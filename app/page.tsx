@@ -5,10 +5,6 @@ export default function Home() {
   return (
     <div className={styles.page}>
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to the macedonian self-teacher!!
-        </h1>
-
         <div>
           <Lesson1 />
         </div>
