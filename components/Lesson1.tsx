@@ -12,9 +12,10 @@ export function Lesson1() {
           {section.content?.intro && (
             <>
               {(section.content.intro.subtitle ?? []).map((sub, idx) => (
-                <li key={idx}>{sub}</li>
+                <p key={idx}>{sub}</p>
               ))}
               <p>{section.content.intro.intro}</p>
+              <p>{section.content.intro.text}</p>
             </>
           )}
 
@@ -27,7 +28,6 @@ export function Lesson1() {
 
               return (
                 <div key={idx} style={{ marginTop: "1rem" }}>
-                  {table.title && <h3>{table.title}</h3>}
                   <table border={1} cellPadding={5} cellSpacing={1}>
                     <thead>
                       <tr>
@@ -54,12 +54,21 @@ export function Lesson1() {
               );
             })}
 
-          {section.content?.afterTable && (
-            <p style={{ marginTop: "1rem" }}>{section.content.afterTable}</p>
+          {section.content?.textAfterTable && (
+            <p style={{ marginTop: "1rem" }}>
+              {section.content.textAfterTable}
+            </p>
           )}
-          {section.content?.text && (
-            <p style={{ marginTop: "1rem" }}>{section.content.text}</p>
-          )}
+
+          {section.content?.text &&
+            section.content.text
+              .split(/\n\s*\n/)
+              .filter((line) => line.trim().length > 0)
+              .map((paragraph, i) => (
+                <p key={i} style={{ marginBottom: 0 }}>
+                  {paragraph}
+                </p>
+              ))}
         </section>
       ))}
     </>
