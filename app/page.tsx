@@ -1,4 +1,5 @@
 import styles from "./page.module.css";
+import { Lesson1 } from "@/components/Lesson1";
 
 export default function Home() {
   return (
@@ -8,10 +9,8 @@ export default function Home() {
           Welcome to the macedonian self-teacher!!
         </h1>
 
-        <div className={styles.ctas}>
-          <p className={styles.description}>
-            This is a simple app to help you learn the Macedonian language.
-          </p>
+        <div>
+          <Lesson1 />
         </div>
       </main>
       <footer className={styles.footer}>
