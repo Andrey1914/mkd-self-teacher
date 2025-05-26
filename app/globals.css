@@ -7,6 +7,7 @@
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --thead-bg: #994747;
   }
 }
 
@@ -33,6 +34,23 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+thead {
+  background: var(--thead-bg);
+}
+
+th {
+  padding: 4px;
+}
+
+td {
+  padding: 6px;
 }
 
 @media (prefers-color-scheme: dark) {
