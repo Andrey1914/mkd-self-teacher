@@ -73,6 +73,7 @@ model TableEntry {
 
 model Exercise {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  title     String?
   prompt    String   // задание
   answer    String   // правильный ответ
   options   Json?    // например, множественный выбор: ["...", "..."]
