@@ -1,14 +1,16 @@
 import React from "react";
+import parse from "html-react-parser";
 import lesson1 from "../prisma/lessons/lesson-1";
+import { exercises } from "@/prisma/lessons/exercises/lesson-1";
 
 export function Lesson1() {
   return (
     <>
-      <h1>{lesson1.title?.join(", ") ?? "Без названия"}</h1>
+      <h1>{parse(lesson1.title?.join(", ") ?? "Без названия")}</h1>
 
       {lesson1.sections?.map((section, i) => (
         <section key={i} style={{ marginBottom: "2rem" }}>
-          <h2>{section.title?.join(", ") ?? "Без названия"}</h2>
+          <h2>{parse(section.title?.join(", ") ?? "Без названия")}</h2>
           {section.content?.intro && (
             <>
               {(section.content.intro.subtitle ?? []).map((sub, idx) => (
@@ -27,7 +29,7 @@ export function Lesson1() {
               const right = rows.slice(mid);
 
               return (
-                <div key={idx} style={{ marginTop: "1rem" }}>
+                <div key={idx} style={{ margin: "1rem 0" }}>
                   <table border={1} cellPadding={5} cellSpacing={1}>
                     <thead>
                       <tr>
@@ -40,35 +42,96 @@ export function Lesson1() {
                     <tbody>
                       {Array.from({
                         length: Math.max(left.length, right.length),
-                      }).map((_, rowIdx) => (
-                        <tr key={rowIdx}>
-                          <td>{left[rowIdx]?.letter ?? ""}</td>
-                          <td>{left[rowIdx]?.sound ?? ""}</td>
-                          <td>{right[rowIdx]?.letter ?? ""}</td>
-                          <td>{right[rowIdx]?.sound ?? ""}</td>
-                        </tr>
-                      ))}
+                      }).map((_, rowIdx) => {
+                        const withItalic = (text: string | undefined) =>
+                          (text ?? "").replace(
+                            /\[([^\]]+)\]/g,
+                            "<em>[$1]</em>"
+                          );
+                        return (
+                          <tr key={rowIdx}>
+                            <td>
+                              {parse(
+                                `<span style="color: rgb(196, 86, 86);">${
+                                  left[rowIdx]?.letter ?? ""
+                                }</span>`
+                              )}
+                            </td>
+                            <td>
+                              {parse(withItalic(left[rowIdx]?.sound ?? ""))}
+                            </td>
+                            <td>
+                              {parse(
+                                `<span style="color: rgb(196, 86, 86);">${
+                                  right[rowIdx]?.letter ?? ""
+                                }</span>`
+                              )}
+                            </td>
+                            <td>
+                              {parse(withItalic(right[rowIdx]?.sound ?? ""))}
+                            </td>
+                          </tr>
+                        );
+                      })}
                     </tbody>
                   </table>
                 </div>
               );
             })}
 
-          {section.content?.textAfterTable && (
-            <p style={{ marginTop: "1rem" }}>
-              {section.content.textAfterTable}
-            </p>
-          )}
-
           {section.content?.text &&
             section.content.text
               .split(/\n\s*\n/)
               .filter((line) => line.trim().length > 0)
-              .map((paragraph, i) => (
-                <p key={i} style={{ marginBottom: 0 }}>
+              .map((paragraph, i) => {
+                const withItalic = paragraph.replace(
+                  /\[([^\]]+)\]/g,
+                  (_, inner) => `<em>[${inner}]</em>`
+                );
+
+                const withBold = withItalic.replace(
+                  /«(.*?)»/g,
+                  (_, inner) => `<strong>${inner}</strong>`
+                );
+
+                return (
+                  <p key={i} style={{ marginBottom: 0 }}>
+                    {parse(withBold)}
+                  </p>
+                );
+              })}
+        </section>
+      ))}
+
+      {exercises.map((exercise, i) => (
+        <section key={`exercise-${i}`} style={{ marginBottom: "2rem" }}>
+          {exercise.sections?.map((section, sIdx) => (
+            <div key={sIdx}>
+              {section.prompt?.map((paragraph, i) => (
+                <p
+                  key={i}
+                  style={{
+                    textIndent: 0,
+                  }}
+                >
+                  <strong>Упражнение 1. </strong>
                   {paragraph}
                 </p>
               ))}
+
+              {section.content?.exercise && (
+                <p
+                  style={{
+                    marginTop: "1rem",
+                    textIndent: 0,
+                    padding: "0 20px",
+                  }}
+                >
+                  {parse(section.content.exercise)}
+                </p>
+              )}
+            </div>
+          ))}
         </section>
       ))}
     </>
