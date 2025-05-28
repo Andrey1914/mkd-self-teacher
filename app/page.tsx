@@ -1,5 +1,5 @@
 import styles from "./page.module.css";
-import { Lesson1 } from "@/components/Lesson1";
+import { Lesson1 } from "@/components/Lessons/Lesson1";
 
 export default function Home() {
   return (
@@ -9,7 +9,7 @@ export default function Home() {
       </main>
       <footer className={styles.footer}>
         <p className={styles.footerText}>
-          Copight &copy; 2023 Macedonian Self-Teacher
+          Copyright &copy; 2023 Macedonian Self-Teacher
         </p>
       </footer>
     </div>
