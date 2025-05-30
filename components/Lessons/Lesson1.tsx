@@ -132,7 +132,7 @@ export function Lesson1() {
                   display: "flex",
                   gap: "2rem",
                   background:
-                    "linear-gradient(to right, #994747, var(--background))",
+                    "linear-gradient(to right, var(--thead-bg), var(--background))",
                 }}
               >
                 <div style={{ flex: 1 }}>
@@ -159,7 +159,7 @@ export function Lesson1() {
                   gap: "2rem",
                   marginBottom: "1rem",
                   background:
-                    "linear-gradient(to right, #994747, var(--background))",
+                    "linear-gradient(to right, var(--thead-bg), var(--background))",
                 }}
               >
                 {/* mkd */}
@@ -226,7 +226,7 @@ export function Lesson1() {
               style={{
                 width: "100%",
                 borderCollapse: "collapse",
-                border: "2px solid #994747",
+                border: "2px solid var(--thead-bg)",
                 backgroundColor: "#ebb2b2",
                 // margin: "0.5rem 0",
               }}
@@ -239,7 +239,7 @@ export function Lesson1() {
                       padding: "0.5rem",
                       fontWeight: "bold",
                       textTransform: "uppercase",
-                      borderRight: "2px solid #994747",
+                      borderRight: "2px solid var(--thead-bg)",
                       verticalAlign: "middle",
                       textAlign: "center",
                       color: "#994747",
@@ -254,7 +254,7 @@ export function Lesson1() {
                       verticalAlign: "top",
                     }}
                   >
-                    <p style={{ color: "#333" }}>
+                    <p style={{ color: "#333", textIndent: 0 }}>
                       {parse(section.content.text)}
                     </p>
                   </td>
