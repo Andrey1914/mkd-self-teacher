@@ -5,18 +5,23 @@ import { Exercise1 } from "@/components/Exercises/Lesson1/Exercise1";
 
 export function Lesson1() {
   let exercise1 = false;
+  const handledTypes = ["pay-attention"];
 
   return (
     <>
       <h1>{parse(lesson1.title?.join(", ") ?? "Без названия")}</h1>
       {lesson1.sections?.map((section, i) => (
         <section key={i} style={{ marginBottom: "2rem" }}>
-          <h2>{parse(section.title?.join(", ") ?? "Без названия")}</h2>
+          {!handledTypes.includes(section.type) && (
+            <h2>{parse(section.title?.join(", ") ?? "Без названия")}</h2>
+          )}
+
           {section.content?.intro && (
             <>
               {(section.content.intro.subtitle ?? []).map((sub, idx) => (
                 <p key={idx}>{sub}</p>
               ))}
+
               <p>{section.content.intro.intro}</p>
               <p>{section.content.intro.text}</p>
             </>
@@ -49,6 +54,7 @@ export function Lesson1() {
                             /\[([^\]]+)\]/g,
                             "<em>[$1]</em>"
                           );
+
                         return (
                           <tr key={rowIdx}>
                             <td>
@@ -81,6 +87,7 @@ export function Lesson1() {
             })}
 
           {section.content?.text &&
+            !handledTypes.includes(section.type) &&
             section.content.text
               .split(/\n\s*\n/)
               .filter((line) => line.trim().length > 0)
@@ -111,7 +118,7 @@ export function Lesson1() {
               })()}
           </div>
 
-          <div>
+          <>
             {section.subtitle && (
               <h3 style={{ padding: "0 0 1rem 1rem" }}>
                 {parse(section.subtitle.join(", ") ?? "Без названия")}
@@ -150,12 +157,12 @@ export function Lesson1() {
 
                   display: "flex",
                   gap: "2rem",
-                  marginBottom: "2rem",
+                  marginBottom: "1rem",
                   background:
                     "linear-gradient(to right, #994747, var(--background))",
                 }}
               >
-                {/* Македонская колонка */}
+                {/* mkd */}
                 <div style={{ flex: 1 }}>
                   {section.content.dialogueOrder
                     .filter(({ language }) => language === "mkd")
@@ -183,7 +190,7 @@ export function Lesson1() {
                     })}
                 </div>
 
-                {/* Русская колонка */}
+                {/* ru */}
                 <div style={{ flex: 1 }}>
                   {section.content.dialogueOrder
                     .filter(({ language }) => language === "ru")
@@ -212,7 +219,49 @@ export function Lesson1() {
                 </div>
               </div>
             )}
-          </div>
+          </>
+
+          {section.type === "pay-attention" && section.content?.text && (
+            <table
+              style={{
+                width: "100%",
+                borderCollapse: "collapse",
+                border: "2px solid #994747",
+                backgroundColor: "#ebb2b2",
+                // margin: "0.5rem 0",
+              }}
+            >
+              <tbody>
+                <tr>
+                  <td
+                    style={{
+                      backgroundColor: "#ebb2b2",
+                      padding: "0.5rem",
+                      fontWeight: "bold",
+                      textTransform: "uppercase",
+                      borderRight: "2px solid #994747",
+                      verticalAlign: "middle",
+                      textAlign: "center",
+                      color: "#994747",
+                    }}
+                  >
+                    {section.title?.[0] ?? "Обратите внимание!"}
+                  </td>
+
+                  <td
+                    style={{
+                      padding: "1rem",
+                      verticalAlign: "top",
+                    }}
+                  >
+                    <p style={{ color: "#333" }}>
+                      {parse(section.content.text)}
+                    </p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          )}
         </section>
       ))}
     </>
