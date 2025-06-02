@@ -2,16 +2,12 @@ import React from "react";
 import parse from "html-react-parser";
 import lesson1 from "../../prisma/lessons/lesson-1";
 import { Exercise1 } from "@/components/Exercises/Lesson1/Exercise1";
-import { vocabulary } from "@/prisma/lessons/vocabulary";
-import { VocabularyTable } from "@/components/Vocabulary/Lesson1/Vocabulary1";
-import { VocabularySection } from "@/components/Vocabulary/Lesson1/Vocabulary1";
+import { Vocabulary1 } from "@/components/Vocabulary/Lesson1/Vocabulary1";
 
 export function Lesson1() {
-  const vocabSection = vocabulary[0].sections.find(
-    (s): s is VocabularySection => s.type === "vocabulary"
-  );
+  let vocabIndex = 0;
 
-  let vocabRendered = false;
+  // let vocabRendered = false;
   let exercise1 = false;
   const handledTypes = ["pay-attention"];
 
@@ -229,62 +225,60 @@ export function Lesson1() {
             )}
           </>
 
-          {section.type === "pay-attention" && section.content?.text && (
-            <table
-              style={{
-                width: "100%",
-                borderCollapse: "collapse",
-                border: "2px solid var(--thead-bg)",
-                backgroundColor: "#ebb2b2",
-                // margin: "0.5rem 0",
-              }}
-            >
-              <tbody>
-                <tr>
-                  <td
-                    style={{
-                      backgroundColor: "#ebb2b2",
-                      padding: "0.5rem",
-                      fontWeight: "bold",
-                      textTransform: "uppercase",
-                      borderRight: "2px solid var(--thead-bg)",
-                      verticalAlign: "middle",
-                      textAlign: "center",
-                      color: "#994747",
-                    }}
-                  >
-                    {section.title?.[0] ?? "Обратите внимание!"}
-                  </td>
+          <>
+            {section.type === "pay-attention" &&
+              section.content?.text &&
+              (() => {
+                const currentIndex = vocabIndex++;
 
-                  <td
-                    style={{
-                      padding: "1rem",
-                      verticalAlign: "top",
-                    }}
-                  >
-                    <p style={{ color: "#333", textIndent: 0 }}>
-                      {parse(section.content.text)}
-                    </p>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          )}
-
-          {section.type?.includes("pay-attention") &&
-            vocabSection &&
-            !vocabRendered &&
-            (() => {
-              vocabRendered = true;
-              return (
-                <div style={{ marginTop: "2rem" }}>
-                  <h2>{parse(vocabulary[0].title.ru)}</h2>
-                  <h2>{parse(vocabulary[0].title.mkd)}</h2>
-
-                  <VocabularyTable section={vocabSection} />
-                </div>
-              );
-            })()}
+                return (
+                  <>
+                    <table
+                      style={{
+                        width: "100%",
+                        border: "2px solid var(--thead-bg)",
+                        backgroundColor: "#ebb2b2",
+                        margin: "0 0 4rem 0",
+                      }}
+                    >
+                      <tbody>
+                        <tr>
+                          <td
+                            style={{
+                              backgroundColor: "#ebb2b2",
+                              padding: "0.5rem",
+                              fontWeight: "bold",
+                              textTransform: "uppercase",
+                              borderRight: "2px solid var(--thead-bg)",
+                              verticalAlign: "middle",
+                              textAlign: "center",
+                              color: "#994747",
+                            }}
+                          >
+                            {section.title?.[0] ?? "Обратите внимание!"}
+                          </td>
+                          <td style={{ padding: "1rem", verticalAlign: "top" }}>
+                            <p style={{ color: "#333", textIndent: 0 }}>
+                              {parse(section.content.text)}
+                            </p>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    {currentIndex === 0 && (
+                      <>
+                        <Vocabulary1 i={1} />
+                      </>
+                    )}
+                    {currentIndex === 1 && (
+                      <>
+                        <Vocabulary1 i={2} />
+                      </>
+                    )}
+                  </>
+                );
+              })()}
+          </>
         </section>
       ))}
     </>
