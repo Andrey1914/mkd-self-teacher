@@ -6,8 +6,6 @@ import { Vocabulary1 } from "@/components/Vocabulary/Lesson1/Vocabulary1";
 
 export function Lesson1() {
   let vocabIndex = 0;
-
-  // let vocabRendered = false;
   let exercise1 = false;
   const handledTypes = ["pay-attention"];
 
@@ -16,9 +14,12 @@ export function Lesson1() {
       <h1>{parse(lesson1.title?.join(", ") ?? "Без названия")}</h1>
       {lesson1.sections?.map((section, i) => (
         <section key={i} style={{ marginBottom: "2rem" }}>
-          {!handledTypes.includes(section.type) && (
-            <h2>{parse(section.title?.join(", ") ?? "Без названия")}</h2>
-          )}
+          {!handledTypes.includes(section.type) &&
+            (Array.isArray(section.title)
+              ? section.title.length > 0 && (
+                  <h2>{parse(section.title.join(", "))}</h2>
+                )
+              : section.title && <h2>{parse(section.title)}</h2>)}
 
           {section.content?.intro && (
             <>
@@ -125,7 +126,7 @@ export function Lesson1() {
           <>
             {section.subtitle && (
               <h3 style={{ padding: "0 0 1rem 1rem" }}>
-                {parse(section.subtitle.join(", ") ?? "Без названия")}
+                {parse(section.subtitle.join(", "))}
               </h3>
             )}
 
@@ -255,7 +256,7 @@ export function Lesson1() {
                               color: "#994747",
                             }}
                           >
-                            {section.title?.[0] ?? "Обратите внимание!"}
+                            {section.title?.[0]}
                           </td>
                           <td style={{ padding: "1rem", verticalAlign: "top" }}>
                             <p style={{ color: "#333", textIndent: 0 }}>
@@ -278,6 +279,130 @@ export function Lesson1() {
                   </>
                 );
               })()}
+          </>
+
+          <>
+            {section.type === "countries-nationalities" &&
+              Array.isArray(section.content?.subtitle) &&
+              Array.isArray(section.content?.words) && (
+                <table
+                  style={{
+                    width: "100%",
+                    borderCollapse: "collapse",
+                    marginBottom: "2rem",
+                    border: "1px solid #994747",
+                  }}
+                >
+                  <thead>
+                    <tr style={{ backgroundColor: "#994747", color: "#fff" }}>
+                      {section.content.subtitle.map(
+                        (title: string, idx: number) => (
+                          <th
+                            key={idx}
+                            style={{
+                              padding: "0.5rem",
+                              borderLeft: idx > 0 ? "1px solid #fff" : "none",
+                              textAlign: "center",
+                            }}
+                          >
+                            {title}
+                          </th>
+                        )
+                      )}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {section.content.words.map(
+                      (
+                        row: {
+                          land: string;
+                          nationality: string;
+                          adjective: string;
+                        },
+                        idx: number
+                      ) => (
+                        <tr key={idx}>
+                          <td
+                            style={{
+                              padding: "0.5rem",
+                              verticalAlign: "top",
+                              border: "1px solid #994747",
+                            }}
+                          >
+                            {parse(
+                              `<span style="color: rgb(196, 86, 86);">${row.land}</span>`
+                            )}
+                          </td>
+                          <td
+                            style={{
+                              padding: "0.5rem",
+                              verticalAlign: "top",
+                              border: "1px solid #994747",
+                            }}
+                          >
+                            {parse(
+                              `<span style="color: rgb(196, 86, 86);">${row.nationality}</span>`
+                            )}
+                          </td>
+                          <td
+                            style={{
+                              padding: "0.5rem",
+                              verticalAlign: "top",
+                              border: "1px solid #994747",
+                            }}
+                          >
+                            {parse(
+                              `<span style="color: rgb(196, 86, 86);">${row.adjective}</span>`
+                            )}
+                          </td>
+                        </tr>
+                      )
+                    )}
+                  </tbody>
+                </table>
+              )}
+
+            {/* {section.type === "countries-nationalities" && (
+              <table
+                style={{
+                  width: "100%",
+                  borderCollapse: "collapse",
+                  marginBottom: "2rem",
+                }}
+              >
+                <thead>
+                  <tr style={{ backgroundColor: "#994747", color: "#fff" }}>
+                    {section.content.subtitle?.map((title, idx) => (
+                      <th
+                        key={idx}
+                        style={{
+                          padding: "0.5rem",
+                          borderLeft: idx > 0 ? "2px solid #fff" : "none",
+                          textAlign: "center",
+                        }}
+                      >
+                        {title}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {section.content.words?.map((row, idx) => (
+                    <tr key={idx}>
+                      <td style={{ padding: "0.5rem", verticalAlign: "top" }}>
+                        {row.land}
+                      </td>
+                      <td style={{ padding: "0.5rem", verticalAlign: "top" }}>
+                        {row.nationality}
+                      </td>
+                      <td style={{ padding: "0.5rem", verticalAlign: "top" }}>
+                        {row.adjective}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            )} */}
           </>
         </section>
       ))}
