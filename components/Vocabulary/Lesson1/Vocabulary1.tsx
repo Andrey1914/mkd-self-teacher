@@ -1,56 +1,72 @@
 import React from "react";
 import parse from "html-react-parser";
+import { vocabulary } from "@/prisma/lessons/vocabulary";
 
-type Word = {
-  mkd: string;
-  pron: string;
-  ru: string;
-};
+export function Vocabulary1({ i }: { i: number }) {
+  const section = vocabulary[0]?.sections.find(
+    (sec) => sec.type === `vocabulary-${i}`
+  );
 
-export type VocabularySection = {
-  type: "vocabulary";
-  content: {
-    subtitle: string[];
-    words: Word[];
-  };
-};
+  if (
+    !section ||
+    !section.content?.subtitle ||
+    !section.content.words?.length
+  ) {
+    return null;
+  }
 
-export function VocabularyTable({ section }: { section: VocabularySection }) {
-  if (!section?.content?.words || !section?.content?.subtitle) return null;
+  const { subtitle, words } = section.content;
 
   return (
-    <table style={{ borderCollapse: "collapse", width: "100%" }}>
-      <thead>
-        <tr style={{ backgroundColor: "#994747", color: "#fff" }}>
-          {section.content.subtitle.map((col, idx) => (
-            <th
-              key={idx}
-              style={{
-                padding: "0.5rem",
-                border: "1px solid #994747",
-                textAlign: "left",
-              }}
-            >
-              {col}
-            </th>
-          ))}
-        </tr>
-      </thead>
-      <tbody>
-        {section.content.words.map((word, idx) => (
-          <tr key={idx}>
-            <td style={{ padding: "0.5rem" }}>
-              {parse(
-                `<span style="color: rgb(196, 86, 86);">${word.mkd}</span>`
-              )}
-            </td>
-            <td style={{ padding: "0.5rem" }}>
-              {parse(`<em>${word.pron}</em>`)}
-            </td>
-            <td style={{ padding: "0.5rem" }}>{parse(word.ru)}</td>
+    <div style={{ marginBottom: "2rem" }}>
+      {i === 1 && vocabulary.length > 0 && (
+        <section style={{ marginBottom: "3rem" }}>
+          {vocabulary[0].title?.ru && (
+            <h2 style={{ marginBottom: "1rem" }}>{vocabulary[0].title.ru}</h2>
+          )}
+          {vocabulary[0].title?.mkd && (
+            <h2 style={{ marginBottom: "1rem" }}>
+              {parse(vocabulary[0].title.mkd)}
+            </h2>
+          )}
+        </section>
+      )}
+
+      <table style={{ width: "100%" }}>
+        <thead>
+          <tr style={{ backgroundColor: "#994747", color: "#fff" }}>
+            {subtitle.map((col, idx) => (
+              <th
+                key={idx}
+                style={{
+                  padding: "0.5rem",
+                  borderLeft: idx > 0 ? "2px solid #fff" : "none",
+                  textAlign: "center",
+                }}
+              >
+                {col}
+              </th>
+            ))}
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {words.map((word, idx) => (
+            <tr key={idx}>
+              <td style={{ padding: "0.5rem" }}>
+                {parse(
+                  `<span style="color: rgb(196, 86, 86);">${word.mkd}</span>`
+                )}
+              </td>
+              <td style={{ padding: "0.5rem" }}>
+                {parse(`<em>${word.pron}</em>`)}
+              </td>
+              <td style={{ padding: "0.5rem" }}>
+                {parse(`<strong>${word.ru}</strong>`)}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }
