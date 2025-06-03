@@ -1,8 +1,9 @@
 import React from "react";
-import parse from "html-react-parser";
+
 import lesson1 from "../../prisma/lessons/lesson-1";
 import { Exercise1 } from "@/components/Exercises/Lesson1/Exercise1";
 import { Vocabulary1 } from "@/components/Vocabulary/Lesson1/Vocabulary1";
+import { formatText } from "@/utils/textFormat";
 
 export function Lesson1() {
   let vocabIndex = 0;
@@ -11,15 +12,21 @@ export function Lesson1() {
 
   return (
     <>
-      <h1>{parse(lesson1.title?.join(", ") ?? "Без названия")}</h1>
+      <h1>{formatText(lesson1.title?.join(", ") ?? "Без названия")}</h1>
       {lesson1.sections?.map((section, i) => (
         <section key={i} style={{ marginBottom: "2rem" }}>
           {!handledTypes.includes(section.type) &&
             (Array.isArray(section.title)
               ? section.title.length > 0 && (
-                  <h2>{parse(section.title.join(", "))}</h2>
+                  <h2>{formatText(section.title.join(", "))}</h2>
                 )
-              : section.title && <h2>{parse(section.title)}</h2>)}
+              : section.title && <h2>{formatText(section.title)}</h2>)}
+
+          {Array.isArray(section.subtitle) && section.subtitle.length > 0 && (
+            <h3 style={{ marginTop: "-0.5rem", marginBottom: "1rem" }}>
+              {formatText(section.subtitle.join(", "))}
+            </h3>
+          )}
 
           {section.content?.intro && (
             <>
@@ -41,46 +48,94 @@ export function Lesson1() {
 
               return (
                 <div key={idx} style={{ margin: "1rem 0" }}>
-                  <table border={1} cellPadding={5} cellSpacing={1}>
+                  <table
+                    // border={1}
+                    // cellPadding={5}
+                    // cellSpacing={1}
+                    style={{
+                      width: "100%",
+                      borderCollapse: "collapse",
+                      marginBottom: "1rem",
+                      border: "1px solid #994747",
+                    }}
+                  >
                     <thead>
                       <tr>
-                        <th>Буква</th>
-                        <th>Звук</th>
-                        <th>Буква</th>
-                        <th>Звук</th>
+                        <th
+                          style={{
+                            borderLeft: idx > 0 ? "1px solid #fff" : "none",
+                          }}
+                        >
+                          Буква
+                        </th>
+                        <th
+                          style={{
+                            borderLeft: idx > 0 ? "1px solid #fff" : "none",
+                          }}
+                        >
+                          Звук
+                        </th>
+                        <th
+                          style={{
+                            borderLeft: idx > 0 ? "1px solid #fff" : "none",
+                          }}
+                        >
+                          Буква
+                        </th>
+                        <th
+                          style={{
+                            borderLeft: idx > 0 ? "1px solid #fff" : "none",
+                          }}
+                        >
+                          Звук
+                        </th>
                       </tr>
                     </thead>
                     <tbody>
                       {Array.from({
                         length: Math.max(left.length, right.length),
                       }).map((_, rowIdx) => {
-                        const withItalic = (text: string | undefined) =>
-                          (text ?? "").replace(
-                            /\[([^\]]+)\]/g,
-                            "<em>[$1]</em>"
-                          );
-
                         return (
                           <tr key={rowIdx}>
-                            <td>
-                              {parse(
-                                `<span style="color: rgb(196, 86, 86);">${
-                                  left[rowIdx]?.letter ?? ""
-                                }</span>`
+                            <td
+                              style={{
+                                padding: "0.5rem",
+                                verticalAlign: "top",
+                                border: "1px solid #994747",
+                              }}
+                            >
+                              {formatText(
+                                `<span>${left[rowIdx]?.letter ?? ""}</span>`
                               )}
                             </td>
-                            <td>
-                              {parse(withItalic(left[rowIdx]?.sound ?? ""))}
+                            <td
+                              style={{
+                                padding: "0.5rem",
+                                verticalAlign: "top",
+                                border: "1px solid #994747",
+                              }}
+                            >
+                              {formatText(left[rowIdx]?.sound ?? "")}
                             </td>
-                            <td>
-                              {parse(
-                                `<span style="color: rgb(196, 86, 86);">${
-                                  right[rowIdx]?.letter ?? ""
-                                }</span>`
+                            <td
+                              style={{
+                                padding: "0.5rem",
+                                verticalAlign: "top",
+                                border: "1px solid #994747",
+                              }}
+                            >
+                              {formatText(
+                                `<span>${right[rowIdx]?.letter ?? ""}</span>`
                               )}
                             </td>
-                            <td>
-                              {parse(withItalic(right[rowIdx]?.sound ?? ""))}
+                            <td
+                              style={{
+                                padding: "0.5rem",
+                                verticalAlign: "top",
+                                border: "1px solid #994747",
+                              }}
+                            >
+                              {formatText(right[rowIdx]?.sound ?? "")}
                             </td>
                           </tr>
                         );
@@ -96,23 +151,11 @@ export function Lesson1() {
             section.content.text
               .split(/\n\s*\n/)
               .filter((line) => line.trim().length > 0)
-              .map((paragraph, i) => {
-                const withItalic = paragraph.replace(
-                  /\[([^\]]+)\]/g,
-                  (_, inner) => `<em>[${inner}]</em>`
-                );
-
-                const withBold = withItalic.replace(
-                  /«(.*?)»/g,
-                  (_, inner) => `<strong>${inner}</strong>`
-                );
-
-                return (
-                  <p key={i} style={{ marginBottom: 0 }}>
-                    {parse(withBold)}
-                  </p>
-                );
-              })}
+              .map((paragraph, i) => (
+                <p key={i} style={{ marginBottom: 0 }}>
+                  {formatText(paragraph)}
+                </p>
+              ))}
 
           <div style={{ paddingTop: "2rem" }}>
             {!exercise1 &&
@@ -124,12 +167,6 @@ export function Lesson1() {
           </div>
 
           <>
-            {section.subtitle && (
-              <h3 style={{ padding: "0 0 1rem 1rem" }}>
-                {parse(section.subtitle.join(", "))}
-              </h3>
-            )}
-
             {section.content?.description && section.content?.subtitle && (
               <div
                 style={{
@@ -141,16 +178,12 @@ export function Lesson1() {
                 }}
               >
                 <div style={{ flex: 1 }}>
-                  <h3 style={{ fontStyle: "italic" }}>
-                    {section.content.subtitle.mkd}
-                  </h3>
-                  <p>{parse(section.content.description.mkd)}</p>
+                  <h3>{formatText(section.content.subtitle.mkd)}</h3>
+                  <p>{formatText(section.content.description.mkd)}</p>
                 </div>
                 <div style={{ flex: 1 }}>
-                  <h3 style={{ fontStyle: "italic" }}>
-                    {section.content.subtitle.ru}
-                  </h3>
-                  <p>{parse(section.content.description.ru)}</p>
+                  <h3>{formatText(section.content.subtitle.ru)}</h3>
+                  <p>{formatText(section.content.description.ru)}</p>
                 </div>
               </div>
             )}
@@ -159,7 +192,6 @@ export function Lesson1() {
               <div
                 style={{
                   padding: "5px",
-
                   display: "flex",
                   gap: "2rem",
                   marginBottom: "1rem",
@@ -189,7 +221,7 @@ export function Lesson1() {
                           style={{ marginBottom: "1rem" }}
                         >
                           <strong>{speakerData.speaker.mkd}</strong>{" "}
-                          {parse(speakerData.mkd[replyIndex])}
+                          {formatText(speakerData.mkd[replyIndex])}
                         </p>
                       );
                     })}
@@ -217,7 +249,7 @@ export function Lesson1() {
                           style={{ marginBottom: "1rem" }}
                         >
                           <strong>{speakerData.speaker.ru}</strong>{" "}
-                          {parse(speakerData.ru[replyIndex])}
+                          {formatText(speakerData.ru[replyIndex])}
                         </p>
                       );
                     })}
@@ -260,7 +292,7 @@ export function Lesson1() {
                           </td>
                           <td style={{ padding: "1rem", verticalAlign: "top" }}>
                             <p style={{ color: "#333", textIndent: 0 }}>
-                              {parse(section.content.text)}
+                              {formatText(section.content.text)}
                             </p>
                           </td>
                         </tr>
@@ -289,7 +321,7 @@ export function Lesson1() {
                   style={{
                     width: "100%",
                     borderCollapse: "collapse",
-                    marginBottom: "2rem",
+                    marginBottom: "1rem",
                     border: "1px solid #994747",
                   }}
                 >
@@ -312,15 +344,13 @@ export function Lesson1() {
                     </tr>
                   </thead>
                   <tbody>
-                    {section.content.words.map(
-                      (
-                        row: {
-                          land: string;
-                          nationality: string;
-                          adjective: string;
-                        },
-                        idx: number
-                      ) => (
+                    {section.content.words.map((row, idx) => {
+                      const r = row as {
+                        land: string;
+                        nationality: string;
+                        adjective: string;
+                      };
+                      return (
                         <tr key={idx}>
                           <td
                             style={{
@@ -329,9 +359,7 @@ export function Lesson1() {
                               border: "1px solid #994747",
                             }}
                           >
-                            {parse(
-                              `<span style="color: rgb(196, 86, 86);">${row.land}</span>`
-                            )}
+                            {formatText(`<span>${r.land}</span>`)}
                           </td>
                           <td
                             style={{
@@ -340,9 +368,7 @@ export function Lesson1() {
                               border: "1px solid #994747",
                             }}
                           >
-                            {parse(
-                              `<span style="color: rgb(196, 86, 86);">${row.nationality}</span>`
-                            )}
+                            {formatText(`<span>${r.nationality}</span>`)}
                           </td>
                           <td
                             style={{
@@ -351,58 +377,90 @@ export function Lesson1() {
                               border: "1px solid #994747",
                             }}
                           >
-                            {parse(
-                              `<span style="color: rgb(196, 86, 86);">${row.adjective}</span>`
-                            )}
+                            {formatText(`<span>${r.adjective}</span>`)}
                           </td>
                         </tr>
-                      )
-                    )}
+                      );
+                    })}
                   </tbody>
                 </table>
               )}
+          </>
 
-            {/* {section.type === "countries-nationalities" && (
-              <table
-                style={{
-                  width: "100%",
-                  borderCollapse: "collapse",
-                  marginBottom: "2rem",
-                }}
-              >
-                <thead>
-                  <tr style={{ backgroundColor: "#994747", color: "#fff" }}>
-                    {section.content.subtitle?.map((title, idx) => (
-                      <th
-                        key={idx}
-                        style={{
-                          padding: "0.5rem",
-                          borderLeft: idx > 0 ? "2px solid #fff" : "none",
-                          textAlign: "center",
-                        }}
-                      >
-                        {title}
-                      </th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {section.content.words?.map((row, idx) => (
-                    <tr key={idx}>
-                      <td style={{ padding: "0.5rem", verticalAlign: "top" }}>
-                        {row.land}
-                      </td>
-                      <td style={{ padding: "0.5rem", verticalAlign: "top" }}>
-                        {row.nationality}
-                      </td>
-                      <td style={{ padding: "0.5rem", verticalAlign: "top" }}>
-                        {row.adjective}
-                      </td>
+          <>
+            {section.type === "grammar" &&
+              Array.isArray(section.content?.subtitle) &&
+              Array.isArray(section.content?.words) && (
+                <table
+                  style={{
+                    width: "100%",
+                    borderCollapse: "collapse",
+                    border: "1px solid #994747",
+                    margin: "1rem 0",
+                  }}
+                >
+                  <thead>
+                    <tr style={{ backgroundColor: "#994747", color: "#fff" }}>
+                      {section.content.subtitle.map(
+                        (col: string, colIdx: number) => (
+                          <th
+                            key={colIdx}
+                            style={{
+                              padding: "0.5rem",
+                              borderLeft:
+                                colIdx > 0 ? "1px solid #fff" : "none",
+                              textAlign: "center",
+                            }}
+                          >
+                            {col}
+                          </th>
+                        )
+                      )}
                     </tr>
-                  ))}
-                </tbody>
-              </table>
-            )} */}
+                  </thead>
+                  <tbody>
+                    {section.content.words.map((row, idx) => {
+                      const r = row as {
+                        persone: string;
+                        singular: string;
+                        plural: string;
+                      };
+
+                      return (
+                        <tr key={idx}>
+                          <td
+                            style={{
+                              padding: "0.5rem",
+                              verticalAlign: "top",
+                              border: "1px solid #994747",
+                            }}
+                          >
+                            {formatText(r.persone)}
+                          </td>
+                          <td
+                            style={{
+                              padding: "0.5rem",
+                              verticalAlign: "top",
+                              border: "1px solid #994747",
+                            }}
+                          >
+                            {formatText(r.singular)}
+                          </td>
+                          <td
+                            style={{
+                              padding: "0.5rem",
+                              verticalAlign: "top",
+                              border: "1px solid #994747",
+                            }}
+                          >
+                            {formatText(r.plural)}
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              )}
           </>
         </section>
       ))}
