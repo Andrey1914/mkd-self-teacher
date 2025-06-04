@@ -637,6 +637,50 @@ const lesson1 = {
       «быть» указывается форма 1-го лица единственного числа <span>сум</span>.`,
       },
     },
+    {
+      type: `grammar`,
+      content: {
+        subtitle: [`Лицо`, `Единственное число`, `Множественное число`],
+        words: [
+          {
+            persone: `1-e`,
+            singular: `<span>сум</span>`,
+            plural: `<span>сме</span>`,
+          },
+          {
+            persone: `2-e`,
+            singular: `<span>си</span>`,
+            plural: `<span>сте</span>`,
+          },
+          {
+            persone: `3-e`,
+            singular: `<span>е</span>`,
+            plural: `<span>се</span>`,
+          },
+        ],
+      },
+    },
+    {
+      type: `grammar`,
+      content: {
+        text: `Формы глагола «быть» в настоящем времени избегают позиции первого слова в предложении, фразе:`,
+      },
+    },
+    {
+      type: `grammar`,
+      content: {
+        words: [
+          {
+            mkd: `<span>И јас «сум» Македонец.</span>`,
+            ru: `И я македонец.`,
+          },
+          {
+            mkd: `<span>Македонец «сум».</span>`,
+            ru: `Я македонец.`,
+          },
+        ],
+      },
+    },
   ],
 };
 

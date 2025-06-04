@@ -18,12 +18,14 @@ export function Lesson1() {
           {!handledTypes.includes(section.type) &&
             (Array.isArray(section.title)
               ? section.title.length > 0 && (
-                  <h2>{formatText(section.title.join(", "))}</h2>
+                  <h2 style={{ margin: "1rem 0" }}>
+                    {formatText(section.title.join(", "))}
+                  </h2>
                 )
               : section.title && <h2>{formatText(section.title)}</h2>)}
 
           {Array.isArray(section.subtitle) && section.subtitle.length > 0 && (
-            <h3 style={{ marginTop: "-0.5rem", marginBottom: "1rem" }}>
+            <h3 style={{ margin: "2rem 0" }}>
               {formatText(section.subtitle.join(", "))}
             </h3>
           )}
@@ -49,9 +51,6 @@ export function Lesson1() {
               return (
                 <div key={idx} style={{ margin: "1rem 0" }}>
                   <table
-                    // border={1}
-                    // cellPadding={5}
-                    // cellSpacing={1}
                     style={{
                       width: "100%",
                       borderCollapse: "collapse",
@@ -60,37 +59,25 @@ export function Lesson1() {
                     }}
                   >
                     <thead>
-                      <tr>
-                        <th
-                          style={{
-                            borderLeft: idx > 0 ? "1px solid #fff" : "none",
-                          }}
-                        >
-                          Буква
-                        </th>
-                        <th
-                          style={{
-                            borderLeft: idx > 0 ? "1px solid #fff" : "none",
-                          }}
-                        >
-                          Звук
-                        </th>
-                        <th
-                          style={{
-                            borderLeft: idx > 0 ? "1px solid #fff" : "none",
-                          }}
-                        >
-                          Буква
-                        </th>
-                        <th
-                          style={{
-                            borderLeft: idx > 0 ? "1px solid #fff" : "none",
-                          }}
-                        >
-                          Звук
-                        </th>
+                      <tr style={{ backgroundColor: "#994747", color: "#fff" }}>
+                        {["Буква", "Звук", "Буква", "Звук"].map(
+                          (label, idx) => (
+                            <th
+                              key={idx}
+                              style={{
+                                padding: "0.5rem",
+                                textAlign: "center",
+                                borderLeft:
+                                  idx === 0 ? "none" : "1px solid #fff",
+                              }}
+                            >
+                              {label}
+                            </th>
+                          )
+                        )}
                       </tr>
                     </thead>
+
                     <tbody>
                       {Array.from({
                         length: Math.max(left.length, right.length),
@@ -157,14 +144,14 @@ export function Lesson1() {
                 </p>
               ))}
 
-          <div style={{ paddingTop: "2rem" }}>
+          <>
             {!exercise1 &&
               section.type === "spelling" &&
               (() => {
                 exercise1 = true;
                 return <Exercise1 />;
               })()}
-          </div>
+          </>
 
           <>
             {section.content?.description && section.content?.subtitle && (
@@ -388,79 +375,131 @@ export function Lesson1() {
           </>
 
           <>
-            {section.type === "grammar" &&
-              Array.isArray(section.content?.subtitle) &&
-              Array.isArray(section.content?.words) && (
-                <table
-                  style={{
-                    width: "100%",
-                    borderCollapse: "collapse",
-                    border: "1px solid #994747",
-                    margin: "1rem 0",
-                  }}
-                >
-                  <thead>
-                    <tr style={{ backgroundColor: "#994747", color: "#fff" }}>
-                      {section.content.subtitle.map(
-                        (col: string, colIdx: number) => (
-                          <th
-                            key={colIdx}
-                            style={{
-                              padding: "0.5rem",
-                              borderLeft:
-                                colIdx > 0 ? "1px solid #fff" : "none",
-                              textAlign: "center",
-                            }}
-                          >
-                            {col}
-                          </th>
-                        )
-                      )}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {section.content.words.map((row, idx) => {
-                      const r = row as {
-                        persone: string;
-                        singular: string;
-                        plural: string;
-                      };
-
-                      return (
-                        <tr key={idx}>
-                          <td
-                            style={{
-                              padding: "0.5rem",
-                              verticalAlign: "top",
-                              border: "1px solid #994747",
-                            }}
-                          >
-                            {formatText(r.persone)}
-                          </td>
-                          <td
-                            style={{
-                              padding: "0.5rem",
-                              verticalAlign: "top",
-                              border: "1px solid #994747",
-                            }}
-                          >
-                            {formatText(r.singular)}
-                          </td>
-                          <td
-                            style={{
-                              padding: "0.5rem",
-                              verticalAlign: "top",
-                              border: "1px solid #994747",
-                            }}
-                          >
-                            {formatText(r.plural)}
-                          </td>
+            {section.type === "grammar" && section.content?.words && (
+              <>
+                {section.content.words.some((row) => "persone" in row) ? (
+                  <table
+                    style={{
+                      width: "100%",
+                      borderCollapse: "collapse",
+                      border: "1px solid #994747",
+                      margin: "1rem 0",
+                    }}
+                  >
+                    {Array.isArray(section.content?.subtitle) && (
+                      <thead>
+                        <tr
+                          style={{ backgroundColor: "#994747", color: "#fff" }}
+                        >
+                          {section.content.subtitle.map(
+                            (col: string, idx: number) => (
+                              <th
+                                key={idx}
+                                style={{
+                                  padding: "0.5rem",
+                                  borderLeft:
+                                    idx > 0 ? "1px solid #fff" : "none",
+                                  textAlign: "center",
+                                }}
+                              >
+                                {col}
+                              </th>
+                            )
+                          )}
                         </tr>
-                      );
-                    })}
-                  </tbody>
-                </table>
-              )}
+                      </thead>
+                    )}
+                    <tbody>
+                      {section.content.words
+                        .filter((row) => "persone" in row)
+                        .map(
+                          (
+                            row: {
+                              persone: string;
+                              singular: string;
+                              plural: string;
+                            },
+                            idx: number
+                          ) => (
+                            <tr key={idx}>
+                              <td
+                                style={{
+                                  padding: "0.5rem",
+                                  verticalAlign: "top",
+                                  border: "1px solid #994747",
+                                }}
+                              >
+                                {formatText(row.persone)}
+                              </td>
+                              <td
+                                style={{
+                                  padding: "0.5rem",
+                                  verticalAlign: "top",
+                                  border: "1px solid #994747",
+                                }}
+                              >
+                                {formatText(row.singular)}
+                              </td>
+                              <td
+                                style={{
+                                  padding: "0.5rem",
+                                  verticalAlign: "top",
+                                  border: "1px solid #994747",
+                                }}
+                              >
+                                {formatText(row.plural)}
+                              </td>
+                            </tr>
+                          )
+                        )}
+                    </tbody>
+                  </table>
+                ) : (
+                  <div
+                    style={{
+                      display: "grid",
+                      gridTemplateColumns: "1fr 1fr",
+                    }}
+                  >
+                    {/* mkd */}
+                    <div>
+                      {section.content.words
+                        .filter((row) => "mkd" in row && "ru" in row)
+                        .map(
+                          (row: { mkd: string; ru: string }, idx: number) => (
+                            <p
+                              key={`mkd-${idx}`}
+                              style={{
+                                marginBottom: "1rem",
+                              }}
+                            >
+                              {formatText(row.mkd)}
+                            </p>
+                          )
+                        )}
+                    </div>
+
+                    {/* ru */}
+                    <div>
+                      {section.content.words
+                        .filter((row) => "mkd" in row && "ru" in row)
+                        .map(
+                          (row: { mkd: string; ru: string }, idx: number) => (
+                            <p
+                              key={`ru-${idx}`}
+                              style={{
+                                marginBottom: "1rem",
+                              }}
+                            >
+                              {formatText(row.ru)}
+                            </p>
+                          )
+                        )}
+                    </div>
+                  </div>
+                )}
+              </>
+            )}
           </>
         </section>
       ))}
