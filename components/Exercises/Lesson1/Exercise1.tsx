@@ -8,7 +8,7 @@ export function Exercise1({ render = true }: { render?: boolean }) {
   return (
     <>
       {exercises.map((exercise, i) => (
-        <section key={`exercise-${i}`} style={{ marginBottom: "2rem" }}>
+        <section key={`exercise-${i}`} style={{ marginTop: "2rem" }}>
           {exercise.sections?.map((section, sIdx) => (
             <div key={sIdx}>
               {section.prompt?.map((paragraph, i) => (
