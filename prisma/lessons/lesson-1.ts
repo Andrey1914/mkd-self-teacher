@@ -667,7 +667,7 @@ const lesson1 = {
       },
     },
     {
-      type: `grammar`,
+      type: `example`,
       content: {
         words: [
           {

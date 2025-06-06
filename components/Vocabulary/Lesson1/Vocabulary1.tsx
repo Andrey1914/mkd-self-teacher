@@ -1,5 +1,5 @@
 import React from "react";
-import parse from "html-react-parser";
+import { formatText } from "@/utils/textFormat";
 import { vocabulary } from "@/prisma/lessons/vocabulary";
 
 export function Vocabulary1({ i }: { i: number }) {
@@ -26,7 +26,7 @@ export function Vocabulary1({ i }: { i: number }) {
           )}
           {vocabulary[0].title?.mkd && (
             <h2 style={{ marginBottom: "1rem" }}>
-              {parse(vocabulary[0].title.mkd)}
+              {formatText(vocabulary[0].title.mkd)}
             </h2>
           )}
         </section>
@@ -53,15 +53,15 @@ export function Vocabulary1({ i }: { i: number }) {
           {words.map((word, idx) => (
             <tr key={idx}>
               <td style={{ padding: "0.5rem" }}>
-                {parse(
+                {formatText(
                   `<span style="color: rgb(196, 86, 86);">${word.mkd}</span>`
                 )}
               </td>
               <td style={{ padding: "0.5rem" }}>
-                {parse(`<em>${word.pron}</em>`)}
+                {formatText(`<em>${word.pron}</em>`)}
               </td>
               <td style={{ padding: "0.5rem" }}>
-                {parse(`<strong>${word.ru}</strong>`)}
+                {formatText(`<strong>${word.ru}</strong>`)}
               </td>
             </tr>
           ))}
