@@ -5,7 +5,7 @@ import { Exercise1 } from "@/components/Exercises/Lesson1/Exercise1";
 import { Vocabulary1 } from "@/components/Vocabulary/Lesson1/Vocabulary1";
 import { formatText } from "@/utils/textFormat";
 import { FillInExercise } from "@/components/Exercises/FillInExercise";
-import exercise2 from "@/prisma/lessons/exercises/lesson-1/exercise-2";
+import { exercise2, exercise3 } from "@/prisma/lessons/exercises/lesson-1";
 
 export function Lesson1() {
   let vocabIndex = 0;
@@ -523,6 +523,10 @@ export function Lesson1() {
 
           <>
             {section.type === "example" && <FillInExercise data={exercise2} />}
+          </>
+
+          <>
+            {section.type === "example" && <FillInExercise data={exercise3} />}
           </>
         </section>
       ))}

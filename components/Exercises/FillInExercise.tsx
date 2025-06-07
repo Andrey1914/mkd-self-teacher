@@ -118,7 +118,7 @@ export function FillInExercise({ data }: { data: FillInExerciseData }) {
                             )}
                           </React.Fragment>
                         ) : null
-                      )}
+                      )}{" "}
                     </React.Fragment>
                   );
                 })}
