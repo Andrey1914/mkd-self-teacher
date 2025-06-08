@@ -2,31 +2,10 @@
 
 import React, { useEffect, useState } from "react";
 import type { FillInExerciseData } from "@/types/exerciseTypes";
-import { formatText } from "@/utils/textFormat";
+import { formatText, highlightInput, getTextWidth } from "@/utils";
 import styles from "@/app/page.module.css";
 
-// function SafeHTML({ html }: { html: string | undefined }) {
-//   if (!html) return null;
-//   return <span dangerouslySetInnerHTML={{ __html: html }} />;
-// }
-
 export function FillInExercise({ data }: { data: FillInExerciseData }) {
-  //   {
-  //     data,
-  //   }: {
-  //     data: {
-  //       title: string;
-  //       sections: {
-  //         prompt?: string[];
-  //         content: {
-  //           sentences: {
-  //             mkd: string;
-  //             answer: string[];
-  //           }[];
-  //         };
-  //       }[];
-  //     };
-  //   }
   const [hasMounted, setHasMounted] = useState(false);
   const [showAnswers, setShowAnswers] = useState(false);
   const [inputs, setInputs] = useState<string[][]>([]);
@@ -39,7 +18,6 @@ export function FillInExercise({ data }: { data: FillInExerciseData }) {
     setInputs(initialInputs);
   }, [data]);
 
-  //   if (!hasMounted) return null;
   if (!hasMounted || !data || !data.sections || data.sections.length === 0) {
     return null;
   }
@@ -56,21 +34,8 @@ export function FillInExercise({ data }: { data: FillInExerciseData }) {
     });
   };
 
-  const highlightInput = (input: string, correct: string, show: boolean) => {
-    if (!show || input === "") return {};
-    const isCorrect = input.trim().toLowerCase() === correct.toLowerCase();
-    return {
-      boxShadow: isCorrect ? "0 0 8px 3px #00c150" : "0 0 8px 3px #ffa347",
-    };
-  };
-
-  //   const renderHTML = (htmlString: string | undefined) => {
-  //     if (!htmlString) return { __html: "" };
-  //     return { __html: htmlString };
-  //   };
-
   return (
-    <section style={{ marginBottom: "2rem" }}>
+    <section style={{ marginBottom: "1rem" }}>
       {data.sections.map((section, sIdx) => (
         <div key={sIdx}>
           {section.prompt?.map((p, i) =>
@@ -78,8 +43,6 @@ export function FillInExercise({ data }: { data: FillInExerciseData }) {
               <p key={i}>
                 <strong>{data.title}. </strong>
                 {formatText(p)}
-                {/* <span dangerouslySetInnerHTML={renderHTML(p)} /> */}
-                {/* <SafeHTML html={p} /> */}
               </p>
             ) : null
           )}
@@ -95,8 +58,6 @@ export function FillInExercise({ data }: { data: FillInExerciseData }) {
                         typeof part === "string" ? (
                           <React.Fragment key={i}>
                             <span>{formatText(part)}</span>
-                            {/* <span dangerouslySetInnerHTML={renderHTML(part)} /> */}
-                            {/* <SafeHTML html={part} /> */}
 
                             {i < sentence.answer.length && (
                               <input
@@ -108,6 +69,20 @@ export function FillInExercise({ data }: { data: FillInExerciseData }) {
                                   handleChange(e.target.value, idx, i)
                                 }
                                 style={{
+                                  ...highlightInput(
+                                    inputs[idx]?.[i] ?? "",
+                                    sentence.answer[i],
+                                    showAnswers
+                                  ),
+                                  minWidth: "60px",
+                                  maxWidth: "100px",
+                                  width: `${Math.min(
+                                    Math.max(
+                                      getTextWidth(inputs[idx]?.[i] ?? ""),
+                                      60
+                                    ),
+                                    100
+                                  )}px`,
                                   ...highlightInput(
                                     inputs[idx]?.[i] ?? "",
                                     sentence.answer[i],

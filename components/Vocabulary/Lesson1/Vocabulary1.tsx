@@ -1,5 +1,5 @@
 import React from "react";
-import { formatText } from "@/utils/textFormat";
+import { formatText } from "@/utils";
 import { vocabulary } from "@/prisma/lessons/vocabulary";
 
 export function Vocabulary1({ i }: { i: number }) {

@@ -3,14 +3,18 @@ import React from "react";
 import lesson1 from "../../prisma/lessons/lesson-1";
 import { Exercise1 } from "@/components/Exercises/Lesson1/Exercise1";
 import { Vocabulary1 } from "@/components/Vocabulary/Lesson1/Vocabulary1";
-import { formatText } from "@/utils/textFormat";
+import { formatText } from "@/utils";
 import { FillInExercise } from "@/components/Exercises/FillInExercise";
-import { exercise2, exercise3 } from "@/prisma/lessons/exercises/lesson-1";
+import {
+  exercise2,
+  exercise3,
+  exercise4,
+  exercise5,
+} from "@/prisma/lessons/exercises/lesson-1";
 
 export function Lesson1() {
   let vocabIndex = 0;
   let exercise1 = false;
-  // let exercise2 = false;
   const handledTypes = ["pay-attention"];
 
   return (
@@ -381,93 +385,105 @@ export function Lesson1() {
           </>
 
           <>
-            <>
-              {section.type === "grammar" && section.content?.words && (
-                <>
-                  {section.content.words.some((row) => "persone" in row) && (
-                    <table
-                      style={{
-                        width: "100%",
-                        borderCollapse: "collapse",
-                        border: "1px solid #994747",
-                        margin: "1rem 0",
-                      }}
-                    >
-                      {Array.isArray(section.content?.subtitle) && (
-                        <thead>
-                          <tr
-                            style={{
-                              backgroundColor: "#994747",
-                              color: "#fff",
-                            }}
-                          >
-                            {section.content.subtitle.map(
-                              (col: string, idx: number) => (
-                                <th
-                                  key={idx}
-                                  style={{
-                                    padding: "0.5rem",
-                                    borderLeft:
-                                      idx > 0 ? "1px solid #fff" : "none",
-                                    textAlign: "center",
-                                  }}
-                                >
-                                  {col}
-                                </th>
-                              )
-                            )}
-                          </tr>
-                        </thead>
-                      )}
-                      <tbody>
-                        {section.content.words
-                          .filter((row) => "persone" in row)
-                          .map(
-                            (
-                              row: {
-                                persone: string;
-                                singular: string;
-                                plural: string;
-                              },
-                              idx: number
-                            ) => (
-                              <tr key={idx}>
-                                <td
-                                  style={{
-                                    padding: "0.5rem",
-                                    verticalAlign: "top",
-                                    border: "1px solid #994747",
-                                  }}
-                                >
-                                  {formatText(row.persone)}
-                                </td>
-                                <td
-                                  style={{
-                                    padding: "0.5rem",
-                                    verticalAlign: "top",
-                                    border: "1px solid #994747",
-                                  }}
-                                >
-                                  {formatText(row.singular)}
-                                </td>
-                                <td
-                                  style={{
-                                    padding: "0.5rem",
-                                    verticalAlign: "top",
-                                    border: "1px solid #994747",
-                                  }}
-                                >
-                                  {formatText(row.plural)}
-                                </td>
-                              </tr>
+            {section.type === "grammar" && section.content?.words && (
+              <>
+                {Array.isArray(section.text) && section.text.length > 0 && (
+                  <div style={{ marginBottom: "1rem" }}>
+                    {section.text.map((t, idx) => (
+                      <p key={idx} style={{ textAlign: "center" }}>
+                        {formatText(t)}
+                      </p>
+                    ))}
+                  </div>
+                )}
+
+                {section.content.words.some((row) => "persone" in row) && (
+                  <table
+                    style={{
+                      width: "100%",
+                      tableLayout: "fixed",
+                      borderCollapse: "collapse",
+                      border: "1px solid #994747",
+                      margin: "1rem 0",
+                    }}
+                  >
+                    {Array.isArray(section.content?.subtitle) && (
+                      <thead>
+                        <tr
+                          style={{
+                            backgroundColor: "#994747",
+                            color: "#fff",
+                          }}
+                        >
+                          {section.content.subtitle.map(
+                            (col: string, idx: number) => (
+                              <th
+                                key={idx}
+                                style={{
+                                  padding: "0.5rem",
+                                  borderLeft:
+                                    idx > 0 ? "1px solid #fff" : "none",
+                                  textAlign: "center",
+                                }}
+                              >
+                                {col}
+                              </th>
                             )
                           )}
-                      </tbody>
-                    </table>
-                  )}
-                </>
-              )}
-            </>
+                        </tr>
+                      </thead>
+                    )}
+                    <tbody>
+                      {section.content.words
+                        .filter((row) => "persone" in row)
+                        .map(
+                          (
+                            row: {
+                              persone: string;
+                              singular: string;
+                              plural: string;
+                            },
+                            idx: number
+                          ) => (
+                            <tr key={idx}>
+                              <td
+                                style={{
+                                  width: "33%",
+                                  padding: "0.5rem",
+                                  verticalAlign: "top",
+                                  border: "1px solid #994747",
+                                }}
+                              >
+                                {formatText(row.persone)}
+                              </td>
+                              <td
+                                style={{
+                                  width: "33%",
+                                  padding: "0.5rem",
+                                  verticalAlign: "top",
+                                  border: "1px solid #994747",
+                                }}
+                              >
+                                {formatText(row.singular)}
+                              </td>
+                              <td
+                                style={{
+                                  width: "33%",
+                                  padding: "0.5rem",
+                                  verticalAlign: "top",
+                                  border: "1px solid #994747",
+                                }}
+                              >
+                                {formatText(row.plural)}
+                              </td>
+                            </tr>
+                          )
+                        )}
+                    </tbody>
+                  </table>
+                )}
+              </>
+            )}
           </>
 
           <>
@@ -512,22 +528,87 @@ export function Lesson1() {
               )}
           </>
 
-          {/* <>
-            {!exercise2 &&
-              section.type === "example" &&
-              (() => {
-                exercise2 = true;
-                return <Exercise2 />;
-              })()}
-          </> */}
+          {section.type === "example" && section.exercise && (
+            <>
+              <FillInExercise data={exercise2} />
+              <FillInExercise data={exercise3} />
+            </>
+          )}
 
           <>
-            {section.type === "example" && <FillInExercise data={exercise2} />}
+            {section.type === "grammar" &&
+              section.content?.words &&
+              section.content.words.every((row) => "singularPerson" in row) && (
+                <table
+                  style={{
+                    width: "100%",
+                    tableLayout: "fixed",
+                    borderCollapse: "collapse",
+                    border: "1px solid #994747",
+                    margin: "1rem 0 2rem",
+                  }}
+                >
+                  <tbody>
+                    {section.content.words.map((row, idx) => (
+                      <tr key={idx}>
+                        <td
+                          style={{
+                            width: "25%",
+                            padding: "0.5rem",
+                            border: "1px solid #994747",
+                            verticalAlign: "top",
+                          }}
+                        >
+                          {formatText(row.singularPerson)}
+                        </td>
+                        <td
+                          style={{
+                            width: "25%",
+                            padding: "0.5rem",
+                            border: "1px solid #994747",
+                            verticalAlign: "top",
+                          }}
+                        >
+                          {formatText(row.singularForm)}
+                        </td>
+                        <td
+                          style={{
+                            width: "25%",
+                            padding: "0.5rem",
+                            border: "1px solid #994747",
+                            verticalAlign: "top",
+                          }}
+                        >
+                          {formatText(row.pluralPerson)}
+                        </td>
+                        <td
+                          style={{
+                            width: "25%",
+                            padding: "0.5rem",
+                            border: "1px solid #994747",
+                            verticalAlign: "top",
+                          }}
+                        >
+                          {formatText(row.pluralForm)}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              )}
           </>
 
-          <>
-            {section.type === "example" && <FillInExercise data={exercise3} />}
-          </>
+          {section.type === "grammar" && section.table && (
+            <>
+              <FillInExercise data={exercise4} />
+            </>
+          )}
+
+          {section.type === "pay-attention" && (
+            <>
+              <FillInExercise data={exercise5} />
+            </>
+          )}
         </section>
       ))}
     </>
