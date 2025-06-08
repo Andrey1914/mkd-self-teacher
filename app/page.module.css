@@ -18,7 +18,6 @@
 
 .exerciseInput {
   display: inline-block;
-  width: 60px;
   margin: 0 4px;
   padding: 4px;
   font-size: 16px;
@@ -57,7 +56,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  /* gap: 32px; */
   grid-row-start: 2;
 }
 
