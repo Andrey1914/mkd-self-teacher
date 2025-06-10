@@ -1,4 +1,6 @@
-const vocabulary1 = {
+import { VocabularyData } from "@/types/vocabularyTypes";
+
+const vocabulary1: VocabularyData = {
   title: {
     ru: `НОВЫЕ СЛОВА И ВЫРАЖЕНИЯ`,
     mkd: `<span>НОВИ ЗБОРОВИ И ИЗРАЗИ</span>`,
