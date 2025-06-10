@@ -1,10 +1,10 @@
 import React from "react";
 import { formatText } from "@/utils";
-import { vocabulary } from "@/prisma/lessons/vocabulary";
+import type { VocabularyProps } from "@/types/vocabularyTypes";
 
-export function Vocabulary1({ i }: { i: number }) {
-  const section = vocabulary[0]?.sections.find(
-    (sec) => sec.type === `vocabulary-${i}`
+export function Vocabulary({ lesson, index }: VocabularyProps) {
+  const section = lesson.sections.find(
+    (section) => section.type === `vocabulary-${index}`
   );
 
   if (
@@ -19,14 +19,14 @@ export function Vocabulary1({ i }: { i: number }) {
 
   return (
     <div style={{ marginBottom: "2rem" }}>
-      {i === 1 && vocabulary.length > 0 && (
+      {index === 1 && (
         <section style={{ marginBottom: "3rem" }}>
-          {vocabulary[0].title?.ru && (
-            <h2 style={{ marginBottom: "1rem" }}>{vocabulary[0].title.ru}</h2>
+          {lesson.title?.ru && (
+            <h2 style={{ marginBottom: "1rem" }}>{lesson.title.ru}</h2>
           )}
-          {vocabulary[0].title?.mkd && (
+          {lesson.title?.mkd && (
             <h2 style={{ marginBottom: "1rem" }}>
-              {formatText(vocabulary[0].title.mkd)}
+              {formatText(lesson.title.mkd)}
             </h2>
           )}
         </section>

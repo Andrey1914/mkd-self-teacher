@@ -1,3 +1,17 @@
+export interface StaticExerciseData {
+  title: string;
+  slug: string;
+  sections: StaticExerciseSection[];
+}
+
+export interface StaticExerciseSection {
+  type: "static-exercise" | string;
+  prompt?: string[];
+  content?: {
+    exercise?: string | string[];
+  };
+}
+
 export interface FillInExerciseData {
   title: string;
   slug: string;

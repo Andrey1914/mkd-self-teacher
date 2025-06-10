@@ -1,9 +1,11 @@
-const exercise1 = {
+import { StaticExerciseData } from "@/types/exerciseTypes";
+
+const exercise1: StaticExerciseData = {
   title: "Упражнение 1",
   slug: "lesson-1",
   sections: [
     {
-      type: "exercise",
+      type: "static-exercise",
       prompt: [
         `Прочитайте следующие слова и словосочетания, обращая внимание на правила чтения.`,
       ],

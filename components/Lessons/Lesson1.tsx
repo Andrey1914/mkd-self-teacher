@@ -1,21 +1,22 @@
 import React from "react";
 
 import lesson1 from "../../prisma/lessons/lesson-1";
-import { Exercise1 } from "@/components/Exercises/Lesson1/Exercise1";
-import { Vocabulary1 } from "@/components/Vocabulary/Lesson1/Vocabulary1";
+import { Vocabulary } from "@/components/Vocabulary/Vocabulary";
 import { formatText } from "@/utils";
 import { FillInExercise } from "@/components/Exercises/FillInExercise";
+import { StaticExercise } from "@/components/Exercises/StaticExercise";
 import {
+  exercise1,
   exercise2,
   exercise3,
   exercise4,
   exercise5,
   exercise6,
 } from "@/prisma/lessons/exercises/lesson-1";
+import { vocabulary1 } from "@/prisma/lessons/vocabulary/lesson-1";
 
 export function Lesson1() {
   let vocabIndex = 0;
-  let exercise1 = false;
   const handledTypes = ["pay-attention"];
 
   return (
@@ -154,12 +155,11 @@ export function Lesson1() {
               ))}
 
           <>
-            {!exercise1 &&
-              section.type === "spelling" &&
-              (() => {
-                exercise1 = true;
-                return <Exercise1 />;
-              })()}
+            {section.type === "spelling" && (
+              <>
+                <StaticExercise data={exercise1} />
+              </>
+            )}
           </>
 
           <>
@@ -297,13 +297,13 @@ export function Lesson1() {
                     {currentIndex === 0 && (
                       <>
                         {" "}
-                        <Vocabulary1 i={1} />{" "}
+                        <Vocabulary lesson={vocabulary1} index={1} />{" "}
                       </>
                     )}
                     {currentIndex === 1 && (
                       <>
                         {" "}
-                        <Vocabulary1 i={2} />{" "}
+                        <Vocabulary lesson={vocabulary1} index={2} />{" "}
                       </>
                     )}
                   </>
