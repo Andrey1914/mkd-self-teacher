@@ -646,7 +646,7 @@ export function Lesson1() {
             </>
           )}
 
-          {section.type === "pay-attention" && (
+          {section.type === "pay-attention" && section.attention && (
             <>
               <FillInExercise data={exercise5} />
             </>
