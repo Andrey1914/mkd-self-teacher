@@ -10,6 +10,7 @@ import {
   exercise3,
   exercise4,
   exercise5,
+  exercise6,
 } from "@/prisma/lessons/exercises/lesson-1";
 
 export function Lesson1() {
@@ -536,66 +537,107 @@ export function Lesson1() {
           )}
 
           <>
-            {section.type === "grammar" &&
-              section.content?.words &&
-              section.content.words.every((row) => "singularPerson" in row) && (
-                <table
-                  style={{
-                    width: "100%",
-                    tableLayout: "fixed",
-                    borderCollapse: "collapse",
-                    border: "1px solid #994747",
-                    margin: "1rem 0 2rem",
-                  }}
-                >
-                  <tbody>
-                    {section.content.words.map((row, idx) => (
-                      <tr key={idx}>
-                        <td
-                          style={{
-                            width: "25%",
-                            padding: "0.5rem",
-                            border: "1px solid #994747",
-                            verticalAlign: "top",
-                          }}
-                        >
-                          {formatText(row.singularPerson)}
-                        </td>
-                        <td
-                          style={{
-                            width: "25%",
-                            padding: "0.5rem",
-                            border: "1px solid #994747",
-                            verticalAlign: "top",
-                          }}
-                        >
-                          {formatText(row.singularForm)}
-                        </td>
-                        <td
-                          style={{
-                            width: "25%",
-                            padding: "0.5rem",
-                            border: "1px solid #994747",
-                            verticalAlign: "top",
-                          }}
-                        >
-                          {formatText(row.pluralPerson)}
-                        </td>
-                        <td
-                          style={{
-                            width: "25%",
-                            padding: "0.5rem",
-                            border: "1px solid #994747",
-                            verticalAlign: "top",
-                          }}
-                        >
-                          {formatText(row.pluralForm)}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              )}
+            {section.type === "grammar" && section.content?.words && (
+              <table
+                style={{
+                  width: "100%",
+                  tableLayout: "fixed",
+                  borderCollapse: "collapse",
+                  border: "1px solid #994747",
+                  margin: "1rem 0 2rem",
+                }}
+              >
+                <tbody>
+                  {section.content.words.map((row, rowIdx) => {
+                    if ("person" in row && "forms" in row) {
+                      return (
+                        <tr key={rowIdx}>
+                          <td
+                            style={{
+                              padding: "0.5rem",
+                              border: "1px solid #994747",
+                              verticalAlign: "top",
+                            }}
+                          >
+                            {formatText(row.person)}
+                          </td>
+                          {row.forms.map((form, formIdx) => (
+                            <td
+                              key={formIdx}
+                              style={{
+                                padding: "0.5rem",
+                                border: "1px solid #994747",
+                                verticalAlign: "top",
+                              }}
+                            >
+                              {formatText(form)}
+                            </td>
+                          ))}
+                        </tr>
+                      );
+                    }
+
+                    if (
+                      "singularPerson" in row &&
+                      "singularForm" in row &&
+                      "pluralPerson" in row &&
+                      "pluralForm" in row
+                    ) {
+                      return (
+                        <tr key={rowIdx}>
+                          <td
+                            style={{
+                              padding: "0.5rem",
+                              border: "1px solid #994747",
+                              verticalAlign: "top",
+                            }}
+                          >
+                            {formatText(row.singularPerson)}
+                          </td>
+                          <td
+                            style={{
+                              padding: "0.5rem",
+                              border: "1px solid #994747",
+                              verticalAlign: "top",
+                            }}
+                          >
+                            {Array.isArray(row.singularForm)
+                              ? row.singularForm.map((form, i) => (
+                                  <div key={i}>{formatText(form)}</div>
+                                ))
+                              : formatText(row.singularForm)}
+                          </td>
+                          <td
+                            style={{
+                              padding: "0.5rem",
+                              border: "1px solid #994747",
+                              verticalAlign: "top",
+                            }}
+                          >
+                            {formatText(row.pluralPerson)}
+                          </td>
+                          <td
+                            style={{
+                              padding: "0.5rem",
+                              border: "1px solid #994747",
+                              verticalAlign: "top",
+                            }}
+                          >
+                            {Array.isArray(row.pluralForm)
+                              ? row.pluralForm.map((form, i) => (
+                                  <div key={i}>{formatText(form)}</div>
+                                ))
+                              : formatText(row.pluralForm)}
+                          </td>
+                        </tr>
+                      );
+                    }
+
+                    return null;
+                  })}
+                </tbody>
+              </table>
+            )}
           </>
 
           {section.type === "grammar" && section.table && (
@@ -608,6 +650,12 @@ export function Lesson1() {
             <>
               <FillInExercise data={exercise5} />
             </>
+          )}
+
+          {section.type === "grammar" && section.paragraph && (
+            <div style={{ marginTop: "2rem" }}>
+              <FillInExercise data={exercise6} />
+            </div>
           )}
         </section>
       ))}
