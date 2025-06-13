@@ -1018,6 +1018,7 @@ const lesson1 = {
     },
     {
       type: `example`,
+      example: true,
       content: {
         words: [
           {
