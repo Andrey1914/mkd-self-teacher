@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { formatText } from "@/utils";
 import styles from "@/app/page.module.css";
-import type { ParagraphExerciseProps } from "@/types/translateParagraphTypes";
+import type { ParagraphExerciseProps } from "@/types/exerciseParagraphTypes";
 
 const pronouns = ["Jас", "Ти", "Ние", "Вие", "Тие"];
 
@@ -16,25 +16,46 @@ export function ParagraphExercise({ data }: { data: ParagraphExerciseProps }) {
   const [checked, setChecked] = useState(false);
   const [showAnswers, setShowAnswers] = useState(false);
 
+  const [isAutoFilled, setIsAutoFilled] = useState<boolean[]>(
+    Array(pronouns.length).fill(false)
+  );
+
   const handleChange = (value: string, idx: number) => {
-    const updated = [...inputs];
-    updated[idx] = value;
-    setInputs(updated);
+    const updatedInputs = [...inputs];
+    updatedInputs[idx] = value;
+
+    const updatedFlags = [...isAutoFilled];
+    updatedFlags[idx] = false;
+
+    setInputs(updatedInputs);
+    setIsAutoFilled(updatedFlags);
   };
 
   const checkAnswers = () => {
+    if (showAnswers) return;
     setChecked(true);
     setShowAnswers(false);
   };
 
   const revealAnswers = () => {
-    setInputs([...sections.content.answers]);
+    const cleanedAnswers = sections.content.answers.map((answer) =>
+      answer
+        .split("\n")
+        .map((line) => line.trim())
+        .join(" ")
+        .replace(/\s+/g, " ")
+        .trim()
+    );
+
+    setInputs(cleanedAnswers);
+    setIsAutoFilled(Array(pronouns.length).fill(true));
     setShowAnswers(true);
     setChecked(false);
   };
 
   const clearInputs = () => {
     setInputs(Array(pronouns.length).fill(""));
+    setIsAutoFilled(Array(pronouns.length).fill(false));
     setShowAnswers(false);
     setChecked(false);
   };
@@ -67,9 +88,7 @@ export function ParagraphExercise({ data }: { data: ParagraphExerciseProps }) {
           userInput.trim().toLowerCase() === correctAnswer.trim().toLowerCase();
 
         const boxShadow = showAnswers
-          ? isCorrect
-            ? "0 0 8px 3px #00c150"
-            : "0 0 8px 3px #ffa347"
+          ? "none"
           : checked
           ? isCorrect
             ? "0 0 8px 3px #00c150"
@@ -92,9 +111,21 @@ export function ParagraphExercise({ data }: { data: ParagraphExerciseProps }) {
                 resize: "none",
                 backgroundColor: "transparent",
                 boxShadow,
+                outline: isAutoFilled[idx] ? "none" : undefined,
               }}
               value={userInput}
               onChange={(e) => handleChange(e.target.value, idx)}
+              readOnly={isAutoFilled[idx]}
+              onCopy={(e) => {
+                if (isAutoFilled[idx]) {
+                  e.preventDefault();
+                }
+              }}
+              onFocus={(e) => {
+                if (isAutoFilled[idx]) {
+                  e.target.blur();
+                }
+              }}
             />
           </div>
         );

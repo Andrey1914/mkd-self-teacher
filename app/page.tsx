@@ -8,9 +8,7 @@ export default function Home() {
         <Lesson1 />
       </main>
       <footer className={styles.footer}>
-        <p className={styles.footerText}>
-          Copyright &copy; 2023 Macedonian Self-Teacher
-        </p>
+        <p className={styles.footerText}>...to be continued...</p>
       </footer>
     </div>
   );

@@ -1,28 +1,4 @@
-// import { StaticExerciseData } from "@/types/exerciseTypes";
-
-// const exercise7: StaticExerciseData = {
-//   title: "Упражнение 7",
-//   slug: "lesson-1",
-//   sections: [
-//     {
-//       type: "static-exercise",
-//       prompt: [
-//         `Трансформируйте текст, начав его с местоимений <span>jас, ти, ние, вие, тие.</span>.`,
-//       ],
-//       content: {
-//         exercise: `<span>Де\u0301jан ста\u0301нува ра\u0301но, пие ка\u0301фе, поjа\u0301дува и о\u0301ди на ра\u0301бота. На ра\u0301бота
-//         чи\u0301та и пи\u0301шува. По\u0301тоа ви\u0301ка та\u0301кси и о\u0301ди на аеродро\u0301м. Та\u0301му се че\u0301кира,
-//         поми\u0301нува па\u0301сошка и ца\u0301ринска ко\u0301нтрола. Ку\u0301пува пода\u0301роци за ро\u0301днини и приjа\u0301тели.
-//         По\u0301тоа се\u0301ди и че\u0301ка зада се ка\u0301чи на авио\u0301н. Па\u0301тува за Бе\u0301рлин.</span>
-//         `,
-//       },
-//     },
-//   ],
-// };
-
-// export default exercise7;
-
-import { ParagraphExerciseProps } from "@/types/translateParagraphTypes";
+import { ParagraphExerciseProps } from "@/types/exerciseParagraphTypes";
 
 const exercise7: ParagraphExerciseProps = {
   title: "Упражнение 7",
