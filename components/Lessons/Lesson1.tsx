@@ -16,6 +16,7 @@ import {
   exercise6,
   exercise7,
   exercise8,
+  exercise9,
 } from "@/prisma/lessons/exercises/lesson-1";
 import { vocabulary1 } from "@/prisma/lessons/vocabulary/lesson-1";
 
@@ -667,6 +668,7 @@ export function Lesson1() {
               <>
                 <ParagraphExercise data={exercise7} />
                 <TranslateParagraphExercise data={exercise8} />
+                <TranslateParagraphExercise data={exercise9} />
               </>
             )}
           </>
