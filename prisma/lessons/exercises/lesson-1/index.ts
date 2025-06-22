@@ -5,6 +5,7 @@ import exercise4 from "@/prisma/lessons/exercises/lesson-1/exercise-4";
 import exercise5 from "@/prisma/lessons/exercises/lesson-1/exercise-5";
 import exercise6 from "@/prisma/lessons/exercises/lesson-1/exercise-6";
 import exercise7 from "@/prisma/lessons/exercises/lesson-1/exercise-7";
+import exercise8 from "@/prisma/lessons/exercises/lesson-1/exercise-8";
 
 export {
   exercise2,
@@ -14,4 +15,5 @@ export {
   exercise6,
   exercise1,
   exercise7,
+  exercise8,
 };

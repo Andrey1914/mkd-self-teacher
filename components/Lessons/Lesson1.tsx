@@ -5,6 +5,7 @@ import { Vocabulary } from "@/components/Vocabulary/Vocabulary";
 import { formatText } from "@/utils";
 import { FillInExercise } from "@/components/Exercises/FillInExercise";
 import { ParagraphExercise } from "@/components/Exercises/ParagraphExercise";
+import { TranslateParagraphExercise } from "@/components/Exercises/TranslateParagraphExercise";
 import { StaticExercise } from "@/components/Exercises/StaticExercise";
 import {
   exercise1,
@@ -14,6 +15,7 @@ import {
   exercise5,
   exercise6,
   exercise7,
+  exercise8,
 } from "@/prisma/lessons/exercises/lesson-1";
 import { vocabulary1 } from "@/prisma/lessons/vocabulary/lesson-1";
 
@@ -664,6 +666,7 @@ export function Lesson1() {
             {section.type === "example" && section.example && (
               <>
                 <ParagraphExercise data={exercise7} />
+                <TranslateParagraphExercise data={exercise8} />
               </>
             )}
           </>
