@@ -1,4 +1,6 @@
-const alphabetTable = {
+import { AlphabetTable } from "@/types/alphabetTable";
+
+const alphabetTable: AlphabetTable = {
   slug: "lesson-1",
   sections: [
     {

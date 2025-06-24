@@ -1,3 +1,5 @@
+import alphabetTable from "@/prisma/lessons/tables/lesson-1/alphabetTable";
+
 const lesson1 = {
   title: [`<span>Урок 1, Лекциjя 1</span>`],
   slug: "lesson-1",
@@ -38,6 +40,7 @@ const lesson1 = {
           <span>с\u0301е</span> [сэ] «всё», для того чтобы отличить их от союза <span>и</span> [и] «и»,
           отрицание <span>не</span> [нэ] «не» и «нет» и возвратной частицы <span>се</span> [сэ].`,
       },
+      ...alphabetTable.sections[0],
     },
     {
       type: "features",
