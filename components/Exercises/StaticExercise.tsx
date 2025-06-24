@@ -8,7 +8,7 @@ export function StaticExercise({ data }: { data: StaticExerciseData }) {
   if (!data?.sections || data.sections.length === 0) return null;
 
   return (
-    <section style={{ marginTop: "2rem" }}>
+    <div style={{ marginTop: "2rem" }}>
       {data.sections.map((section, sIdx) => (
         <div key={sIdx} style={{ marginBottom: "1.5rem" }}>
           {section.prompt?.map((paragraph, pIdx) => (
@@ -24,7 +24,7 @@ export function StaticExercise({ data }: { data: StaticExerciseData }) {
                 style={{
                   marginTop: "1rem",
                   textIndent: 0,
-                  padding: "0 20px",
+                  // padding: "0 20px",
                   lineHeight: "1.8",
                 }}
               >
@@ -33,6 +33,6 @@ export function StaticExercise({ data }: { data: StaticExerciseData }) {
             )}
         </div>
       ))}
-    </section>
+    </div>
   );
 }

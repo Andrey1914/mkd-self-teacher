@@ -1,6 +1,9 @@
 import React from "react";
 
 import lesson1 from "../../prisma/lessons/lesson-1";
+import { Heading } from "@/components/Heading/Heading";
+import { AlphabetTable } from "@/components/Tables/AlphabetTable";
+import { DialogueBlock } from "@/components/DialogueBlock/DialogueBlock";
 import { Vocabulary } from "@/components/Vocabulary/Vocabulary";
 import { formatText } from "@/utils";
 import { FillInExercise } from "@/components/Exercises/FillInExercise";
@@ -18,15 +21,31 @@ import {
   exercise8,
   exercise9,
 } from "@/prisma/lessons/exercises/lesson-1";
+import { lectureLesson1 } from "@/prisma/lessons/heading/lesson-1/headings";
 import { vocabulary1 } from "@/prisma/lessons/vocabulary/lesson-1";
 
 export function Lesson1() {
+  // const section = lectureLesson1.sections.find((s) => s.type === "lecture");
+
   let vocabIndex = 0;
   const handledTypes = ["pay-attention"];
 
   return (
     <>
-      <h1>{formatText(lesson1.title?.join(", ") ?? "Без названия")}</h1>
+      {/* <h1>{formatText(lesson1.title?.join(", ") ?? "Без названия")}</h1> */}
+
+      <Heading level={lectureLesson1.level}>{lectureLesson1.title}</Heading>
+
+      {/* {section && (
+        <>
+          <Heading level={section.level}>{section.title}</Heading>
+          {section.content?.subtitle && (
+            <Heading level={section.content.level}>
+              {section.content.subtitle}
+            </Heading>
+          )}
+        </>
+      )} */}
 
       {lesson1.sections?.map((section, i) => (
         <section key={i} style={{ marginBottom: "2rem" }}>
@@ -56,97 +75,7 @@ export function Lesson1() {
             </>
           )}
 
-          {Array.isArray(section.tableEntries?.create) &&
-            section.tableEntries!.create.map((table, idx) => {
-              const rows = table.rows ?? [];
-              const mid = Math.ceil(rows.length / 2);
-              const left = rows.slice(0, mid);
-              const right = rows.slice(mid);
-
-              return (
-                <div key={idx} style={{ margin: "1rem 0" }}>
-                  <table
-                    style={{
-                      width: "100%",
-                      borderCollapse: "collapse",
-                      marginBottom: "1rem",
-                      border: "1px solid #994747",
-                    }}
-                  >
-                    <thead>
-                      <tr style={{ backgroundColor: "#994747", color: "#fff" }}>
-                        {["Буква", "Звук", "Буква", "Звук"].map(
-                          (label, idx) => (
-                            <th
-                              key={idx}
-                              style={{
-                                padding: "0.5rem",
-                                textAlign: "center",
-                                borderLeft:
-                                  idx === 0 ? "none" : "1px solid #fff",
-                              }}
-                            >
-                              {label}
-                            </th>
-                          )
-                        )}
-                      </tr>
-                    </thead>
-
-                    <tbody>
-                      {Array.from({
-                        length: Math.max(left.length, right.length),
-                      }).map((_, rowIdx) => {
-                        return (
-                          <tr key={rowIdx}>
-                            <td
-                              style={{
-                                padding: "0.5rem",
-                                verticalAlign: "top",
-                                border: "1px solid #994747",
-                              }}
-                            >
-                              {formatText(
-                                `<span>${left[rowIdx]?.letter ?? ""}</span>`
-                              )}
-                            </td>
-                            <td
-                              style={{
-                                padding: "0.5rem",
-                                verticalAlign: "top",
-                                border: "1px solid #994747",
-                              }}
-                            >
-                              {formatText(left[rowIdx]?.sound ?? "")}
-                            </td>
-                            <td
-                              style={{
-                                padding: "0.5rem",
-                                verticalAlign: "top",
-                                border: "1px solid #994747",
-                              }}
-                            >
-                              {formatText(
-                                `<span>${right[rowIdx]?.letter ?? ""}</span>`
-                              )}
-                            </td>
-                            <td
-                              style={{
-                                padding: "0.5rem",
-                                verticalAlign: "top",
-                                border: "1px solid #994747",
-                              }}
-                            >
-                              {formatText(right[rowIdx]?.sound ?? "")}
-                            </td>
-                          </tr>
-                        );
-                      })}
-                    </tbody>
-                  </table>
-                </div>
-              );
-            })}
+          <>{section.type === "phonetics" && <AlphabetTable />}</>
 
           {section.content?.text &&
             !handledTypes.includes(section.type) &&
@@ -163,99 +92,8 @@ export function Lesson1() {
             {section.type === "spelling" && (
               <>
                 <StaticExercise data={exercise1} />
+                <DialogueBlock />
               </>
-            )}
-          </>
-
-          <>
-            {section.content?.description && section.content?.subtitle && (
-              <div
-                style={{
-                  padding: "5px",
-                  display: "flex",
-                  gap: "2rem",
-                  background:
-                    "linear-gradient(to right, var(--thead-bg), var(--background))",
-                }}
-              >
-                <div style={{ flex: 1 }}>
-                  <h3>{formatText(section.content.subtitle.mkd)}</h3>
-                  <p>{formatText(section.content.description.mkd)}</p>
-                </div>
-                <div style={{ flex: 1 }}>
-                  <h3>{formatText(section.content.subtitle.ru)}</h3>
-                  <p>{formatText(section.content.description.ru)}</p>
-                </div>
-              </div>
-            )}
-
-            {section.content?.dialogue && (
-              <div
-                style={{
-                  padding: "5px",
-                  display: "flex",
-                  gap: "2rem",
-                  marginBottom: "1rem",
-                  background:
-                    "linear-gradient(to right, var(--thead-bg), var(--background))",
-                }}
-              >
-                {/* mkd */}
-                <div style={{ flex: 1 }}>
-                  {section.content.dialogueOrder
-                    .filter(({ language }) => language === "mkd")
-                    .map(({ speakerId, replyIndex }, i) => {
-                      const speakerData = section.content.dialogue?.find(
-                        (line) => line.speaker.id === speakerId
-                      );
-
-                      if (
-                        !speakerData ||
-                        !speakerData.mkd ||
-                        !speakerData.mkd[replyIndex]
-                      )
-                        return null;
-
-                      return (
-                        <p
-                          key={`dialogue-mkd-${i}`}
-                          style={{ marginBottom: "1rem" }}
-                        >
-                          <strong>{speakerData.speaker.mkd}</strong>{" "}
-                          {formatText(speakerData.mkd[replyIndex])}
-                        </p>
-                      );
-                    })}
-                </div>
-
-                {/* ru */}
-                <div style={{ flex: 1 }}>
-                  {section.content.dialogueOrder
-                    .filter(({ language }) => language === "ru")
-                    .map(({ speakerId, replyIndex }, i) => {
-                      const speakerData = section.content.dialogue?.find(
-                        (line) => line.speaker.id === speakerId
-                      );
-
-                      if (
-                        !speakerData ||
-                        !speakerData.ru ||
-                        !speakerData.ru[replyIndex]
-                      )
-                        return null;
-
-                      return (
-                        <p
-                          key={`dialogue-ru-${i}`}
-                          style={{ marginBottom: "1rem" }}
-                        >
-                          <strong>{speakerData.speaker.ru}</strong>{" "}
-                          {formatText(speakerData.ru[replyIndex])}
-                        </p>
-                      );
-                    })}
-                </div>
-              </div>
             )}
           </>
 

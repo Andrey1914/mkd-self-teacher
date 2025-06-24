@@ -72,7 +72,7 @@ export function ParagraphExercise({ data }: { data: ParagraphExerciseProps }) {
       <div
         style={{
           marginBottom: "2rem",
-          padding: "1rem",
+          // padding: "1rem",
           fontSize: "18px",
         }}
       >
