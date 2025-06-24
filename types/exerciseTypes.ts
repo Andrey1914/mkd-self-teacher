@@ -16,7 +16,7 @@ export interface FillInExerciseData {
   title: string;
   slug: string;
   sections: {
-    type: "exercise-fill-in";
+    type: "exercise-fill-in" | string;
     prompt?: string[];
     content: {
       sentences: {
