@@ -6,6 +6,7 @@ import { AlphabetTable } from "@/components/Tables/AlphabetTable";
 import { DialogueBlock } from "@/components/DialogueBlock/DialogueBlock";
 import { PayAttentionBlock } from "@/components/PayAttentionBlock/PayAttentionBlock";
 import { Vocabulary } from "@/components/Vocabulary/Vocabulary";
+import { CountriesNationalitiesTable } from "@/components/Tables/CountriesNationalities";
 import { formatText } from "@/utils";
 import { FillInExercise } from "@/components/Exercises/FillInExercise";
 import { ParagraphExercise } from "@/components/Exercises/ParagraphExercise";
@@ -28,6 +29,7 @@ import {
 } from "@/prisma/lessons/pay-attention/lesson-1";
 import { lectureLesson1 } from "@/prisma/lessons/heading/lesson-1/headings";
 import { vocabulary1 } from "@/prisma/lessons/vocabulary/lesson-1";
+import countriesNationalitiesTable from "@/prisma/lessons/tables/lesson-1/countriesNationalitiesTable";
 
 export function Lesson1() {
   // const section = lectureLesson1.sections.find((s) => s.type === "lecture");
@@ -102,82 +104,17 @@ export function Lesson1() {
                 <Vocabulary lesson={vocabulary1} index={1} />{" "}
                 <PayAttentionBlock data={payAttention2} />
                 <Vocabulary lesson={vocabulary1} index={2} />{" "}
+                <CountriesNationalitiesTable
+                  data={countriesNationalitiesTable}
+                />
               </>
             )}
           </>
 
           <>
-            {section.type === "countries-nationalities" &&
-              Array.isArray(section.content?.subtitle) &&
-              Array.isArray(section.content?.words) && (
-                <table
-                  style={{
-                    width: "100%",
-                    borderCollapse: "collapse",
-                    marginBottom: "1rem",
-                    border: "1px solid #994747",
-                  }}
-                >
-                  <thead>
-                    <tr style={{ backgroundColor: "#994747", color: "#fff" }}>
-                      {section.content.subtitle.map(
-                        (title: string, idx: number) => (
-                          <th
-                            key={idx}
-                            style={{
-                              padding: "0.5rem",
-                              borderLeft: idx > 0 ? "1px solid #fff" : "none",
-                              textAlign: "center",
-                            }}
-                          >
-                            {title}
-                          </th>
-                        )
-                      )}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {section.content.words.map((row, idx) => {
-                      const r = row as {
-                        land: string;
-                        nationality: string;
-                        adjective: string;
-                      };
-                      return (
-                        <tr key={idx}>
-                          <td
-                            style={{
-                              padding: "0.5rem",
-                              verticalAlign: "top",
-                              border: "1px solid #994747",
-                            }}
-                          >
-                            {formatText(`<span>${r.land}</span>`)}
-                          </td>
-                          <td
-                            style={{
-                              padding: "0.5rem",
-                              verticalAlign: "top",
-                              border: "1px solid #994747",
-                            }}
-                          >
-                            {formatText(`<span>${r.nationality}</span>`)}
-                          </td>
-                          <td
-                            style={{
-                              padding: "0.5rem",
-                              verticalAlign: "top",
-                              border: "1px solid #994747",
-                            }}
-                          >
-                            {formatText(`<span>${r.adjective}</span>`)}
-                          </td>
-                        </tr>
-                      );
-                    })}
-                  </tbody>
-                </table>
-              )}
+            {section.type === "countries-nationalities" && (
+              <CountriesNationalitiesTable data={countriesNationalitiesTable} />
+            )}
           </>
 
           <>
