@@ -4,6 +4,7 @@ import lesson1 from "../../prisma/lessons/lesson-1";
 import { Heading } from "@/components/Heading/Heading";
 import { AlphabetTable } from "@/components/Tables/AlphabetTable";
 import { DialogueBlock } from "@/components/DialogueBlock/DialogueBlock";
+import { PayAttentionBlock } from "@/components/PayAttentionBlock/PayAttentionBlock";
 import { Vocabulary } from "@/components/Vocabulary/Vocabulary";
 import { formatText } from "@/utils";
 import { FillInExercise } from "@/components/Exercises/FillInExercise";
@@ -21,13 +22,17 @@ import {
   exercise8,
   exercise9,
 } from "@/prisma/lessons/exercises/lesson-1";
+import {
+  payAttention1,
+  payAttention2,
+} from "@/prisma/lessons/pay-attention/lesson-1";
 import { lectureLesson1 } from "@/prisma/lessons/heading/lesson-1/headings";
 import { vocabulary1 } from "@/prisma/lessons/vocabulary/lesson-1";
 
 export function Lesson1() {
   // const section = lectureLesson1.sections.find((s) => s.type === "lecture");
 
-  let vocabIndex = 0;
+  // let vocabIndex = 0;
   const handledTypes = ["pay-attention"];
 
   return (
@@ -93,65 +98,12 @@ export function Lesson1() {
               <>
                 <StaticExercise data={exercise1} />
                 <DialogueBlock />
+                <PayAttentionBlock data={payAttention1} />
+                <Vocabulary lesson={vocabulary1} index={1} />{" "}
+                <PayAttentionBlock data={payAttention2} />
+                <Vocabulary lesson={vocabulary1} index={2} />{" "}
               </>
             )}
-          </>
-
-          <>
-            {section.type === "pay-attention" &&
-              section.content?.text &&
-              (() => {
-                const currentIndex = vocabIndex++;
-
-                return (
-                  <>
-                    <table
-                      style={{
-                        width: "100%",
-                        border: "2px solid var(--thead-bg)",
-                        backgroundColor: "#ebb2b2",
-                        margin: "0 0 4rem 0",
-                      }}
-                    >
-                      <tbody>
-                        <tr>
-                          <td
-                            style={{
-                              backgroundColor: "#ebb2b2",
-                              padding: "0.5rem",
-                              fontWeight: "bold",
-                              textTransform: "uppercase",
-                              borderRight: "2px solid var(--thead-bg)",
-                              verticalAlign: "middle",
-                              textAlign: "center",
-                              color: "#994747",
-                            }}
-                          >
-                            {section.title?.[0]}
-                          </td>
-                          <td style={{ padding: "1rem", verticalAlign: "top" }}>
-                            <p style={{ color: "#333", textIndent: 0 }}>
-                              {formatText(section.content.text)}
-                            </p>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                    {currentIndex === 0 && (
-                      <>
-                        {" "}
-                        <Vocabulary lesson={vocabulary1} index={1} />{" "}
-                      </>
-                    )}
-                    {currentIndex === 1 && (
-                      <>
-                        {" "}
-                        <Vocabulary lesson={vocabulary1} index={2} />{" "}
-                      </>
-                    )}
-                  </>
-                );
-              })()}
           </>
 
           <>

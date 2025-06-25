@@ -1,0 +1,46 @@
+import React from "react";
+import { PayAttentionBlockProps } from "@/types/payAttantionTypes";
+import { formatText } from "@/utils";
+
+export function PayAttentionBlock({
+  data: section,
+}: {
+  data: PayAttentionBlockProps;
+}) {
+  if (!section.content?.text) return null;
+
+  return (
+    <table
+      style={{
+        width: "100%",
+        border: "2px solid var(--thead-bg)",
+        backgroundColor: "#ebb2b2",
+        margin: "0 0 4rem 0",
+      }}
+    >
+      <tbody>
+        <tr>
+          <td
+            style={{
+              backgroundColor: "#ebb2b2",
+              padding: "0.5rem",
+              fontWeight: "bold",
+              textTransform: "uppercase",
+              borderRight: "2px solid var(--thead-bg)",
+              verticalAlign: "middle",
+              textAlign: "center",
+              color: "#994747",
+            }}
+          >
+            {section.title?.[0]}
+          </td>
+          <td style={{ padding: "1rem", verticalAlign: "top" }}>
+            <p style={{ color: "#333", textIndent: 0 }}>
+              {formatText(section.content.text)}
+            </p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  );
+}
