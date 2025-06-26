@@ -73,7 +73,7 @@ export function ParagraphExercise({ data }: { data: ParagraphExerciseProps }) {
         style={{
           marginBottom: "2rem",
           // padding: "1rem",
-          fontSize: "18px",
+          // fontSize: "18px",
         }}
       >
         {formatText(sections.content.original)}

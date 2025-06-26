@@ -28,7 +28,7 @@ import {
   payAttention2,
 } from "@/prisma/lessons/pay-attention/lesson-1";
 import { lectureLesson1 } from "@/prisma/lessons/heading/lesson-1/headings";
-import { vocabulary1 } from "@/prisma/lessons/vocabulary/lesson-1";
+import { vocabulary1, vocabulary2 } from "@/prisma/lessons/vocabulary/lesson-1";
 import countriesNationalitiesTable from "@/prisma/lessons/tables/lesson-1/countriesNationalitiesTable";
 
 export function Lesson1() {
@@ -101,18 +101,15 @@ export function Lesson1() {
                 <StaticExercise data={exercise1} />
                 <DialogueBlock />
                 <PayAttentionBlock data={payAttention1} />
-                <Vocabulary lesson={vocabulary1} index={1} />{" "}
+                <Vocabulary lesson={vocabulary1} />{" "}
                 <PayAttentionBlock data={payAttention2} />
-                <Vocabulary lesson={vocabulary1} index={2} />{" "}
-                <CountriesNationalitiesTable
-                  data={countriesNationalitiesTable}
-                />
+                <Vocabulary lesson={vocabulary2} />{" "}
               </>
             )}
           </>
 
           <>
-            {section.type === "countries-nationalities" && (
+            {section.type === "paragraph" && (
               <CountriesNationalitiesTable data={countriesNationalitiesTable} />
             )}
           </>

@@ -22,6 +22,7 @@ export function PayAttentionBlock({
         <tr>
           <td
             style={{
+              width: "25%",
               backgroundColor: "#ebb2b2",
               padding: "0.5rem",
               fontWeight: "bold",

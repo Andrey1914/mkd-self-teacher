@@ -2,15 +2,14 @@ import React from "react";
 import { formatText } from "@/utils";
 import type { VocabularyProps } from "@/types/vocabularyTypes";
 
-export function Vocabulary({ lesson, index }: VocabularyProps) {
-  const section = lesson.sections.find(
-    (section) => section.type === `vocabulary-${index}`
-  );
+export function Vocabulary({ lesson }: VocabularyProps) {
+  const section = lesson.sections[0];
 
   if (
     !section ||
-    !section.content?.subtitle ||
-    !section.content.words?.length
+    !Array.isArray(section.content?.subtitle) ||
+    !Array.isArray(section.content.words) ||
+    section.content.words.length === 0
   ) {
     return null;
   }
@@ -19,13 +18,13 @@ export function Vocabulary({ lesson, index }: VocabularyProps) {
 
   return (
     <div style={{ marginBottom: "2rem" }}>
-      {index === 1 && (
-        <section style={{ marginBottom: "3rem" }}>
+      {(lesson.title?.ru || lesson.title?.mkd) && (
+        <section style={{ marginBottom: "1.5rem" }}>
           {lesson.title?.ru && (
-            <h2 style={{ marginBottom: "1rem" }}>{lesson.title.ru}</h2>
+            <h2 style={{ marginBottom: "0.5rem" }}>{lesson.title.ru}</h2>
           )}
           {lesson.title?.mkd && (
-            <h2 style={{ marginBottom: "1rem" }}>
+            <h2 style={{ marginBottom: "0.5rem" }}>
               {formatText(lesson.title.mkd)}
             </h2>
           )}

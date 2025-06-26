@@ -1,6 +1,5 @@
 export interface VocabularyProps {
   lesson: VocabularyData;
-  index: number;
 }
 
 export interface VocabularyData {

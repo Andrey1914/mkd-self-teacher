@@ -17,7 +17,7 @@ export function CountriesNationalitiesTable({
   return (
     <>
       {Array.isArray(data.title) && data.title[0] && (
-        <h2 style={{ marginBottom: "1rem" }}>{data.title[0]}</h2>
+        <h2 style={{ margin: "2rem 0 1rem" }}>{data.title[0]}</h2>
       )}
 
       <table
