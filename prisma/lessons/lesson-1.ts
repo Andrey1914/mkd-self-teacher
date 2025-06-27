@@ -1,4 +1,5 @@
-import alphabetTable from "@/prisma/lessons/tables/lesson-1/alphabetTable";
+import { alphabetTable } from "@/prisma/lessons/tables/lesson-1";
+import { payAttention3 } from "@/prisma/lessons/pay-attention/lesson-1";
 
 const lesson1 = {
   title: [`<span>Урок 1, Лекциjя 1</span>`],
@@ -173,31 +174,7 @@ const lesson1 = {
         `.trim(),
       },
     },
-    {
-      type: `grammar`,
-      title: [`ГРАММАТИКА`, `<span>ГРАМАТИКА</span>`],
-      subtitle: [`ФОРМЫ ЛИЧНЫХ МЕСТОИМЕНИЙ`],
-      content: {
-        subtitle: [`Лицо`, `Единственное число`, `Множественное число`],
-        words: [
-          {
-            persone: `1-e`,
-            singular: `<span>jас</span> я`,
-            plural: `<span>ни\u0301е</span> мы`,
-          },
-          {
-            persone: `2-e`,
-            singular: `<span>ти</span> ты`,
-            plural: `<span>ви\u0301е</span> вы`,
-          },
-          {
-            persone: `3-e`,
-            singular: `<span>тој, то\u0301а, та\u0301а</span> он, оно, она`,
-            plural: `<span>ти\u0301е</span> они`,
-          },
-        ],
-      },
-    },
+
     {
       type: `grammar`,
       content: {
@@ -206,34 +183,12 @@ const lesson1 = {
     },
     {
       type: `grammar`,
+      verbToBe: true,
       title: [`ГЛАГОЛ`],
       subtitle: [`ГЛАГОЛ «БЫТЬ»`],
       content: {
         text: `В македонском языке нет инфинитива, поэтому в слове обычно указывается форма 3-го лица (<span>чека</span> ждать), но для глагола
       «быть» указывается форма 1-го лица единственного числа <span>сум</span>.`,
-      },
-    },
-    {
-      type: `grammar`,
-      content: {
-        subtitle: [`Лицо`, `Единственное число`, `Множественное число`],
-        words: [
-          {
-            persone: `1-e`,
-            singular: `<span>сум</span>`,
-            plural: `<span>сме</span>`,
-          },
-          {
-            persone: `2-e`,
-            singular: `<span>си</span>`,
-            plural: `<span>сте</span>`,
-          },
-          {
-            persone: `3-e`,
-            singular: `<span>е</span>`,
-            plural: `<span>се</span>`,
-          },
-        ],
       },
     },
     {
@@ -332,55 +287,10 @@ const lesson1 = {
       },
     },
     {
-      type: `grammar`,
-      subtitle: [`СПРЯЖЕНИЕ ГЛАГОЛОВ И-КЛАССА`],
-      text: [
-        `<span>о\u0301ди</span> идти, <span>се\u0301ди</span> сидеть, <span>бро\u0301и</span> считать, <span>сто\u0301и</span> стоять.`,
-      ],
-      content: {
-        words: [
-          {
-            persone: `<span>jас</span>`,
-            singular: `<span>о\u0301д-а-м</span>`,
-            plural: `<span>бро\u0301-j-ам</span>`,
-          },
-          {
-            persone: `<span>ти</span>`,
-            singular: `<span>о\u0301д-и-ш</span>`,
-            plural: `<span>бро\u0301-и-ш</span>`,
-          },
-          {
-            persone: `<span>тоj, таа, тоа</span>`,
-            singular: `<span>о\u0301д-и</span>`,
-            plural: `<span>бро\u0301-и</span>`,
-          },
-          {
-            persone: `<span>ние</span>`,
-            singular: `<span>о\u0301д-и-ме</span>`,
-            plural: `<span>бро\u0301-и-ме</span>`,
-          },
-          {
-            persone: `<span>вие</span>`,
-            singular: `<span>о\u0301д-и-те</span>`,
-            plural: `<span>бро\u0301-и-те</span>`,
-          },
-          {
-            persone: `<span>тие</span>`,
-            singular: `<span>о\u0301д-ат</span>`,
-            plural: `<span>бро\u0301-j-а-т</span>`,
-          },
-        ],
-      },
-    },
-    {
       type: "pay-attention",
       title: ["ОБРАТИТЕ ВНИМАНИЕ!"],
       attention: true,
-      content: {
-        text: `
-        У глаголов на  <span>«-ои»</span> в формах 1-го л. ед. ч. и 3-го мн. ч. появляется <span>«j»</span>.        
-        `.trim(),
-      },
+      content: { ...payAttention3 },
     },
     {
       type: `grammar`,

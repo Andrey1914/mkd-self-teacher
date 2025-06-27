@@ -1,10 +1,12 @@
 import { PayAttentionBlockProps } from "@/types/payAttantionTypes";
 
 const payAttention1: PayAttentionBlockProps = {
-  type: "pay-attention",
-  title: ["ОБРАТИТЕ ВНИМАНИЕ!"],
-  content: {
-    text: `
+  sections: [
+    {
+      type: "pay-attention",
+      title: ["ОБРАТИТЕ ВНИМАНИЕ!"],
+      content: {
+        text: `
         В македонском языке есть определенный артикль, который присоединяется к существительному или его оприделению:
         <span>па\u0301соши</span> «загранпаспорта», <span>пасо\u0301шите</span> «эти загранпаспорта», <span>ва\u0301ши па\u0301соши</span>
         «ваши загранпаспорта», <span>ва\u0301шите па\u0301соши</span> «эти ваши загранпаспорта».
@@ -18,7 +20,9 @@ const payAttention1: PayAttentionBlockProps = {
         В македонском языке нет инфинитива, поэтому используется частица <span>да</span> и личные формы глагола в настоящем времени:
         <span>че\u0301каат да се ка\u0301чат во авио\u0301н</span> «ждут, чтобы сесть в самолёт».
         `.trim(),
-  },
+      },
+    },
+  ],
 };
 
 export default payAttention1;

@@ -2,11 +2,11 @@ import React from "react";
 import { CountriesNationalitiesProps } from "@/types/countriesNationalitiesTypes";
 import { formatText } from "@/utils";
 
-export function CountriesNationalitiesTable({
+export const CountriesNationalitiesTable = ({
   data,
 }: {
   data: CountriesNationalitiesProps;
-}) {
+}) => {
   if (
     !Array.isArray(data.content?.subtitle) ||
     !Array.isArray(data.content?.words)
@@ -80,4 +80,4 @@ export function CountriesNationalitiesTable({
       </table>
     </>
   );
-}
+};
