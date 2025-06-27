@@ -2,11 +2,15 @@ import React from "react";
 
 import lesson1 from "../../prisma/lessons/lesson-1";
 import { Heading } from "@/components/Heading/Heading";
-import { AlphabetTable } from "@/components/Tables/AlphabetTable";
 import { DialogueBlock } from "@/components/DialogueBlock/DialogueBlock";
 import { PayAttentionBlock } from "@/components/PayAttentionBlock/PayAttentionBlock";
 import { Vocabulary } from "@/components/Vocabulary/Vocabulary";
-import { CountriesNationalitiesTable } from "@/components/Tables/CountriesNationalities";
+import {
+  AlphabetTable,
+  CountriesNationalitiesTable,
+  GrammarTable,
+} from "@/components/Tables";
+
 import { formatText } from "@/utils";
 import { FillInExercise } from "@/components/Exercises/FillInExercise";
 import { ParagraphExercise } from "@/components/Exercises/ParagraphExercise";
@@ -26,10 +30,16 @@ import {
 import {
   payAttention1,
   payAttention2,
+  payAttention3,
 } from "@/prisma/lessons/pay-attention/lesson-1";
 import { lectureLesson1 } from "@/prisma/lessons/heading/lesson-1/headings";
 import { vocabulary1, vocabulary2 } from "@/prisma/lessons/vocabulary/lesson-1";
-import countriesNationalitiesTable from "@/prisma/lessons/tables/lesson-1/countriesNationalitiesTable";
+import {
+  countriesNationalitiesTable,
+  grammarPronouns1,
+  grammarPronouns2,
+  verbsIClass,
+} from "@/prisma/lessons/tables/lesson-1";
 
 export function Lesson1() {
   // const section = lectureLesson1.sections.find((s) => s.type === "lecture");
@@ -110,108 +120,19 @@ export function Lesson1() {
 
           <>
             {section.type === "paragraph" && (
-              <CountriesNationalitiesTable data={countriesNationalitiesTable} />
+              <>
+                <CountriesNationalitiesTable
+                  data={countriesNationalitiesTable}
+                />
+                <GrammarTable data={grammarPronouns1} />
+              </>
             )}
           </>
 
           <>
-            {section.type === "grammar" && section.content?.words && (
+            {section.type === "grammar" && section.verbToBe && (
               <>
-                {Array.isArray(section.text) && section.text.length > 0 && (
-                  <div style={{ marginBottom: "1rem" }}>
-                    {section.text.map((t, idx) => (
-                      <p key={idx} style={{ textAlign: "center" }}>
-                        {formatText(t)}
-                      </p>
-                    ))}
-                  </div>
-                )}
-
-                {section.content.words.some((row) => "persone" in row) && (
-                  <table
-                    style={{
-                      width: "100%",
-                      tableLayout: "fixed",
-                      borderCollapse: "collapse",
-                      border: "1px solid #994747",
-                      margin: "1rem 0",
-                    }}
-                  >
-                    {Array.isArray(section.content?.subtitle) && (
-                      <thead>
-                        <tr
-                          style={{
-                            backgroundColor: "#994747",
-                            color: "#fff",
-                          }}
-                        >
-                          {section.content.subtitle.map(
-                            (col: string, idx: number) => (
-                              <th
-                                key={idx}
-                                style={{
-                                  padding: "0.5rem",
-                                  borderLeft:
-                                    idx > 0 ? "1px solid #fff" : "none",
-                                  textAlign: "center",
-                                }}
-                              >
-                                {col}
-                              </th>
-                            )
-                          )}
-                        </tr>
-                      </thead>
-                    )}
-                    <tbody>
-                      {section.content.words
-                        .filter((row) => "persone" in row)
-                        .map(
-                          (
-                            row: {
-                              persone: string;
-                              singular: string;
-                              plural: string;
-                            },
-                            idx: number
-                          ) => (
-                            <tr key={idx}>
-                              <td
-                                style={{
-                                  width: "33%",
-                                  padding: "0.5rem",
-                                  verticalAlign: "top",
-                                  border: "1px solid #994747",
-                                }}
-                              >
-                                {formatText(row.persone)}
-                              </td>
-                              <td
-                                style={{
-                                  width: "33%",
-                                  padding: "0.5rem",
-                                  verticalAlign: "top",
-                                  border: "1px solid #994747",
-                                }}
-                              >
-                                {formatText(row.singular)}
-                              </td>
-                              <td
-                                style={{
-                                  width: "33%",
-                                  padding: "0.5rem",
-                                  verticalAlign: "top",
-                                  border: "1px solid #994747",
-                                }}
-                              >
-                                {formatText(row.plural)}
-                              </td>
-                            </tr>
-                          )
-                        )}
-                    </tbody>
-                  </table>
-                )}
+                <GrammarTable data={grammarPronouns2} />
               </>
             )}
           </>
@@ -372,11 +293,13 @@ export function Lesson1() {
           {section.type === "grammar" && section.table && (
             <>
               <FillInExercise data={exercise4} />
+              <GrammarTable data={verbsIClass} />
             </>
           )}
 
-          {section.type === "pay-attention" && section.attention && (
+          {section.type === "pay-attention" && (
             <>
+              <PayAttentionBlock data={payAttention3} />
               <FillInExercise data={exercise5} />
             </>
           )}
