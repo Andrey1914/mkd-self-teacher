@@ -3,7 +3,7 @@ import { GrammarTableProps } from "@/types/grammarTypes";
 import { formatText } from "@/utils";
 
 export const GrammarTable = ({ data }: { data: GrammarTableProps }) => {
-  const { title, subtitle, content } = data;
+  const { title, subtitle, text, content } = data;
 
   return (
     <>
@@ -15,6 +15,19 @@ export const GrammarTable = ({ data }: { data: GrammarTableProps }) => {
 
       {Array.isArray(subtitle) && subtitle.length > 0 && (
         <h3 style={{ margin: "2rem 0" }}>{formatText(subtitle.join(", "))}</h3>
+      )}
+
+      {Array.isArray(text) && text.length > 0 && (
+        <>
+          {text.map((item, idx) => (
+            <p
+              key={idx}
+              style={{ marginBottom: "1rem 0", textAlign: "center" }}
+            >
+              {formatText(item)}
+            </p>
+          ))}
+        </>
       )}
 
       {content?.words?.length > 0 && (

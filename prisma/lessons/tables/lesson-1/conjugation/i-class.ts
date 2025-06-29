@@ -1,6 +1,6 @@
 import { GrammarTableProps } from "@/types/grammarTypes";
 
-const verbsIClass: GrammarTableProps = {
+const iClass: GrammarTableProps = {
   type: `grammar`,
   subtitle: [`СПРЯЖЕНИЕ ГЛАГОЛОВ И-КЛАССА`],
   text: [
@@ -42,4 +42,4 @@ const verbsIClass: GrammarTableProps = {
   },
 };
 
-export default verbsIClass;
+export default iClass;

@@ -2,26 +2,33 @@
 
 import React from "react";
 import { formatText } from "@/utils";
-import dialogueBlock from "@/prisma/lessons/dialogues/lesson-1/dialogueBlock";
+import { DialogueBlockProps } from "@/types";
 
-export const DialogueBlock: React.FC = () => {
+export const DialogueBlock = ({ data }: { data: DialogueBlockProps }) => {
+  const { sections } = data;
+
   return (
     <>
-      {dialogueBlock.sections.map((section, idx) => {
-        const { content } = section;
+      {sections.map((section, idx) => {
         const {
-          subtitle: contentSubtitle,
-          description,
-          dialogue,
-          dialogueOrder,
-        } = content;
+          title,
+          subtitle,
+          content: {
+            subtitle: contentSubtitle,
+            description,
+            dialogue,
+            dialogueOrder,
+          },
+        } = section;
 
         return (
           <div key={`section-${idx}`} style={{ marginBottom: "2rem" }}>
             <div style={{ marginBottom: "1rem" }}>
-              {section.title && <h2>{formatText(section.title.join(", "))}</h2>}
-              {section.subtitle && (
-                <h3>{formatText(section.subtitle.join(", "))}</h3>
+              {Array.isArray(title) && title.length > 0 && (
+                <h2>{formatText(title.join(", "))}</h2>
+              )}
+              {Array.isArray(subtitle) && subtitle.length > 0 && (
+                <h3>{formatText(subtitle.join(", "))}</h3>
               )}
             </div>
 
@@ -46,7 +53,7 @@ export const DialogueBlock: React.FC = () => {
               </div>
             )}
 
-            {/* Dialogue */}
+            {/* dialogue */}
             {dialogue && dialogueOrder && (
               <div
                 style={{
@@ -66,7 +73,6 @@ export const DialogueBlock: React.FC = () => {
                       const speakerData = dialogue.find(
                         (line) => line.speaker.id === speakerId
                       );
-
                       const text = speakerData?.mkd?.[replyIndex];
                       if (!text) return null;
 
@@ -75,7 +81,7 @@ export const DialogueBlock: React.FC = () => {
                           key={`dialogue-mkd-${idx}-${i}`}
                           style={{ marginBottom: "1rem" }}
                         >
-                          <strong>{speakerData.speaker.mkd}</strong>{" "}
+                          <strong>{speakerData?.speaker?.mkd}</strong>{" "}
                           {formatText(text)}
                         </p>
                       );
@@ -90,7 +96,6 @@ export const DialogueBlock: React.FC = () => {
                       const speakerData = dialogue.find(
                         (line) => line.speaker.id === speakerId
                       );
-
                       const text = speakerData?.ru?.[replyIndex];
                       if (!text) return null;
 
@@ -99,7 +104,7 @@ export const DialogueBlock: React.FC = () => {
                           key={`dialogue-ru-${idx}-${i}`}
                           style={{ marginBottom: "1rem" }}
                         >
-                          <strong>{speakerData.speaker.ru}</strong>{" "}
+                          <strong>{speakerData?.speaker?.ru}</strong>{" "}
                           {formatText(text)}
                         </p>
                       );
