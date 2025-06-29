@@ -9,13 +9,14 @@ import {
   AlphabetTable,
   CountriesNationalitiesTable,
   GrammarTable,
+  ExamplesTable,
 } from "@/components/Tables";
-
-import { formatText } from "@/utils";
-import { FillInExercise } from "@/components/Exercises/FillInExercise";
-import { ParagraphExercise } from "@/components/Exercises/ParagraphExercise";
-import { TranslateParagraphExercise } from "@/components/Exercises/TranslateParagraphExercise";
-import { StaticExercise } from "@/components/Exercises/StaticExercise";
+import {
+  FillInExercise,
+  ParagraphExercise,
+  StaticExercise,
+  TranslateParagraphExercise,
+} from "@/components/Exercises";
 import {
   exercise1,
   exercise2,
@@ -39,7 +40,16 @@ import {
   grammarPronouns1,
   grammarPronouns2,
   verbsIClass,
+  example1,
+  example2,
+  example3,
+  example4,
+  example5,
+  example6,
+  example7,
+  example8,
 } from "@/prisma/lessons/tables/lesson-1";
+import { formatText } from "@/utils";
 
 export function Lesson1() {
   // const section = lectureLesson1.sections.find((s) => s.type === "lecture");
@@ -137,52 +147,17 @@ export function Lesson1() {
             )}
           </>
 
-          <>
-            {section.type === "example" &&
-              Array.isArray(section.content?.words) &&
-              section.content.words.every((w) => "mkd" in w && "ru" in w) && (
-                <div
-                  style={{
-                    display: "grid",
-                    gridTemplateColumns: "1fr 1fr",
-                    margin: "1rem 0",
-                  }}
-                >
-                  {/* mkd */}
-                  <div>
-                    {section.content.words.map((row, idx) => (
-                      <p
-                        key={`mkd-example-${idx}`}
-                        style={{
-                          marginBottom: "1rem",
-                        }}
-                      >
-                        {formatText(row.mkd)}
-                      </p>
-                    ))}
-                  </div>
-
-                  {/* ru */}
-                  <div>
-                    {section.content.words.map((row, idx) => (
-                      <p
-                        key={`ru-example-${idx}`}
-                        style={{
-                          marginBottom: "1rem",
-                        }}
-                      >
-                        {formatText(row.ru)}
-                      </p>
-                    ))}
-                  </div>
-                </div>
-              )}
-          </>
-
-          {section.type === "example" && section.exercise && (
+          {section.type === "grammar" && section.verbForms && (
             <>
+              <ExamplesTable data={example1} />
               <FillInExercise data={exercise2} />
               <FillInExercise data={exercise3} />
+            </>
+          )}
+
+          {section.type === "grammar" && section.reflexiveVerbs && (
+            <>
+              <ExamplesTable data={example2} />
             </>
           )}
 
@@ -310,15 +285,39 @@ export function Lesson1() {
             </div>
           )}
 
-          <>
-            {section.type === "example" && section.example && (
-              <>
-                <ParagraphExercise data={exercise7} />
-                <TranslateParagraphExercise data={exercise8} />
-                <TranslateParagraphExercise data={exercise9} />
-              </>
-            )}
-          </>
+          {section.type === "grammar" && section.example3 && (
+            <>
+              <ExamplesTable data={example3} />
+            </>
+          )}
+          {section.type === "grammar" && section.example4 && (
+            <>
+              <ExamplesTable data={example4} />
+            </>
+          )}
+          {section.type === "grammar" && section.example5 && (
+            <>
+              <ExamplesTable data={example5} />
+            </>
+          )}
+          {section.type === "grammar" && section.example6 && (
+            <>
+              <ExamplesTable data={example6} />
+            </>
+          )}
+          {section.type === "grammar" && section.example7 && (
+            <>
+              <ExamplesTable data={example7} />
+            </>
+          )}
+          {section.type === "grammar" && section.example8 && (
+            <>
+              <ExamplesTable data={example8} />
+              <ParagraphExercise data={exercise7} />
+              <TranslateParagraphExercise data={exercise8} />
+              <TranslateParagraphExercise data={exercise9} />
+            </>
+          )}
         </section>
       ))}
     </>
