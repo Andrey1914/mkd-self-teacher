@@ -4,7 +4,6 @@ import {
   grammarPronouns1,
   grammarPronouns2,
 } from "@/prisma/lessons/tables/lesson-1/grammarPronouns";
-import { verbsIClass } from "@/prisma/lessons/tables/lesson-1/verbs";
 import {
   example1,
   example2,
@@ -15,13 +14,17 @@ import {
   example7,
   example8,
 } from "@/prisma/lessons/tables/lesson-1/examples";
+import {
+  aClass,
+  eClass,
+  iClass,
+} from "@/prisma/lessons/tables/lesson-1/conjugation";
 
 export {
   alphabetTable,
   countriesNationalitiesTable,
   grammarPronouns1,
   grammarPronouns2,
-  verbsIClass,
   example1,
   example2,
   example3,
@@ -30,4 +33,7 @@ export {
   example6,
   example7,
   example8,
+  aClass,
+  eClass,
+  iClass,
 };
