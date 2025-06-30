@@ -4,6 +4,8 @@ import { DialogueBlockProps } from "@/types/dailogueTypes";
 import { GrammarTableProps } from "@/types/grammarTypes";
 import { PayAttentionBlockProps } from "@/types/payAttantionTypes";
 import { VocabularyProps } from "@/types/vocabularyTypes";
+import { TabsProps } from "@/types/tabsProps";
+import { HeaderProps } from "@/types/headerProps";
 
 export type {
   AlphabetTable,
@@ -12,4 +14,6 @@ export type {
   GrammarTableProps,
   PayAttentionBlockProps,
   VocabularyProps,
+  TabsProps,
+  HeaderProps,
 };
