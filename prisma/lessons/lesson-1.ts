@@ -1,4 +1,4 @@
-import { alphabetTable } from "@/prisma/lessons/tables/lesson-1";
+import { alphabetTable } from "@/prisma/lessons/tables";
 import { payAttention3 } from "@/prisma/lessons/pay-attention/lesson-1";
 
 const lesson1 = {
