@@ -1,23 +1,23 @@
 import React from "react";
 
 import lesson1 from "../../prisma/lessons/lesson-1";
-import { Heading } from "@/components/Heading/Heading";
-import { DialogueBlock } from "@/components/DialogueBlock/DialogueBlock";
-import { PayAttentionBlock } from "@/components/PayAttentionBlock/PayAttentionBlock";
-import { Vocabulary } from "@/components/Vocabulary/Vocabulary";
+import { Heading } from "@/components/lesson/Heading/Heading";
+import { DialogueBlock } from "@/components/lesson/DialogueBlock/DialogueBlock";
+import { PayAttentionBlock } from "@/components/lesson/PayAttentionBlock/PayAttentionBlock";
+import { Vocabulary } from "@/components/lesson/Vocabulary/Vocabulary";
 import {
   AlphabetTable,
   CountriesNationalitiesTable,
   GrammarTable,
   ExamplesTable,
   ConjugationTable,
-} from "@/components/Tables";
+} from "@/components/lesson/Tables";
 import {
   FillInExercise,
   ParagraphExercise,
   StaticExercise,
   TranslateParagraphExercise,
-} from "@/components/Exercises";
+} from "@/components/lesson/Exercises";
 import {
   exercise1,
   exercise2,
