@@ -13,8 +13,8 @@
   min-height: 100svh;
   padding: 80px;
   gap: 64px; */
-  padding-left: 80px;
-  padding-right: 80px;
+  /* padding-left: 80px;
+  padding-right: 80px; */
   font-family: var(--font-geist-sans);
 }
 
@@ -54,6 +54,11 @@
   }
 }
 
+.main {
+  padding-left: 80px;
+  padding-right: 80px;
+}
+
 /* .main {
   width: 100%;
   display: flex;
@@ -91,14 +96,14 @@
 }
 
 @media (max-width: 900px) {
-  .page {
+  .main {
     padding-left: 24px;
     padding-right: 24px;
   }
 }
 
 @media (max-width: 400px) {
-  .page {
+  .main {
     padding-left: 16px;
     padding-right: 16px;
   }
