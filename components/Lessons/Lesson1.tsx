@@ -51,7 +51,7 @@ import {
   aClass,
   eClass,
   iClass,
-} from "@/prisma/lessons/tables/lesson-1";
+} from "@/prisma/lessons/tables";
 import { dialogueBlock } from "@/prisma/lessons/dialogues/lesson-1";
 import { formatText } from "@/utils";
 

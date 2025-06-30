@@ -1,9 +1,9 @@
-import alphabetTable from "@/prisma/lessons/tables/lesson-1/alphabetTable";
-import countriesNationalitiesTable from "@/prisma/lessons/tables/lesson-1/countriesNationalitiesTable";
+import alphabetTable from "@/prisma/lessons/tables/alphabetTable";
+import countriesNationalitiesTable from "@/prisma/lessons/tables/countriesNationalitiesTable";
 import {
   grammarPronouns1,
   grammarPronouns2,
-} from "@/prisma/lessons/tables/lesson-1/grammarPronouns";
+} from "@/prisma/lessons/tables/grammarPronouns/lesson-1";
 import {
   example1,
   example2,
@@ -13,12 +13,12 @@ import {
   example6,
   example7,
   example8,
-} from "@/prisma/lessons/tables/lesson-1/examples";
+} from "@/prisma/lessons/tables/examples/lesson-1";
 import {
   aClass,
   eClass,
   iClass,
-} from "@/prisma/lessons/tables/lesson-1/conjugation";
+} from "@/prisma/lessons/tables/conjugation/lesson-1";
 
 export {
   alphabetTable,
