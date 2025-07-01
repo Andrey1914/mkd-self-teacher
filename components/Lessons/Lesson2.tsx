@@ -39,7 +39,6 @@ export function Lesson2() {
               ))}
 
               <p>{section.content.intro.intro}</p>
-              <p>{section.content.intro.text}</p>
             </>
           )}
         </section>
