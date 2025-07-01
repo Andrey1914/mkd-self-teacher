@@ -1,6 +1,7 @@
 import React from "react";
 
 import lesson1 from "../../prisma/lessons/lesson-1";
+import { Paragraph } from "@/components/lesson";
 import { Heading } from "@/components/lesson/Heading/Heading";
 import { DialogueBlock } from "@/components/lesson/DialogueBlock/DialogueBlock";
 import { PayAttentionBlock } from "@/components/lesson/PayAttentionBlock/PayAttentionBlock";
@@ -53,6 +54,14 @@ import {
   iClass,
 } from "@/prisma/lessons/tables";
 import { dialogueBlock } from "@/prisma/lessons/dialogues/lesson-1";
+import {
+  phonetics,
+  features,
+  accent,
+  exceptions,
+  spelling,
+  explanation,
+} from "@/prisma/lessons/paragraph";
 import { formatText } from "@/utils";
 
 export function Lesson1() {
@@ -102,39 +111,26 @@ export function Lesson1() {
               ))}
 
               <p>{section.content.intro.intro}</p>
-              <p>{section.content.intro.text}</p>
             </>
           )}
 
-          <>{section.type === "phonetics" && <AlphabetTable />}</>
-
-          {section.content?.text &&
-            !handledTypes.includes(section.type) &&
-            section.content.text
-              .split(/\n\s*\n/)
-              .filter((line) => line.trim().length > 0)
-              .map((paragraph, i) => (
-                <p key={i} style={{ marginBottom: 0 }}>
-                  {formatText(paragraph)}
-                </p>
-              ))}
-
           <>
-            {section.type === "spelling" && (
+            {section.type === "lecture" && section.lecture && (
               <>
+                <Paragraph data={phonetics} part="title" />
+                <AlphabetTable />
+                <Paragraph data={phonetics} part="text" />
+                <Paragraph data={features} />
+                <Paragraph data={accent} />
+                <Paragraph data={exceptions} />
+                <Paragraph data={spelling} />
                 <StaticExercise data={exercise1} />
                 <DialogueBlock data={dialogueBlock} />
                 <PayAttentionBlock data={payAttention1} />
                 <Vocabulary lesson={vocabulary1} />{" "}
                 <PayAttentionBlock data={payAttention2} />
                 <Vocabulary lesson={vocabulary2} />{" "}
-              </>
-            )}
-          </>
-
-          <>
-            {section.type === "paragraph" && (
-              <>
+                <Paragraph data={explanation} />
                 <CountriesNationalitiesTable
                   data={countriesNationalitiesTable}
                 />

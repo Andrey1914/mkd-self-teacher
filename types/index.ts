@@ -6,6 +6,7 @@ import { PayAttentionBlockProps } from "@/types/payAttantionTypes";
 import { VocabularyProps } from "@/types/vocabularyTypes";
 import { TabsProps } from "@/types/tabsProps";
 import { HeaderProps } from "@/types/headerProps";
+import { ParagraphSectionsProps } from "@/types/paragraphType";
 
 export type {
   AlphabetTable,
@@ -16,4 +17,5 @@ export type {
   VocabularyProps,
   TabsProps,
   HeaderProps,
+  ParagraphSectionsProps,
 };
