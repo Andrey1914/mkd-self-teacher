@@ -61,13 +61,20 @@ import {
   exceptions,
   spelling,
   explanation,
+  intro,
+  toBe,
+  formsToVerb,
+  verbType,
+  reflexiveVerbs,
+  verbConjugation,
+  ruleConjugation,
+  negation,
 } from "@/prisma/lessons/paragraph";
 import { formatText } from "@/utils";
 
 export function Lesson1() {
   // const section = lectureLesson1.sections.find((s) => s.type === "lecture");
 
-  // let vocabIndex = 0;
   const handledTypes = ["pay-attention"];
 
   return (
@@ -135,55 +142,29 @@ export function Lesson1() {
                   data={countriesNationalitiesTable}
                 />
                 <GrammarTable data={grammarPronouns1} />
-              </>
-            )}
-          </>
-
-          <>
-            {section.type === "grammar" && section.verbToBe && (
-              <>
+                <Paragraph data={intro} />
+                <Paragraph data={toBe} />
                 <GrammarTable data={grammarPronouns2} />
-              </>
-            )}
-          </>
-
-          {section.type === "grammar" && section.verbForms && (
-            <>
-              <ExamplesTable data={example1} />
-              <FillInExercise data={exercise2} />
-              <FillInExercise data={exercise3} />
-            </>
-          )}
-
-          {section.type === "grammar" && section.reflexiveVerbs && (
-            <>
-              <ExamplesTable data={example2} />
-            </>
-          )}
-
-          <>
-            {section.type === "grammar" && section.aClass && (
-              <>
+                <Paragraph data={formsToVerb} />
+                <ExamplesTable data={example1} />
+                <FillInExercise data={exercise2} />
+                <FillInExercise data={exercise3} />
+                <Paragraph data={verbType} />
+                <Paragraph data={reflexiveVerbs} />
+                <ExamplesTable data={example2} />
+                <Paragraph data={verbConjugation} />
                 <ConjugationTable data={aClass} />
                 <FillInExercise data={exercise4} />
                 <GrammarTable data={iClass} />
+                <PayAttentionBlock data={payAttention3} />
+                <FillInExercise data={exercise5} />
+                <ConjugationTable data={eClass} />
+                <Paragraph data={ruleConjugation} />
+                <FillInExercise data={exercise6} />
+                <Paragraph data={negation} />
               </>
             )}
           </>
-
-          {section.type === "pay-attention" && (
-            <>
-              <PayAttentionBlock data={payAttention3} />
-              <FillInExercise data={exercise5} />
-              <ConjugationTable data={eClass} />
-            </>
-          )}
-
-          {section.type === "grammar" && section.paragraph && (
-            <div style={{ marginTop: "2rem" }}>
-              <FillInExercise data={exercise6} />
-            </div>
-          )}
 
           {section.type === "grammar" && section.example3 && (
             <>
