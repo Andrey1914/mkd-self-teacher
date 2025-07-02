@@ -47,19 +47,6 @@ async function main() {
           });
         }
       }
-
-      // if ("tableEntries" in section && section.tableEntries?.create) {
-
-      //     for (const table of section.tableEntries.create) {
-      //       await prisma.tableEntry.create({
-      //         data: {
-      //           title: table.title,
-      //           rows: table.rows,
-      //           sectionId: createdSection.id,
-      //         },
-      //       });
-      //     }
-      //   }
     }
 
     console.log(`Добавлен: ${lesson.slug}`);
