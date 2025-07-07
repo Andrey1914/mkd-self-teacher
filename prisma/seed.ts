@@ -21,15 +21,11 @@ async function main() {
     });
 
     for (const section of lesson.sections) {
-      console.log(
-        "👉 Контент секции:",
-        JSON.stringify(section.content, null, 2)
-      );
       const createdSection = await prisma.section.create({
         data: {
           type: section.type,
           title: section.title?.join(", "),
-          content: section.content,
+          content: "content" in section ? section.content : undefined,
           lessonId: createdLesson.id,
         },
       });
