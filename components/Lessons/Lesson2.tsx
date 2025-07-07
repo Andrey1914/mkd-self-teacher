@@ -26,11 +26,11 @@ export function Lesson2() {
                 )
               : section.title && <h2>{formatText(section.title)}</h2>)}
 
-          {Array.isArray(section.subtitle) && section.subtitle.length > 0 && (
+          {/* {Array.isArray(section.subtitle) && section.subtitle.length > 0 && (
             <h3 style={{ margin: "2rem 0" }}>
               {formatText(section.subtitle.join(", "))}
             </h3>
-          )}
+          )} */}
 
           {section.content?.intro && (
             <>
