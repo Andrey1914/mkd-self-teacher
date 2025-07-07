@@ -49,7 +49,7 @@ export default function Home() {
           </Swiper>
         </main>
         <footer className={styles.footer}>
-          <p className={styles.footerText}>...to be continued...</p>
+          <p>- Ready to move on to the second lesson? -</p>
         </footer>
       </div>
     </>

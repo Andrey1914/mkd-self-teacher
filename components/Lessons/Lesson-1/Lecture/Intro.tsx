@@ -1,21 +1,20 @@
 import React from "react";
 
-import lesson2 from "../../prisma/lessons/lesson-1";
 import { Heading } from "@/components/lesson/Heading/Heading";
 
+import lesson1 from "@/prisma/lessons/lesson-1";
 import { lectureLesson1 } from "@/prisma/lessons/heading/lesson-1/headings";
 
 import { formatText } from "@/utils";
 
-export function Lesson2() {
+export function Intro() {
   const handledTypes = ["pay-attention"];
 
   return (
     <>
-      <p>TEST LESSON START</p>
       <Heading level={lectureLesson1.level}>{lectureLesson1.title}</Heading>
 
-      {lesson2.sections?.map((section, i) => (
+      {lesson1.sections?.map((section, i) => (
         <section key={i} style={{ marginBottom: "2rem" }}>
           {!handledTypes.includes(section.type) &&
             (Array.isArray(section.title)
@@ -43,7 +42,6 @@ export function Lesson2() {
           )}
         </section>
       ))}
-      <p>TEST LESSON FINISH</p>
     </>
   );
 }

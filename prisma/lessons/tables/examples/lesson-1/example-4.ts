@@ -5,7 +5,7 @@ const example4: ExampleSection = {
   content: {
     words: [
       {
-        mkd: `<span>На\u0301таша жи\u0301вее во Ско\u0301пjе?</span>`,
+        mkd: `<span>Да\u0301ли На\u0301таша жи\u0301вее во Ско\u0301пjе?</span>`,
         ru: `Наташа живет в Скопье?`,
       },
     ],

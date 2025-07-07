@@ -8,6 +8,14 @@ import {
   reflexiveVerbs,
   verbConjugation,
 } from "@/prisma/lessons/paragraph/lesson-1/grammar/verbs";
+import {
+  sentences1,
+  sentences2,
+  sentences3,
+  sentences4,
+  sentences5,
+  sentences6,
+} from "@/prisma/lessons/paragraph/lesson-1/grammar/interrogative-sentences";
 
 export {
   intro,
@@ -18,4 +26,10 @@ export {
   verbConjugation,
   ruleConjugation,
   negation,
+  sentences1,
+  sentences2,
+  sentences3,
+  sentences4,
+  sentences5,
+  sentences6,
 };

@@ -90,9 +90,9 @@
 }
 
 .footer {
-  grid-row-start: 3;
   display: flex;
   gap: 24px;
+  justify-content: center;
 }
 
 @media (max-width: 900px) {

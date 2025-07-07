@@ -13,6 +13,12 @@ import {
   verbConjugation,
   ruleConjugation,
   negation,
+  sentences1,
+  sentences2,
+  sentences3,
+  sentences4,
+  sentences5,
+  sentences6,
 } from "@/prisma/lessons/paragraph/lesson-1/grammar";
 
 export {
@@ -30,4 +36,10 @@ export {
   verbConjugation,
   ruleConjugation,
   negation,
+  sentences1,
+  sentences2,
+  sentences3,
+  sentences4,
+  sentences5,
+  sentences6,
 };
