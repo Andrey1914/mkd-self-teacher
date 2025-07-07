@@ -1,0 +1,47 @@
+import React from "react";
+
+import { Heading } from "@/components/lesson/Heading/Heading";
+
+import lesson1 from "@/prisma/lessons/lesson-1";
+import { lectureLesson1 } from "@/prisma/lessons/heading/lesson-1/headings";
+
+import { formatText } from "@/utils";
+
+export function Intro() {
+  const handledTypes = ["pay-attention"];
+
+  return (
+    <>
+      <Heading level={lectureLesson1.level}>{lectureLesson1.title}</Heading>
+
+      {lesson1.sections?.map((section, i) => (
+        <section key={i} style={{ marginBottom: "2rem" }}>
+          {!handledTypes.includes(section.type) &&
+            (Array.isArray(section.title)
+              ? section.title.length > 0 && (
+                  <h2 style={{ margin: "1rem 0" }}>
+                    {formatText(section.title.join(", "))}
+                  </h2>
+                )
+              : section.title && <h2>{formatText(section.title)}</h2>)}
+
+          {Array.isArray(section.subtitle) && section.subtitle.length > 0 && (
+            <h3 style={{ margin: "2rem 0" }}>
+              {formatText(section.subtitle.join(", "))}
+            </h3>
+          )}
+
+          {section.content?.intro && (
+            <>
+              {(section.content.intro.subtitle ?? []).map((sub, idx) => (
+                <p key={idx}>{sub}</p>
+              ))}
+
+              <p>{section.content.intro.intro}</p>
+            </>
+          )}
+        </section>
+      ))}
+    </>
+  );
+}
