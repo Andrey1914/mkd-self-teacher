@@ -32,7 +32,10 @@ export const DialogueBlock = ({ data }: { data: DialogueBlockProps }) => {
               )}
             </div>
 
-            {description && contentSubtitle && (
+            {(description?.mkd ||
+              description?.ru ||
+              contentSubtitle?.mkd ||
+              contentSubtitle?.ru) && (
               <div
                 style={{
                   padding: "5px",
@@ -42,14 +45,25 @@ export const DialogueBlock = ({ data }: { data: DialogueBlockProps }) => {
                     "linear-gradient(to right, var(--thead-bg), var(--background))",
                 }}
               >
-                <div style={{ flex: 1 }}>
-                  <h3>{formatText(contentSubtitle.mkd || "")}</h3>
-                  <p>{formatText(description.mkd || "")}</p>
-                </div>
-                <div style={{ flex: 1 }}>
-                  <h3>{formatText(contentSubtitle.ru || "")}</h3>
-                  <p>{formatText(description.ru || "")}</p>
-                </div>
+                {/* mkd */}
+                {(contentSubtitle?.mkd || description?.mkd) && (
+                  <div style={{ flex: 1 }}>
+                    {contentSubtitle?.mkd && (
+                      <h3>{formatText(contentSubtitle.mkd)}</h3>
+                    )}
+                    {description?.mkd && <p>{formatText(description.mkd)}</p>}
+                  </div>
+                )}
+
+                {/* ru */}
+                {(contentSubtitle?.ru || description?.ru) && (
+                  <div style={{ flex: 1 }}>
+                    {contentSubtitle?.ru && (
+                      <h3>{formatText(contentSubtitle.ru)}</h3>
+                    )}
+                    {description?.ru && <p>{formatText(description.ru)}</p>}
+                  </div>
+                )}
               </div>
             )}
 
