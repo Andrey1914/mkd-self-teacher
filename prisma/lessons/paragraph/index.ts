@@ -15,6 +15,8 @@ import {
   negation,
 } from "@/prisma/lessons/paragraph/lesson-1";
 
+import { ruleAfterDialogue } from "@/prisma/lessons/paragraph/lesson-2/lecture";
+
 export {
   phonetics,
   features,
@@ -30,4 +32,5 @@ export {
   verbConjugation,
   ruleConjugation,
   negation,
+  ruleAfterDialogue,
 };
