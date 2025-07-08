@@ -4,7 +4,7 @@ import {
   accent,
   exceptions,
   spelling,
-  explanation,
+  explanation as explanationLesson1,
   intro,
   toBe,
   formsToVerb,
@@ -15,7 +15,12 @@ import {
   negation,
 } from "@/prisma/lessons/paragraph/lesson-1";
 
-import { ruleAfterDialogue } from "@/prisma/lessons/paragraph/lesson-2/lecture";
+import {
+  ruleAfterDialogue,
+  explanation as explanationLesson2,
+} from "@/prisma/lessons/paragraph/lesson-2/lecture";
+
+import { genderOfNouns } from "@/prisma/lessons/paragraph/lesson-2/grammar/noun";
 
 export {
   phonetics,
@@ -23,7 +28,7 @@ export {
   accent,
   exceptions,
   spelling,
-  explanation,
+  explanationLesson1,
   intro,
   toBe,
   formsToVerb,
@@ -33,4 +38,6 @@ export {
   ruleConjugation,
   negation,
   ruleAfterDialogue,
+  explanationLesson2,
+  genderOfNouns,
 };
