@@ -6,6 +6,7 @@ export interface ParagraphSectionsProps {
 }
 
 export interface ContentType {
+  subtitle?: string | string[];
   text?: string | string[];
   intro?: IntroType;
 }

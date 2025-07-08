@@ -11,7 +11,7 @@ import {
   payAttention2,
 } from "@/prisma/lessons/pay-attention/lesson-1";
 import { vocabulary1, vocabulary2 } from "@/prisma/lessons/vocabulary/lesson-1";
-import { explanation } from "@/prisma/lessons/paragraph";
+import { explanationLesson1 } from "@/prisma/lessons/paragraph";
 import { countriesNationalitiesTable } from "@/prisma/lessons/tables";
 
 export const Lecture = () => {
@@ -22,7 +22,7 @@ export const Lecture = () => {
       <Vocabulary lesson={vocabulary1} />{" "}
       <PayAttentionBlock data={payAttention2} />
       <Vocabulary lesson={vocabulary2} />
-      <Paragraph data={explanation} />
+      <Paragraph data={explanationLesson1} />
       <CountriesNationalitiesTable data={countriesNationalitiesTable} />
     </>
   );

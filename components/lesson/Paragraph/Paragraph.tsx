@@ -80,6 +80,9 @@ export const Paragraph = ({ data, part }: ParagraphProps) => {
             )}
           </h3>
         )}
+        {content?.subtitle && (
+          <>{content?.subtitle && renderTextParagraphs(content.subtitle)}</>
+        )}
         {content?.text && (
           <>{content?.text && renderTextParagraphs(content.text)}</>
         )}
