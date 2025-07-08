@@ -24,10 +24,9 @@ async function main() {
       const createdSection = await prisma.section.create({
         data: {
           type: section.type,
-          title: section.title?.join(", "),
-          ...("content" in section && section.content !== undefined
-            ? { content: section.content }
-            : {}),
+          ...(section.title && { title: section.title.join(", ") }),
+          ...("content" in section &&
+            section.content && { content: section.content }),
           lesson: {
             connect: {
               id: createdLesson.id,
