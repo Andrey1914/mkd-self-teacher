@@ -21,18 +21,29 @@ async function main() {
     });
 
     for (const section of lesson.sections) {
-      const createdSection = await prisma.section.create({
-        data: {
-          type: section.type,
-          ...(section.title && { title: section.title.join(", ") }),
-          ...("content" in section &&
-            section.content && { content: section.content }),
-          lesson: {
-            connect: {
-              id: createdLesson.id,
-            },
+      // Создаем базовый объект данных
+      const baseData = {
+        type: section.type,
+        lesson: {
+          connect: {
+            id: createdLesson.id,
           },
         },
+      };
+
+      // Условно добавляем поля
+      const sectionData = {
+        ...baseData,
+        ...(section.title ? { title: section.title.join(", ") } : {}),
+      };
+
+      // Добавляем content только если он действительно существует
+      if ("content" in section && section.content != null) {
+        Object.assign(sectionData, { content: section.content });
+      }
+
+      const createdSection = await prisma.section.create({
+        data: sectionData,
       });
 
       const sectionWithTables = section as SectionWithTables;
