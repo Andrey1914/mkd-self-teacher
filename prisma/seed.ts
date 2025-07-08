@@ -25,7 +25,9 @@ async function main() {
         data: {
           type: section.type,
           title: section.title?.join(", "),
-          content: "content" in section ? section.content : undefined,
+          ...("content" in section && section.content !== undefined
+            ? { content: section.content }
+            : {}),
           lesson: {
             connect: {
               id: createdLesson.id,
