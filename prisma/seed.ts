@@ -1,5 +1,3 @@
-import { Prisma } from "@prisma/client";
-
 import { prisma } from "../lib/prisma";
 import { lessons } from "@/prisma/lessons";
 import { SectionWithTables } from "@/types";
@@ -23,21 +21,18 @@ async function main() {
     });
 
     for (const section of lesson.sections) {
-      const sectionData: Prisma.SectionCreateInput = {
-        type: section.type,
-        title: section.title?.join(", "),
-        lesson: {
-          connect: { id: createdLesson.id },
+      const createdSection = await prisma.section.create({
+        data: {
+          type: section.type,
+          title: section.title?.join(", "),
+          content: "content" in section ? section.content : null,
+          lesson: {
+            connect: {
+              id: createdLesson.id,
+            },
+          },
         },
-
-        ...(typeof section === "object" &&
-          "content" in section &&
-          section.content && {
-            content: section.content as Prisma.InputJsonValue,
-          }),
-      };
-
-      const createdSection = await prisma.section.create({ data: sectionData });
+      });
 
       const sectionWithTables = section as SectionWithTables;
       if (sectionWithTables.tableEntries?.create) {
@@ -46,12 +41,40 @@ async function main() {
             data: {
               title: table.title,
               rows: table.rows,
-              sectionId: createdSection.id,
+              section: {
+                connect: {
+                  id: createdSection.id,
+                },
+              },
             },
           });
         }
       }
     }
+
+    // for (const section of lesson.sections) {
+    //   const createdSection = await prisma.section.create({
+    //     data: {
+    //       type: section.type,
+    //       title: section.title?.join(", ") || null,
+    //       content: "content" in section ? section.content : null,
+    //       lessonId: createdLesson.id,
+    //     },
+    //   });
+
+    //   const sectionWithTables = section as SectionWithTables;
+    //   if (sectionWithTables.tableEntries?.create) {
+    //     for (const table of sectionWithTables.tableEntries.create) {
+    //       await prisma.tableEntry.create({
+    //         data: {
+    //           title: table.title,
+    //           rows: table.rows,
+    //           sectionId: createdSection.id,
+    //         },
+    //       });
+    //     }
+    //   }
+    // }
 
     // for (const section of lesson.sections) {
     //   const createdSection = await prisma.section.create({
