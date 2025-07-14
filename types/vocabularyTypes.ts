@@ -13,14 +13,14 @@ export interface VocabularyData {
 
 export interface VocabularySection {
   type: string;
-  content: {
+  content?: {
     subtitle: string[];
     words: VocabularyWord[];
   };
 }
 
 export interface VocabularyWord {
-  mkd: string;
+  mkd?: string;
   pron: string;
   ru: string;
 }

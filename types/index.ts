@@ -8,6 +8,7 @@ import { TabsProps } from "@/types/tabsProps";
 import { HeaderProps } from "@/types/headerProps";
 import { ParagraphSectionsProps } from "@/types/paragraphType";
 import { SectionWithTables } from "@/types/sectionWithTables";
+import { LessonData } from "@/types/lessonTypes";
 
 export type {
   AlphabetTable,
@@ -20,4 +21,5 @@ export type {
   HeaderProps,
   ParagraphSectionsProps,
   SectionWithTables,
+  LessonData,
 };
