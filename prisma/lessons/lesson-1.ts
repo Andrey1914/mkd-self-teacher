@@ -1,3 +1,29 @@
+import {
+  phonetics,
+  features,
+  accent,
+  exceptions,
+  spelling,
+} from "@/prisma/lessons/paragraph";
+import {
+  exercise1,
+  exercise2,
+  exercise3,
+  exercise4,
+  exercise5,
+  exercise6,
+  exercise7,
+  exercise8,
+  exercise9,
+} from "@/prisma/lessons/exercises/lesson-1";
+import { dialogueBlock } from "@/prisma/lessons/dialogues/lesson-1";
+import {
+  payAttention1,
+  payAttention2,
+  payAttention3,
+} from "@/prisma/lessons/pay-attention/lesson-1";
+import { vocabulary1, vocabulary2 } from "@/prisma/lessons/vocabulary/lesson-1";
+
 const lesson1 = {
   title: [`<span>Урок 1, Лекциjя 1</span>`],
   slug: "lesson-1",
@@ -23,6 +49,21 @@ const lesson1 = {
       },
     },
   ],
+  paragraph: [phonetics, features, accent, exceptions, spelling],
+  exercises: [
+    exercise1,
+    exercise2,
+    exercise3,
+    exercise4,
+    exercise5,
+    exercise6,
+    exercise7,
+    exercise8,
+    exercise9,
+  ],
+  dialogues: [dialogueBlock],
+  payAttention: [payAttention1, payAttention2, payAttention3],
+  vocabulary: [vocabulary1, vocabulary2],
 };
 
 export default lesson1;

@@ -14,23 +14,27 @@ datasource db {
 }
 
 model User {
-  id       String   @id @default(auto()) @map("_id") @db.ObjectId
-  email    String   @unique
-  password String
-  name     String?
-  role     String   @default("user") // или "admin"
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  email     String   @unique
+  password  String
+  name      String?
+  role      String   @default("user")
   createdAt DateTime @default(now())
-
-  // Позже можно добавить связи с результатами, избранными уроками и т.д.
 }
 
 model Lesson {
-  id       String    @id @default(auto()) @map("_id") @db.ObjectId
-  title    String
-  slug     String    @unique
+  id            String              @id @default(auto()) @map("_id") @db.ObjectId
+  title         String
+  slug          String              @unique
 
-  sections Section[]
-  glossary GlossaryEntry[]
+  sections      Section[]
+  glossary      GlossaryEntry[]
+  
+  dialogues     DialogueBlock[]
+  paragraph     ParagraphBlock[]
+  payAttention  PayAttentionBlock[]
+  tables        TableBlock[]
+  vocabulary    VocabularyEntry[]
 }
 
 model Section {
@@ -63,7 +67,7 @@ model GlossaryEntry {
 model TableEntry {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   title     String?
-  rows      Json     
+  rows      Json
 
   sectionId String   @db.ObjectId
   section   Section  @relation(fields: [sectionId], references: [id])
@@ -74,12 +78,71 @@ model TableEntry {
 model Exercise {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   title     String?
-  prompt    String   // задание
-  answer    String   // правильный ответ
-  options   Json?    // например, множественный выбор: ["...", "..."]
+  prompt    String
+  answer    String
+  options   Json?
+
+  lessonId  String   @db.ObjectId
+  
 
   sectionId String   @db.ObjectId
   section   Section  @relation(fields: [sectionId], references: [id])
 
   @@index([sectionId])
+}
+
+model DialogueBlock {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  content   Json
+
+  lessonId  String   @db.ObjectId
+  lesson    Lesson   @relation(fields: [lessonId], references: [id])
+
+  @@index([lessonId])
+}
+
+model ParagraphBlock {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  type      String           // grammar, rule, intro и т.п.
+  subtype   String?          // verbs, interrogative-sentences, и т.п.
+  content   Json
+
+  lessonId  String   @db.ObjectId
+  lesson    Lesson   @relation(fields: [lessonId], references: [id])
+
+  @@index([lessonId])
+}
+
+model PayAttentionBlock {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  content   Json
+
+  lessonId  String   @db.ObjectId
+  lesson    Lesson   @relation(fields: [lessonId], references: [id])
+
+  @@index([lessonId])
+}
+
+model TableBlock {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  category  String   // conjugation, examples, grammarPronouns и т.п.
+  title     String?
+  data      Json
+
+  lessonId  String   @db.ObjectId
+  lesson    Lesson   @relation(fields: [lessonId], references: [id])
+
+  @@index([lessonId])
+}
+
+model VocabularyEntry {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  word      String
+  translation String
+  example   String?
+
+  lessonId  String   @db.ObjectId
+  lesson    Lesson   @relation(fields: [lessonId], references: [id])
+
+  @@index([lessonId])
 }
