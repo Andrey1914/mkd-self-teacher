@@ -1,4 +1,2 @@
-import { Header } from "@/components/app/Header/Header";
-import { Tabs } from "@/components/app/Tabs/Tabs";
-
-export { Header, Tabs };
+export { default as Header } from "./Header/Header";
+export { default as Tabs } from "./Tabs/Tabs";

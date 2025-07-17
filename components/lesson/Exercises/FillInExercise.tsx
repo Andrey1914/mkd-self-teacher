@@ -5,7 +5,7 @@ import type { FillInExerciseData } from "@/types/exerciseTypes";
 import { formatText, highlightInput, getTextWidth } from "@/utils";
 import styles from "@/app/page.module.css";
 
-export function FillInExercise({ data }: { data: FillInExerciseData }) {
+export default function FillInExercise({ data }: { data: FillInExerciseData }) {
   const [hasMounted, setHasMounted] = useState(false);
   const [showAnswers, setShowAnswers] = useState(false);
   const [inputs, setInputs] = useState<string[][]>([]);

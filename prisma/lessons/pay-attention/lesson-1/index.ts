@@ -1,5 +1,3 @@
-import payAttention1 from "@/prisma/lessons/pay-attention/lesson-1/pay-attention-1";
-import payAttention2 from "@/prisma/lessons/pay-attention/lesson-1/pay-attention-2";
-import payAttention3 from "@/prisma/lessons/pay-attention/lesson-1/pay-attention-3";
-
-export { payAttention1, payAttention2, payAttention3 };
+export { default as payAttention1 } from "./pay-attention-1";
+export { default as payAttention2 } from "./pay-attention-2";
+export { default as payAttention3 } from "./pay-attention-3";

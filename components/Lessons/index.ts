@@ -1,4 +1,2 @@
-import { Lesson1 } from "@/components/Lessons/Lesson-1/Lesson1";
-import { Lesson2 } from "@/components/Lessons/Lesson-2/Lesson2";
-
-export { Lesson1, Lesson2 };
+export { default as Lesson1 } from "./Lesson-1/Lesson1";
+export { default as Lesson2 } from "./Lesson-2/Lesson2";

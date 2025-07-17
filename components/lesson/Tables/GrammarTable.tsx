@@ -2,7 +2,7 @@ import React from "react";
 import { GrammarTableProps } from "@/types/grammarTypes";
 import { formatText } from "@/utils";
 
-export const GrammarTable = ({ data }: { data: GrammarTableProps }) => {
+const GrammarTable = ({ data }: { data: GrammarTableProps }) => {
   const { title, subtitle, text, content } = data;
 
   return (
@@ -104,3 +104,5 @@ export const GrammarTable = ({ data }: { data: GrammarTableProps }) => {
     </>
   );
 };
+
+export default GrammarTable;

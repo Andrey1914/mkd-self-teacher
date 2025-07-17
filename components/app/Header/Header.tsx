@@ -1,14 +1,10 @@
 "use client";
 
 import React from "react";
-import { Tabs } from "@/components/app/Tabs/Tabs";
+import Tabs from "@/components/app/Tabs/Tabs";
 import { HeaderProps } from "@/types";
 
-export const Header = ({
-  activeIndex,
-  onChange,
-  lessonTitles,
-}: HeaderProps) => {
+const Header = ({ activeIndex, onChange, lessonTitles }: HeaderProps) => {
   return (
     <header
       style={{
@@ -29,3 +25,5 @@ export const Header = ({
     </header>
   );
 };
+
+export default Header;

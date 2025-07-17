@@ -1,7 +1,5 @@
-import toBe from "@/prisma/lessons/paragraph/lesson-1/grammar/verbs/to-be";
-import formsToVerb from "@/prisma/lessons/paragraph/lesson-1/grammar/verbs/forms-to-verb";
-import verbType from "@/prisma/lessons/paragraph/lesson-1/grammar/verbs/verb-type";
-import reflexiveVerbs from "@/prisma/lessons/paragraph/lesson-1/grammar/verbs/reflexive-verbs";
-import verbConjugation from "@/prisma/lessons/paragraph/lesson-1/grammar/verbs/verb-conjugation";
-
-export { toBe, formsToVerb, verbType, reflexiveVerbs, verbConjugation };
+export { default as toBe } from "./to-be";
+export { default as formsToVerb } from "./forms-to-verb";
+export { default as verbType } from "./verb-type";
+export { default as reflexiveVerbs } from "./reflexive-verbs";
+export { default as verbConjugation } from "./verb-conjugation";
