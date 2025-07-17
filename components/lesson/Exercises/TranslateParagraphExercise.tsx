@@ -5,7 +5,7 @@ import { formatText } from "@/utils";
 import styles from "@/app/page.module.css";
 import type { ParagraphExerciseProps } from "@/types/exerciseParagraphTypes";
 
-export function TranslateParagraphExercise({
+export default function TranslateParagraphExercise({
   data,
 }: {
   data: ParagraphExerciseProps;

@@ -7,7 +7,11 @@ import type { ParagraphExerciseProps } from "@/types/exerciseParagraphTypes";
 
 const pronouns = ["Jас", "Ти", "Ние", "Вие", "Тие"];
 
-export function ParagraphExercise({ data }: { data: ParagraphExerciseProps }) {
+export default function ParagraphExercise({
+  data,
+}: {
+  data: ParagraphExerciseProps;
+}) {
   const sections = data.sections[0];
 
   const [inputs, setInputs] = useState<string[]>(

@@ -2,7 +2,7 @@ import React from "react";
 import { ExampleSection } from "@/types/exampleTypes";
 import { formatText } from "@/utils";
 
-export const ExamplesTable = ({ data }: { data: ExampleSection }) => {
+const ExamplesTable = ({ data }: { data: ExampleSection }) => {
   const { content } = data;
 
   if (
@@ -41,3 +41,5 @@ export const ExamplesTable = ({ data }: { data: ExampleSection }) => {
     </div>
   );
 };
+
+export default ExamplesTable;

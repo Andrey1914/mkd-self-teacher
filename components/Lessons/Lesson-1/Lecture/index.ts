@@ -1,4 +1,2 @@
-import { Intro } from "@/components/Lessons/Lesson-1/Lecture/Intro";
-import { Lecture } from "@/components/Lessons/Lesson-1/Lecture/Lecture";
-
-export { Intro, Lecture };
+export { default as Intro } from "./Intro";
+export { default as Lecture } from "./Lecture";

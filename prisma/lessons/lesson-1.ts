@@ -1,9 +1,8 @@
 import {
-  phonetics,
-  features,
-  accent,
-  exceptions,
-  spelling,
+  sentences,
+  verbs,
+  grammar,
+  paragraph,
 } from "@/prisma/lessons/paragraph";
 import {
   exercise1,
@@ -49,7 +48,27 @@ const lesson1 = {
       },
     },
   ],
-  paragraph: [phonetics, features, accent, exceptions, spelling],
+  paragraph: [
+    paragraph.phonetics,
+    paragraph.features,
+    paragraph.accent,
+    paragraph.exceptions,
+    paragraph.spelling,
+    sentences.sentences1,
+    sentences.sentences2,
+    sentences.sentences3,
+    sentences.sentences4,
+    sentences.sentences5,
+    sentences.sentences6,
+    verbs.formsToVerb,
+    verbs.reflexiveVerbs,
+    verbs.toBe,
+    verbs.verbConjugation,
+    verbs.verbType,
+    grammar.intro,
+    grammar.ruleConjugation,
+    grammar.negation,
+  ],
   exercises: [
     exercise1,
     exercise2,
@@ -64,6 +83,7 @@ const lesson1 = {
   dialogues: [dialogueBlock],
   payAttention: [payAttention1, payAttention2, payAttention3],
   vocabulary: [vocabulary1, vocabulary2],
+  tables: [],
 };
 
 export default lesson1;

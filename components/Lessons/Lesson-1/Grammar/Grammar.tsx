@@ -9,7 +9,7 @@ import {
 import { Negation } from "@/components/Lessons/Lesson-1/Grammar/Negation";
 import { InterrogativeSentences } from "@/components/Lessons/Lesson-1/Grammar/InterrogativeSentences";
 
-export const Grammar = () => {
+const Grammar = () => {
   return (
     <>
       <FormsOfPersonalPronouns />
@@ -21,3 +21,6 @@ export const Grammar = () => {
     </>
   );
 };
+
+
+export default Grammar

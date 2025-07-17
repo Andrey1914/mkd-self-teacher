@@ -1,45 +1,23 @@
-import phonetics from "@/prisma/lessons/paragraph/lesson-1/phonetics";
-import features from "@/prisma/lessons/paragraph/lesson-1/features";
-import accent from "@/prisma/lessons/paragraph/lesson-1/accent";
-import exceptions from "@/prisma/lessons/paragraph/lesson-1/exeptions";
-import spelling from "@/prisma/lessons/paragraph/lesson-1/spelling";
-import explanation from "@/prisma/lessons/paragraph/lesson-1/explanation";
-import {
-  intro,
-  toBe,
-  formsToVerb,
-  verbType,
-  reflexiveVerbs,
-  verbConjugation,
-  ruleConjugation,
-  negation,
-  sentences1,
-  sentences2,
-  sentences3,
-  sentences4,
-  sentences5,
-  sentences6,
-} from "@/prisma/lessons/paragraph/lesson-1/grammar";
+export { default as phonetics } from "./phonetics";
+export { default as features } from "./features";
+export { default as accent } from "./accent";
+export { default as exceptions } from "./exeptions";
+export { default as spelling } from "./spelling";
+export { default as explanation } from "./explanation";
 
 export {
-  phonetics,
-  features,
-  accent,
-  exceptions,
-  spelling,
-  explanation,
-  intro,
-  toBe,
-  formsToVerb,
-  verbType,
-  reflexiveVerbs,
-  verbConjugation,
-  ruleConjugation,
-  negation,
   sentences1,
   sentences2,
   sentences3,
   sentences4,
   sentences5,
   sentences6,
-};
+  toBe,
+  formsToVerb,
+  verbType,
+  reflexiveVerbs,
+  verbConjugation,
+  intro,
+  ruleConjugation,
+  negation,
+} from "./grammar";

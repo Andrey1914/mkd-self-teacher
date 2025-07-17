@@ -10,7 +10,7 @@ import {
 } from "@/prisma/lessons/paragraph";
 import { vocabulary } from "@/prisma/lessons/vocabulary/lesson-2";
 
-export const Lecture = () => {
+const Lecture = () => {
   return (
     <>
       <DialogueAtTaxiAndHotel />
@@ -20,3 +20,5 @@ export const Lecture = () => {
     </>
   );
 };
+
+export default Lecture;

@@ -5,7 +5,7 @@ import "swiper/css";
 import React from "react";
 import { TabsProps } from "@/types";
 
-export const Tabs = ({ tabs, activeIndex, onChange }: TabsProps) => {
+const Tabs = ({ tabs, activeIndex, onChange }: TabsProps) => {
   return (
     <div
       style={{
@@ -52,3 +52,5 @@ export const Tabs = ({ tabs, activeIndex, onChange }: TabsProps) => {
     </div>
   );
 };
+
+export default Tabs;

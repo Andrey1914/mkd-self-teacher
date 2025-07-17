@@ -1,35 +1,20 @@
-import intro from "@/prisma/lessons/paragraph/lesson-1/grammar/intro";
-import ruleConjugation from "@/prisma/lessons/paragraph/lesson-1/grammar/rule";
-import negation from "@/prisma/lessons/paragraph/lesson-1/grammar/negation";
-import {
-  toBe,
-  formsToVerb,
-  verbType,
-  reflexiveVerbs,
-  verbConjugation,
-} from "@/prisma/lessons/paragraph/lesson-1/grammar/verbs";
-import {
-  sentences1,
-  sentences2,
-  sentences3,
-  sentences4,
-  sentences5,
-  sentences6,
-} from "@/prisma/lessons/paragraph/lesson-1/grammar/interrogative-sentences";
+export { default as intro } from "./intro";
+export { default as ruleConjugation } from "./rule";
+export { default as negation } from "./negation";
 
 export {
-  intro,
   toBe,
   formsToVerb,
   verbType,
   reflexiveVerbs,
   verbConjugation,
-  ruleConjugation,
-  negation,
+} from "./verbs";
+
+export {
   sentences1,
   sentences2,
   sentences3,
   sentences4,
   sentences5,
   sentences6,
-};
+} from "./interrogative-sentences";

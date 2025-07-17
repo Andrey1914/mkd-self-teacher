@@ -11,10 +11,10 @@ import {
   payAttention2,
 } from "@/prisma/lessons/pay-attention/lesson-1";
 import { vocabulary1, vocabulary2 } from "@/prisma/lessons/vocabulary/lesson-1";
-import { explanationLesson1 } from "@/prisma/lessons/paragraph";
+import { paragraph } from "@/prisma/lessons/paragraph";
 import { countriesNationalitiesTable } from "@/prisma/lessons/tables";
 
-export const Lecture = () => {
+const Lecture = () => {
   return (
     <>
       <DialogueAtAirport />
@@ -22,8 +22,10 @@ export const Lecture = () => {
       <Vocabulary lesson={vocabulary1} />{" "}
       <PayAttentionBlock data={payAttention2} />
       <Vocabulary lesson={vocabulary2} />
-      <Paragraph data={explanationLesson1} />
+      <Paragraph data={paragraph.explanation} />
       <CountriesNationalitiesTable data={countriesNationalitiesTable} />
     </>
   );
 };
+
+export default Lecture;

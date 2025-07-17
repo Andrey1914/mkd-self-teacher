@@ -1,3 +1,1 @@
-import { Grammar } from "@/components/Lessons/Lesson-2/Grammar/Grammar";
-
-export { Grammar };
+export { default as Grammar } from "./Grammar";

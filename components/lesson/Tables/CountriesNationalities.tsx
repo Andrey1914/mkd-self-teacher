@@ -2,7 +2,7 @@ import React from "react";
 import { CountriesNationalitiesProps } from "@/types/countriesNationalitiesTypes";
 import { formatText } from "@/utils";
 
-export const CountriesNationalitiesTable = ({
+const CountriesNationalitiesTable = ({
   data,
 }: {
   data: CountriesNationalitiesProps;
@@ -81,3 +81,5 @@ export const CountriesNationalitiesTable = ({
     </>
   );
 };
+
+export default CountriesNationalitiesTable;

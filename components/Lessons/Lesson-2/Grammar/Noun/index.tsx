@@ -1,3 +1,1 @@
-import { GenderOfNouns } from "@/components/Lessons/Lesson-2/Grammar/Noun/GenderOfNouns";
-
-export { GenderOfNouns };
+export { default as GenderOfNouns } from "./GenderOfNouns";
