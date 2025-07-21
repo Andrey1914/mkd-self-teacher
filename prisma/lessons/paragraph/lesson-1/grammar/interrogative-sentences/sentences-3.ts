@@ -1,7 +1,7 @@
 import { ParagraphSectionsProps } from "@/types";
 
 const sentences3: ParagraphSectionsProps = {
-  type: `grammar`,
+  type: `sentences`,
   content: {
     text: `Как и в русском языке, для выдиления отдельной части вопросительного предложения может использоваться вопросительная
       частица <span>ли</span>:`,

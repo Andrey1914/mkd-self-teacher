@@ -4,14 +4,16 @@ import { Paragraph } from "@/components/lesson/Paragraph/Paragraph";
 import { ExamplesTable } from "@/components/lesson/Tables";
 
 import { grammar } from "@/prisma/lessons/paragraph";
-import { example2 } from "@/prisma/lessons/tables";
+import { example2 as examplesLesson1 } from "@/prisma/lessons/tables/examples";
+
+const { verbType, reflexiveVerbs } = grammar;
 
 const VerbType = () => {
   return (
     <>
-      <Paragraph data={grammar.verbType} />
-      <Paragraph data={grammar.reflexiveVerbs} />
-      <ExamplesTable data={example2} />
+      <Paragraph data={verbType} />
+      <Paragraph data={reflexiveVerbs} />
+      <ExamplesTable data={examplesLesson1} />
     </>
   );
 };

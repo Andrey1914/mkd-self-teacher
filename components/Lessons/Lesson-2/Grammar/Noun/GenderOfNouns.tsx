@@ -2,7 +2,9 @@ import React from "react";
 
 import { Paragraph } from "@/components/lesson/Paragraph/Paragraph";
 
-import { genderOfNouns } from "@/prisma/lessons/paragraph";
+import { noun } from "@/prisma/lessons/paragraph";
+
+const { genderOfNouns } = noun;
 
 const GenderOfNouns = () => {
   return (

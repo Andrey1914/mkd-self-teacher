@@ -9,4 +9,6 @@ export type CountriesNationalitiesProps = {
       adjective: string;
     }[];
   };
+
+  data?: Partial<CountriesNationalitiesProps>;
 };

@@ -14,17 +14,19 @@ import {
 } from "@/prisma/lessons/exercises/lesson-1";
 import { payAttention3 } from "@/prisma/lessons/pay-attention/lesson-1";
 
+const { verbConjugation, ruleConjugation } = grammar;
+
 const VerbConjugation = () => {
   return (
     <>
-      <Paragraph data={grammar.verbConjugation} />
+      <Paragraph data={verbConjugation} />
       <ConjugationTable data={aClass} />
       <FillInExercise data={exercise4} />
       <GrammarTable data={iClass} />
       <PayAttentionBlock data={payAttention3} />
       <FillInExercise data={exercise5} />
       <ConjugationTable data={eClass} />
-      <Paragraph data={grammar.ruleConjugation} />
+      <Paragraph data={ruleConjugation} />
       <FillInExercise data={exercise6} />
     </>
   );

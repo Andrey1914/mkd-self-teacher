@@ -6,6 +6,7 @@
 
 generator client {
   provider = "prisma-client-js"
+  seed     = "ts-node --transpile-only prisma/seed.ts"
 }
 
 datasource db {

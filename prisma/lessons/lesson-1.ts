@@ -1,9 +1,11 @@
 import {
-  sentences,
   verbs,
   grammar,
   paragraph,
+  sentences,
 } from "@/prisma/lessons/paragraph";
+import { conjugationLesson1 as conjugationLesson1 } from "@/prisma/lessons/tables/conjugation";
+import { examplesLesson1 as examplesLesson1 } from "@/prisma/lessons/tables";
 import {
   exercise1,
   exercise2,
@@ -22,6 +24,34 @@ import {
   payAttention3,
 } from "@/prisma/lessons/pay-attention/lesson-1";
 import { vocabulary1, vocabulary2 } from "@/prisma/lessons/vocabulary/lesson-1";
+
+const { phonetics, features, accent, exceptions, spelling } = paragraph;
+
+const {
+  sentences1,
+  sentences2,
+  sentences3,
+  sentences4,
+  sentences5,
+  sentences6,
+} = sentences;
+
+const { formsToVerb, reflexiveVerbs, toBe, verbConjugation, verbType } = verbs;
+
+const { intro, ruleConjugation, negation } = grammar;
+
+const { aClass, eClass, iClass } = conjugationLesson1;
+
+const {
+  example1,
+  example2,
+  example3,
+  example4,
+  example5,
+  example6,
+  example7,
+  example8,
+} = examplesLesson1;
 
 const lesson1 = {
   title: [`<span>Урок 1, Лекциjя 1</span>`],
@@ -49,25 +79,28 @@ const lesson1 = {
     },
   ],
   paragraph: [
-    paragraph.phonetics,
-    paragraph.features,
-    paragraph.accent,
-    paragraph.exceptions,
-    paragraph.spelling,
-    sentences.sentences1,
-    sentences.sentences2,
-    sentences.sentences3,
-    sentences.sentences4,
-    sentences.sentences5,
-    sentences.sentences6,
-    verbs.formsToVerb,
-    verbs.reflexiveVerbs,
-    verbs.toBe,
-    verbs.verbConjugation,
-    verbs.verbType,
-    grammar.intro,
-    grammar.ruleConjugation,
-    grammar.negation,
+    { type: "phonetics", content: phonetics },
+    { type: "features", content: features },
+    { type: "accent", content: accent },
+    { type: "exceptions", content: exceptions },
+    { type: "spelling", content: spelling },
+
+    { type: "sentences", subtype: "sentences1", content: sentences1 },
+    { type: "sentences", subtype: "sentences2", content: sentences2 },
+    { type: "sentences", subtype: "sentences3", content: sentences3 },
+    { type: "sentences", subtype: "sentences4", content: sentences4 },
+    { type: "sentences", subtype: "sentences5", content: sentences5 },
+    { type: "sentences", subtype: "sentences6", content: sentences6 },
+
+    { type: "verbs", subtype: "formsToVerb", content: formsToVerb },
+    { type: "verbs", subtype: "reflexiveVerbs", content: reflexiveVerbs },
+    { type: "verbs", subtype: "toBe", content: toBe },
+    { type: "verbs", subtype: "verbConjugation", content: verbConjugation },
+    { type: "verbs", subtype: "verbType", content: verbType },
+
+    { type: "grammar", subtype: "intro", content: intro },
+    { type: "grammar", subtype: "ruleConjugation", content: ruleConjugation },
+    { type: "grammar", subtype: "negation", content: negation },
   ],
   exercises: [
     exercise1,
@@ -83,7 +116,55 @@ const lesson1 = {
   dialogues: [dialogueBlock],
   payAttention: [payAttention1, payAttention2, payAttention3],
   vocabulary: [vocabulary1, vocabulary2],
-  tables: [],
+  tables: [
+    {
+      category: "conjugation",
+      title: aClass.subtitle?.[0] || "A-Class Verbs",
+      data: aClass,
+    },
+    {
+      category: "conjugation",
+      title: eClass.subtitle?.[0] || "E-Class Verbs",
+      data: eClass,
+    },
+    {
+      category: "conjugation",
+      title: iClass.subtitle?.[0] || "I-Class Verbs",
+      data: iClass,
+    },
+    {
+      category: "exaples",
+      data: example1,
+    },
+    {
+      category: "exaples",
+      data: example2,
+    },
+    {
+      category: "exaples",
+      data: example3,
+    },
+    {
+      category: "exaples",
+      data: example4,
+    },
+    {
+      category: "exaples",
+      data: example5,
+    },
+    {
+      category: "exaples",
+      data: example6,
+    },
+    {
+      category: "exaples",
+      data: example7,
+    },
+    {
+      category: "exaples",
+      data: example8,
+    },
+  ],
 };
 
 export default lesson1;

@@ -1,7 +1,7 @@
 import { ParagraphSectionsProps } from "@/types";
 
 const toBe: ParagraphSectionsProps = {
-  type: `grammar`,
+  type: `verbs`,
   title: [`ГЛАГОЛ`],
   subtitle: [`ГЛАГОЛ «БЫТЬ»`],
   content: {

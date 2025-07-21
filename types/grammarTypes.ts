@@ -15,4 +15,6 @@ export interface GrammarTableProps {
   subtitle?: string[];
   text?: string[];
   content: GrammarContent;
+
+  data?: Partial<GrammarTableProps>;
 }

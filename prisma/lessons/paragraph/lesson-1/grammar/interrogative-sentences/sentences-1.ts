@@ -1,7 +1,7 @@
 import { ParagraphSectionsProps } from "@/types";
 
 const sentences1: ParagraphSectionsProps = {
-  type: `grammar`,
+  type: `sentences`,
   subtitle: [`ВОПРОСИТЕЛЬНЫЕ ПРЕДЛОЖЕНИЯ`],
   content: {
     text: `Общие вопросы в македонском языке, как и в русском, могут быть оформлены только интонацией: `,

@@ -1,7 +1,7 @@
 import { ParagraphSectionsProps } from "@/types";
 
 const sentences5: ParagraphSectionsProps = {
-  type: `grammar`,
+  type: `sentences`,
   content: {
     text: `Специальные вопросы начинаются с вопросительного слова. Вот некоторые из них <span>коj</span> «кто», <span>што</span> «что»,
       <span>каде</span> «где» и «куда», <span>кога</span> «когда», <span>како</span> «как», <span>колку</span> «сколько»,
