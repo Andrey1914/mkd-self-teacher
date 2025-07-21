@@ -18,8 +18,12 @@ export interface ConjugationContent {
 
 export interface ConjugationTableSection {
   type: string;
+  category?: string;
+  title?: string | string[];
   table?: true;
   subtitle?: string[];
   text?: string[];
   content: ConjugationContent;
+
+  data?: Partial<ConjugationTableSection>;
 }

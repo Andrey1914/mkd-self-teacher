@@ -14,27 +14,36 @@ import {
   example6,
   example7,
   example8,
-} from "@/prisma/lessons/tables";
+} from "@/prisma/lessons/tables/examples";
 import {
   exercise7,
   exercise8,
   exercise9,
 } from "@/prisma/lessons/exercises/lesson-1";
 
+const {
+  sentences1,
+  sentences2,
+  sentences3,
+  sentences4,
+  sentences5,
+  sentences6,
+} = sentences;
+
 export const InterrogativeSentences = () => {
   return (
     <>
-      <Paragraph data={sentences.sentences1} />
+      <Paragraph data={sentences1} />
       <ExamplesTable data={example3} />
-      <Paragraph data={sentences.sentences2} />
+      <Paragraph data={sentences2} />
       <ExamplesTable data={example4} />
-      <Paragraph data={sentences.sentences3} />
+      <Paragraph data={sentences3} />
       <ExamplesTable data={example5} />
-      <Paragraph data={sentences.sentences4} />
+      <Paragraph data={sentences4} />
       <ExamplesTable data={example6} />
-      <Paragraph data={sentences.sentences5} />
+      <Paragraph data={sentences5} />
       <ExamplesTable data={example7} />
-      <Paragraph data={sentences.sentences6} />
+      <Paragraph data={sentences6} />
       <ExamplesTable data={example8} />
       <ParagraphExercise data={exercise7} />
       <TranslateParagraphExercise data={exercise8} />

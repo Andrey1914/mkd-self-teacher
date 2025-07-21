@@ -1,7 +1,7 @@
 import { ParagraphSectionsProps } from "@/types";
 
 const verbType: ParagraphSectionsProps = {
-  type: `grammar`,
+  type: `verbs`,
   title: [`ВИД ГЛАГОЛА`],
   content: {
     text: `Как и в русском языке, в македонском глаголы бывают несовершенного вида, совершенного и двувидовые. Глаголы несовершенного

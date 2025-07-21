@@ -1,7 +1,7 @@
 import { GrammarTableProps } from "@/types/grammarTypes";
 
 const iClass: GrammarTableProps = {
-  type: `grammar`,
+  type: `conjugation`,
   subtitle: [`СПРЯЖЕНИЕ ГЛАГОЛОВ И-КЛАССА`],
   text: [
     `<span>о\u0301ди</span> идти, <span>се\u0301ди</span> сидеть, <span>бро\u0301и</span> считать, <span>сто\u0301и</span> стоять.`,

@@ -1,7 +1,7 @@
 import { ParagraphSectionsProps } from "@/types";
 
 const reflexiveVerbs: ParagraphSectionsProps = {
-  type: `grammar`,
+  type: `verbs`,
   subtitle: [`ВОЗВРАТНЫЕ ГЛАГОЛЫ`],
   content: {
     text: `Как и в русском языке, в македонском глаголы делятся на невозвратные и возвратные: <span>ми\u0301е</span> «мыть» и 
