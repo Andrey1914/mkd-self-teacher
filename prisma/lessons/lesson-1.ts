@@ -133,35 +133,35 @@ const lesson1 = {
       data: iClass,
     },
     {
-      category: "exaples",
+      category: "example",
       data: example1,
     },
     {
-      category: "exaples",
+      category: "example",
       data: example2,
     },
     {
-      category: "exaples",
+      category: "example",
       data: example3,
     },
     {
-      category: "exaples",
+      category: "example",
       data: example4,
     },
     {
-      category: "exaples",
+      category: "example",
       data: example5,
     },
     {
-      category: "exaples",
+      category: "example",
       data: example6,
     },
     {
-      category: "exaples",
+      category: "example",
       data: example7,
     },
     {
-      category: "exaples",
+      category: "example",
       data: example8,
     },
   ],

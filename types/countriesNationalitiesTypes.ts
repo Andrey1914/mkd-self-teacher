@@ -1,5 +1,6 @@
 export type CountriesNationalitiesProps = {
   type: string;
+  category?: string;
   title: string[];
   content: {
     subtitle: string[];
