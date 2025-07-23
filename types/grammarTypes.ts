@@ -11,6 +11,7 @@ export interface GrammarContent {
 
 export interface GrammarTableProps {
   type: string;
+  category?: string;
   title?: string[];
   subtitle?: string[];
   text?: string[];
