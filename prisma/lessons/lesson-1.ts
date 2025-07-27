@@ -4,7 +4,8 @@ import {
   paragraph,
   sentences,
 } from "@/prisma/lessons/paragraph";
-import { conjugationLesson1 as conjugationLesson1 } from "@/prisma/lessons/tables/conjugation";
+import { grammarPronouns } from "@/prisma/lessons/tables";
+import { conjugationLesson1 } from "@/prisma/lessons/tables";
 import { examplesLesson1 as examplesLesson1 } from "@/prisma/lessons/tables";
 import {
   exercise1,
@@ -24,7 +25,10 @@ import {
   payAttention3,
 } from "@/prisma/lessons/pay-attention/lesson-1";
 import { vocabulary1, vocabulary2 } from "@/prisma/lessons/vocabulary/lesson-1";
-import { alphabetTable } from "@/prisma/lessons/tables";
+import {
+  alphabetTable,
+  countriesNationalitiesTable,
+} from "@/prisma/lessons/tables";
 
 const { phonetics, features, accent, exceptions, spelling } = paragraph;
 
@@ -53,6 +57,8 @@ const {
   example7,
   example8,
 } = examplesLesson1;
+
+const { grammarPronouns1, grammarPronouns2 } = grammarPronouns;
 
 const lesson1 = {
   title: [`<span>Урок 1, Лекциjя 1</span>`],
@@ -169,6 +175,23 @@ const lesson1 = {
     {
       category: "example",
       data: example8,
+    },
+    {
+      category: "grammar-pronouns",
+      title: grammarPronouns1.subtitle?.[0] || "Grammar Pronouns 1",
+      data: grammarPronouns1,
+    },
+    {
+      category: "grammar-pronouns",
+      title: grammarPronouns2.subtitle?.[0] || "Grammar Pronouns 2",
+      data: grammarPronouns2,
+    },
+
+    {
+      category: "countries-nationalities",
+      title:
+        countriesNationalitiesTable.title?.[0] || "Countries and Nationalities",
+      data: countriesNationalitiesTable,
     },
   ],
 };

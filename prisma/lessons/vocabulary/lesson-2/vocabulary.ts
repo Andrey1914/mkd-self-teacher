@@ -8,7 +8,7 @@ const vocabulary: VocabularyData = {
   slug: "lesson-2",
   sections: [
     {
-      type: "vocabulary-1",
+      type: "vocabulary",
       content: {
         subtitle: [`Македонский язык`, `Произношение`, `Русский язык`],
         words: [

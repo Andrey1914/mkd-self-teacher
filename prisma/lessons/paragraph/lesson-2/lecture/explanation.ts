@@ -1,7 +1,7 @@
 import { ParagraphSectionsProps } from "@/types";
 
 const explanation: ParagraphSectionsProps = {
-  type: "lecture",
+  type: "explanation",
   content: {
     text: `
       В тексте используется более литературное выражение <span>шест и поло\u0301вина</span> «шесть с половиной» и слова <span>час</span>

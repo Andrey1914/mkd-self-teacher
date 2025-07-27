@@ -6,7 +6,7 @@ import { FillInExercise } from "@/components/lesson/Exercises";
 import { PayAttentionBlock } from "@/components/lesson/PayAttentionBlock/PayAttentionBlock";
 
 import { grammar } from "@/prisma/lessons/paragraph";
-import { aClass, iClass, eClass } from "@/prisma/lessons/tables";
+import { conjugationLesson1 } from "@/prisma/lessons/tables";
 import {
   exercise4,
   exercise5,
@@ -15,6 +15,7 @@ import {
 import { payAttention3 } from "@/prisma/lessons/pay-attention/lesson-1";
 
 const { verbConjugation, ruleConjugation } = grammar;
+const { aClass, eClass, iClass } = conjugationLesson1;
 
 const VerbConjugation = () => {
   return (
