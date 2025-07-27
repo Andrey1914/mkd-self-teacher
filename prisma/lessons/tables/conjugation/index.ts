@@ -1,1 +1,1 @@
-export * as conjugationLesson1 from "./lesson-1";
+export { aClass, eClass, iClass } from "./lesson-1";

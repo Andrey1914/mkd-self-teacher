@@ -1,3 +1,11 @@
+import { noun, lecture } from "@/prisma/lessons/paragraph";
+import { vocabulary } from "@/prisma/lessons/vocabulary/lesson-2";
+import { dialogueBlock } from "@/prisma/lessons/dialogues/lesson-2";
+
+const { genderOfNouns } = noun;
+
+const { ruleAfterDialogue, explanation } = lecture;
+
 const lesson2 = {
   title: [`<span>Урок 2, Лекциjя 2</span>`],
   slug: "lesson-2",
@@ -8,6 +16,9 @@ const lesson2 = {
       subtitle: [`ЛЕКСИКА`, `<span>ЛЕКСИКА</span>`],
     },
   ],
+  paragraph: [genderOfNouns, ruleAfterDialogue, explanation],
+  vocabulary: [vocabulary],
+  dialogues: [dialogueBlock],
 };
 
 export default lesson2;

@@ -2,7 +2,7 @@
 
 import React from "react";
 import { formatText } from "@/utils";
-import alphabetTable from "@/prisma/lessons/tables/alphabetTable";
+import alphabetTable from "@/prisma/lessons/tables/alphabet-table";
 
 const AlphabetTable = () => {
   const section = alphabetTable.sections[0];

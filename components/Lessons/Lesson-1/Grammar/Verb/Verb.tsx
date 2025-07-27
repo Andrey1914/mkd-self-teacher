@@ -5,11 +5,12 @@ import { ExamplesTable, GrammarTable } from "@/components/lesson/Tables";
 import { FillInExercise } from "@/components/lesson/Exercises";
 
 import { grammar } from "@/prisma/lessons/paragraph";
-import { grammarPronouns2 } from "@/prisma/lessons/tables";
+import { grammarPronouns } from "@/prisma/lessons/tables";
 import { example1 as examplesLesson1 } from "@/prisma/lessons/tables/examples";
 import { exercise2, exercise3 } from "@/prisma/lessons/exercises/lesson-1";
 
 const { toBe, formsToVerb } = grammar;
+const { grammarPronouns2 } = grammarPronouns;
 
 const Verb = () => {
   return (
