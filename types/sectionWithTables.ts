@@ -1,5 +1,5 @@
 import {
-  StaticExerciseSection,
+  StaticExerciseData,
   FillInExerciseData,
   ParagraphExerciseProps,
 } from "@/types";
@@ -10,7 +10,7 @@ export type TableEntry = {
 };
 
 export type ExerciseType =
-  | StaticExerciseSection
+  | StaticExerciseData
   | FillInExerciseData
   | ParagraphExerciseProps;
 
