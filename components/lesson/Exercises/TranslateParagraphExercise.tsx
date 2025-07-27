@@ -11,7 +11,7 @@ export default function TranslateParagraphExercise({
   data: ParagraphExerciseProps;
 }) {
   const section = data.sections[0];
-  const correctAnswer = section.content.answers[0];
+  const correctAnswer = section.content.answer[0];
 
   const [input, setInput] = useState("");
   const [checked, setChecked] = useState(false);

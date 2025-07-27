@@ -9,6 +9,12 @@ import { HeaderProps } from "@/types/headerProps";
 import { ParagraphSectionsProps } from "@/types/paragraphType";
 import { SectionWithTables } from "@/types/sectionWithTables";
 import { LessonData } from "@/types/lessonTypes";
+import { ParagraphExerciseProps } from "@/types/exerciseParagraphTypes";
+import {
+  // StaticExerciseSection,
+  FillInExerciseData,
+  StaticExerciseData,
+} from "@/types/exerciseTypes";
 
 export type {
   AlphabetTable,
@@ -22,4 +28,8 @@ export type {
   ParagraphSectionsProps,
   SectionWithTables,
   LessonData,
+  ParagraphExerciseProps,
+  // StaticExerciseSection,
+  FillInExerciseData,
+  StaticExerciseData,
 };

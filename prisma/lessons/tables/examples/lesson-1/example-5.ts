@@ -1,7 +1,7 @@
 import { ExampleSection } from "@/types/exampleTypes";
 
 const example5: ExampleSection = {
-  type: "example",
+  type: "example-5",
   content: {
     words: [
       {

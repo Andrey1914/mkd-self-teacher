@@ -25,7 +25,7 @@ export default function Intro() {
                 )
               : section.title && <h2>{formatText(section.title)}</h2>)}
 
-          {section.content?.intro && (
+          {"content" in section && section.content?.intro && (
             <>
               {(section.content.intro.subtitle ?? []).map((sub, idx) => (
                 <p key={idx}>{sub}</p>

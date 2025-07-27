@@ -1,4 +1,5 @@
 export type ParagraphExerciseProps = {
+  type?: string;
   title: string;
   slug: string;
   sections: {
@@ -6,7 +7,7 @@ export type ParagraphExerciseProps = {
     prompt: string[];
     content: {
       original: string;
-      answers: string[];
+      answer: string[];
     };
   }[];
 };

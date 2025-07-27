@@ -11,7 +11,6 @@ async function main() {
     try {
       await prisma.$transaction(
         async (tx) => {
-          // ✅ Получаем lesson: либо существующий, либо создаём
           const existing = await tx.lesson.findUnique({
             where: { slug: lesson.slug },
           });
@@ -35,36 +34,125 @@ async function main() {
 
           // 📘 Sections и таблицы
           for (const section of lesson.sections ?? []) {
-            const createdSection = await tx.section.create({
-              data: {
+            const sectionTitle = Array.isArray(section.title)
+              ? section.title.join(", ")
+              : section.title ?? "";
+
+            const existingSection = await tx.section.findFirst({
+              where: {
+                title: sectionTitle,
                 type: section.type,
-                title: Array.isArray(section.title)
-                  ? section.title.join(", ")
-                  : section.title,
-                content:
-                  "content" in section ? (section.content as object) : {},
                 lessonId,
               },
             });
 
-            for (const table of section.tableEntries?.create ?? []) {
-              await tx.tableEntry.create({
-                data: { ...table, sectionId: createdSection.id },
-              });
+            const createdSection = existingSection
+              ? existingSection
+              : await tx.section.create({
+                  data: {
+                    type: section.type,
+                    title: sectionTitle,
+                    content: "content" in section ? section.content ?? {} : {},
+                    lessonId,
+                  },
+                });
+
+            if (existingSection) {
+              console.log(
+                `ℹ️ Section "${sectionTitle}" уже существует, пропущен.`
+              );
+              continue;
+            } else {
+              console.log(`✅ Section "${sectionTitle}" создан.`);
             }
 
+            // ✅ Table entries
             if (
-              "exercises" in section &&
-              section.exercises &&
-              typeof section.exercises === "object" &&
-              "create" in section.exercises &&
-              Array.isArray(section.exercises.create)
+              section.tableEntries &&
+              typeof section.tableEntries === "object" &&
+              Array.isArray(section.tableEntries.create)
             ) {
-              for (const exercise of section.exercises.create) {
-                await tx.exercise.create({
-                  data: { ...exercise, sectionId: createdSection.id, lessonId },
+              for (const entry of section.tableEntries.create) {
+                const exists = await tx.tableEntry.findFirst({
+                  where: {
+                    sectionId: createdSection.id,
+                    title: entry.title,
+                    rows: { equals: entry.rows },
+                  },
                 });
+
+                if (exists) continue;
+
+                await tx.tableEntry.create({
+                  data: {
+                    ...entry,
+                    sectionId: createdSection.id,
+                  },
+                });
+
+                console.log(`✅ TableEntry добавлен.`);
               }
+            }
+          }
+
+          for (const exercise of lesson.exercises ?? []) {
+            const existingExercise = await tx.exercise.findFirst({
+              where: {
+                title: exercise.title,
+                lessonId,
+              },
+            });
+
+            if (existingExercise) {
+              console.log(
+                `ℹ️ Exercise "${exercise.title}" уже существует, пропущен.`
+              );
+              continue;
+            }
+
+            if (!exercise.sections?.[0]) {
+              console.warn(
+                `⚠️ "${exercise.title}" → sections =`,
+                JSON.stringify(exercise.sections)
+              );
+              continue;
+            }
+
+            const section = exercise.sections?.[0];
+
+            if (!section) {
+              console.warn(
+                `⚠️ Упражнение "${exercise.title}" пропущено — section[0] невалидный.`,
+                JSON.stringify(exercise.sections)
+              );
+              continue;
+            }
+
+            if (!section || !Array.isArray(section.prompt)) {
+              console.warn(
+                `⚠️ Упражнение "${exercise.title}" пропущено — prompt не массив строк.`
+              );
+              continue;
+            }
+
+            try {
+              await tx.exercise.create({
+                data: {
+                  type: exercise.type ?? "default_type",
+                  slug: exercise.slug,
+                  title: exercise.title ?? "Без названия",
+                  prompt: section.prompt,
+                  content: section.content ?? {},
+                  lessonId,
+                },
+              });
+
+              console.log(`✅ Exercise "${exercise.title}" добавлен.`);
+            } catch (error) {
+              console.error(
+                `❌ Ошибка при добавлении упражнения "${exercise.title}":`,
+                error
+              );
             }
           }
 
@@ -73,9 +161,23 @@ async function main() {
             const exists = await tx.glossaryEntry.findFirst({
               where: { word: entry.word, lessonId },
             });
-            if (exists) continue;
+            if (exists) {
+              console.log(
+                `ℹ️ GlossaryEntry "${entry.word}" уже существует, пропущен.`
+              );
+              continue;
+            }
 
-            await tx.glossaryEntry.create({ data: { ...entry, lessonId } });
+            try {
+              await tx.glossaryEntry.create({ data: { ...entry, lessonId } });
+
+              console.log(`✅ GlossaryEntry "${entry.word}" добавлен.`);
+            } catch (error) {
+              console.error(
+                `❌ Ошибка при добавлении GlossaryEntry "${entry.word}":`,
+                error
+              );
+            }
           }
 
           // 📘 Dialogue blocks
@@ -83,11 +185,25 @@ async function main() {
             const exists = await tx.dialogueBlock.findFirst({
               where: { content: { equals: dialogue }, lessonId },
             });
-            if (exists) continue;
+            if (exists) {
+              console.log(
+                `ℹ️ DialogueBlock "${dialogue}" уже существует, пропущен.`
+              );
+              continue;
+            }
 
-            await tx.dialogueBlock.create({
-              data: { content: dialogue, lessonId },
-            });
+            try {
+              await tx.dialogueBlock.create({
+                data: { content: dialogue, lessonId },
+              });
+
+              console.log(`✅ DialogueBlock "${dialogue}" добавлен.`);
+            } catch (error) {
+              console.error(
+                `❌ Ошибка при добавлении DialogueBlock "${dialogue}":`,
+                error
+              );
+            }
           }
 
           // 📘 Paragraph blocks
@@ -96,23 +212,44 @@ async function main() {
               ? paragraph.subtitle.join(", ")
               : paragraph.subtitle;
 
-            const exists = await tx.paragraphBlock.findFirst({
+            const content = JSON.parse(JSON.stringify(paragraph.content ?? {}));
+
+            const existing = await tx.paragraphBlock.findFirst({
               where: {
                 type: paragraph.type,
                 subtype,
                 lessonId,
               },
             });
-            if (exists) continue;
 
-            await tx.paragraphBlock.create({
-              data: {
-                type: paragraph.type,
-                subtype,
-                content: JSON.parse(JSON.stringify(paragraph.content ?? {})),
-                lessonId,
-              },
-            });
+            if (existing) {
+              const isEqualContent =
+                JSON.stringify(existing.content) === JSON.stringify(content);
+
+              if (isEqualContent) {
+                continue;
+              }
+
+              await tx.paragraphBlock.update({
+                where: { id: existing.id },
+                data: {
+                  content,
+                },
+              });
+
+              console.log(`🔁 Обновлён ParagraphBlock "${content}"`);
+            } else {
+              await tx.paragraphBlock.create({
+                data: {
+                  type: paragraph.type,
+                  subtype,
+                  content,
+                  lessonId,
+                },
+              });
+
+              console.log(`✅ Добавлен ParagraphBlock "${subtype}"`);
+            }
           }
 
           // 📘 Pay attention blocks
@@ -120,24 +257,39 @@ async function main() {
             const exists = await tx.payAttentionBlock.findFirst({
               where: { content: { equals: attention }, lessonId },
             });
-            if (exists) continue;
+            if (exists) {
+              console.log(
+                `ℹ️ PayAttentionBlock "${attention}" уже существует, пропущен.`
+              );
+              continue;
+            }
 
-            await tx.payAttentionBlock.create({
-              data: { content: attention, lessonId },
-            });
+            try {
+              await tx.payAttentionBlock.create({
+                data: { content: attention, lessonId },
+              });
+
+              console.log(`✅ Добавлен PayAttentionBlock "${attention}"`);
+            } catch (error) {
+              console.error(
+                `❌ Ошибка при добавлении PayAttentionBlock "${attention}":`,
+                error
+              );
+              continue;
+            }
           }
 
           // 📘 Table blocks (из папки tables)
+          let exampleIndex = 1;
 
-          for (const [index, tableBlock] of (lesson.tables ?? []).entries()) {
+          for (const tableBlock of lesson.tables ?? []) {
             const rawTitle =
               "title" in tableBlock ? tableBlock.title : undefined;
 
-            const title = Array.isArray(rawTitle)
-              ? rawTitle.join(", ")
-              : typeof rawTitle === "string"
-              ? rawTitle
-              : `table-${index}`;
+            const title =
+              typeof rawTitle === "string"
+                ? rawTitle
+                : `example-${exampleIndex++}`;
 
             const content = tableBlock?.content ?? tableBlock?.data?.content;
 
@@ -169,44 +321,63 @@ async function main() {
               },
             });
 
-            console.log(
-              `✅ Добавлен tableBlock. title: ${title ?? "Без названия"}`
-            );
+            console.log(`✅ Добавлен tableBlock. title: ${title}`);
           }
 
           // 📘 Vocabulary (если есть секция типа "vocabulary")
-          for (const section of lesson.sections ?? []) {
-            if (
-              section.type === "vocabulary" &&
-              "content" in section &&
-              section.content &&
-              typeof section.content === "object" &&
-              "words" in section.content &&
-              Array.isArray(section.content.words)
-            ) {
-              const words = section.content.words ?? [];
+          for (const vocab of lesson.vocabulary ?? []) {
+            const sections = vocab.sections ?? [];
+
+            for (const sec of sections) {
+              if (sec.type !== "vocabulary") continue;
+
+              const words = sec.content?.words ?? [];
+              console.log(`🔡 Vocabulary words: ${words.length}`);
 
               for (const word of words) {
-                const term = word.mkd && word.pron;
-                if (!term || !word.ru) continue;
+                const term = word.mkd?.trim();
+                const pron = word.pron?.trim();
+                const translation = word.ru?.trim();
 
-                const exists = await tx.vocabularyEntry.findFirst({
-                  where: {
-                    word: term,
-                    translation: word.ru,
-                    lessonId,
-                  },
+                if (!term || !translation) continue;
+
+                const existing = await tx.vocabularyEntry.findFirst({
+                  where: { word: term, translation, lessonId },
                 });
 
-                if (exists) continue;
+                if (existing) {
+                  const needUpdate =
+                    (existing.pronunciation ?? "") !== (pron ?? "") ||
+                    (existing.translation ?? "") !== translation;
+
+                  if (needUpdate) {
+                    await tx.vocabularyEntry.update({
+                      where: { id: existing.id },
+                      data: {
+                        pronunciation: pron,
+                        translation,
+                      },
+                    });
+                    console.log(`🔁 Обновлён VocabularyEntry "${term}"`);
+                  } else {
+                    console.log(
+                      `ℹ️ VocabularyEntry "${term}" уже существует, пропущен.`
+                    );
+                  }
+
+                  continue;
+                }
 
                 await tx.vocabularyEntry.create({
                   data: {
                     word: term,
-                    translation: word.ru,
+                    pronunciation: pron,
+                    translation,
                     lessonId,
                   },
                 });
+
+                console.log(`✅ Добавлен VocabularyEntry "${term}"`);
               }
             }
           }
@@ -236,244 +407,6 @@ main()
     await prisma.$disconnect();
     console.log("Соединение с базой данных закрыто.");
   });
-
-// v-02 worked-------------------------------------------------------------------------------------------------------------------------
-// import { PrismaClient } from "@prisma/client";
-// import { lessons } from "@/prisma/lessons";
-
-// import type { LessonData } from "@/types";
-
-// const prisma = new PrismaClient();
-
-// async function main() {
-//   console.log("Запуск сидинга...");
-
-//   for (const lesson of lessons as LessonData[]) {
-//     const existing = await prisma.lesson.findUnique({
-//       where: { slug: lesson.slug },
-//     });
-
-//     if (existing) {
-//       console.log(`Урок "${lesson.slug}" уже существует. Пропущен.`);
-//       // continue;
-//     }
-
-//     try {
-//       await prisma.$transaction(
-//         async (tx) => {
-//           let lessonId: string;
-
-//           if (existing) {
-//             lessonId = existing.id;
-//           } else {
-//             const createdLesson = await tx.lesson.create({
-//               data: {
-//                 title: lesson.title?.join(", ") ?? "Урок без названия.",
-//                 slug: lesson.slug,
-//               },
-//             });
-//             lessonId = createdLesson.id;
-//           }
-
-//           // const createdLesson = await tx.lesson.create({
-//           //   data: {
-//           //     title: lesson.title?.join(", ") ?? "Урок без названия.",
-//           //     slug: lesson.slug,
-//           //   },
-//           // });
-
-//           // const lessonId = createdLesson.id;
-
-//           for (const section of lesson.sections ?? []) {
-//             const createdSection = await tx.section.create({
-//               data: {
-//                 type: section.type,
-//                 title: Array.isArray(section.title)
-//                   ? section.title.join(", ")
-//                   : section.title,
-//                 content:
-//                   "content" in section ? (section.content as object) : {},
-//                 lessonId: lessonId,
-//               },
-//             });
-
-//             if (
-//               "tableEntries" in section &&
-//               section.tableEntries &&
-//               typeof section.tableEntries === "object" &&
-//               "create" in section.tableEntries &&
-//               Array.isArray(section.tableEntries.create)
-//             ) {
-//               for (const table of section.tableEntries.create) {
-//                 await tx.tableEntry.create({
-//                   data: { ...table, sectionId: createdSection.id },
-//                 });
-//               }
-//             }
-
-//             for (const table of section.tableEntries?.create ?? []) {
-//               await tx.tableEntry.create({
-//                 data: { ...table, sectionId: createdSection.id },
-//               });
-//             }
-
-//             if (
-//               "exercises" in section &&
-//               section.exercises &&
-//               typeof section.exercises === "object" &&
-//               "create" in section.exercises &&
-//               Array.isArray(section.exercises.create)
-//             ) {
-//               for (const exercise of section.exercises.create) {
-//                 await tx.exercise.create({
-//                   data: { ...exercise, sectionId: createdSection.id, lessonId },
-//                 });
-//               }
-//             }
-//           }
-//           for (const entry of lesson.glossary ?? []) {
-//             await tx.glossaryEntry.create({ data: { ...entry, lessonId } });
-//           }
-//           for (const dialogue of lesson.dialogues ?? []) {
-//             await tx.dialogueBlock.create({
-//               data: { content: dialogue, lessonId },
-//             });
-//           }
-
-//           for (const paragraph of lesson.paragraph ?? []) {
-//             const subtype = Array.isArray(paragraph.subtitle)
-//               ? paragraph.subtitle.join(", ")
-//               : paragraph.subtitle;
-//             await tx.paragraphBlock.create({
-//               data: {
-//                 type: paragraph.type,
-//                 subtype: subtype,
-//                 content: JSON.parse(JSON.stringify(paragraph.content ?? {})),
-//                 lessonId,
-//               },
-//             });
-//           }
-
-//           for (const attention of lesson.payAttention ?? []) {
-//             await tx.payAttentionBlock.create({
-//               data: { content: attention, lessonId },
-//             });
-//           }
-
-//           for (const tableBlock of lesson.tables ?? []) {
-//             const title =
-//               "title" in tableBlock && Array.isArray(tableBlock.title)
-//                 ? tableBlock.title.join(", ")
-//                 : typeof tableBlock.title === "string"
-//                 ? tableBlock.title
-//                 : undefined;
-
-//             const content = tableBlock?.content ?? tableBlock?.data?.content;
-
-//             if (!content) {
-//               console.error(
-//                 `❌ Пропущен tableBlock без content. title: ${title}`
-//               );
-//               continue;
-//             }
-
-//             try {
-//               await tx.tableBlock.create({
-//                 data: {
-//                   title,
-//                   data: JSON.parse(JSON.stringify(tableBlock)),
-//                   lessonId,
-//                 },
-//               });
-
-//               console.log(
-//                 `✅ Добавлен tableBlock. title: ${title ?? "Без названия"}`
-//               );
-//             } catch (err) {
-//               console.error(
-//                 `❌ Ошибка при добавлении tableBlock "${
-//                   title ?? "Без названия"
-//                 }":`,
-//                 err
-//               );
-//             }
-//           }
-
-//           // for (const tableBlock of lesson.tables ?? []) {
-//           //   const title =
-//           //     "title" in tableBlock && Array.isArray(tableBlock.title)
-//           //       ? tableBlock.title.join(", ")
-//           //       : typeof tableBlock.title === "string"
-//           //       ? tableBlock.title
-//           //       : undefined;
-
-//           //   const content = tableBlock?.content ?? tableBlock?.data?.content;
-
-//           //   if (!content) {
-//           //     console.error(`❌ Нет content у tableBlock с title: ${title}`);
-//           //     continue;
-//           //   }
-
-//           //   await tx.tableBlock.create({
-//           //     data: {
-//           //       category: tableBlock.type,
-//           //       title,
-//           //       data: JSON.parse(JSON.stringify(tableBlock)),
-//           //       lessonId,
-//           //     },
-//           //   });
-//           // }
-
-//           if (lesson.sections && Array.isArray(lesson.sections)) {
-//             for (const section of lesson.sections) {
-//               if (section.type === "vocabulary") {
-//                 if (
-//                   "content" in section &&
-//                   section.content &&
-//                   typeof section.content === "object" &&
-//                   "words" in section.content &&
-//                   Array.isArray(section.content.words)
-//                 ) {
-//                   for (const word of section.content.words) {
-//                     const words = word.mkd && word.pron;
-//                     await tx.vocabularyEntry.create({
-//                       data: {
-//                         word: words,
-//                         translation: word.ru,
-//                         lessonId,
-//                       },
-//                     });
-//                   }
-//                 }
-//               }
-//             }
-//           }
-
-//           console.log(`Урок "${lesson.slug}" успешно добавлен в транзакции.`);
-//         },
-//         {
-//           maxWait: 10000,
-//           timeout: 20000,
-//         }
-//       );
-//     } catch (error) {
-//       console.error(
-//         `\n--- ОШИБКА при сидинге урока "${lesson.slug}". Транзакция отменена. ---\n`,
-//         error instanceof Error ? error.message : error
-//       );
-//     }
-//   }
-// }
-
-// main()
-//   .catch((err) => {
-//     console.error("Критическая ошибка во время выполнения сидинга:", err);
-//     process.exit(1);
-//   })
-//   .finally(async () => {
-//     await prisma.$disconnect();
-//     console.log("Соединение с базой данных закрыто.");
-//   });
 
 // v-0_worked-------------------------------------------------------------------------------------------------------------------------
 // import { prisma } from "../lib/prisma";

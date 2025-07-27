@@ -78,16 +78,18 @@ model TableEntry {
 
 model Exercise {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
+
+  type      String
+  slug      String
   title     String?
-  prompt    String
-  answer    String
-  options   Json?
+  prompt    String[] 
+  content   Json
 
   lessonId  String   @db.ObjectId
   
 
-  sectionId String   @db.ObjectId
-  section   Section  @relation(fields: [sectionId], references: [id])
+  sectionId String?   @db.ObjectId
+  section   Section?  @relation(fields: [sectionId], references: [id])
 
   @@index([sectionId])
 }
@@ -126,7 +128,9 @@ model PayAttentionBlock {
 
 model TableBlock {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  category  String?   // conjugation, examples, grammarPronouns и т.п.
+
+  type      String?
+  category  String?   
   title     String?
   data      Json
 
@@ -140,6 +144,7 @@ model VocabularyEntry {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   word      String
   translation String
+  pronunciation String?
   example   String?
 
   lessonId  String   @db.ObjectId

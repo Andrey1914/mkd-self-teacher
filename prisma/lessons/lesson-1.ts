@@ -24,6 +24,7 @@ import {
   payAttention3,
 } from "@/prisma/lessons/pay-attention/lesson-1";
 import { vocabulary1, vocabulary2 } from "@/prisma/lessons/vocabulary/lesson-1";
+import { alphabetTable } from "@/prisma/lessons/tables";
 
 const { phonetics, features, accent, exceptions, spelling } = paragraph;
 
@@ -77,6 +78,11 @@ const lesson1 = {
         },
       },
     },
+    ...alphabetTable.sections.map((section) => ({
+      ...section,
+      type: "alphabet",
+      title: "Македонский алфавит",
+    })),
   ],
   paragraph: [
     { type: "phonetics", content: phonetics },

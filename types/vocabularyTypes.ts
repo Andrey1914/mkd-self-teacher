@@ -8,16 +8,23 @@ export interface VocabularyData {
     mkd?: string;
   };
   slug: string;
-  sections: VocabularySection[];
+  sections: {
+    type?: string;
+    content?: {
+      subtitle: string[];
+      words: VocabularyWord[];
+    };
+  }[];
+  // sections: VocabularySection[];
 }
 
-export interface VocabularySection {
-  type: string;
-  content?: {
-    subtitle: string[];
-    words: VocabularyWord[];
-  };
-}
+// export interface VocabularySection {
+//   type: string;
+//   content?: {
+//     subtitle: string[];
+//     words: VocabularyWord[];
+//   };
+// }
 
 export interface VocabularyWord {
   mkd?: string;
