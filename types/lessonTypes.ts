@@ -5,6 +5,10 @@ import {
   ParagraphSectionsProps,
   GrammarTableProps,
   CountriesNationalitiesProps,
+  // StaticExerciseSection,
+  StaticExerciseData,
+  FillInExerciseData,
+  ParagraphExerciseProps,
 } from "@/types";
 import { VocabularySection } from "@/types/vocabularyTypes";
 
@@ -15,6 +19,11 @@ export interface GlossaryEntryData {
   meaning: string;
   example?: string;
 }
+
+export type ExerciseType =
+  | StaticExerciseData
+  | FillInExerciseData
+  | ParagraphExerciseProps;
 
 export type TableBlockData =
   | GrammarTableProps
@@ -31,4 +40,5 @@ export interface LessonData {
   payAttention?: PayAttentionBlockProps[];
   tables?: TableBlockData[];
   vocabulary?: VocabularySection[];
+  exercises?: ExerciseType[];
 }

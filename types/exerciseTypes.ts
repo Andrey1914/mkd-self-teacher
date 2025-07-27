@@ -1,18 +1,29 @@
 export interface StaticExerciseData {
-  title: string;
+  type?: string;
+  title?: string;
   slug: string;
-  sections: StaticExerciseSection[];
+  sections: {
+    type?: "static-exercise" | "exercises" | string;
+    title?: string;
+    prompt?: string[];
+    content?: {
+      exercise?: string | string[];
+    };
+  }[];
 }
 
-export interface StaticExerciseSection {
-  type: "static-exercise" | string;
-  prompt?: string[];
-  content?: {
-    exercise?: string | string[];
-  };
-}
+// export interface StaticExerciseSection {
+//   type: "static-exercise" | string;
+//   // slug?: string;
+//   // title?: string;
+//   prompt?: string[];
+//   content?: {
+//     exercise?: string | string[];
+//   };
+// }
 
 export interface FillInExerciseData {
+  type?: string;
   title: string;
   slug: string;
   sections: {

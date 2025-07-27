@@ -1,11 +1,13 @@
 import { FillInExerciseData } from "@/types/exerciseTypes";
 
 const exercise2: FillInExerciseData = {
+  type: "exercises",
   title: "Упражнение 2",
   slug: "lesson-1",
   sections: [
     {
       type: "exercise-fill-in",
+      // type: "exercises",
       prompt: [`Вставьте глагол <span>сум</span> в нужной форме.`],
       content: {
         sentences: [

@@ -1,6 +1,7 @@
 import { FillInExerciseData } from "@/types/exerciseTypes";
 
 const exercise3: FillInExerciseData = {
+  type: "exercises",
   title: "Упражнение 3",
   slug: "lesson-1",
   sections: [
