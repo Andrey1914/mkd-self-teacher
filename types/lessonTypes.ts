@@ -10,7 +10,7 @@ import {
   FillInExerciseData,
   ParagraphExerciseProps,
 } from "@/types";
-import { VocabularySection } from "@/types/vocabularyTypes";
+import { VocabularyData } from "@/types/vocabularyTypes";
 
 import { ConjugationTableSection } from "@/types/conjugationTypes";
 
@@ -39,6 +39,6 @@ export interface LessonData {
   paragraph?: ParagraphSectionsProps[];
   payAttention?: PayAttentionBlockProps[];
   tables?: TableBlockData[];
-  vocabulary?: VocabularySection[];
+  vocabulary?: VocabularyData[];
   exercises?: ExerciseType[];
 }
