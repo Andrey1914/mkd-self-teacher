@@ -42,7 +42,7 @@ export default function ParagraphExercise({
   };
 
   const revealAnswers = () => {
-    const cleanedAnswers = sections.content.answers.map((answer) =>
+    const cleanedAnswers = sections.content.answer.map((answer) =>
       answer
         .split("\n")
         .map((line) => line.trim())
@@ -84,7 +84,7 @@ export default function ParagraphExercise({
       </div>
 
       {pronouns.map((pronoun, idx) => {
-        const correctAnswer = sections.content.answers?.[idx] ?? "";
+        const correctAnswer = sections.content.answer?.[idx] ?? "";
 
         const userInput = inputs[idx] || "";
 
