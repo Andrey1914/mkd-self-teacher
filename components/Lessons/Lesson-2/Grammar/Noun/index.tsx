@@ -1,1 +1,1 @@
-export { default as GenderOfNouns } from "./GenderOfNouns";
+export { default as Nouns } from "./Nouns";
