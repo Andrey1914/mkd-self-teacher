@@ -4,14 +4,16 @@ import { Paragraph } from "@/components/lesson/Paragraph/Paragraph";
 
 import { noun } from "@/prisma/lessons/paragraph";
 
-const { genderOfNouns } = noun;
+const { genderOfNouns, pluralOfNouns, feminineNouns } = noun;
 
-const GenderOfNouns = () => {
+const Nouns = () => {
   return (
     <>
       <Paragraph data={genderOfNouns} />
+      <Paragraph data={pluralOfNouns} />
+      <Paragraph data={feminineNouns} />
     </>
   );
 };
 
-export default GenderOfNouns;
+export default Nouns;
