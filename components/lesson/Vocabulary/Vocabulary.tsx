@@ -31,7 +31,13 @@ export function Vocabulary({ lesson }: VocabularyProps) {
         </section>
       )}
 
-      <table style={{ width: "100%" }}>
+      <table
+        style={{
+          width: "100%",
+          borderCollapse: "collapse",
+          tableLayout: "fixed",
+        }}
+      >
         <thead>
           <tr style={{ backgroundColor: "#994747", color: "#fff" }}>
             {subtitle.map((col, idx) => (
@@ -39,7 +45,7 @@ export function Vocabulary({ lesson }: VocabularyProps) {
                 key={idx}
                 style={{
                   padding: "0.5rem",
-                  borderLeft: idx > 0 ? "2px solid #fff" : "none",
+                  borderLeft: idx > 0 ? "0.5px solid #fff" : "none",
                   textAlign: "center",
                 }}
               >

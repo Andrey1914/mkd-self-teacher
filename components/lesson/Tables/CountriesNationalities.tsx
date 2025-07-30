@@ -25,7 +25,7 @@ const CountriesNationalitiesTable = ({
           width: "100%",
           borderCollapse: "collapse",
           marginBottom: "1rem",
-          border: "1px solid #994747",
+          border: "0.5px solid #994747",
         }}
       >
         <thead>
@@ -35,7 +35,7 @@ const CountriesNationalitiesTable = ({
                 key={idx}
                 style={{
                   padding: "0.5rem",
-                  borderLeft: idx > 0 ? "1px solid #fff" : "none",
+                  borderLeft: idx > 0 ? "0.5px solid #fff" : "none",
                   textAlign: "center",
                 }}
               >

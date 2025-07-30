@@ -92,10 +92,26 @@ span {
 
 th {
   padding: 4px;
+  font-size: 12px;
+  word-wrap: break-word;
+}
+
+@media (min-width: 768px) {
+  th {
+    font-size: 16px;
+  }
 }
 
 td {
-  padding: 6px;
+  padding: 4px;
+  font-size: 12px;
+  word-wrap: break-word;
+}
+
+@media (min-width: 768px) {
+  td {
+    font-size: 16px;
+  }
 }
 
 td,
