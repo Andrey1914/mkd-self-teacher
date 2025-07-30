@@ -4,7 +4,13 @@ import { Paragraph } from "@/components/lesson/Paragraph/Paragraph";
 
 import { noun } from "@/prisma/lessons/paragraph";
 
-const { genderOfNouns, pluralOfNouns, feminineNouns, masculineNouns } = noun;
+const {
+  genderOfNouns,
+  pluralOfNouns,
+  feminineNouns,
+  masculineNouns,
+  neuterNouns,
+} = noun;
 
 const Nouns = () => {
   return (
@@ -13,6 +19,7 @@ const Nouns = () => {
       <Paragraph data={pluralOfNouns} />
       <Paragraph data={feminineNouns} />
       <Paragraph data={masculineNouns} />
+      <Paragraph data={neuterNouns} />
     </>
   );
 };
