@@ -2,7 +2,7 @@ import { noun, lecture } from "@/prisma/lessons/paragraph";
 import { vocabulary } from "@/prisma/lessons/vocabulary/lesson-2";
 import { dialogueBlock } from "@/prisma/lessons/dialogues/lesson-2";
 
-const { genderOfNouns, pluralOfNouns, feminineNouns } = noun;
+const { genderOfNouns, pluralOfNouns, feminineNouns, masculineNouns } = noun;
 
 const { ruleAfterDialogue, explanation } = lecture;
 
@@ -22,6 +22,7 @@ const lesson2 = {
     feminineNouns,
     ruleAfterDialogue,
     explanation,
+    masculineNouns,
   ],
   vocabulary: [vocabulary],
   dialogues: [dialogueBlock],
