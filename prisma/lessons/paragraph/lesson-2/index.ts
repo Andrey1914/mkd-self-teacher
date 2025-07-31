@@ -4,5 +4,6 @@ export {
   feminineNouns,
   masculineNouns,
   neuterNouns,
-} from "./grammar/noun";
+  countablePlural,
+} from "./grammar/nouns";
 export { ruleAfterDialogue, explanation } from "./lecture";
