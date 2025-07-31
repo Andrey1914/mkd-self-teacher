@@ -10,6 +10,7 @@ const {
   feminineNouns,
   masculineNouns,
   neuterNouns,
+  countablePlural,
 } = noun;
 
 const Nouns = () => {
@@ -20,6 +21,7 @@ const Nouns = () => {
       <Paragraph data={feminineNouns} />
       <Paragraph data={masculineNouns} />
       <Paragraph data={neuterNouns} />
+      <Paragraph data={countablePlural} />
     </>
   );
 };

@@ -8,6 +8,7 @@ const {
   feminineNouns,
   masculineNouns,
   neuterNouns,
+  countablePlural,
 } = noun;
 
 const { ruleAfterDialogue, explanation } = lecture;
@@ -30,6 +31,7 @@ const lesson2 = {
     explanation,
     masculineNouns,
     neuterNouns,
+    countablePlural,
   ],
   vocabulary: [vocabulary],
   dialogues: [dialogueBlock],
