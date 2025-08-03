@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { formatText } from "@/utils";
+import { formatText, normalizeAnswer } from "@/utils";
 import styles from "@/app/page.module.css";
 import type { ParagraphExerciseProps } from "@/types/exerciseParagraphTypes";
 
@@ -43,12 +43,11 @@ export default function ParagraphExercise({
 
   const revealAnswers = () => {
     const cleanedAnswers = sections.content.answer.map((answer) =>
-      answer
-        .split("\n")
-        .map((line) => line.trim())
-        .join(" ")
-        .replace(/\s+/g, " ")
-        .trim()
+      normalizeAnswer(answer.replace(/\s+/g, " "), {
+        trim: true,
+        convertLatinToCyrillic: false,
+        lowercase: false,
+      })
     );
 
     setInputs(cleanedAnswers);
@@ -88,8 +87,18 @@ export default function ParagraphExercise({
 
         const userInput = inputs[idx] || "";
 
-        const isCorrect =
-          userInput.trim().toLowerCase() === correctAnswer.trim().toLowerCase();
+        const normalizedUserInput = normalizeAnswer(userInput, {
+          trim: true,
+          lowercase: true,
+          convertLatinToCyrillic: true,
+        });
+
+        const normalizedCorrect = normalizeAnswer(correctAnswer, {
+          trim: true,
+          lowercase: true,
+        });
+
+        const isCorrect = normalizedUserInput === normalizedCorrect;
 
         const boxShadow = showAnswers
           ? "none"

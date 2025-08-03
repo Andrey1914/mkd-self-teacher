@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useRef } from "react";
-import { formatText } from "@/utils";
+import { formatText, normalizeAnswer } from "@/utils";
 import styles from "@/app/page.module.css";
 import type { ParagraphExerciseProps } from "@/types/exerciseParagraphTypes";
 
@@ -30,24 +30,36 @@ export default function TranslateParagraphExercise({
   const correctWordOptions = parseAnswerWords(correctAnswer);
 
   const isPerfectMatch = (): boolean => {
-    const userWords = input.trim().split(/\s+/);
+    const userWords = normalizeAnswer(input, {
+      trim: true,
+      lowercase: true,
+      convertLatinToCyrillic: true,
+    }).split(/\s+/);
+
     return (
       userWords.length === correctWordOptions.length &&
-      userWords.every((word, idx) =>
-        correctWordOptions[idx]?.includes(word.toLowerCase())
-      )
+      userWords.every((word, idx) => correctWordOptions[idx]?.includes(word))
     );
   };
 
   const highlightWords = () => {
-    const userWords = input.trim().split(/\s+/);
-    return userWords
-      .map((word, idx) => {
-        const isCorrect = correctWordOptions[idx]?.includes(word.toLowerCase());
+    const rawWords = input.trim().split(/\s+/);
+    const normalizedWords = rawWords.map((word) =>
+      normalizeAnswer(word, {
+        trim: true,
+        lowercase: true,
+        convertLatinToCyrillic: true,
+      })
+    );
+
+    return rawWords
+      .map((originalWord, idx) => {
+        const normalized = normalizedWords[idx];
+        const isCorrect = correctWordOptions[idx]?.includes(normalized);
         if (!isCorrect) {
-          return `<span style="color: #ffa347">${word}</span>`;
+          return `<span style="color: #ffa347">${originalWord}</span>`;
         }
-        return word;
+        return originalWord;
       })
       .join(" ");
   };
@@ -105,7 +117,6 @@ export default function TranslateParagraphExercise({
       <div
         style={{
           marginBottom: "2rem",
-          // padding: "1rem",
           // fontSize: "18px",
         }}
       >

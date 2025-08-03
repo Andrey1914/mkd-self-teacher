@@ -7,7 +7,6 @@ const exercise2: FillInExerciseData = {
   sections: [
     {
       type: "exercise-fill-in",
-      // type: "exercises",
       prompt: [`Вставьте глагол <span>сум</span> в нужной форме.`],
       content: {
         sentences: [

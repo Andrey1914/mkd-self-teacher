@@ -81,7 +81,13 @@ export const Paragraph = ({ data, part }: ParagraphProps) => {
           </h3>
         )}
         {content?.subtitle && (
-          <>{content?.subtitle && renderTextParagraphs(content.subtitle)}</>
+          <h4>
+            {formatText(
+              Array.isArray(content.subtitle)
+                ? content.subtitle.join(", ")
+                : content.subtitle
+            )}
+          </h4>
         )}
         {content?.text && (
           <>{content?.text && renderTextParagraphs(content.text)}</>

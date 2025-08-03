@@ -21,13 +21,9 @@ export function Vocabulary({ lesson }: VocabularyProps) {
       {(lesson.title?.ru || lesson.title?.mkd) && (
         <section style={{ marginBottom: "1.5rem" }}>
           {lesson.title?.ru && (
-            <h2 style={{ marginBottom: "0.5rem" }}>{lesson.title.ru}</h2>
+            <h2 style={{ paddingBottom: 0 }}>{lesson.title.ru}</h2>
           )}
-          {lesson.title?.mkd && (
-            <h2 style={{ marginBottom: "0.5rem" }}>
-              {formatText(lesson.title.mkd)}
-            </h2>
-          )}
+          {lesson.title?.mkd && <h2>{formatText(lesson.title.mkd)}</h2>}
         </section>
       )}
 
