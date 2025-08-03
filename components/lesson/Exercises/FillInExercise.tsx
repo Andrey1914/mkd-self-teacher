@@ -9,13 +9,21 @@ export default function FillInExercise({ data }: { data: FillInExerciseData }) {
   const [hasMounted, setHasMounted] = useState(false);
   const [showAnswers, setShowAnswers] = useState(false);
   const [inputs, setInputs] = useState<string[][]>([]);
+  const [isAutoFilled, setIsAutoFilled] = useState<boolean[][]>([]);
 
   useEffect(() => {
     setHasMounted(true);
+
     const initialInputs = data.sections[0].content.sentences.map((s) =>
       new Array(s.answer.length).fill("")
     );
+
+    const initialFlags = data.sections[0].content.sentences.map((s) =>
+      new Array(s.answer.length).fill(false)
+    );
+
     setInputs(initialInputs);
+    setIsAutoFilled(initialFlags);
   }, [data]);
 
   if (!hasMounted || !data || !data.sections || data.sections.length === 0) {
@@ -32,6 +40,26 @@ export default function FillInExercise({ data }: { data: FillInExerciseData }) {
       updated[sentenceIdx][wordIdx] = value;
       return updated;
     });
+
+    setIsAutoFilled((prev) => {
+      const updated = [...prev];
+      updated[sentenceIdx][wordIdx] = false;
+      return updated;
+    });
+  };
+
+  const revealAnswers = () => {
+    const filled = data.sections[0].content.sentences.map((sentence) => [
+      ...sentence.answer,
+    ]);
+
+    const filledFlags = data.sections[0].content.sentences.map((sentence) =>
+      new Array(sentence.answer.length).fill(true)
+    );
+
+    setInputs(filled);
+    setIsAutoFilled(filledFlags);
+    setShowAnswers(false);
   };
 
   return (
@@ -68,12 +96,15 @@ export default function FillInExercise({ data }: { data: FillInExerciseData }) {
                                 onChange={(e) =>
                                   handleChange(e.target.value, idx, i)
                                 }
+                                readOnly={isAutoFilled[idx]?.[i]}
+                                onCopy={(e) => {
+                                  if (isAutoFilled[idx]?.[i])
+                                    e.preventDefault();
+                                }}
+                                onFocus={(e) => {
+                                  if (isAutoFilled[idx]?.[i]) e.target.blur();
+                                }}
                                 style={{
-                                  ...highlightInput(
-                                    inputs[idx]?.[i] ?? "",
-                                    sentence.answer[i],
-                                    showAnswers
-                                  ),
                                   minWidth: "60px",
                                   maxWidth: "100px",
                                   width: `${Math.min(
@@ -83,11 +114,13 @@ export default function FillInExercise({ data }: { data: FillInExerciseData }) {
                                     ),
                                     100
                                   )}px`,
-                                  ...highlightInput(
-                                    inputs[idx]?.[i] ?? "",
-                                    sentence.answer[i],
-                                    showAnswers
-                                  ),
+                                  ...(isAutoFilled[idx]?.[i] || !showAnswers
+                                    ? {}
+                                    : highlightInput(
+                                        inputs[idx]?.[i] ?? "",
+                                        sentence.answer[i],
+                                        showAnswers
+                                      )),
                                 }}
                               />
                             )}
@@ -106,13 +139,23 @@ export default function FillInExercise({ data }: { data: FillInExerciseData }) {
               type="button"
               onClick={() => setShowAnswers(true)}
             >
-              Показать
+              Проверить мою работу
+            </button>
+            <button
+              className={styles.exerciseButton}
+              type="button"
+              onClick={revealAnswers}
+            >
+              Показать правильные ответы
             </button>
             <button
               className={styles.exerciseButton}
               type="button"
               onClick={() => {
                 setInputs((prev) => prev.map((row) => row.map(() => "")));
+                setIsAutoFilled((prev) =>
+                  prev.map((row) => row.map(() => false))
+                );
                 setShowAnswers(false);
               }}
             >
