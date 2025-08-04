@@ -114,12 +114,7 @@ export default function TranslateParagraphExercise({
         </p>
       ))}
 
-      <div
-        style={{
-          marginBottom: "2rem",
-          // fontSize: "18px",
-        }}
-      >
+      <div style={{ marginBottom: "2rem" }}>
         {formatText(section.content.original)}
       </div>
 
