@@ -72,13 +72,7 @@ export default function ParagraphExercise({
         </p>
       ))}
 
-      <div
-        style={{
-          marginBottom: "2rem",
-          // padding: "1rem",
-          // fontSize: "18px",
-        }}
-      >
+      <div style={{ marginBottom: "2rem" }}>
         {formatText(sections.content.original)}
       </div>
 
