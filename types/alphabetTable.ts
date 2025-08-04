@@ -3,7 +3,7 @@ export type AlphabetTable = {
   sections: {
     tableEntries: {
       create: Array<{
-        title: string;
+        title?: string;
         rows: Array<{
           letter: string;
           sound: string;
