@@ -87,7 +87,6 @@ const lesson1 = {
     ...alphabetTable.sections.map((section) => ({
       ...section,
       type: "alphabet",
-      title: "Македонский алфавит",
     })),
   ],
   paragraph: [

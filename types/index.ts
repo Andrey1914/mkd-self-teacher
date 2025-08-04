@@ -1,35 +1,14 @@
-import { AlphabetTable } from "@/types/alphabetTable";
-import { CountriesNationalitiesProps } from "@/types/countriesNationalitiesTypes";
-import { DialogueBlockProps } from "@/types/dailogueTypes";
-import { GrammarTableProps } from "@/types/grammarTypes";
-import { PayAttentionBlockProps } from "@/types/payAttantionTypes";
-import { VocabularyProps } from "@/types/vocabularyTypes";
-import { TabsProps } from "@/types/tabsProps";
-import { HeaderProps } from "@/types/headerProps";
-import { ParagraphSectionsProps } from "@/types/paragraphType";
-import { SectionWithTables } from "@/types/sectionWithTables";
-import { LessonData } from "@/types/lessonTypes";
-import { ParagraphExerciseProps } from "@/types/exerciseParagraphTypes";
-import {
-  // StaticExerciseSection,
-  FillInExerciseData,
-  StaticExerciseData,
-} from "@/types/exerciseTypes";
-
-export type {
-  AlphabetTable,
-  CountriesNationalitiesProps,
-  DialogueBlockProps,
-  GrammarTableProps,
-  PayAttentionBlockProps,
-  VocabularyProps,
-  TabsProps,
-  HeaderProps,
-  ParagraphSectionsProps,
-  SectionWithTables,
-  LessonData,
-  ParagraphExerciseProps,
-  // StaticExerciseSection,
-  FillInExerciseData,
-  StaticExerciseData,
-};
+export type { AdjectivesData } from "./adjectiveTypes";
+export type { AlphabetTable } from "./alphabetTable";
+export type { CountriesNationalitiesProps } from "./countriesNationalitiesTypes";
+export type { DialogueBlockProps } from "./dailogueTypes";
+export type { GrammarTableProps } from "./grammarTypes";
+export type { PayAttentionBlockProps } from "./payAttantionTypes";
+export type { VocabularyProps } from "./vocabularyTypes";
+export type { TabsProps } from "./tabsProps";
+export type { HeaderProps } from "./headerProps";
+export type { ParagraphSectionsProps } from "./paragraphType";
+export type { SectionWithTables } from "./sectionWithTables";
+export type { LessonData } from "./lessonTypes";
+export type { ParagraphExerciseProps } from "./exerciseParagraphTypes";
+export type { FillInExerciseData, StaticExerciseData } from "./exerciseTypes";
