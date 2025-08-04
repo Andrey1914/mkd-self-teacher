@@ -47,7 +47,6 @@ const lesson2 = {
       category: "adjectives",
       title: "gender-number-pronominal",
       content: genderNumberPronominalOfAdjectives.content,
-      // data: genderNumberPronominalOfAdjectives,
     },
   ],
 };
