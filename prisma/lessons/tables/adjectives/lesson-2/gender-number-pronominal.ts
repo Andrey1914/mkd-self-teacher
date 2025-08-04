@@ -1,6 +1,6 @@
-import { AdjectivesData } from "@/types";
+import { AdjectivesTableBlock } from "@/types";
 
-const genderNumberPronominalOfAdjectives: AdjectivesData = {
+const genderNumberPronominalOfAdjectives: AdjectivesTableBlock = {
   slug: "lesson-2",
   type: "adjectives",
   content: {

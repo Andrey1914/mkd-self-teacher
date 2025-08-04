@@ -1,5 +1,6 @@
 export interface AdjectivesTableBlock {
   type: string;
+  slug?: string;
   category?: string;
   title?: string;
   content: AdjectiveContent;
