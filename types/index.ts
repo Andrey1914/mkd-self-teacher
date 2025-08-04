@@ -1,4 +1,4 @@
-export type { AdjectivesData } from "./adjectiveTypes";
+export type { AdjectivesTableBlock } from "./adjectiveTypes";
 export type { AlphabetTable } from "./alphabetTable";
 export type { CountriesNationalitiesProps } from "./countriesNationalitiesTypes";
 export type { DialogueBlockProps } from "./dailogueTypes";
