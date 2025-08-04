@@ -1,17 +1,18 @@
-export interface AdjectivesData {
-  slug?: string;
-  sections: AdjectiveSection[];
+export interface AdjectivesTableBlock {
+  type: string;
+  category?: string;
+  title?: string;
+  content: AdjectiveContent;
+
+  data?: Partial<AdjectivesTableBlock>;
 }
 
-export interface AdjectiveSection {
-  type?: string;
-  content: {
-    subtitle: string[];
-    words: AdjectivesWords[];
-  };
+export interface AdjectiveContent {
+  subtitle: string[];
+  words: AdjectiveWords[];
 }
 
-export interface AdjectivesWords {
+export interface AdjectiveWords {
   masculine: string;
   feminine: string;
   neuter: string;

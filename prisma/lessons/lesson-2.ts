@@ -43,9 +43,11 @@ const lesson2 = {
   dialogues: [dialogueBlock],
   tables: [
     {
+      type: "adjectives",
       category: "adjectives",
       title: "gender-number-pronominal",
-      data: genderNumberPronominalOfAdjectives,
+      content: genderNumberPronominalOfAdjectives.sections[0].content,
+      // data: genderNumberPronominalOfAdjectives,
     },
   ],
 };

@@ -5,10 +5,10 @@ import {
   ParagraphSectionsProps,
   GrammarTableProps,
   CountriesNationalitiesProps,
-  // StaticExerciseSection,
   StaticExerciseData,
   FillInExerciseData,
   ParagraphExerciseProps,
+  AdjectivesTableBlock,
 } from "@/types";
 import { VocabularyData } from "@/types/vocabularyTypes";
 
@@ -28,7 +28,8 @@ export type ExerciseType =
 export type TableBlockData =
   | GrammarTableProps
   | CountriesNationalitiesProps
-  | ConjugationTableSection;
+  | ConjugationTableSection
+  | AdjectivesTableBlock;
 
 export interface LessonData {
   slug: string;
