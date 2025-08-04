@@ -5,3 +5,4 @@ export * as paragraph from "./lesson-1";
 
 export * as noun from "./lesson-2";
 export * as lecture from "./lesson-2";
+export * as adjectives from "./lesson-2";
