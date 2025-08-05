@@ -14,7 +14,7 @@ const {
 
 const { ruleAfterDialogue, explanation } = lecture;
 
-const { introAdjectives } = adjectives;
+const { introAdjectives, genderNumberPronominalText } = adjectives;
 
 const { genderNumberPronominalOfAdjectives } = adjectivesTable;
 
@@ -38,6 +38,7 @@ const lesson2 = {
     neuterNouns,
     countablePlural,
     introAdjectives,
+    genderNumberPronominalText,
   ],
   vocabulary: [vocabulary],
   dialogues: [dialogueBlock],
