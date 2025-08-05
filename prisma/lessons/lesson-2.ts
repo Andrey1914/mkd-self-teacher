@@ -1,4 +1,9 @@
-import { noun, lecture, adjectives } from "@/prisma/lessons/paragraph";
+import {
+  noun,
+  lecture,
+  adjectives,
+  numerals,
+} from "@/prisma/lessons/paragraph";
 import { adjectivesTable } from "@/prisma/lessons/tables";
 import { vocabulary } from "@/prisma/lessons/vocabulary/lesson-2";
 import { dialogueBlock } from "@/prisma/lessons/dialogues/lesson-2";
@@ -15,6 +20,8 @@ const {
 const { ruleAfterDialogue, explanation } = lecture;
 
 const { introAdjectives, genderNumberPronominalText } = adjectives;
+
+const { cardinalOrdinalNumerals } = numerals;
 
 const { genderNumberPronominalOfAdjectives } = adjectivesTable;
 
@@ -39,6 +46,7 @@ const lesson2 = {
     countablePlural,
     introAdjectives,
     genderNumberPronominalText,
+    cardinalOrdinalNumerals,
   ],
   vocabulary: [vocabulary],
   dialogues: [dialogueBlock],
