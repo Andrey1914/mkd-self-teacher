@@ -4,7 +4,7 @@ import {
   adjectives,
   numerals,
 } from "@/prisma/lessons/paragraph";
-import { adjectivesTable } from "@/prisma/lessons/tables";
+import { adjectivesTable, numeralsTable } from "@/prisma/lessons/tables";
 import { vocabulary } from "@/prisma/lessons/vocabulary/lesson-2";
 import { dialogueBlock } from "@/prisma/lessons/dialogues/lesson-2";
 
@@ -24,6 +24,8 @@ const { introAdjectives, genderNumberPronominalText } = adjectives;
 const { cardinalOrdinalNumerals } = numerals;
 
 const { genderNumberPronominalOfAdjectives } = adjectivesTable;
+
+const { cardinalOrdinalNumeralsTable } = numeralsTable;
 
 const lesson2 = {
   title: [`<span>Урок 2, Лекциjя 2</span>`],
@@ -56,6 +58,12 @@ const lesson2 = {
       category: "adjectives",
       title: "gender-number-pronominal",
       content: genderNumberPronominalOfAdjectives.content,
+    },
+    {
+      type: "numerals",
+      category: "numerals",
+      title: "cardinal-ordinal-numerals",
+      content: cardinalOrdinalNumeralsTable.content,
     },
   ],
 };

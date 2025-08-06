@@ -1,4 +1,5 @@
 import {
+  VocabularyData,
   PayAttentionBlockProps,
   SectionWithTables,
   DialogueBlockProps,
@@ -9,10 +10,9 @@ import {
   FillInExerciseData,
   ParagraphExerciseProps,
   AdjectivesTableBlock,
+  NumeralsTableBlock,
+  ConjugationTableSection,
 } from "@/types";
-import { VocabularyData } from "@/types/vocabularyTypes";
-
-import { ConjugationTableSection } from "@/types/conjugationTypes";
 
 export interface GlossaryEntryData {
   word: string;
@@ -29,7 +29,8 @@ export type TableBlockData =
   | GrammarTableProps
   | CountriesNationalitiesProps
   | ConjugationTableSection
-  | AdjectivesTableBlock;
+  | AdjectivesTableBlock
+  | NumeralsTableBlock;
 
 export interface LessonData {
   slug: string;
