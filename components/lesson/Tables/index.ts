@@ -4,3 +4,4 @@ export { default as GrammarTable } from "./GrammarTable";
 export { default as ExamplesTable } from "./ExemplesTable";
 export { default as ConjugationTable } from "./ConjugationTable";
 export { default as AdjectivesTable } from "./AdjectivesTable";
+export { default as NumeralsTable } from "./NumeralsTable";

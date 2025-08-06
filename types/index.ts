@@ -4,7 +4,7 @@ export type { CountriesNationalitiesProps } from "./countriesNationalitiesTypes"
 export type { DialogueBlockProps } from "./dailogueTypes";
 export type { GrammarTableProps } from "./grammarTypes";
 export type { PayAttentionBlockProps } from "./payAttantionTypes";
-export type { VocabularyProps } from "./vocabularyTypes";
+export type { VocabularyProps, VocabularyData } from "./vocabularyTypes";
 export type { TabsProps } from "./tabsProps";
 export type { HeaderProps } from "./headerProps";
 export type { ParagraphSectionsProps } from "./paragraphType";
@@ -12,3 +12,5 @@ export type { SectionWithTables } from "./sectionWithTables";
 export type { LessonData } from "./lessonTypes";
 export type { ParagraphExerciseProps } from "./exerciseParagraphTypes";
 export type { FillInExerciseData, StaticExerciseData } from "./exerciseTypes";
+export type { NumeralsTableBlock } from "./numeralsTypes";
+export type { ConjugationTableSection } from "./conjugationTypes";
