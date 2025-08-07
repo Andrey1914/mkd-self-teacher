@@ -21,7 +21,7 @@ const { ruleAfterDialogue, explanation } = lecture;
 
 const { introAdjectives, genderNumberPronominalText } = adjectives;
 
-const { cardinalOrdinalNumerals } = numerals;
+const { cardinalOrdinalNumerals, finalPartCardinalOrdinalNumerals } = numerals;
 
 const { genderNumberPronominalOfAdjectives } = adjectivesTable;
 
@@ -49,6 +49,7 @@ const lesson2 = {
     introAdjectives,
     genderNumberPronominalText,
     cardinalOrdinalNumerals,
+    finalPartCardinalOrdinalNumerals,
   ],
   vocabulary: [vocabulary],
   dialogues: [dialogueBlock],
