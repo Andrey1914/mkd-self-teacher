@@ -75,7 +75,7 @@ export default function FillInExercise({ data }: { data: FillInExerciseData }) {
             ) : null
           )}
           <form>
-            <p style={{ textAlign: "justify", lineHeight: "2rem" }}>
+            <p style={{ textAlign: "left", lineHeight: "2rem" }}>
               {Array.isArray(section.content?.sentences) &&
                 section.content.sentences.map((sentence, idx) => {
                   const parts = sentence.mkd.split("___");
@@ -106,13 +106,13 @@ export default function FillInExercise({ data }: { data: FillInExerciseData }) {
                                 }}
                                 style={{
                                   minWidth: "60px",
-                                  maxWidth: "100px",
+                                  maxWidth: "210px",
                                   width: `${Math.min(
                                     Math.max(
                                       getTextWidth(inputs[idx]?.[i] ?? ""),
                                       60
                                     ),
-                                    100
+                                    210
                                   )}px`,
                                   ...(isAutoFilled[idx]?.[i] || !showAnswers
                                     ? {}
