@@ -7,6 +7,7 @@ import {
 import { adjectivesTable, numeralsTable } from "@/prisma/lessons/tables";
 import { vocabulary } from "@/prisma/lessons/vocabulary/lesson-2";
 import { dialogueBlock } from "@/prisma/lessons/dialogues/lesson-2";
+import { exercise1 } from "@/prisma/lessons/exercises/lesson-2";
 
 const {
   genderOfNouns,
@@ -67,6 +68,7 @@ const lesson2 = {
       content: cardinalOrdinalNumeralsTable.content,
     },
   ],
+  exercises: [exercise1],
 };
 
 export default lesson2;

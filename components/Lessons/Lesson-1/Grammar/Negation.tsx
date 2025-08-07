@@ -4,10 +4,12 @@ import { Paragraph } from "@/components/lesson/Paragraph/Paragraph";
 
 import { grammar } from "@/prisma/lessons/paragraph";
 
+const { negation } = grammar;
+
 export const Negation = () => {
   return (
     <>
-      <Paragraph data={grammar.negation} />
+      <Paragraph data={negation} />
     </>
   );
 };
