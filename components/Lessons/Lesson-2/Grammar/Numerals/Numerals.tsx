@@ -6,7 +6,7 @@ import { NumeralsTable } from "@/components/lesson/Tables";
 import { numerals } from "@/prisma/lessons/paragraph";
 import { numeralsTable } from "@/prisma/lessons/tables";
 
-const { cardinalOrdinalNumerals } = numerals;
+const { cardinalOrdinalNumerals, finalPartCardinalOrdinalNumerals } = numerals;
 const { cardinalOrdinalNumeralsTable } = numeralsTable;
 
 const Numerals = () => {
@@ -14,6 +14,7 @@ const Numerals = () => {
     <>
       <Paragraph data={cardinalOrdinalNumerals} />
       <NumeralsTable data={cardinalOrdinalNumeralsTable} />
+      <Paragraph data={finalPartCardinalOrdinalNumerals} />
     </>
   );
 };

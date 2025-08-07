@@ -8,4 +8,7 @@ export {
 } from "./grammar/nouns";
 export { ruleAfterDialogue, explanation } from "./lecture";
 export { introAdjectives, genderNumberPronominalText } from "./adjectives";
-export { cardinalOrdinalNumerals } from "./numerals";
+export {
+  cardinalOrdinalNumerals,
+  finalPartCardinalOrdinalNumerals,
+} from "./numerals";
