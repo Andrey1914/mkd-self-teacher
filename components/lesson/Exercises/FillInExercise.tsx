@@ -85,7 +85,16 @@ export default function FillInExercise({ data }: { data: FillInExerciseData }) {
                       {parts.map((part, i) =>
                         typeof part === "string" ? (
                           <React.Fragment key={i}>
-                            <span>{formatText(part)}</span>
+                            {/^\d+\.\s/.test(part) ? (
+                              <>
+                                {part.match(/^(\d+\.\s*)/)?.[1]}
+                                <span>
+                                  {formatText(part.replace(/^(\d+\.\s*)/, ""))}
+                                </span>
+                              </>
+                            ) : (
+                              <span>{formatText(part)}</span>
+                            )}
 
                             {i < sentence.answer.length && (
                               <input
