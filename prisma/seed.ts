@@ -104,9 +104,43 @@ async function main() {
             });
 
             if (existingExercise) {
-              console.log(
-                `ℹ️ Exercise "${exercise.title}" уже существует, пропущен.`
-              );
+              const section = exercise.sections?.[0];
+              const newData = {
+                type: exercise.type ?? "default_type",
+                slug: exercise.slug,
+                title: exercise.title ?? "Без названия",
+                prompt: section?.prompt ?? [],
+                content: section?.content ?? {},
+              };
+
+              const isSame =
+                existingExercise.type === newData.type &&
+                existingExercise.slug === newData.slug &&
+                existingExercise.title === newData.title &&
+                JSON.stringify(existingExercise.prompt) ===
+                  JSON.stringify(newData.prompt) &&
+                JSON.stringify(existingExercise.content) ===
+                  JSON.stringify(newData.content);
+
+              if (isSame) {
+                console.log(
+                  `ℹ️ Exercise "${exercise.title}" уже существует, пропущен.`
+                );
+                continue;
+              }
+
+              try {
+                await tx.exercise.update({
+                  where: { id: existingExercise.id },
+                  data: { ...newData },
+                });
+                console.log(`♻️ Exercise "${exercise.title}" обновлён.`);
+              } catch (error) {
+                console.error(
+                  `❌ Ошибка при обновлении упражнения "${exercise.title}":`,
+                  error
+                );
+              }
               continue;
             }
 
@@ -128,7 +162,7 @@ async function main() {
               continue;
             }
 
-            if (!section || !Array.isArray(section.prompt)) {
+            if (!Array.isArray(section.prompt)) {
               console.warn(
                 `⚠️ Упражнение "${exercise.title}" пропущено — prompt не массив строк.`
               );
@@ -155,6 +189,67 @@ async function main() {
               );
             }
           }
+
+          // for (const exercise of lesson.exercises ?? []) {
+          //   const existingExercise = await tx.exercise.findFirst({
+          //     where: {
+          //       title: exercise.title,
+          //       lessonId,
+          //     },
+          //   });
+
+          //   if (existingExercise) {
+          //     console.log(
+          //       `ℹ️ Exercise "${exercise.title}" уже существует, пропущен.`
+          //     );
+          //     continue;
+          //   }
+
+          //   if (!exercise.sections?.[0]) {
+          //     console.warn(
+          //       `⚠️ "${exercise.title}" → sections =`,
+          //       JSON.stringify(exercise.sections)
+          //     );
+          //     continue;
+          //   }
+
+          //   const section = exercise.sections?.[0];
+
+          //   if (!section) {
+          //     console.warn(
+          //       `⚠️ Упражнение "${exercise.title}" пропущено — section[0] невалидный.`,
+          //       JSON.stringify(exercise.sections)
+          //     );
+          //     continue;
+          //   }
+
+          //   if (!section || !Array.isArray(section.prompt)) {
+          //     console.warn(
+          //       `⚠️ Упражнение "${exercise.title}" пропущено — prompt не массив строк.`
+          //     );
+          //     continue;
+          //   }
+
+          //   try {
+          //     await tx.exercise.create({
+          //       data: {
+          //         type: exercise.type ?? "default_type",
+          //         slug: exercise.slug,
+          //         title: exercise.title ?? "Без названия",
+          //         prompt: section.prompt,
+          //         content: section.content ?? {},
+          //         lessonId,
+          //       },
+          //     });
+
+          //     console.log(`✅ Exercise "${exercise.title}" добавлен.`);
+          //   } catch (error) {
+          //     console.error(
+          //       `❌ Ошибка при добавлении упражнения "${exercise.title}":`,
+          //       error
+          //     );
+          //   }
+          // }
 
           // 📘 Glossary entries
           for (const entry of lesson.glossary ?? []) {
@@ -212,7 +307,7 @@ async function main() {
               ? paragraph.subtitle.join(", ")
               : paragraph.subtitle;
 
-            const content = JSON.parse(JSON.stringify(paragraph.content ?? {}));
+            const content = paragraph.content ?? {};
 
             const existing = await tx.paragraphBlock.findFirst({
               where: {
@@ -223,21 +318,28 @@ async function main() {
             });
 
             if (existing) {
-              const isEqualContent =
-                JSON.stringify(existing.content) === JSON.stringify(content);
+              const existingText =
+                typeof existing.content === "object" &&
+                existing.content !== null &&
+                "text" in existing.content
+                  ? existing.content.text ?? ""
+                  : "";
 
-              if (isEqualContent) {
+              const newText = content.text ?? "";
+
+              if (existingText === newText) {
+                console.log(
+                  `ℹ️ ParagraphBlock "${paragraph.type}" уже существует, пропущен.`
+                );
                 continue;
               }
 
               await tx.paragraphBlock.update({
                 where: { id: existing.id },
-                data: {
-                  content,
-                },
+                data: { content },
               });
 
-              console.log(`🔁 Обновлён ParagraphBlock "${content}"`);
+              console.log(`♻️ ParagraphBlock "${paragraph.type}" обновлен.`);
             } else {
               await tx.paragraphBlock.create({
                 data: {
@@ -248,9 +350,131 @@ async function main() {
                 },
               });
 
-              console.log(`✅ Добавлен ParagraphBlock "${subtype}"`);
+              console.log(
+                `✅ Добавлен ParagraphBlock "${paragraph.type}", subtype: "${subtype}".`
+              );
             }
           }
+
+          // for (const paragraph of lesson.paragraph ?? []) {
+          //   const subtype = Array.isArray(paragraph.subtitle)
+          //     ? paragraph.subtitle.join(", ")
+          //     : paragraph.subtitle;
+
+          //   const raw = paragraph.content ?? "";
+          //   const content = typeof raw === "string" ? raw : JSON.stringify(raw);
+
+          //   const existing = await tx.paragraphBlock.findFirst({
+          //     where: {
+          //       type: paragraph.type,
+          //       subtype,
+          //       lessonId,
+          //     },
+          //   });
+
+          //   if (existing) {
+          //     const existingRaw = existing.content ?? "";
+          //     const existingContent =
+          //       typeof existingRaw === "string"
+          //         ? existingRaw
+          //         : JSON.stringify(existingRaw);
+
+          //     if (existingContent === content) {
+          //       console.log(
+          //         `ℹ️ ParagraphBlock "${paragraph.type}" уже существует, пропущен.`
+          //       );
+          //       continue;
+          //     }
+
+          //     try {
+          //       await tx.paragraphBlock.update({
+          //         where: { id: existing.id },
+          //         data: {
+          //           content,
+          //         },
+          //       });
+
+          //       console.log(`♻️ ParagraphBlock "${paragraph.type}" обновлен.`);
+          //     } catch (err) {
+          //       console.error(
+          //         `❌ Ошибка при обновлении ParagraphBlock "${paragraph.type}":`,
+          //         err
+          //       );
+          //       throw err;
+          //     }
+          //   } else {
+          //     try {
+          //       await tx.paragraphBlock.create({
+          //         data: {
+          //           type: paragraph.type,
+          //           subtype,
+          //           content,
+          //           lessonId,
+          //         },
+          //       });
+
+          //       console.log(
+          //         `✅ Добавлен ParagraphBlock "${paragraph.type}", subtype: "${subtype}".`
+          //       );
+          //     } catch (err) {
+          //       console.error(
+          //         `❌ Ошибка при создании ParagraphBlock "${paragraph.type}":`,
+          //         err
+          //       );
+          //       throw err;
+          //     }
+          //   }
+          // }
+
+          // for (const paragraph of lesson.paragraph ?? []) {
+          //   const subtype = Array.isArray(paragraph.subtitle)
+          //     ? paragraph.subtitle.join(", ")
+          //     : paragraph.subtitle;
+
+          //   const content = JSON.parse(JSON.stringify(paragraph.content ?? {}));
+
+          //   const existing = await tx.paragraphBlock.findFirst({
+          //     where: {
+          //       type: paragraph.type,
+          //       subtype,
+          //       lessonId,
+          //     },
+          //   });
+
+          //   if (existing) {
+          //     const isEqualContent =
+          //       JSON.stringify(existing.content) === JSON.stringify(content);
+
+          //     if (isEqualContent) {
+          //       console.log(
+          //         `ℹ️ ParagraphBlock "${paragraph.type}" уже существует, пропущен.`
+          //       );
+          //       continue;
+          //     }
+
+          //     await tx.paragraphBlock.update({
+          //       where: { id: existing.id },
+          //       data: {
+          //         content,
+          //       },
+          //     });
+
+          //     console.log(`♻️ ParagraphBlock "${paragraph.type}" обновлен.`);
+          //   } else {
+          //     await tx.paragraphBlock.create({
+          //       data: {
+          //         type: paragraph.type,
+          //         subtype,
+          //         content,
+          //         lessonId,
+          //       },
+          //     });
+
+          //     console.log(
+          //       `✅ Добавлен ParagraphBlock "${paragraph.type}", subtype: "${subtype}".`
+          //     );
+          //   }
+          // }
 
           // 📘 Pay attention blocks
           for (const attention of lesson.payAttention ?? []) {

@@ -5,13 +5,27 @@ export interface ParagraphSectionsProps {
   content?: ContentType;
 }
 
+// export interface ContentType {
+//   subtitle?: string | string[];
+//   text?: string | string[];
+//   intro?: IntroType;
+// }
+
+// export interface IntroType {
+//   subtitle?: string | string[];
+//   intro?: string;
+//   text?: string;
+// }
+
 export interface ContentType {
+  [key: string]: string | string[] | ContentType | IntroType | undefined;
   subtitle?: string | string[];
   text?: string | string[];
   intro?: IntroType;
 }
 
 export interface IntroType {
+  [key: string]: string | string[] | undefined;
   subtitle?: string | string[];
   intro?: string;
   text?: string;
