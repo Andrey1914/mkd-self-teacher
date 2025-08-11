@@ -1,6 +1,10 @@
 import React from "react";
 
-import { FillInExercise } from "@/components/lesson/Exercises";
+import {
+  FillInExercise,
+  TranslateParagraphExercise,
+  ParagraphExercise,
+} from "@/components/lesson/Exercises";
 
 import {
   exercise1,
@@ -8,6 +12,8 @@ import {
   exercise3,
   exercise4,
   exercise5,
+  exercise6,
+  exercise7,
 } from "@/prisma/lessons/exercises/lesson-2";
 
 const Exercises = () => {
@@ -18,6 +24,8 @@ const Exercises = () => {
       <FillInExercise data={exercise3} />
       <FillInExercise data={exercise4} />
       <FillInExercise data={exercise5} />
+      <TranslateParagraphExercise data={exercise6} />
+      <ParagraphExercise data={exercise7} />
     </>
   );
 };

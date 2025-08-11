@@ -98,8 +98,10 @@ export default function FillInExercise({ data }: { data: FillInExerciseData }) {
 
                             {i < sentence.answer.length && (
                               <input
-                                type="text"
+                                id={`input-${sIdx}-${idx}-${i}`}
+                                name={`input-${sIdx}-${idx}-${i}`}
                                 autoComplete="off"
+                                type="text"
                                 className={styles.exerciseInput}
                                 value={inputs[idx]?.[i] ?? ""}
                                 onChange={(e) =>

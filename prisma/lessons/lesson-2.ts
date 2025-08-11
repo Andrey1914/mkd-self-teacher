@@ -13,6 +13,8 @@ import {
   exercise3,
   exercise4,
   exercise5,
+  exercise6,
+  exercise7,
 } from "@/prisma/lessons/exercises/lesson-2";
 
 const {
@@ -74,7 +76,15 @@ const lesson2 = {
       content: cardinalOrdinalNumeralsTable.content,
     },
   ],
-  exercises: [exercise1, exercise2, exercise3, exercise4, exercise5],
+  exercises: [
+    exercise1,
+    exercise2,
+    exercise3,
+    exercise4,
+    exercise5,
+    exercise6,
+    exercise7,
+  ],
 };
 
 export default lesson2;
