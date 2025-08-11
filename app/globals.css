@@ -96,9 +96,6 @@ thead {
   background: var(--thead-bg);
 }
 
-/* span {
-  color: rgb(196, 86, 86);
-} */
 span:not(.sentence-number) {
   color: rgb(196, 86, 86);
 }

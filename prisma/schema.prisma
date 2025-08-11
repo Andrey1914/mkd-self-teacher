@@ -106,8 +106,8 @@ model DialogueBlock {
 
 model ParagraphBlock {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  type      String           // grammar, rule, intro и т.п.
-  subtype   String?          // verbs, interrogative-sentences, и т.п.
+  type      String           
+  subtype   String?          
   content   Json
 
   lessonId  String   @db.ObjectId
