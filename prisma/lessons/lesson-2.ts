@@ -15,6 +15,7 @@ import {
   exercise5,
   exercise6,
   exercise7,
+  exercise8,
 } from "@/prisma/lessons/exercises/lesson-2";
 
 const {
@@ -84,6 +85,7 @@ const lesson2 = {
     exercise5,
     exercise6,
     exercise7,
+    exercise8,
   ],
 };
 
