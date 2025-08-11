@@ -21,10 +21,13 @@ export default function TranslateParagraphExercise({
   const editorRef = useRef<HTMLDivElement>(null);
 
   const parseAnswerWords = (text: string): string[][] => {
-    return text
-      .trim()
+    return normalizeAnswer(text, {
+      trim: true,
+      lowercase: true,
+      convertLatinToCyrillic: true,
+    })
       .split(/\s+/)
-      .map((word) => word.split("/").map((w) => w.toLowerCase()));
+      .map((word) => word.split("/"));
   };
 
   const correctWordOptions = parseAnswerWords(correctAnswer);
