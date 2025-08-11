@@ -14,6 +14,7 @@ import {
   exercise5,
   exercise6,
   exercise7,
+  exercise8,
 } from "@/prisma/lessons/exercises/lesson-2";
 
 const Exercises = () => {
@@ -26,6 +27,7 @@ const Exercises = () => {
       <FillInExercise data={exercise5} />
       <TranslateParagraphExercise data={exercise6} />
       <ParagraphExercise data={exercise7} />
+      <TranslateParagraphExercise data={exercise8} />
     </>
   );
 };

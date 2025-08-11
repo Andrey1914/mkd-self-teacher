@@ -116,7 +116,6 @@ export default function ParagraphExercise({
           return (
             <div key={idx} style={{ marginBottom: "1.5rem" }}>
               <textarea
-                // id={`textarea-${idx}`}
                 id={`${uniqueIdBase}-textarea-${idx}`}
                 name={`${uniqueIdBase}-textarea-${idx}`}
                 autoComplete="off"

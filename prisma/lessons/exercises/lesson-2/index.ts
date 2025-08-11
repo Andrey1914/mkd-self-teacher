@@ -5,3 +5,4 @@ export { default as exercise4 } from "./exercise-4";
 export { default as exercise5 } from "./exercise-5";
 export { default as exercise6 } from "./exercise-6";
 export { default as exercise7 } from "./exercise-7";
+export { default as exercise8 } from "./exercise-8";
