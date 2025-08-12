@@ -7,7 +7,7 @@ import type { Swiper as SwiperType } from "swiper";
 import "swiper/css";
 
 import styles from "./page.module.css";
-import { Lesson1, Lesson2 } from "@/components/Lessons";
+import { Lesson1, Lesson2, Lesson3 } from "@/components/Lessons";
 import { Header } from "@/components/app";
 
 export default function Home() {
@@ -17,6 +17,7 @@ export default function Home() {
   const lessons = [
     { title: "Урок 1", component: <Lesson1 /> },
     { title: "Урок 2", component: <Lesson2 /> },
+    { title: "Урок 3", component: <Lesson3 /> },
   ];
 
   const handleTabChange = (index: number) => {
@@ -38,7 +39,7 @@ export default function Home() {
           <Swiper
             onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
             onSwiper={(swiper) => (swiperRef.current = swiper)}
-            spaceBetween={50}
+            spaceBetween={0}
             slidesPerView={1}
             allowTouchMove
             initialSlide={activeIndex}

@@ -9,19 +9,17 @@ const Tabs = ({ tabs, activeIndex, onChange }: TabsProps) => {
   return (
     <div
       style={{
-        borderBottom: "1px solid rgba(255, 255, 255, 0.2)",
         overflowX: "auto",
         whiteSpace: "nowrap",
       }}
     >
-      <Swiper slidesPerView="auto" spaceBetween={8}>
+      <Swiper slidesPerView="auto" spaceBetween={0}>
         {tabs.map((tab, index) => (
           <SwiperSlide
             key={index}
             style={{
               width: "auto",
               flexShrink: 0,
-              margin: 0,
             }}
           >
             <button
