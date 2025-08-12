@@ -1,8 +1,6 @@
 "use client";
-
-import React from "react";
 import { formatText } from "@/utils";
-import { DialogueBlockProps } from "@/types";
+import type { DialogueBlockProps } from "@/types";
 
 export const DialogueBlock = ({ data }: { data: DialogueBlockProps }) => {
   const { sections } = data;
@@ -51,17 +49,38 @@ export const DialogueBlock = ({ data }: { data: DialogueBlockProps }) => {
                     {contentSubtitle?.mkd && (
                       <h3>{formatText(contentSubtitle.mkd)}</h3>
                     )}
-                    {description?.mkd && <p>{formatText(description.mkd)}</p>}
+                    {description?.mkd && (
+                      <p
+                        lang="mk"
+                        style={{
+                          hyphens: "auto",
+                          overflowWrap: "break-word",
+                          whiteSpace: "normal",
+                        }}
+                      >
+                        {formatText(description.mkd)}
+                      </p>
+                    )}
                   </div>
                 )}
-
                 {/* ru */}
                 {(contentSubtitle?.ru || description?.ru) && (
                   <div style={{ flex: 1 }}>
                     {contentSubtitle?.ru && (
                       <h3>{formatText(contentSubtitle.ru)}</h3>
                     )}
-                    {description?.ru && <p>{formatText(description.ru)}</p>}
+                    {description?.ru && (
+                      <p
+                        lang="ru"
+                        style={{
+                          hyphens: "auto",
+                          overflowWrap: "break-word",
+                          whiteSpace: "normal",
+                        }}
+                      >
+                        {formatText(description.ru)}
+                      </p>
+                    )}
                   </div>
                 )}
               </div>
@@ -72,58 +91,86 @@ export const DialogueBlock = ({ data }: { data: DialogueBlockProps }) => {
               <div
                 style={{
                   padding: "5px",
-                  display: "flex",
-                  gap: "2rem",
                   marginBottom: "1rem",
                   background:
                     "linear-gradient(to right, var(--thead-bg), var(--background))",
                 }}
               >
-                {/* mkd */}
-                <div style={{ flex: 1 }}>
-                  {dialogueOrder
-                    .filter(({ language }) => language === "mkd")
-                    .map(({ speakerId, replyIndex }, i) => {
-                      const speakerData = dialogue.find(
-                        (line) => line.speaker.id === speakerId
-                      );
-                      const text = speakerData?.mkd?.[replyIndex];
-                      if (!text) return null;
+                {/* Группируем реплики по парам */}
+                {dialogueOrder
+                  .filter(({ language }) => language === "mkd")
+                  .map((mkdItem, i) => {
+                    const ruItem = dialogueOrder.find(
+                      (item, index) =>
+                        item.language === "ru" &&
+                        Math.floor(index / 2) ===
+                          Math.floor(dialogueOrder.indexOf(mkdItem) / 2)
+                    );
 
-                      return (
-                        <p
-                          key={`dialogue-mkd-${idx}-${i}`}
-                          style={{ marginBottom: "1rem" }}
-                        >
-                          <strong>{speakerData?.speaker?.mkd}</strong>{" "}
-                          {formatText(text)}
-                        </p>
-                      );
-                    })}
-                </div>
+                    const mkdSpeakerData = dialogue.find(
+                      (line) => line.speaker.id === mkdItem.speakerId
+                    );
+                    const mkdText = mkdSpeakerData?.mkd?.[mkdItem.replyIndex];
 
-                {/* ru */}
-                <div style={{ flex: 1 }}>
-                  {dialogueOrder
-                    .filter(({ language }) => language === "ru")
-                    .map(({ speakerId, replyIndex }, i) => {
-                      const speakerData = dialogue.find(
-                        (line) => line.speaker.id === speakerId
-                      );
-                      const text = speakerData?.ru?.[replyIndex];
-                      if (!text) return null;
+                    const ruSpeakerData = ruItem
+                      ? dialogue.find(
+                          (line) => line.speaker.id === ruItem.speakerId
+                        )
+                      : null;
+                    const ruText = ruSpeakerData?.ru?.[ruItem?.replyIndex || 0];
 
-                      return (
-                        <p
-                          key={`dialogue-ru-${idx}-${i}`}
-                          style={{ marginBottom: "1rem" }}
-                        >
-                          <strong>{speakerData?.speaker?.ru}</strong>{" "}
-                          {formatText(text)}
-                        </p>
-                      );
-                    })}
-                </div>
+                    if (!mkdText) return null;
+
+                    return (
+                      <div
+                        key={`dialogue-pair-${idx}-${i}`}
+                        style={{
+                          display: "flex",
+                          gap: "2rem",
+                          marginBottom: "0.5rem",
+                          alignItems: "flex-start",
+                        }}
+                      >
+                        <div style={{ display: "flex", flex: 1 }}>
+                          <p
+                            lang="mk"
+                            style={{
+                              margin: 0,
+                              padding: "0.5rem",
+                              overflowWrap: "break-word",
+                              wordBreak: "break-word",
+                              whiteSpace: "normal",
+                              hyphens: "auto",
+                              flex: 1,
+                            }}
+                          >
+                            <strong>{mkdSpeakerData?.speaker?.mkd}</strong>{" "}
+                            {formatText(mkdText)}
+                          </p>
+                        </div>
+                        <div style={{ display: "flex", flex: 1 }}>
+                          {ruText ? (
+                            <p
+                              lang="ru"
+                              style={{
+                                margin: 0,
+                                padding: "0.5rem",
+                                overflowWrap: "break-word",
+                                whiteSpace: "normal",
+                                hyphens: "auto",
+                                flex: 1,
+                              }}
+                            >
+                              <strong>{ruSpeakerData?.speaker?.ru}</strong>{" "}
+                              {formatText(ruText)}
+                            </p>
+                          ) : (
+                            <div style={{ flex: 1 }} />
+                          )}
+                        </div>
+                      </div>
+                    );
+                  })}
               </div>
             )}
           </div>

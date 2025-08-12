@@ -26,10 +26,18 @@ const AlphabetTable = () => {
           border: "1px solid #994747",
         }}
       >
+        <colgroup>
+          <col style={{ width: "15%" }} />
+          <col style={{ width: "35%" }} />
+          <col style={{ width: "15%" }} />
+          <col style={{ width: "35%" }} />
+        </colgroup>
+
         <thead>
           <tr style={{ backgroundColor: "#994747", color: "#fff" }}>
             {["Буква", "Звук", "Буква", "Звук"].map((label, idx) => (
               <th
+                lang="ru"
                 key={idx}
                 style={{
                   padding: "0.5rem",
@@ -61,7 +69,13 @@ const AlphabetTable = () => {
                         : ""}
                     </td>
                     <td
+                      lang="ru"
                       style={{
+                        hyphens: "auto",
+                        overflowWrap: "break-word",
+                        wordBreak: "normal",
+                        whiteSpace: "normal",
+
                         padding: "0.5rem",
                         verticalAlign: "top",
                         border: "1px solid #994747",
