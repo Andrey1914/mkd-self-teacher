@@ -3,7 +3,8 @@ import { PayAttentionBlockProps } from "@/types/payAttantionTypes";
 const payAttention2: PayAttentionBlockProps = {
   sections: [
     {
-      type: "pay-attention",
+      type: "pay-attention-2",
+      slug: "lesson-1",
       title: ["ОБРАТИТЕ ВНИМАНИЕ!"],
       content: {
         text: `

@@ -6,7 +6,7 @@ import { PayAttentionBlock } from "@/components/lesson/PayAttentionBlock/PayAtte
 // import { Paragraph } from "@/components/lesson/Paragraph/Paragraph";
 // import { CountriesNationalitiesTable } from "@/components/lesson/Tables";
 
-import { payAttention1 } from "@/prisma/lessons/pay-attention/lesson -3";
+import { payAttention1 } from "@/prisma/lessons/pay-attention/lesson-3";
 // import { vocabulary1, vocabulary2 } from "@/prisma/lessons/vocabulary/lesson-1";
 // import { paragraph } from "@/prisma/lessons/paragraph";
 // import { countriesNationalitiesTable } from "@/prisma/lessons/tables";

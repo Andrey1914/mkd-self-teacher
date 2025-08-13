@@ -118,6 +118,8 @@ model ParagraphBlock {
 
 model PayAttentionBlock {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  type      String
+  slug      String
   content   Json
 
   lessonId  String   @db.ObjectId
