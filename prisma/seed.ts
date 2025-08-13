@@ -445,7 +445,7 @@ async function main() {
                     console.log(`♻️ Обновлён VocabularyEntry "${term}"`);
                   } else {
                     console.log(
-                      `ℹ️ VocabularyEntry "${term}" уже существует, пропущен.`
+                      `ℹ️ VocabularyEntry "${term}" уже существует, пропущены.`
                     );
                   }
 
