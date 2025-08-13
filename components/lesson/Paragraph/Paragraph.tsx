@@ -19,7 +19,16 @@ export const Paragraph = ({ data, part }: ParagraphProps) => {
       .split(/\n\s*\n/)
       .filter((line) => line.trim().length > 0)
       .map((paragraph, i) => (
-        <p key={i} style={{ marginBottom: 0 }}>
+        <p
+          lang="ru"
+          key={i}
+          style={{
+            marginBottom: 0,
+            overflowWrap: "break-word",
+            whiteSpace: "normal",
+            hyphens: "auto",
+          }}
+        >
           {formatText(paragraph)}
         </p>
       ));
@@ -49,8 +58,32 @@ export const Paragraph = ({ data, part }: ParagraphProps) => {
                 )}
               </h4>
             )}
-            {content.intro.intro && <p>{formatText(content.intro.intro)}</p>}
-            {content.intro.text && <p>{formatText(content.intro.text)}</p>}
+            {content.intro.intro && (
+              <p
+                lang="ru"
+                style={{
+                  marginBottom: 0,
+                  overflowWrap: "break-word",
+                  whiteSpace: "normal",
+                  hyphens: "auto",
+                }}
+              >
+                {formatText(content.intro.intro)}
+              </p>
+            )}
+            {content.intro.text && (
+              <p
+                lang="ru"
+                style={{
+                  marginBottom: 0,
+                  overflowWrap: "break-word",
+                  whiteSpace: "normal",
+                  hyphens: "auto",
+                }}
+              >
+                {formatText(content.intro.text)}
+              </p>
+            )}
           </>
         )}
       </>

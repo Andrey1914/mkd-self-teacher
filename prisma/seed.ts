@@ -401,7 +401,7 @@ async function main() {
                         translation,
                       },
                     });
-                    console.log(`🔁 Обновлён VocabularyEntry "${term}"`);
+                    console.log(`♻️ Обновлён VocabularyEntry "${term}"`);
                   } else {
                     console.log(
                       `ℹ️ VocabularyEntry "${term}" уже существует, пропущен.`
