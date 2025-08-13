@@ -35,9 +35,9 @@ export function PayAttentionBlock({ data }: { data: PayAttentionBlockProps }) {
                 {section.title?.[0]}
               </td>
               <td style={{ padding: "1rem", verticalAlign: "top" }}>
-                <p style={{ color: "#333", textIndent: 0 }}>
-                  {formatText(section.content.text)}
-                </p>
+                <div style={{ color: "#333", textIndent: 0 }}>
+                  {formatText(section.content.text, true)}
+                </div>
               </td>
             </tr>
           </tbody>
