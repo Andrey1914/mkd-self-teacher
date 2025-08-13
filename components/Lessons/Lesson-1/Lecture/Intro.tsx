@@ -31,7 +31,17 @@ export default function Intro() {
                 <p key={idx}>{sub}</p>
               ))}
 
-              <p>{section.content.intro.intro}</p>
+              <p
+                lang="ru"
+                style={{
+                  marginBottom: 0,
+                  overflowWrap: "break-word",
+                  whiteSpace: "normal",
+                  hyphens: "auto",
+                }}
+              >
+                {section.content.intro.intro}
+              </p>
             </>
           )}
         </section>
