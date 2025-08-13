@@ -4,8 +4,12 @@ import {
   paragraph,
   sentences,
 } from "@/prisma/lessons/paragraph";
-import { grammarPronouns } from "@/prisma/lessons/tables";
-import { conjugationLesson1 } from "@/prisma/lessons/tables";
+import {
+  conjugationLesson1,
+  grammarPronouns,
+  alphabetTable,
+  countriesNationalitiesTable,
+} from "@/prisma/lessons/tables";
 import { examplesLesson1 as examplesLesson1 } from "@/prisma/lessons/tables";
 import {
   exercise1,
@@ -25,10 +29,6 @@ import {
   payAttention3,
 } from "@/prisma/lessons/pay-attention/lesson-1";
 import { vocabulary1, vocabulary2 } from "@/prisma/lessons/vocabulary/lesson-1";
-import {
-  alphabetTable,
-  countriesNationalitiesTable,
-} from "@/prisma/lessons/tables";
 
 const { phonetics, features, accent, exceptions, spelling } = paragraph;
 
