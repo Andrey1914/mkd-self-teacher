@@ -95,6 +95,8 @@ async function main() {
             }
           }
 
+          //Exercises
+          let skippedCount = 0;
           for (const exercise of lesson.exercises ?? []) {
             const existingExercise = await tx.exercise.findFirst({
               where: {
@@ -123,23 +125,20 @@ async function main() {
                   JSON.stringify(newData.content);
 
               if (isSame) {
-                console.log(
-                  `ℹ️ Exercise "${exercise.title}" уже существует, пропущен.`
-                );
-                continue;
-              }
-
-              try {
-                await tx.exercise.update({
-                  where: { id: existingExercise.id },
-                  data: { ...newData },
-                });
-                console.log(`♻️ Exercise "${exercise.title}" обновлён.`);
-              } catch (error) {
-                console.error(
-                  `❌ Ошибка при обновлении упражнения "${exercise.title}":`,
-                  error
-                );
+                skippedCount++;
+              } else {
+                try {
+                  await tx.exercise.update({
+                    where: { id: existingExercise.id },
+                    data: { ...newData },
+                  });
+                  console.log(`♻️ Exercise "${exercise.title}" обновлён.`);
+                } catch (error) {
+                  console.error(
+                    `❌ Ошибка при обновлении упражнения "${exercise.title}":`,
+                    error
+                  );
+                }
               }
               continue;
             }
@@ -174,7 +173,7 @@ async function main() {
                 data: {
                   type: exercise.type ?? "default_type",
                   slug: exercise.slug,
-                  title: exercise.title ?? "Без названия",
+                  title: exercise.title ?? "Без названия.",
                   prompt: section.prompt,
                   content: section.content ?? {},
                   lessonId,
@@ -188,6 +187,11 @@ async function main() {
                 error
               );
             }
+          }
+          if (skippedCount > 0) {
+            console.log(
+              `ℹ️ Пропущено ${skippedCount} уже существующих упражнений.`
+            );
           }
 
           // 📘 Glossary entries
@@ -418,6 +422,8 @@ async function main() {
               const words = sec.content?.words ?? [];
               console.log(`🔡 Vocabulary words: ${words.length}`);
 
+              let skippedCount = 0;
+
               for (const word of words) {
                 const term = word.mkd?.trim();
                 const pron = word.pron?.trim();
@@ -444,9 +450,7 @@ async function main() {
                     });
                     console.log(`♻️ Обновлён VocabularyEntry "${term}"`);
                   } else {
-                    console.log(
-                      `ℹ️ VocabularyEntry "${term}" уже существует, пропущены.`
-                    );
+                    skippedCount++;
                   }
 
                   continue;
@@ -462,6 +466,12 @@ async function main() {
                 });
 
                 console.log(`✅ Добавлен VocabularyEntry "${term}"`);
+              }
+
+              if (skippedCount > 0) {
+                console.log(
+                  `ℹ️ Пропущено ${skippedCount} уже существующих слов`
+                );
               }
             }
           }

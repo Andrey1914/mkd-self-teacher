@@ -12,6 +12,7 @@ import {
   AdjectivesTableBlock,
   NumeralsTableBlock,
   ConjugationTableSection,
+  OccupationTableBlock,
 } from "@/types";
 
 export interface GlossaryEntryData {
@@ -30,7 +31,8 @@ export type TableBlockData =
   | CountriesNationalitiesProps
   | ConjugationTableSection
   | AdjectivesTableBlock
-  | NumeralsTableBlock;
+  | NumeralsTableBlock
+  | OccupationTableBlock;
 
 export interface LessonData {
   slug: string;

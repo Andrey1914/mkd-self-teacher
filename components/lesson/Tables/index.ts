@@ -5,3 +5,4 @@ export { default as ExamplesTable } from "./ExemplesTable";
 export { default as ConjugationTable } from "./ConjugationTable";
 export { default as AdjectivesTable } from "./AdjectivesTable";
 export { default as NumeralsTable } from "./NumeralsTable";
+export { default as OccupationTable } from "./OccupationTable";

@@ -7,3 +7,4 @@ export * as conjugationLesson1 from "./conjugation";
 export * as examplesLesson1 from "./examples";
 export * as adjectivesTable from "./adjectives";
 export * as numeralsTable from "./numerals";
+export * as occupation from "./occupation";
