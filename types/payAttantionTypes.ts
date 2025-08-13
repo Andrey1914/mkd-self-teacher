@@ -1,7 +1,7 @@
 export type PayAttentionSection = {
   type: string;
+  slug: string;
   title: string[];
-  attention?: boolean;
   content: {
     text: string;
   };

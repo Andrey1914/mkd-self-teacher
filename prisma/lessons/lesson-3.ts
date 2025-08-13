@@ -1,5 +1,6 @@
 // import { vocabulary } from "@/prisma/lessons/vocabulary/lesson-3";
 import { dialogueBlock } from "@/prisma/lessons/dialogues/lesson-3";
+import { payAttention1 } from "@/prisma/lessons/pay-attention/lesson-3";
 // import {
 //   exercise1,
 //   exercise2,
@@ -26,6 +27,7 @@ const lesson3 = {
   //   ],
   //   vocabulary: [vocabulary],
   dialogues: [dialogueBlock],
+  payAttention: [payAttention1],
   //   tables: [
 
   //   ],

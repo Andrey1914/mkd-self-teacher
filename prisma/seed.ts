@@ -296,29 +296,70 @@ async function main() {
           }
 
           // 📘 Pay attention blocks
-          for (const attention of lesson.payAttention ?? []) {
-            const exists = await tx.payAttentionBlock.findFirst({
-              where: { content: { equals: attention }, lessonId },
-            });
-            if (exists) {
-              console.log(
-                `ℹ️ PayAttentionBlock "${attention}" уже существует, пропущен.`
+          for (const block of lesson.payAttention ?? []) {
+            const slug = block.sections?.[0]?.slug ?? "";
+            const type = block.sections?.[0]?.type ?? "";
+            const contentText = block.sections?.[0]?.content?.text ?? "";
+
+            if (!slug || !type) {
+              console.error(
+                `❌ Пропущен PayAttentionBlock — нет slug или type в ${JSON.stringify(
+                  block
+                )}`
               );
+              continue;
+            }
+
+            const exists = await tx.payAttentionBlock.findFirst({
+              where: {
+                type,
+                lessonId,
+              },
+            });
+
+            const contentObject = { text: contentText };
+
+            if (exists) {
+              const existingText =
+                typeof exists.content === "object" &&
+                exists.content !== null &&
+                !Array.isArray(exists.content) &&
+                "text" in exists.content
+                  ? (exists.content as { text: string }).text
+                  : "";
+
+              if (existingText !== contentText) {
+                await tx.payAttentionBlock.update({
+                  where: { id: exists.id },
+                  data: {
+                    content: contentObject,
+                    slug,
+                  },
+                });
+                console.log(`♻️ Обновлён PayAttentionBlock "${type}"`);
+              } else {
+                console.log(
+                  `ℹ️ PayAttentionBlock "${type}" без изменений, пропущен.`
+                );
+              }
               continue;
             }
 
             try {
               await tx.payAttentionBlock.create({
-                data: { content: attention, lessonId },
+                data: {
+                  slug,
+                  type,
+                  content: contentObject,
+                  lessonId,
+                },
               });
-
-              console.log(`✅ Добавлен PayAttentionBlock "${attention}"`);
+              console.log(`✅ Добавлен PayAttentionBlock "${type}"`);
             } catch (error) {
               console.error(
-                `❌ Ошибка при добавлении PayAttentionBlock "${attention}":`,
+                `❌ Ошибка при добавлении PayAttentionBlock "${type}":`,
                 error
               );
-              continue;
             }
           }
 
