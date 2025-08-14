@@ -369,111 +369,248 @@ async function main() {
 
           // 📘 Table blocks (из папки tables)
           let exampleIndex = 1;
-
           for (const tableBlock of lesson.tables ?? []) {
             const rawTitle =
               "title" in tableBlock ? tableBlock.title : undefined;
+            let title: string | { ru?: string; mkd?: string };
+            let displayTitle: string;
 
-            const title =
-              typeof rawTitle === "string"
-                ? rawTitle
-                : `example-${exampleIndex++}`;
+            if (typeof rawTitle === "string") {
+              title = rawTitle;
+              displayTitle = rawTitle;
+            } else if (
+              rawTitle &&
+              typeof rawTitle === "object" &&
+              !Array.isArray(rawTitle)
+            ) {
+              title = rawTitle as { ru?: string; mkd?: string };
+              displayTitle = title.ru || title.mkd || `example-${exampleIndex}`;
+            } else {
+              title = `example-${exampleIndex}`;
+              displayTitle = `example-${exampleIndex}`;
+            }
+
+            exampleIndex++;
 
             const content = tableBlock?.content ?? tableBlock?.data?.content;
-
             if (!content) {
               console.error(
-                `❌ Пропущен tableBlock без content. title: ${title}`
+                `❌ Пропущен tableBlock без content. title: ${displayTitle}`
               );
               continue;
             }
 
             const exists = await tx.tableBlock.findFirst({
               where: {
-                title,
+                category: tableBlock.type,
                 lessonId,
               },
             });
 
             if (exists) {
-              console.log(`ℹ️ TableBlock "${title}" уже существует, пропущен.`);
+              console.log(
+                `ℹ️ TableBlock "${displayTitle}" уже существует, пропущен.`
+              );
               continue;
             }
+
+            const jsonData = JSON.parse(
+              JSON.stringify({
+                content: content,
+              })
+            );
 
             await tx.tableBlock.create({
               data: {
                 title,
                 category: tableBlock.type ?? undefined,
-                data: JSON.parse(JSON.stringify(tableBlock)),
+                data: jsonData,
                 lessonId,
               },
             });
 
-            console.log(`✅ Добавлен tableBlock. title: ${title}`);
+            console.log(`✅ Добавлен tableBlock. title: ${displayTitle}`);
           }
 
           // 📘 Vocabulary (если есть секция типа "vocabulary")
+          let vocabularyIndex = 1;
           for (const vocab of lesson.vocabulary ?? []) {
-            const sections = vocab.sections ?? [];
+            let title: string | { ru?: string; mkd?: string };
+            let displayTitle: string;
 
-            for (const sec of sections) {
-              if (sec.type !== "vocabulary") continue;
+            if (!vocab.title) {
+              title = `vocabulary-${vocabularyIndex}`;
+              displayTitle = title;
+            } else if (typeof vocab.title === "string") {
+              title = vocab.title;
+              displayTitle = vocab.title;
+            } else if (
+              typeof vocab.title === "object" &&
+              vocab.title !== null
+            ) {
+              title = vocab.title as { ru?: string; mkd?: string };
+              displayTitle =
+                title.ru || title.mkd || `vocabulary-${vocabularyIndex}`;
+            } else {
+              title = `vocabulary-${vocabularyIndex}`;
+              displayTitle = title;
+            }
 
-              const words = sec.content?.words ?? [];
-              console.log(`🔡 Vocabulary words: ${words.length}`);
+            const slug = vocab.slug || `vocabulary-${vocabularyIndex}`;
+            const uniqueSlug = `${slug}-${vocabularyIndex}`;
 
-              let skippedCount = 0;
+            const existing = await tx.vocabularyEntry.findFirst({
+              where: {
+                slug: uniqueSlug,
+                lessonId,
+              },
+            });
 
-              for (const word of words) {
-                const term = word.mkd?.trim();
-                const pron = word.pron?.trim();
-                const translation = word.ru?.trim();
+            const newContent = JSON.parse(JSON.stringify(vocab.sections));
 
-                if (!term || !translation) continue;
+            if (existing) {
+              const existingContentStr = JSON.stringify(existing.content);
+              const newContentStr = JSON.stringify(newContent);
+              const titleChanged =
+                JSON.stringify(existing.title) !== JSON.stringify(title);
+              const contentChanged = existingContentStr !== newContentStr;
 
-                const existing = await tx.vocabularyEntry.findFirst({
-                  where: { word: term, translation, lessonId },
-                });
+              if (titleChanged || contentChanged) {
+                const changes: string[] = [];
+                const updatedWords: string[] = [];
 
-                if (existing) {
-                  const needUpdate =
-                    (existing.pronunciation ?? "") !== (pron ?? "") ||
-                    (existing.translation ?? "") !== translation;
-
-                  if (needUpdate) {
-                    await tx.vocabularyEntry.update({
-                      where: { id: existing.id },
-                      data: {
-                        pronunciation: pron,
-                        translation,
-                      },
-                    });
-                    console.log(`♻️ Обновлён VocabularyEntry "${term}"`);
-                  } else {
-                    skippedCount++;
-                  }
-
-                  continue;
+                if (titleChanged) {
+                  changes.push("заголовок");
                 }
 
-                await tx.vocabularyEntry.create({
+                if (contentChanged) {
+                  type WordType = { mkd?: string; ru?: string; pron?: string };
+
+                  const existingWords: WordType[] = [];
+                  try {
+                    const existingContent = existing.content;
+                    if (Array.isArray(existingContent)) {
+                      existingContent.forEach((section) => {
+                        if (
+                          section &&
+                          typeof section === "object" &&
+                          "content" in section
+                        ) {
+                          const content = section.content;
+                          if (
+                            content &&
+                            typeof content === "object" &&
+                            "words" in content
+                          ) {
+                            const words = content.words;
+                            if (Array.isArray(words)) {
+                              words.forEach((word) => {
+                                if (word && typeof word === "object") {
+                                  existingWords.push(word as WordType);
+                                }
+                              });
+                            }
+                          }
+                        }
+                      });
+                    }
+                  } catch (e) {
+                    console.log(
+                      "❌ Ошибка при извлечении существующих слов:",
+                      e
+                    );
+                  }
+
+                  const newWords: WordType[] = [];
+                  vocab.sections?.forEach((section) => {
+                    section.content?.words?.forEach((word) => {
+                      newWords.push(word);
+                    });
+                  });
+
+                  newWords.forEach((newWord) => {
+                    if (!newWord.mkd) return;
+
+                    const oldWord = existingWords.find(
+                      (w) => w.mkd === newWord.mkd
+                    );
+                    if (oldWord) {
+                      if (
+                        oldWord.ru !== newWord.ru ||
+                        oldWord.pron !== newWord.pron
+                      ) {
+                        updatedWords.push(newWord.mkd);
+                      }
+                    } else {
+                      updatedWords.push(`+${newWord.mkd}`);
+                    }
+                  });
+
+                  existingWords.forEach((oldWord) => {
+                    if (!oldWord.mkd) return;
+
+                    const stillExists = newWords.some(
+                      (w) => w.mkd === oldWord.mkd
+                    );
+                    if (!stillExists) {
+                      updatedWords.push(`-${oldWord.mkd}`);
+                    }
+                  });
+
+                  if (updatedWords.length > 0) {
+                    changes.push(
+                      `♻️ Обновлены слова: ${updatedWords.join(", ")}`
+                    );
+                  } else {
+                    changes.push("структура словаря");
+                  }
+                }
+
+                await tx.vocabularyEntry.update({
+                  where: { id: existing.id },
                   data: {
-                    word: term,
-                    pronunciation: pron,
-                    translation,
-                    lessonId,
+                    title,
+                    content: newContent,
                   },
                 });
 
-                console.log(`✅ Добавлен VocabularyEntry "${term}"`);
-              }
+                const wordsCount =
+                  vocab.sections?.reduce((total, section) => {
+                    return total + (section.content?.words?.length ?? 0);
+                  }, 0) ?? 0;
 
-              if (skippedCount > 0) {
                 console.log(
-                  `ℹ️ Пропущено ${skippedCount} уже существующих слов`
+                  `♻️ Обновлен Vocabulary "${displayTitle}": ${changes.join(
+                    ", "
+                  )} (🔡 всего ${wordsCount} слов)`
+                );
+              } else {
+                console.log(
+                  `ℹ️ Vocabulary "${displayTitle}" не изменился, пропущен.`
                 );
               }
+              vocabularyIndex++;
+              continue;
             }
+
+            await tx.vocabularyEntry.create({
+              data: {
+                title,
+                slug: uniqueSlug,
+                content: newContent,
+                lessonId,
+              },
+            });
+
+            const wordsCount =
+              vocab.sections?.reduce((total, section) => {
+                return total + (section.content?.words?.length ?? 0);
+              }, 0) ?? 0;
+
+            console.log(
+              `✅ Добавлен Vocabulary "${displayTitle}" с ${wordsCount} словами`
+            );
+            vocabularyIndex++;
           }
 
           console.log(`🎉 Данные для урока "${lesson.slug}" обработаны.\n`);

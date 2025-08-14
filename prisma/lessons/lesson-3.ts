@@ -32,12 +32,13 @@ const lesson3 = {
   dialogues: [dialogueBlock],
   payAttention: [payAttention1],
   tables: [
-    {
-      category: "occupation-table",
-      title: occupationTable.title?.ru || "Occupation Table",
-      data: occupationTable,
-    },
-    // occupationTable,
+    // {
+    //   category: "occupation-table",
+    //   title: occupationTable.title?.ru || "Occupation Table",
+    //   // occupationTable,
+    //   data: occupationTable,
+    // },
+    occupationTable,
   ],
   //   exercises: [
   //     exercise1,
