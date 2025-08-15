@@ -1,9 +1,9 @@
 import React from "react";
-import type { OccupationTableBlock } from "@/types";
+import type { GlossaryTableBlock } from "@/types";
 import { formatText } from "@/utils";
 
 interface Props {
-  data: OccupationTableBlock;
+  data: GlossaryTableBlock;
 }
 
 export default function GlossaryTable({ data }: Props) {
