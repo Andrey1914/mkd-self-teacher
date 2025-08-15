@@ -15,3 +15,4 @@ export type { FillInExerciseData, StaticExerciseData } from "./exerciseTypes";
 export type { NumeralsTableBlock } from "./numeralsTypes";
 export type { ConjugationTableSection } from "./conjugationTypes";
 export type { GlossaryTableBlock } from "./glossaryTypes";
+export type { PronounTableProps } from "./pronounsTypes";
