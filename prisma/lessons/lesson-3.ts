@@ -1,7 +1,8 @@
 import { vocabulary } from "@/prisma/lessons/vocabulary/lesson-3";
 import { dialogueBlock } from "@/prisma/lessons/dialogues/lesson-3";
 import { payAttention1 } from "@/prisma/lessons/pay-attention/lesson-3";
-import { occupation } from "@/prisma/lessons/tables";
+import { glossary } from "@/prisma/lessons/tables";
+import { pronouns } from "@/prisma/lessons/paragraph";
 // import {
 //   exercise1,
 //   exercise2,
@@ -13,7 +14,9 @@ import { occupation } from "@/prisma/lessons/tables";
 //   exercise8,
 // } from "@/prisma/lessons/exercises/lesson-3";
 
-const { occupationTable } = occupation;
+const { occupationTable } = glossary;
+
+const { personalPronouns } = pronouns;
 
 const lesson3 = {
   title: [`<span>Урок 3, Лекциjя 3</span>`],
@@ -25,9 +28,7 @@ const lesson3 = {
       subtitle: [`ЛЕКСИКА`, `<span>ЛЕКСИКА</span>`],
     },
   ],
-  //   paragraph: [
-
-  //   ],
+  paragraph: [personalPronouns],
   vocabulary: [vocabulary],
   dialogues: [dialogueBlock],
   payAttention: [payAttention1],

@@ -14,4 +14,4 @@ export type { ParagraphExerciseProps } from "./exerciseParagraphTypes";
 export type { FillInExerciseData, StaticExerciseData } from "./exerciseTypes";
 export type { NumeralsTableBlock } from "./numeralsTypes";
 export type { ConjugationTableSection } from "./conjugationTypes";
-export type { OccupationTableBlock } from "./occupationTypes";
+export type { GlossaryTableBlock } from "./glossaryTypes";
