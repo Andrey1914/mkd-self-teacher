@@ -6,3 +6,4 @@ export { default as ConjugationTable } from "./ConjugationTable";
 export { default as AdjectivesTable } from "./AdjectivesTable";
 export { default as NumeralsTable } from "./NumeralsTable";
 export { default as GlossaryTable } from "./GlossaryTable";
+export { default as PronounTable } from "./PronounTable";
