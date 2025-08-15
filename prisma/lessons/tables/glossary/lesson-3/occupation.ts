@@ -1,6 +1,6 @@
-import { OccupationTableBlock } from "@/types";
+import { GlossaryTableBlock } from "@/types";
 
-const occupationTable: OccupationTableBlock = {
+const occupationTable: GlossaryTableBlock = {
   slug: "lesson-3",
   type: "occupation-table",
   title: {

@@ -1,0 +1,1 @@
+export { personalPronouns } from "./grammar";

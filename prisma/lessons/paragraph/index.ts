@@ -7,3 +7,5 @@ export * as noun from "./lesson-2";
 export * as lecture from "./lesson-2";
 export * as adjectives from "./lesson-2";
 export * as numerals from "./lesson-2";
+
+export * as pronouns from "./lesson-3";

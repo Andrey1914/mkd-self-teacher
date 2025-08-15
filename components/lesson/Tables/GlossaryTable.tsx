@@ -6,7 +6,7 @@ interface Props {
   data: OccupationTableBlock;
 }
 
-export default function OccupationTable({ data }: Props) {
+export default function GlossaryTable({ data }: Props) {
   const { title, content } = data;
 
   if (
@@ -22,11 +22,9 @@ export default function OccupationTable({ data }: Props) {
 
   return (
     <div style={{ padding: "1rem 0 2rem 0" }}>
-      {/* Заголовок блока */}
       <h2>{formatText(title?.ru)}</h2>
       <h2>{formatText(`<span>${title?.mkd}</span>`)}</h2>
 
-      {/* Таблица */}
       <table
         style={{
           width: "100%",
