@@ -1,8 +1,8 @@
 import { PronounTableProps } from "@/types";
 
 const personalPronounsTable: PronounTableProps = {
+  slug: "lesson-3",
   type: "personal-pronouns-table",
-  //   title: ["ЛИЧНЫЕ МЕСТОИМЕНИЯ"],
   subtitle: ["Дательный падеж", "Винительный падеж"],
   content: {
     dativeHeader: "Дательный падеж",

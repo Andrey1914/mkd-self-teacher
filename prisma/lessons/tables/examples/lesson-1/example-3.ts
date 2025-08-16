@@ -1,6 +1,6 @@
 import { ExampleSection } from "@/types/exampleTypes";
 
-const example3: ExampleSection = {
+export const example3: ExampleSection = {
   type: "example-3",
   content: {
     words: [
@@ -12,4 +12,4 @@ const example3: ExampleSection = {
   },
 };
 
-export default example3;
+// export default example3;

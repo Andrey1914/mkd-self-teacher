@@ -9,8 +9,9 @@ import {
   grammarPronouns,
   alphabetTable,
   countriesNationalitiesTable,
+  examples,
 } from "@/prisma/lessons/tables";
-import { examplesLesson1 as examplesLesson1 } from "@/prisma/lessons/tables";
+// import { examplesLesson1 as examplesLesson1 } from "@/prisma/lessons/tables";
 import {
   exercise1,
   exercise2,
@@ -47,6 +48,28 @@ const { intro, ruleConjugation, negation } = grammar;
 
 const { aClass, eClass, iClass } = conjugationLesson1;
 
+// // const {
+// //   example1,
+// //   example2,
+// //   example3,
+// //   example4,
+// //   example5,
+// //   example6,
+// //   example7,
+// //   example8,
+// // } = examples;
+// const { lesson1 } = examples;
+// const {
+//   example1,
+//   example2,
+//   example3,
+//   example4,
+//   example5,
+//   example6,
+//   example7,
+//   example8,
+// } = lesson1;
+const { lesson1: examplesLesson1 } = examples;
 const {
   example1,
   example2,

@@ -4,6 +4,7 @@ export interface ExampleRow {
 }
 
 export interface ExampleContent {
+  text?: string;
   words: ExampleRow[];
 }
 

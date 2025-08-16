@@ -17,6 +17,7 @@ export interface PronounTableContent {
 
 export interface PronounTableProps {
   type: string;
+  slug: "lesson-3";
   title?: string | string[];
   subtitle?: string[];
   text?: string[];

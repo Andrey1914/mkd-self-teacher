@@ -33,7 +33,14 @@ const lesson3 = {
   vocabulary: [vocabulary],
   dialogues: [dialogueBlock],
   payAttention: [payAttention1],
-  tables: [occupationTable, personalPronounsTable],
+  tables: [
+    occupationTable,
+    // personalPronounsTable,
+    {
+      title: personalPronounsTable.title || "personal-pronouns-table",
+      data: personalPronounsTable,
+    },
+  ],
   //   exercises: [
   //     exercise1,
   //     exercise2,
