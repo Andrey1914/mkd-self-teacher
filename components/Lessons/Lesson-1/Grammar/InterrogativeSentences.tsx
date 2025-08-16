@@ -7,14 +7,15 @@ import { TranslateParagraphExercise } from "@/components/lesson/Exercises";
 
 import { sentences } from "@/prisma/lessons/paragraph";
 
-import {
-  example3,
-  example4,
-  example5,
-  example6,
-  example7,
-  example8,
-} from "@/prisma/lessons/tables/examples";
+// import {
+//   example3,
+//   example4,
+//   example5,
+//   example6,
+//   example7,
+//   example8,
+// } from "@/prisma/lessons/tables/examples";
+import { examples } from "@/prisma/lessons/tables";
 import {
   exercise7,
   exercise8,
@@ -29,6 +30,9 @@ const {
   sentences5,
   sentences6,
 } = sentences;
+
+const { lesson1 } = examples;
+const { example3, example4, example5, example6, example7, example8 } = lesson1;
 
 export const InterrogativeSentences = () => {
   return (
