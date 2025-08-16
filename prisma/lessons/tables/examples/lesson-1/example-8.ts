@@ -3,6 +3,7 @@ import { ExampleSection } from "@/types/exampleTypes";
 export const example8: ExampleSection = {
   type: "example-8",
   content: {
+    text: `Разделительные вопросы в македонском языке образуются при помощи частицы <span>нели</span>:`,
     words: [
       {
         mkd: `<span>Ма\u0301риjа е Ру\u0301синка, нели?</span>`,
@@ -15,5 +16,3 @@ export const example8: ExampleSection = {
     ],
   },
 };
-
-// export default example8;

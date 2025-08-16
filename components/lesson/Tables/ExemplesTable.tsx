@@ -3,7 +3,7 @@ import { ExampleSection } from "@/types";
 import { formatText } from "@/utils";
 
 const ExamplesTable = ({ data }: { data: ExampleSection }) => {
-  const { content } = data;
+  const { subtitle, content } = data;
 
   if (
     !Array.isArray(content?.words) ||
@@ -14,6 +14,13 @@ const ExamplesTable = ({ data }: { data: ExampleSection }) => {
 
   return (
     <>
+      {subtitle && (
+        <h3>
+          {Array.isArray(subtitle)
+            ? formatText(subtitle.join(", "))
+            : formatText(subtitle)}
+        </h3>
+      )}
       <div>{content.text && <p>{formatText(content.text)}</p>}</div>
       <div
         style={{

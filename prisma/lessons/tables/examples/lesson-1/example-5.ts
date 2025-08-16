@@ -3,6 +3,8 @@ import { ExampleSection } from "@/types/exampleTypes";
 export const example5: ExampleSection = {
   type: "example-5",
   content: {
+    text: `Как и в русском языке, для выдиления отдельной части вопросительного предложения может использоваться вопросительная
+      частица <span>ли</span>:`,
     words: [
       {
         mkd: `<span>На\u0301таша ли жи\u0301вее во Ско\u0301пjе?</span>`,

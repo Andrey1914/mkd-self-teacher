@@ -6,16 +6,8 @@ export { default as spelling } from "./spelling";
 export { default as explanation } from "./explanation";
 
 export {
-  sentences1,
-  sentences2,
-  sentences3,
-  sentences4,
-  sentences5,
-  sentences6,
   toBe,
-  formsToVerb,
   verbType,
-  reflexiveVerbs,
   verbConjugation,
   intro,
   ruleConjugation,
