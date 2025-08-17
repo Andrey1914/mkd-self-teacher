@@ -368,10 +368,10 @@ async function main() {
           }
 
           // 📘 Table blocks (из папки tables)
-
           for (const tableBlock of lesson.tables ?? []) {
             const rawTitle =
               "title" in tableBlock ? tableBlock.title : undefined;
+
             let title: string | { ru?: string; mkd?: string };
             let displayTitle: string;
 
@@ -387,7 +387,6 @@ async function main() {
               displayTitle = title.ru || title.mkd || tableBlock.type;
             } else {
               title = tableBlock.type;
-
               displayTitle = tableBlock.type;
             }
 
@@ -401,6 +400,12 @@ async function main() {
 
             const slug = tableBlock.slug;
 
+            const subtitleValue = tableBlock.subtitle
+              ? Array.isArray(tableBlock.subtitle)
+                ? tableBlock.subtitle.join(", ")
+                : tableBlock.subtitle
+              : null;
+
             const exists = await tx.tableBlock.findFirst({
               where: {
                 category: tableBlock.type,
@@ -409,23 +414,42 @@ async function main() {
               },
             });
 
-            if (exists) {
-              console.log(
-                `ℹ️ TableBlock "${displayTitle}" уже существует, пропущен.`
-              );
-              continue;
-            }
-
             const jsonData = JSON.parse(
               JSON.stringify({
                 content: content,
               })
             );
 
+            if (exists) {
+              const titleChanged =
+                JSON.stringify(exists.title) !== JSON.stringify(title);
+
+              const subtitleChanged = exists.subtitle !== subtitleValue;
+
+              const dataChanged =
+                JSON.stringify(exists.data) !== JSON.stringify(jsonData);
+
+              if (titleChanged || subtitleChanged || dataChanged) {
+                await tx.tableBlock.update({
+                  where: { id: exists.id },
+                  data: {
+                    title,
+                    subtitle: subtitleValue,
+                    data: jsonData,
+                  },
+                });
+                console.log(`♻️ Обновлён TableBlock "${displayTitle}"`);
+              } else {
+                console.log(`ℹ️ TableBlock "${displayTitle}" без изменений`);
+              }
+              continue;
+            }
+
             await tx.tableBlock.create({
               data: {
                 slug,
                 title,
+                subtitle: subtitleValue,
                 category: tableBlock.type ?? undefined,
                 data: jsonData,
                 lessonId,
