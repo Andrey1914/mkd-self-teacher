@@ -10,6 +10,7 @@ export interface GrammarContent {
 }
 
 export interface GrammarTableProps {
+  slug?: string;
   type: string;
   category?: string;
   title?: string[];

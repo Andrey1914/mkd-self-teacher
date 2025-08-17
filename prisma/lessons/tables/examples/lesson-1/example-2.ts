@@ -1,6 +1,7 @@
 import { ExampleSection } from "@/types/exampleTypes";
 
 export const example2: ExampleSection = {
+  slug: "lesson-1",
   type: "example-2",
   subtitle: `ВОЗВРАТНЫЕ ГЛАГОЛЫ`,
   content: {

@@ -1,6 +1,7 @@
 import { ExampleSection } from "@/types/exampleTypes";
 
 export const example6: ExampleSection = {
+  slug: "lesson-1",
   type: "example-6",
   content: {
     text: `Общий вопрос может содержать отрицание. В этом случае используется или <span>не</span> + глагол, или конструкция

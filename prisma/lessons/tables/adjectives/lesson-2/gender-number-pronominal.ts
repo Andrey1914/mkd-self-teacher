@@ -2,7 +2,7 @@ import { AdjectivesTableBlock } from "@/types";
 
 const genderNumberPronominalOfAdjectives: AdjectivesTableBlock = {
   slug: "lesson-2",
-  type: "adjectives",
+  type: "gender-number-pronominal-of-adjectives",
   content: {
     subtitle: [
       `Мужской род`,

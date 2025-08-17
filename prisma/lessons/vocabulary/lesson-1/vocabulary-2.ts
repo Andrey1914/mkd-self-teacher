@@ -1,6 +1,7 @@
 import { VocabularyData } from "@/types/vocabularyTypes";
 
 const vocabulary2: VocabularyData = {
+  type: "vocabulary-2",
   slug: "lesson-1",
   sections: [
     {

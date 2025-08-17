@@ -1,6 +1,7 @@
 import { VocabularyData } from "@/types/vocabularyTypes";
 
 const vocabulary1: VocabularyData = {
+  type: "vocabulary-1",
   title: {
     ru: `НОВЫЕ СЛОВА И ВЫРАЖЕНИЯ`,
     mkd: `<span>НОВИ ЗБОРОВИ И ИЗРАЗИ</span>`,

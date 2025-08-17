@@ -3,6 +3,7 @@ export interface NumeralsTableBlock {
   slug?: string;
   category?: string;
   title?: string;
+  subtitle?: string;
   content: NumeralsContent;
 
   data?: Partial<NumeralsTableBlock>;

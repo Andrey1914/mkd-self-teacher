@@ -368,7 +368,7 @@ async function main() {
           }
 
           // 📘 Table blocks (из папки tables)
-          let exampleIndex = 1;
+
           for (const tableBlock of lesson.tables ?? []) {
             const rawTitle =
               "title" in tableBlock ? tableBlock.title : undefined;
@@ -384,13 +384,12 @@ async function main() {
               !Array.isArray(rawTitle)
             ) {
               title = rawTitle as { ru?: string; mkd?: string };
-              displayTitle = title.ru || title.mkd || `example-${exampleIndex}`;
+              displayTitle = title.ru || title.mkd || tableBlock.type;
             } else {
-              title = `example-${exampleIndex}`;
-              displayTitle = `example-${exampleIndex}`;
-            }
+              title = tableBlock.type;
 
-            exampleIndex++;
+              displayTitle = tableBlock.type;
+            }
 
             const content = tableBlock?.content ?? tableBlock?.data?.content;
             if (!content) {
@@ -400,9 +399,12 @@ async function main() {
               continue;
             }
 
+            const slug = tableBlock.slug;
+
             const exists = await tx.tableBlock.findFirst({
               where: {
                 category: tableBlock.type,
+                slug: slug,
                 lessonId,
               },
             });
@@ -422,6 +424,7 @@ async function main() {
 
             await tx.tableBlock.create({
               data: {
+                slug,
                 title,
                 category: tableBlock.type ?? undefined,
                 data: jsonData,
@@ -619,6 +622,7 @@ async function main() {
           maxWait: 10000,
           timeout: 20000,
         }
+        //----------------------------------------------------------------------------------------
       );
     } catch (error) {
       console.error(

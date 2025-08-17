@@ -3,6 +3,7 @@ export interface VocabularyProps {
 }
 
 export interface VocabularyData {
+  type: string;
   title?: {
     ru?: string;
     mkd?: string;

@@ -1,6 +1,7 @@
 import { ExampleSection } from "@/types/exampleTypes";
 
 export const example1: ExampleSection = {
+  slug: "lesson-1",
   type: "example-1",
   content: {
     text: `Формы глагола «быть» в настоящем времени избегают позиции первого слова в предложении, фразе:`,

@@ -6,6 +6,7 @@ export interface GlossaryTableBlock {
     ru?: string;
     mkd?: string;
   };
+  subtitle?: string;
   content: GlossaryContent;
 
   data?: Partial<GlossaryTableBlock>;

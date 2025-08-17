@@ -1,6 +1,7 @@
 import { ExampleSection } from "@/types/exampleTypes";
 
 export const example4: ExampleSection = {
+  slug: "lesson-1",
   type: "example-4",
   content: {
     text: `Кроме того, вопрос может оформлятся вопросительным словом <span>да\u0301ли</span>, которое не переводится на русский язык

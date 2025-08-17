@@ -130,10 +130,12 @@ model PayAttentionBlock {
 
 model TableBlock {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
-
+  slug      String?
   type      String?
-  category  String?   
+  category  String? 
   title     Json
+  subtitle     String?
+
   data      Json
 
   lessonId  String   @db.ObjectId
@@ -144,6 +146,7 @@ model TableBlock {
 
 model VocabularyEntry {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  type      String?
   title     Json
   slug      String?
   content   Json

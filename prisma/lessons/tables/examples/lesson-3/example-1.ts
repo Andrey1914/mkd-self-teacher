@@ -1,6 +1,7 @@
 import { ExampleSection } from "@/types";
 
 export const example1: ExampleSection = {
+  slug: "lesson-3",
   type: "example-1",
   content: {
     text: `Краткие формы возвратных и личных местоимений используются при наличии глагола. Обратите внимание, что краткие формы стоят
@@ -17,5 +18,3 @@ export const example1: ExampleSection = {
     ],
   },
 };
-
-// export default example1;
