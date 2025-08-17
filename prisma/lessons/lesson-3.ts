@@ -1,6 +1,6 @@
 import { vocabulary } from "@/prisma/lessons/vocabulary/lesson-3";
 import { dialogueBlock } from "@/prisma/lessons/dialogues/lesson-3";
-import { payAttention1 } from "@/prisma/lessons/pay-attention/lesson-3";
+import { payAttentionsLesson3 } from "@/prisma/lessons/pay-attention";
 import { glossary, pronounsTable, examples } from "@/prisma/lessons/tables";
 import { pronouns } from "@/prisma/lessons/paragraph";
 // import {
@@ -14,6 +14,8 @@ import { pronouns } from "@/prisma/lessons/paragraph";
 //   exercise8,
 // } from "@/prisma/lessons/exercises/lesson-3";
 
+const { payAttention1, payAttention2 } = payAttentionsLesson3;
+
 const { occupationTable } = glossary;
 
 const { personalPronouns } = pronouns;
@@ -22,9 +24,9 @@ const { personalPronounsTable } = pronounsTable;
 const { lesson3: examplesLesson3 } = examples;
 const {
   example1,
-  // example2,
-  // example3,
-  // example4,
+  example2,
+  example3,
+  example4,
   // example5,
   // example6,
   // example7,
@@ -44,11 +46,17 @@ const lesson3 = {
   paragraph: [personalPronouns],
   vocabulary: [vocabulary],
   dialogues: [dialogueBlock],
-  payAttention: [payAttention1],
+  // payAttention: [{ ...payAttention1, slug: "lesson-3" }],
+  payAttention: [payAttention1, payAttention2],
+
   tables: [
     occupationTable,
     personalPronounsTable,
     { ...example1, slug: "lesson-3" },
+    { ...example2, slug: "lesson-3" },
+    { ...example3, slug: "lesson-3" },
+    { ...example4, slug: "lesson-3" },
+
     // {
     //   title: personalPronounsTable.title || "personal-pronouns-table",
     //   data: personalPronounsTable,
