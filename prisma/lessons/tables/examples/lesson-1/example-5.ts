@@ -1,6 +1,7 @@
 import { ExampleSection } from "@/types/exampleTypes";
 
 export const example5: ExampleSection = {
+  slug: "lesson-1",
   type: "example-5",
   content: {
     text: `Как и в русском языке, для выдиления отдельной части вопросительного предложения может использоваться вопросительная

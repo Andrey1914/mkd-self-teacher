@@ -18,6 +18,7 @@ export interface ConjugationContent {
 
 export interface ConjugationTableSection {
   type: string;
+  slug?: string;
   category?: string;
   title?: string | string[];
   table?: true;

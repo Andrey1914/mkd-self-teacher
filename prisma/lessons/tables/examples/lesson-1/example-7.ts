@@ -1,6 +1,7 @@
 import { ExampleSection } from "@/types/exampleTypes";
 
 export const example7: ExampleSection = {
+  slug: "lesson-1",
   type: "example-7",
   content: {
     text: `Специальные вопросы начинаются с вопросительного слова. Вот некоторые из них <span>коj</span> «кто», <span>што</span> «что»,

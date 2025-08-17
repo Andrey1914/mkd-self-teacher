@@ -30,6 +30,7 @@
 
 .headerCellNoRight {
   border-right: none;
+  border-left: 1px solid #fff;
 }
 
 .secondRowCell {

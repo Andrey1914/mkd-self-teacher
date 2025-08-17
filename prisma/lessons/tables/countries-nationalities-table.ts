@@ -1,7 +1,7 @@
 import { CountriesNationalitiesProps } from "@/types/countriesNationalitiesTypes";
 
 const countriesNationalitiesTable: CountriesNationalitiesProps = {
-  type: "countries-nationalities",
+  type: "countries-nationalities-table",
   title: ["СТРАНЫ И НАЦИОНАЛЬНОСТИ"],
   content: {
     subtitle: [

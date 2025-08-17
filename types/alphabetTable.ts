@@ -1,4 +1,5 @@
 export type AlphabetTable = {
+  type: string;
   slug: string;
   sections: {
     tableEntries: {

@@ -3,6 +3,7 @@ export interface AdjectivesTableBlock {
   slug?: string;
   category?: string;
   title?: string;
+  subtitle?: string;
   content: AdjectiveContent;
 
   data?: Partial<AdjectivesTableBlock>;

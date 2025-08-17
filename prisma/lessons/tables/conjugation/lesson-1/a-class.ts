@@ -1,7 +1,7 @@
 import { ConjugationTableSection } from "@/types/conjugationTypes";
 
 const aClass: ConjugationTableSection = {
-  type: "conjugation",
+  type: "a-class",
   subtitle: ["СПРЯЖЕНИЕ ГЛАГОЛОВ A-КЛАССА"],
   text: ["<span>cе в\u0301ика</span> называться"],
   content: {

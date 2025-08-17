@@ -1,6 +1,7 @@
 import { AlphabetTable } from "@/types/alphabetTable";
 
 const alphabetTable: AlphabetTable = {
+  type: "alphabet-table",
   slug: "lesson-1",
   sections: [
     {

@@ -1,6 +1,7 @@
 import { ExampleSection } from "@/types/exampleTypes";
 
 export const example8: ExampleSection = {
+  slug: "lesson-1",
   type: "example-8",
   content: {
     text: `Разделительные вопросы в македонском языке образуются при помощи частицы <span>нели</span>:`,

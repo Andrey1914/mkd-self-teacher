@@ -1,7 +1,7 @@
 import { GrammarTableProps } from "@/types/grammarTypes";
 
 const grammarPronouns1: GrammarTableProps = {
-  type: "grammar",
+  type: "grammar-pronouns-1",
   title: ["ГРАММАТИКА", "<span>ГРАМАТИКА</span>"],
   subtitle: ["ФОРМЫ ЛИЧНЫХ МЕСТОИМЕНИЙ"],
   content: {

@@ -10,6 +10,7 @@ export interface ExampleContent {
 
 export interface ExampleSection {
   type: string;
+  slug?: string;
   subtitle?: string;
   content: ExampleContent;
 }
