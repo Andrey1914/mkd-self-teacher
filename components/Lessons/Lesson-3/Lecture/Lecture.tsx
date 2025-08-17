@@ -10,7 +10,7 @@ import {
 } from "@/components/lesson/Tables";
 import { Paragraph } from "@/components/lesson/Paragraph/Paragraph";
 
-import { payAttention1 } from "@/prisma/lessons/pay-attention/lesson-3";
+import { payAttentionsLesson3 } from "@/prisma/lessons/pay-attention";
 import { vocabulary } from "@/prisma/lessons/vocabulary/lesson-3";
 import { glossary, pronounsTable, examples } from "@/prisma/lessons/tables";
 import { pronouns } from "@/prisma/lessons/paragraph";
@@ -19,7 +19,8 @@ const { occupationTable } = glossary;
 const { personalPronouns } = pronouns;
 const { personalPronounsTable } = pronounsTable;
 const { lesson3 } = examples;
-const { example1 } = lesson3;
+const { example1, example2, example3, example4 } = lesson3;
+const { payAttention1, payAttention2 } = payAttentionsLesson3;
 
 const Lecture = () => {
   return (
@@ -33,6 +34,10 @@ const Lecture = () => {
       <Paragraph data={personalPronouns} />
       <PronounTable data={personalPronounsTable} />
       <ExamplesTable data={example1} />
+      <ExamplesTable data={example2} />
+      <ExamplesTable data={example3} />
+      <ExamplesTable data={example4} />
+      <PayAttentionBlock data={payAttention2} />
     </>
   );
 };

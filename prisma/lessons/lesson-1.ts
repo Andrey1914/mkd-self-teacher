@@ -18,12 +18,10 @@ import {
   exercise9,
 } from "@/prisma/lessons/exercises/lesson-1";
 import { dialogueBlock } from "@/prisma/lessons/dialogues/lesson-1";
-import {
-  payAttention1,
-  payAttention2,
-  payAttention3,
-} from "@/prisma/lessons/pay-attention/lesson-1";
+import { payAttentionsLesson1 } from "@/prisma/lessons/pay-attention";
 import { vocabulary1, vocabulary2 } from "@/prisma/lessons/vocabulary/lesson-1";
+
+const { payAttention1, payAttention2, payAttention3 } = payAttentionsLesson1;
 
 const { phonetics, features, accent, exceptions, spelling } = paragraph;
 

@@ -1,6 +1,6 @@
 import { PayAttentionBlockProps } from "@/types/payAttantionTypes";
 
-const payAttention2: PayAttentionBlockProps = {
+export const payAttention2: PayAttentionBlockProps = {
   sections: [
     {
       type: "pay-attention-2",
@@ -16,4 +16,4 @@ const payAttention2: PayAttentionBlockProps = {
   ],
 };
 
-export default payAttention2;
+// export default payAttention2;
