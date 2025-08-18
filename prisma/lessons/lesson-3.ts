@@ -27,9 +27,9 @@ const {
   example2,
   example3,
   example4,
-  // example5,
-  // example6,
-  // example7,
+  example5,
+  example6,
+  example7,
   // example8,
 } = examplesLesson3;
 
@@ -46,7 +46,6 @@ const lesson3 = {
   paragraph: [personalPronouns],
   vocabulary: [vocabulary],
   dialogues: [dialogueBlock],
-  // payAttention: [{ ...payAttention1, slug: "lesson-3" }],
   payAttention: [payAttention1, payAttention2],
 
   tables: [
@@ -56,6 +55,9 @@ const lesson3 = {
     { ...example2, slug: "lesson-3" },
     { ...example3, slug: "lesson-3" },
     { ...example4, slug: "lesson-3" },
+    { ...example5, slug: "lesson-3" },
+    { ...example6, slug: "lesson-3" },
+    { ...example7, slug: "lesson-3" },
 
     // {
     //   title: personalPronounsTable.title || "personal-pronouns-table",
