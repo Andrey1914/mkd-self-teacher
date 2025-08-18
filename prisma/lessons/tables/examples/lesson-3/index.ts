@@ -5,3 +5,7 @@ export { example4 } from "./example-4";
 export { example5 } from "./example-5";
 export { example6 } from "./example-6";
 export { example7 } from "./example-7";
+export { example8 } from "./example-8";
+export { example9 } from "./example-9";
+export { example10 } from "./example-10";
+export { example11 } from "./example-11";
