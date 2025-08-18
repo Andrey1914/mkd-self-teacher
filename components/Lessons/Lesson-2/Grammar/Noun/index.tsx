@@ -1,1 +1,1 @@
-export { default as Nouns } from "./Nouns";
+export { Nouns } from "./Nouns";

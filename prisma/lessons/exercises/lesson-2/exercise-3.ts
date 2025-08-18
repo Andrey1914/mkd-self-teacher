@@ -1,6 +1,6 @@
 import { FillInExerciseData } from "@/types/exerciseTypes";
 
-const exercise3: FillInExerciseData = {
+export const exercise3: FillInExerciseData = {
   type: "exercises",
   title: "Упражнение 3",
   slug: "lesson-2",
@@ -50,5 +50,3 @@ const exercise3: FillInExerciseData = {
     },
   ],
 };
-
-export default exercise3;

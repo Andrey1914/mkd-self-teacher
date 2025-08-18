@@ -1,2 +1,2 @@
-export { default as Intro } from "./Intro";
-export { default as Lecture } from "./Lecture";
+export { Intro } from "./Intro";
+export { Lecture } from "./Lecture";

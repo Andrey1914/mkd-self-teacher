@@ -28,5 +28,3 @@ export const payAttention1: PayAttentionBlockProps = {
     },
   ],
 };
-
-// export default payAttention1;

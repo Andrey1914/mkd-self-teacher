@@ -1,23 +1,25 @@
 import React from "react";
 
-import { Paragraph } from "@/components/lesson/Paragraph/Paragraph";
+import { Paragraph } from "@/components/lesson/Paragraph";
 import { AlphabetTable } from "@/components/lesson/Tables";
 import { StaticExercise } from "@/components/lesson/Exercises";
 
 import { paragraph } from "@/prisma/lessons/paragraph";
+import { exercisesLesson1 } from "@/prisma/lessons/exercises";
 
-import { exercise1 } from "@/prisma/lessons/exercises/lesson-1";
+const { exercise1 } = exercisesLesson1;
+const { phonetics, features, accent, exceptions, spelling } = paragraph;
 
 export const Phonetics = () => {
   return (
     <>
-      <Paragraph data={paragraph.phonetics} part="title" />
+      <Paragraph data={phonetics} part="title" />
       <AlphabetTable />
-      <Paragraph data={paragraph.phonetics} part="text" />
-      <Paragraph data={paragraph.features} />
-      <Paragraph data={paragraph.accent} />
-      <Paragraph data={paragraph.exceptions} />
-      <Paragraph data={paragraph.spelling} />
+      <Paragraph data={phonetics} part="text" />
+      <Paragraph data={features} />
+      <Paragraph data={accent} />
+      <Paragraph data={exceptions} />
+      <Paragraph data={spelling} />
       <StaticExercise data={exercise1} />
     </>
   );

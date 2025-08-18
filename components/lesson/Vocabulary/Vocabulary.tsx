@@ -2,7 +2,7 @@ import React from "react";
 import { formatText } from "@/utils";
 import type { VocabularyProps } from "@/types/vocabularyTypes";
 
-export function Vocabulary({ lesson }: VocabularyProps) {
+export const Vocabulary = ({ lesson }: VocabularyProps) => {
   const section = lesson.sections[0];
 
   if (
@@ -70,4 +70,4 @@ export function Vocabulary({ lesson }: VocabularyProps) {
       </table>
     </div>
   );
-}
+};

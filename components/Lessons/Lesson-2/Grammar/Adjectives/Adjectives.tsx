@@ -8,7 +8,7 @@ import { genderNumberPronominalOfAdjectives } from "@/prisma/lessons/tables/adje
 
 const { introAdjectives, genderNumberPronominalText } = adjectives;
 
-const Adjectives = () => {
+export const Adjectives = () => {
   return (
     <>
       <Paragraph data={introAdjectives} />
@@ -17,5 +17,3 @@ const Adjectives = () => {
     </>
   );
 };
-
-export default Adjectives;

@@ -7,7 +7,7 @@ import { lectureLesson1 } from "@/prisma/lessons/heading/lesson-1/headings";
 
 import { formatText } from "@/utils";
 
-export default function Intro() {
+export const Intro = () => {
   const handledTypes = ["pay-attention"];
 
   return (
@@ -48,4 +48,4 @@ export default function Intro() {
       ))}
     </>
   );
-}
+};

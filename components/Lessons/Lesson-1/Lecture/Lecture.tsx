@@ -1,20 +1,19 @@
 import React from "react";
 
-import { DialogueAtAirport } from "@/components/Lessons/Lesson-1/Lecture/Dialogue";
-import { PayAttentionBlock } from "@/components/lesson/PayAttentionBlock/PayAttentionBlock";
-import { Vocabulary } from "@/components/lesson/Vocabulary/Vocabulary";
-import { Paragraph } from "@/components/lesson/Paragraph/Paragraph";
+import { DialogueAtAirport } from "./Dialogue";
+import { PayAttentionBlock } from "@/components/lesson/PayAttentionBlock";
+import { Vocabulary } from "@/components/lesson/Vocabulary";
+import { Paragraph } from "@/components/lesson/Paragraph";
 import { CountriesNationalitiesTable } from "@/components/lesson/Tables";
 
-import {
-  payAttention1,
-  payAttention2,
-} from "@/prisma/lessons/pay-attention/lesson-1";
+import { payAttentionsLesson1 } from "@/prisma/lessons/pay-attention";
 import { vocabulary1, vocabulary2 } from "@/prisma/lessons/vocabulary/lesson-1";
 import { paragraph } from "@/prisma/lessons/paragraph";
 import { countriesNationalitiesTable } from "@/prisma/lessons/tables";
 
-const Lecture = () => {
+const { payAttention1, payAttention2 } = payAttentionsLesson1;
+
+export const Lecture = () => {
   return (
     <>
       <DialogueAtAirport />
@@ -27,5 +26,3 @@ const Lecture = () => {
     </>
   );
 };
-
-export default Lecture;

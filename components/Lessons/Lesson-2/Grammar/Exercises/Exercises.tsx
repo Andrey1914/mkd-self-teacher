@@ -6,7 +6,9 @@ import {
   ParagraphExercise,
 } from "@/components/lesson/Exercises";
 
-import {
+import { exercisesLesson2 } from "@/prisma/lessons/exercises";
+
+const {
   exercise1,
   exercise2,
   exercise3,
@@ -15,9 +17,9 @@ import {
   exercise6,
   exercise7,
   exercise8,
-} from "@/prisma/lessons/exercises/lesson-2";
+} = exercisesLesson2;
 
-const Exercises = () => {
+export const Exercises = () => {
   return (
     <>
       <FillInExercise data={exercise1} />
@@ -31,5 +33,3 @@ const Exercises = () => {
     </>
   );
 };
-
-export default Exercises;
