@@ -19,8 +19,19 @@ const { occupationTable } = glossary;
 const { personalPronouns } = pronouns;
 const { personalPronounsTable } = pronounsTable;
 const { lesson3 } = examples;
-const { example1, example2, example3, example4, example5, example6, example7 } =
-  lesson3;
+const {
+  example1,
+  example2,
+  example3,
+  example4,
+  example5,
+  example6,
+  example7,
+  example8,
+  example9,
+  example10,
+  example11,
+} = lesson3;
 const { payAttention1, payAttention2 } = payAttentionsLesson3;
 
 export const Lecture = () => {
@@ -40,6 +51,10 @@ export const Lecture = () => {
       <ExamplesTable data={example5} />
       <ExamplesTable data={example6} />
       <ExamplesTable data={example7} />
+      <ExamplesTable data={example8} />
+      <ExamplesTable data={example9} />
+      <ExamplesTable data={example10} />
+      <ExamplesTable data={example11} />
     </>
   );
 };

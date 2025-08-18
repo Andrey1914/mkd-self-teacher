@@ -5,6 +5,28 @@ import { formatText } from "@/utils";
 const ExamplesTable = ({ data }: { data: ExampleSection }) => {
   const { subtitle, content } = data;
 
+  const renderTextParagraphs = (text: string | string[]) => {
+    const textContent = Array.isArray(text) ? text.join("\n\n") : text;
+
+    return textContent
+      .split(/\n\s*\n/)
+      .filter((line) => line.trim().length > 0)
+      .map((paragraph, i) => (
+        <p
+          lang="ru"
+          key={i}
+          style={{
+            marginBottom: 0,
+            overflowWrap: "break-word",
+            whiteSpace: "normal",
+            hyphens: "auto",
+          }}
+        >
+          {formatText(paragraph)}
+        </p>
+      ));
+  };
+
   if (
     !Array.isArray(content?.words) ||
     !content.words.every((row) => "mkd" in row && "ru" in row)
@@ -22,7 +44,7 @@ const ExamplesTable = ({ data }: { data: ExampleSection }) => {
         </h3>
       )}
       <div>{content.subtitle && <h4>{formatText(content.subtitle)}</h4>}</div>
-      <div>{content.text && <p>{formatText(content.text)}</p>}</div>
+      <div>{content.text && <>{renderTextParagraphs(content.text)}</>}</div>
       <div
         style={{
           display: "grid",

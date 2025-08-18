@@ -30,7 +30,10 @@ const {
   example5,
   example6,
   example7,
-  // example8,
+  example8,
+  example9,
+  example10,
+  example11,
 } = examplesLesson3;
 
 const lesson3 = {
@@ -58,6 +61,10 @@ const lesson3 = {
     { ...example5, slug: "lesson-3" },
     { ...example6, slug: "lesson-3" },
     { ...example7, slug: "lesson-3" },
+    { ...example8, slug: "lesson-3" },
+    { ...example9, slug: "lesson-3" },
+    { ...example10, slug: "lesson-3" },
+    { ...example11, slug: "lesson-3" },
 
     // {
     //   title: personalPronounsTable.title || "personal-pronouns-table",
