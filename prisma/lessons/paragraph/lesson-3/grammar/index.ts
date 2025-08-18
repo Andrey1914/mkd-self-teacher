@@ -1,1 +1,2 @@
-export { default as personalPronouns } from "./personal-pronouns";
+export { personalPronouns } from "./personal-pronouns";
+export { needVerb } from "./need-verb";

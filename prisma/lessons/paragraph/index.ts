@@ -8,4 +8,4 @@ export * as lecture from "./lesson-2";
 export * as adjectives from "./lesson-2";
 export * as numerals from "./lesson-2";
 
-export * as pronouns from "./lesson-3";
+export * as grammarLesson3 from "./lesson-3";
