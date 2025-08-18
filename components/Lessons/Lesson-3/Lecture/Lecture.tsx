@@ -13,10 +13,10 @@ import { Paragraph } from "@/components/lesson/Paragraph";
 import { payAttentionsLesson3 } from "@/prisma/lessons/pay-attention";
 import { vocabulary } from "@/prisma/lessons/vocabulary/lesson-3";
 import { glossary, pronounsTable, examples } from "@/prisma/lessons/tables";
-import { pronouns } from "@/prisma/lessons/paragraph";
+import { grammarLesson3 } from "@/prisma/lessons/paragraph";
 
 const { occupationTable } = glossary;
-const { personalPronouns } = pronouns;
+const { personalPronouns, needVerb } = grammarLesson3;
 const { personalPronounsTable } = pronounsTable;
 const { lesson3 } = examples;
 const {
@@ -55,6 +55,7 @@ export const Lecture = () => {
       <ExamplesTable data={example9} />
       <ExamplesTable data={example10} />
       <ExamplesTable data={example11} />
+      <Paragraph data={needVerb} />
     </>
   );
 };

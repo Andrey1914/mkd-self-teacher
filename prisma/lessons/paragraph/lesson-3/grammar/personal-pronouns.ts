@@ -1,6 +1,6 @@
 import { ParagraphSectionsProps } from "@/types";
 
-const personalPronouns: ParagraphSectionsProps = {
+export const personalPronouns: ParagraphSectionsProps = {
   type: "personal-pronouns",
   title: ["ГРАММАТИКА", "<span>ГРАМАТИКА</span>"],
   subtitle: ["ЛИЧНЫЕ МЕСТОИМЕНИЯ"],
@@ -12,5 +12,3 @@ const personalPronouns: ParagraphSectionsProps = {
     вопросы [кого? что?]). У относительно-вопросительного местоимения <span>кој</span> и образованных от него есть только полные формы.`,
   },
 };
-
-export default personalPronouns;

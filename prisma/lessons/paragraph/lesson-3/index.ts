@@ -1,1 +1,1 @@
-export { personalPronouns } from "./grammar";
+export { personalPronouns, needVerb } from "./grammar";
