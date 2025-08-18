@@ -21,6 +21,7 @@ const ExamplesTable = ({ data }: { data: ExampleSection }) => {
             : formatText(subtitle)}
         </h3>
       )}
+      <div>{content.subtitle && <h4>{formatText(content.subtitle)}</h4>}</div>
       <div>{content.text && <p>{formatText(content.text)}</p>}</div>
       <div
         style={{
