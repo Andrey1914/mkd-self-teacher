@@ -1,6 +1,6 @@
 import { ParagraphExerciseProps } from "@/types/exerciseParagraphTypes";
 
-const exercise8: ParagraphExerciseProps = {
+export const exercise8: ParagraphExerciseProps = {
   type: "exercises",
   title: "Упражнение 8",
   slug: "lesson-1",
@@ -27,5 +27,3 @@ const exercise8: ParagraphExerciseProps = {
     },
   ],
 };
-
-export default exercise8;

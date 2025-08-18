@@ -1,23 +1,21 @@
 import React from "react";
 
-import { Paragraph } from "@/components/lesson/Paragraph/Paragraph";
+import { Paragraph } from "@/components/lesson/Paragraph";
 import { ConjugationTable, GrammarTable } from "@/components/lesson/Tables";
 import { FillInExercise } from "@/components/lesson/Exercises";
-import { PayAttentionBlock } from "@/components/lesson/PayAttentionBlock/PayAttentionBlock";
+import { PayAttentionBlock } from "@/components/lesson/PayAttentionBlock";
 
 import { grammar } from "@/prisma/lessons/paragraph";
 import { conjugationLesson1 } from "@/prisma/lessons/tables";
-import {
-  exercise4,
-  exercise5,
-  exercise6,
-} from "@/prisma/lessons/exercises/lesson-1";
-import { payAttention3 } from "@/prisma/lessons/pay-attention/lesson-1";
+import { exercisesLesson1 } from "@/prisma/lessons/exercises";
+import { payAttentionsLesson1 } from "@/prisma/lessons/pay-attention";
 
 const { verbConjugation, ruleConjugation } = grammar;
 const { aClass, eClass, iClass } = conjugationLesson1;
+const { payAttention3 } = payAttentionsLesson1;
+const { exercise4, exercise5, exercise6 } = exercisesLesson1;
 
-const VerbConjugation = () => {
+export const VerbConjugation = () => {
   return (
     <>
       <Paragraph data={verbConjugation} />
@@ -33,4 +31,4 @@ const VerbConjugation = () => {
   );
 };
 
-export default VerbConjugation;
+// export default VerbConjugation;

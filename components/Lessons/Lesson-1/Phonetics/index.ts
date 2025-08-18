@@ -1,0 +1,1 @@
+export { Phonetics } from "./Phonetics";

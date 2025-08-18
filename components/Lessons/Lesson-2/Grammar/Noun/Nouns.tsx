@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Paragraph } from "@/components/lesson/Paragraph/Paragraph";
+import { Paragraph } from "@/components/lesson/Paragraph";
 
 import { noun } from "@/prisma/lessons/paragraph";
 
@@ -13,7 +13,7 @@ const {
   countablePlural,
 } = noun;
 
-const Nouns = () => {
+export const Nouns = () => {
   return (
     <>
       <Paragraph data={genderOfNouns} />
@@ -25,5 +25,3 @@ const Nouns = () => {
     </>
   );
 };
-
-export default Nouns;

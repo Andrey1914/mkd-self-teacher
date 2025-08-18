@@ -1,7 +1,7 @@
 import React from "react";
 
 import { GrammarTable } from "@/components/lesson/Tables";
-import { Paragraph } from "@/components/lesson/Paragraph/Paragraph";
+import { Paragraph } from "@/components/lesson/Paragraph";
 
 import { grammarPronouns } from "@/prisma/lessons/tables";
 import { grammar } from "@/prisma/lessons/paragraph";

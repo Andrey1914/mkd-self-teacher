@@ -1,18 +1,17 @@
 import React from "react";
 
 import { ExamplesTable } from "@/components/lesson/Tables";
-import { ParagraphExercise } from "@/components/lesson/Exercises";
-import { TranslateParagraphExercise } from "@/components/lesson/Exercises";
+import {
+  ParagraphExercise,
+  TranslateParagraphExercise,
+} from "@/components/lesson/Exercises";
 
 import { examples } from "@/prisma/lessons/tables";
-import {
-  exercise7,
-  exercise8,
-  exercise9,
-} from "@/prisma/lessons/exercises/lesson-1";
+import { exercisesLesson1 } from "@/prisma/lessons/exercises";
 
 const { lesson1 } = examples;
 const { example3, example4, example5, example6, example7, example8 } = lesson1;
+const { exercise7, exercise8, exercise9 } = exercisesLesson1;
 
 export const InterrogativeSentences = () => {
   return (

@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Paragraph } from "@/components/lesson/Paragraph/Paragraph";
+import { Paragraph } from "@/components/lesson/Paragraph";
 
 import { grammar } from "@/prisma/lessons/paragraph";
 

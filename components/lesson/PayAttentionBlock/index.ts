@@ -1,0 +1,1 @@
+export { PayAttentionBlock } from "./PayAttentionBlock";

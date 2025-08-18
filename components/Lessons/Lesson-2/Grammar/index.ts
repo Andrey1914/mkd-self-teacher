@@ -1,1 +1,1 @@
-export { default as Grammar } from "./Grammar";
+export { Grammar } from "./Grammar";

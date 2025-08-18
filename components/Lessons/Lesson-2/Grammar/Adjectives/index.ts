@@ -1,1 +1,1 @@
-export { default as Adjectives } from "./Adjectives";
+export { Adjectives } from "./Adjectives";

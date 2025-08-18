@@ -1,15 +1,11 @@
 import React from "react";
 
-import { FormsOfPersonalPronouns } from "@/components/Lessons/Lesson-1/Grammar/FormsOfPersonalPronouns";
-import {
-  Verb,
-  VerbType,
-  VerbConjugation,
-} from "@/components/Lessons/Lesson-1/Grammar/Verb";
-import { Negation } from "@/components/Lessons/Lesson-1/Grammar/Negation";
-import { InterrogativeSentences } from "@/components/Lessons/Lesson-1/Grammar/InterrogativeSentences";
+import { FormsOfPersonalPronouns } from "./FormsOfPersonalPronouns";
+import { Verb, VerbType, VerbConjugation } from "./Verb";
+import { Negation } from "./Negation";
+import { InterrogativeSentences } from "./InterrogativeSentences";
 
-const Grammar = () => {
+export const Grammar = () => {
   return (
     <>
       <FormsOfPersonalPronouns />
@@ -21,6 +17,3 @@ const Grammar = () => {
     </>
   );
 };
-
-
-export default Grammar

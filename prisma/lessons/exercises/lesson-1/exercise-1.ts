@@ -1,6 +1,6 @@
 import { StaticExerciseData } from "@/types/exerciseTypes";
 
-const exercise1: StaticExerciseData = {
+export const exercise1: StaticExerciseData = {
   type: "exercises",
   title: "Упражнение 1",
   slug: "lesson-1",
@@ -18,5 +18,3 @@ const exercise1: StaticExerciseData = {
     },
   ],
 };
-
-export default exercise1;

@@ -1,1 +1,1 @@
-export { default as Numerals } from "./Numerals";
+export { Numerals } from "./Numerals";
