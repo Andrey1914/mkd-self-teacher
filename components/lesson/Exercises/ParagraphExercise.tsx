@@ -7,11 +7,11 @@ import type { ParagraphExerciseProps } from "@/types/exerciseParagraphTypes";
 
 const pronouns = ["Jас", "Ти", "Ние", "Вие", "Тие"];
 
-export default function ParagraphExercise({
+export const ParagraphExercise = ({
   data,
 }: {
   data: ParagraphExerciseProps;
-}) {
+}) => {
   const sections = data.sections[0];
 
   const answers = sections.content.answer ?? [];
@@ -177,4 +177,4 @@ export default function ParagraphExercise({
       </div>
     </section>
   );
-}
+};

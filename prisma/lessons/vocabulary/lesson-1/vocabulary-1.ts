@@ -1,6 +1,6 @@
 import { VocabularyData } from "@/types/vocabularyTypes";
 
-const vocabulary1: VocabularyData = {
+export const vocabulary1: VocabularyData = {
   type: "vocabulary-1",
   title: {
     ru: `НОВЫЕ СЛОВА И ВЫРАЖЕНИЯ`,
@@ -118,5 +118,3 @@ const vocabulary1: VocabularyData = {
     },
   ],
 };
-
-export default vocabulary1;

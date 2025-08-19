@@ -6,7 +6,7 @@ interface Props {
   data: NumeralsTableBlock;
 }
 
-export default function NumeralsTable({ data }: Props) {
+export const NumeralsTable = ({ data }: Props) => {
   const content = data.content;
 
   if (
@@ -62,4 +62,4 @@ export default function NumeralsTable({ data }: Props) {
       </table>
     </div>
   );
-}
+};

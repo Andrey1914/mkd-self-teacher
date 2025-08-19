@@ -1,4 +1,4 @@
-export { default as FillInExercise } from "./FillInExercise";
-export { default as ParagraphExercise } from "./ParagraphExercise";
-export { default as StaticExercise } from "./StaticExercise";
-export { default as TranslateParagraphExercise } from "./TranslateParagraphExercise";
+export { FillInExercise } from "./FillInExercise";
+export { ParagraphExercise } from "./ParagraphExercise";
+export { StaticExercise } from "./StaticExercise";
+export { TranslateParagraphExercise } from "./TranslateParagraphExercise";

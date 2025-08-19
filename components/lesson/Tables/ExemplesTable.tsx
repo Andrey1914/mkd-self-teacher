@@ -2,7 +2,7 @@ import React from "react";
 import { ExampleSection } from "@/types";
 import { formatText } from "@/utils";
 
-const ExamplesTable = ({ data }: { data: ExampleSection }) => {
+export const ExamplesTable = ({ data }: { data: ExampleSection }) => {
   const { subtitle, content } = data;
 
   const renderTextParagraphs = (text: string | string[]) => {
@@ -74,5 +74,3 @@ const ExamplesTable = ({ data }: { data: ExampleSection }) => {
     </>
   );
 };
-
-export default ExamplesTable;

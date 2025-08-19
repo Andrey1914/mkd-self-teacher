@@ -4,7 +4,11 @@ import React from "react";
 import { ConjugationTableSection } from "@/types/conjugationTypes";
 import { formatText } from "@/utils";
 
-const ConjugationTable = ({ data }: { data: ConjugationTableSection }) => {
+export const ConjugationTable = ({
+  data,
+}: {
+  data: ConjugationTableSection;
+}) => {
   const { subtitle, text, content } = data;
 
   if (!content?.words || !Array.isArray(content.words)) return null;
@@ -136,5 +140,3 @@ const ConjugationTable = ({ data }: { data: ConjugationTableSection }) => {
     </>
   );
 };
-
-export default ConjugationTable;
