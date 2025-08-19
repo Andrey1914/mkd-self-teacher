@@ -25,7 +25,7 @@ export interface ConjugationTableSection {
   title?: string | string[];
   table?: true;
   subtitle?: string[];
-  text?: string[];
+  text?: string;
   content: ConjugationContent;
 
   data?: Partial<ConjugationTableSection>;
