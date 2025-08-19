@@ -6,17 +6,17 @@ const grammarPronouns2: GrammarTableProps = {
     subtitle: [`Лицо`, `Единственное число`, `Множественное число`],
     words: [
       {
-        persone: `1-e`,
+        person: `1-e`,
         singular: `<span>сум</span>`,
         plural: `<span>сме</span>`,
       },
       {
-        persone: `2-e`,
+        person: `2-e`,
         singular: `<span>си</span>`,
         plural: `<span>сте</span>`,
       },
       {
-        persone: `3-e`,
+        person: `3-e`,
         singular: `<span>е</span>`,
         plural: `<span>се</span>`,
       },
