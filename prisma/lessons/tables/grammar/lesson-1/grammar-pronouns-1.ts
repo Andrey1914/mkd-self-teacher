@@ -1,6 +1,6 @@
 import { GrammarTableProps } from "@/types/grammarTypes";
 
-const grammarPronouns1: GrammarTableProps = {
+export const grammarPronouns1: GrammarTableProps = {
   type: "grammar-pronouns-1",
   title: ["ГРАММАТИКА", "<span>ГРАМАТИКА</span>"],
   subtitle: ["ФОРМЫ ЛИЧНЫХ МЕСТОИМЕНИЙ"],
@@ -25,5 +25,3 @@ const grammarPronouns1: GrammarTableProps = {
     ],
   },
 };
-
-export default grammarPronouns1;

@@ -6,7 +6,7 @@ interface Props {
   data: GlossaryTableBlock;
 }
 
-export default function GlossaryTable({ data }: Props) {
+export const GlossaryTable = ({ data }: Props) => {
   const { title, content } = data;
 
   if (
@@ -60,4 +60,4 @@ export default function GlossaryTable({ data }: Props) {
       </table>
     </div>
   );
-}
+};

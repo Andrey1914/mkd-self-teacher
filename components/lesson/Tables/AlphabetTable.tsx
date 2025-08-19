@@ -4,7 +4,7 @@ import React from "react";
 import { formatText } from "@/utils";
 import { alphabetTable } from "@/prisma/lessons/tables";
 
-const AlphabetTable = () => {
+export const AlphabetTable = () => {
   const section = alphabetTable.sections[0];
   const table = section.tableEntries?.create?.[0];
 
@@ -94,5 +94,3 @@ const AlphabetTable = () => {
     </div>
   );
 };
-
-export default AlphabetTable;

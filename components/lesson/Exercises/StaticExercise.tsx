@@ -4,7 +4,7 @@ import React from "react";
 import parse from "html-react-parser";
 import type { StaticExerciseData } from "@/types/exerciseTypes";
 
-export default function StaticExercise({ data }: { data: StaticExerciseData }) {
+export const StaticExercise = ({ data }: { data: StaticExerciseData }) => {
   if (!data?.sections || data.sections.length === 0) return null;
 
   return (
@@ -35,4 +35,4 @@ export default function StaticExercise({ data }: { data: StaticExerciseData }) {
       ))}
     </div>
   );
-}
+};

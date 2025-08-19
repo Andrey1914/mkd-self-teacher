@@ -1,1 +1,1 @@
-export { default as occupationTable } from "./occupation";
+export { occupationTable } from "./occupation";

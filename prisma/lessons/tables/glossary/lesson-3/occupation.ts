@@ -1,6 +1,6 @@
 import { GlossaryTableBlock } from "@/types";
 
-const occupationTable: GlossaryTableBlock = {
+export const occupationTable: GlossaryTableBlock = {
   slug: "lesson-3",
   type: "occupation-table",
   title: {
@@ -157,5 +157,3 @@ const occupationTable: GlossaryTableBlock = {
     ],
   },
 };
-
-export default occupationTable;

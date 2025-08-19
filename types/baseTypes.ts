@@ -38,6 +38,7 @@ export interface CommonRows {
   accusativeShort?: string;
   accusativeFull?: string;
 }
+
 export interface CommonWords {
   land?: string;
   nationality?: string;

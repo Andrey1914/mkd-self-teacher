@@ -3,7 +3,7 @@ import { PronounTableProps } from "@/types";
 import { formatText } from "@/utils";
 import { styles } from "./styles";
 
-const PronounTable = ({ data }: { data: PronounTableProps }) => {
+export const PronounTable = ({ data }: { data: PronounTableProps }) => {
   const { content } = data;
 
   const { dativeHeader, accusativeHeader } = content;
@@ -79,5 +79,3 @@ const PronounTable = ({ data }: { data: PronounTableProps }) => {
     </div>
   );
 };
-
-export default PronounTable;

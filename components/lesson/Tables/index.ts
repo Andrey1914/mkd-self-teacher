@@ -1,9 +1,9 @@
-export { default as AlphabetTable } from "./AlphabetTable";
-export { default as CountriesNationalitiesTable } from "./CountriesNationalities";
-export { default as GrammarTable } from "./GrammarTable";
-export { default as ExamplesTable } from "./ExemplesTable";
-export { default as ConjugationTable } from "./ConjugationTable";
-export { default as AdjectivesTable } from "./AdjectivesTable";
-export { default as NumeralsTable } from "./NumeralsTable";
-export { default as GlossaryTable } from "./GlossaryTable";
-export { default as PronounTable } from "./PronounTable";
+export { AlphabetTable } from "./AlphabetTable";
+export { CountriesNationalitiesTable } from "./CountriesNationalities";
+export { GrammarTable } from "./GrammarTable";
+export { ExamplesTable } from "./ExemplesTable";
+export { ConjugationTable } from "./ConjugationTable";
+export { AdjectivesTable } from "./AdjectivesTable";
+export { NumeralsTable } from "./NumeralsTable";
+export { GlossaryTable } from "./GlossaryTable";
+export { PronounTable } from "./PronounTable";

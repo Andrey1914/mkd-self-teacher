@@ -6,7 +6,7 @@ interface Props {
   data: AdjectivesTableBlock;
 }
 
-export default function AdjectivesTable({ data }: Props) {
+export const AdjectivesTable = ({ data }: Props) => {
   const content = data.content;
 
   if (
@@ -66,4 +66,4 @@ export default function AdjectivesTable({ data }: Props) {
       </table>
     </div>
   );
-}
+};

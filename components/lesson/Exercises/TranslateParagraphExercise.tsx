@@ -5,11 +5,11 @@ import { formatText, normalizeAnswer } from "@/utils";
 import styles from "@/app/page.module.css";
 import type { ParagraphExerciseProps } from "@/types/exerciseParagraphTypes";
 
-export default function TranslateParagraphExercise({
+export const TranslateParagraphExercise = ({
   data,
 }: {
   data: ParagraphExerciseProps;
-}) {
+}) => {
   const section = data.sections[0];
   const correctAnswer = section.content.answer[0];
 
@@ -184,4 +184,4 @@ export default function TranslateParagraphExercise({
       </div>
     </section>
   );
-}
+};
