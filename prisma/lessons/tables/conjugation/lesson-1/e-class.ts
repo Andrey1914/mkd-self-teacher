@@ -3,9 +3,8 @@ import { ConjugationTableSection } from "@/types/conjugationTypes";
 const eClass: ConjugationTableSection = {
   type: `e-class`,
   subtitle: [`СПРЯЖЕНИЕ ГЛАГОЛОВ E-КЛАССА`],
-  text: [
-    `<span>ја́де</span> есть, <span>живе́е</span> жить, <span>вли́јае</span> влиять, <span>пи́е</span> пить, <span>пцу́е</span> ругать, материться`,
-  ],
+  text: `<span>ја́де</span> есть, <span>живе́е</span> жить, <span>вли́јае</span> влиять, <span>пи́е</span> пить, <span>пцу́е</span> ругать, материться`,
+
   content: {
     words: [
       {

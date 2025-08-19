@@ -12,7 +12,6 @@ import { BaseProps, CommonContent } from "@/types/baseTypes";
 // }
 
 export interface GrammarTableProps extends BaseProps {
-  // slug?: string;
   type: string;
   // category?: string;
   title?: string[];

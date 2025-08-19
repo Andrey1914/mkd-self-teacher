@@ -1,4 +1,5 @@
 import { CommonWords } from "@/types";
+// for fix
 // export interface ConjugationSimpleRow {
 //   person: string;
 //   forms: string[];
@@ -25,7 +26,7 @@ export interface ConjugationTableSection {
   title?: string | string[];
   table?: true;
   subtitle?: string[];
-  text?: string[];
+  text?: string;
   content: ConjugationContent;
 
   data?: Partial<ConjugationTableSection>;

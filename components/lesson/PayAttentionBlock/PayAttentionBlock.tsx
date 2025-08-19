@@ -3,7 +3,7 @@ import { PayAttentionBlockProps } from "@/types/payAttantionTypes";
 import { formatText } from "@/utils";
 
 export function PayAttentionBlock({ data }: { data: PayAttentionBlockProps }) {
-  if (!data.sections || !data.sections.length) return null;
+  if (!data.sections || !data.sections) return null;
 
   return (
     <>
@@ -32,7 +32,7 @@ export function PayAttentionBlock({ data }: { data: PayAttentionBlockProps }) {
                   color: "#994747",
                 }}
               >
-                {section.title?.[0]}
+                {section.title}
               </td>
               <td style={{ padding: "1rem", verticalAlign: "top" }}>
                 <div style={{ color: "#333", textIndent: 0 }}>
