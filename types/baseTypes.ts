@@ -41,4 +41,6 @@ export interface CommonWords {
   singularForm?: string | string[];
   pluralPerson?: string;
   pluralForm?: string | string[];
+  mkd?: string;
+  ru?: string;
 }
