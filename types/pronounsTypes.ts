@@ -7,17 +7,15 @@ export interface PronounTableRow {
 }
 
 export interface PronounTableContent {
-  dativeHeader: string; // Дательный падеж
-  accusativeHeader: string; // Винительный падеж
+  dativeHeader: string; // dative case
+  accusativeHeader: string; // accusative case
   columns: string[]; // Заголовки подформ
   rows: PronounTableRow[];
-  // subtitle: string[];
-  // rows: PronounTableRow[];
 }
 
 export interface PronounTableProps {
   type: string;
-  slug: "lesson-3";
+  slug: string;
   title?: string | string[];
   subtitle?: string[];
   text?: string[];

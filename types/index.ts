@@ -17,3 +17,4 @@ export type { ConjugationTableSection } from "./conjugationTypes";
 export type { GlossaryTableBlock } from "./glossaryTypes";
 export type { PronounTableProps } from "./pronounsTypes";
 export type { ExampleSection } from "./exampleTypes";
+export type { BaseProps, CommonContent } from "./baseTypes";
