@@ -1,6 +1,8 @@
-export type AlphabetTable = {
-  type: string;
-  slug: string;
+import { BaseProps } from "@/types";
+
+export interface AlphabetTable extends BaseProps {
+  // type: string;
+  // slug: string;
   sections: {
     tableEntries: {
       create: Array<{
@@ -12,4 +14,4 @@ export type AlphabetTable = {
       }>;
     };
   }[];
-};
+}
