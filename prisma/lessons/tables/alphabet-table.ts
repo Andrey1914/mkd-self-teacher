@@ -1,6 +1,6 @@
 import { AlphabetTable } from "@/types/alphabetTable";
 
-const alphabetTable: AlphabetTable = {
+export const alphabetTable: AlphabetTable = {
   type: "alphabet-table",
   slug: "lesson-1",
   sections: [
@@ -83,5 +83,3 @@ const alphabetTable: AlphabetTable = {
     },
   ],
 };
-
-export default alphabetTable;

@@ -1,5 +1,5 @@
-export { default as alphabetTable } from "./alphabet-table";
-export { default as countriesNationalitiesTable } from "./countries-nationalities-table";
+export { alphabetTable } from "./alphabet-table";
+export { countriesNationalitiesTable } from "./countries-nationalities-table";
 
 export * as grammarPronouns from "./grammar";
 export * as pronounsTable from "./grammar";

@@ -1,1 +1,1 @@
-export { default as cardinalOrdinalNumeralsTable } from "./cardinal-ordinal-numerals";
+export { cardinalOrdinalNumeralsTable } from "./cardinal-ordinal-numerals";

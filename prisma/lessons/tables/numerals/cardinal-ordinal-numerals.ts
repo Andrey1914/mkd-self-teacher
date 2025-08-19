@@ -1,6 +1,6 @@
 import { NumeralsTableBlock } from "@/types";
 
-const cardinalOrdinalNumeralsTable: NumeralsTableBlock = {
+export const cardinalOrdinalNumeralsTable: NumeralsTableBlock = {
   slug: "lesson-2",
   type: "cardinal-ordinal-numerals-table",
   content: {
@@ -70,5 +70,3 @@ const cardinalOrdinalNumeralsTable: NumeralsTableBlock = {
     ],
   },
 };
-
-export default cardinalOrdinalNumeralsTable;

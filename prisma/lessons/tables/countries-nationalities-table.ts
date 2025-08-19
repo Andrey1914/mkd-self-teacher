@@ -1,6 +1,6 @@
 import { CountriesNationalitiesProps } from "@/types/countriesNationalitiesTypes";
 
-const countriesNationalitiesTable: CountriesNationalitiesProps = {
+export const countriesNationalitiesTable: CountriesNationalitiesProps = {
   type: "countries-nationalities-table",
   title: ["СТРАНЫ И НАЦИОНАЛЬНОСТИ"],
   content: {
@@ -154,5 +154,3 @@ const countriesNationalitiesTable: CountriesNationalitiesProps = {
     ],
   },
 };
-
-export default countriesNationalitiesTable;
