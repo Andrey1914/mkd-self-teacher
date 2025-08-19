@@ -31,4 +31,8 @@ export interface CommonWords {
   land?: string;
   nationality?: string;
   adjective?: string;
+  masculine?: string;
+  feminine?: string;
+  neuter?: string;
+  plural?: string;
 }
