@@ -46,4 +46,7 @@ export interface CommonWords {
   original?: string;
   answer?: string[];
   singular?: string;
+  numbers?: number;
+  cardinal?: string;
+  ordinal?: string;
 }

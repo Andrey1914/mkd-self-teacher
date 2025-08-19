@@ -26,7 +26,6 @@ export default function NumeralsTable({ data }: Props) {
         style={{
           width: "100%",
           borderCollapse: "collapse",
-          //   tableLayout: "fixed",
         }}
       >
         <thead>
