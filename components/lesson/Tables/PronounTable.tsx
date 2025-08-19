@@ -42,7 +42,7 @@ const PronounTable = ({ data }: { data: PronounTableProps }) => {
           </tr>
 
           <tr className={headerRow}>
-            {content.columns.map((col, idx) => (
+            {content.columns?.map((col, idx) => (
               <th
                 key={idx}
                 className={`${headerCell} ${secondRowCell} ${
@@ -55,7 +55,7 @@ const PronounTable = ({ data }: { data: PronounTableProps }) => {
           </tr>
         </thead>
         <tbody>
-          {content.rows.map((row, idx) => (
+          {content.rows?.map((row, idx) => (
             <tr key={idx}>
               <td className={cell}>
                 {formatText(`<span>${row.pronoun}</span>`)}

@@ -1,1 +1,1 @@
-export { default as personalPronounsTable } from "./personal-pronouns";
+export { personalPronounsTable } from "./personal-pronouns";

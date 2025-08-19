@@ -25,8 +25,19 @@ export interface CommonContent {
   subtitle?: string | string[];
   text?: string;
   words?: CommonWords[];
+  rows?: CommonRows[];
+  dativeHeader?: string; // dative case
+  accusativeHeader?: string; // accusative case
+  columns?: string[]; // Заголовки подформ
 }
 
+export interface CommonRows {
+  pronoun?: string;
+  dativeShort?: string;
+  dativeFull?: string;
+  accusativeShort?: string;
+  accusativeFull?: string;
+}
 export interface CommonWords {
   land?: string;
   nationality?: string;
