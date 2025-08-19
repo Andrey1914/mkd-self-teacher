@@ -1,9 +1,9 @@
-export { default as phonetics } from "./phonetics";
-export { default as features } from "./features";
-export { default as accent } from "./accent";
-export { default as exceptions } from "./exeptions";
-export { default as spelling } from "./spelling";
-export { default as explanation } from "./explanation";
+export { phonetics } from "./phonetics";
+export { features } from "./features";
+export { accent } from "./accent";
+export { exceptions } from "./exeptions";
+export { spelling } from "./spelling";
+export { explanation } from "./explanation";
 
 export {
   toBe,

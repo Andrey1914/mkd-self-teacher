@@ -1,9 +1,9 @@
 import { ParagraphSectionsProps } from "@/types";
 
-const neuterNouns: ParagraphSectionsProps = {
+export const neuterNouns: ParagraphSectionsProps = {
   type: "neuter-noun",
   content: {
-    subtitle: ["СУЩЕСТВИТЕЛЬНЫЕ СРЕДНЕГО РОДА"],
+    subtitle: "СУЩЕСТВИТЕЛЬНЫЕ СРЕДНЕГО РОДА",
     text: `Существительные, оканчивающиеся на <span>«-о»</span>, <span>«-це»</span>, <span>«-ште»</span>, <span>«-je»</span>,
     <span>«-ње»</span>, <span>«-ие»</span>, во множественном числе имеют окончание <span>«-а»</span>: <span>е\u0301зеро</span> - <span>е\u0301зера</span>,
     <span>jа\u0301jце</span> - <span>jа\u0301jца</span>, <span>учи\u0301лиште</span> - <span>учи\u0301лишта</span>,
@@ -29,5 +29,3 @@ const neuterNouns: ParagraphSectionsProps = {
     `,
   },
 };
-
-export default neuterNouns;

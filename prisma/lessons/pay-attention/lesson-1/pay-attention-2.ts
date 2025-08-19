@@ -5,7 +5,7 @@ export const payAttention2: PayAttentionBlockProps = {
     {
       type: "pay-attention-2",
       slug: "lesson-1",
-      title: ["ОБРАТИТЕ ВНИМАНИЕ!"],
+      title: "ОБРАТИТЕ ВНИМАНИЕ!",
       content: {
         text: `
         Слова <span>по\u0301вели</span> и <span>пове\u0301лете</span> используются, когда человек даёт что-то другому человеку,

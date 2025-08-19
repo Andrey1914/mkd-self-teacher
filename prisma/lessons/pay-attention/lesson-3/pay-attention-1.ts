@@ -5,7 +5,7 @@ export const payAttention1: PayAttentionBlockProps = {
     {
       type: "pay-attention-1",
       slug: "lesson-3",
-      title: ["ОБРАТИТЕ ВНИМАНИЕ!"],
+      title: "ОБРАТИТЕ ВНИМАНИЕ!",
       content: {
         text: `
         В македонском языке превосходная степень прилагательных и наречий образуется при помощи приставки

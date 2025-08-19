@@ -1,6 +1,6 @@
-export { default as genderOfNouns } from "./gender-of-nouns";
-export { default as pluralOfNouns } from "./plural-of-nouns";
-export { default as feminineNouns } from "./feminine-nouns";
-export { default as masculineNouns } from "./masculine-nouns";
-export { default as neuterNouns } from "./neuter-nouns";
-export { default as countablePlural } from "./countable-plural";
+export { genderOfNouns } from "./gender-of-nouns";
+export { pluralOfNouns } from "./plural-of-nouns";
+export { feminineNouns } from "./feminine-nouns";
+export { masculineNouns } from "./masculine-nouns";
+export { neuterNouns } from "./neuter-nouns";
+export { countablePlural } from "./countable-plural";

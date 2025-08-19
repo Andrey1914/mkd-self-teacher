@@ -12,7 +12,7 @@ import { grammarLesson3 } from "@/prisma/lessons/paragraph";
 //   exercise6,
 //   exercise7,
 //   exercise8,
-// } from "@/prisma/lessons/exercises/lesson-3";
+// } from "@/prisma/lessons/exercises";
 
 const { payAttention1, payAttention2 } = payAttentionsLesson3;
 
@@ -34,6 +34,7 @@ const {
   example9,
   example10,
   example11,
+  example12,
 } = examplesLesson3;
 
 const lesson3 = {
@@ -65,6 +66,7 @@ const lesson3 = {
     { ...example9, slug: "lesson-3" },
     { ...example10, slug: "lesson-3" },
     { ...example11, slug: "lesson-3" },
+    { ...example12, slug: "lesson-3" },
 
     // {
     //   title: personalPronounsTable.title || "personal-pronouns-table",

@@ -1,8 +1,8 @@
 import { ParagraphSectionsProps } from "@/types";
 
-const exceptions: ParagraphSectionsProps = {
+export const exceptions: ParagraphSectionsProps = {
   type: "exceptions",
-  title: ["ИСКЛЮЧЕНИЯ"],
+  title: "ИСКЛЮЧЕНИЯ",
   content: {
     text: `
       Двусложный предлог + полная форма местоимения: <span>покра\u0301j нас</span> [покра\u0301й_нас] «мимо нас», по аналогии с
@@ -16,5 +16,3 @@ const exceptions: ParagraphSectionsProps = {
       `.trim(),
   },
 };
-
-export default exceptions;

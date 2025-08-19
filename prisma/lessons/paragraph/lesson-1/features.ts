@@ -1,8 +1,8 @@
 import { ParagraphSectionsProps } from "@/types";
 
-const features: ParagraphSectionsProps = {
+export const features: ParagraphSectionsProps = {
   type: "features",
-  title: ["ОСОБЕННОСТИ ПРОИЗНОШЕНИЯ"],
+  title: "ОСОБЕННОСТИ ПРОИЗНОШЕНИЯ",
   content: {
     text: `
       Согласные перед <span>«и», «е»</span> практически не смягчаются и произносятся намного тверже, чем в русском языке: 
@@ -22,5 +22,3 @@ const features: ParagraphSectionsProps = {
       `.trim(),
   },
 };
-
-export default features;

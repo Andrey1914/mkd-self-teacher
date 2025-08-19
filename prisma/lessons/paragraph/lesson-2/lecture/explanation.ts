@@ -1,6 +1,6 @@
 import { ParagraphSectionsProps } from "@/types";
 
-const explanation: ParagraphSectionsProps = {
+export const explanation: ParagraphSectionsProps = {
   type: "explanation",
   content: {
     text: `
@@ -12,5 +12,3 @@ const explanation: ParagraphSectionsProps = {
       `.trim(),
   },
 };
-
-export default explanation;

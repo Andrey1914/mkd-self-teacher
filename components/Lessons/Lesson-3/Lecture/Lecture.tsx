@@ -31,6 +31,7 @@ const {
   example9,
   example10,
   example11,
+  example12,
 } = lesson3;
 const { payAttention1, payAttention2 } = payAttentionsLesson3;
 
@@ -56,6 +57,7 @@ export const Lecture = () => {
       <ExamplesTable data={example10} />
       <ExamplesTable data={example11} />
       <Paragraph data={needVerb} />
+      <ExamplesTable data={example12} />
     </>
   );
 };

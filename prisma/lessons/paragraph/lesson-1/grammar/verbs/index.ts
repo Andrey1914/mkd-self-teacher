@@ -1,3 +1,3 @@
-export { default as toBe } from "./to-be";
-export { default as verbType } from "./verb-type";
-export { default as verbConjugation } from "./verb-conjugation";
+export { toBe } from "./to-be";
+export { verbType } from "./verb-type";
+export { verbConjugation } from "./verb-conjugation";

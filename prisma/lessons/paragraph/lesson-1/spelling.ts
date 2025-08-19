@@ -1,8 +1,8 @@
 import { ParagraphSectionsProps } from "@/types";
 
-const spelling: ParagraphSectionsProps = {
+export const spelling: ParagraphSectionsProps = {
   type: "spelling",
-  title: ["ПРАВОПИСАНИЕ"],
+  title: "ПРАВОПИСАНИЕ",
   content: {
     text: `
       Считается, что в македонском языкедействует фонетический принцип письма (слова пишутся так, как произносятся), но на самом деле
@@ -24,5 +24,3 @@ const spelling: ParagraphSectionsProps = {
       `.trim(),
   },
 };
-
-export default spelling;

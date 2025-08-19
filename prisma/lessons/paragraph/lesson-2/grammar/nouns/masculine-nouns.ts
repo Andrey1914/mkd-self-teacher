@@ -1,9 +1,9 @@
 import { ParagraphSectionsProps } from "@/types";
 
-const masculineNouns: ParagraphSectionsProps = {
+export const masculineNouns: ParagraphSectionsProps = {
   type: "masculine-noun",
   content: {
-    subtitle: ["СУЩЕСТВИТЕЛЬНЫЕ МУЖСКОГО РОДА"],
+    subtitle: "СУЩЕСТВИТЕЛЬНЫЕ МУЖСКОГО РОДА",
     text: `Если односложное существительное оканчивается на <span>«ч»</span>, <span>«ж»</span>, <span>«ш»</span>, <span>«j»</span>,
     то во множественном числе скорее всего будет окончание <span>«-еви»</span> (это тенденция, а не жесткое правило):
     <span>клу\u0301ч</span> - <span>клу\u0301чеви</span>, <span>бро\u0301j</span> - <span>бро\u0301еви</span> (но <span>па\u0301ж</span> - <span>пажо\u0301ви</span>).
@@ -60,5 +60,3 @@ const masculineNouns: ParagraphSectionsProps = {
     `,
   },
 };
-
-export default masculineNouns;

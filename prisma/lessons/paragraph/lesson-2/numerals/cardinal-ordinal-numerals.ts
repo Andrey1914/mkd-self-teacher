@@ -1,8 +1,8 @@
 import { ParagraphSectionsProps } from "@/types";
 
-const cardinalOrdinalNumerals: ParagraphSectionsProps = {
+export const cardinalOrdinalNumerals: ParagraphSectionsProps = {
   type: "cardinal-ordinal-numerals",
-  subtitle: ["КОЛИЧЕСТВЕННЫЕ И ПОРЯДКОВЫЕ ЧИСЛИТЕЛЬНЫЕ"],
+  subtitle: "КОЛИЧЕСТВЕННЫЕ И ПОРЯДКОВЫЕ ЧИСЛИТЕЛЬНЫЕ",
   content: {
     text: `Количественные числительные обозначают количество предметов (<span>е́ден, два, три...</span>), а порядковые указывают их 
     порядковый номер в некоторой последовательности (<span>прв, втор, трет...</span>). Единицы отделяются от десятков/сотен союзом
@@ -29,5 +29,3 @@ const cardinalOrdinalNumerals: ParagraphSectionsProps = {
     `,
   },
 };
-
-export default cardinalOrdinalNumerals;

@@ -1,8 +1,8 @@
 import { ParagraphSectionsProps } from "@/types";
 
-const accent: ParagraphSectionsProps = {
+export const accent: ParagraphSectionsProps = {
   type: "accent",
-  title: ["УДАРЕНИЕ"],
+  title: "УДАРЕНИЕ",
   content: {
     text: `
       В македонском языке ударение фиксированное - на третьем слоге от конца: <span>у\u0301чебник, уче\u0301бници</span>.
@@ -57,5 +57,3 @@ const accent: ParagraphSectionsProps = {
       Знаменательная часть речи + клитика + знаменательная часть речи: <span>три\u0301 и пол</span> [три\u0301_и_пол] «три с половиной».`.trim(),
   },
 };
-
-export default accent;
