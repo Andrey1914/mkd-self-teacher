@@ -1,4 +1,5 @@
 import { CommonWords } from "@/types";
+// for fix
 // export interface ConjugationSimpleRow {
 //   person: string;
 //   forms: string[];
