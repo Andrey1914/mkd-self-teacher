@@ -60,4 +60,5 @@ export interface CommonWords {
   numbers?: number;
   cardinal?: string;
   ordinal?: string;
+  pron?: string;
 }
