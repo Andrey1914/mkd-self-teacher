@@ -5,16 +5,17 @@ export interface AdjectivesTableBlock extends BaseProps {
   // category?: string;
   // title?: string;
   // subtitle?: string;
-  content: AdjectiveContent;
+  // content: AdjectiveContent;
+  content: CommonContent;
 
   data?: Partial<AdjectivesTableBlock>;
 }
 
-export interface AdjectiveContent {
-  // subtitle: string[];
-  // words: AdjectiveWords[];
-  words: CommonContent[];
-}
+// export interface AdjectiveContent {
+//   // subtitle: string[];
+//   // words: AdjectiveWords[];
+//   words: CommonContent[];
+// }
 
 // export interface AdjectiveWords {
 //   masculine: string;
