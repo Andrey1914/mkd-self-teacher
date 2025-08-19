@@ -1,6 +1,6 @@
 import { ParagraphSectionsProps } from "@/types";
 
-const genderNumberPronominalText: ParagraphSectionsProps = {
+export const genderNumberPronominalText: ParagraphSectionsProps = {
   type: "text-adjectives",
   content: {
     text: `Подавляющее большинство прилагательных и местоименных прилагательных меняется как прилагательное <span>но\u0301в</span>, при 
@@ -28,5 +28,3 @@ const genderNumberPronominalText: ParagraphSectionsProps = {
     `,
   },
 };
-
-export default genderNumberPronominalText;

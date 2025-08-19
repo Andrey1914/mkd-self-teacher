@@ -1,11 +1,11 @@
 import { ParagraphSectionsProps } from "@/types";
 
-const genderOfNouns: ParagraphSectionsProps = {
+export const genderOfNouns: ParagraphSectionsProps = {
   type: "gender-of-noun",
   title: ["ГРАММАТИКА", "<span>ГРАМАТИКА</span>"],
-  subtitle: ["ИМЯ СУЩЕСТВИТЕЛЬНОЕ"],
+  subtitle: "ИМЯ СУЩЕСТВИТЕЛЬНОЕ",
   content: {
-    subtitle: ["РОД ИМЁН СУЩЕСТВИТЕЛЬНЫХ"],
+    subtitle: "РОД ИМЁН СУЩЕСТВИТЕЛЬНЫХ",
     text: `Как и в русском языке, в македонском существительные делятся на существительные мужского, женского и среднего рода.
     Большинство существительных мужского рода оканчиваются на согласный: <span>брат</span>. К мужскому роду относятся существительные
     на <span>«-а»</span>, <span>«-о»</span>, <span>«-е»</span>, <span>«-у»</span>, <span>«-и»</span>, обозначающие лиц мужского пола:
@@ -33,5 +33,3 @@ const genderOfNouns: ParagraphSectionsProps = {
     рода, а другой женского.`,
   },
 };
-
-export default genderOfNouns;

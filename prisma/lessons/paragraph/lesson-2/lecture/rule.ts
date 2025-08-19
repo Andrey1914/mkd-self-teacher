@@ -1,6 +1,6 @@
 import { ParagraphSectionsProps } from "@/types";
 
-const ruleAfterDialogue: ParagraphSectionsProps = {
+export const ruleAfterDialogue: ParagraphSectionsProps = {
   type: "lecture",
   content: {
     text: `В македонском языке будущее время образуется при помощи частицы <span>к\u0301е</span>
@@ -13,5 +13,3 @@ const ruleAfterDialogue: ParagraphSectionsProps = {
     <span>мно\u0301гу то\u0301пло</span>, даже если на улице +45 \u00B0C.`,
   },
 };
-
-export default ruleAfterDialogue;

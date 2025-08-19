@@ -303,6 +303,7 @@ async function main() {
           for (const block of lesson.payAttention ?? []) {
             const slug = block.sections?.[0]?.slug ?? "";
             const type = block.sections?.[0]?.type ?? "";
+            const rawTitle = block.sections?.[0]?.title;
             const contentText = block.sections?.[0]?.content?.text ?? "";
 
             if (!slug || !type) {
@@ -314,16 +315,25 @@ async function main() {
               continue;
             }
 
+            const title: string = rawTitle || type || "Без названия";
+
             const exists = await tx.payAttentionBlock.findFirst({
               where: {
                 type,
                 lessonId,
+              },
+              select: {
+                id: true,
+                content: true,
+                slug: true,
+                type: true,
               },
             });
 
             const contentObject = { text: contentText };
 
             if (exists) {
+              // const existingTitle = exists.title || "";
               const existingText =
                 typeof exists.content === "object" &&
                 exists.content !== null &&
@@ -332,10 +342,13 @@ async function main() {
                   ? (exists.content as { text: string }).text
                   : "";
 
+              // const isTitleDifferent = existingTitle !== title;
+
               if (existingText !== contentText) {
                 await tx.payAttentionBlock.update({
                   where: { id: exists.id },
                   data: {
+                    title,
                     content: contentObject,
                     slug,
                   },
@@ -354,6 +367,7 @@ async function main() {
                 data: {
                   slug,
                   type,
+                  title,
                   content: contentObject,
                   lessonId,
                 },

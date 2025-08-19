@@ -1,7 +1,7 @@
 import { alphabetTable } from "@/prisma/lessons/tables";
 import { ParagraphSectionsProps } from "@/types";
 
-const phonetics: ParagraphSectionsProps = {
+export const phonetics: ParagraphSectionsProps = {
   type: "phonetics",
   title: ["ФОНЕТИКА", "<span>ФОНЕТИКА</span>"],
   content: {
@@ -21,5 +21,3 @@ const phonetics: ParagraphSectionsProps = {
   },
   ...alphabetTable.sections[0],
 };
-
-export default phonetics;

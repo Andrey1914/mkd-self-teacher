@@ -5,7 +5,7 @@ export const payAttention1: PayAttentionBlockProps = {
     {
       type: "pay-attention-1",
       slug: "lesson-1",
-      title: ["ОБРАТИТЕ ВНИМАНИЕ!"],
+      title: "ОБРАТИТЕ ВНИМАНИЕ!",
       content: {
         text: `
         В македонском языке есть определенный артикль, который присоединяется к существительному или его оприделению:

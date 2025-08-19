@@ -5,7 +5,7 @@ export const payAttention2: PayAttentionBlockProps = {
     {
       type: "pay-attention-2",
       slug: "lesson-3",
-      title: ["ОБРАТИТЕ ВНИМАНИЕ!"],
+      title: "ОБРАТИТЕ ВНИМАНИЕ!",
       content: {
         text: `
         В македонском языке жёсткий порядок частиц: 1) отрицательная частица <span>не</span>, 2) показатель будущего времени

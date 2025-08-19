@@ -1,13 +1,11 @@
 import { ParagraphSectionsProps } from "@/types";
 
-const negation: ParagraphSectionsProps = {
+export const negation: ParagraphSectionsProps = {
   type: `grammar`,
-  title: [`ОТРИЦАНИЕ`],
+  title: `ОТРИЦАНИЕ`,
   content: {
     text: `В македонском языке отрицание практически всегда стоит перед глаголом. Например, предложение «Никола живет не здесь.» на 
       македонский язык следует перевести так: <span>Никола не живее тука</span>. В предложениях с опущенным глаголом, отрицание может
       стоять перед другой частью речи: <span>Живееш тука? - Не, не тука.</span> «Ты живешь здесь? - Нет, не здесь.»`,
   },
 };
-
-export default negation;

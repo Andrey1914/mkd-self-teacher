@@ -1,9 +1,9 @@
 import { ParagraphSectionsProps } from "@/types";
 
-const countablePlural: ParagraphSectionsProps = {
+export const countablePlural: ParagraphSectionsProps = {
   type: "countable-plural",
   content: {
-    subtitle: ["СЧЁТНОЕ МНОЖЕСТВЕННОЕ"],
+    subtitle: "СЧЁТНОЕ МНОЖЕСТВЕННОЕ",
     text: `Если числительное употребляется с существительным мужского рода, то это существительное может стоять в счётной форме, которая
     образуется прибавлением окончания <span>«-а»</span> к основе единственного числа: <span>фи\u0301лм</span> - <span>два фи\u0301лма</span>,
     <span>а\u0301втобус</span> - <span>два авто\u0301буса</span>. Форма обычного множественного числа также возможна. Счётная форма более
@@ -15,5 +15,3 @@ const countablePlural: ParagraphSectionsProps = {
     `,
   },
 };
-
-export default countablePlural;

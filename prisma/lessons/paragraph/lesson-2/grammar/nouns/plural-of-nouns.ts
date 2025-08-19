@@ -1,10 +1,10 @@
 import { ParagraphSectionsProps } from "@/types";
 
-const pluralOfNouns: ParagraphSectionsProps = {
+export const pluralOfNouns: ParagraphSectionsProps = {
   type: "plural-of-noun",
-  subtitle: ["МНОЖЕСТВЕННОЕ ЧИСЛО ИМЁН СУЩЕСТВИТЕЛЬНЫХ"],
+  subtitle: "МНОЖЕСТВЕННОЕ ЧИСЛО ИМЁН СУЩЕСТВИТЕЛЬНЫХ",
   content: {
-    subtitle: ["ПРОСТОЕ МНОЖЕСТВЕННОЕ ЧИСЛО"],
+    subtitle: "ПРОСТОЕ МНОЖЕСТВЕННОЕ ЧИСЛО",
     text: `Некоторые существительные имеют или только форму единственного числа, или только множественного: <span>И\u0301нтернет</span>,
     <span>во\u0301лjа</span>, <span>панта\u0301лони</span>.
 
@@ -12,5 +12,3 @@ const pluralOfNouns: ParagraphSectionsProps = {
     `,
   },
 };
-
-export default pluralOfNouns;

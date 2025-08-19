@@ -1,6 +1,6 @@
 import { ParagraphSectionsProps } from "@/types";
 
-const finalPartCardinalOrdinalNumerals: ParagraphSectionsProps = {
+export const finalPartCardinalOrdinalNumerals: ParagraphSectionsProps = {
   type: "final-part-cardinal-ordinal-numerals",
   content: {
     text: `Порядковые числительные с элементом <span>«-стоти»</span> и <span>«-илjадит»</span> обычно используются, когда речь идёт 
@@ -19,5 +19,3 @@ const finalPartCardinalOrdinalNumerals: ParagraphSectionsProps = {
     `,
   },
 };
-
-export default finalPartCardinalOrdinalNumerals;

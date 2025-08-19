@@ -3,7 +3,7 @@ import { ParagraphSectionsProps } from "@/types";
 export const personalPronouns: ParagraphSectionsProps = {
   type: "personal-pronouns",
   title: ["ГРАММАТИКА", "<span>ГРАМАТИКА</span>"],
-  subtitle: ["ЛИЧНЫЕ МЕСТОИМЕНИЯ"],
+  subtitle: "ЛИЧНЫЕ МЕСТОИМЕНИЯ",
   content: {
     text: `
     В македонском языке у личных местоимений <span>јас</span>, <span>ти</span>, <span>тој</span>, <span>то\u0301а</span>,
