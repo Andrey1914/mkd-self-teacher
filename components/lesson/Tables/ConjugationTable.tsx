@@ -57,7 +57,7 @@ const ConjugationTable = ({ data }: { data: ConjugationTableSection }) => {
                   >
                     {formatText(row.person)}
                   </td>
-                  {row.forms.map((form, formIdx) => (
+                  {row.forms?.map((form, formIdx) => (
                     <td
                       key={formIdx}
                       style={{

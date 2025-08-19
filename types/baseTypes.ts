@@ -35,4 +35,10 @@ export interface CommonWords {
   feminine?: string;
   neuter?: string;
   plural?: string;
+  person?: string;
+  forms?: string[];
+  singularPerson?: string;
+  singularForm?: string | string[];
+  pluralPerson?: string;
+  pluralForm?: string | string[];
 }
