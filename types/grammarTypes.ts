@@ -1,22 +1,25 @@
-export interface GrammarRow {
-  persone: string;
-  singular: string;
-  plural: string;
-}
+import { BaseProps, CommonContent } from "@/types/baseTypes";
 
-export interface GrammarContent {
-  subtitle?: string[];
-  words: GrammarRow[];
-}
+// export interface GrammarRow {
+//   person: string;
+//   singular: string;
+//   plural: string;
+// }
 
-export interface GrammarTableProps {
-  slug?: string;
+// export interface GrammarContent {
+//   subtitle?: string[];
+//   words: GrammarRow[];
+// }
+
+export interface GrammarTableProps extends BaseProps {
+  // slug?: string;
   type: string;
-  category?: string;
+  // category?: string;
   title?: string[];
-  subtitle?: string[];
-  text?: string[];
-  content: GrammarContent;
+  // subtitle?: string[];
+  // text?: string[];
+  // content: GrammarContent;
+  content: CommonContent;
 
   data?: Partial<GrammarTableProps>;
 }

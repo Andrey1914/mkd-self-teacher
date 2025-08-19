@@ -23,7 +23,7 @@ export interface CommonProps {
 
 export interface CommonContent {
   subtitle?: string | string[];
-  text?: string;
+  text?: string | string[];
   words?: CommonWords[];
 }
 
@@ -45,4 +45,5 @@ export interface CommonWords {
   ru?: string;
   original?: string;
   answer?: string[];
+  singular?: string;
 }

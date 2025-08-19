@@ -30,7 +30,7 @@ const GrammarTable = ({ data }: { data: GrammarTableProps }) => {
         </>
       )}
 
-      {content?.words?.length > 0 && (
+      {content.words?.length && (
         <table
           style={{
             width: "100%",
@@ -64,7 +64,7 @@ const GrammarTable = ({ data }: { data: GrammarTableProps }) => {
             </thead>
           )}
           <tbody>
-            {content.words.map((row, idx) => (
+            {content.words?.map((row, idx) => (
               <tr key={idx}>
                 <td
                   style={{
@@ -74,7 +74,7 @@ const GrammarTable = ({ data }: { data: GrammarTableProps }) => {
                     border: "1px solid #994747",
                   }}
                 >
-                  {formatText(row.persone)}
+                  {formatText(row.person)}
                 </td>
                 <td
                   style={{
