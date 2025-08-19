@@ -5,7 +5,7 @@ export interface CountriesNationalitiesProps extends BaseProps {
   // slug?: string;
   type: string;
   // category?: string;
-  // title: string[];
+  title: string[];
   // subtitle?: string;
   content: CommonContent;
   // content: {
