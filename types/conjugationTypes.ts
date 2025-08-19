@@ -1,21 +1,6 @@
 import { CommonWords } from "@/types";
-// for fix
-// export interface ConjugationSimpleRow {
-//   person: string;
-//   forms: string[];
-// }
-
-// export interface ConjugationPairRow {
-//   singularPerson: string;
-//   singularForm: string | string[];
-//   pluralPerson: string;
-//   pluralForm: string | string[];
-// }
-
-// export type ConjugationRow = ConjugationSimpleRow | ConjugationPairRow;
 
 export interface ConjugationContent {
-  // words: ConjugationRow[];
   words: CommonWords[];
 }
 
