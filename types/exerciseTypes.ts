@@ -1,7 +1,6 @@
 import { BaseProps } from "@/types";
 
 export interface StaticExerciseData extends BaseProps {
-  // type?: string;
   title?: string;
   slug: string;
   sections: {
@@ -15,7 +14,6 @@ export interface StaticExerciseData extends BaseProps {
 }
 
 export interface FillInExerciseData extends BaseProps {
-  // type?: string;
   title: string;
   slug: string;
   sections: {
