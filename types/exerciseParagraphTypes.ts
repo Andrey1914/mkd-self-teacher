@@ -1,4 +1,4 @@
-export type ParagraphExerciseProps = {
+export interface ParagraphExerciseProps {
   type?: string;
   title: string;
   slug: string;
@@ -10,4 +10,4 @@ export type ParagraphExerciseProps = {
       answer: string[];
     };
   }[];
-};
+}

@@ -43,4 +43,6 @@ export interface CommonWords {
   pluralForm?: string | string[];
   mkd?: string;
   ru?: string;
+  original?: string;
+  answer?: string[];
 }

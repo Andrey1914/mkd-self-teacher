@@ -1,5 +1,7 @@
-export interface StaticExerciseData {
-  type?: string;
+import { BaseProps } from "@/types";
+
+export interface StaticExerciseData extends BaseProps {
+  // type?: string;
   title?: string;
   slug: string;
   sections: {
@@ -12,8 +14,8 @@ export interface StaticExerciseData {
   }[];
 }
 
-export interface FillInExerciseData {
-  type?: string;
+export interface FillInExerciseData extends BaseProps {
+  // type?: string;
   title: string;
   slug: string;
   sections: {
