@@ -5,7 +5,7 @@ import {
   DialogueBlockProps,
   ParagraphSectionsProps,
   GrammarTableProps,
-  CountriesNationalitiesProps,
+  // CountriesNationalitiesProps,
   StaticExerciseData,
   FillInExerciseData,
   ParagraphExerciseProps,
@@ -30,7 +30,7 @@ export type ExerciseType =
 
 export type TableBlockData =
   | GrammarTableProps
-  | CountriesNationalitiesProps
+  // | CountriesNationalitiesProps
   // | ConjugationTableSection
   // | AdjectivesTableBlock
   | NumeralsTableBlock

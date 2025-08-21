@@ -1,6 +1,7 @@
-import { ExampleSection } from "@/types";
+// import { ExampleSection } from "@/types";
+import { TablesProps } from "@/types";
 
-export const example2: ExampleSection = {
+export const example2: TablesProps = {
   slug: "lesson-3",
   type: "example-2",
   content: {

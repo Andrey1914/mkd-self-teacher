@@ -1,8 +1,10 @@
 import React from "react";
-import { ExampleSection } from "@/types";
+// import { ExampleSection } from "@/types";
+import { TablesProps } from "@/types";
 import { formatText } from "@/utils";
 
-export const ExamplesTable = ({ data }: { data: ExampleSection }) => {
+// export const ExamplesTable = ({ data }: { data: ExampleSection }) => {
+export const ExamplesTable = ({ data }: { data: TablesProps }) => {
   const { subtitle, content } = data;
 
   const renderTextParagraphs = (text: string | string[]) => {
@@ -43,7 +45,15 @@ export const ExamplesTable = ({ data }: { data: ExampleSection }) => {
             : formatText(subtitle)}
         </h3>
       )}
-      <div>{content.subtitle && <h4>{formatText(content.subtitle)}</h4>}</div>
+      <div>
+        {content.subtitle && (
+          <h4>
+            {Array.isArray(content.subtitle)
+              ? formatText(content.subtitle.join(", "))
+              : formatText(content.subtitle)}
+          </h4>
+        )}
+      </div>
       <div>{content.text && <>{renderTextParagraphs(content.text)}</>}</div>
       <div
         style={{
