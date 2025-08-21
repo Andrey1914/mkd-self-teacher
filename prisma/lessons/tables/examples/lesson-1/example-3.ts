@@ -1,6 +1,8 @@
-import { ExampleSection } from "@/types/exampleTypes";
+// import { ExampleSection } from "@/types/exampleTypes";
+import { TablesProps } from "@/types";
 
-export const example3: ExampleSection = {
+// export const example3: ExampleSection = {
+export const example3: TablesProps = {
   slug: "lesson-1",
   type: "example-3",
   subtitle: `ВОПРОСИТЕЛЬНЫЕ ПРЕДЛОЖЕНИЯ`,

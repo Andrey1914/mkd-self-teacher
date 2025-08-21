@@ -1,11 +1,13 @@
 import React from "react";
-import { CountriesNationalitiesProps } from "@/types/countriesNationalitiesTypes";
+// import { CountriesNationalitiesProps } from "@/types/countriesNationalitiesTypes";
+import { TablesProps } from "@/types";
 import { formatText } from "@/utils";
 
 export const CountriesNationalitiesTable = ({
   data,
 }: {
-  data: CountriesNationalitiesProps;
+  // data: CountriesNationalitiesProps;
+  data: TablesProps;
 }) => {
   if (
     !Array.isArray(data.content?.subtitle) ||
