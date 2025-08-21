@@ -9,11 +9,12 @@ import {
   StaticExerciseData,
   FillInExerciseData,
   ParagraphExerciseProps,
-  AdjectivesTableBlock,
+  // AdjectivesTableBlock,
   NumeralsTableBlock,
   ConjugationTableSection,
   GlossaryTableBlock,
   PronounTableProps,
+  TablesProps,
 } from "@/types";
 
 export interface GlossaryEntryData {
@@ -31,10 +32,11 @@ export type TableBlockData =
   | GrammarTableProps
   | CountriesNationalitiesProps
   | ConjugationTableSection
-  | AdjectivesTableBlock
+  // | AdjectivesTableBlock
   | NumeralsTableBlock
   | GlossaryTableBlock
-  | PronounTableProps;
+  | PronounTableProps
+  | TablesProps;
 
 export interface LessonData {
   slug: string;

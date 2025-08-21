@@ -1,1 +1,1 @@
-export { default as genderNumberPronominalOfAdjectives } from "./gender-number-pronominal";
+export { genderNumberPronominalOfAdjectives } from "./gender-number-pronominal";

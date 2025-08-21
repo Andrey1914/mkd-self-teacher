@@ -1,6 +1,8 @@
-import { AdjectivesTableBlock } from "@/types";
+// import { AdjectivesTableBlock } from "@/types";
+import { TablesProps } from "@/types";
 
-const genderNumberPronominalOfAdjectives: AdjectivesTableBlock = {
+// export const genderNumberPronominalOfAdjectives: AdjectivesTableBlock = {
+export const genderNumberPronominalOfAdjectives: TablesProps = {
   slug: "lesson-2",
   type: "gender-number-pronominal-of-adjectives",
   content: {
@@ -140,5 +142,3 @@ const genderNumberPronominalOfAdjectives: AdjectivesTableBlock = {
     ],
   },
 };
-
-export default genderNumberPronominalOfAdjectives;
