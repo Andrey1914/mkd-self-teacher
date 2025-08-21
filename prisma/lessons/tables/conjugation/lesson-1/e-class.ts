@@ -1,10 +1,11 @@
-import { ConjugationTableSection } from "@/types/conjugationTypes";
+// import { ConjugationTableSection } from "@/types/conjugationTypes";
+import { TablesProps } from "@/types";
 
-export const eClass: ConjugationTableSection = {
+// export const eClass: ConjugationTableSection = {
+export const eClass: TablesProps = {
   type: `e-class`,
   subtitle: [`СПРЯЖЕНИЕ ГЛАГОЛОВ E-КЛАССА`],
   text: `<span>ја́де</span> есть, <span>живе́е</span> жить, <span>вли́јае</span> влиять, <span>пи́е</span> пить, <span>пцу́е</span> ругать, материться`,
-
   content: {
     words: [
       {
