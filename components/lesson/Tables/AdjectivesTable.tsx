@@ -1,9 +1,11 @@
 import React from "react";
-import type { AdjectivesTableBlock } from "@/types";
+// import type { AdjectivesTableBlock } from "@/types";
+import type { TablesProps } from "@/types";
 import { formatText } from "@/utils";
 
 interface Props {
-  data: AdjectivesTableBlock;
+  // data: AdjectivesTableBlock;
+  data: TablesProps;
 }
 
 export const AdjectivesTable = ({ data }: Props) => {

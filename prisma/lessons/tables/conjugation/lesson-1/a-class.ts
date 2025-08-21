@@ -1,6 +1,6 @@
 import { ConjugationTableSection } from "@/types/conjugationTypes";
 
-const aClass: ConjugationTableSection = {
+export const aClass: ConjugationTableSection = {
   type: "a-class",
   subtitle: ["СПРЯЖЕНИЕ ГЛАГОЛОВ A-КЛАССА"],
   text: "<span>cе в\u0301ика</span> называться",
@@ -27,5 +27,3 @@ const aClass: ConjugationTableSection = {
     ],
   },
 };
-
-export default aClass;

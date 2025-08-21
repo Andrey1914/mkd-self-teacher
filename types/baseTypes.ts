@@ -39,27 +39,48 @@ export interface CommonRows {
   accusativeFull?: string;
 }
 
-export interface CommonWords {
+// Страны и национальности
+export interface CountryProps {
   land?: string;
   nationality?: string;
   adjective?: string;
+}
+
+// Род (для прилагательных, местоимений)
+export interface GenderProps {
   masculine?: string;
   feminine?: string;
-  neuter?: string;
+  neuter: string;
   plural?: string;
+}
+
+// Лицо (для глаголов и местоимений)
+export interface PersonProps {
   person?: string;
+  singular?: string;
   forms?: string[];
   singularPerson?: string;
   singularForm?: string | string[];
   pluralPerson?: string;
   pluralForm?: string | string[];
+}
+
+// Переводы
+export interface TranslationProps {
   mkd?: string;
   ru?: string;
+  pron?: string;
   original?: string;
   answer?: string[];
-  singular?: string;
+}
+
+// Числа
+export interface NumberProps {
   numbers?: number;
   cardinal?: string;
   ordinal?: string;
-  pron?: string;
 }
+
+export type CommonWords = Partial<
+  CountryProps & GenderProps & PersonProps & TranslationProps & NumberProps
+>;

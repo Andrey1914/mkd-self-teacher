@@ -1,4 +1,4 @@
-export type { AdjectivesTableBlock } from "./adjectiveTypes";
+// export type { AdjectivesTableBlock } from "./adjectiveTypes";
 export type { AlphabetTable } from "./alphabetTable";
 export type { CountriesNationalitiesProps } from "./countriesNationalitiesTypes";
 export type { DialogueBlockProps } from "./dailogueTypes";
@@ -18,3 +18,4 @@ export type { GlossaryTableBlock } from "./glossaryTypes";
 export type { PronounTableProps } from "./pronounsTypes";
 export type { ExampleSection } from "./exampleTypes";
 export type { BaseProps, CommonContent, CommonWords } from "./baseTypes";
+export type { TablesProps } from "./tablesTypes";

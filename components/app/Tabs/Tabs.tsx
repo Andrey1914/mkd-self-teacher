@@ -35,7 +35,7 @@ export const Tabs = ({ tabs, activeIndex, onChange }: TabsProps) => {
                   index === activeIndex
                     ? "2px solid #fff"
                     : "1px solid transparent",
-                padding: "0.5rem 1rem",
+                padding: "0.5rem 0.75rem",
                 color: index === activeIndex ? "#fff" : "#c6b8b8",
                 fontWeight: index === activeIndex ? "700" : "400",
                 cursor: "pointer",

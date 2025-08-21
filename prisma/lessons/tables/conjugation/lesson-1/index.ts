@@ -1,3 +1,3 @@
-export { default as aClass } from "./a-class";
-export { default as eClass } from "./e-class";
-export { default as iClass } from "./i-class";
+export { aClass } from "./a-class";
+export { eClass } from "./e-class";
+export { iClass } from "./i-class";
