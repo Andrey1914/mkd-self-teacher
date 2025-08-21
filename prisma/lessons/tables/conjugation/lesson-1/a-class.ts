@@ -1,6 +1,8 @@
-import { ConjugationTableSection } from "@/types/conjugationTypes";
+// import { ConjugationTableSection } from "@/types/conjugationTypes";
+import { TablesProps } from "@/types";
 
-export const aClass: ConjugationTableSection = {
+// export const aClass: ConjugationTableSection = {
+export const aClass: TablesProps = {
   type: "a-class",
   subtitle: ["СПРЯЖЕНИЕ ГЛАГОЛОВ A-КЛАССА"],
   text: "<span>cе в\u0301ика</span> называться",

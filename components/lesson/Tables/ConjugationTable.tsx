@@ -1,13 +1,15 @@
 "use client";
 
 import React from "react";
-import { ConjugationTableSection } from "@/types/conjugationTypes";
+// import { ConjugationTableSection } from "@/types/conjugationTypes";
+import { TablesProps } from "@/types";
 import { formatText } from "@/utils";
 
 export const ConjugationTable = ({
   data,
 }: {
-  data: ConjugationTableSection;
+  // data: ConjugationTableSection;
+  data: TablesProps;
 }) => {
   const { subtitle, text, content } = data;
 

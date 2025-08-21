@@ -11,7 +11,7 @@ import {
   ParagraphExerciseProps,
   // AdjectivesTableBlock,
   NumeralsTableBlock,
-  ConjugationTableSection,
+  // ConjugationTableSection,
   GlossaryTableBlock,
   PronounTableProps,
   TablesProps,
@@ -31,7 +31,7 @@ export type ExerciseType =
 export type TableBlockData =
   | GrammarTableProps
   | CountriesNationalitiesProps
-  | ConjugationTableSection
+  // | ConjugationTableSection
   // | AdjectivesTableBlock
   | NumeralsTableBlock
   | GlossaryTableBlock

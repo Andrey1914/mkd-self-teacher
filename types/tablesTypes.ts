@@ -1,6 +1,7 @@
 export interface TablesProps {
   slug?: string;
   type: string;
+  category?: string;
   title?: string[] | string | { ru?: string; mkd?: string };
   text?: string;
   subtitle?: string[] | string;
@@ -20,7 +21,7 @@ export interface TablesContent {
 }
 
 export interface TablesWords {
-  // gender-number-pronominal-of-adjectives, grammar-pronouns
+  // i-class, gender-number-pronominal-of-adjectives, grammar-pronouns
   masculine?: string;
   feminine?: string;
   neuter?: string;
@@ -30,7 +31,7 @@ export interface TablesWords {
   singularForm?: string;
   pluralPerson?: string;
   pluralForm?: string;
-  // e-class, grammar-pronouns
+  // e-class, i-class, grammar-pronouns
   person?: string;
   forms?: string[];
   // examples
@@ -38,7 +39,7 @@ export interface TablesWords {
   ru?: string;
   // grammar-pronouns
   singular?: string;
-  // cardinal-ordinal-numerals
+  // i-class, cardinal-ordinal-numerals
   numbers?: number;
   cardinal?: string;
   ordinal?: string;
