@@ -3,17 +3,11 @@
 import React, { useState, useId } from "react";
 import { formatText, normalizeAnswer } from "@/utils";
 import styles from "@/app/page.module.css";
-// import type { ParagraphExerciseProps } from "@/types/exerciseParagraphTypes";
 import { ExercisesProps } from "@/types";
 
 const pronouns = ["Jас", "Ти", "Ние", "Вие", "Тие"];
 
-export const ParagraphExercise = ({
-  data,
-}: {
-  // data: ParagraphExerciseProps;
-  data: ExercisesProps;
-}) => {
+export const ParagraphExercise = ({ data }: { data: ExercisesProps }) => {
   const sections = data.sections[0];
 
   const answers = sections.content.answer ?? [];

@@ -4,16 +4,6 @@ import {
   SectionWithTables,
   DialogueBlockProps,
   ParagraphSectionsProps,
-  // GrammarTableProps,
-  // CountriesNationalitiesProps,
-  // StaticExerciseData,
-  // FillInExerciseData,
-  // ParagraphExerciseProps,
-  // AdjectivesTableBlock,
-  // NumeralsTableBlock,
-  // ConjugationTableSection,
-  // GlossaryTableBlock,
-  // PronounTableProps,
   TablesProps,
   ExercisesProps,
 } from "@/types";
@@ -24,21 +14,7 @@ export interface GlossaryEntryData {
   example?: string;
 }
 
-export type ExerciseType =
-  // | StaticExerciseData
-  // | FillInExerciseData
-  // | ParagraphExerciseProps
-  ExercisesProps;
-
-export type TableBlockData =
-  // | GrammarTableProps
-  // | CountriesNationalitiesProps
-  // | ConjugationTableSection
-  // | AdjectivesTableBlock
-  // | NumeralsTableBlock
-  // | GlossaryTableBlock
-  // | PronounTableProps
-  TablesProps;
+export type TableBlockData = TablesProps;
 
 export interface LessonData {
   slug: string;
@@ -50,5 +26,5 @@ export interface LessonData {
   payAttention?: PayAttentionBlockProps[];
   tables?: TableBlockData[];
   vocabulary?: VocabularyData[];
-  exercises?: ExerciseType[];
+  exercises?: ExercisesProps[];
 }

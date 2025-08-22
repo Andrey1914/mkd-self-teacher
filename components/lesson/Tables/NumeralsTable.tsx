@@ -1,5 +1,4 @@
 import React from "react";
-// import type { NumeralsTableBlock } from "@/types";
 import { TablesProps } from "@/types";
 import { formatText } from "@/utils";
 

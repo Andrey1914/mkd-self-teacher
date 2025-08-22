@@ -1,16 +1,10 @@
 "use client";
 
 import React from "react";
-// import { ConjugationTableSection } from "@/types/conjugationTypes";
 import { TablesProps } from "@/types";
 import { formatText } from "@/utils";
 
-export const ConjugationTable = ({
-  data,
-}: {
-  // data: ConjugationTableSection;
-  data: TablesProps;
-}) => {
+export const ConjugationTable = ({ data }: { data: TablesProps }) => {
   const { subtitle, text, content } = data;
 
   if (!content?.words || !Array.isArray(content.words)) return null;

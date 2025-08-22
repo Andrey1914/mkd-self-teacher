@@ -1,5 +1,4 @@
 import React from "react";
-// import { PronounTableProps } from "@/types";
 import { TablesProps } from "@/types";
 import { formatText } from "@/utils";
 import { styles } from "./styles";

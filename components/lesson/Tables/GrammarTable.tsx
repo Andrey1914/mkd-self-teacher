@@ -1,5 +1,4 @@
 import React from "react";
-// import { GrammarTableProps } from "@/types/grammarTypes";
 import { TablesProps } from "@/types";
 import { formatText } from "@/utils";
 

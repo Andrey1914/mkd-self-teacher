@@ -3,7 +3,6 @@
 import React, { useState, useRef } from "react";
 import { formatText, normalizeAnswer } from "@/utils";
 import styles from "@/app/page.module.css";
-// import type { ParagraphExerciseProps } from "@/types/exerciseParagraphTypes";
 import { ExercisesProps } from "@/types";
 
 export const TranslateParagraphExercise = ({

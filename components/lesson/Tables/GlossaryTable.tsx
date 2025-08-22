@@ -1,10 +1,8 @@
 import React from "react";
-// import type { GlossaryTableBlock } from "@/types";
 import { TablesProps } from "@/types";
 import { formatText } from "@/utils";
 
 interface Props {
-  // data: GlossaryTableBlock;
   data: TablesProps;
 }
 

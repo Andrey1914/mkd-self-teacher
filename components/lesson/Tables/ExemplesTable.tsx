@@ -1,9 +1,7 @@
 import React from "react";
-// import { ExampleSection } from "@/types";
 import { TablesProps } from "@/types";
 import { formatText } from "@/utils";
 
-// export const ExamplesTable = ({ data }: { data: ExampleSection }) => {
 export const ExamplesTable = ({ data }: { data: TablesProps }) => {
   const { subtitle, content } = data;
 
