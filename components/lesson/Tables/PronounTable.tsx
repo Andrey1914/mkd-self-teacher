@@ -1,9 +1,10 @@
 import React from "react";
-import { PronounTableProps } from "@/types";
+// import { PronounTableProps } from "@/types";
+import { TablesProps } from "@/types";
 import { formatText } from "@/utils";
 import { styles } from "./styles";
 
-export const PronounTable = ({ data }: { data: PronounTableProps }) => {
+export const PronounTable = ({ data }: { data: TablesProps }) => {
   const { content } = data;
 
   const { dativeHeader, accusativeHeader } = content;

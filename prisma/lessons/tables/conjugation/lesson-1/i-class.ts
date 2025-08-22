@@ -1,6 +1,7 @@
-import { GrammarTableProps } from "@/types/grammarTypes";
+// import { GrammarTableProps } from "@/types/grammarTypes";
+import { TablesProps } from "@/types";
 
-export const iClass: GrammarTableProps = {
+export const iClass: TablesProps = {
   type: `i-class`,
   subtitle: [`СПРЯЖЕНИЕ ГЛАГОЛОВ И-КЛАССА`],
   text: `<span>о\u0301ди</span> идти, <span>се\u0301ди</span> сидеть, <span>бро\u0301и</span> считать, <span>сто\u0301и</span> стоять.`,

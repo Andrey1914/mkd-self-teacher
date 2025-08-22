@@ -1,6 +1,7 @@
-import { PronounTableProps } from "@/types";
+// import { PronounTableProps } from "@/types";
+import { TablesProps } from "@/types";
 
-export const personalPronounsTable: PronounTableProps = {
+export const personalPronounsTable: TablesProps = {
   slug: "lesson-3",
   type: "personal-pronouns-table",
   subtitle: ["Дательный падеж", "Винительный падеж"],

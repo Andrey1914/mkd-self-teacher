@@ -4,16 +4,16 @@ import {
   SectionWithTables,
   DialogueBlockProps,
   ParagraphSectionsProps,
-  GrammarTableProps,
+  // GrammarTableProps,
   // CountriesNationalitiesProps,
   StaticExerciseData,
   FillInExerciseData,
   ParagraphExerciseProps,
   // AdjectivesTableBlock,
-  NumeralsTableBlock,
+  // NumeralsTableBlock,
   // ConjugationTableSection,
   // GlossaryTableBlock,
-  PronounTableProps,
+  // PronounTableProps,
   TablesProps,
 } from "@/types";
 
@@ -29,14 +29,14 @@ export type ExerciseType =
   | ParagraphExerciseProps;
 
 export type TableBlockData =
-  | GrammarTableProps
+  // | GrammarTableProps
   // | CountriesNationalitiesProps
   // | ConjugationTableSection
   // | AdjectivesTableBlock
-  | NumeralsTableBlock
+  // | NumeralsTableBlock
   // | GlossaryTableBlock
-  | PronounTableProps
-  | TablesProps;
+  // | PronounTableProps
+  TablesProps;
 
 export interface LessonData {
   slug: string;

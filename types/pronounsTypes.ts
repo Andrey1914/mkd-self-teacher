@@ -1,12 +1,12 @@
-import { CommonContent } from "@/types";
+// import { CommonContent } from "@/types";
 
-export interface PronounTableProps {
-  type: string;
-  slug: string;
-  title?: string | string[];
-  subtitle?: string[];
-  text?: string[];
-  content: CommonContent;
+// export interface PronounTableProps {
+//   type: string;
+//   slug: string;
+//   title?: string | string[];
+//   subtitle?: string[];
+//   text?: string[];
+//   content: CommonContent;
 
-  data?: Partial<PronounTableProps>;
-}
+//   data?: Partial<PronounTableProps>;
+// }

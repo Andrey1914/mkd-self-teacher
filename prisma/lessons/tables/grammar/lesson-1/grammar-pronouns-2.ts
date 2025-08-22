@@ -1,6 +1,7 @@
-import { GrammarTableProps } from "@/types/grammarTypes";
+// import { GrammarTableProps } from "@/types/grammarTypes";
+import { TablesProps } from "@/types";
 
-export const grammarPronouns2: GrammarTableProps = {
+export const grammarPronouns2: TablesProps = {
   type: `grammar-pronouns-2`,
   content: {
     subtitle: [`Лицо`, `Единственное число`, `Множественное число`],

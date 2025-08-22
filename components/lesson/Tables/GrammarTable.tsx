@@ -1,8 +1,9 @@
 import React from "react";
-import { GrammarTableProps } from "@/types/grammarTypes";
+// import { GrammarTableProps } from "@/types/grammarTypes";
+import { TablesProps } from "@/types";
 import { formatText } from "@/utils";
 
-export const GrammarTable = ({ data }: { data: GrammarTableProps }) => {
+export const GrammarTable = ({ data }: { data: TablesProps }) => {
   const { title, subtitle, text, content } = data;
 
   return (
@@ -11,7 +12,11 @@ export const GrammarTable = ({ data }: { data: GrammarTableProps }) => {
         ? title.length > 0 && (
             <h2 style={{ margin: "1rem 0" }}>{formatText(title.join(", "))}</h2>
           )
-        : title && <h2 style={{ margin: "1rem 0" }}>{formatText(title)}</h2>}
+        : title && (
+            <h2 style={{ margin: "1rem 0" }}>
+              {formatText(typeof title === "string" ? title : "")}
+            </h2>
+          )}
 
       {Array.isArray(subtitle) && subtitle.length > 0 && (
         <h3 style={{ margin: "2rem 0" }}>{formatText(subtitle.join(", "))}</h3>
