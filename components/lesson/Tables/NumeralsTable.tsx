@@ -1,9 +1,10 @@
 import React from "react";
-import type { NumeralsTableBlock } from "@/types";
+// import type { NumeralsTableBlock } from "@/types";
+import { TablesProps } from "@/types";
 import { formatText } from "@/utils";
 
 interface Props {
-  data: NumeralsTableBlock;
+  data: TablesProps;
 }
 
 export const NumeralsTable = ({ data }: Props) => {

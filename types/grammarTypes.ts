@@ -1,9 +1,9 @@
-import { BaseProps, CommonContent } from "@/types/baseTypes";
+// import { BaseProps, CommonContent } from "@/types/baseTypes";
 
-export interface GrammarTableProps extends BaseProps {
-  type: string;
-  title?: string[];
-  content: CommonContent;
+// export interface GrammarTableProps extends BaseProps {
+//   type: string;
+//   title?: string[];
+//   content: CommonContent;
 
-  data?: Partial<GrammarTableProps>;
-}
+//   data?: Partial<GrammarTableProps>;
+// }
