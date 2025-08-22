@@ -14,7 +14,7 @@ export type { ParagraphExerciseProps } from "./exerciseParagraphTypes";
 export type { FillInExerciseData, StaticExerciseData } from "./exerciseTypes";
 export type { NumeralsTableBlock } from "./numeralsTypes";
 // export type { ConjugationTableSection } from "./conjugationTypes";
-export type { GlossaryTableBlock } from "./glossaryTypes";
+// export type { GlossaryTableBlock } from "./glossaryTypes";
 export type { PronounTableProps } from "./pronounsTypes";
 // export type { ExampleSection } from "./exampleTypes";
 export type { BaseProps, CommonContent, CommonWords } from "./baseTypes";
