@@ -3,17 +3,7 @@ import { dialogueBlock } from "@/prisma/lessons/dialogues/lesson-3";
 import { payAttentionsLesson3 } from "@/prisma/lessons/pay-attention";
 import { glossary, pronounsTable, examples } from "@/prisma/lessons/tables";
 import { grammarLesson3 } from "@/prisma/lessons/paragraph";
-import {
-  exercisesLesson3,
-  // exercise1,
-  // exercise2,
-  // exercise3,
-  // exercise4,
-  // exercise5,
-  // exercise6,
-  // exercise7,
-  // exercise8,
-} from "@/prisma/lessons/exercises";
+import { exercisesLesson3 } from "@/prisma/lessons/exercises";
 
 const { payAttention1, payAttention2 } = payAttentionsLesson3;
 
@@ -38,7 +28,7 @@ const {
   example12,
 } = examplesLesson3;
 
-const { exercise1 } = exercisesLesson3;
+const { exercise1, exercise2, exercise3, exercise4 } = exercisesLesson3;
 
 const lesson3 = {
   title: [`<span>Урок 3, Лекциjя 3</span>`],
@@ -78,9 +68,9 @@ const lesson3 = {
   ],
   exercises: [
     exercise1,
-    // exercise2,
-    // exercise3,
-    // exercise4,
+    exercise2,
+    exercise3,
+    exercise4,
     // exercise5,
     // exercise6,
     // exercise7,
