@@ -78,6 +78,11 @@ export const FillInExercise = ({ data }: { data: ExercisesProps }) => {
               </p>
             ) : null
           )}
+          {section.content?.text && (
+            <p style={{ textAlign: "center" }}>
+              {formatText(section.content.text)}
+            </p>
+          )}
           <form>
             <p style={{ textAlign: "left", lineHeight: "2rem" }}>
               {Array.isArray(section.content?.sentences) &&
