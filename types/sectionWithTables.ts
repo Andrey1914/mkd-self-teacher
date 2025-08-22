@@ -1,7 +1,8 @@
 import {
-  StaticExerciseData,
-  FillInExerciseData,
-  ParagraphExerciseProps,
+  // StaticExerciseData,
+  // FillInExerciseData,
+  // ParagraphExerciseProps,
+  ExercisesProps,
 } from "@/types";
 
 export type TableEntry = {
@@ -9,10 +10,10 @@ export type TableEntry = {
   rows: string[][];
 };
 
-export type ExerciseType =
-  | StaticExerciseData
-  | FillInExerciseData
-  | ParagraphExerciseProps;
+// export type ExerciseType =
+//   | StaticExerciseData
+//   | FillInExerciseData
+//   | ParagraphExerciseProps;
 
 export type SectionWithTables = {
   type: string;
@@ -20,7 +21,8 @@ export type SectionWithTables = {
   tableEntries?: {
     create: TableEntry[];
   };
-  exercises?: ExerciseType[];
+  // exercises?: ExerciseType[];
+  exercises?: ExercisesProps[];
   prompt?: string[] | string;
   answer?: string[] | string;
 };

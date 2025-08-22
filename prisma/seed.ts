@@ -172,7 +172,7 @@ async function main() {
               await tx.exercise.create({
                 data: {
                   type: exercise.type ?? "default_type",
-                  slug: exercise.slug,
+                  slug: exercise.slug ?? "default_slug",
                   title: exercise.title ?? "Без названия.",
                   prompt: section.prompt,
                   content: section.content ?? {},

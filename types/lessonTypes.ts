@@ -6,15 +6,16 @@ import {
   ParagraphSectionsProps,
   // GrammarTableProps,
   // CountriesNationalitiesProps,
-  StaticExerciseData,
-  FillInExerciseData,
-  ParagraphExerciseProps,
+  // StaticExerciseData,
+  // FillInExerciseData,
+  // ParagraphExerciseProps,
   // AdjectivesTableBlock,
   // NumeralsTableBlock,
   // ConjugationTableSection,
   // GlossaryTableBlock,
   // PronounTableProps,
   TablesProps,
+  ExercisesProps,
 } from "@/types";
 
 export interface GlossaryEntryData {
@@ -24,9 +25,10 @@ export interface GlossaryEntryData {
 }
 
 export type ExerciseType =
-  | StaticExerciseData
-  | FillInExerciseData
-  | ParagraphExerciseProps;
+  // | StaticExerciseData
+  // | FillInExerciseData
+  // | ParagraphExerciseProps
+  ExercisesProps;
 
 export type TableBlockData =
   // | GrammarTableProps

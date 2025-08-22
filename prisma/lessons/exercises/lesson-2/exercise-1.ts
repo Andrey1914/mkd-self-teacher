@@ -1,6 +1,7 @@
-import { FillInExerciseData } from "@/types/exerciseTypes";
+// import { FillInExerciseData } from "@/types/exerciseTypes";
+import { ExercisesProps } from "@/types";
 
-export const exercise1: FillInExerciseData = {
+export const exercise1: ExercisesProps = {
   type: "exercises",
   title: "Упражнение 1",
   slug: "lesson-2",

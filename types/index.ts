@@ -10,8 +10,12 @@ export type { HeaderProps } from "./headerProps";
 export type { ParagraphSectionsProps } from "./paragraphType";
 export type { SectionWithTables } from "./sectionWithTables";
 export type { LessonData } from "./lessonTypes";
-export type { ParagraphExerciseProps } from "./exerciseParagraphTypes";
-export type { FillInExerciseData, StaticExerciseData } from "./exerciseTypes";
+// export type { ParagraphExerciseProps } from "./exerciseParagraphTypes";
+export type {
+  //   FillInExerciseData,
+  //   StaticExerciseData,
+  ExercisesProps,
+} from "./exerciseTypes";
 // export type { NumeralsTableBlock } from "./numeralsTypes";
 // export type { ConjugationTableSection } from "./conjugationTypes";
 // export type { GlossaryTableBlock } from "./glossaryTypes";

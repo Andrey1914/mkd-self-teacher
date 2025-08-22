@@ -2,9 +2,10 @@
 
 import React from "react";
 import parse from "html-react-parser";
-import type { StaticExerciseData } from "@/types/exerciseTypes";
+// import type { StaticExerciseData } from "@/types/exerciseTypes";
+import { ExercisesProps } from "@/types";
 
-export const StaticExercise = ({ data }: { data: StaticExerciseData }) => {
+export const StaticExercise = ({ data }: { data: ExercisesProps }) => {
   if (!data?.sections || data.sections.length === 0) return null;
 
   return (

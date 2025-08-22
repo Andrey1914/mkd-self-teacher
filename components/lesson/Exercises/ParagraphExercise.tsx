@@ -3,14 +3,16 @@
 import React, { useState, useId } from "react";
 import { formatText, normalizeAnswer } from "@/utils";
 import styles from "@/app/page.module.css";
-import type { ParagraphExerciseProps } from "@/types/exerciseParagraphTypes";
+// import type { ParagraphExerciseProps } from "@/types/exerciseParagraphTypes";
+import { ExercisesProps } from "@/types";
 
 const pronouns = ["Jас", "Ти", "Ние", "Вие", "Тие"];
 
 export const ParagraphExercise = ({
   data,
 }: {
-  data: ParagraphExerciseProps;
+  // data: ParagraphExerciseProps;
+  data: ExercisesProps;
 }) => {
   const sections = data.sections[0];
 
@@ -52,7 +54,7 @@ export const ParagraphExercise = ({
   };
 
   const revealAnswers = () => {
-    const cleanedAnswers = sections.content.answer.map((answer) =>
+    const cleanedAnswers = sections.content.answer?.map((answer) =>
       normalizeAnswer(answer.replace(/\s+/g, " "), {
         trim: true,
         convertLatinToCyrillic: false,
@@ -60,7 +62,7 @@ export const ParagraphExercise = ({
       })
     );
 
-    setInputs(cleanedAnswers);
+    setInputs(cleanedAnswers ?? Array(pronouns.length).fill(""));
     setIsAutoFilled(Array(pronouns.length).fill(true));
     setShowAnswers(true);
     setChecked(false);
@@ -75,7 +77,7 @@ export const ParagraphExercise = ({
 
   return (
     <section style={{ marginBottom: "2rem" }}>
-      {sections.prompt.map((text, i) => (
+      {sections.prompt?.map((text, i) => (
         <p key={i} style={{ marginBottom: "1rem" }}>
           <strong>{data.title}. </strong>
           {formatText(text)}

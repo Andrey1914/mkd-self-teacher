@@ -1,11 +1,12 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import type { FillInExerciseData } from "@/types/exerciseTypes";
+// import type { FillInExerciseData } from "@/types/exerciseTypes";
+import { ExercisesProps } from "@/types";
 import { formatText, highlightInput, getTextWidth } from "@/utils";
 import styles from "@/app/page.module.css";
 
-export const FillInExercise = ({ data }: { data: FillInExerciseData }) => {
+export const FillInExercise = ({ data }: { data: ExercisesProps }) => {
   const [hasMounted, setHasMounted] = useState(false);
   const [showAnswers, setShowAnswers] = useState(false);
   const [inputs, setInputs] = useState<string[][]>([]);
@@ -14,13 +15,15 @@ export const FillInExercise = ({ data }: { data: FillInExerciseData }) => {
   useEffect(() => {
     setHasMounted(true);
 
-    const initialInputs = data.sections[0].content.sentences.map((s) =>
-      new Array(s.answer.length).fill("")
-    );
+    const initialInputs =
+      data.sections?.[0]?.content?.sentences?.map((sentence) =>
+        new Array(sentence.answer?.length).fill("")
+      ) ?? [];
 
-    const initialFlags = data.sections[0].content.sentences.map((s) =>
-      new Array(s.answer.length).fill(false)
-    );
+    const initialFlags =
+      data.sections?.[0]?.content?.sentences?.map((sentence) =>
+        new Array(sentence.answer?.length).fill(false)
+      ) ?? [];
 
     setInputs(initialInputs);
     setIsAutoFilled(initialFlags);
@@ -49,13 +52,15 @@ export const FillInExercise = ({ data }: { data: FillInExerciseData }) => {
   };
 
   const revealAnswers = () => {
-    const filled = data.sections[0].content.sentences.map((sentence) => [
-      ...sentence.answer,
-    ]);
+    const filled =
+      data.sections?.[0]?.content?.sentences?.map((sentence) => [
+        ...(sentence.answer ?? []),
+      ]) ?? [];
 
-    const filledFlags = data.sections[0].content.sentences.map((sentence) =>
-      new Array(sentence.answer.length).fill(true)
-    );
+    const filledFlags =
+      data.sections?.[0]?.content?.sentences?.map((sentence) =>
+        new Array(sentence.answer?.length).fill(true)
+      ) ?? [];
 
     setInputs(filled);
     setIsAutoFilled(filledFlags);
@@ -78,11 +83,11 @@ export const FillInExercise = ({ data }: { data: FillInExerciseData }) => {
             <p style={{ textAlign: "left", lineHeight: "2rem" }}>
               {Array.isArray(section.content?.sentences) &&
                 section.content.sentences.map((sentence, idx) => {
-                  const parts = sentence.mkd.split("___");
+                  const parts = sentence.mkd?.split("___");
 
                   return (
                     <React.Fragment key={idx}>
-                      {parts.map((part, i) =>
+                      {parts?.map((part, i) =>
                         typeof part === "string" ? (
                           <React.Fragment key={i}>
                             {/^\d+\.\s/.test(part) ? (
@@ -96,7 +101,7 @@ export const FillInExercise = ({ data }: { data: FillInExerciseData }) => {
                               <span>{formatText(part)}</span>
                             )}
 
-                            {i < sentence.answer.length && (
+                            {sentence.answer && i < sentence.answer.length && (
                               <input
                                 id={`input-${sIdx}-${idx}-${i}`}
                                 name={`input-${sIdx}-${idx}-${i}`}
