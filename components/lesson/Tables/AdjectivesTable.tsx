@@ -1,10 +1,8 @@
 import React from "react";
-// import type { AdjectivesTableBlock } from "@/types";
 import type { TablesProps } from "@/types";
 import { formatText } from "@/utils";
 
 interface Props {
-  // data: AdjectivesTableBlock;
   data: TablesProps;
 }
 

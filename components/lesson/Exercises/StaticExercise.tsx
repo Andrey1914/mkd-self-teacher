@@ -2,7 +2,6 @@
 
 import React from "react";
 import parse from "html-react-parser";
-// import type { StaticExerciseData } from "@/types/exerciseTypes";
 import { ExercisesProps } from "@/types";
 
 export const StaticExercise = ({ data }: { data: ExercisesProps }) => {

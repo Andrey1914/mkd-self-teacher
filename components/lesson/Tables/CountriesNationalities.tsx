@@ -1,12 +1,10 @@
 import React from "react";
-// import { CountriesNationalitiesProps } from "@/types/countriesNationalitiesTypes";
 import { TablesProps } from "@/types";
 import { formatText } from "@/utils";
 
 export const CountriesNationalitiesTable = ({
   data,
 }: {
-  // data: CountriesNationalitiesProps;
   data: TablesProps;
 }) => {
   if (

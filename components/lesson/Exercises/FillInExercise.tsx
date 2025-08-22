@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-// import type { FillInExerciseData } from "@/types/exerciseTypes";
 import { ExercisesProps } from "@/types";
 import { formatText, highlightInput, getTextWidth } from "@/utils";
 import styles from "@/app/page.module.css";
