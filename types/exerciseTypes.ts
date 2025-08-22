@@ -10,6 +10,7 @@ export interface ExercisesProps {
       exercise?: string | string[];
       original?: string;
       answer?: string[];
+      text?: string;
       sentences?: {
         mkd?: string; // текст с ___
         answer?: string[];
