@@ -1,4 +1,3 @@
-// import { FillInExerciseData } from "@/types/exerciseTypes";
 import { ExercisesProps } from "@/types";
 
 export const exercise5: ExercisesProps = {
@@ -29,7 +28,7 @@ export const exercise5: ExercisesProps = {
           },
           {
             mkd: `5. ___ (тоj) ка\u0301ртичка е ___ (ни\u0301вен).`,
-            answer: [`таа`, `нивна`],
+            answer: [`Таа`, `нивна`],
           },
 
           {
@@ -42,7 +41,7 @@ export const exercise5: ExercisesProps = {
           },
           {
             mkd: `8. ___ (тоj) ме\u0301сто е ___ (ни\u0301вен).`,
-            answer: [`тоа`, `нивно`],
+            answer: [`Тоа`, `нивно`],
           },
           {
             mkd: `9. Тоа е ___ (де\u0301сетти) кат.`,
