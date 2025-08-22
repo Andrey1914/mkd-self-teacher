@@ -1,9 +1,11 @@
 import React from "react";
-import type { GlossaryTableBlock } from "@/types";
+// import type { GlossaryTableBlock } from "@/types";
+import { TablesProps } from "@/types";
 import { formatText } from "@/utils";
 
 interface Props {
-  data: GlossaryTableBlock;
+  // data: GlossaryTableBlock;
+  data: TablesProps;
 }
 
 export const GlossaryTable = ({ data }: Props) => {
@@ -22,8 +24,17 @@ export const GlossaryTable = ({ data }: Props) => {
 
   return (
     <div style={{ padding: "1rem 0 2rem 0" }}>
-      <h2>{formatText(title?.ru)}</h2>
-      <h2>{formatText(`<span>${title?.mkd}</span>`)}</h2>
+      <h2>
+        {typeof title === "object" && !Array.isArray(title) && "ru" in title
+          ? formatText(title.ru)
+          : formatText(typeof title === "string" ? title : "")}
+      </h2>
+
+      <h2>
+        {typeof title === "object" && !Array.isArray(title) && "mkd" in title
+          ? formatText(`<span>${title.mkd}</span>`)
+          : formatText("")}
+      </h2>
 
       <table
         style={{

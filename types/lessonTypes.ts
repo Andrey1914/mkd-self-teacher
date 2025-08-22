@@ -12,7 +12,7 @@ import {
   // AdjectivesTableBlock,
   NumeralsTableBlock,
   // ConjugationTableSection,
-  GlossaryTableBlock,
+  // GlossaryTableBlock,
   PronounTableProps,
   TablesProps,
 } from "@/types";
@@ -34,7 +34,7 @@ export type TableBlockData =
   // | ConjugationTableSection
   // | AdjectivesTableBlock
   | NumeralsTableBlock
-  | GlossaryTableBlock
+  // | GlossaryTableBlock
   | PronounTableProps
   | TablesProps;
 
