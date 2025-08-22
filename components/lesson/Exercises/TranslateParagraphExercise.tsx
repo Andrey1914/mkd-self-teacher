@@ -3,15 +3,16 @@
 import React, { useState, useRef } from "react";
 import { formatText, normalizeAnswer } from "@/utils";
 import styles from "@/app/page.module.css";
-import type { ParagraphExerciseProps } from "@/types/exerciseParagraphTypes";
+// import type { ParagraphExerciseProps } from "@/types/exerciseParagraphTypes";
+import { ExercisesProps } from "@/types";
 
 export const TranslateParagraphExercise = ({
   data,
 }: {
-  data: ParagraphExerciseProps;
+  data: ExercisesProps;
 }) => {
   const section = data.sections[0];
-  const correctAnswer = section.content.answer[0];
+  const correctAnswer = section.content.answer?.[0] ?? "";
 
   const [input, setInput] = useState("");
   const [checked, setChecked] = useState(false);
@@ -110,7 +111,7 @@ export const TranslateParagraphExercise = ({
 
   return (
     <section style={{ marginBottom: "2rem" }}>
-      {section.prompt.map((text, i) => (
+      {section.prompt?.map((text, i) => (
         <p key={i} style={{ marginBottom: "1rem" }}>
           <strong>{data.title}. </strong>
           {formatText(text)}

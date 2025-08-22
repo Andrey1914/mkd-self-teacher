@@ -1,6 +1,7 @@
-import { ParagraphExerciseProps } from "@/types/exerciseParagraphTypes";
+// import { ParagraphExerciseProps } from "@/types/exerciseParagraphTypes";
+import { ExercisesProps } from "@/types";
 
-export const exercise8: ParagraphExerciseProps = {
+export const exercise8: ExercisesProps = {
   type: "exercises",
   title: "Упражнение 8",
   slug: "lesson-1",
