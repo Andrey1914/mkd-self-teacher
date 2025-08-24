@@ -45,7 +45,7 @@ const {
 
 const { grammarPronouns1, grammarPronouns2 } = grammarPronouns;
 
-const lesson1 = {
+export const lesson1 = {
   title: [`<span>Урок 1, Лекциjя 1</span>`],
   slug: "lesson-1",
   sections: [
@@ -193,5 +193,3 @@ const lesson1 = {
     countriesNationalitiesTable,
   ],
 };
-
-export default lesson1;

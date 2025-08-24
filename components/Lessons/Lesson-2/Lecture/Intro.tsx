@@ -1,6 +1,6 @@
 import React from "react";
 
-import lesson2 from "@/prisma/lessons/lesson-2";
+import { lesson2 } from "@/prisma/lessons/lesson-2";
 
 import { formatText } from "@/utils";
 

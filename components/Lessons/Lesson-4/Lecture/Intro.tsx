@@ -1,6 +1,6 @@
 import React from "react";
 
-import { lesson3 } from "@/prisma/lessons/lesson-3";
+import { lesson4 } from "@/prisma/lessons/lesson-4";
 
 import { formatText } from "@/utils";
 
@@ -9,10 +9,10 @@ export const Intro = () => {
 
   return (
     <>
-      {Array.isArray(lesson3.title) && lesson3.title.length > 0 && (
-        <h1>{formatText(lesson3.title.join(", "))}</h1>
+      {Array.isArray(lesson4.title) && lesson4.title.length > 0 && (
+        <h1>{formatText(lesson4.title.join(", "))}</h1>
       )}
-      {lesson3.sections?.map((section, i) => (
+      {lesson4.sections?.map((section, i) => (
         <section key={i} style={{ marginBottom: "2rem" }}>
           {!handledTypes.includes(section.type) &&
             (Array.isArray(section.title)
