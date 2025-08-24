@@ -37,7 +37,7 @@ const { genderNumberPronominalOfAdjectives } = adjectivesTable;
 
 const { cardinalOrdinalNumeralsTable } = numeralsTable;
 
-const lesson2 = {
+export const lesson2 = {
   title: [`<span>Урок 2, Лекциjя 2</span>`],
   slug: "lesson-2",
   sections: [
@@ -88,5 +88,3 @@ const lesson2 = {
     exercise8,
   ],
 };
-
-export default lesson2;

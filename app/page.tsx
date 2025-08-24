@@ -7,7 +7,7 @@ import type { Swiper as SwiperType } from "swiper";
 import "swiper/css";
 
 import styles from "./page.module.css";
-import { Lesson1, Lesson2, Lesson3 } from "@/components/Lessons";
+import { Lesson1, Lesson2, Lesson3, Lesson4 } from "@/components/Lessons";
 import { Header } from "@/components/app";
 
 export default function Home() {
@@ -18,6 +18,7 @@ export default function Home() {
     { title: "Урок 1", component: <Lesson1 /> },
     { title: "Урок 2", component: <Lesson2 /> },
     { title: "Урок 3", component: <Lesson3 /> },
+    { title: "Урок 4", component: <Lesson4 /> },
   ];
 
   const handleTabChange = (index: number) => {

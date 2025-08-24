@@ -2,7 +2,7 @@ import React from "react";
 
 import { Heading } from "@/components/lesson/Heading/Heading";
 
-import lesson1 from "@/prisma/lessons/lesson-1";
+import { lesson1 } from "@/prisma/lessons/lesson-1";
 import { lectureLesson1 } from "@/prisma/lessons/heading/lesson-1/headings";
 
 import { formatText } from "@/utils";

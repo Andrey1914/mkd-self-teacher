@@ -42,7 +42,7 @@ const {
   exercise9,
 } = exercisesLesson3;
 
-const lesson3 = {
+export const lesson3 = {
   title: [`<span>Урок 3, Лекциjя 3</span>`],
   slug: "lesson-3",
   sections: [
@@ -85,5 +85,3 @@ const lesson3 = {
     exercise9,
   ],
 };
-
-export default lesson3;
