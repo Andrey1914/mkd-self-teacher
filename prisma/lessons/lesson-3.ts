@@ -10,9 +10,11 @@ const { payAttention1, payAttention2 } = payAttentionsLesson3;
 const { occupationTable } = glossary;
 
 const { personalPronouns, needVerb } = grammarLesson3;
+
 const { personalPronounsTable } = pronounsTable;
 
 const { lesson3: examplesLesson3 } = examples;
+
 const {
   example1,
   example2,
@@ -28,7 +30,17 @@ const {
   example12,
 } = examplesLesson3;
 
-const { exercise1, exercise2, exercise3, exercise4 } = exercisesLesson3;
+const {
+  exercise1,
+  exercise2,
+  exercise3,
+  exercise4,
+  exercise5,
+  exercise6,
+  exercise7,
+  exercise8,
+  exercise9,
+} = exercisesLesson3;
 
 const lesson3 = {
   title: [`<span>Урок 3, Лекциjя 3</span>`],
@@ -60,21 +72,17 @@ const lesson3 = {
     { ...example10, slug: "lesson-3" },
     { ...example11, slug: "lesson-3" },
     { ...example12, slug: "lesson-3" },
-
-    // {
-    //   title: personalPronounsTable.title || "personal-pronouns-table",
-    //   data: personalPronounsTable,
-    // },
   ],
   exercises: [
     exercise1,
     exercise2,
     exercise3,
     exercise4,
-    // exercise5,
-    // exercise6,
-    // exercise7,
-    // exercise8,
+    exercise5,
+    exercise6,
+    exercise7,
+    exercise8,
+    exercise9,
   ],
 };
 

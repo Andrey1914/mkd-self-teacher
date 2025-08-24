@@ -1,4 +1,3 @@
-// import { ParagraphExerciseProps } from "@/types/exerciseParagraphTypes";
 import { ExercisesProps } from "@/types";
 
 export const exercise9: ExercisesProps = {

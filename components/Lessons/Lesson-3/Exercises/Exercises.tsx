@@ -2,8 +2,7 @@ import React from "react";
 
 import {
   FillInExercise,
-  //   TranslateParagraphExercise,
-  //   ParagraphExercise,
+  TranslateParagraphExercise,
 } from "@/components/lesson/Exercises";
 
 import { exercisesLesson3 } from "@/prisma/lessons/exercises";
@@ -13,10 +12,11 @@ const {
   exercise2,
   exercise3,
   exercise4,
-  //   exercise5,
-  //   exercise6,
-  //   exercise7,
-  //   exercise8,
+  exercise5,
+  exercise6,
+  exercise7,
+  exercise8,
+  exercise9,
 } = exercisesLesson3;
 
 export const Exercises = () => {
@@ -26,10 +26,12 @@ export const Exercises = () => {
       <FillInExercise data={exercise2} />
       <FillInExercise data={exercise3} />
       <FillInExercise data={exercise4} />
-      {/* <FillInExercise data={exercise5} /> */}
-      {/* <TranslateParagraphExercise data={exercise6} /> */}
-      {/* <ParagraphExercise data={exercise7} /> */}
-      {/* <TranslateParagraphExercise data={exercise8} /> */}
+      <FillInExercise data={exercise5} />
+      <FillInExercise data={exercise6} />
+
+      <TranslateParagraphExercise data={exercise7} />
+      <TranslateParagraphExercise data={exercise8} />
+      <TranslateParagraphExercise data={exercise9} />
     </>
   );
 };

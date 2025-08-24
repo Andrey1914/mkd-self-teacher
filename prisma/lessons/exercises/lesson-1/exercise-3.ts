@@ -1,4 +1,3 @@
-// import { FillInExerciseData } from "@/types/exerciseTypes";
 import { ExercisesProps } from "@/types";
 
 export const exercise3: ExercisesProps = {

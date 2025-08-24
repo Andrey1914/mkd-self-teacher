@@ -1,4 +1,3 @@
-// import { StaticExerciseData } from "@/types/exerciseTypes";
 import { ExercisesProps } from "@/types";
 
 export const exercise1: ExercisesProps = {
