@@ -45,9 +45,11 @@ export const DialogueBlock = ({ data }: { data: DialogueBlockProps }) => {
               >
                 {/* mkd */}
                 {(contentSubtitle?.mkd || description?.mkd) && (
-                  <div style={{ flex: 1 }}>
+                  <div style={{ padding: "0.5rem", flex: 1 }}>
                     {contentSubtitle?.mkd && (
-                      <h3>{formatText(contentSubtitle.mkd)}</h3>
+                      <h3 style={{ textIndent: 0 }}>
+                        {formatText(contentSubtitle.mkd)}
+                      </h3>
                     )}
                     {description?.mkd && (
                       <p
@@ -56,18 +58,21 @@ export const DialogueBlock = ({ data }: { data: DialogueBlockProps }) => {
                           hyphens: "auto",
                           overflowWrap: "break-word",
                           whiteSpace: "normal",
+                          textIndent: 0,
                         }}
                       >
-                        {formatText(description.mkd)}
+                        {formatText(`<em>${description.mkd}</em>`)}
                       </p>
                     )}
                   </div>
                 )}
                 {/* ru */}
                 {(contentSubtitle?.ru || description?.ru) && (
-                  <div style={{ flex: 1 }}>
+                  <div style={{ padding: "0.5rem", flex: 1 }}>
                     {contentSubtitle?.ru && (
-                      <h3>{formatText(contentSubtitle.ru)}</h3>
+                      <h3 style={{ textIndent: 0 }}>
+                        {formatText(contentSubtitle.ru)}
+                      </h3>
                     )}
                     {description?.ru && (
                       <p
@@ -76,9 +81,10 @@ export const DialogueBlock = ({ data }: { data: DialogueBlockProps }) => {
                           hyphens: "auto",
                           overflowWrap: "break-word",
                           whiteSpace: "normal",
+                          textIndent: 0,
                         }}
                       >
-                        {formatText(description.ru)}
+                        {formatText(`<em>${description.ru}</em>`)}
                       </p>
                     )}
                   </div>
@@ -142,6 +148,7 @@ export const DialogueBlock = ({ data }: { data: DialogueBlockProps }) => {
                               whiteSpace: "normal",
                               hyphens: "auto",
                               flex: 1,
+                              textIndent: 0,
                             }}
                           >
                             <strong>{mkdSpeakerData?.speaker?.mkd}</strong>{" "}
@@ -159,6 +166,7 @@ export const DialogueBlock = ({ data }: { data: DialogueBlockProps }) => {
                                 whiteSpace: "normal",
                                 hyphens: "auto",
                                 flex: 1,
+                                textIndent: 0,
                               }}
                             >
                               <strong>{ruSpeakerData?.speaker?.ru}</strong>{" "}
