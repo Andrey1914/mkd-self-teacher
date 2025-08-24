@@ -1,6 +1,6 @@
-import { DialogueBlockProps } from "@/types/dailogueTypes";
+import { DialogueBlockProps } from "@/types";
 
-const dialogueBlock: DialogueBlockProps = {
+export const dialogueBlock: DialogueBlockProps = {
   slug: `lesson-1`,
   sections: [
     {
@@ -172,5 +172,3 @@ const dialogueBlock: DialogueBlockProps = {
     },
   ],
 };
-
-export default dialogueBlock;
