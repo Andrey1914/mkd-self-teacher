@@ -1,4 +1,4 @@
-import { PayAttentionBlockProps } from "@/types/payAttantionTypes";
+import { PayAttentionBlockProps } from "@/types";
 
 export const payAttention1: PayAttentionBlockProps = {
   sections: [

@@ -1,4 +1,4 @@
-// import { vocabulary } from "@/prisma/lessons/vocabulary/lesson-3";
+import { vocabulary } from "@/prisma/lessons/vocabulary/lesson-4";
 import { dialogueBlock } from "@/prisma/lessons/dialogues/lesson-4";
 import { payAttentionsLesson4 } from "@/prisma/lessons/pay-attention";
 // import { glossary, pronounsTable, examples } from "@/prisma/lessons/tables";
@@ -53,7 +53,7 @@ export const lesson4 = {
     },
   ],
   //   paragraph: [personalPronouns, needVerb],
-  //   vocabulary: [vocabulary],
+  vocabulary: [vocabulary],
   dialogues: [dialogueBlock],
   payAttention: [payAttention1, payAttention2],
 

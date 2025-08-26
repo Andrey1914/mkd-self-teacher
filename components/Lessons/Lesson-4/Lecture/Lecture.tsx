@@ -2,7 +2,7 @@ import React from "react";
 
 import { DialogueCity } from "./Dialogue";
 import { PayAttentionBlock } from "@/components/lesson/PayAttentionBlock";
-// import { Vocabulary } from "@/components/lesson/Vocabulary";
+import { Vocabulary } from "@/components/lesson/Vocabulary";
 // import {
 //   GlossaryTable,
 //   PronounTable,
@@ -11,7 +11,7 @@ import { PayAttentionBlock } from "@/components/lesson/PayAttentionBlock";
 // import { Paragraph } from "@/components/lesson/Paragraph";
 
 import { payAttentionsLesson4 } from "@/prisma/lessons/pay-attention";
-// import { vocabulary } from "@/prisma/lessons/vocabulary/lesson-3";
+import { vocabulary } from "@/prisma/lessons/vocabulary/lesson-4";
 // import { glossary, pronounsTable, examples } from "@/prisma/lessons/tables";
 // import { grammarLesson3 } from "@/prisma/lessons/paragraph";
 
@@ -41,8 +41,7 @@ export const Lecture = () => {
       <DialogueCity />
       <PayAttentionBlock data={payAttention1} />
       <PayAttentionBlock data={payAttention2} />
-
-      {/* <Vocabulary lesson={vocabulary} /> */}
+      <Vocabulary lesson={vocabulary} />
       {/* <GlossaryTable data={occupationTable} /> */}
       {/* <Paragraph data={personalPronouns} /> */}
       {/* <PronounTable data={personalPronounsTable} /> */}
