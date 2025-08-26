@@ -1,11 +1,11 @@
 // import { vocabulary } from "@/prisma/lessons/vocabulary/lesson-3";
 import { dialogueBlock } from "@/prisma/lessons/dialogues/lesson-4";
-// import { payAttentionsLesson3 } from "@/prisma/lessons/pay-attention";
+import { payAttentionsLesson4 } from "@/prisma/lessons/pay-attention";
 // import { glossary, pronounsTable, examples } from "@/prisma/lessons/tables";
 // import { grammarLesson3 } from "@/prisma/lessons/paragraph";
 // import { exercisesLesson3 } from "@/prisma/lessons/exercises";
 
-// const { payAttention1, payAttention2 } = payAttentionsLesson3;
+const { payAttention1, payAttention2 } = payAttentionsLesson4;
 
 // const { occupationTable } = glossary;
 
@@ -55,7 +55,7 @@ export const lesson4 = {
   //   paragraph: [personalPronouns, needVerb],
   //   vocabulary: [vocabulary],
   dialogues: [dialogueBlock],
-  //   payAttention: [payAttention1, payAttention2],
+  payAttention: [payAttention1, payAttention2],
 
   //   tables: [
   //     occupationTable,

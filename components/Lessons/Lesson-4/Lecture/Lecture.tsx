@@ -1,7 +1,7 @@
 import React from "react";
 
 import { DialogueCity } from "./Dialogue";
-// import { PayAttentionBlock } from "@/components/lesson/PayAttentionBlock";
+import { PayAttentionBlock } from "@/components/lesson/PayAttentionBlock";
 // import { Vocabulary } from "@/components/lesson/Vocabulary";
 // import {
 //   GlossaryTable,
@@ -10,7 +10,7 @@ import { DialogueCity } from "./Dialogue";
 // } from "@/components/lesson/Tables";
 // import { Paragraph } from "@/components/lesson/Paragraph";
 
-// import { payAttentionsLesson3 } from "@/prisma/lessons/pay-attention";
+import { payAttentionsLesson4 } from "@/prisma/lessons/pay-attention";
 // import { vocabulary } from "@/prisma/lessons/vocabulary/lesson-3";
 // import { glossary, pronounsTable, examples } from "@/prisma/lessons/tables";
 // import { grammarLesson3 } from "@/prisma/lessons/paragraph";
@@ -33,13 +33,15 @@ import { DialogueCity } from "./Dialogue";
 //   example11,
 //   example12,
 // } = lesson3;
-// const { payAttention1, payAttention2 } = payAttentionsLesson3;
+const { payAttention1, payAttention2 } = payAttentionsLesson4;
 
 export const Lecture = () => {
   return (
     <>
       <DialogueCity />
-      {/* <PayAttentionBlock data={payAttention1} /> */}
+      <PayAttentionBlock data={payAttention1} />
+      <PayAttentionBlock data={payAttention2} />
+
       {/* <Vocabulary lesson={vocabulary} /> */}
       {/* <GlossaryTable data={occupationTable} /> */}
       {/* <Paragraph data={personalPronouns} /> */}
@@ -48,7 +50,6 @@ export const Lecture = () => {
       {/* <ExamplesTable data={example2} /> */}
       {/* <ExamplesTable data={example3} /> */}
       {/* <ExamplesTable data={example4} /> */}
-      {/* <PayAttentionBlock data={payAttention2} /> */}
       {/* <ExamplesTable data={example5} /> */}
       {/* <ExamplesTable data={example6} /> */}
       {/* <ExamplesTable data={example7} /> */}
