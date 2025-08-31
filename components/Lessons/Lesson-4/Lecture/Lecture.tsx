@@ -3,36 +3,10 @@ import React from "react";
 import { DialogueCity } from "./Dialogue";
 import { PayAttentionBlock } from "@/components/lesson/PayAttentionBlock";
 import { Vocabulary } from "@/components/lesson/Vocabulary";
-// import {
-//   GlossaryTable,
-//   PronounTable,
-//   ExamplesTable,
-// } from "@/components/lesson/Tables";
-// import { Paragraph } from "@/components/lesson/Paragraph";
 
 import { payAttentionsLesson4 } from "@/prisma/lessons/pay-attention";
 import { vocabulary } from "@/prisma/lessons/vocabulary/lesson-4";
-// import { glossary, pronounsTable, examples } from "@/prisma/lessons/tables";
-// import { grammarLesson3 } from "@/prisma/lessons/paragraph";
 
-// const { occupationTable } = glossary;
-// const { personalPronouns, needVerb } = grammarLesson3;
-// const { personalPronounsTable } = pronounsTable;
-// const { lesson3 } = examples;
-// const {
-//   example1,
-//   example2,
-//   example3,
-//   example4,
-//   example5,
-//   example6,
-//   example7,
-//   example8,
-//   example9,
-//   example10,
-//   example11,
-//   example12,
-// } = lesson3;
 const { payAttention1, payAttention2 } = payAttentionsLesson4;
 
 export const Lecture = () => {
@@ -42,22 +16,6 @@ export const Lecture = () => {
       <PayAttentionBlock data={payAttention1} />
       <PayAttentionBlock data={payAttention2} />
       <Vocabulary lesson={vocabulary} />
-      {/* <GlossaryTable data={occupationTable} /> */}
-      {/* <Paragraph data={personalPronouns} /> */}
-      {/* <PronounTable data={personalPronounsTable} /> */}
-      {/* <ExamplesTable data={example1} /> */}
-      {/* <ExamplesTable data={example2} /> */}
-      {/* <ExamplesTable data={example3} /> */}
-      {/* <ExamplesTable data={example4} /> */}
-      {/* <ExamplesTable data={example5} /> */}
-      {/* <ExamplesTable data={example6} /> */}
-      {/* <ExamplesTable data={example7} /> */}
-      {/* <ExamplesTable data={example8} /> */}
-      {/* <ExamplesTable data={example9} /> */}
-      {/* <ExamplesTable data={example10} /> */}
-      {/* <ExamplesTable data={example11} /> */}
-      {/* <Paragraph data={needVerb} /> */}
-      {/* <ExamplesTable data={example12} /> */}
     </>
   );
 };

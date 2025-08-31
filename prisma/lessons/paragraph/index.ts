@@ -9,3 +9,4 @@ export * as adjectives from "./lesson-2";
 export * as numerals from "./lesson-2";
 
 export * as grammarLesson3 from "./lesson-3";
+export * as grammarLesson4 from "./lesson-4";

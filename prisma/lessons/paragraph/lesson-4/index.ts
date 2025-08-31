@@ -1,0 +1,1 @@
+export { definitenessCategory } from "./grammar";

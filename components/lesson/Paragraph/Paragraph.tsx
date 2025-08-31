@@ -72,17 +72,7 @@ export const Paragraph = ({ data, part }: ParagraphProps) => {
               </p>
             )}
             {content.intro.text && (
-              <p
-                lang="ru"
-                style={{
-                  marginBottom: 0,
-                  overflowWrap: "break-word",
-                  whiteSpace: "normal",
-                  hyphens: "auto",
-                }}
-              >
-                {formatText(content.intro.text)}
-              </p>
+              <>{renderTextParagraphs(content.intro.text)}</>
             )}
           </>
         )}
