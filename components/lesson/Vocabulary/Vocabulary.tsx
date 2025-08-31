@@ -1,6 +1,6 @@
 import React from "react";
 import { formatText } from "@/utils";
-import type { VocabularyProps } from "@/types/vocabularyTypes";
+import type { VocabularyProps } from "@/types";
 
 export const Vocabulary = ({ lesson }: VocabularyProps) => {
   const section = lesson.sections[0];
@@ -54,16 +54,12 @@ export const Vocabulary = ({ lesson }: VocabularyProps) => {
           {words.map((word, idx) => (
             <tr key={idx}>
               <td style={{ padding: "0.5rem" }}>
-                {formatText(
-                  `<span style="color: rgb(196, 86, 86);">${word.mkd}</span>`
-                )}
+                {formatText(`<span>${word.mkd}</span>`)}
               </td>
               <td style={{ padding: "0.5rem" }}>
                 {formatText(`<em>${word.pron}</em>`)}
               </td>
-              <td style={{ padding: "0.5rem" }}>
-                {formatText(`<strong>${word.ru}</strong>`)}
-              </td>
+              <td style={{ padding: "0.5rem" }}>{formatText(word.ru)}</td>
             </tr>
           ))}
         </tbody>

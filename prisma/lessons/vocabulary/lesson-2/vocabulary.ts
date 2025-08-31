@@ -1,4 +1,4 @@
-import { VocabularyData } from "@/types/vocabularyTypes";
+import { VocabularyData } from "@/types";
 
 export const vocabulary: VocabularyData = {
   type: "vocabulary",
@@ -134,7 +134,7 @@ export const vocabulary: VocabularyData = {
             ru: "момент, миг",
           },
           {
-            mkd: "се на\u0301ог\u0301а",
+            mkd: "се на\u0301оѓа",
             pron: "сэ_на\u0301ог'а",
             ru: "находится",
           },
