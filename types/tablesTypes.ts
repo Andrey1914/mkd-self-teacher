@@ -56,4 +56,8 @@ export interface TablesRows {
   dativeFull?: string;
   accusativeShort?: string;
   accusativeFull?: string;
+  // definiteness-category
+  suffix?: string;
+  note?: string;
+  examples?: string[];
 }

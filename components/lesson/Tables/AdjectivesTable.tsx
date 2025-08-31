@@ -1,12 +1,8 @@
 import React from "react";
-import type { TablesProps } from "@/types";
+import { TablesProps } from "@/types";
 import { formatText } from "@/utils";
 
-interface Props {
-  data: TablesProps;
-}
-
-export const AdjectivesTable = ({ data }: Props) => {
+export const AdjectivesTable = ({ data }: { data: TablesProps }) => {
   const content = data.content;
 
   if (

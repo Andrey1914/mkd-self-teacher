@@ -7,3 +7,4 @@ export { AdjectivesTable } from "./AdjectivesTable";
 export { NumeralsTable } from "./NumeralsTable";
 export { GlossaryTable } from "./GlossaryTable";
 export { PronounTable } from "./PronounTable";
+export { DefinitenessCategoryTable } from "./DefinitenessCategoryTable";

@@ -3,6 +3,7 @@ export { countriesNationalitiesTable } from "./countries-nationalities-table";
 
 export * as grammarPronouns from "./grammar";
 export * as pronounsTable from "./grammar";
+export * as grammarTables from "./grammar";
 export * as conjugationLesson1 from "./conjugation";
 
 export * as examples from "./examples";
