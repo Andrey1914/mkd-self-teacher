@@ -1,3 +1,8 @@
+export interface ParagraphProps {
+  data: ParagraphSectionsProps;
+  part?: "title" | "text";
+}
+
 export interface ParagraphSectionsProps {
   type: string;
   title?: string | string[];

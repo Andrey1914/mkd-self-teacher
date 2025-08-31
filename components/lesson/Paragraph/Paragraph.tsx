@@ -1,13 +1,8 @@
 "use client";
 
 import React from "react";
-import { ParagraphSectionsProps } from "@/types";
+import { ParagraphProps } from "@/types";
 import { formatText } from "@/utils";
-
-interface ParagraphProps {
-  data: ParagraphSectionsProps;
-  part?: "title" | "text";
-}
 
 export const Paragraph = ({ data, part }: ParagraphProps) => {
   const { title, subtitle, content } = data;
