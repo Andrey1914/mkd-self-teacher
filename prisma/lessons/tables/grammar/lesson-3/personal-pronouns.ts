@@ -1,4 +1,3 @@
-// import { PronounTableProps } from "@/types";
 import { TablesProps } from "@/types";
 
 export const personalPronounsTable: TablesProps = {

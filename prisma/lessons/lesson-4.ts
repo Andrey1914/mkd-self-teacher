@@ -3,6 +3,7 @@ import { dialogueBlock } from "@/prisma/lessons/dialogues/lesson-4";
 import { payAttentionsLesson4 } from "@/prisma/lessons/pay-attention";
 // import { glossary, pronounsTable, examples } from "@/prisma/lessons/tables";
 import { grammarLesson4 } from "@/prisma/lessons/paragraph";
+import { grammarTables } from "@/prisma/lessons/tables";
 // import { exercisesLesson3 } from "@/prisma/lessons/exercises";
 
 const { payAttention1, payAttention2 } = payAttentionsLesson4;
@@ -10,6 +11,8 @@ const { payAttention1, payAttention2 } = payAttentionsLesson4;
 // const { occupationTable } = glossary;
 
 const { definitenessCategory } = grammarLesson4;
+
+const { definitenessCategoryTable } = grammarTables;
 
 // const { personalPronounsTable } = pronounsTable;
 
@@ -60,22 +63,21 @@ export const lesson4 = {
 
   payAttention: [payAttention1, payAttention2],
 
-  //   tables: [
-  //     occupationTable,
-  //     personalPronounsTable,
-  //     { ...example1, slug: "lesson-4" },
-  //     { ...example2, slug: "lesson-4" },
-  //     { ...example3, slug: "lesson-4" },
-  //     { ...example4, slug: "lesson-4" },
-  //     { ...example5, slug: "lesson-4" },
-  //     { ...example6, slug: "lesson-4" },
-  //     { ...example7, slug: "lesson-4" },
-  //     { ...example8, slug: "lesson-4" },
-  //     { ...example9, slug: "lesson-4" },
-  //     { ...example10, slug: "lesson-4" },
-  //     { ...example11, slug: "lesson-4" },
-  //     { ...example12, slug: "lesson-4" },
-  //   ],
+  tables: [
+    definitenessCategoryTable,
+    // { ...example1, slug: "lesson-4" },
+    // { ...example2, slug: "lesson-4" },
+    // { ...example3, slug: "lesson-4" },
+    // { ...example4, slug: "lesson-4" },
+    // { ...example5, slug: "lesson-4" },
+    // { ...example6, slug: "lesson-4" },
+    // { ...example7, slug: "lesson-4" },
+    // { ...example8, slug: "lesson-4" },
+    // { ...example9, slug: "lesson-4" },
+    // { ...example10, slug: "lesson-4" },
+    // { ...example11, slug: "lesson-4" },
+    // { ...example12, slug: "lesson-4" },
+  ],
   //   exercises: [
   //     exercise1,
   //     exercise2,
