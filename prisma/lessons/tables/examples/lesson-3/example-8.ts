@@ -1,4 +1,3 @@
-// import { ExampleSection } from "@/types";
 import { TablesProps } from "@/types";
 
 export const example8: TablesProps = {
