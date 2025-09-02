@@ -65,7 +65,7 @@ export const ExamplesTable = ({ data }: { data: TablesProps }) => {
         <div>
           {content.words.map((row, idx) => (
             <p key={`mkd-example-${idx}`} style={{ marginBottom: "1rem" }}>
-              {formatText(row.mkd)}
+              {formatText(`<span>${row.mkd}</span>`)}
             </p>
           ))}
         </div>
