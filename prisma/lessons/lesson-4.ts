@@ -1,7 +1,7 @@
 import { vocabulary } from "@/prisma/lessons/vocabulary/lesson-4";
 import { dialogueBlock } from "@/prisma/lessons/dialogues/lesson-4";
 import { payAttentionsLesson4 } from "@/prisma/lessons/pay-attention";
-// import { glossary, pronounsTable, examples } from "@/prisma/lessons/tables";
+import { examples } from "@/prisma/lessons/tables";
 import { grammarLesson4 } from "@/prisma/lessons/paragraph";
 import { grammarTables } from "@/prisma/lessons/tables";
 // import { exercisesLesson3 } from "@/prisma/lessons/exercises";
@@ -16,22 +16,22 @@ const { definitenessCategoryTable } = grammarTables;
 
 // const { personalPronounsTable } = pronounsTable;
 
-// const { lesson3: examplesLesson3 } = examples;
+const { lesson4: examplesLesson4 } = examples;
 
-// const {
-//   example1,
-//   example2,
-//   example3,
-//   example4,
-//   example5,
-//   example6,
-//   example7,
-//   example8,
-//   example9,
-//   example10,
-//   example11,
-//   example12,
-// } = examplesLesson3;
+const {
+  example1,
+  example2,
+  // example3,
+  // example4,
+  // example5,
+  // example6,
+  // example7,
+  // example8,
+  // example9,
+  // example10,
+  // example11,
+  // example12,
+} = examplesLesson4;
 
 // const {
 //   exercise1,
@@ -65,8 +65,8 @@ export const lesson4 = {
 
   tables: [
     definitenessCategoryTable,
-    // { ...example1, slug: "lesson-4" },
-    // { ...example2, slug: "lesson-4" },
+    { ...example1, slug: "lesson-4" },
+    { ...example2, slug: "lesson-4" },
     // { ...example3, slug: "lesson-4" },
     // { ...example4, slug: "lesson-4" },
     // { ...example5, slug: "lesson-4" },
