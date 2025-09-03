@@ -53,31 +53,57 @@ export const ExamplesTable = ({ data }: { data: TablesProps }) => {
         )}
       </div>
       <div>{content.text && <>{renderTextParagraphs(content.text)}</>}</div>
+
       <div
         style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
+          display: "flex",
+          flexDirection: "column",
+          gap: "0.5rem",
           margin: "1rem 0",
-          gap: "1rem",
+          justifyItems: "center",
         }}
       >
-        {/* mkd */}
-        <div>
-          {content.words.map((row, idx) => (
-            <p key={`mkd-example-${idx}`} style={{ marginBottom: "1rem" }}>
+        {content.words.map((row, idx) => (
+          <div
+            key={`row-${idx}`}
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              gap: "1rem",
+              justifyItems: "center",
+            }}
+          >
+            {/* mkd */}
+            <p
+              style={{
+                overflowWrap: "break-word",
+                whiteSpace: "normal",
+                hyphens: "auto",
+                textIndent: 0,
+                textAlign: "left",
+                width: "100%",
+                maxWidth: "250px",
+              }}
+            >
               {formatText(`<span>${row.mkd}</span>`)}
             </p>
-          ))}
-        </div>
-
-        {/* ru */}
-        <div>
-          {content.words.map((row, idx) => (
-            <p key={`ru-example-${idx}`} style={{ marginBottom: "1rem" }}>
+            {/* ru */}
+            <p
+              lang="ru"
+              style={{
+                overflowWrap: "break-word",
+                whiteSpace: "normal",
+                hyphens: "auto",
+                textIndent: 0,
+                textAlign: "left",
+                width: "100%",
+                maxWidth: "300px",
+              }}
+            >
               {formatText(row.ru)}
             </p>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
     </>
   );

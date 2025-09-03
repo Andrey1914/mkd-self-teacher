@@ -10,7 +10,7 @@ import { grammarTables, examples } from "@/prisma/lessons/tables";
 const { definitenessCategory } = grammarLesson4;
 const { definitenessCategoryTable } = grammarTables;
 const { lesson4: examplesLesson4 } = examples;
-const { example1, example2 } = examplesLesson4;
+const { example1, example2, example3, example4, example5 } = examplesLesson4;
 
 export const Grammar = () => {
   return (
@@ -20,6 +20,9 @@ export const Grammar = () => {
       <Paragraph data={definitenessCategory} part="text" />
       <ExamplesTable data={example1} />
       <ExamplesTable data={example2} />
+      <ExamplesTable data={example3} />
+      <ExamplesTable data={example4} />
+      <ExamplesTable data={example5} />
     </>
   );
 };
