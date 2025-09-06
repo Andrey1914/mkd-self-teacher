@@ -1,0 +1,16 @@
+.paragraph,
+.marked-paragraph {
+  margin-bottom: 0;
+}
+
+.markedParagraph {
+  display: inline;
+}
+
+.markedItem {
+  padding: 0 0 0 2rem;
+}
+
+.markedList {
+  list-style: inside;
+}

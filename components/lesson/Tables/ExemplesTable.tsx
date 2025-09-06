@@ -12,16 +12,7 @@ export const ExamplesTable = ({ data }: { data: TablesProps }) => {
       .split(/\n\s*\n/)
       .filter((line) => line.trim().length > 0)
       .map((paragraph, i) => (
-        <p
-          lang="ru"
-          key={i}
-          style={{
-            marginBottom: 0,
-            overflowWrap: "break-word",
-            whiteSpace: "normal",
-            hyphens: "auto",
-          }}
-        >
+        <p lang="ru" key={i} style={{ marginBottom: 0 }}>
           {formatText(paragraph)}
         </p>
       ));
@@ -58,7 +49,6 @@ export const ExamplesTable = ({ data }: { data: TablesProps }) => {
         style={{
           display: "flex",
           flexDirection: "column",
-          gap: "0.5rem",
           margin: "1rem 0",
           justifyItems: "center",
         }}
@@ -69,16 +59,14 @@ export const ExamplesTable = ({ data }: { data: TablesProps }) => {
             style={{
               display: "grid",
               gridTemplateColumns: "1fr 1fr",
-              gap: "1rem",
               justifyItems: "center",
             }}
           >
             {/* mkd */}
             <p
               style={{
-                overflowWrap: "break-word",
-                whiteSpace: "normal",
-                hyphens: "auto",
+                margin: 0,
+                padding: "0 0 0.5rem 0 ",
                 textIndent: 0,
                 textAlign: "left",
                 width: "100%",
@@ -91,9 +79,8 @@ export const ExamplesTable = ({ data }: { data: TablesProps }) => {
             <p
               lang="ru"
               style={{
-                overflowWrap: "break-word",
-                whiteSpace: "normal",
-                hyphens: "auto",
+                margin: 0,
+                padding: "0 0 0.5rem 0 ",
                 textIndent: 0,
                 textAlign: "left",
                 width: "100%",

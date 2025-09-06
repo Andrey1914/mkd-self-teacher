@@ -74,12 +74,12 @@ h1 {
 }
 
 p {
-  /* width: 100%; */
-  margin-bottom: 1rem;
   text-indent: 2em;
   line-height: 1.5;
   letter-spacing: 0.05em;
-  /* font-size: 18px; */
+  overflow-wrap: break-word;
+  white-space: normal;
+  hyphens: auto;
 }
 
 a {
@@ -87,9 +87,8 @@ a {
   text-decoration: none;
 }
 
-ol,
-ul {
-  list-style: none;
+li::marker {
+  color: #994747;
 }
 
 thead {

@@ -4,8 +4,13 @@ import React from "react";
 import { ParagraphProps } from "@/types";
 import { formatText } from "@/utils";
 
+import { styles } from "./styles";
+
 export const Paragraph = ({ data, part }: ParagraphProps) => {
-  const { title, subtitle, content } = data;
+  const { title, subtitle, intro, content } = data;
+
+  const { paragraph, markedParagraph, markedItem, markedList } =
+    styles.paragraph;
 
   const renderTextParagraphs = (text: string | string[]) => {
     const fullText = Array.isArray(text) ? text.join("\n\n") : text;
@@ -13,19 +18,25 @@ export const Paragraph = ({ data, part }: ParagraphProps) => {
     return fullText
       .split(/\n\s*\n/)
       .filter((line) => line.trim().length > 0)
-      .map((paragraph, i) => (
-        <p
-          lang="ru"
-          key={i}
-          style={{
-            marginBottom: 0,
-            overflowWrap: "break-word",
-            whiteSpace: "normal",
-            hyphens: "auto",
-          }}
-        >
-          {formatText(paragraph)}
+      .map((p, i) => (
+        <p lang="ru" key={i} className={paragraph}>
+          {formatText(p)}
         </p>
+      ));
+  };
+
+  const markedTextParagraphs = (text: string | string[]) => {
+    const fullText = Array.isArray(text) ? text.join("\n\n") : text;
+
+    return fullText
+      .split(/\n\s*\n/)
+      .filter((line) => line.trim().length > 0)
+      .map((item, i) => (
+        <li key={i} className={markedItem}>
+          <p key={i} lang="ru" className={markedParagraph}>
+            {formatText(item)}
+          </p>
+        </li>
       ));
   };
 
@@ -54,15 +65,7 @@ export const Paragraph = ({ data, part }: ParagraphProps) => {
               </h4>
             )}
             {content.intro.intro && (
-              <p
-                lang="ru"
-                style={{
-                  marginBottom: 0,
-                  overflowWrap: "break-word",
-                  whiteSpace: "normal",
-                  hyphens: "auto",
-                }}
-              >
+              <p lang="ru" className={paragraph}>
                 {formatText(content.intro.intro)}
               </p>
             )}
@@ -109,6 +112,21 @@ export const Paragraph = ({ data, part }: ParagraphProps) => {
         )}
         {content?.text && (
           <>{content?.text && renderTextParagraphs(content.text)}</>
+        )}
+      </>
+    );
+  }
+
+  if (part === "marked") {
+    return (
+      <>
+        {intro && (
+          <p>{formatText(Array.isArray(intro) ? intro.join(", ") : intro)}</p>
+        )}
+        {content?.text && (
+          <ul className={markedList}>
+            {content?.text && markedTextParagraphs(content.text)}
+          </ul>
         )}
       </>
     );
