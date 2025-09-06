@@ -4,7 +4,8 @@ import React from "react";
 import { Tabs } from "@/components/app/Tabs/Tabs";
 import { HeaderProps } from "@/types";
 
-import styles from "./header.module.css";
+// import styles from "./header.module.css";
+import styles from "./Header.module.css";
 
 const { header } = styles;
 
