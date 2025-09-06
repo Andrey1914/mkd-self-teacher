@@ -2,32 +2,34 @@ import React from "react";
 import { TablesProps } from "@/types";
 import { formatText } from "@/utils";
 
+import { styles } from "./styles";
+
 export const GrammarTable = ({ data }: { data: TablesProps }) => {
   const { title, subtitle, text, content } = data;
+
+  const { heading, paragraph, table, headerRow, headerCell, cell } =
+    styles.grammar;
 
   return (
     <>
       {Array.isArray(title)
         ? title.length > 0 && (
-            <h2 style={{ margin: "1rem 0" }}>{formatText(title.join(", "))}</h2>
+            <h2 className={heading}>{formatText(title.join(", "))}</h2>
           )
         : title && (
-            <h2 style={{ margin: "1rem 0" }}>
+            <h2 className={heading}>
               {formatText(typeof title === "string" ? title : "")}
             </h2>
           )}
 
       {Array.isArray(subtitle) && subtitle.length > 0 && (
-        <h3 style={{ margin: "2rem 0" }}>{formatText(subtitle.join(", "))}</h3>
+        <h3 className={heading}>{formatText(subtitle.join(", "))}</h3>
       )}
 
       {Array.isArray(text) && text.length > 0 && (
         <>
           {text.map((item, idx) => (
-            <p
-              key={idx}
-              style={{ marginBottom: "1rem 0", textAlign: "center" }}
-            >
+            <p key={idx} className={paragraph}>
               {formatText(item)}
             </p>
           ))}
@@ -35,31 +37,15 @@ export const GrammarTable = ({ data }: { data: TablesProps }) => {
       )}
 
       {content.words?.length && (
-        <table
-          style={{
-            width: "100%",
-            tableLayout: "fixed",
-            borderCollapse: "collapse",
-            border: "1px solid #994747",
-            margin: "1rem 0",
-          }}
-        >
+        <table className={table}>
           {Array.isArray(content.subtitle) && (
             <thead>
-              <tr
-                style={{
-                  backgroundColor: "#994747",
-                  color: "#fff",
-                }}
-              >
+              <tr className={headerRow}>
                 {content.subtitle.map((col, idx) => (
                   <th
                     key={idx}
-                    style={{
-                      padding: "0.5rem",
-                      borderLeft: idx > 0 ? "1px solid #fff" : "none",
-                      textAlign: "center",
-                    }}
+                    style={{ borderLeft: idx > 0 ? "1px solid #fff" : "none" }}
+                    className={headerCell}
                   >
                     {col}
                   </th>
@@ -70,36 +56,9 @@ export const GrammarTable = ({ data }: { data: TablesProps }) => {
           <tbody>
             {content.words?.map((row, idx) => (
               <tr key={idx}>
-                <td
-                  style={{
-                    width: "33%",
-                    padding: "0.5rem",
-                    verticalAlign: "top",
-                    border: "1px solid #994747",
-                  }}
-                >
-                  {formatText(row.person)}
-                </td>
-                <td
-                  style={{
-                    width: "33%",
-                    padding: "0.5rem",
-                    verticalAlign: "top",
-                    border: "1px solid #994747",
-                  }}
-                >
-                  {formatText(row.singular)}
-                </td>
-                <td
-                  style={{
-                    width: "33%",
-                    padding: "0.5rem",
-                    verticalAlign: "top",
-                    border: "1px solid #994747",
-                  }}
-                >
-                  {formatText(row.plural)}
-                </td>
+                <td className={cell}>{formatText(row.person)}</td>
+                <td className={cell}>{formatText(row.singular)}</td>
+                <td className={cell}>{formatText(row.plural)}</td>
               </tr>
             ))}
           </tbody>

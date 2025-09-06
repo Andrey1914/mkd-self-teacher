@@ -1,0 +1,13 @@
+.headerRow {
+  background-color: #994747;
+  color: #fff;
+}
+
+.headerCell {
+  padding: 0.5rem;
+  vertical-align: center;
+}
+
+.cell {
+  padding: 0.5rem;
+}

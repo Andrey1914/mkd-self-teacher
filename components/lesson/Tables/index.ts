@@ -1,7 +1,7 @@
 export { AlphabetTable } from "./AlphabetTable";
 export { CountriesNationalitiesTable } from "./CountriesNationalities";
 export { GrammarTable } from "./GrammarTable";
-export { ExamplesTable } from "./ExemplesTable";
+export { ExamplesTable } from "./ExamplesTable";
 export { ConjugationTable } from "./ConjugationTable";
 export { AdjectivesTable } from "./AdjectivesTable";
 export { NumeralsTable } from "./NumeralsTable";

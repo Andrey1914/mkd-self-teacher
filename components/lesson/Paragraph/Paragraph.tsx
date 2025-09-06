@@ -120,6 +120,13 @@ export const Paragraph = ({ data, part }: ParagraphProps) => {
   if (part === "marked") {
     return (
       <>
+        {subtitle && (
+          <h3>
+            {formatText(
+              Array.isArray(subtitle) ? subtitle.join(", ") : subtitle
+            )}
+          </h3>
+        )}
         {intro && (
           <p>{formatText(Array.isArray(intro) ? intro.join(", ") : intro)}</p>
         )}

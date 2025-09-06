@@ -1,7 +1,5 @@
-// import { AdjectivesTableBlock } from "@/types";
 import { TablesProps } from "@/types";
 
-// export const genderNumberPronominalOfAdjectives: AdjectivesTableBlock = {
 export const genderNumberPronominalOfAdjectives: TablesProps = {
   slug: "lesson-2",
   type: "gender-number-pronominal-of-adjectives",

@@ -20,8 +20,6 @@ export const AlphabetTable = () => {
       {table.title && <h3 style={{ marginBottom: "1rem" }}>{table.title}</h3>}
       <table
         style={{
-          width: "100%",
-          borderCollapse: "collapse",
           marginBottom: "1rem",
           border: "1px solid #994747",
         }}

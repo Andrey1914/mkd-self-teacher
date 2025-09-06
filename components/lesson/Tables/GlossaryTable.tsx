@@ -2,12 +2,16 @@ import React from "react";
 import { TablesProps } from "@/types";
 import { formatText } from "@/utils";
 
+import { styles } from "./styles";
+
 interface Props {
   data: TablesProps;
 }
 
 export const GlossaryTable = ({ data }: Props) => {
   const { title, content } = data;
+
+  const { headerRow, headerCell, cell } = styles.glossary;
 
   if (
     !content ||
@@ -34,22 +38,14 @@ export const GlossaryTable = ({ data }: Props) => {
           : formatText("")}
       </h2>
 
-      <table
-        style={{
-          width: "100%",
-          borderCollapse: "collapse",
-        }}
-      >
+      <table>
         <thead>
-          <tr style={{ backgroundColor: "#994747", color: "#fff" }}>
+          <tr className={headerRow}>
             {subtitle.map((col, idx) => (
               <th
                 key={idx}
-                style={{
-                  padding: "0.5rem",
-                  borderLeft: idx > 0 ? "0.5px solid #fff" : "none",
-                  textAlign: "center",
-                }}
+                style={{ borderLeft: idx > 0 ? "0.5px solid #fff" : "none" }}
+                className={headerCell}
               >
                 {col}
               </th>
@@ -59,10 +55,8 @@ export const GlossaryTable = ({ data }: Props) => {
         <tbody>
           {words.map((word, idx) => (
             <tr key={idx}>
-              <td style={{ padding: "0.5rem" }}>
-                {formatText(`<span>${word.mkd}</span>`)}
-              </td>
-              <td style={{ padding: "0.5rem" }}>{formatText(word.ru)}</td>
+              <td className={cell}>{formatText(`<span>${word.mkd}</span>`)}</td>
+              <td className={cell}>{formatText(word.ru)}</td>
             </tr>
           ))}
         </tbody>

@@ -1,0 +1,9 @@
+.table {
+  border: 1px solid #994747;
+}
+
+.cell {
+  padding: 0.5rem;
+  border: 1px solid #994747;
+  vertical-align: top;
+}

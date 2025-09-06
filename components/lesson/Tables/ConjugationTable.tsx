@@ -4,8 +4,12 @@ import React from "react";
 import { TablesProps } from "@/types";
 import { formatText } from "@/utils";
 
+import { styles } from "./styles";
+
 export const ConjugationTable = ({ data }: { data: TablesProps }) => {
   const { subtitle, text, content } = data;
+
+  const { table, cell } = styles.conjugation;
 
   if (!content?.words || !Array.isArray(content.words)) return null;
 
@@ -34,38 +38,15 @@ export const ConjugationTable = ({ data }: { data: TablesProps }) => {
         </>
       )}
 
-      <table
-        style={{
-          width: "100%",
-          tableLayout: "fixed",
-          borderCollapse: "collapse",
-          border: "1px solid #994747",
-          margin: "1rem 0 2rem",
-        }}
-      >
+      <table className={table}>
         <tbody>
           {content.words.map((row, rowIdx) => {
             if ("person" in row && "forms" in row) {
               return (
                 <tr key={rowIdx}>
-                  <td
-                    style={{
-                      padding: "0.5rem",
-                      border: "1px solid #994747",
-                      verticalAlign: "top",
-                    }}
-                  >
-                    {formatText(row.person)}
-                  </td>
+                  <td className={cell}>{formatText(row.person)}</td>
                   {row.forms?.map((form, formIdx) => (
-                    <td
-                      key={formIdx}
-                      style={{
-                        padding: "0.5rem",
-                        border: "1px solid #994747",
-                        verticalAlign: "top",
-                      }}
-                    >
+                    <td key={formIdx} className={cell}>
                       {formatText(form)}
                     </td>
                   ))}
@@ -81,44 +62,16 @@ export const ConjugationTable = ({ data }: { data: TablesProps }) => {
             ) {
               return (
                 <tr key={rowIdx}>
-                  <td
-                    style={{
-                      padding: "0.5rem",
-                      border: "1px solid #994747",
-                      verticalAlign: "top",
-                    }}
-                  >
-                    {formatText(row.singularPerson)}
-                  </td>
-                  <td
-                    style={{
-                      padding: "0.5rem",
-                      border: "1px solid #994747",
-                      verticalAlign: "top",
-                    }}
-                  >
+                  <td className={cell}>{formatText(row.singularPerson)}</td>
+                  <td className={cell}>
                     {Array.isArray(row.singularForm)
                       ? row.singularForm.map((form, i) => (
                           <div key={i}>{formatText(form)}</div>
                         ))
                       : formatText(row.singularForm)}
                   </td>
-                  <td
-                    style={{
-                      padding: "0.5rem",
-                      border: "1px solid #994747",
-                      verticalAlign: "top",
-                    }}
-                  >
-                    {formatText(row.pluralPerson)}
-                  </td>
-                  <td
-                    style={{
-                      padding: "0.5rem",
-                      border: "1px solid #994747",
-                      verticalAlign: "top",
-                    }}
-                  >
+                  <td className={cell}>{formatText(row.pluralPerson)}</td>
+                  <td className={cell}>
                     {Array.isArray(row.pluralForm)
                       ? row.pluralForm.map((form, i) => (
                           <div key={i}>{formatText(form)}</div>

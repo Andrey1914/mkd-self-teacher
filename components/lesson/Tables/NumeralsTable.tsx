@@ -2,12 +2,16 @@ import React from "react";
 import { TablesProps } from "@/types";
 import { formatText } from "@/utils";
 
+import { styles } from "./styles";
+
 interface Props {
   data: TablesProps;
 }
 
 export const NumeralsTable = ({ data }: Props) => {
   const content = data.content;
+
+  const { container, headerRow, headerCell, cell } = styles.numerals;
 
   if (
     !content ||
@@ -21,23 +25,15 @@ export const NumeralsTable = ({ data }: Props) => {
   const { subtitle, words } = content;
 
   return (
-    <div style={{ padding: "1rem 0 2rem 0" }}>
-      <table
-        style={{
-          width: "100%",
-          borderCollapse: "collapse",
-        }}
-      >
+    <div className={container}>
+      <table>
         <thead>
-          <tr style={{ backgroundColor: "#994747", color: "#fff" }}>
+          <tr className={headerRow}>
             {subtitle.map((col, idx) => (
               <th
                 key={idx}
-                style={{
-                  padding: "0.5rem",
-                  borderLeft: idx > 0 ? "0.5px solid #fff" : "none",
-                  textAlign: "center",
-                }}
+                style={{ borderLeft: idx > 0 ? "0.5px solid #fff" : "none" }}
+                className={headerCell}
               >
                 {col}
               </th>
@@ -47,13 +43,11 @@ export const NumeralsTable = ({ data }: Props) => {
         <tbody>
           {words.map((word, idx) => (
             <tr key={idx}>
-              <td style={{ padding: "0.5rem" }}>
-                {formatText(`${word.numbers}`)}
-              </td>
-              <td style={{ padding: "0.5rem" }}>
+              <td className={cell}>{formatText(`${word.numbers}`)}</td>
+              <td className={cell}>
                 {formatText(`<span>${word.cardinal}</span>`)}
               </td>
-              <td style={{ padding: "0.5rem" }}>
+              <td className={cell}>
                 {formatText(`<span>${word.ordinal}</span>`)}
               </td>
             </tr>

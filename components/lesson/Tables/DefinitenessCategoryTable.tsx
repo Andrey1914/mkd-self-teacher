@@ -2,8 +2,13 @@ import React from "react";
 import { TablesProps } from "@/types";
 import { formatText } from "@/utils";
 
+import { styles } from "./styles";
+
 export const DefinitenessCategoryTable = ({ data }: { data: TablesProps }) => {
   const rows = data?.content?.rows;
+
+  const { table, cell } = styles.didfiniteness;
+
   if (!rows || !Array.isArray(rows) || rows.length === 0) {
     return null;
   }
@@ -54,13 +59,7 @@ export const DefinitenessCategoryTable = ({ data }: { data: TablesProps }) => {
 
   return (
     <div style={{ padding: "1rem 0 2rem 0" }}>
-      <table
-        style={{
-          width: "100%",
-          borderCollapse: "collapse",
-          border: "1px solid #994747",
-        }}
-      >
+      <table className={table}>
         <tbody>
           {groupedRows.map((suffixGroup, suffixIdx) => {
             const suffixRowSpan = suffixGroup.noteGroups.reduce(
@@ -77,28 +76,13 @@ export const DefinitenessCategoryTable = ({ data }: { data: TablesProps }) => {
 
                   return noteGroup.items.map((item, itemIdx) => {
                     const suffixCell = isFirstRowOfSuffix && (
-                      <td
-                        rowSpan={suffixRowSpan}
-                        style={{
-                          padding: "0.5rem",
-                          verticalAlign: "center",
-                          textAlign: "center",
-                          border: "1px solid #994747",
-                        }}
-                      >
+                      <td rowSpan={suffixRowSpan} className={cell}>
                         {formatText(`<span>«${suffixGroup.suffix}»</span>`)}
                       </td>
                     );
 
                     const noteCell = isFirstRowOfNote && (
-                      <td
-                        rowSpan={noteGroup.items.length}
-                        style={{
-                          padding: "0.5rem",
-                          verticalAlign: "center",
-                          border: "1px solid #994747",
-                        }}
-                      >
+                      <td rowSpan={noteGroup.items.length} className={cell}>
                         {formatText(noteGroup.note)}
                       </td>
                     );
@@ -110,12 +94,7 @@ export const DefinitenessCategoryTable = ({ data }: { data: TablesProps }) => {
                       <tr key={`${noteIdx}-${itemIdx}`}>
                         {suffixCell}
                         {noteCell}
-                        <td
-                          style={{
-                            padding: "0.5rem",
-                            border: "1px solid #994747",
-                          }}
-                        >
+                        <td className={cell}>
                           {formatText(
                             `<span>${item.examples.join(", ")}</span>`
                           )}

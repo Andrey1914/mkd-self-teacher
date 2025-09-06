@@ -2,11 +2,15 @@ import React from "react";
 import { TablesProps } from "@/types";
 import { formatText } from "@/utils";
 
+import { styles } from "./styles";
+
 export const CountriesNationalitiesTable = ({
   data,
 }: {
   data: TablesProps;
 }) => {
+  const { table, headerRow, headerCell, cell } = styles.countriesNationalities;
+
   if (
     !Array.isArray(data.content?.subtitle) ||
     !Array.isArray(data.content?.words)
@@ -20,24 +24,14 @@ export const CountriesNationalitiesTable = ({
         <h2 style={{ margin: "2rem 0 1rem" }}>{data.title[0]}</h2>
       )}
 
-      <table
-        style={{
-          width: "100%",
-          borderCollapse: "collapse",
-          marginBottom: "1rem",
-          border: "0.5px solid #994747",
-        }}
-      >
+      <table className={table}>
         <thead>
-          <tr style={{ backgroundColor: "#994747", color: "#fff" }}>
+          <tr className={headerRow}>
             {data.content.subtitle.map((title, idx) => (
               <th
                 key={idx}
-                style={{
-                  padding: "0.5rem",
-                  borderLeft: idx > 0 ? "0.5px solid #fff" : "none",
-                  textAlign: "center",
-                }}
+                style={{ borderLeft: idx > 0 ? "0.5px solid #fff" : "none" }}
+                className={headerCell}
               >
                 {title}
               </th>
@@ -47,31 +41,11 @@ export const CountriesNationalitiesTable = ({
         <tbody>
           {data.content.words.map((row, idx) => (
             <tr key={idx}>
-              <td
-                style={{
-                  padding: "0.5rem",
-                  verticalAlign: "top",
-                  border: "1px solid #994747",
-                }}
-              >
-                {formatText(`<span>${row.land}</span>`)}
-              </td>
-              <td
-                style={{
-                  padding: "0.5rem",
-                  verticalAlign: "top",
-                  border: "1px solid #994747",
-                }}
-              >
+              <td className={cell}>{formatText(`<span>${row.land}</span>`)}</td>
+              <td className={cell}>
                 {formatText(`<span>${row.nationality}</span>`)}
               </td>
-              <td
-                style={{
-                  padding: "0.5rem",
-                  verticalAlign: "top",
-                  border: "1px solid #994747",
-                }}
-              >
+              <td className={cell}>
                 {formatText(`<span>${row.adjective}</span>`)}
               </td>
             </tr>

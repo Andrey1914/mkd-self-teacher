@@ -2,8 +2,12 @@ import React from "react";
 import { formatText } from "@/utils";
 import type { VocabularyProps } from "@/types";
 
+import { styles } from "./styles";
+
 export const Vocabulary = ({ lesson }: VocabularyProps) => {
   const section = lesson.sections[0];
+
+  const { table, headerRow, headerCell, cell } = styles.vocabulary;
 
   if (
     !section ||
@@ -27,23 +31,14 @@ export const Vocabulary = ({ lesson }: VocabularyProps) => {
         </section>
       )}
 
-      <table
-        style={{
-          width: "100%",
-          borderCollapse: "collapse",
-          tableLayout: "fixed",
-        }}
-      >
+      <table className={table}>
         <thead>
-          <tr style={{ backgroundColor: "#994747", color: "#fff" }}>
+          <tr className={headerRow}>
             {subtitle.map((col, idx) => (
               <th
                 key={idx}
-                style={{
-                  padding: "0.5rem",
-                  borderLeft: idx > 0 ? "0.5px solid #fff" : "none",
-                  textAlign: "center",
-                }}
+                style={{ borderLeft: idx > 0 ? "0.5px solid #fff" : "none" }}
+                className={headerCell}
               >
                 {col}
               </th>
@@ -53,13 +48,9 @@ export const Vocabulary = ({ lesson }: VocabularyProps) => {
         <tbody>
           {words.map((word, idx) => (
             <tr key={idx}>
-              <td style={{ padding: "0.5rem" }}>
-                {formatText(`<span>${word.mkd}</span>`)}
-              </td>
-              <td style={{ padding: "0.5rem" }}>
-                {formatText(`<em>${word.pron}</em>`)}
-              </td>
-              <td style={{ padding: "0.5rem" }}>{formatText(word.ru)}</td>
+              <td className={cell}>{formatText(`<span>${word.mkd}</span>`)}</td>
+              <td className={cell}>{formatText(`<em>${word.pron}</em>`)}</td>
+              <td className={cell}>{formatText(word.ru)}</td>
             </tr>
           ))}
         </tbody>
