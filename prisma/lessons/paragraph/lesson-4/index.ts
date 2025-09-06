@@ -1,1 +1,1 @@
-export { definitenessCategory } from "./grammar";
+export { definitenessCategory, prepositions } from "./grammar";

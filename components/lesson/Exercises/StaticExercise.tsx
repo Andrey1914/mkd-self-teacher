@@ -24,7 +24,6 @@ export const StaticExercise = ({ data }: { data: ExercisesProps }) => {
                 style={{
                   marginTop: "1rem",
                   textIndent: 0,
-                  // padding: "0 20px",
                   lineHeight: "1.8",
                 }}
               >

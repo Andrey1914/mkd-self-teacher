@@ -1,12 +1,13 @@
 export interface ParagraphProps {
   data: ParagraphSectionsProps;
-  part?: "title" | "text";
+  part?: "title" | "text" | "marked";
 }
 
 export interface ParagraphSectionsProps {
   type: string;
   title?: string | string[];
   subtitle?: string | string[];
+  intro?: string;
   content?: ContentType;
 }
 

@@ -52,15 +52,7 @@ export const DialogueBlock = ({ data }: { data: DialogueBlockProps }) => {
                       </h3>
                     )}
                     {description?.mkd && (
-                      <p
-                        lang="mk"
-                        style={{
-                          hyphens: "auto",
-                          overflowWrap: "break-word",
-                          whiteSpace: "normal",
-                          textIndent: 0,
-                        }}
-                      >
+                      <p lang="mk" style={{ textIndent: 0 }}>
                         {formatText(`<em>${description.mkd}</em>`)}
                       </p>
                     )}
@@ -75,15 +67,7 @@ export const DialogueBlock = ({ data }: { data: DialogueBlockProps }) => {
                       </h3>
                     )}
                     {description?.ru && (
-                      <p
-                        lang="ru"
-                        style={{
-                          hyphens: "auto",
-                          overflowWrap: "break-word",
-                          whiteSpace: "normal",
-                          textIndent: 0,
-                        }}
-                      >
+                      <p lang="ru" style={{ textIndent: 0 }}>
                         {formatText(`<em>${description.ru}</em>`)}
                       </p>
                     )}
@@ -143,10 +127,7 @@ export const DialogueBlock = ({ data }: { data: DialogueBlockProps }) => {
                             style={{
                               margin: 0,
                               padding: "0.5rem",
-                              overflowWrap: "break-word",
                               wordBreak: "break-word",
-                              whiteSpace: "normal",
-                              hyphens: "auto",
                               flex: 1,
                               textIndent: 0,
                             }}
@@ -162,9 +143,6 @@ export const DialogueBlock = ({ data }: { data: DialogueBlockProps }) => {
                               style={{
                                 margin: 0,
                                 padding: "0.5rem",
-                                overflowWrap: "break-word",
-                                whiteSpace: "normal",
-                                hyphens: "auto",
                                 flex: 1,
                                 textIndent: 0,
                               }}
