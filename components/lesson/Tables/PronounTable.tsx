@@ -18,7 +18,7 @@ export const PronounTable = ({ data }: { data: TablesProps }) => {
     headerCellNoRight,
     secondRowCell,
     cell,
-  } = styles.pronounsTable;
+  } = styles.pronouns;
 
   return (
     <div style={{ overflowX: "auto", padding: "2rem 0" }}>

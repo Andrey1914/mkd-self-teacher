@@ -129,7 +129,6 @@ td {
 
 td,
 th {
-  /* word-break: break-word; */
   white-space: normal;
 }
 
@@ -139,8 +138,7 @@ th {
   }
 }
 
-/* table {
-  max-width: 100%;
-  overflow-x: auto;
-  display: block;
-} */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}

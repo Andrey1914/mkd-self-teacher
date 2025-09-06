@@ -1,0 +1,25 @@
+.examples {
+  margin: 0;
+  padding: 0 0 0.5rem 0;
+  text-indent: 0;
+  text-align: left;
+  width: 100%;
+  max-width: 300px;
+}
+
+.paragraph {
+  margin-bottom: 0;
+}
+
+.flexContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 0;
+  justify-items: center;
+}
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+}

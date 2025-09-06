@@ -1,0 +1,17 @@
+.table {
+  table-layout: fixed;
+}
+
+.headerRow {
+  background-color: #994747;
+  color: #fff;
+}
+
+.headerCell {
+  padding: 0.5rem;
+  text-align: center;
+}
+
+.cell {
+  padding: 0.5rem;
+}

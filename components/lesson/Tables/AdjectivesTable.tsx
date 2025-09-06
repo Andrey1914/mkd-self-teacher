@@ -2,8 +2,12 @@ import React from "react";
 import { TablesProps } from "@/types";
 import { formatText } from "@/utils";
 
+import { styles } from "./styles";
+
 export const AdjectivesTable = ({ data }: { data: TablesProps }) => {
   const content = data.content;
+
+  const { table, headerRow, headerCell, cell } = styles.adjectives;
 
   if (
     !content ||
@@ -18,23 +22,14 @@ export const AdjectivesTable = ({ data }: { data: TablesProps }) => {
 
   return (
     <div style={{ padding: "1rem 0 2rem 0" }}>
-      <table
-        style={{
-          width: "100%",
-          borderCollapse: "collapse",
-          tableLayout: "fixed",
-        }}
-      >
+      <table className={table}>
         <thead>
-          <tr style={{ backgroundColor: "#994747", color: "#fff" }}>
+          <tr className={headerRow}>
             {subtitle.map((col, idx) => (
               <th
                 key={idx}
-                style={{
-                  padding: "0.5rem",
-                  borderLeft: idx > 0 ? "0.5px solid #fff" : "none",
-                  textAlign: "center",
-                }}
+                style={{ borderLeft: idx > 0 ? "0.5px solid #fff" : "none" }}
+                className={headerCell}
               >
                 {col}
               </th>
@@ -44,16 +39,16 @@ export const AdjectivesTable = ({ data }: { data: TablesProps }) => {
         <tbody>
           {words.map((word, idx) => (
             <tr key={idx}>
-              <td style={{ padding: "0.5rem" }}>
+              <td className={cell}>
                 {formatText(`<span>${word.masculine}</span>`)}
               </td>
-              <td style={{ padding: "0.5rem" }}>
+              <td className={cell}>
                 {formatText(`<span>${word.feminine}</span>`)}
               </td>
-              <td style={{ padding: "0.5rem" }}>
+              <td className={cell}>
                 {formatText(`<span>${word.neuter}</span>`)}
               </td>
-              <td style={{ padding: "0.5rem" }}>
+              <td className={cell}>
                 {formatText(`<span>${word.plural}</span>`)}
               </td>
             </tr>

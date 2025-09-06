@@ -4,7 +4,10 @@ import React from "react";
 import { Tabs } from "@/components/app/Tabs/Tabs";
 import { HeaderProps } from "@/types";
 
+// import styles from "./header.module.css";
 import styles from "./Header.module.css";
+
+const { header } = styles;
 
 export const Header = ({
   activeIndex,
@@ -12,7 +15,7 @@ export const Header = ({
   lessonTitles,
 }: HeaderProps) => {
   return (
-    <header className={styles.header}>
+    <header className={header}>
       <Tabs tabs={lessonTitles} activeIndex={activeIndex} onChange={onChange} />
     </header>
   );
