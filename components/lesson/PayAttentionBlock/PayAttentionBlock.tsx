@@ -11,7 +11,6 @@ export function PayAttentionBlock({ data }: { data: PayAttentionBlockProps }) {
         <table
           key={index}
           style={{
-            width: "100%",
             border: "2px solid var(--thead-bg)",
             backgroundColor: "#ebb2b2",
             margin: "0 0 4rem 0",
