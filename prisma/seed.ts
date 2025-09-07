@@ -250,12 +250,14 @@ async function main() {
               ? paragraph.subtitle.join(", ")
               : paragraph.subtitle;
 
+            const intro = paragraph.intro;
             const content = paragraph.content ?? {};
 
             const existing = await tx.paragraphBlock.findFirst({
               where: {
                 type: paragraph.type,
                 subtype,
+                ...(intro ? { intro } : {}),
                 lessonId,
               },
             });
@@ -268,9 +270,11 @@ async function main() {
                   ? existing.content.text ?? ""
                   : "";
 
+              const existingIntro = existing.intro;
               const newText = content.text ?? "";
+              const newIntro = intro ?? "";
 
-              if (existingText === newText) {
+              if (existingText === newText || existingIntro === newIntro) {
                 console.log(
                   `ℹ️ ParagraphBlock "${paragraph.type}" уже существует, пропущен.`
                 );
@@ -279,7 +283,11 @@ async function main() {
 
               await tx.paragraphBlock.update({
                 where: { id: existing.id },
-                data: { content },
+                data: {
+                  subtype,
+                  content,
+                  ...(intro !== undefined ? { intro } : {}),
+                },
               });
 
               console.log(`♻️ ParagraphBlock "${paragraph.type}" обновлен.`);
@@ -290,6 +298,7 @@ async function main() {
                   subtype,
                   content,
                   lessonId,
+                  ...(intro !== undefined ? { intro } : {}),
                 },
               });
 
