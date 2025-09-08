@@ -3,13 +3,17 @@
 import React, { useEffect, useState } from "react";
 import { ExercisesProps } from "@/types";
 import { formatText, highlightInput, getTextWidth } from "@/utils";
-import styles from "@/app/page.module.css";
+
+import { styles } from "./styles";
 
 export const FillInExercise = ({ data }: { data: ExercisesProps }) => {
   const [hasMounted, setHasMounted] = useState(false);
   const [showAnswers, setShowAnswers] = useState(false);
   const [inputs, setInputs] = useState<string[][]>([]);
   const [isAutoFilled, setIsAutoFilled] = useState<boolean[][]>([]);
+
+  const { buttonContainer, exerciseButton } = styles.buttons;
+  const { fillInInput } = styles.inputs;
 
   useEffect(() => {
     setHasMounted(true);
@@ -111,7 +115,7 @@ export const FillInExercise = ({ data }: { data: ExercisesProps }) => {
                                 name={`input-${sIdx}-${idx}-${i}`}
                                 autoComplete="off"
                                 type="text"
-                                className={styles.exerciseInput}
+                                className={fillInInput}
                                 value={inputs[idx]?.[i] ?? ""}
                                 onChange={(e) =>
                                   handleChange(e.target.value, idx, i)
@@ -125,8 +129,6 @@ export const FillInExercise = ({ data }: { data: ExercisesProps }) => {
                                   if (isAutoFilled[idx]?.[i]) e.target.blur();
                                 }}
                                 style={{
-                                  minWidth: "60px",
-                                  maxWidth: "240px",
                                   width: `${Math.min(
                                     Math.max(
                                       getTextWidth(inputs[idx]?.[i] ?? ""),
@@ -153,30 +155,23 @@ export const FillInExercise = ({ data }: { data: ExercisesProps }) => {
             </p>
           </form>
 
-          <div
-            style={{
-              marginTop: "2rem",
-              display: "flex",
-              gap: "1rem",
-              justifyContent: "end",
-            }}
-          >
+          <div className={buttonContainer}>
             <button
-              className={styles.exerciseButton}
+              className={exerciseButton}
               type="button"
               onClick={() => setShowAnswers(true)}
             >
               Проверить мою работу
             </button>
             <button
-              className={styles.exerciseButton}
+              className={exerciseButton}
               type="button"
               onClick={revealAnswers}
             >
               Показать правильные ответы
             </button>
             <button
-              className={styles.exerciseButton}
+              className={exerciseButton}
               type="button"
               onClick={() => {
                 setInputs((prev) => prev.map((row) => row.map(() => "")));

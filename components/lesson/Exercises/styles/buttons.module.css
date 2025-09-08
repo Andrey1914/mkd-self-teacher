@@ -1,0 +1,15 @@
+.buttonContainer {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+
+.exerciseButton {
+  padding: 8px 16px;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  background-color: #994747;
+  cursor: pointer;
+}

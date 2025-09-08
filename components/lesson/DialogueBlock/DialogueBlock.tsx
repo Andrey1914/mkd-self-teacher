@@ -2,8 +2,12 @@
 import { formatText } from "@/utils";
 import type { DialogueBlockProps } from "@/types";
 
+import { styles } from "./styles";
+
 export const DialogueBlock = ({ data }: { data: DialogueBlockProps }) => {
   const { sections } = data;
+
+  const { dialogueWrap, subtitleWrap } = styles.dialogue;
 
   return (
     <>
@@ -34,18 +38,10 @@ export const DialogueBlock = ({ data }: { data: DialogueBlockProps }) => {
               description?.ru ||
               contentSubtitle?.mkd ||
               contentSubtitle?.ru) && (
-              <div
-                style={{
-                  padding: "5px",
-                  display: "flex",
-                  gap: "2rem",
-                  background:
-                    "linear-gradient(to right, var(--thead-bg), var(--background))",
-                }}
-              >
+              <div className={dialogueWrap}>
                 {/* mkd */}
                 {(contentSubtitle?.mkd || description?.mkd) && (
-                  <div style={{ padding: "0.5rem", flex: 1 }}>
+                  <div className={subtitleWrap}>
                     {contentSubtitle?.mkd && (
                       <h3 style={{ textIndent: 0 }}>
                         {formatText(contentSubtitle.mkd)}
@@ -60,7 +56,7 @@ export const DialogueBlock = ({ data }: { data: DialogueBlockProps }) => {
                 )}
                 {/* ru */}
                 {(contentSubtitle?.ru || description?.ru) && (
-                  <div style={{ padding: "0.5rem", flex: 1 }}>
+                  <div className={subtitleWrap}>
                     {contentSubtitle?.ru && (
                       <h3 style={{ textIndent: 0 }}>
                         {formatText(contentSubtitle.ru)}
