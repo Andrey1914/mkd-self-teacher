@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState, useId } from "react";
-import { formatText, normalizeAnswer } from "@/utils";
+import React, { useState, useId, useRef, useEffect } from "react";
+import { formatText, normalizeAnswer, resizeTextarea } from "@/utils";
 import styles from "@/app/page.module.css";
 import { ExercisesProps } from "@/types";
 
@@ -12,7 +12,10 @@ export const ParagraphExercise = ({ data }: { data: ExercisesProps }) => {
 
   const answers = sections.content.answer ?? [];
 
+  const isSingleInput = sections.singleInput === true;
+
   const usePlaceholders =
+    !isSingleInput &&
     answers.length > 0 &&
     answers.every((answer) =>
       pronouns.some((pronoun) => answer.trim().startsWith(pronoun))
@@ -20,15 +23,24 @@ export const ParagraphExercise = ({ data }: { data: ExercisesProps }) => {
 
   const uniqueIdBase = useId();
 
-  const [inputs, setInputs] = useState<string[]>(
-    Array(pronouns.length).fill("")
-  );
+  const inputCount = isSingleInput ? 1 : pronouns.length;
+
+  const [inputs, setInputs] = useState<string[]>(Array(inputCount).fill(""));
+
   const [checked, setChecked] = useState(false);
   const [showAnswers, setShowAnswers] = useState(false);
 
   const [isAutoFilled, setIsAutoFilled] = useState<boolean[]>(
-    Array(pronouns.length).fill(false)
+    Array(inputCount).fill(false)
   );
+
+  const textareasRef = useRef<(HTMLTextAreaElement | null)[]>([]);
+
+  useEffect(() => {
+    textareasRef.current.forEach((textarea) => {
+      resizeTextarea(textarea, { minRows: 3, maxRows: 15 });
+    });
+  }, [inputs]);
 
   const handleChange = (value: string, idx: number) => {
     const updatedInputs = [...inputs];
@@ -56,21 +68,21 @@ export const ParagraphExercise = ({ data }: { data: ExercisesProps }) => {
       })
     );
 
-    setInputs(cleanedAnswers ?? Array(pronouns.length).fill(""));
-    setIsAutoFilled(Array(pronouns.length).fill(true));
+    setInputs(cleanedAnswers ?? Array(inputCount).fill(""));
+    setIsAutoFilled(Array(inputCount).fill(true));
     setShowAnswers(true);
     setChecked(false);
   };
 
   const clearInputs = () => {
-    setInputs(Array(pronouns.length).fill(""));
-    setIsAutoFilled(Array(pronouns.length).fill(false));
+    setInputs(Array(inputCount).fill(""));
+    setIsAutoFilled(Array(inputCount).fill(false));
     setShowAnswers(false);
     setChecked(false);
   };
 
   return (
-    <section style={{ marginBottom: "2rem" }}>
+    <section style={{ margin: "2rem 0" }}>
       {sections.prompt?.map((text, i) => (
         <p key={i} style={{ marginBottom: "1rem" }}>
           <strong>{data.title}. </strong>
@@ -83,7 +95,7 @@ export const ParagraphExercise = ({ data }: { data: ExercisesProps }) => {
       </div>
 
       <form onSubmit={(e) => e.preventDefault()}>
-        {pronouns.map((pronoun, idx) => {
+        {Array.from({ length: inputCount }).map((_, idx) => {
           const correctAnswer = sections.content.answer?.[idx] ?? "";
 
           const userInput = inputs[idx] || "";
@@ -109,6 +121,9 @@ export const ParagraphExercise = ({ data }: { data: ExercisesProps }) => {
               : "0 0 8px 3px #ffa347"
             : "none";
 
+          const placeholder =
+            !isSingleInput && usePlaceholders ? pronouns[idx] : "";
+
           return (
             <div key={idx} style={{ marginBottom: "1.5rem" }}>
               <textarea
@@ -116,18 +131,22 @@ export const ParagraphExercise = ({ data }: { data: ExercisesProps }) => {
                 name={`${uniqueIdBase}-textarea-${idx}`}
                 autoComplete="off"
                 className={styles.exerciseTextarea}
-                placeholder={usePlaceholders ? pronoun : ""}
-                rows={5}
+                placeholder={placeholder}
+                ref={(el) => {
+                  textareasRef.current[idx] = el;
+                }}
                 style={{
                   width: "100%",
                   padding: "0.5rem",
                   borderRadius: "6px",
                   border: "1px solid #994747",
                   fontSize: "18px",
+                  lineHeight: "1.5",
                   resize: "none",
                   backgroundColor: "transparent",
                   boxShadow,
                   outline: isAutoFilled[idx] ? "none" : undefined,
+                  overflow: "hidden",
                 }}
                 value={userInput}
                 onChange={(e) => handleChange(e.target.value, idx)}
@@ -148,7 +167,14 @@ export const ParagraphExercise = ({ data }: { data: ExercisesProps }) => {
         })}
       </form>
 
-      <div style={{ display: "flex", gap: "1rem", justifyContent: "end" }}>
+      <div
+        style={{
+          marginTop: "2rem",
+          display: "flex",
+          gap: "1rem",
+          justifyContent: "end",
+        }}
+      >
         <button
           className={styles.exerciseButton}
           type="button"

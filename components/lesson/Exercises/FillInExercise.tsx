@@ -67,7 +67,7 @@ export const FillInExercise = ({ data }: { data: ExercisesProps }) => {
   };
 
   return (
-    <section style={{ marginBottom: "1rem" }}>
+    <section style={{ margin: "2rem 0" }}>
       {data.sections.map((section, sIdx) => (
         <div key={sIdx}>
           {section.prompt?.map((p, i) =>
@@ -126,13 +126,13 @@ export const FillInExercise = ({ data }: { data: ExercisesProps }) => {
                                 }}
                                 style={{
                                   minWidth: "60px",
-                                  maxWidth: "210px",
+                                  maxWidth: "240px",
                                   width: `${Math.min(
                                     Math.max(
                                       getTextWidth(inputs[idx]?.[i] ?? ""),
                                       60
                                     ),
-                                    210
+                                    240
                                   )}px`,
                                   ...(isAutoFilled[idx]?.[i] || !showAnswers
                                     ? {}
@@ -153,7 +153,14 @@ export const FillInExercise = ({ data }: { data: ExercisesProps }) => {
             </p>
           </form>
 
-          <div style={{ display: "flex", gap: "1rem", justifyContent: "end" }}>
+          <div
+            style={{
+              marginTop: "2rem",
+              display: "flex",
+              gap: "1rem",
+              justifyContent: "end",
+            }}
+          >
             <button
               className={styles.exerciseButton}
               type="button"

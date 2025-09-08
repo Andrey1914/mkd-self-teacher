@@ -1,6 +1,10 @@
-import normalizeAnswer from "@/utils/normalizeAnswer";
+import { normalizeAnswer } from "@/utils/normalizeAnswer";
 
-const highlightInput = (input: string, correct: string, show: boolean) => {
+export const highlightInput = (
+  input: string,
+  correct: string,
+  show: boolean
+) => {
   if (!show || input === "") return {};
 
   const normalizedInput = normalizeAnswer(input, {
@@ -16,5 +20,3 @@ const highlightInput = (input: string, correct: string, show: boolean) => {
     boxShadow: isCorrect ? "0 0 8px 3px #00c150" : "0 0 8px 3px #ffa347",
   };
 };
-
-export default highlightInput;

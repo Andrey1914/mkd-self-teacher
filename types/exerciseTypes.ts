@@ -4,6 +4,7 @@ export interface ExercisesProps {
   title?: string;
   sections: {
     type?: "static-exercise" | "exercises" | "exercise-fill-in" | string;
+    singleInput?: boolean;
     title?: string;
     prompt?: string[];
     content: {

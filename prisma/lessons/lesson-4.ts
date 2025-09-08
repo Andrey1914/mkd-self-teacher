@@ -4,7 +4,7 @@ import { payAttentionsLesson4 } from "@/prisma/lessons/pay-attention";
 import { examples } from "@/prisma/lessons/tables";
 import { grammarLesson4 } from "@/prisma/lessons/paragraph";
 import { grammarTables } from "@/prisma/lessons/tables";
-// import { exercisesLesson3 } from "@/prisma/lessons/exercises";
+import { exercisesLesson4 } from "@/prisma/lessons/exercises";
 
 const { payAttention1, payAttention2 } = payAttentionsLesson4;
 
@@ -26,17 +26,17 @@ const {
   example9,
 } = examplesLesson4;
 
-// const {
-//   exercise1,
-//   exercise2,
-//   exercise3,
-//   exercise4,
-//   exercise5,
-//   exercise6,
-//   exercise7,
-//   exercise8,
-//   exercise9,
-// } = exercisesLesson3;
+const {
+  exercise1,
+  exercise2,
+  exercise3,
+  //   exercise4,
+  //   exercise5,
+  //   exercise6,
+  //   exercise7,
+  //   exercise8,
+  //   exercise9,
+} = exercisesLesson4;
 
 export const lesson4 = {
   title: [`<span>Урок 4, Лекциjя 4</span>`],
@@ -68,15 +68,15 @@ export const lesson4 = {
     { ...example8, slug: "lesson-4" },
     { ...example9, slug: "lesson-4" },
   ],
-  //   exercises: [
-  //     exercise1,
-  //     exercise2,
-  //     exercise3,
-  //     exercise4,
-  //     exercise5,
-  //     exercise6,
-  //     exercise7,
-  //     exercise8,
-  //     exercise9,
-  //   ],
+  exercises: [
+    exercise1,
+    exercise2,
+    exercise3,
+    //     exercise4,
+    //     exercise5,
+    //     exercise6,
+    //     exercise7,
+    //     exercise8,
+    //     exercise9,
+  ],
 };

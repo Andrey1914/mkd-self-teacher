@@ -1,4 +1,4 @@
-export default function normalizeAnswer(
+export const normalizeAnswer = (
   input: string,
   options?: {
     trim?: boolean;
@@ -6,7 +6,7 @@ export default function normalizeAnswer(
     convertLatinToCyrillic?: boolean;
     convertCyrillicToLatin?: boolean;
   }
-): string {
+): string => {
   const {
     trim = true,
     lowercase = true,
@@ -110,4 +110,4 @@ export default function normalizeAnswer(
   }
 
   return result;
-}
+};

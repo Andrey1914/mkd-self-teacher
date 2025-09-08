@@ -1,4 +1,5 @@
-export { default as normalizeAnswer } from "./normalizeAnswer";
-export { default as formatText } from "./textFormat";
-export { default as highlightInput } from "./hightlightInput";
-export { default as getTextWidth } from "./getTextWidth";
+export { normalizeAnswer } from "./normalizeAnswer";
+export { formatText } from "./textFormat";
+export { highlightInput } from "./hightlightInput";
+export { getTextWidth } from "./getTextWidth";
+export { resizeTextarea } from "./resizeTextarea";
