@@ -2,8 +2,9 @@
 
 import React, { useState, useRef } from "react";
 import { formatText, normalizeAnswer } from "@/utils";
-import styles from "@/app/page.module.css";
 import { ExercisesProps } from "@/types";
+
+import { styles } from "./styles";
 
 export const TranslateParagraphExercise = ({
   data,
@@ -12,6 +13,9 @@ export const TranslateParagraphExercise = ({
 }) => {
   const section = data.sections[0];
   const correctAnswer = section.content.answer?.[0] ?? "";
+
+  const { buttonContainer, exerciseButton } = styles.buttons;
+  const { translatorInput } = styles.inputs;
 
   const [input, setInput] = useState("");
   const [checked, setChecked] = useState(false);
@@ -105,8 +109,22 @@ export const TranslateParagraphExercise = ({
     if (editorRef.current) {
       const text = editorRef.current.innerText;
       setInput(text);
+
+      if (checked) {
+        setChecked(false);
+      }
     }
   };
+
+  const boxShadow =
+    checked && isPerfectMatch()
+      ? "0 0 8px 3px #00c150"
+      : checked
+      ? "0 0 8px 3px #ffa347"
+      : "none";
+
+  const outline = isFocused && !showAnswer ? "2px solid white" : "none";
+  const userSelect = showAnswer ? "none" : "text";
 
   return (
     <section style={{ marginBottom: "2rem" }}>
@@ -123,25 +141,14 @@ export const TranslateParagraphExercise = ({
 
       <div style={{ marginBottom: "1.5rem" }}>
         <div
+          className={translatorInput}
           ref={editorRef}
           contentEditable={!showAnswer}
           onInput={handleInput}
           style={{
-            minHeight: "180px",
-            padding: "0.75rem",
-            borderRadius: "8px",
-            border: "1px solid #994747",
-            fontSize: "18px",
-            backgroundColor: "transparent",
-            boxShadow:
-              checked && isPerfectMatch()
-                ? "0 0 8px 3px #00c150"
-                : checked
-                ? "0 0 8px 3px #ffa347"
-                : "none",
-            whiteSpace: "pre-wrap",
-            outline: isFocused && !showAnswer ? "2px solid white" : "none",
-            userSelect: showAnswer ? "none" : "text",
+            boxShadow,
+            outline,
+            userSelect,
           }}
           onFocus={(e) => {
             if (showAnswer) {
@@ -159,26 +166,19 @@ export const TranslateParagraphExercise = ({
         ></div>
       </div>
 
-      <div style={{ display: "flex", gap: "1rem", justifyContent: "end" }}>
+      <div className={buttonContainer}>
         <button
-          className={styles.exerciseButton}
+          className={exerciseButton}
           type="button"
           onClick={handleCheck}
+          disabled={showAnswer}
         >
           Проверить мою работу
         </button>
-        <button
-          className={styles.exerciseButton}
-          type="button"
-          onClick={handleReveal}
-        >
+        <button className={exerciseButton} type="button" onClick={handleReveal}>
           Показать правильный перевод
         </button>
-        <button
-          className={styles.exerciseButton}
-          type="button"
-          onClick={handleClear}
-        >
+        <button className={exerciseButton} type="button" onClick={handleClear}>
           Очистить
         </button>
       </div>

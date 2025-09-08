@@ -2,13 +2,17 @@
 
 import React, { useState, useId, useRef, useEffect } from "react";
 import { formatText, normalizeAnswer, resizeTextarea } from "@/utils";
-import styles from "@/app/page.module.css";
 import { ExercisesProps } from "@/types";
+
+import { styles } from "./styles";
 
 const pronouns = ["Jас", "Ти", "Ние", "Вие", "Тие"];
 
 export const ParagraphExercise = ({ data }: { data: ExercisesProps }) => {
   const sections = data.sections[0];
+
+  const { buttonContainer, exerciseButton } = styles.buttons;
+  const { paragraphInput } = styles.inputs;
 
   const answers = sections.content.answer ?? [];
 
@@ -124,29 +128,22 @@ export const ParagraphExercise = ({ data }: { data: ExercisesProps }) => {
           const placeholder =
             !isSingleInput && usePlaceholders ? pronouns[idx] : "";
 
+          const outline = isAutoFilled[idx] ? "none" : undefined;
+
           return (
             <div key={idx} style={{ marginBottom: "1.5rem" }}>
               <textarea
+                className={paragraphInput}
                 id={`${uniqueIdBase}-textarea-${idx}`}
                 name={`${uniqueIdBase}-textarea-${idx}`}
                 autoComplete="off"
-                className={styles.exerciseTextarea}
                 placeholder={placeholder}
                 ref={(el) => {
                   textareasRef.current[idx] = el;
                 }}
                 style={{
-                  width: "100%",
-                  padding: "0.5rem",
-                  borderRadius: "6px",
-                  border: "1px solid #994747",
-                  fontSize: "18px",
-                  lineHeight: "1.5",
-                  resize: "none",
-                  backgroundColor: "transparent",
                   boxShadow,
-                  outline: isAutoFilled[idx] ? "none" : undefined,
-                  overflow: "hidden",
+                  outline,
                 }}
                 value={userInput}
                 onChange={(e) => handleChange(e.target.value, idx)}
@@ -167,33 +164,18 @@ export const ParagraphExercise = ({ data }: { data: ExercisesProps }) => {
         })}
       </form>
 
-      <div
-        style={{
-          marginTop: "2rem",
-          display: "flex",
-          gap: "1rem",
-          justifyContent: "end",
-        }}
-      >
-        <button
-          className={styles.exerciseButton}
-          type="button"
-          onClick={checkAnswers}
-        >
+      <div className={buttonContainer}>
+        <button className={exerciseButton} type="button" onClick={checkAnswers}>
           Проверить мою работу
         </button>
         <button
-          className={styles.exerciseButton}
+          className={exerciseButton}
           type="button"
           onClick={revealAnswers}
         >
           Показать правильные ответы
         </button>
-        <button
-          className={styles.exerciseButton}
-          type="button"
-          onClick={clearInputs}
-        >
+        <button className={exerciseButton} type="button" onClick={clearInputs}>
           Очистить
         </button>
       </div>

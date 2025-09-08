@@ -1,0 +1,47 @@
+.exerciseInput,
+.fillInInput {
+  display: inline-block;
+  margin: 0 4px;
+  padding: 4px;
+  font-size: 16px;
+  text-align: center;
+  background-color: transparent;
+  border-radius: 5px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 2px solid #994747;
+  outline: none;
+  vertical-align: baseline;
+}
+
+.fillInInput {
+  min-width: 60px;
+  max-width: 240px;
+}
+
+.translatorInput {
+  min-height: 120px;
+  max-height: 360px;
+  overflow-y: auto;
+  white-space: pre-wrap;
+}
+
+.paragraphInput,
+.translatorInput {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: 1px solid #994747;
+  font-size: 18px;
+  line-height: 1.5;
+  background-color: transparent;
+  overflow: hidden;
+  resize: none;
+}
+
+.staticExercise {
+  margin-top: 1rem;
+  text-indent: 0;
+  line-height: 1.8;
+}

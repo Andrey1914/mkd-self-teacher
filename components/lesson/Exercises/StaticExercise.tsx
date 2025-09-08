@@ -4,7 +4,11 @@ import React from "react";
 import parse from "html-react-parser";
 import { ExercisesProps } from "@/types";
 
+import { styles } from "./styles";
+
 export const StaticExercise = ({ data }: { data: ExercisesProps }) => {
+  const { staticExercise } = styles.inputs;
+
   if (!data?.sections || data.sections.length === 0) return null;
 
   return (
@@ -20,13 +24,7 @@ export const StaticExercise = ({ data }: { data: ExercisesProps }) => {
 
           {section.type === "static-exercise" &&
             typeof section.content?.exercise === "string" && (
-              <p
-                style={{
-                  marginTop: "1rem",
-                  textIndent: 0,
-                  lineHeight: "1.8",
-                }}
-              >
+              <p className={staticExercise}>
                 {parse(section.content.exercise)}
               </p>
             )}
