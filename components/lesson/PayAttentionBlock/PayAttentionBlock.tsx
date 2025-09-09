@@ -1,40 +1,25 @@
+"use client";
+
 import React from "react";
-import { PayAttentionBlockProps } from "@/types/payAttantionTypes";
+import { PayAttentionBlockProps } from "@/types";
 import { formatText } from "@/utils";
 
+import { styles } from "./styles";
+
 export function PayAttentionBlock({ data }: { data: PayAttentionBlockProps }) {
+  const { table, leftCell, rightCell, cell } = styles.payAttentionStyles;
+
   if (!data.sections || !data.sections) return null;
 
   return (
     <>
       {data.sections.map((section, index) => (
-        <table
-          key={index}
-          style={{
-            border: "2px solid var(--thead-bg)",
-            backgroundColor: "#ebb2b2",
-            margin: "0 0 4rem 0",
-          }}
-        >
+        <table key={index} className={table}>
           <tbody>
             <tr>
-              <td
-                style={{
-                  width: "25%",
-                  backgroundColor: "#ebb2b2",
-                  padding: "0.5rem",
-                  fontWeight: "bold",
-                  textTransform: "uppercase",
-                  borderRight: "2px solid var(--thead-bg)",
-                  verticalAlign: "middle",
-                  textAlign: "center",
-                  color: "#994747",
-                }}
-              >
-                {section.title}
-              </td>
-              <td style={{ padding: "1rem", verticalAlign: "top" }}>
-                <div style={{ color: "#333", textIndent: 0 }}>
+              <td className={leftCell}>{section.title}</td>
+              <td className={rightCell}>
+                <div className={cell}>
                   {formatText(section.content.text, true)}
                 </div>
               </td>

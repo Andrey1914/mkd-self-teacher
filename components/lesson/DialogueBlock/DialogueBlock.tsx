@@ -7,7 +7,19 @@ import { styles } from "./styles";
 export const DialogueBlock = ({ data }: { data: DialogueBlockProps }) => {
   const { sections } = data;
 
-  const { dialogueWrap, subtitleWrap } = styles.dialogue;
+  const {
+    dialogueWrap,
+    subtitleWrap,
+    sectionContainer,
+    header,
+    noIndent,
+    dialogueContainer,
+    dialoguePair,
+    languageColumn,
+    emptyColumn,
+    dialogueText,
+    dialogueTextMkd,
+  } = styles.dialogue;
 
   return (
     <>
@@ -24,8 +36,8 @@ export const DialogueBlock = ({ data }: { data: DialogueBlockProps }) => {
         } = section;
 
         return (
-          <div key={`section-${idx}`} style={{ marginBottom: "2rem" }}>
-            <div style={{ marginBottom: "1rem" }}>
+          <div key={`section-${idx}`} className={sectionContainer}>
+            <div className={header}>
               {Array.isArray(title) && title.length > 0 && (
                 <h2>{formatText(title.join(", "))}</h2>
               )}
@@ -43,12 +55,12 @@ export const DialogueBlock = ({ data }: { data: DialogueBlockProps }) => {
                 {(contentSubtitle?.mkd || description?.mkd) && (
                   <div className={subtitleWrap}>
                     {contentSubtitle?.mkd && (
-                      <h3 style={{ textIndent: 0 }}>
-                        {formatText(contentSubtitle.mkd)}
+                      <h3 lang="mk" className={noIndent}>
+                        {formatText(`<em>${contentSubtitle.mkd}</em>`)}
                       </h3>
                     )}
                     {description?.mkd && (
-                      <p lang="mk" style={{ textIndent: 0 }}>
+                      <p lang="mk" className={noIndent}>
                         {formatText(`<em>${description.mkd}</em>`)}
                       </p>
                     )}
@@ -58,12 +70,12 @@ export const DialogueBlock = ({ data }: { data: DialogueBlockProps }) => {
                 {(contentSubtitle?.ru || description?.ru) && (
                   <div className={subtitleWrap}>
                     {contentSubtitle?.ru && (
-                      <h3 style={{ textIndent: 0 }}>
-                        {formatText(contentSubtitle.ru)}
+                      <h3 lang="ru" className={noIndent}>
+                        {formatText(`<em>${contentSubtitle.ru}</em>`)}
                       </h3>
                     )}
                     {description?.ru && (
-                      <p lang="ru" style={{ textIndent: 0 }}>
+                      <p lang="ru" className={noIndent}>
                         {formatText(`<em>${description.ru}</em>`)}
                       </p>
                     )}
@@ -74,14 +86,7 @@ export const DialogueBlock = ({ data }: { data: DialogueBlockProps }) => {
 
             {/* dialogue */}
             {dialogue && dialogueOrder && (
-              <div
-                style={{
-                  padding: "5px",
-                  marginBottom: "1rem",
-                  background:
-                    "linear-gradient(to right, var(--thead-bg), var(--background))",
-                }}
-              >
+              <div className={dialogueContainer}>
                 {/* Группируем реплики по парам */}
                 {dialogueOrder
                   .filter(({ language }) => language === "mkd")
@@ -110,44 +115,25 @@ export const DialogueBlock = ({ data }: { data: DialogueBlockProps }) => {
                     return (
                       <div
                         key={`dialogue-pair-${idx}-${i}`}
-                        style={{
-                          display: "flex",
-                          gap: "2rem",
-                          marginBottom: "0.5rem",
-                          alignItems: "flex-start",
-                        }}
+                        className={dialoguePair}
                       >
-                        <div style={{ display: "flex", flex: 1 }}>
+                        <div className={languageColumn}>
                           <p
                             lang="mk"
-                            style={{
-                              margin: 0,
-                              padding: "0.5rem",
-                              wordBreak: "break-word",
-                              flex: 1,
-                              textIndent: 0,
-                            }}
+                            className={`${dialogueText} ${dialogueTextMkd}`}
                           >
                             <strong>{mkdSpeakerData?.speaker?.mkd}</strong>{" "}
                             {formatText(mkdText)}
                           </p>
                         </div>
-                        <div style={{ display: "flex", flex: 1 }}>
+                        <div className={languageColumn}>
                           {ruText ? (
-                            <p
-                              lang="ru"
-                              style={{
-                                margin: 0,
-                                padding: "0.5rem",
-                                flex: 1,
-                                textIndent: 0,
-                              }}
-                            >
+                            <p lang="ru" className={dialogueText}>
                               <strong>{ruSpeakerData?.speaker?.ru}</strong>{" "}
                               {formatText(ruText)}
                             </p>
                           ) : (
-                            <div style={{ flex: 1 }} />
+                            <div className={emptyColumn} />
                           )}
                         </div>
                       </div>
