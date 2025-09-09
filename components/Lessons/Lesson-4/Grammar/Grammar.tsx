@@ -6,6 +6,7 @@ import { ExamplesTable } from "@/components/lesson/Tables";
 import {
   FillInExercise,
   ParagraphExercise,
+  TranslateParagraphExercise,
 } from "@/components/lesson/Exercises";
 
 import { grammarLesson4 } from "@/prisma/lessons/paragraph";
@@ -28,7 +29,8 @@ const {
   example9,
 } = examplesLesson4;
 
-const { exercise1, exercise2, exercise3 } = exercisesLesson4;
+const { exercise1, exercise2, exercise3, exercise4, exercise8 } =
+  exercisesLesson4;
 
 export const Grammar = () => {
   return (
@@ -49,6 +51,8 @@ export const Grammar = () => {
       <FillInExercise data={exercise1} />
       <FillInExercise data={exercise2} />
       <ParagraphExercise data={exercise3} />
+      <TranslateParagraphExercise data={exercise4} />
+      <TranslateParagraphExercise data={exercise8} />
     </>
   );
 };

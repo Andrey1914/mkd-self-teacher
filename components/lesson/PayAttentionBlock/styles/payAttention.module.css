@@ -1,0 +1,27 @@
+.table {
+  border: 2px solid var(--thead-bg);
+  background-color: #ebb2b2;
+  margin: 0 0 4rem 0;
+}
+
+.leftCell {
+  width: 25%;
+  background-color: #ebb2b2;
+  padding: 0.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-right: 2px solid var(--thead-bg);
+  vertical-align: middle;
+  text-align: center;
+  color: #994747;
+}
+
+.rightCell {
+  padding: 1rem;
+  vertical-align: top;
+}
+
+.cell {
+  color: #333;
+  text-indent: 0;
+}

@@ -30,12 +30,11 @@ const {
   exercise1,
   exercise2,
   exercise3,
-  //   exercise4,
+  exercise4,
   //   exercise5,
   //   exercise6,
   //   exercise7,
-  //   exercise8,
-  //   exercise9,
+  exercise8,
 } = exercisesLesson4;
 
 export const lesson4 = {
@@ -72,11 +71,10 @@ export const lesson4 = {
     exercise1,
     exercise2,
     exercise3,
-    //     exercise4,
+    exercise4,
     //     exercise5,
     //     exercise6,
     //     exercise7,
-    //     exercise8,
-    //     exercise9,
+    exercise8,
   ],
 };

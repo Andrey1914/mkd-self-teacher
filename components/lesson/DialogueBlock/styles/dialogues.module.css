@@ -9,3 +9,45 @@
   padding: 0.5rem;
   flex: 1;
 }
+
+.sectionContainer {
+  margin-bottom: 2rem;
+}
+
+.header {
+  margin-bottom: 1rem;
+}
+
+.noIndent {
+  text-indent: 0;
+}
+
+.dialogueContainer {
+  padding: 5px;
+  margin-bottom: 1rem;
+  background: linear-gradient(to right, var(--thead-bg), var(--background));
+}
+
+.dialoguePair {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 0.5rem;
+  align-items: flex-start;
+}
+
+.languageColumn,
+.emptyColumn {
+  display: flex;
+  flex: 1;
+}
+
+.dialogueText {
+  margin: 0;
+  padding: 0.5rem;
+  flex: 1;
+  text-indent: 0;
+}
+
+.dialogueTextMkd {
+  word-break: break-word;
+}
