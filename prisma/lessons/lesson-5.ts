@@ -1,5 +1,5 @@
 // import { vocabulary } from "@/prisma/lessons/vocabulary/lesson-4";
-// import { dialogueBlock } from "@/prisma/lessons/dialogues/lesson-4";
+import { dialogueBlock } from "@/prisma/lessons/dialogues/lesson-5";
 // import { payAttentionsLesson4 } from "@/prisma/lessons/pay-attention";
 // import { examples } from "@/prisma/lessons/tables";
 // import { grammarLesson4 } from "@/prisma/lessons/paragraph";
@@ -51,7 +51,7 @@ export const lesson5 = {
 
   //   vocabulary: [vocabulary],
 
-  //   dialogues: [dialogueBlock],
+  dialogues: [dialogueBlock],
 
   //   payAttention: [payAttention1, payAttention2],
 

@@ -9,7 +9,7 @@ export const dialogueBlock: DialogueBlockProps = {
       subtitle: [`ДИАЛОГ`, `<span>ДИЈАЛОГ</span>`],
       content: {
         subtitle: {
-          mkd: `На аеродром`,
+          mkd: `На аеродро\u0301м`,
           ru: `В аэропорту`,
         },
         description: {
