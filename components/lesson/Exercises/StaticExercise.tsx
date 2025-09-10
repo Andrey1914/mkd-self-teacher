@@ -25,7 +25,7 @@ export const StaticExercise = ({ data }: { data: ExercisesProps }) => {
           {section.type === "static-exercise" &&
             typeof section.content?.exercise === "string" && (
               <p className={staticExercise}>
-                {parse(section.content.exercise)}
+                <span>{parse(section.content.exercise)}</span>
               </p>
             )}
         </div>

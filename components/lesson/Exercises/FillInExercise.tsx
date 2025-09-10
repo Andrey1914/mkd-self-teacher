@@ -134,7 +134,7 @@ export const FillInExercise = ({ data }: { data: ExercisesProps }) => {
                                       getTextWidth(inputs[idx]?.[i] ?? ""),
                                       60
                                     ),
-                                    240
+                                    250
                                   )}px`,
                                   ...(isAutoFilled[idx]?.[i] || !showAnswers
                                     ? {}
