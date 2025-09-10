@@ -1,0 +1,208 @@
+import { DialogueBlockProps } from "@/types";
+
+export const dialogueBlock: DialogueBlockProps = {
+  slug: `lesson-5`,
+  sections: [
+    {
+      type: "lecture",
+      subtitle: [`ДИАЛОГ`, `<span>ДИЈАЛОГ</span>`],
+      content: {
+        description: {
+          mkd: `На\u0301таша и И\u0301ван се умо\u0301рени од проше\u0301тката и о\u0301дат на ру\u0301чек.`,
+          ru: `Наташа и Иван устали после прогулки и идут на обед.`,
+        },
+        dialogue: [
+          {
+            speaker: {
+              id: `waiter`,
+              mkd: `Ке\u0301лнерот:`,
+              ru: `Официант:`,
+            },
+            mkd: [
+              `До\u0301бар де\u0301н! Пове\u0301лете. Са\u0301кате вна\u0301тре и\u0301ли на\u0301двор?`,
+              `Не, во рестора\u0301ните пуше\u0301њето е забра\u0301нето. Мо\u0301же да се пу\u0301ши са\u0301мо на те\u0301раса.`,
+              `Мо\u0301же да се\u0301днете се\u0301каде о\u0301свен о\u0301наа ма\u0301са де\u0301сно, резерви\u0301рана е.`,
+              `Пове\u0301лете ме\u0301ни.`,
+              `То\u0301гаш за пердjа\u0301дење ви перпора\u0301чувам а\u0301jвар и си\u0301рење, шо\u0301пска са\u0301лата за два\u0301jца
+              и\u0301ли е\u0301дна шо\u0301пска са\u0301лата за вас и е\u0301дна маке\u0301донска са\u0301лата за госпо\u0301ѓата.`,
+              `И\u0301маме ра\u0301злично ме\u0301со на ска\u0301ра. И се\u0301како ви препора\u0301чувам да про\u0301бате
+              турли\u0301-та\u0301ва и та\u0301вче-гра\u0301вче.`,
+              `Турли\u0301-та\u0301ва се пра\u0301ви од зе\u0301ленчук и ме\u0301со, та\u0301вче-гра\u0301вче од пе\u0301чен грав.`,
+              `За со са\u0301лата мо\u0301же да зе\u0301мете е\u0301дна ра\u0301киjа, а по\u0301тоа пи\u0301во и\u0301ли ви\u0301но по ваш
+              и\u0301збор.`,
+              `Ќе тре\u0301ба да поче\u0301кате ма\u0301лку за турли\u0301-та\u0301ва, се дру\u0301го ќе би\u0301де го\u0301тово мно\u0301гу
+              бр\u0301зо.`,
+              `Пове\u0301лете, пердjаде\u0301њата и пиjала\u0301ците.`,
+              `Се изви\u0301нувам, ве\u0301днаш.`,
+              `Пове\u0301лете. Ќе пла\u0301ќате со ка\u0301ртичка и\u0301ли во го\u0301тово?`,
+              `Се ра\u0301збирам. Са\u0301мо мо\u0301мент. Пове\u0301лете.`,
+              `Ви благо\u0301дарам и при\u0301jатно.`,
+            ],
+            ru: [
+              `Добрый день! Проходите. Выхотите внутри или снаружи?`,
+              `Нет, в ресторанах курение запрещено. Можно курить только на террасе.`,
+              `Вы можете сесть везде, кроме того столика справа. Он зарезервирован.`,
+              `Пожалуйта, меню.`,
+              `Тогда на закуску советую айвар и брынзу, шопский салат на двоих или один шопский салат для вас и один македонский салат для
+              дамы.`,
+              `У нас есть разное мясо на гриле. И, конечно же, советую вам попробовать турли-таву и тавче-гравче.`,
+              `Турли-тава из овощей и мяса, тавче-гравче из печенной фосоли.`,
+              `С салатом можете взять ракию, а потом пиво или вино на выбор.`,
+              `Придется немного подождать турли-таву, все остальное будет готовиться очень быстро.`,
+              `Пожалуйста, закуски и напитки.`,
+              `Извените, секунду.`,
+              `Пожалуйста. Вы будете платить карточкой или наличными?`,
+              `Разумеется. Менуточку. Пожалуйста.`,
+              `Спасибо и до свиданья.`,
+            ],
+          },
+          {
+            speaker: {
+              id: `ivan`,
+              mkd: `И\u0301ван:`,
+              ru: `И\u0301ван:`,
+            },
+            mkd: [
+              `А се пу\u0301ши ли вна\u0301тре?`,
+              `То\u0301гаш на\u0301двор. Е\u0301дна ма\u0301са за два\u0301jца, ве мо\u0301лам.`,
+              `Што ќе ни перпара\u0301чате? Са\u0301кам да ги про\u0301бам наjдо\u0301брите маке\u0301донски специjалите\u0301ти.`,
+              `А за гла\u0301вно jа\u0301дење?`,
+              `Од што се пра\u0301ват?`,
+              `А за пи\u0301ење?`,
+              `На\u0301таша, што ми\u0301слиш?`,
+              `Ве мо\u0301лам, а\u0301jвар со си\u0301рење е\u0301дна ма\u0301ла шо\u0301пска, турли\u0301-та\u0301ва, е\u0301дна жо\u0301лта
+              ра\u0301киjа, поло\u0301вина ли\u0301тар гази\u0301рана во\u0301да и е\u0301дно подпе\u0301чено ле\u0301пче. Ко\u0301лку
+              вре\u0301ме ќе че\u0301каме?`,
+              `До\u0301бар а\u0301петит.`,
+              `Сме\u0301тка ве мо\u0301лам.`,
+              `Со ка\u0301ртичка. На\u0301таша и\u0301маш па\u0301ри во го\u0301тово за ба\u0301кшиш?`,
+              `Фа\u0301ла. Мно\u0301гу у\u0301баво jа\u0301дење. При\u0301jатно.`,
+            ],
+            ru: [
+              `Внутри можно курить?`,
+              `Тогда снаружи. Столик на двоих, пожалуйста.`,
+              `Что вы нам посоветуете? Я хочу попробовать лучшие македонские блюда.`,
+              `А на второе?`,
+              `Из чего они готовятся?`,
+              `А попить?`,
+              `Наташа, что ты думаешь?`,
+              `Пожалуйста, айвар с брынзой, маленькая порция шопского салата, турли-тава, рюмка жолтой ракии, пол литра газированной воды и 
+              поджаренный хлеб. Как долго мы будем ждать?`,
+              `Приятного аппетита.`,
+              `Счет пожалуйста. Карточкой. Наташа, у тебя есть наличные на чаевые?`,
+              `Спасибо. Очень вкусно. До свидания.`,
+            ],
+          },
+          {
+            speaker: {
+              id: `natasha`,
+              mkd: `На\u0301таша:`,
+              ru: `Наташа:`,
+            },
+            mkd: [
+              `Ми се до\u0301паѓа о\u0301ваа.`,
+              `Jас ќе зе\u0301мам е\u0301дна ма\u0301ла маке\u0301донска са\u0301лата, но ќе ве за\u0301молам без ма\u0301гдонос — и\u0301мам
+              але\u0301ргиja. Де\u0301сет кеба\u0301пчиња и ча\u0301ша бе\u0301ло су\u0301во ви\u0301но.`,
+              `Изви\u0301нете, да\u0301ли мо\u0301жете да ja сме\u0301ните о\u0301ваа ви\u0301љушка? Не\u0301чиста е.`,
+              `До\u0301бар а\u0301петит.`,
+              `Да, но са\u0301мо 500. Изви\u0301нете, да\u0301ли мо\u0301жете да ни раси\u0301тните 500 де\u0301нари по сто?`,
+            ],
+            ru: [
+              `Мне нравится вот этот.`,
+              `Я возьму маленькую порцию македонского салата, но попрошу вас без петрушки — у меня аллергия. Десять кебабче и бокал
+              белого сухого вина.`,
+              `Извините, вы можете поменять эту вилку? Она грязная.`,
+              `Приятного аппетита.`,
+              `Да, но только 500. Извините, вы можете нам поменять 500 денар по сто?`,
+            ],
+          },
+          {
+            speaker: {
+              id: `description`,
+            },
+            mkd: [
+              `<em>По 10 ми\u0301нути.</em>`,
+              `<em>По 40 ми\u0301нути.</em>`,
+            ],
+            ru: [
+              `<em>Десять минут спустя.</em>`,
+              `<em>Сорок минут спустя.</em>`,
+            ],
+          },
+        ],
+        dialogueOrder: [
+          { speakerId: "waiter", language: "ru", replyIndex: 0 },
+          { speakerId: "waiter", language: "mkd", replyIndex: 0 },
+          { speakerId: "ivan", language: "ru", replyIndex: 0 },
+          { speakerId: "ivan", language: "mkd", replyIndex: 0 },
+          { speakerId: "waiter", language: "ru", replyIndex: 1 },
+          { speakerId: "waiter", language: "mkd", replyIndex: 1 },
+          { speakerId: "ivan", language: "ru", replyIndex: 1 },
+          { speakerId: "ivan", language: "mkd", replyIndex: 1 },
+          { speakerId: "waiter", language: "ru", replyIndex: 2 },
+          { speakerId: "waiter", language: "mkd", replyIndex: 2 },
+          { speakerId: "natasha", language: "ru", replyIndex: 0 },
+          { speakerId: "natasha", language: "mkd", replyIndex: 0 },
+          { speakerId: "waiter", language: "ru", replyIndex: 3 },
+          { speakerId: "waiter", language: "mkd", replyIndex: 3 },
+          { speakerId: "ivan", language: "ru", replyIndex: 2 },
+          { speakerId: "ivan", language: "mkd", replyIndex: 2 },
+          { speakerId: "waiter", language: "ru", replyIndex: 4 },
+          { speakerId: "waiter", language: "mkd", replyIndex: 4 },
+          { speakerId: "ivan", language: "ru", replyIndex: 3 },
+          { speakerId: "ivan", language: "mkd", replyIndex: 3 },
+          { speakerId: "waiter", language: "ru", replyIndex: 5 },
+          { speakerId: "waiter", language: "mkd", replyIndex: 5 },
+          { speakerId: "ivan", language: "ru", replyIndex: 4 },
+          { speakerId: "ivan", language: "mkd", replyIndex: 4 },
+          { speakerId: "waiter", language: "ru", replyIndex: 6 },
+          { speakerId: "waiter", language: "mkd", replyIndex: 6 },
+          { speakerId: "ivan", language: "ru", replyIndex: 5 },
+          { speakerId: "ivan", language: "mkd", replyIndex: 5 },
+          { speakerId: "waiter", language: "ru", replyIndex: 7 },
+          { speakerId: "waiter", language: "mkd", replyIndex: 7 },
+          { speakerId: "ivan", language: "ru", replyIndex: 6 },
+          { speakerId: "ivan", language: "mkd", replyIndex: 6 },
+          { speakerId: "natasha", language: "ru", replyIndex: 1 },
+          { speakerId: "natasha", language: "mkd", replyIndex: 1 },
+          { speakerId: "ivan", language: "ru", replyIndex: 7 },
+          { speakerId: "ivan", language: "mkd", replyIndex: 7 },
+          { speakerId: "waiter", language: "ru", replyIndex: 8 },
+          { speakerId: "waiter", language: "mkd", replyIndex: 8 },
+
+          { speakerId: "description", language: "ru", replyIndex: 0 },
+          { speakerId: "description", language: "mkd", replyIndex: 0 },
+
+          { speakerId: "waiter", language: "ru", replyIndex: 9 },
+          { speakerId: "waiter", language: "mkd", replyIndex: 9 },
+          { speakerId: "natasha", language: "ru", replyIndex: 2 },
+          { speakerId: "natasha", language: "mkd", replyIndex: 2 },
+          { speakerId: "waiter", language: "ru", replyIndex: 10 },
+          { speakerId: "waiter", language: "mkd", replyIndex: 10 },
+          { speakerId: "natasha", language: "ru", replyIndex: 3 },
+          { speakerId: "natasha", language: "mkd", replyIndex: 3 },
+          { speakerId: "ivan", language: "ru", replyIndex: 8 },
+          { speakerId: "ivan", language: "mkd", replyIndex: 8 },
+
+          { speakerId: "description", language: "ru", replyIndex: 1 },
+          { speakerId: "description", language: "mkd", replyIndex: 1 },
+
+          { speakerId: "ivan", language: "ru", replyIndex: 9 },
+          { speakerId: "ivan", language: "mkd", replyIndex: 9 },
+          { speakerId: "waiter", language: "ru", replyIndex: 11 },
+          { speakerId: "waiter", language: "mkd", replyIndex: 11 },
+          { speakerId: "ivan", language: "ru", replyIndex: 10 },
+          { speakerId: "ivan", language: "mkd", replyIndex: 10 },
+          { speakerId: "natasha", language: "ru", replyIndex: 4 },
+          { speakerId: "natasha", language: "mkd", replyIndex: 4 },
+          { speakerId: "waiter", language: "ru", replyIndex: 12 },
+          { speakerId: "waiter", language: "mkd", replyIndex: 12 },
+          { speakerId: "ivan", language: "ru", replyIndex: 11 },
+          { speakerId: "ivan", language: "mkd", replyIndex: 11 },
+          { speakerId: "waiter", language: "ru", replyIndex: 13 },
+          { speakerId: "waiter", language: "mkd", replyIndex: 13 },
+        ],
+      },
+    },
+  ],
+};

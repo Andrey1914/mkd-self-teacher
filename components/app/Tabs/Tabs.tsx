@@ -13,7 +13,11 @@ export const Tabs = ({ tabs, activeIndex, onChange }: TabsProps) => {
         whiteSpace: "nowrap",
       }}
     >
-      <Swiper slidesPerView="auto" spaceBetween={0}>
+      <Swiper
+        slidesPerView="auto"
+        spaceBetween={8}
+        style={{ padding: "10px 10px 0 10px" }}
+      >
         {tabs.map((tab, index) => (
           <SwiperSlide
             key={index}
@@ -29,8 +33,10 @@ export const Tabs = ({ tabs, activeIndex, onChange }: TabsProps) => {
                   index === activeIndex
                     ? "rgba(191, 191, 191, 0.2)"
                     : "transparent",
-
                 border: "none",
+                // borderTopLeftRadius: index === activeIndex ? "6px" : "none",
+                // borderTopRightRadius: index === activeIndex ? "6px" : "none",
+
                 borderBottom:
                   index === activeIndex
                     ? "2px solid #fff"
@@ -39,7 +45,12 @@ export const Tabs = ({ tabs, activeIndex, onChange }: TabsProps) => {
                 color: index === activeIndex ? "#fff" : "#c6b8b8",
                 fontWeight: index === activeIndex ? "700" : "400",
                 cursor: "pointer",
-                transition: "border-bottom 0.2s ease",
+                boxShadow:
+                  index === activeIndex
+                    ? `rgb(255, 255, 255) 0px 0px 8px 0px`
+                    : "none",
+
+                transition: "border-bottom 0.2s ease, box-shadow 0.2s ease",
               }}
             >
               {tab}
