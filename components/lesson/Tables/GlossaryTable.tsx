@@ -11,7 +11,7 @@ interface Props {
 export const GlossaryTable = ({ data }: Props) => {
   const { title, content } = data;
 
-  const { headerRow, headerCell, cell } = styles.glossary;
+  const { table, headerRow, headerCell, cell } = styles.glossary;
 
   if (
     !content ||
@@ -38,7 +38,7 @@ export const GlossaryTable = ({ data }: Props) => {
           : formatText("")}
       </h2>
 
-      <table>
+      <table className={table}>
         <thead>
           <tr className={headerRow}>
             {subtitle.map((col, idx) => (

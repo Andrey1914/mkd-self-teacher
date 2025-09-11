@@ -1,16 +1,16 @@
-// import { vocabulary } from "@/prisma/lessons/vocabulary/lesson-4";
+import { vocabulary } from "@/prisma/lessons/vocabulary/lesson-5";
 import { dialogueBlock } from "@/prisma/lessons/dialogues/lesson-5";
 // import { payAttentionsLesson4 } from "@/prisma/lessons/pay-attention";
-// import { examples } from "@/prisma/lessons/tables";
-// import { grammarLesson4 } from "@/prisma/lessons/paragraph";
+import { glossary } from "@/prisma/lessons/tables";
+import { lectureLesson5 } from "@/prisma/lessons/paragraph";
 // import { grammarTables } from "@/prisma/lessons/tables";
 // import { exercisesLesson4 } from "@/prisma/lessons/exercises";
 
+const { intro } = lectureLesson5;
+
+const { foodTable } = glossary;
+
 // const { payAttention1, payAttention2 } = payAttentionsLesson4;
-
-// const { definitenessCategory, prepositions } = grammarLesson4;
-
-// const { definitenessCategoryTable } = grammarTables;
 
 // const { lesson4: examplesLesson4 } = examples;
 
@@ -47,26 +47,26 @@ export const lesson5 = {
       subtitle: [`ЛЕКСИКА`, `<span>ЛЕКСИКА</span>`],
     },
   ],
-  //   paragraph: [definitenessCategory, prepositions],
+  paragraph: [intro],
 
-  //   vocabulary: [vocabulary],
+  vocabulary: [vocabulary],
 
   dialogues: [dialogueBlock],
 
   //   payAttention: [payAttention1, payAttention2],
 
-  //   tables: [
-  //     definitenessCategoryTable,
-  //     { ...example1, slug: "lesson-4" },
-  //     { ...example2, slug: "lesson-4" },
-  //     { ...example3, slug: "lesson-4" },
-  //     { ...example4, slug: "lesson-4" },
-  //     { ...example5, slug: "lesson-4" },
-  //     { ...example6, slug: "lesson-4" },
-  //     { ...example7, slug: "lesson-4" },
-  //     { ...example8, slug: "lesson-4" },
-  //     { ...example9, slug: "lesson-4" },
-  //   ],
+  tables: [
+    foodTable,
+    //     { ...example1, slug: "lesson-4" },
+    //     { ...example2, slug: "lesson-4" },
+    //     { ...example3, slug: "lesson-4" },
+    //     { ...example4, slug: "lesson-4" },
+    //     { ...example5, slug: "lesson-4" },
+    //     { ...example6, slug: "lesson-4" },
+    //     { ...example7, slug: "lesson-4" },
+    //     { ...example8, slug: "lesson-4" },
+    //     { ...example9, slug: "lesson-4" },
+  ],
   //   exercises: [
   //     exercise1,
   //     exercise2,

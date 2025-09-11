@@ -1,4 +1,3 @@
-// import { GlossaryTableBlock } from "@/types";
 import { TablesProps } from "@/types";
 
 export const occupationTable: TablesProps = {
