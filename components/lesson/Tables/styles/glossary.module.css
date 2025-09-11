@@ -1,3 +1,7 @@
+.table {
+  table-layout: fixed;
+}
+
 .headerRow {
   background-color: #994747;
   color: #fff;
