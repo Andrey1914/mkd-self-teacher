@@ -2,9 +2,9 @@ import React from "react";
 
 import { Paragraph } from "@/components/lesson/Paragraph";
 
-import { grammar } from "@/prisma/lessons/paragraph";
+import { grammarLesson1 } from "@/prisma/lessons/paragraph";
 
-const { negation } = grammar;
+const { negation } = grammarLesson1;
 
 export const Negation = () => {
   return (

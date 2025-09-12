@@ -1,4 +1,4 @@
-import { verbs, grammar, paragraph } from "@/prisma/lessons/paragraph";
+import { grammarLesson1 } from "@/prisma/lessons/paragraph";
 import {
   conjugationLesson1,
   grammarPronouns,
@@ -23,13 +23,21 @@ import { vocabulary1, vocabulary2 } from "@/prisma/lessons/vocabulary/lesson-1";
 
 const { payAttention1, payAttention2, payAttention3 } = payAttentionsLesson1;
 
-const { phonetics, features, accent, exceptions, spelling } = paragraph;
+const {
+  phonetics,
+  features,
+  accent,
+  exceptions,
+  spelling,
+  toBe,
+  verbConjugation,
+  verbType,
+  intro,
+  ruleConjugation,
+  negation,
+} = grammarLesson1;
 
-const { toBe, verbConjugation, verbType } = verbs;
-
-const { intro, ruleConjugation, negation } = grammar;
-
-const { aClass, eClass, iClass } = conjugationLesson1;
+const { aClass, eClass, iClass } = conjugationLesson1; //tables
 
 const { lesson1: examplesLesson1 } = examples;
 const {
@@ -109,21 +117,6 @@ export const lesson1 = {
     { ...eClass, slug: "lesson-1" },
     { ...iClass, slug: "lesson-1" },
 
-    // {
-    //   category: "A-Class Verbs",
-    //   title: aClass.subtitle?.[0] || "A-Class Verbs",
-    //   data: aClass,
-    // },
-    // {
-    //   category: "E-Class Verbs",
-    //   title: eClass.subtitle?.[0] || "E-Class Verbs",
-    //   data: eClass,
-    // },
-    // {
-    //   category: "I-Class Verbs",
-    //   title: iClass.subtitle?.[0] || "I-Class Verbs",
-    //   data: iClass,
-    // },
     { ...example1, slug: "lesson-1" },
     { ...example2, slug: "lesson-1" },
     { ...example3, slug: "lesson-1" },
@@ -132,64 +125,10 @@ export const lesson1 = {
     { ...example6, slug: "lesson-1" },
     { ...example7, slug: "lesson-1" },
     { ...example8, slug: "lesson-1" },
-    // example1,
-    // example2,
-    // example3,
-    // example4,
-    // example5,
-    // example6,
-    // example7,
-    // example8,
-    // {
-    //   category: "example-1",
-    //   data: example1,
-    // },
-    // {
-    //   category: "example-2",
-    //   data: example2,
-    // },
-    // {
-    //   category: "example-3",
-    //   data: example3,
-    // },
-    // {
-    //   category: "example-4",
-    //   data: example4,
-    // },
-    // {
-    //   category: "example-5",
-    //   data: example5,
-    // },
-    // {
-    //   category: "example-6",
-    //   data: example6,
-    // },
-    // {
-    //   category: "example-7",
-    //   data: example7,
-    // },
-    // {
-    //   category: "example-8",
-    //   data: example8,
-    // },
-    // {
-    //   category: "Grammar Pronouns 1",
-    //   title: grammarPronouns1.subtitle?.[0] || "Grammar Pronouns 1",
-    //   data: grammarPronouns1,
-    // },
-    // {
-    //   category: "Grammar Pronouns 2",
-    //   title: grammarPronouns2.subtitle?.[0] || "Grammar Pronouns 2",
-    //   data: grammarPronouns2,
-    // },
+
     grammarPronouns1,
     grammarPronouns2,
-    // {
-    //   category: "Countries and Nationalities",
-    //   title:
-    //     countriesNationalitiesTable.title?.[0] || "Countries and Nationalities",
-    //   data: countriesNationalitiesTable,
-    // },
+
     countriesNationalitiesTable,
   ],
 };

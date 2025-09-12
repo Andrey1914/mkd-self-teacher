@@ -4,12 +4,12 @@ import { Paragraph } from "@/components/lesson/Paragraph";
 import { ExamplesTable, GrammarTable } from "@/components/lesson/Tables";
 import { FillInExercise } from "@/components/lesson/Exercises";
 
-import { grammar } from "@/prisma/lessons/paragraph";
+import { grammarLesson1 } from "@/prisma/lessons/paragraph";
 import { grammarPronouns } from "@/prisma/lessons/tables";
 import { examples } from "@/prisma/lessons/tables";
 import { exercisesLesson1 } from "@/prisma/lessons/exercises";
 
-const { toBe } = grammar;
+const { toBe } = grammarLesson1;
 
 const { exercise2, exercise3 } = exercisesLesson1;
 

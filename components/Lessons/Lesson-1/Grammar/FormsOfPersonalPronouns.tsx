@@ -4,9 +4,9 @@ import { GrammarTable } from "@/components/lesson/Tables";
 import { Paragraph } from "@/components/lesson/Paragraph";
 
 import { grammarPronouns } from "@/prisma/lessons/tables";
-import { grammar } from "@/prisma/lessons/paragraph";
+import { grammarLesson1 } from "@/prisma/lessons/paragraph";
 
-const { intro } = grammar;
+const { intro } = grammarLesson1;
 const { grammarPronouns1 } = grammarPronouns;
 
 export const FormsOfPersonalPronouns = () => {

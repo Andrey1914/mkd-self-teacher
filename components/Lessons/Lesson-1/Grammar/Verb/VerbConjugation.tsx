@@ -5,12 +5,12 @@ import { ConjugationTable, GrammarTable } from "@/components/lesson/Tables";
 import { FillInExercise } from "@/components/lesson/Exercises";
 import { PayAttentionBlock } from "@/components/lesson/PayAttentionBlock";
 
-import { grammar } from "@/prisma/lessons/paragraph";
+import { grammarLesson1 } from "@/prisma/lessons/paragraph";
 import { conjugationLesson1 } from "@/prisma/lessons/tables";
 import { exercisesLesson1 } from "@/prisma/lessons/exercises";
 import { payAttentionsLesson1 } from "@/prisma/lessons/pay-attention";
 
-const { verbConjugation, ruleConjugation } = grammar;
+const { verbConjugation, ruleConjugation } = grammarLesson1;
 const { aClass, eClass, iClass } = conjugationLesson1;
 const { payAttention3 } = payAttentionsLesson1;
 const { exercise4, exercise5, exercise6 } = exercisesLesson1;
