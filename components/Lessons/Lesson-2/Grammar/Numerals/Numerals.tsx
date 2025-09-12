@@ -3,10 +3,12 @@ import React from "react";
 import { Paragraph } from "@/components/lesson/Paragraph";
 import { NumeralsTable } from "@/components/lesson/Tables";
 
-import { numerals } from "@/prisma/lessons/paragraph";
+import { grammarLesson2 } from "@/prisma/lessons/paragraph";
 import { numeralsTable } from "@/prisma/lessons/tables";
 
-const { cardinalOrdinalNumerals, finalPartCardinalOrdinalNumerals } = numerals;
+const { cardinalOrdinalNumerals, finalPartCardinalOrdinalNumerals } =
+  grammarLesson2;
+
 const { cardinalOrdinalNumeralsTable } = numeralsTable;
 
 export const Numerals = () => {
