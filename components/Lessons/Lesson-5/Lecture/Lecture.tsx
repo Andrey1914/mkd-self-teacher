@@ -12,7 +12,7 @@ import { glossary } from "@/prisma/lessons/tables";
 
 import { vocabulary } from "@/prisma/lessons/vocabulary/lesson-5";
 
-const { intro } = lectureLesson5;
+const { intro, ruleAfterGlossary } = lectureLesson5;
 
 const { foodTable } = glossary;
 
@@ -22,9 +22,9 @@ export const Lecture = () => {
       <Intro />
       <DialogueCity />
       <Paragraph data={intro} />
-
       <Vocabulary lesson={vocabulary} />
       <GlossaryTable data={foodTable} />
+      <Paragraph data={ruleAfterGlossary} />
     </>
   );
 };

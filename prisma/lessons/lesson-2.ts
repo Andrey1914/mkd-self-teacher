@@ -1,9 +1,3 @@
-// import {
-//   noun,
-//   lecture,
-//   adjectives,
-//   numerals,
-// } from "@/prisma/lessons/paragraph";
 import { lectureLesson2, grammarLesson2 } from "@/prisma/lessons/paragraph";
 import { adjectivesTable, numeralsTable } from "@/prisma/lessons/tables";
 import { vocabulary } from "@/prisma/lessons/vocabulary/lesson-2";
@@ -19,15 +13,6 @@ import {
   exercise8,
 } from "@/prisma/lessons/exercises/lesson-2";
 
-// const {
-//   genderOfNouns,
-//   pluralOfNouns,
-//   feminineNouns,
-//   masculineNouns,
-//   neuterNouns,
-//   countablePlural,
-// } = noun;
-
 const { ruleAfterDialogue, explanation } = lectureLesson2;
 
 const {
@@ -42,10 +27,6 @@ const {
   cardinalOrdinalNumerals,
   finalPartCardinalOrdinalNumerals,
 } = grammarLesson2;
-
-// const { introAdjectives, genderNumberPronominalText } = adjectives;
-
-// const { cardinalOrdinalNumerals, finalPartCardinalOrdinalNumerals } = numerals;
 
 const { genderNumberPronominalOfAdjectives } = adjectivesTable;
 
