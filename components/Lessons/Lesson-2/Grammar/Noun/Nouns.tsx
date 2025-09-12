@@ -2,7 +2,7 @@ import React from "react";
 
 import { Paragraph } from "@/components/lesson/Paragraph";
 
-import { noun } from "@/prisma/lessons/paragraph";
+import { grammarLesson2 } from "@/prisma/lessons/paragraph";
 
 const {
   genderOfNouns,
@@ -11,7 +11,7 @@ const {
   masculineNouns,
   neuterNouns,
   countablePlural,
-} = noun;
+} = grammarLesson2;
 
 export const Nouns = () => {
   return (
