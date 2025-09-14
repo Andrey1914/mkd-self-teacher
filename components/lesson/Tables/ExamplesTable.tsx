@@ -5,7 +5,7 @@ import { formatText } from "@/utils";
 import { styles } from "./styles";
 
 export const ExamplesTable = ({ data }: { data: TablesProps }) => {
-  const { subtitle, content } = data;
+  const { title, subtitle, content } = data;
 
   const { examples, paragraph, flexContainer, gridContainer } = styles.examples;
 
@@ -22,15 +22,40 @@ export const ExamplesTable = ({ data }: { data: TablesProps }) => {
       ));
   };
 
-  if (
-    !Array.isArray(content?.words) ||
-    !content.words.every((row) => "mkd" in row && "ru" in row)
-  ) {
+  const renderTitle = (title: TablesProps["title"]) => {
+    if (!title) return null;
+
+    if (typeof title === "string") {
+      return formatText(title);
+    }
+
+    if (Array.isArray(title)) {
+      return title
+        .map((t) => {
+          if (typeof t === "string") return formatText(t);
+
+          const obj = t as { ru?: string; mkd?: string };
+          return formatText([obj.mkd, obj.ru].filter(Boolean).join(" "));
+        })
+        .join(", ");
+    }
+
+    const obj = title as { ru?: string; mkd?: string };
+    return formatText([obj.ru, obj.mkd].filter(Boolean).join(" "));
+  };
+
+  if (!Array.isArray(content?.words)) {
     return null;
   }
 
   return (
     <>
+      {title && (
+        <h2 style={{ display: "flex", flexDirection: "column" }}>
+          {renderTitle(title)}
+        </h2>
+      )}
+
       {subtitle && (
         <h3>
           {Array.isArray(subtitle)
@@ -50,16 +75,34 @@ export const ExamplesTable = ({ data }: { data: TablesProps }) => {
       <>{content.text && <>{renderTextParagraphs(content.text)}</>}</>
 
       <div className={flexContainer}>
-        {content.words.map((row, idx) => (
-          <div key={`row-${idx}`} className={gridContainer}>
-            {/* mkd */}
-            <p className={examples}>{formatText(`<span>${row.mkd}</span>`)}</p>
-            {/* ru */}
-            <p lang="ru" className={examples}>
-              {formatText(row.ru)}
-            </p>
-          </div>
-        ))}
+        {content.words.map((row, idx) => {
+          const hasMkd = "mkd" in row && row.mkd;
+          const maxWidth = hasMkd ? "500px" : "700px";
+          const justifyItems = hasMkd ? "start" : "center ";
+          const gridTemplateColumns = hasMkd ? "1fr 1fr" : "1fr";
+
+          return (
+            <div
+              key={`row-${idx}`}
+              className={gridContainer}
+              style={{
+                gridTemplateColumns: gridTemplateColumns,
+                justifyItems: justifyItems,
+              }}
+            >
+              {/* mkd (если есть) */}
+              {hasMkd && (
+                <p className={examples} style={{ maxWidth: maxWidth }}>
+                  {formatText(`<span>${row.mkd}</span>`)}
+                </p>
+              )}
+              {/* ru */}
+              <p lang="ru" className={examples} style={{ maxWidth: maxWidth }}>
+                {formatText(row.ru)}
+              </p>
+            </div>
+          );
+        })}
       </div>
     </>
   );
