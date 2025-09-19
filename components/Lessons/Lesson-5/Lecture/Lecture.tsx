@@ -3,7 +3,6 @@ import React from "react";
 import { DialogueCity } from "./Dialogue";
 import { Intro } from "./Intro";
 import { Paragraph } from "@/components/lesson/Paragraph";
-// import { PayAttentionBlock } from "@/components/lesson/PayAttentionBlock";
 import { Vocabulary } from "@/components/lesson/Vocabulary";
 import { GlossaryTable } from "@/components/lesson/Tables";
 

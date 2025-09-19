@@ -47,7 +47,7 @@ export default function Home() {
           <Swiper
             onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
             onSwiper={(swiper) => (swiperRef.current = swiper)}
-            spaceBetween={0}
+            spaceBetween={15}
             slidesPerView={1}
             allowTouchMove
             initialSlide={activeIndex}

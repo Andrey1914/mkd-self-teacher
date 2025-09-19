@@ -1,9 +1,15 @@
 .examples {
   margin: 0;
-  padding: 0 0 0.5rem 4rem;
+  padding: 0 0 0.5rem 2rem;
   text-indent: 0;
   text-align: left;
   width: 100%;
+}
+
+@media (max-width: 768px) {
+  .examples {
+    padding-left: 0.5rem;
+  }
 }
 
 .paragraph {
@@ -21,4 +27,10 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   justify-items: center;
+}
+
+@media (max-width: 768px) {
+  .gridContainer {
+    gap: 0.3rem;
+  }
 }
