@@ -1,6 +1,6 @@
 import React from "react";
 import { TablesProps } from "@/types";
-import { formatText } from "@/utils";
+import { formatText, renderTitle } from "@/utils";
 
 import { styles } from "./styles";
 
@@ -20,28 +20,6 @@ export const ExamplesTable = ({ data }: { data: TablesProps }) => {
           {formatText(p)}
         </p>
       ));
-  };
-
-  const renderTitle = (title: TablesProps["title"]) => {
-    if (!title) return null;
-
-    if (typeof title === "string") {
-      return formatText(title);
-    }
-
-    if (Array.isArray(title)) {
-      return title
-        .map((t) => {
-          if (typeof t === "string") return formatText(t);
-
-          const obj = t as { ru?: string; mkd?: string };
-          return formatText([obj.mkd, obj.ru].filter(Boolean).join(" "));
-        })
-        .join(", ");
-    }
-
-    const obj = title as { ru?: string; mkd?: string };
-    return formatText([obj.ru, obj.mkd].filter(Boolean).join(" "));
   };
 
   if (!Array.isArray(content?.words)) {
@@ -77,7 +55,7 @@ export const ExamplesTable = ({ data }: { data: TablesProps }) => {
       <div className={flexContainer}>
         {content.words.map((row, idx) => {
           const hasMkd = "mkd" in row && row.mkd;
-          const maxWidth = hasMkd ? "500px" : "700px";
+          const maxWidth = hasMkd ? "500px" : "650px";
           const justifyItems = hasMkd ? "start" : "center ";
           const gridTemplateColumns = hasMkd ? "1fr 1fr" : "1fr";
 
