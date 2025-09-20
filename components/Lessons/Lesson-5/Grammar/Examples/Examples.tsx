@@ -12,8 +12,8 @@ const {
   example3,
   example4,
   example5,
-  //   example6,
-  //   example7,
+  example6,
+  example7,
   //   example8,
   //   example9,
 } = examplesLesson5;
@@ -26,8 +26,8 @@ export const Examples = () => {
       <ExamplesTable data={example3} />
       <ExamplesTable data={example4} />
       <ExamplesTable data={example5} />
-      {/* <ExamplesTable data={example6} /> */}
-      {/* <ExamplesTable data={example7} /> */}
+      <ExamplesTable data={example6} />
+      <ExamplesTable data={example7} />
       {/* <ExamplesTable data={example8} /> */}
       {/* <ExamplesTable data={example9} /> */}
     </>
