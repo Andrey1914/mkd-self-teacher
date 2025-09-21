@@ -1,10 +1,13 @@
 import React from "react";
 
 import { ExamplesTable } from "@/components/lesson/Tables";
+import { Paragraph } from "@/components/lesson/Paragraph";
 
 import { examples } from "@/prisma/lessons/tables";
+import { lectureLesson5 } from "@/prisma/lessons/paragraph";
 
 const { lesson5: examplesLesson5 } = examples;
+const { verbalNoun } = lectureLesson5;
 
 const {
   example1,
@@ -28,6 +31,7 @@ export const Examples = () => {
       <ExamplesTable data={example5} />
       <ExamplesTable data={example6} />
       <ExamplesTable data={example7} />
+      <Paragraph data={verbalNoun} />
       {/* <ExamplesTable data={example8} /> */}
       {/* <ExamplesTable data={example9} /> */}
     </>

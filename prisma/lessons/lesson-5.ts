@@ -6,7 +6,7 @@ import { lectureLesson5 } from "@/prisma/lessons/paragraph";
 // import { grammarTables } from "@/prisma/lessons/tables";
 // import { exercisesLesson4 } from "@/prisma/lessons/exercises";
 
-const { intro, ruleAfterGlossary } = lectureLesson5;
+const { intro, ruleAfterGlossary, verbalNoun } = lectureLesson5;
 
 const { foodTable } = glossary;
 
@@ -47,7 +47,7 @@ export const lesson5 = {
       subtitle: [`ЛЕКСИКА`, `<span>ЛЕКСИКА</span>`],
     },
   ],
-  paragraph: [intro, ruleAfterGlossary],
+  paragraph: [intro, ruleAfterGlossary, verbalNoun],
 
   vocabulary: [vocabulary],
 

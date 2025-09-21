@@ -1,1 +1,1 @@
-export { intro, ruleAfterGlossary } from "./lecture";
+export { intro, ruleAfterGlossary, verbalNoun } from "./lecture";

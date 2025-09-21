@@ -1,7 +1,8 @@
 import { ParagraphSectionsProps } from "@/types";
 
 export const ruleAfterGlossary: ParagraphSectionsProps = {
-  type: "lecture",
+  type: "rule-after-glossary",
+  slug: "lesson-5",
   content: {
     text: `В македонском языке слово <span>благ</span> и <span>сла\u0301док</span> «сладкий», <span>го\u0301рок</span> и
       <span>го\u0301рчлив</span> «горький» являются синонимами, но в некоторых устойчивых сочетаниях обычно употребляются только
