@@ -106,7 +106,8 @@ model DialogueBlock {
 
 model ParagraphBlock {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  type      String           
+  type      String 
+  slug      String?    
   subtype   String?  
   intro     String?  
   content   Json

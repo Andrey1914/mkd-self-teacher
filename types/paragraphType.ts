@@ -5,6 +5,7 @@ export interface ParagraphProps {
 
 export interface ParagraphSectionsProps {
   type: string;
+  slug?: string;
   title?: string | string[];
   subtitle?: string | string[];
   intro?: string;

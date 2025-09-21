@@ -246,6 +246,7 @@ async function main() {
 
           // 📘 Paragraph blocks
           for (const paragraph of lesson.paragraph ?? []) {
+            const slug = paragraph.slug;
             const subtype = Array.isArray(paragraph.subtitle)
               ? paragraph.subtitle.join(", ")
               : paragraph.subtitle;
@@ -256,6 +257,7 @@ async function main() {
             const existing = await tx.paragraphBlock.findFirst({
               where: {
                 type: paragraph.type,
+                slug,
                 subtype,
                 ...(intro ? { intro } : {}),
                 lessonId,
@@ -284,6 +286,7 @@ async function main() {
               await tx.paragraphBlock.update({
                 where: { id: existing.id },
                 data: {
+                  slug,
                   subtype,
                   content,
                   ...(intro !== undefined ? { intro } : {}),
@@ -295,6 +298,7 @@ async function main() {
               await tx.paragraphBlock.create({
                 data: {
                   type: paragraph.type,
+                  slug,
                   subtype,
                   content,
                   lessonId,
