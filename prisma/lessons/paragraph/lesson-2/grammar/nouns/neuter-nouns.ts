@@ -1,7 +1,8 @@
 import { ParagraphSectionsProps } from "@/types";
 
 export const neuterNouns: ParagraphSectionsProps = {
-  type: "neuter-noun",
+  type: "grammar-neuter-noun",
+  slug: "lesson-2",
   content: {
     subtitle: "СУЩЕСТВИТЕЛЬНЫЕ СРЕДНЕГО РОДА",
     text: `Существительные, оканчивающиеся на <span>«-о»</span>, <span>«-це»</span>, <span>«-ште»</span>, <span>«-je»</span>,

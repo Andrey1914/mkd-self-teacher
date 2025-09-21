@@ -1,7 +1,8 @@
 import { ParagraphSectionsProps } from "@/types";
 
 export const personalPronouns: ParagraphSectionsProps = {
-  type: "personal-pronouns",
+  type: "grammar-personal-pronouns",
+  slug: "lesson-3",
   title: ["ГРАММАТИКА", "<span>ГРАМАТИКА</span>"],
   subtitle: "ЛИЧНЫЕ МЕСТОИМЕНИЯ",
   content: {

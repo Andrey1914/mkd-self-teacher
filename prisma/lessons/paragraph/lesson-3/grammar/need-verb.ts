@@ -1,7 +1,8 @@
 import { ParagraphSectionsProps } from "@/types";
 
 export const needVerb: ParagraphSectionsProps = {
-  type: "need-verb",
+  type: "grammar-need-verb",
+  slug: "lesson-3",
   subtitle: "ГЛАГОЛ <span>ТРЕ\u0301БА</span>",
   content: {
     text: `

@@ -1,7 +1,7 @@
 import { ParagraphSectionsProps } from "@/types";
 
 export const verbalNoun: ParagraphSectionsProps = {
-  type: "verbal-noun",
+  type: "lecture-verbal-noun",
   slug: "lesson-5",
   subtitle: "ГЛАГОЛЬНОЕ СУЩЕСТВИТЕЛЬНОЕ",
   content: {

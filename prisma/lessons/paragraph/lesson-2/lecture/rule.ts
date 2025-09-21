@@ -1,7 +1,8 @@
 import { ParagraphSectionsProps } from "@/types";
 
 export const ruleAfterDialogue: ParagraphSectionsProps = {
-  type: "lecture",
+  type: "lecture-rule-after-dialogue",
+  slug: "lesson-2",
   content: {
     text: `В македонском языке будущее время образуется при помощи частицы <span>к\u0301е</span>
     и глагола в форме настоящего времени: <span>к\u0301е чи\u0301там</span> «я буду читать»,

@@ -1,7 +1,8 @@
 import { ParagraphSectionsProps } from "@/types";
 
 export const genderNumberPronominalText: ParagraphSectionsProps = {
-  type: "text-adjectives",
+  type: "adjectives-gender-number-pronominal",
+  slug: "lesson-2",
   content: {
     text: `Подавляющее большинство прилагательных и местоименных прилагательных меняется как прилагательное <span>но\u0301в</span>, при 
     этом могут выдавать беглые гласные <span>«а, е, о»</span>. Обратите внимание, что при выпадении может меняться произношение и соответственно

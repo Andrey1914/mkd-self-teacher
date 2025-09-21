@@ -1,7 +1,8 @@
 import { ParagraphSectionsProps } from "@/types";
 
 export const masculineNouns: ParagraphSectionsProps = {
-  type: "masculine-noun",
+  type: "grammar-masculine-noun",
+  slug: "lesson-2",
   content: {
     subtitle: "СУЩЕСТВИТЕЛЬНЫЕ МУЖСКОГО РОДА",
     text: `Если односложное существительное оканчивается на <span>«ч»</span>, <span>«ж»</span>, <span>«ш»</span>, <span>«j»</span>,

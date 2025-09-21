@@ -1,7 +1,8 @@
 import { ParagraphSectionsProps } from "@/types";
 
 export const finalPartCardinalOrdinalNumerals: ParagraphSectionsProps = {
-  type: "final-part-cardinal-ordinal-numerals",
+  type: "numerals-final-part-cardinal-ordinal",
+  slug: "lesson-2",
   content: {
     text: `Порядковые числительные с элементом <span>«-стоти»</span> и <span>«-илjадит»</span> обычно используются, когда речь идёт 
     о порядке при счёте (<span>по двестотен пат</span> «в двухсотый раз», <span>двеилјадита година</span> «двухтысячный год»),
