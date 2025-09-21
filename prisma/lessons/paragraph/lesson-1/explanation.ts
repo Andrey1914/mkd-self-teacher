@@ -2,6 +2,7 @@ import { ParagraphSectionsProps } from "@/types";
 
 export const explanation: ParagraphSectionsProps = {
   type: "explanation",
+  slug: "lesson-1",
   content: {
     text: `
       Как вы уже, наверное, заметили, названия национальностей пишутся по-македонски с большой буквы: <span>И\u0301ван е Ру\u0301син.</span>

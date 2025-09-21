@@ -1,7 +1,8 @@
 import { ParagraphSectionsProps } from "@/types";
 
 export const negation: ParagraphSectionsProps = {
-  type: `grammar`,
+  type: `grammar-negation`,
+  slug: "lesson-1",
   title: `ОТРИЦАНИЕ`,
   content: {
     text: `В македонском языке отрицание практически всегда стоит перед глаголом. Например, предложение «Никола живет не здесь.» на 

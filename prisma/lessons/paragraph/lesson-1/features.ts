@@ -2,6 +2,7 @@ import { ParagraphSectionsProps } from "@/types";
 
 export const features: ParagraphSectionsProps = {
   type: "features",
+  slug: "lesson-1",
   title: "ОСОБЕННОСТИ ПРОИЗНОШЕНИЯ",
   content: {
     text: `
