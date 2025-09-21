@@ -1,7 +1,8 @@
 import { ParagraphSectionsProps } from "@/types";
 
 export const verbConjugation: ParagraphSectionsProps = {
-  type: `verbs`,
+  type: `verb-conjugation`,
+  slug: "lesson-1",
   subtitle: `СПРЯЖЕНИЕ ГЛАГОЛОВ В НАСТОЯЩЕМ ВРЕМЕНИ`,
   content: {
     text: `В македонском языке глаголы делятся на три класса в зависимости от тематического гласного, на который оканчивается глагол

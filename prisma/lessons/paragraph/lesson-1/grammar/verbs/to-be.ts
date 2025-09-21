@@ -1,7 +1,8 @@
 import { ParagraphSectionsProps } from "@/types";
 
 export const toBe: ParagraphSectionsProps = {
-  type: `verbs`,
+  type: `verb-to-be`,
+  slug: "lesson-1",
   title: `ГЛАГОЛ`,
   subtitle: `ГЛАГОЛ «БЫТЬ»`,
   content: {
