@@ -1,7 +1,7 @@
 import { ParagraphSectionsProps } from "@/types";
 
 export const intro: ParagraphSectionsProps = {
-  type: "intro",
+  type: "lecture-intro",
   slug: "lesson-5",
   content: {
     text: `В македонском языке часто используются сочетания предлогов: <span>ра\u0301киjа за со са\u0301лата</span>

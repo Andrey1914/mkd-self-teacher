@@ -247,7 +247,7 @@ async function main() {
           // 📘 Paragraph blocks
           for (const paragraph of lesson.paragraph ?? []) {
             const slug = paragraph.slug;
-            const subtype = Array.isArray(paragraph.subtitle)
+            const subtitle = Array.isArray(paragraph.subtitle)
               ? paragraph.subtitle.join(", ")
               : paragraph.subtitle;
 
@@ -256,29 +256,41 @@ async function main() {
 
             const existing = await tx.paragraphBlock.findFirst({
               where: {
-                type: paragraph.type,
                 slug,
-                subtype,
-                ...(intro ? { intro } : {}),
+                type: paragraph.type,
                 lessonId,
               },
             });
 
             if (existing) {
-              const existingText =
+              const typeChanged = existing.type !== paragraph.type;
+              const slugChanged = existing.slug !== paragraph.slug;
+              const existingSubtitle = existing.subtitle ?? null;
+              const newSubtitle = subtitle ?? null;
+              const subtitleChanged = existingSubtitle !== newSubtitle;
+              const existingIntro = existing.intro ?? "";
+              const newIntro = intro ?? "";
+              const introChanged = existingIntro !== newIntro;
+
+              const existingContentText =
                 typeof existing.content === "object" &&
                 existing.content !== null &&
                 "text" in existing.content
-                  ? existing.content.text ?? ""
+                  ? existing.content.text
                   : "";
 
-              const existingIntro = existing.intro;
-              const newText = content.text ?? "";
-              const newIntro = intro ?? "";
+              const newContentText = content.text ?? "";
+              const contentChanged = existingContentText !== newContentText;
 
-              if (existingText === newText || existingIntro === newIntro) {
+              if (
+                !typeChanged &&
+                !slugChanged &&
+                !subtitleChanged &&
+                !introChanged &&
+                !contentChanged
+              ) {
                 console.log(
-                  `ℹ️ ParagraphBlock "${paragraph.type}" уже существует, пропущен.`
+                  `ℹ️ ParagraphBlock "${paragraph.type}" не изменился, пропущен.`
                 );
                 continue;
               }
@@ -286,8 +298,9 @@ async function main() {
               await tx.paragraphBlock.update({
                 where: { id: existing.id },
                 data: {
-                  slug,
-                  subtype,
+                  type: paragraph.type,
+                  slug: paragraph.slug,
+                  subtitle,
                   content,
                   ...(intro !== undefined ? { intro } : {}),
                 },
@@ -298,8 +311,8 @@ async function main() {
               await tx.paragraphBlock.create({
                 data: {
                   type: paragraph.type,
-                  slug,
-                  subtype,
+                  slug: paragraph.slug,
+                  subtitle,
                   content,
                   lessonId,
                   ...(intro !== undefined ? { intro } : {}),
@@ -307,10 +320,116 @@ async function main() {
               });
 
               console.log(
-                `✅ Добавлен ParagraphBlock "${paragraph.type}", subtype: "${subtype}".`
+                `✅ Добавлен ParagraphBlock "${paragraph.type}", subtitle: "${subtitle}".`
               );
             }
           }
+          // for (const paragraph of lesson.paragraph ?? []) {
+          //   const slug = paragraph.slug;
+          //   const subtype = Array.isArray(paragraph.subtitle)
+          //     ? paragraph.subtitle.join(", ")
+          //     : paragraph.subtitle;
+
+          //   const intro = paragraph.intro;
+          //   const content = paragraph.content ?? {};
+
+          //   const existing = await tx.paragraphBlock.findFirst({
+          //     where: {
+          //       slug,
+          //       // type: paragraph.type,
+          //       // subtype,
+          //       lessonId,
+          //     },
+          //   });
+
+          //   if (existing) {
+          //     const typeChanged = existing.type !== paragraph.type;
+          //     const slugChanged =
+          //       (existing.slug ?? "") !== (paragraph.slug ?? "");
+          //     const introChanged =
+          //       (existing.intro ?? "") !== (paragraph.intro ?? "");
+
+          //     // const typeChanged = existing.type !== paragraph.type;
+          //     // const slugChanged = existing.slug !== paragraph.slug;
+          //     // const introChanged = existing.intro !== paragraph.intro;
+          //     const textChanged =
+          //       typeof existing.content === "object" &&
+          //       existing.content !== null &&
+          //       "text" in existing.content &&
+          //       existing.content.text !== (content.text ?? "");
+
+          //     // const textChanged =
+          //     //   typeof existing.content === "object" &&
+          //     //   existing.content !== null &&
+          //     //   "text" in existing.content
+          //     //     ? existing.content.text ?? ""
+          //     //     : "";
+
+          //     if (
+          //       !typeChanged &&
+          //       !slugChanged &&
+          //       !introChanged &&
+          //       !textChanged
+          //     ) {
+          //       console.log(
+          //         `ℹ️ ParagraphBlock "${paragraph.type}" уже актуален, пропущен.`
+          //       );
+          //       continue;
+          //     }
+          //     // const existingType = paragraph.type === paragraph.type;
+          //     // const existingSlug = paragraph.slug === paragraph.slug;
+
+          //     // const existingText =
+          //     //   typeof existing.content === "object" &&
+          //     //   existing.content !== null &&
+          //     //   "text" in existing.content
+          //     //     ? existing.content.text ?? ""
+          //     //     : "";
+
+          //     // const existingIntro = existing.intro === existing.intro;
+          //     // const newText = content.text ?? "";
+
+          //     // if (
+          //     //   existingType ||
+          //     //   existingSlug ||
+          //     //   existingText === newText ||
+          //     //   existingIntro
+          //     // ) {
+          //     //   console.log(
+          //     //     `ℹ️ ParagraphBlock "${paragraph.type}" уже существует, пропущен.`
+          //     //   );
+          //     //   continue;
+          //     // }
+
+          //     await tx.paragraphBlock.update({
+          //       where: { id: existing.id },
+          //       data: {
+          //         type: paragraph.type,
+          //         slug: paragraph.slug,
+          //         subtype,
+          //         content,
+          //         ...(intro !== undefined ? { intro } : {}),
+          //       },
+          //     });
+
+          //     console.log(`♻️ ParagraphBlock "${paragraph.type}" обновлен.`);
+          //   } else {
+          //     await tx.paragraphBlock.create({
+          //       data: {
+          //         type: paragraph.type,
+          //         slug: paragraph.slug,
+          //         subtype,
+          //         content,
+          //         lessonId,
+          //         ...(intro !== undefined ? { intro } : {}),
+          //       },
+          //     });
+
+          //     console.log(
+          //       `✅ Добавлен ParagraphBlock "${paragraph.type}", subtype: "${subtype}".`
+          //     );
+          //   }
+          // }
 
           // 📘 Pay attention blocks
           for (const block of lesson.payAttention ?? []) {

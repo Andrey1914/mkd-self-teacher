@@ -1,7 +1,8 @@
 import { ParagraphSectionsProps } from "@/types";
 
 export const feminineNouns: ParagraphSectionsProps = {
-  type: "feminine-noun",
+  type: "grammar-feminine-noun",
+  slug: "lesson-2",
   content: {
     subtitle: "СУЩЕСТВИТЕЛЬНЫЕ ЖЕНСКОГО РОДА",
     text: `К основе присоединяется окончание <span>«-и»</span>: <span>же\u0301на</span> - <span>же\u0301ни</span>, <span>на\u0301циjа</span> - <span>на\u0301ции</span>,
