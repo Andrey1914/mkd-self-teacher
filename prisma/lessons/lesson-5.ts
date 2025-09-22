@@ -22,8 +22,8 @@ const {
   example5,
   example6,
   example7,
-  //   example8,
-  //   example9,
+  example8,
+  example9,
 } = examplesLesson5;
 
 // const {
@@ -64,8 +64,8 @@ export const lesson5 = {
     { ...example5, slug: "lesson-5" },
     { ...example6, slug: "lesson-5" },
     { ...example7, slug: "lesson-5" },
-    //     { ...example8, slug: "lesson-5" },
-    //     { ...example9, slug: "lesson-5" },
+    { ...example8, slug: "lesson-5" },
+    { ...example9, slug: "lesson-5" },
   ],
   //   exercises: [
   //     exercise1,

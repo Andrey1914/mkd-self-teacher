@@ -17,8 +17,8 @@ const {
   example5,
   example6,
   example7,
-  //   example8,
-  //   example9,
+  example8,
+  example9,
 } = examplesLesson5;
 
 export const Examples = () => {
@@ -32,8 +32,8 @@ export const Examples = () => {
       <ExamplesTable data={example6} />
       <ExamplesTable data={example7} />
       <Paragraph data={verbalNoun} />
-      {/* <ExamplesTable data={example8} /> */}
-      {/* <ExamplesTable data={example9} /> */}
+      <ExamplesTable data={example8} />
+      <ExamplesTable data={example9} />
     </>
   );
 };
