@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Examples } from "./Examples";
-// import { Exercises } from "./Exercises";
+import { Exercises } from "./Exercises";
 // import { Paragraph } from "@/components/lesson/Paragraph";
 // import { DefinitenessCategoryTable } from "@/components/lesson/Tables";
 
@@ -14,12 +14,12 @@ import { Examples } from "./Examples";
 export const Grammar = () => {
   return (
     <>
-      {/* <Paragraph data={definitenessCategory} part="title" />
-      <DefinitenessCategoryTable data={definitenessCategoryTable} />
-      <Paragraph data={definitenessCategory} part="text" /> */}
+      {/* <Paragraph data={definitenessCategory} part="title" /> */}
+      {/* <DefinitenessCategoryTable data={definitenessCategoryTable} /> */}
+      {/* <Paragraph data={definitenessCategory} part="text" /> */}
       <Examples />
-      {/* <Paragraph data={prepositions} part="marked" />
-      <Exercises /> */}
+      {/* <Paragraph data={prepositions} part="marked" /> */}
+      <Exercises />
     </>
   );
 };

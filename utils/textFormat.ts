@@ -16,7 +16,7 @@ export const formatText = (
     return parse(
       processed
         .split(/\n\s*\n/)
-        .map((p) => `<div style="margin:0 0 1rem 0">${p.trim()}</div>`)
+        .map((p) => `<li><p style="margin:0 0 0.5rem 0">${p.trim()}</p></li>`)
         .join("")
     );
   }
