@@ -1,14 +1,15 @@
 import React from "react";
 
+import { PayAttentionBlock } from "@/components/lesson/PayAttentionBlock";
 import { ExamplesTable } from "@/components/lesson/Tables";
 import { Paragraph } from "@/components/lesson/Paragraph";
 
+import { payAttentionsLesson3 } from "@/prisma/lessons/pay-attention";
 import { examples } from "@/prisma/lessons/tables";
-import { lectureLesson5 } from "@/prisma/lessons/paragraph";
+import { grammarLesson3 } from "@/prisma/lessons/paragraph";
 
-const { lesson5: examplesLesson5 } = examples;
-const { verbalNoun } = lectureLesson5;
-
+const { needVerb } = grammarLesson3;
+const { lesson3: examplesLesson3 } = examples;
 const {
   example1,
   example2,
@@ -22,9 +23,9 @@ const {
   example10,
   example11,
   example12,
-  example13,
-  example14,
-} = examplesLesson5;
+} = examplesLesson3;
+
+const { payAttention2 } = payAttentionsLesson3;
 
 export const Examples = () => {
   return (
@@ -33,17 +34,16 @@ export const Examples = () => {
       <ExamplesTable data={example2} />
       <ExamplesTable data={example3} />
       <ExamplesTable data={example4} />
+      <PayAttentionBlock data={payAttention2} />
       <ExamplesTable data={example5} />
       <ExamplesTable data={example6} />
       <ExamplesTable data={example7} />
-      <Paragraph data={verbalNoun} />
       <ExamplesTable data={example8} />
       <ExamplesTable data={example9} />
       <ExamplesTable data={example10} />
       <ExamplesTable data={example11} />
+      <Paragraph data={needVerb} />
       <ExamplesTable data={example12} />
-      <ExamplesTable data={example13} />
-      <ExamplesTable data={example14} />
     </>
   );
 };
