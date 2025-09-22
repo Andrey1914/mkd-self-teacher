@@ -1,0 +1,17 @@
+import { TablesProps } from "@/types";
+
+export const example12: TablesProps = {
+  slug: "lesson-5",
+  type: "example-12",
+  content: {
+    subtitle: "РАЗДЕЛИТЕЛЬНЫЕ СОЮЗЫ",
+    text: `Разделительные союзы: <span>и\u0301ли</span> «или», <span>де — де</span> «то — то», <span>ту — ту</span> «то — то»,
+    <span>час — час</span> «то — то».`,
+    words: [
+      {
+        mkd: `Ту е\u0301дно ту дру\u0301го.`,
+        ru: `То одно, то другое.`,
+      },
+    ],
+  },
+};

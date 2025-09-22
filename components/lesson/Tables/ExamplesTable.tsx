@@ -54,10 +54,14 @@ export const ExamplesTable = ({ data }: { data: TablesProps }) => {
 
       <div className={flexContainer}>
         {content.words.map((row, idx) => {
-          const hasMkd = "mkd" in row && row.mkd;
-          const maxWidth = hasMkd ? "500px" : "650px";
-          const justifyItems = hasMkd ? "start" : "center ";
-          const gridTemplateColumns = hasMkd ? "1fr 1fr" : "1fr";
+          const hasMkd = !!row.mkd;
+          const hasRu = !!row.ru;
+
+          const isTwoColumn = hasMkd && hasRu;
+
+          const maxWidth = isTwoColumn ? "500px" : "650px";
+          const justifyItems = isTwoColumn ? "start" : "center ";
+          const gridTemplateColumns = isTwoColumn ? "1fr 1fr" : "1fr";
 
           return (
             <div
@@ -74,10 +78,13 @@ export const ExamplesTable = ({ data }: { data: TablesProps }) => {
                   {formatText(`<span>${row.mkd}</span>`)}
                 </p>
               )}
-              {/* ru */}
-              <p lang="ru" className={examples} style={{ maxWidth: maxWidth }}>
-                {formatText(row.ru)}
-              </p>
+
+              {/* ru (если есть) */}
+              {hasRu && (
+                <p lang="ru" className={examples} style={{ maxWidth }}>
+                  {formatText(row.ru)}
+                </p>
+              )}
             </div>
           );
         })}
