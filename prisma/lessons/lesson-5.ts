@@ -2,7 +2,7 @@ import { vocabulary } from "@/prisma/lessons/vocabulary/lesson-5";
 import { dialogueBlock } from "@/prisma/lessons/dialogues/lesson-5";
 import { glossary, examples } from "@/prisma/lessons/tables";
 import { lectureLesson5 } from "@/prisma/lessons/paragraph";
-// import { exercisesLesson5 } from "@/prisma/lessons/exercises";
+import { exercisesLesson5 } from "@/prisma/lessons/exercises";
 
 const { intro, ruleAfterGlossary, verbalNoun } = lectureLesson5;
 
@@ -27,16 +27,16 @@ const {
   example14,
 } = examplesLesson5;
 
-// const {
-//   exercise1,
-//   exercise2,
-//   exercise3,
-//   exercise4,
-//   exercise5,
-//   exercise6,
-//   exercise7,
-//   exercise8,
-// } = exercisesLesson5;
+const {
+  exercise1,
+  exercise2,
+  //   exercise3,
+  //   exercise4,
+  //   exercise5,
+  //   exercise6,
+  //   exercise7,
+  //   exercise8,
+} = exercisesLesson5;
 
 export const lesson5 = {
   title: [`<span>Урок 5, Лекциjя 5</span>`],
@@ -71,14 +71,14 @@ export const lesson5 = {
     { ...example13, slug: "lesson-5" },
     { ...example14, slug: "lesson-5" },
   ],
-  //   exercises: [
-  //     exercise1,
-  //     exercise2,
-  //     exercise3,
-  //     exercise4,
-  //     exercise5,
-  //     exercise6,
-  //     exercise7,
-  //     exercise8,
-  //   ],
+  exercises: [
+    exercise1,
+    exercise2,
+    //     exercise3,
+    //     exercise4,
+    //     exercise5,
+    //     exercise6,
+    //     exercise7,
+    //     exercise8,
+  ],
 };

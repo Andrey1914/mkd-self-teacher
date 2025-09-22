@@ -76,10 +76,14 @@ export const FillInExercise = ({ data }: { data: ExercisesProps }) => {
         <div key={sIdx}>
           {section.prompt?.map((p, i) =>
             typeof p === "string" ? (
-              <p key={i}>
-                <strong>{data.title}. </strong>
-                {formatText(p)}
-              </p>
+              <ul key={i}>
+                <li>
+                  <p>
+                    <strong>{data.title}.</strong>
+                  </p>
+                </li>
+                {formatText(p, true)}
+              </ul>
             ) : null
           )}
           {section.content?.text && (
@@ -95,20 +99,41 @@ export const FillInExercise = ({ data }: { data: ExercisesProps }) => {
 
                   return (
                     <React.Fragment key={idx}>
-                      {parts?.map((part, i) =>
-                        typeof part === "string" ? (
-                          <React.Fragment key={i}>
-                            {/^\d+\.\s/.test(part) ? (
-                              <>
-                                {part.match(/^(\d+\.\s*)/)?.[1]}
-                                <span>
-                                  {formatText(part.replace(/^(\d+\.\s*)/, ""))}
-                                </span>
-                              </>
-                            ) : (
-                              <span>{formatText(part)}</span>
-                            )}
+                      {parts?.map((part, i) => {
+                        // Identifying patterns
+                        const numberPatternStart = /^(\d+\.\s*)/; // For "1." at the beginning
+                        const letterPatternEnd = /([a-вA-V]\)\s*)$/; // For "a)" at the end (extended for Latin just in case)
 
+                        // Variables for parts of a string
+                        let unstyledPrefix = "";
+                        let styledText = part; // By default, the entire line is styled.
+                        let unstyledSuffix = "";
+
+                        const numberMatch = part.match(numberPatternStart);
+                        const letterMatchEnd = part.match(letterPatternEnd);
+
+                        if (numberMatch) {
+                          // If you find a number at the beginning, separate it
+                          unstyledPrefix = numberMatch[1];
+                          styledText = part.replace(numberPatternStart, "");
+                        } else if (letterMatchEnd) {
+                          // If you find a letter at the end, separate it
+                          unstyledSuffix = letterMatchEnd[1];
+                          styledText = part.replace(letterPatternEnd, "");
+                        }
+
+                        return (
+                          <React.Fragment key={i}>
+                            {/* 1. We output a non-colorable prefix (for numbers) */}
+                            {unstyledPrefix}
+
+                            {/* 2. We display the main text, which is always colored */}
+                            <span>{formatText(styledText)}</span>
+
+                            {/* 3. We derive a non-colorable suffix (for letters) */}
+                            {unstyledSuffix}
+
+                            {/* The logic for input remains unchanged. */}
                             {sentence.answer && i < sentence.answer.length && (
                               <input
                                 id={`input-${sIdx}-${idx}-${i}`}
@@ -147,8 +172,8 @@ export const FillInExercise = ({ data }: { data: ExercisesProps }) => {
                               />
                             )}
                           </React.Fragment>
-                        ) : null
-                      )}{" "}
+                        );
+                      })}{" "}
                     </React.Fragment>
                   );
                 })}
