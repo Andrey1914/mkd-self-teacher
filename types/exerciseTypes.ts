@@ -3,7 +3,9 @@ export interface ExercisesProps {
   slug?: string;
   title?: string;
   sections: {
-    type?: "static-exercise" | "exercises" | "exercise-fill-in" | string;
+    // type?: "static-exercise" | "exercises" | "exercise-fill-in" | string;
+    type?: string;
+
     singleInput?: boolean;
     title?: string;
     prompt?: string[];
@@ -21,3 +23,14 @@ export interface ExercisesProps {
 
   data?: Partial<ExercisesProps>;
 }
+
+export type WordState = {
+  text: string;
+  isWord: boolean;
+  userStyle: "normal" | "bold" | "italic";
+  correctStyle: "normal" | "bold" | "italic";
+  status: "unchecked" | "correct" | "incorrect";
+  touched: boolean;
+
+  data?: Partial<WordState>;
+};

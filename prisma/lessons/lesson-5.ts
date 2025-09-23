@@ -30,7 +30,7 @@ const {
 const {
   exercise1,
   exercise2,
-  //   exercise3,
+  exercise3,
   //   exercise4,
   //   exercise5,
   //   exercise6,
@@ -74,7 +74,7 @@ export const lesson5 = {
   exercises: [
     exercise1,
     exercise2,
-    //     exercise3,
+    exercise3,
     //     exercise4,
     //     exercise5,
     //     exercise6,

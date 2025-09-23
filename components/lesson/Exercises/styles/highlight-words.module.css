@@ -1,0 +1,33 @@
+.word {
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  border-radius: 4px;
+  padding: 0 2px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.word:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Стили, которые выбирает пользователь */
+.normal {
+  font-weight: normal;
+  font-style: normal;
+}
+.bold {
+  font-weight: bold;
+}
+.italic {
+  font-style: italic;
+}
+
+/* Стили для проверки */
+.correct {
+  box-shadow: 0 0 8px 3px #00c150;
+  background-color: rgba(0, 193, 80, 0.2);
+}
+.incorrect {
+  box-shadow: 0 0 8px 3px #ffa347;
+  background-color: rgba(255, 163, 71, 0.2);
+}

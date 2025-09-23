@@ -1,0 +1,1 @@
+export { parseHighlightExercise } from "./parseHighlightExercise";
