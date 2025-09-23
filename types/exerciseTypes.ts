@@ -3,9 +3,7 @@ export interface ExercisesProps {
   slug?: string;
   title?: string;
   sections: {
-    // type?: "static-exercise" | "exercises" | "exercise-fill-in" | string;
     type?: string;
-
     singleInput?: boolean;
     title?: string;
     prompt?: string[];
@@ -14,15 +12,17 @@ export interface ExercisesProps {
       original?: string;
       answer?: string[];
       text?: string;
-      sentences?: {
-        mkd?: string; // текст с ___
-        answer?: string[];
-      }[];
+      sentences?: Sentence[];
     };
   }[];
 
   data?: Partial<ExercisesProps>;
 }
+
+export type Sentence = {
+  mkd?: string;
+  answer?: string[];
+};
 
 export type WordState = {
   text: string;
@@ -31,6 +31,4 @@ export type WordState = {
   correctStyle: "normal" | "bold" | "italic";
   status: "unchecked" | "correct" | "incorrect";
   touched: boolean;
-
-  data?: Partial<WordState>;
 };
