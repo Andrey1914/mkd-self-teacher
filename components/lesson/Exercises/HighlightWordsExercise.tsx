@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useMemo } from "react";
 import type { ExercisesProps, WordState } from "@/types";
-import { formatText, parseHighlightExercise } from "@/utils";
+import { formatText, exercisesUtils } from "@/utils";
 import { styles } from "./styles";
 
 export const HighlightWordsExercise = ({ data }: { data: ExercisesProps }) => {
@@ -14,13 +14,15 @@ export const HighlightWordsExercise = ({ data }: { data: ExercisesProps }) => {
   const [checked, setChecked] = useState(false);
   const [showAnswer, setShowAnswer] = useState(false);
 
+  const { parseHighlightExercise } = exercisesUtils;
+
   const { buttonContainer, exerciseButton } = styles.buttons;
   const { word, normal, bold, italic, correct, incorrect } =
     styles.highlightWords;
 
   const initialWordsState = useMemo(
     () => parseHighlightExercise(originalText, answerText),
-    [originalText, answerText]
+    [originalText, answerText, parseHighlightExercise]
   );
 
   useEffect(() => {

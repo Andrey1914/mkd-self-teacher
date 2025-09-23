@@ -2,35 +2,35 @@
 
 import React, { useEffect, useState } from "react";
 import { ExercisesProps } from "@/types";
-import { formatText, highlightInput, getTextWidth } from "@/utils";
+import {
+  formatText,
+  highlightInput,
+  getTextWidth,
+  exercisesUtils,
+} from "@/utils";
 
 import { styles } from "./styles";
 
 export const FillInExercise = ({ data }: { data: ExercisesProps }) => {
   const [hasMounted, setHasMounted] = useState(false);
+  const [checked, setChecked] = useState(false);
   const [showAnswers, setShowAnswers] = useState(false);
   const [inputs, setInputs] = useState<string[][]>([]);
   const [isAutoFilled, setIsAutoFilled] = useState<boolean[][]>([]);
+  const sentences = data.sections?.[0]?.content?.sentences;
+
+  const { initializeFillInState, getCorrectFillInAnswers, parseFillInPart } =
+    exercisesUtils;
 
   const { buttonContainer, exerciseButton } = styles.buttons;
   const { fillInInput } = styles.inputs;
 
   useEffect(() => {
     setHasMounted(true);
-
-    const initialInputs =
-      data.sections?.[0]?.content?.sentences?.map((sentence) =>
-        new Array(sentence.answer?.length).fill("")
-      ) ?? [];
-
-    const initialFlags =
-      data.sections?.[0]?.content?.sentences?.map((sentence) =>
-        new Array(sentence.answer?.length).fill(false)
-      ) ?? [];
-
+    const { initialInputs, initialFlags } = initializeFillInState(sentences);
     setInputs(initialInputs);
     setIsAutoFilled(initialFlags);
-  }, [data]);
+  }, [data, sentences, initializeFillInState]);
 
   if (!hasMounted || !data || !data.sections || data.sections.length === 0) {
     return null;
@@ -54,19 +54,24 @@ export const FillInExercise = ({ data }: { data: ExercisesProps }) => {
     });
   };
 
+  const handleCheck = () => {
+    setChecked(true);
+    setShowAnswers(false);
+  };
+
   const revealAnswers = () => {
-    const filled =
-      data.sections?.[0]?.content?.sentences?.map((sentence) => [
-        ...(sentence.answer ?? []),
-      ]) ?? [];
+    const { correctInputs, correctFlags } = getCorrectFillInAnswers(sentences);
+    setInputs(correctInputs);
+    setIsAutoFilled(correctFlags);
+    setChecked(false);
+    setShowAnswers(true);
+  };
 
-    const filledFlags =
-      data.sections?.[0]?.content?.sentences?.map((sentence) =>
-        new Array(sentence.answer?.length).fill(true)
-      ) ?? [];
-
-    setInputs(filled);
-    setIsAutoFilled(filledFlags);
+  const handleClear = () => {
+    const { initialInputs, initialFlags } = initializeFillInState(sentences);
+    setInputs(initialInputs);
+    setIsAutoFilled(initialFlags);
+    setChecked(false);
     setShowAnswers(false);
   };
 
@@ -100,27 +105,8 @@ export const FillInExercise = ({ data }: { data: ExercisesProps }) => {
                   return (
                     <React.Fragment key={idx}>
                       {parts?.map((part, i) => {
-                        // Identifying patterns
-                        const numberPatternStart = /^(\d+\.\s*)/; // For "1." at the beginning
-                        const letterPatternEnd = /([a-вA-V]\)\s*)$/; // For "a)" at the end (extended for Latin just in case)
-
-                        // Variables for parts of a string
-                        let unstyledPrefix = "";
-                        let styledText = part; // By default, the entire line is styled.
-                        let unstyledSuffix = "";
-
-                        const numberMatch = part.match(numberPatternStart);
-                        const letterMatchEnd = part.match(letterPatternEnd);
-
-                        if (numberMatch) {
-                          // If you find a number at the beginning, separate it
-                          unstyledPrefix = numberMatch[1];
-                          styledText = part.replace(numberPatternStart, "");
-                        } else if (letterMatchEnd) {
-                          // If you find a letter at the end, separate it
-                          unstyledSuffix = letterMatchEnd[1];
-                          styledText = part.replace(letterPatternEnd, "");
-                        }
+                        const { unstyledPrefix, styledText, unstyledSuffix } =
+                          parseFillInPart(part);
 
                         return (
                           <React.Fragment key={i}>
@@ -161,13 +147,15 @@ export const FillInExercise = ({ data }: { data: ExercisesProps }) => {
                                     ),
                                     250
                                   )}px`,
-                                  ...(isAutoFilled[idx]?.[i] || !showAnswers
+                                  ...(isAutoFilled[idx]?.[i]
                                     ? {}
-                                    : highlightInput(
+                                    : checked && !showAnswers
+                                    ? highlightInput(
                                         inputs[idx]?.[i] ?? "",
                                         sentence.answer[i],
-                                        showAnswers
-                                      )),
+                                        true
+                                      )
+                                    : {}),
                                 }}
                               />
                             )}
@@ -184,7 +172,8 @@ export const FillInExercise = ({ data }: { data: ExercisesProps }) => {
             <button
               className={exerciseButton}
               type="button"
-              onClick={() => setShowAnswers(true)}
+              onClick={handleCheck}
+              disabled={showAnswers}
             >
               Проверить мою работу
             </button>
@@ -198,13 +187,7 @@ export const FillInExercise = ({ data }: { data: ExercisesProps }) => {
             <button
               className={exerciseButton}
               type="button"
-              onClick={() => {
-                setInputs((prev) => prev.map((row) => row.map(() => "")));
-                setIsAutoFilled((prev) =>
-                  prev.map((row) => row.map(() => false))
-                );
-                setShowAnswers(false);
-              }}
+              onClick={handleClear}
             >
               Очистить
             </button>
