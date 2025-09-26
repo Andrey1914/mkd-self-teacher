@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useRef } from "react";
-import { formatText, normalizeAnswer } from "@/utils";
+import { formatText, exercisesUtils, highlightInput } from "@/utils";
 import { ExercisesProps } from "@/types";
 
 import { styles } from "./styles";
@@ -12,6 +12,9 @@ export const TranslateParagraphExercise = ({
   data: ExercisesProps;
 }) => {
   const section = data.sections[0];
+
+  const { generateHighlightedWord, parseAnswerWords } = exercisesUtils;
+
   const correctAnswer = section.content.answer?.[0] ?? "";
 
   const { buttonContainer, exerciseButton } = styles.buttons;
@@ -24,72 +27,27 @@ export const TranslateParagraphExercise = ({
 
   const editorRef = useRef<HTMLDivElement>(null);
 
-  const parseAnswerWords = (text: string): string[][] => {
-    return normalizeAnswer(text, {
-      trim: true,
-      lowercase: true,
-      convertLatinToCyrillic: true,
-    })
-      .split(/\s+/)
-      .map((word) => word.split("/"));
-  };
-
   const correctWordOptions = parseAnswerWords(correctAnswer);
-
-  const isPerfectMatch = (): boolean => {
-    const userWords = normalizeAnswer(input, {
-      trim: true,
-      lowercase: true,
-      convertLatinToCyrillic: true,
-    }).split(/\s+/);
-
-    return (
-      userWords.length === correctWordOptions.length &&
-      userWords.every((word, idx) => correctWordOptions[idx]?.includes(word))
-    );
-  };
-
-  const highlightWords = () => {
-    const rawWords = input.trim().split(/\s+/);
-    const normalizedWords = rawWords.map((word) =>
-      normalizeAnswer(word, {
-        trim: true,
-        lowercase: true,
-        convertLatinToCyrillic: true,
-      })
-    );
-
-    return rawWords
-      .map((originalWord, idx) => {
-        const normalized = normalizedWords[idx];
-        const isCorrect = correctWordOptions[idx]?.includes(normalized);
-        if (!isCorrect) {
-          return `<span style="color: #ffa347">${originalWord}</span>`;
-        }
-        return originalWord;
-      })
-      .join(" ");
-  };
 
   const handleCheck = () => {
     setChecked(true);
     setShowAnswer(false);
-
     if (editorRef.current) {
-      editorRef.current.innerHTML = highlightWords();
+      editorRef.current.innerHTML = generateHighlightedWord(
+        input,
+        correctWordOptions
+      );
     }
   };
 
   const handleReveal = () => {
     const cleanAnswer = correctAnswer
-      .replace(/\s*\n\s*/g, " ")
+      .replace(/[/«»]|<em>|<\/em>/g, " ")
       .replace(/\s+/g, " ")
       .trim();
-
     setInput(cleanAnswer);
     setChecked(false);
     setShowAnswer(true);
-
     if (editorRef.current) {
       editorRef.current.innerText = cleanAnswer;
     }
@@ -116,13 +74,6 @@ export const TranslateParagraphExercise = ({
     }
   };
 
-  const boxShadow =
-    checked && isPerfectMatch()
-      ? "0 0 8px 3px #00c150"
-      : checked
-      ? "0 0 8px 3px #ffa347"
-      : "none";
-
   const outline = isFocused && !showAnswer ? "2px solid white" : "none";
   const userSelect = showAnswer ? "none" : "text";
 
@@ -146,9 +97,9 @@ export const TranslateParagraphExercise = ({
           contentEditable={!showAnswer}
           onInput={handleInput}
           style={{
-            boxShadow,
             outline,
             userSelect,
+            ...highlightInput(input, correctAnswer, checked && !showAnswer),
           }}
           onFocus={(e) => {
             if (showAnswer) {

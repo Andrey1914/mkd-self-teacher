@@ -4,10 +4,10 @@ import { normalizeText } from "./normalizeText";
 import { stripPunctuation } from "./stripPunctuation";
 
 /**
- * Парсит оригинальный текст и текст с ответами для упражнения HighlightWords.
- * @param originalText - Исходный текст для упражнения.
- * @param answerText - Текст с правильной разметкой (bold/italic).
- * @returns Массив объектов WordState для инициализации состояния.
+ * Parses the original text and the text with answers for the HighlightWords.
+ * @param originalText - Source text for the exercise.
+ * @param answerText - Text with correct markup (bold/italic).
+ * @returns Array of WordState objects to initialize the state.
  */
 export const parseHighlightExercise = (
   originalText: string,
@@ -16,7 +16,7 @@ export const parseHighlightExercise = (
   const boldWords = new Set<string>();
   const italicWords = new Set<string>();
 
-  // Ищем все слова, которые должны быть жирными
+  // We are looking for all the words that should be in bold.
   const boldRegex = /«([^»]+)»/g;
   let boldMatch;
   while ((boldMatch = boldRegex.exec(answerText))) {
@@ -27,7 +27,7 @@ export const parseHighlightExercise = (
     });
   }
 
-  // Ищем все слова, которые должны быть курсивом
+  // We are looking for all the words that should be in italics.
   const italicRegex = /<em\b[^>]*>([\s\S]*?)<\/em>/gi;
   let italicMatch;
   while ((italicMatch = italicRegex.exec(answerText))) {
@@ -38,7 +38,7 @@ export const parseHighlightExercise = (
     });
   }
 
-  // Разбиваем оригинальный текст на слова и пробелы (для сохранения форматирования)
+  // Split the original text into words and spaces (to preserve formatting)
   const textParts = originalText.replace(/<span>|<\/span>/g, "").split(/(\s+)/);
 
   return textParts.map((part) => {

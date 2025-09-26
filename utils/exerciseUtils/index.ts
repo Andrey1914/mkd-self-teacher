@@ -1,4 +1,11 @@
 export { parseHighlightExercise } from "./parseHighlightExercise";
-export { initializeFillInState } from "./initializeFillInState";
-export { getCorrectFillInAnswers } from "./getCorrectFillInAnswers";
-export { parseFillInPart } from "./parseFillInPart";
+export { determineExerciseConfig } from "./paragraphExercise";
+export {
+  parseAnswerWords,
+  generateHighlightedWord,
+} from "./translateParagraph";
+export {
+  initializeFillInState,
+  getCorrectFillInAnswers,
+  parseFillInPart,
+} from "./fillInExercise";

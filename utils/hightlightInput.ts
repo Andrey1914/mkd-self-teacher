@@ -1,4 +1,4 @@
-import { normalizeAnswer } from "@/utils/normalizeAnswer";
+import { normalizeAnswer } from "@/utils";
 
 export const highlightInput = (
   input: string,

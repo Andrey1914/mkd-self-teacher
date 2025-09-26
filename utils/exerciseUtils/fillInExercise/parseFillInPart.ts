@@ -1,5 +1,5 @@
 /**
- * Разбирает текстовый фрагмент на стилизуемую и нестилизуемую части.
+ * Parses a text fragment into stylized and non-stylized parts.
  */
 export const parseFillInPart = (part: string) => {
   const numberPatternStart = /^(\d+\.\s*)/;

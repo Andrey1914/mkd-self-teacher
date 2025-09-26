@@ -1,8 +1,8 @@
-// Вспомогательная функция для нормализации текста
+// Helper function for text normalization
 export const normalizeText = (text: string): string =>
   (text ?? "")
-    .replace(/<[^>]*>/g, "") // Убрать HTML теги
-    .replace(/\u0301/g, "") // Убрать знаки ударения
-    .replace(/\s+/g, " ") // Схлопнуть пробелы
+    .replace(/<[^>]*>/g, "") // Remove HTML tags
+    .replace(/\u0301/g, "") // Remove accent marks
+    .replace(/\s+/g, " ") // Collapse the gaps
     .trim()
     .toLowerCase();
