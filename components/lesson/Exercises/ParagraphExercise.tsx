@@ -1,44 +1,40 @@
 "use client";
 
 import React, { useState, useId, useRef, useEffect } from "react";
-import { formatText, normalizeAnswer, resizeTextarea } from "@/utils";
+import { MACEDONIAN_PRONOUNS } from "@/constants";
+import {
+  formatText,
+  resizeTextarea,
+  highlightInput,
+  getCleanedAnswers,
+  exercisesUtils,
+} from "@/utils";
 import { ExercisesProps } from "@/types";
 
 import { styles } from "./styles";
 
-const pronouns = ["Jас", "Ти", "Ние", "Вие", "Тие"];
-
 export const ParagraphExercise = ({ data }: { data: ExercisesProps }) => {
   const sections = data.sections[0];
 
-  const { buttonContainer, exerciseButton } = styles.buttons;
-  const { paragraphInput } = styles.inputs;
+  const { determineExerciseConfig } = exercisesUtils;
 
-  const answers = sections.content.answer ?? [];
-
-  const isSingleInput = sections.singleInput === true;
-
-  const usePlaceholders =
-    !isSingleInput &&
-    answers.length > 0 &&
-    answers.every((answer) =>
-      pronouns.some((pronoun) => answer.trim().startsWith(pronoun))
-    );
-
-  const uniqueIdBase = useId();
-
-  const inputCount = isSingleInput ? 1 : pronouns.length;
+  const { usePlaceholders, inputCount } = determineExerciseConfig(
+    sections,
+    MACEDONIAN_PRONOUNS
+  );
 
   const [inputs, setInputs] = useState<string[]>(Array(inputCount).fill(""));
-
   const [checked, setChecked] = useState(false);
   const [showAnswers, setShowAnswers] = useState(false);
-
   const [isAutoFilled, setIsAutoFilled] = useState<boolean[]>(
     Array(inputCount).fill(false)
   );
 
+  const uniqueIdBase = useId();
   const textareasRef = useRef<(HTMLTextAreaElement | null)[]>([]);
+
+  const { buttonContainer, exerciseButton } = styles.buttons;
+  const { paragraphInput } = styles.inputs;
 
   useEffect(() => {
     textareasRef.current.forEach((textarea) => {
@@ -49,11 +45,11 @@ export const ParagraphExercise = ({ data }: { data: ExercisesProps }) => {
   const handleChange = (value: string, idx: number) => {
     const updatedInputs = [...inputs];
     updatedInputs[idx] = value;
+    setInputs(updatedInputs);
+    setChecked(false);
 
     const updatedFlags = [...isAutoFilled];
     updatedFlags[idx] = false;
-
-    setInputs(updatedInputs);
     setIsAutoFilled(updatedFlags);
   };
 
@@ -64,13 +60,7 @@ export const ParagraphExercise = ({ data }: { data: ExercisesProps }) => {
   };
 
   const revealAnswers = () => {
-    const cleanedAnswers = sections.content.answer?.map((answer) =>
-      normalizeAnswer(answer.replace(/\s+/g, " "), {
-        trim: true,
-        convertLatinToCyrillic: false,
-        lowercase: false,
-      })
-    );
+    const cleanedAnswers = getCleanedAnswers(sections.content.answer);
 
     setInputs(cleanedAnswers ?? Array(inputCount).fill(""));
     setIsAutoFilled(Array(inputCount).fill(true));
@@ -101,33 +91,8 @@ export const ParagraphExercise = ({ data }: { data: ExercisesProps }) => {
       <form onSubmit={(e) => e.preventDefault()}>
         {Array.from({ length: inputCount }).map((_, idx) => {
           const correctAnswer = sections.content.answer?.[idx] ?? "";
-
           const userInput = inputs[idx] || "";
-
-          const normalizedUserInput = normalizeAnswer(userInput, {
-            trim: true,
-            lowercase: true,
-            convertLatinToCyrillic: true,
-          });
-
-          const normalizedCorrect = normalizeAnswer(correctAnswer, {
-            trim: true,
-            lowercase: true,
-          });
-
-          const isCorrect = normalizedUserInput === normalizedCorrect;
-
-          const boxShadow = showAnswers
-            ? "none"
-            : checked
-            ? isCorrect
-              ? "0 0 8px 3px #00c150"
-              : "0 0 8px 3px #ffa347"
-            : "none";
-
-          const placeholder =
-            !isSingleInput && usePlaceholders ? pronouns[idx] : "";
-
+          const placeholder = usePlaceholders ? MACEDONIAN_PRONOUNS[idx] : "";
           const outline = isAutoFilled[idx] ? "none" : undefined;
 
           return (
@@ -142,8 +107,12 @@ export const ParagraphExercise = ({ data }: { data: ExercisesProps }) => {
                   textareasRef.current[idx] = el;
                 }}
                 style={{
-                  boxShadow,
                   outline,
+                  ...highlightInput(
+                    userInput,
+                    correctAnswer,
+                    checked && !showAnswers
+                  ),
                 }}
                 value={userInput}
                 onChange={(e) => handleChange(e.target.value, idx)}
@@ -165,7 +134,12 @@ export const ParagraphExercise = ({ data }: { data: ExercisesProps }) => {
       </form>
 
       <div className={buttonContainer}>
-        <button className={exerciseButton} type="button" onClick={checkAnswers}>
+        <button
+          className={exerciseButton}
+          type="button"
+          onClick={checkAnswers}
+          disabled={showAnswers}
+        >
           Проверить мою работу
         </button>
         <button

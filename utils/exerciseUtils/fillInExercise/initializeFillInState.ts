@@ -1,7 +1,7 @@
 import { Sentence } from "@/types";
 
 /**
- * Инициализирует начальное состояние для упражнения FillInExercise.
+ * Initializes the initial state for the FillInExercise.
  */
 export const initializeFillInState = (sentences: Sentence[] | undefined) => {
   const initialInputs =

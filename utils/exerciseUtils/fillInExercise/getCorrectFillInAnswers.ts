@@ -1,7 +1,7 @@
 import { Sentence } from "@/types";
 
 /**
- * Генерирует массивы с правильными ответами для показа.
+ * Generates arrays with correct answers for display.
  */
 export const getCorrectFillInAnswers = (sentences: Sentence[] | undefined) => {
   const correctInputs =

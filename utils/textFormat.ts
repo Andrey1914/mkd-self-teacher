@@ -6,7 +6,7 @@ export const formatText = (
 ) => {
   if (!text) return null;
 
-  // Жирный/курсив
+  // Bold/Italic
   const processed = text
     .replace(/\[\[([^\]]+)\]\]/g, (_, inner) => `<em>[[${inner}]]</em>`)
     .replace(/\[([^\]]+)\]/g, (_, inner) => `<em>${inner}</em>`)
