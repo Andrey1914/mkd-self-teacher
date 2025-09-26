@@ -32,10 +32,11 @@ const {
   exercise2,
   exercise3,
   exercise4,
-  //   exercise5,
-  //   exercise6,
-  //   exercise7,
-  //   exercise8,
+  exercise5,
+  exercise6,
+  exercise7,
+  exercise8,
+  exercise9,
 } = exercisesLesson5;
 
 export const lesson5 = {
@@ -49,11 +50,8 @@ export const lesson5 = {
     },
   ],
   paragraph: [intro, ruleAfterGlossary, verbalNoun],
-
   vocabulary: [vocabulary],
-
   dialogues: [dialogueBlock],
-
   tables: [
     foodTable,
     { ...example1, slug: "lesson-5" },
@@ -76,9 +74,10 @@ export const lesson5 = {
     exercise2,
     exercise3,
     exercise4,
-    //     exercise5,
-    //     exercise6,
-    //     exercise7,
-    //     exercise8,
+    exercise5,
+    exercise6,
+    exercise7,
+    exercise8,
+    exercise9,
   ],
 };
