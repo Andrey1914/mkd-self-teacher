@@ -18,7 +18,7 @@ export type TableBlockData = TablesProps;
 
 export interface LessonData {
   slug: string;
-  title?: string[];
+  title?: { ru: string; mkd: string } | string | string[];
   sections?: SectionWithTables[];
   glossary?: GlossaryEntryData[];
   dialogues?: DialogueBlockProps[];
@@ -27,4 +27,6 @@ export interface LessonData {
   tables?: TableBlockData[];
   vocabulary?: VocabularyData[];
   exercises?: ExercisesProps[];
+
+  // data?: Partial<LessonData>;
 }

@@ -1,35 +1,36 @@
-import React from "react";
-
-import { Heading } from "@/components/lesson/Heading/Heading";
+import { HeadingLesson } from "@/components/lesson/Heading";
 
 import { lesson1 } from "@/prisma/lessons/lesson-1";
-import { lectureLesson1 } from "@/prisma/lessons/heading/lesson-1/headings";
-
-import { formatText } from "@/utils";
 
 export const Intro = () => {
-  const handledTypes = ["pay-attention"];
-
   return (
     <>
-      <Heading level={lectureLesson1.level}>{lectureLesson1.title}</Heading>
+      <HeadingLesson lessonData={lesson1} />
 
       {lesson1.sections?.map((section, i) => (
         <section key={i} style={{ marginBottom: "2rem" }}>
-          {!handledTypes.includes(section.type) &&
-            (Array.isArray(section.title)
-              ? section.title.length > 0 && (
-                  <h2 style={{ margin: "1rem 0" }}>
-                    {formatText(section.title.join(", "))}
-                  </h2>
-                )
-              : section.title && <h2>{formatText(section.title)}</h2>)}
-
           {"content" in section && section.content?.intro && (
             <>
-              {(section.content.intro.subtitle ?? []).map((sub, idx) => (
-                <p key={idx}>{sub}</p>
-              ))}
+              {section.content.intro.subtitle && (
+                <>
+                  {typeof section.content.intro.subtitle === "string" ? (
+                    <p>{section.content.intro.subtitle}</p>
+                  ) : Array.isArray(section.content.intro.subtitle) ? (
+                    section.content.intro.subtitle.map((sub, idx) => (
+                      <p key={idx}>{sub}</p>
+                    ))
+                  ) : (
+                    <div style={{ display: "flex", flexDirection: "column" }}>
+                      {section.content.intro.subtitle.ru && (
+                        <p>{section.content.intro.subtitle.ru}</p>
+                      )}
+                      {section.content.intro.subtitle.mkd && (
+                        <p>{section.content.intro.subtitle.mkd}</p>
+                      )}
+                    </div>
+                  )}
+                </>
+              )}
 
               <p
                 lang="ru"

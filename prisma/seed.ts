@@ -19,7 +19,7 @@ async function main() {
             ? existing
             : await tx.lesson.create({
                 data: {
-                  title: lesson.title?.join(", ") ?? "Урок без названия.",
+                  title: lesson.title ?? {},
                   slug: lesson.slug,
                 },
               });
@@ -36,11 +36,11 @@ async function main() {
           for (const section of lesson.sections ?? []) {
             const sectionTitle = Array.isArray(section.title)
               ? section.title.join(", ")
-              : section.title ?? "";
+              : section.title ?? {};
 
             const existingSection = await tx.section.findFirst({
               where: {
-                title: sectionTitle,
+                title: { equals: sectionTitle },
                 type: section.type,
                 lessonId,
               },
@@ -51,8 +51,19 @@ async function main() {
               : await tx.section.create({
                   data: {
                     type: section.type,
+                    slug: section.slug,
                     title: sectionTitle,
-                    content: "content" in section ? section.content ?? {} : {},
+                    ...("subtitle" in section &&
+                    section.subtitle &&
+                    Object.keys(section.subtitle).length > 0
+                      ? { subtitle: section.subtitle }
+                      : {}),
+
+                    ...("content" in section &&
+                    section.content &&
+                    Object.keys(section.content).length > 0
+                      ? { content: section.content }
+                      : {}),
                     lessonId,
                   },
                 });

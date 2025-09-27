@@ -33,13 +33,23 @@ const { genderNumberPronominalOfAdjectives } = adjectivesTable;
 const { cardinalOrdinalNumeralsTable } = numeralsTable;
 
 export const lesson2 = {
-  title: [`<span>Урок 2, Лекциjя 2</span>`],
+  title: {
+    ru: "Урок 2",
+    mkd: "Лекциjя 2",
+  },
   slug: "lesson-2",
   sections: [
     {
       type: "lecture",
-      title: [`ТАКСИ И ГОСТИНИЦА`, `<span>ТАКСИ И ХОТЕЛ</span>`],
-      subtitle: [`ЛЕКСИКА`, `<span>ЛЕКСИКА</span>`],
+      slug: "lesson-2",
+      title: {
+        ru: "ТАКСИ И ГОСТИНИЦА",
+        mkd: "ТАКСИ И ХОТЕЛ",
+      },
+      subtitle: {
+        ru: "ЛЕКСИКА",
+        mkd: "ЛЕКСИКА",
+      },
     },
   ],
   paragraph: [
