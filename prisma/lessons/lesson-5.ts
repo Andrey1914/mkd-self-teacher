@@ -40,13 +40,24 @@ const {
 } = exercisesLesson5;
 
 export const lesson5 = {
-  title: [`<span>Урок 5, Лекциjя 5</span>`],
+  title: {
+    ru: "Урок 5",
+    mkd: "Лекциjя 5",
+  },
   slug: "lesson-5",
   sections: [
     {
       type: "lecture",
-      title: [`РЕСТОРАН`, `<span>РЕСТОРАН</span>`],
-      subtitle: [`ЛЕКСИКА`, `<span>ЛЕКСИКА</span>`],
+      slug: "lesson-5",
+
+      title: {
+        ru: "РЕСТОРАН",
+        mkd: "РЕСТОРАН",
+      },
+      subtitle: {
+        ru: "ЛЕКСИКА",
+        mkd: "ЛЕКСИКА",
+      },
     },
   ],
   paragraph: [intro, ruleAfterGlossary, verbalNoun],

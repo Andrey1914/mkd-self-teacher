@@ -43,13 +43,23 @@ const {
 } = exercisesLesson3;
 
 export const lesson3 = {
-  title: [`<span>Урок 3, Лекциjя 3</span>`],
+  title: {
+    ru: "Урок 3",
+    mkd: "Лекциjя 3",
+  },
   slug: "lesson-3",
   sections: [
     {
       type: "lecture",
-      title: [`ЗНАКОМСТВО`, `<span>ЗАПОЗНАВАЊЕ</span>`],
-      subtitle: [`ЛЕКСИКА`, `<span>ЛЕКСИКА</span>`],
+      slug: "lesson-3",
+      title: {
+        ru: "ЗНАКОМСТВО",
+        mkd: "ЗАПОЗНАВАЊЕ",
+      },
+      subtitle: {
+        ru: "ЛЕКСИКА",
+        mkd: "ЛЕКСИКА",
+      },
     },
   ],
   paragraph: [personalPronouns, needVerb],

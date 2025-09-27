@@ -25,7 +25,7 @@ model User {
 
 model Lesson {
   id            String              @id @default(auto()) @map("_id") @db.ObjectId
-  title         String
+  title         Json
   slug          String              @unique
 
   sections      Section[]
@@ -41,7 +41,9 @@ model Lesson {
 model Section {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   type      String
-  title     String?
+  slug      String?
+  title     Json?
+  subtitle  Json?
   content   Json?
 
   lessonId  String   @db.ObjectId

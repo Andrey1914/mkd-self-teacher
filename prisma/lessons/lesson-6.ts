@@ -1,3 +1,4 @@
+// import type { LessonData } from "@/types";
 // import { vocabulary } from "@/prisma/lessons/vocabulary/lesson-5";
 // import { dialogueBlock } from "@/prisma/lessons/dialogues/lesson-5";
 // import { glossary, examples } from "@/prisma/lessons/tables";
@@ -40,13 +41,23 @@
 // } = exercisesLesson6;
 
 export const lesson6 = {
-  title: [`<span>Урок 6, Лекциjя 6</span>`],
+  title: {
+    ru: "Урок 6",
+    mkd: "Лекциjя 6",
+  },
   slug: "lesson-6",
   sections: [
     {
       type: "lecture",
-      title: [`АРЕНДА АВТОМОБИЛЯ`, `<span>ИЗНАJМУВАЊЕ АВТОМОБИЛ</span>`],
-      subtitle: [`ЛЕКСИКА`, `<span>ЛЕКСИКА</span>`],
+      slug: "lesson-6",
+      title: {
+        ru: "АРЕНДА АВТОМОБИЛЯ",
+        mkd: "ИЗНАJМУВАЊЕ АВТОМОБИЛ",
+      },
+      subtitle: {
+        ru: "ЛЕКСИКА",
+        mkd: "ЛЕКСИКА",
+      },
     },
   ],
   //   paragraph: [intro, ruleAfterGlossary, verbalNoun],
