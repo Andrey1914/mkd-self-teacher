@@ -3,6 +3,7 @@
 import React from "react";
 import parse from "html-react-parser";
 import { ExercisesProps } from "@/types";
+import { formatText } from "@/utils";
 
 import { styles } from "./styles";
 
@@ -25,7 +26,7 @@ export const StaticExercise = ({ data }: { data: ExercisesProps }) => {
           {section.type === "static-exercise" &&
             typeof section.content?.exercise === "string" && (
               <p className={staticExercise}>
-                <span>{parse(section.content.exercise)}</span>
+                <span>{formatText(section.content.exercise)}</span>
               </p>
             )}
         </div>

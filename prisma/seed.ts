@@ -231,25 +231,34 @@ async function main() {
 
           // 📘 Dialogue blocks
           for (const dialogue of lesson.dialogues ?? []) {
-            const exists = await tx.dialogueBlock.findFirst({
-              where: { content: { equals: dialogue }, lessonId },
-            });
-            if (exists) {
-              console.log(
-                `ℹ️ DialogueBlock "${dialogue}" уже существует, пропущен.`
-              );
-              continue;
-            }
-
             try {
-              await tx.dialogueBlock.create({
-                data: { content: dialogue, lessonId },
+              const existing = await tx.dialogueBlock.findFirst({
+                where: { lessonId },
               });
 
-              console.log(`✅ DialogueBlock "${dialogue}" добавлен.`);
+              if (existing) {
+                if (
+                  JSON.stringify(existing.content) !== JSON.stringify(dialogue)
+                ) {
+                  await tx.dialogueBlock.update({
+                    where: { id: existing.id },
+                    data: { content: dialogue },
+                  });
+                  console.log(`♻️ DialogueBlock "${dialogue}" обновлён.`);
+                } else {
+                  console.log(
+                    `ℹ️ DialogueBlock "${dialogue}" уже существует, пропущен.`
+                  );
+                }
+              } else {
+                await tx.dialogueBlock.create({
+                  data: { content: dialogue, lessonId },
+                });
+                console.log(`✅ DialogueBlock "${dialogue}" добавлен.`);
+              }
             } catch (error) {
               console.error(
-                `❌ Ошибка при добавлении DialogueBlock "${dialogue}":`,
+                `❌ Ошибка при обработке DialogueBlock "${dialogue}":`,
                 error
               );
             }
