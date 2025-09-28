@@ -17,7 +17,7 @@ export const AlphabetTable = () => {
 
   return (
     <div style={{ margin: "1rem 0" }}>
-      {table.title && <h3 style={{ marginBottom: "1rem" }}>{table.title}</h3>}
+      {/* {table.title && <h3 style={{ marginBottom: "1rem" }}>{table.title}</h3>} */}
       <table
         style={{
           marginBottom: "1rem",

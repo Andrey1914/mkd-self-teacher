@@ -3,7 +3,7 @@ import { ParagraphSectionsProps } from "@/types";
 export const spelling: ParagraphSectionsProps = {
   type: "spelling",
   slug: "lesson-1",
-  title: "ПРАВОПИСАНИЕ",
+  subtitle: "ПРАВОПИСАНИЕ",
   content: {
     text: `
       Считается, что в македонском языкедействует фонетический принцип письма (слова пишутся так, как произносятся), но на самом деле

@@ -3,7 +3,7 @@ import { ParagraphSectionsProps } from "@/types";
 export const features: ParagraphSectionsProps = {
   type: "features",
   slug: "lesson-1",
-  title: "ОСОБЕННОСТИ ПРОИЗНОШЕНИЯ",
+  subtitle: "ОСОБЕННОСТИ ПРОИЗНОШЕНИЯ",
   content: {
     text: `
       Согласные перед <span>«и», «е»</span> практически не смягчаются и произносятся намного тверже, чем в русском языке: 

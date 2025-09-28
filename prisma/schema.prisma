@@ -110,7 +110,7 @@ model ParagraphBlock {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   type      String 
   slug      String?    
-  subtitle   String?  
+  subtitle  Json?  
   intro     String?  
   content   Json
 

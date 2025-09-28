@@ -4,10 +4,16 @@ import { ParagraphSectionsProps } from "@/types";
 export const phonetics: ParagraphSectionsProps = {
   type: "phonetics",
   slug: "lesson-1",
-  title: ["ФОНЕТИКА", "<span>ФОНЕТИКА</span>"],
+  title: {
+    ru: "ФОНЕТИКА",
+    mkd: "ФОНЕТИКА",
+  },
   content: {
     intro: {
-      subtitle: ["АЛФАВИТ", "<span>АЗБУКА</span>"],
+      subtitle: {
+        ru: "АЛФАВИТ",
+        mkd: "АЗБУКА",
+      },
       text: `В македонском алфавите используется кириллица, поэтому многие буквы схожи с русскими, хотя есть отличия. 
           Всего в алфавите 31 буква.`,
     },

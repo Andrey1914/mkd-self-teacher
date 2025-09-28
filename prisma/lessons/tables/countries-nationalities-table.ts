@@ -1,10 +1,8 @@
-// import { CountriesNationalitiesProps } from "@/types/countriesNationalitiesTypes";
 import { TablesProps } from "@/types";
 
-// export const countriesNationalitiesTable: CountriesNationalitiesProps = {
 export const countriesNationalitiesTable: TablesProps = {
   type: "countries-nationalities-table",
-  title: ["СТРАНЫ И НАЦИОНАЛЬНОСТИ"],
+  subtitle: ["СТРАНЫ И НАЦИОНАЛЬНОСТИ"],
   content: {
     subtitle: [
       `Государство`,

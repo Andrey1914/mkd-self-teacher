@@ -12,6 +12,12 @@ export const GrammarTable = ({ data }: { data: TablesProps }) => {
 
   return (
     <>
+      {title && typeof title === "object" && !Array.isArray(title) && (
+        <h2 style={{ display: "flex", flexDirection: "column" }}>
+          {title.ru && <>{formatText(title.ru)}</>}
+          <span>{title.mkd && <>{formatText(title.mkd)}</>}</span>
+        </h2>
+      )}
       {Array.isArray(title)
         ? title.length > 0 && (
             <h2 className={heading}>{formatText(title.join(", "))}</h2>

@@ -8,7 +8,7 @@ export const alphabetTable: AlphabetTable = {
       tableEntries: {
         create: [
           {
-            title: "Македонский алфавит",
+            // title: "Македонский алфавит",
             rows: [
               { letter: `Аа`, sound: `[a]` },
               { letter: `Бб`, sound: `[б]` },

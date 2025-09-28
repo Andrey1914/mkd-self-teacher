@@ -6,8 +6,8 @@ export interface ParagraphProps {
 export interface ParagraphSectionsProps {
   type: string;
   slug?: string;
-  title?: string | string[];
-  subtitle?: string | string[];
+  title?: string | string[] | { ru: string; mkd: string };
+  subtitle?: string | string[] | { ru: string; mkd: string };
   intro?: string;
   content?: ContentType;
 }
@@ -20,8 +20,8 @@ export interface ContentType {
 }
 
 export interface IntroType {
-  [key: string]: string | string[] | undefined;
-  subtitle?: string | string[];
+  [key: string]: string | string[] | undefined | { ru: string; mkd: string };
+  subtitle?: string | string[] | { ru: string; mkd: string };
   intro?: string;
   text?: string;
 }

@@ -5,7 +5,10 @@ export const dialogueBlock: DialogueBlockProps = {
   sections: [
     {
       type: "lecture",
-      subtitle: [`ДИАЛОГ`, `<span>ДИЈАЛОГ</span>`],
+      subtitle: {
+        ru: "ДИАЛОГ",
+        mkd: "ДИЈАЛОГ",
+      },
       content: {
         description: {
           mkd: `На\u0301таша и И\u0301ван се умо\u0301рени од проше\u0301тката и о\u0301дат на ру\u0301чек.`,
