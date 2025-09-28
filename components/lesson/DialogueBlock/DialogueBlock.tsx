@@ -38,12 +38,23 @@ export const DialogueBlock = ({ data }: { data: DialogueBlockProps }) => {
         return (
           <div key={`section-${idx}`} className={sectionContainer}>
             <div className={header}>
-              {Array.isArray(title) && title.length > 0 && (
-                <h2>{formatText(title.join(", "))}</h2>
+              {title && typeof title === "object" && !Array.isArray(title) && (
+                <h2 style={{ display: "flex", flexDirection: "column" }}>
+                  {title.ru && <>{formatText(title.ru)}</>}
+                  <span>{title.mkd && <>{formatText(title.mkd)}</>}</span>
+                </h2>
               )}
-              {Array.isArray(subtitle) && subtitle.length > 0 && (
-                <h3>{formatText(subtitle.join(", "))}</h3>
-              )}
+
+              {subtitle &&
+                typeof subtitle === "object" &&
+                !Array.isArray(subtitle) && (
+                  <h3 style={{ display: "flex", flexDirection: "column" }}>
+                    {subtitle.ru && <>{formatText(subtitle.ru)}</>}
+                    <span>
+                      {subtitle.mkd && <>{formatText(subtitle.mkd)}</>}
+                    </span>
+                  </h3>
+                )}
             </div>
 
             {(description?.mkd ||

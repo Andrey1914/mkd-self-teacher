@@ -44,23 +44,41 @@ export const Paragraph = ({ data, part }: ParagraphProps) => {
     return (
       <>
         {title && (
-          <h2>{formatText(Array.isArray(title) ? title.join(", ") : title)}</h2>
-        )}
-        {subtitle && (
-          <h3>
-            {formatText(
-              Array.isArray(subtitle) ? subtitle.join(", ") : subtitle
+          <>
+            {typeof title === "string" ? (
+              <h2>{formatText(title)}</h2>
+            ) : Array.isArray(title) ? (
+              <h2>{formatText(title.join(", "))}</h2>
+            ) : (
+              <h2 style={{ display: "flex", flexDirection: "column" }}>
+                {title.ru && <>{formatText(title.ru)}</>}
+                {title.mkd && <span>{formatText(title.mkd)}</span>}
+              </h2>
             )}
-          </h3>
+          </>
         )}
+
+        {subtitle &&
+          typeof subtitle === "object" &&
+          !Array.isArray(subtitle) && (
+            <h3 style={{ display: "flex", flexDirection: "column" }}>
+              {subtitle.ru && <>{formatText(subtitle.ru)}</>}
+              <span>{subtitle.mkd && <>{formatText(subtitle.mkd)}</>}</span>
+            </h3>
+          )}
         {content?.intro && (
           <>
             {content.intro.subtitle && (
-              <h4>
-                {formatText(
-                  Array.isArray(content.intro.subtitle)
-                    ? content.intro.subtitle.join(", ")
-                    : content.intro.subtitle
+              <h4 style={{ display: "flex", flexDirection: "column" }}>
+                {typeof content.intro.subtitle === "string" ? (
+                  formatText(content.intro.subtitle)
+                ) : Array.isArray(content.intro.subtitle) ? (
+                  formatText(content.intro.subtitle.join(", "))
+                ) : (
+                  <>
+                    {formatText(content.intro.subtitle.ru)}
+                    <span>{formatText(content.intro.subtitle.mkd)}</span>
+                  </>
                 )}
               </h4>
             )}
@@ -92,15 +110,35 @@ export const Paragraph = ({ data, part }: ParagraphProps) => {
     return (
       <>
         {title && (
-          <h2>{formatText(Array.isArray(title) ? title.join(", ") : title)}</h2>
-        )}
-        {subtitle && (
-          <h3>
-            {formatText(
-              Array.isArray(subtitle) ? subtitle.join(", ") : subtitle
+          <>
+            {typeof title === "string" ? (
+              <h2>{formatText(title)}</h2>
+            ) : Array.isArray(title) ? (
+              <h2>{formatText(title.join(", "))}</h2>
+            ) : (
+              <h2 style={{ display: "flex", flexDirection: "column" }}>
+                {title.ru && <>{formatText(title.ru)}</>}
+                {title.mkd && <span>{formatText(title.mkd)}</span>}
+              </h2>
             )}
-          </h3>
+          </>
         )}
+
+        {subtitle && (
+          <>
+            {typeof subtitle === "string" ? (
+              <h3>{formatText(subtitle)}</h3>
+            ) : Array.isArray(subtitle) ? (
+              <h3>{formatText(subtitle.join(", "))}</h3>
+            ) : (
+              <h3 style={{ display: "flex", flexDirection: "column" }}>
+                {subtitle.ru && <>{formatText(subtitle.ru)}</>}
+                {subtitle.mkd && <span>{formatText(subtitle.mkd)}</span>}
+              </h3>
+            )}
+          </>
+        )}
+
         {content?.subtitle && (
           <h4>
             {formatText(
@@ -120,13 +158,14 @@ export const Paragraph = ({ data, part }: ParagraphProps) => {
   if (part === "marked") {
     return (
       <>
-        {subtitle && (
-          <h3>
-            {formatText(
-              Array.isArray(subtitle) ? subtitle.join(", ") : subtitle
-            )}
-          </h3>
-        )}
+        {subtitle &&
+          typeof subtitle === "object" &&
+          !Array.isArray(subtitle) && (
+            <h3 style={{ display: "flex", flexDirection: "column" }}>
+              {subtitle.ru && <>{formatText(subtitle.ru)}</>}
+              <span>{subtitle.mkd && <>{formatText(subtitle.mkd)}</>}</span>
+            </h3>
+          )}
         {intro && (
           <p>{formatText(Array.isArray(intro) ? intro.join(", ") : intro)}</p>
         )}

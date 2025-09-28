@@ -20,8 +20,8 @@ export const CountriesNationalitiesTable = ({
 
   return (
     <>
-      {Array.isArray(data.title) && data.title[0] && (
-        <h2 style={{ margin: "2rem 0 1rem" }}>{data.title[0]}</h2>
+      {Array.isArray(data.subtitle) && data.subtitle[0] && (
+        <h3 style={{ margin: "2rem 0 1rem" }}>{data.subtitle[0]}</h3>
       )}
 
       <table className={table}>

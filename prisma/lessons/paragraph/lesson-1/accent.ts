@@ -3,7 +3,7 @@ import { ParagraphSectionsProps } from "@/types";
 export const accent: ParagraphSectionsProps = {
   type: "accent",
   slug: "lesson-1",
-  title: "УДАРЕНИЕ",
+  subtitle: "УДАРЕНИЕ",
   content: {
     text: `
       В македонском языке ударение фиксированное - на третьем слоге от конца: <span>у\u0301чебник, уче\u0301бници</span>.

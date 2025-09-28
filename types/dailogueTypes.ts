@@ -2,8 +2,8 @@ export type DialogueBlockProps = {
   slug: string;
   sections: {
     type: string;
-    title?: string[];
-    subtitle?: string[];
+    title?: string[] | { ru: string; mkd: string };
+    subtitle?: string[] | { ru: string; mkd: string };
 
     content: {
       subtitle?: {

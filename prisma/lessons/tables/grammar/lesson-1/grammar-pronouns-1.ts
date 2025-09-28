@@ -1,9 +1,11 @@
-// import { GrammarTableProps } from "@/types/grammarTypes";
 import { TablesProps } from "@/types";
 
 export const grammarPronouns1: TablesProps = {
   type: "grammar-pronouns-1",
-  title: ["ГРАММАТИКА", "<span>ГРАМАТИКА</span>"],
+  title: {
+    ru: "ГРАММАТИКА",
+    mkd: "ГРАММАТИКА",
+  },
   subtitle: ["ФОРМЫ ЛИЧНЫХ МЕСТОИМЕНИЙ"],
   content: {
     subtitle: ["Лицо", "Единственное число", "Множественное число"],

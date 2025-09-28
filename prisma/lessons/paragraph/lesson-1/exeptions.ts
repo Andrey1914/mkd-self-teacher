@@ -3,7 +3,7 @@ import { ParagraphSectionsProps } from "@/types";
 export const exceptions: ParagraphSectionsProps = {
   type: "exceptions",
   slug: "lesson-1",
-  title: "ИСКЛЮЧЕНИЯ",
+  subtitle: "ИСКЛЮЧЕНИЯ",
   content: {
     text: `
       Двусложный предлог + полная форма местоимения: <span>покра\u0301j нас</span> [покра\u0301й_нас] «мимо нас», по аналогии с
