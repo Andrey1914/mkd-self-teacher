@@ -133,7 +133,9 @@ export const DialogueBlock = ({ data }: { data: DialogueBlockProps }) => {
                             lang="mk"
                             className={`${dialogueText} ${dialogueTextMkd}`}
                           >
-                            <strong>{mkdSpeakerData?.speaker?.mkd}</strong>{" "}
+                            <strong>
+                              {formatText(mkdSpeakerData?.speaker?.mkd)}
+                            </strong>{" "}
                             {formatText(mkdText)}
                           </p>
                         </div>

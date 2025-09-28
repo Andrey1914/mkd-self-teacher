@@ -19,7 +19,7 @@ export const exercise2: ExercisesProps = {
       content: {
         sentences: [
           {
-            mkd: `италиjа\u0301нски авио\u0301н a) ___ ;`,
+            mkd: `италиjа*нски авио*н a) ___ ;`,
             answer: [`италиjанскиот авион`],
           },
           {
@@ -31,7 +31,7 @@ export const exercise2: ExercisesProps = {
             answer: [`италиjанските авиони`],
           },
           {
-            mkd: `си\u0301лна але\u0301ргиjа a) ___ ;`,
+            mkd: `си*лна але*ргиjа a) ___ ;`,
             answer: [`силната алергиjа`],
           },
           {
@@ -55,7 +55,7 @@ export const exercise2: ExercisesProps = {
             answer: [`старите анови`],
           },
           {
-            mkd: `не\u0301гова ви\u0301љушка a) ___ ;`,
+            mkd: `не*гова ви*љушка a) ___ ;`,
             answer: [`неговата виљушка`],
           },
           {
@@ -67,7 +67,7 @@ export const exercise2: ExercisesProps = {
             answer: [`неговите виљушки`],
           },
           {
-            mkd: `тво\u0301jа глу\u0301пост a) ___ ;`,
+            mkd: `тво*jа глу*пост a) ___ ;`,
             answer: [`твоjата глупост`],
           },
           {
@@ -79,7 +79,7 @@ export const exercise2: ExercisesProps = {
             answer: [`твоите глупости`],
           },
           {
-            mkd: `ви\u0301сок го\u0301сподин a) ___ ;`,
+            mkd: `ви*сок го*сподин a) ___ ;`,
             answer: [`високиот господин`],
           },
           {
@@ -91,7 +91,7 @@ export const exercise2: ExercisesProps = {
             answer: [`високите господа`],
           },
           {
-            mkd: `у\u0301бава го\u0301споѓа a) ___ ;`,
+            mkd: `у*бава го*споѓа a) ___ ;`,
             answer: [`убавата госпоѓа`],
           },
           {
@@ -103,7 +103,7 @@ export const exercise2: ExercisesProps = {
             answer: [`убавите госпоѓи`],
           },
           {
-            mkd: `моj и\u0301злез a) ___ ;`,
+            mkd: `моj и*злез a) ___ ;`,
             answer: [`моjот излез`],
           },
           {
@@ -115,7 +115,7 @@ export const exercise2: ExercisesProps = {
             answer: [`моите излези`],
           },
           {
-            mkd: `бла\u0301го jа\u0301болко a) ___ ;`,
+            mkd: `бла*го jа*болко a) ___ ;`,
             answer: [`благото jаболко`],
           },
           {
@@ -127,7 +127,7 @@ export const exercise2: ExercisesProps = {
             answer: [`благите jаболка`],
           },
           {
-            mkd: `вку\u0301сно jа\u0301дење a) ___ ;`,
+            mkd: `вку*сно jа*дење a) ___ ;`,
             answer: [`вкусното jадење`],
           },
           {
@@ -139,7 +139,7 @@ export const exercise2: ExercisesProps = {
             answer: [`вкусните jадења`],
           },
           {
-            mkd: `наш jа\u0301зик a) ___ ;`,
+            mkd: `наш jа*зик a) ___ ;`,
             answer: [`нашиот jазик`],
           },
           {
@@ -163,7 +163,7 @@ export const exercise2: ExercisesProps = {
             answer: [`чистите катови`],
           },
           {
-            mkd: `шпа\u0301нско ка\u0301фуле a) ___ ;`,
+            mkd: `шпа*нско ка*фуле a) ___ ;`,
             answer: [`шпанското кафуле`],
           },
           {
@@ -175,7 +175,7 @@ export const exercise2: ExercisesProps = {
             answer: [`шпанските кафулиња`],
           },
           {
-            mkd: `ни\u0301вен клуч a) ___ ;`,
+            mkd: `ни*вен клуч a) ___ ;`,
             answer: [`нивниот клуч`],
           },
           {
@@ -187,7 +187,7 @@ export const exercise2: ExercisesProps = {
             answer: [`нивните клучеви`],
           },
           {
-            mkd: `за\u0301морен лет a) ___ ;`,
+            mkd: `за*морен лет a) ___ ;`,
             answer: [`заморниот лет`],
           },
           {
@@ -199,7 +199,7 @@ export const exercise2: ExercisesProps = {
             answer: [`заморните летовите`],
           },
           {
-            mkd: `у\u0301морен маж a) ___ ;`,
+            mkd: `у*морен маж a) ___ ;`,
             answer: [`уморениот маж`],
           },
           {
@@ -211,7 +211,7 @@ export const exercise2: ExercisesProps = {
             answer: [`уморените мажи`],
           },
           {
-            mkd: `де\u0301сна ма\u0301са a) ___ ;`,
+            mkd: `де*сна ма*са a) ___ ;`,
             answer: [`десната маса`],
           },
           {
@@ -223,7 +223,7 @@ export const exercise2: ExercisesProps = {
             answer: [`десните маси`],
           },
           {
-            mkd: `но\u0301во мени\u0301 a) ___ ;`,
+            mkd: `но*во мени* a) ___ ;`,
             answer: [`новото мени`],
           },
           {
@@ -235,7 +235,7 @@ export const exercise2: ExercisesProps = {
             answer: [`новите мениjа`],
           },
           {
-            mkd: `сло\u0301бодно ме\u0301сто a) ___ ;`,
+            mkd: `сло*бодно ме*сто a) ___ ;`,
             answer: [`слободното место`],
           },
           {
@@ -247,7 +247,7 @@ export const exercise2: ExercisesProps = {
             answer: [`слободните места`],
           },
           {
-            mkd: `а\u0301нтички мост a) ___ ;`,
+            mkd: `а*нтички мост a) ___ ;`,
             answer: [`античкиот мост`],
           },
           {
@@ -259,7 +259,7 @@ export const exercise2: ExercisesProps = {
             answer: [`античките мостови`],
           },
           {
-            mkd: `ге\u0301рмански музе\u0301j a) ___ ;`,
+            mkd: `ге*рмански музе*j a) ___ ;`,
             answer: [`германскиот музеj`],
           },
           {
@@ -271,7 +271,7 @@ export const exercise2: ExercisesProps = {
             answer: [`германските музеи`],
           },
           {
-            mkd: `ма\u0301ло па\u0301рче a) ___ ;`,
+            mkd: `ма*ло па*рче a) ___ ;`,
             answer: [`малото парче`],
           },
           {
@@ -283,7 +283,7 @@ export const exercise2: ExercisesProps = {
             answer: [`малите парчиња`],
           },
           {
-            mkd: `до\u0301бар па\u0301тник a) ___ ;`,
+            mkd: `до*бар па*тник a) ___ ;`,
             answer: [`добриот патник`],
           },
           {
@@ -295,7 +295,7 @@ export const exercise2: ExercisesProps = {
             answer: [`добрите патници`],
           },
           {
-            mkd: `го\u0301рко пи\u0301во a) ___ ;`,
+            mkd: `го*рко пи*во a) ___ ;`,
             answer: [`горкото пиво`],
           },
           {
@@ -307,7 +307,7 @@ export const exercise2: ExercisesProps = {
             answer: [`горките пива`],
           },
           {
-            mkd: `лу\u0301та пи\u0301перка a) ___ ;`,
+            mkd: `лу*та пи*перка a) ___ ;`,
             answer: [`лутата пиперка`],
           },
           {
@@ -319,7 +319,7 @@ export const exercise2: ExercisesProps = {
             answer: [`лутите пиперки`],
           },
           {
-            mkd: `со\u0301лено предjа\u0301дење a) ___ ;`,
+            mkd: `со*лено предjа*дење a) ___ ;`,
             answer: [`соленото предjадење`],
           },
           {
@@ -331,7 +331,7 @@ export const exercise2: ExercisesProps = {
             answer: [`солените предjадења`],
           },
           {
-            mkd: `у\u0301нгарско пре\u0301зиме a) ___ ;`,
+            mkd: `у*нгарско пре*зиме a) ___ ;`,
             answer: [`унгарското презиме`],
           },
           {
@@ -343,7 +343,7 @@ export const exercise2: ExercisesProps = {
             answer: [`унгарските презимиња`],
           },
           {
-            mkd: `не\u0301jзина резерва\u0301циjа a) ___ ;`,
+            mkd: `не*jзина резерва*циjа a) ___ ;`,
             answer: [`неjзината резервациjа`],
           },
           {
@@ -355,7 +355,7 @@ export const exercise2: ExercisesProps = {
             answer: [`неjзините резервации`],
           },
           {
-            mkd: `стар Ру\u0301син a) ___ ;`,
+            mkd: `стар Ру*син a) ___ ;`,
             answer: [`стариот Русин`],
           },
           {
@@ -367,7 +367,7 @@ export const exercise2: ExercisesProps = {
             answer: [`старите Руси`],
           },
           {
-            mkd: `не\u0301познат слу\u0301жбеник a) ___ ;`,
+            mkd: `не*познат слу*жбеник a) ___ ;`,
             answer: [`непознатиот службеник`],
           },
           {
@@ -379,7 +379,7 @@ export const exercise2: ExercisesProps = {
             answer: [`непознатите службеници`],
           },
           {
-            mkd: `го\u0301лема сме\u0301тка a) ___ ;`,
+            mkd: `го*лема сме*тка a) ___ ;`,
             answer: [`големата сметка`],
           },
           {
@@ -391,7 +391,7 @@ export const exercise2: ExercisesProps = {
             answer: [`големите сметки`],
           },
           {
-            mkd: `еднокре\u0301ветна со\u0301ба a) ___ ;`,
+            mkd: `еднокре*ветна со*ба a) ___ ;`,
             answer: [`еднокреветната соба`],
           },
           {
@@ -403,7 +403,7 @@ export const exercise2: ExercisesProps = {
             answer: [`еднокреветните соби`],
           },
           {
-            mkd: `ки\u0301сел сос a) ___ ;`,
+            mkd: `ки*сел сос a) ___ ;`,
             answer: [`киселиот сос`],
           },
           {
@@ -415,7 +415,7 @@ export const exercise2: ExercisesProps = {
             answer: [`киселите сосови`],
           },
           {
-            mkd: `желе\u0301зничка ста\u0301ница a) ___ ;`,
+            mkd: `желе*зничка ста*ница a) ___ ;`,
             answer: [`железничката станица`],
           },
           {
@@ -427,7 +427,7 @@ export const exercise2: ExercisesProps = {
             answer: [`железничките станици`],
           },
           {
-            mkd: `твоj таксиме\u0301тар a) ___ ;`,
+            mkd: `твоj таксиме*тар a) ___ ;`,
             answer: [`твоjот таксиметар`],
           },
           {
@@ -439,7 +439,7 @@ export const exercise2: ExercisesProps = {
             answer: [`твоите таксиметри`],
           },
           {
-            mkd: `о\u0301творен це\u0301тар a) ___ ;`,
+            mkd: `о*творен це*тар a) ___ ;`,
             answer: [`отворениот центар`],
           },
           {
