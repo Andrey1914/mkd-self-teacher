@@ -29,7 +29,7 @@ export const HeadingLesson = ({ lessonData }: LessonIntroProps) => {
         }}
       >
         <span>{formatText(titleData.ru)}</span>
-        <span>{formatText(titleData.mkd)}</span>
+        <span style={{ fontWeight: 300 }}>{formatText(titleData.mkd)}</span>
       </h1>
     );
   };

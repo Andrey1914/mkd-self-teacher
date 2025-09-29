@@ -19,9 +19,11 @@ export function PayAttentionBlock({ data }: { data: PayAttentionBlockProps }) {
             <tr>
               <td className={leftCell}>{section.title}</td>
               <td className={rightCell}>
-                <div className={cell}>
-                  {formatText(section.content.text, true)}
-                </div>
+                <ul style={{ listStyle: "none" }}>
+                  <li className={cell}>
+                    {formatText(section.content.text, true)}
+                  </li>
+                </ul>
               </td>
             </tr>
           </tbody>

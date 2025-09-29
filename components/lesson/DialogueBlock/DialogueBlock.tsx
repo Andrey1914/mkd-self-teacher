@@ -129,22 +129,30 @@ export const DialogueBlock = ({ data }: { data: DialogueBlockProps }) => {
                         className={dialoguePair}
                       >
                         <div className={languageColumn}>
-                          <div
+                          <ul
                             lang="mk"
                             className={`${dialogueText} ${dialogueTextMkd}`}
                           >
-                            <strong>
-                              {formatText(mkdSpeakerData?.speaker?.mkd)}
-                            </strong>{" "}
-                            {formatText(mkdText)}
-                          </div>
+                            <li>
+                              <p style={{ textIndent: 0 }}>
+                                <strong>
+                                  {formatText(mkdSpeakerData?.speaker?.mkd)}
+                                </strong>{" "}
+                                {formatText(mkdText)}
+                              </p>
+                            </li>
+                          </ul>
                         </div>
                         <div className={languageColumn}>
                           {ruText ? (
-                            <div lang="ru" className={dialogueText}>
-                              <strong>{ruSpeakerData?.speaker?.ru}</strong>{" "}
-                              {formatText(ruText)}
-                            </div>
+                            <ul lang="ru" className={dialogueText}>
+                              <li>
+                                <p style={{ textIndent: 0 }}>
+                                  <strong>{ruSpeakerData?.speaker?.ru}</strong>{" "}
+                                  {formatText(ruText)}
+                                </p>
+                              </li>
+                            </ul>
                           ) : (
                             <div className={emptyColumn} />
                           )}
