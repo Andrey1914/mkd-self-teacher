@@ -44,7 +44,7 @@ function updateDirectory(): void {
   console.log("♻️ Обновление всех файлов в директории...");
 
   // ✅ ✅ ✅ НАСТРОЙКИ: ✅ ✅ ✅
-  const targetDirectory = "prisma/lessons/tables"; // Папка для обработки
+  const targetDirectory = "prisma/lessons/vocabulary"; // Папка для обработки
   const allowedExtensions = [".ts", ".tsx", ".js", ".jsx"]; // Расширения файлов для проверки
   const ignoredFolders = ["node_modules", ".git", "dist", "build"]; // Папки, которые нужно игнорировать
 
