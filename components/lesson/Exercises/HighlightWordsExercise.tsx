@@ -142,10 +142,10 @@ export const HighlightWordsExercise = ({ data }: { data: ExercisesProps }) => {
               }`}
               onClick={() => handleWordClick(index)}
             >
-              {wordState.text}
+              {formatText(wordState.text)}
             </span>
           ) : (
-            <span key={index}>{wordState.text}</span>
+            <span key={index}>{formatText(wordState.text)}</span>
           )
         )}
       </div>

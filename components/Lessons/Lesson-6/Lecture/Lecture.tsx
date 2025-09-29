@@ -1,6 +1,6 @@
 import React from "react";
 
-// import { DialogueCity } from "./Dialogue";
+import { TripToOhrid } from "./Dialogue";
 import { Intro } from "./Intro";
 // import { Paragraph } from "@/components/lesson/Paragraph";
 // import { Vocabulary } from "@/components/lesson/Vocabulary";
@@ -19,7 +19,7 @@ export const Lecture = () => {
   return (
     <>
       <Intro />
-      {/* <DialogueCity /> */}
+      <TripToOhrid />
       {/* <Paragraph data={intro} /> */}
       {/* <Vocabulary lesson={vocabulary} /> */}
       {/* <GlossaryTable data={foodTable} /> */}

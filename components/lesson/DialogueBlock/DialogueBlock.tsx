@@ -129,7 +129,7 @@ export const DialogueBlock = ({ data }: { data: DialogueBlockProps }) => {
                         className={dialoguePair}
                       >
                         <div className={languageColumn}>
-                          <p
+                          <div
                             lang="mk"
                             className={`${dialogueText} ${dialogueTextMkd}`}
                           >
@@ -137,14 +137,14 @@ export const DialogueBlock = ({ data }: { data: DialogueBlockProps }) => {
                               {formatText(mkdSpeakerData?.speaker?.mkd)}
                             </strong>{" "}
                             {formatText(mkdText)}
-                          </p>
+                          </div>
                         </div>
                         <div className={languageColumn}>
                           {ruText ? (
-                            <p lang="ru" className={dialogueText}>
+                            <div lang="ru" className={dialogueText}>
                               <strong>{ruSpeakerData?.speaker?.ru}</strong>{" "}
                               {formatText(ruText)}
-                            </p>
+                            </div>
                           ) : (
                             <div className={emptyColumn} />
                           )}

@@ -1,6 +1,6 @@
 // import type { LessonData } from "@/types";
 // import { vocabulary } from "@/prisma/lessons/vocabulary/lesson-5";
-// import { dialogueBlock } from "@/prisma/lessons/dialogues/lesson-5";
+import { dialogueBlock } from "@/prisma/lessons/dialogues/lesson-6";
 // import { glossary, examples } from "@/prisma/lessons/tables";
 // import { lectureLesson5 } from "@/prisma/lessons/paragraph";
 // import { exercisesLesson5 } from "@/prisma/lessons/exercises";
@@ -62,7 +62,7 @@ export const lesson6 = {
   ],
   //   paragraph: [intro, ruleAfterGlossary, verbalNoun],
   //   vocabulary: [vocabulary],
-  //   dialogues: [dialogueBlock],
+  dialogues: [dialogueBlock],
   //   tables: [
   // foodTable,
   // { ...example1, slug: "lesson-5" },
