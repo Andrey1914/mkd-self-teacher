@@ -11,7 +11,7 @@ export const cardinalOrdinalNumeralsTable: TablesProps = {
       `Порядковое числительное`,
     ],
     words: [
-      { numbers: 1, cardinal: "е\u0301ден", ordinal: "прв" },
+      { numbers: 1, cardinal: "е*ден", ordinal: "прв" },
       { numbers: 2, cardinal: "два/две", ordinal: "втор" },
       { numbers: 3, cardinal: "три", ordinal: "трет" },
       { numbers: 4, cardinal: "че́тири", ordinal: "че́тврт" },

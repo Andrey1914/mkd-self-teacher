@@ -13,17 +13,17 @@ export const grammarPronouns1: TablesProps = {
       {
         person: "1-e",
         singular: "<span>jас</span> я",
-        plural: "<span>ни\u0301е</span> мы",
+        plural: "<span>ни*е</span> мы",
       },
       {
         person: "2-e",
         singular: "<span>ти</span> ты",
-        plural: "<span>ви\u0301е</span> вы",
+        plural: "<span>ви*е</span> вы",
       },
       {
         person: "3-e",
-        singular: "<span>тој, то\u0301а, та\u0301а</span> он, оно, она",
-        plural: "<span>ти\u0301е</span> они",
+        singular: "<span>тој, то*а, та*а</span> он, оно, она",
+        plural: "<span>ти*е</span> они",
       },
     ],
   },
