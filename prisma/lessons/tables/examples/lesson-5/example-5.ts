@@ -8,7 +8,7 @@ export const example5: TablesProps = {
     `,
     words: [
       {
-        mkd: `Ко\u0301го го че\u0301каш?`,
+        mkd: `Ко*го го че*каш?`,
         ru: `Кого ты ждёшь?`,
       },
     ],

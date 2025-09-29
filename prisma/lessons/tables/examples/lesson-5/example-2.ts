@@ -9,7 +9,7 @@ export const example2: TablesProps = {
     `,
     words: [
       {
-        mkd: `А\u0301ња ме фа\u0301ли.`,
+        mkd: `А*ња ме фа*ли.`,
         ru: `Аня меня хвалит.`,
       },
     ],
