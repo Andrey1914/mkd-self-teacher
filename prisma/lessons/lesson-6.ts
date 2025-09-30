@@ -1,11 +1,11 @@
 // import type { LessonData } from "@/types";
-// import { vocabulary } from "@/prisma/lessons/vocabulary/lesson-5";
+import { vocabulary } from "@/prisma/lessons/vocabulary/lesson-6";
 import { dialogueBlock } from "@/prisma/lessons/dialogues/lesson-6";
 // import { glossary, examples } from "@/prisma/lessons/tables";
-// import { lectureLesson5 } from "@/prisma/lessons/paragraph";
+import { lectureLesson6 } from "@/prisma/lessons/paragraph";
 // import { exercisesLesson5 } from "@/prisma/lessons/exercises";
 
-// const { intro, ruleAfterGlossary, verbalNoun } = lectureLesson6;
+const { intro } = lectureLesson6;
 
 // const { foodTable } = glossary;
 
@@ -60,8 +60,8 @@ export const lesson6 = {
       },
     },
   ],
-  //   paragraph: [intro, ruleAfterGlossary, verbalNoun],
-  //   vocabulary: [vocabulary],
+  paragraph: [intro],
+  vocabulary: [vocabulary],
   dialogues: [dialogueBlock],
   //   tables: [
   // foodTable,
