@@ -1,3 +1,15 @@
+export interface GenericTableProps {
+  data: TablesProps;
+  classNames?: {
+    table?: string;
+    thead?: string;
+    th?: string | ((index: number) => string);
+    tbody?: string;
+    tr?: string;
+    td?: string;
+  };
+}
+
 export interface TablesProps {
   slug?: string;
   type: string;

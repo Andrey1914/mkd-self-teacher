@@ -1,9 +1,17 @@
 import { TablesProps } from "@/types";
 
-export const eClass: TablesProps = {
-  type: `e-class`,
-  subtitle: [`СПРЯЖЕНИЕ ГЛАГОЛОВ E-КЛАССА`],
-  text: `<span>ја́де</span> есть, <span>живе́е</span> жить, <span>вли́јае</span> влиять, <span>пи́е</span> пить, <span>пцу́е</span> ругать, материться`,
+export const imperfect: TablesProps = {
+  type: `grammar-imperfect-table`,
+  title: {
+    ru: "ГРАММАТИКА",
+    mkd: "ГРАМАТИКА",
+  },
+  subtitle: "ИМПЕРФЕКТ",
+
+  text: `Имперфект от глаголов несовершённого вида (отвечают на вопрос <em>что делать?</em>) используется для повествования о прошлом,
+    свидетелем которого был говорящий. При образовании имперфекта у глаголов и-класса <span>и</span> чередуется с <span>е</span>
+    (<span>о*ди</span>, <span>бро*и</span>). У глаголов е-класса и и-класса, оканчивающихся на две гласных (<span>пи*е</span>,
+    <span>бро*и</span>), в форме 3-го л. мн. ч. появляется <span>j</span>.`,
   content: {
     words: [
       {

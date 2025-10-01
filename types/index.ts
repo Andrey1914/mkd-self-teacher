@@ -9,4 +9,4 @@ export type { SectionWithTables } from "./sectionWithTables";
 export type { LessonData } from "./lessonTypes";
 export type { ExercisesProps, WordState, Sentence } from "./exerciseTypes";
 export type { BaseProps, CommonContent, CommonWords } from "./baseTypes";
-export type { TablesProps } from "./tablesTypes";
+export type { TablesProps, GenericTableProps } from "./tablesTypes";

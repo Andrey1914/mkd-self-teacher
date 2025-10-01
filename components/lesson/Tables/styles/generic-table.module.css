@@ -1,0 +1,43 @@
+.table {
+  table-layout: fixed;
+  border: 1px solid #994747;
+  margin: 1rem 0 2rem;
+}
+
+.headerRow {
+  background-color: #994747;
+  color: #fff;
+}
+
+.headerCell {
+  padding: 0.5rem;
+  text-align: center;
+}
+
+.headerFirstCell {
+  border-right: 1px solid #fff;
+  border-bottom: none;
+}
+
+.headerCellBorderLeft {
+  border-left: 1px solid #fff;
+}
+
+.headerCellBorderBottom {
+  border-bottom: 1px solid #fff;
+}
+
+.headerCellNoRight {
+  border-right: none;
+  border-left: 1px solid #fff;
+}
+
+.secondRowCell {
+  border-bottom: none;
+}
+
+.cell {
+  padding: 0.5rem;
+  border: 1px solid #994747;
+  vertical-align: top;
+}

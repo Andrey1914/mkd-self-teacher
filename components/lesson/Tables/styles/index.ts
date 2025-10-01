@@ -7,8 +7,10 @@ import examples from "./examples.module.css";
 import glossary from "./glossary.module.css";
 import grammar from "./grammar.module.css";
 import numerals from "./numerals.module.css";
+import generic from "./generic-table.module.css";
 
 export const styles = {
+  generic,
   pronouns,
   adjectives,
   conjugation,
