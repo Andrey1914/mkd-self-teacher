@@ -8,3 +8,4 @@ export { NumeralsTable } from "./NumeralsTable";
 export { GlossaryTable } from "./GlossaryTable";
 export { PronounTable } from "./PronounTable";
 export { DefinitenessCategoryTable } from "./DefinitenessCategoryTable";
+export { GenericTable } from "./GenericTable";
