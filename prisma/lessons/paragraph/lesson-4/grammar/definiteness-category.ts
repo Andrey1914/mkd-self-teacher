@@ -3,7 +3,10 @@ import { ParagraphSectionsProps } from "@/types";
 export const definitenessCategory: ParagraphSectionsProps = {
   type: "grammar-definiteness-category",
   slug: "lesson-4",
-  title: ["ГРАММАТИКА", "<span>ГРАМАТИКА</span>"],
+  title: {
+    ru: "ГРАММАТИКА",
+    mkd: "ГРАМАТИКА",
+  },
   content: {
     intro: {
       subtitle: ["КАТЕГОРИЯ ОПРЕДЕЛЁННОСТИ"],

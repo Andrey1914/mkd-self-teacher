@@ -1,3 +1,8 @@
+.title {
+  display: flex;
+  flex-direction: column;
+}
+
 .table {
   table-layout: fixed;
   border: 1px solid #994747;
