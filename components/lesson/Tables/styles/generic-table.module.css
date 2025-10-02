@@ -1,7 +1,16 @@
 .table {
   table-layout: fixed;
+  /* table-layout: auto; */
   border: 1px solid #994747;
   margin: 1rem 0 2rem;
+}
+
+.tableWithoutBorder {
+  border: none;
+}
+
+.tableLayoutAuto {
+  table-layout: auto;
 }
 
 .headerRow {
@@ -40,4 +49,16 @@
   padding: 0.5rem;
   border: 1px solid #994747;
   vertical-align: top;
+}
+
+.cellWithoutBorder {
+  border: none;
+}
+
+.cellColorized {
+  color: #994747;
+}
+
+.cellItalic {
+  font-style: italic;
 }
