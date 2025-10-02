@@ -4,26 +4,22 @@ import React from "react";
 import { GenericTableProps } from "@/types";
 import { formatText } from "@/utils";
 
-// import { styles } from "./styles";
-
-export const GenericTable = ({ data, classNames = {} }: GenericTableProps) => {
-  const rows = data.content?.words || data.content?.rows;
-  const headers = data.content?.subtitle;
-  const title = data.title;
-  const subtitle = data.subtitle;
-  const text = data.text;
+export const GenericTable = ({
+  data,
+  lesson,
+  classNames = {},
+}: GenericTableProps) => {
+  const rows =
+    data?.content.words ||
+    data?.content.rows ||
+    lesson?.sections?.[0].content.words;
+  const headers =
+    data?.content?.subtitle || lesson?.sections?.[0].content.subtitle;
+  const title = data?.title || lesson?.title;
+  const subtitle = data?.subtitle;
+  const text = data?.text;
 
   const { table, thead, th, tbody, tr, td } = classNames;
-
-  // const {
-  //   // table,
-  //   headerRow,
-  //   headerCell,
-  //   secondRowCell,
-  //   headerCellBorderLeft,
-
-  //   cell,
-  // } = styles.pronouns;
 
   if (!Array.isArray(rows) || rows.length === 0) {
     return null;
@@ -55,20 +51,14 @@ export const GenericTable = ({ data, classNames = {} }: GenericTableProps) => {
       )}
       {text && <p style={{ textAlign: "center" }}>{formatText(text)}</p>}
 
-      <table className={table} style={{ tableLayout: "fixed" }}>
+      <table className={table}>
         {Array.isArray(headers) && headers.length > 0 && (
           <thead className={thead}>
             <tr className={tr}>
               {headers.map((header, index) => {
                 const thClassName = typeof th === "function" ? th(index) : th;
                 return (
-                  <th
-                    className={thClassName}
-                    key={index}
-                    // className={`${headerCell} ${secondRowCell} ${
-                    //   index > 0 ? headerCellBorderLeft : ""
-                    // }`}
-                  >
+                  <th className={thClassName} key={index}>
                     {formatText(header)}
                   </th>
                 );
@@ -81,12 +71,14 @@ export const GenericTable = ({ data, classNames = {} }: GenericTableProps) => {
           {rows.map((row, rowIndex) => (
             <tr key={rowIndex} className={tr}>
               {Object.values(row).flatMap((cellData, cellIndex) => {
+                const tdClassName =
+                  typeof td === "function" ? td(cellIndex, rowIndex) : td;
+
                 if (Array.isArray(cellData)) {
                   return cellData.map((item, itemIndex) => (
                     <td
                       key={`${cellIndex}-${itemIndex}`}
-                      // className={cell}
-                      className={td}
+                      className={tdClassName}
                     >
                       {formatText(item)}
                     </td>
@@ -94,11 +86,7 @@ export const GenericTable = ({ data, classNames = {} }: GenericTableProps) => {
                 }
 
                 return (
-                  <td
-                    key={cellIndex}
-                    className={td}
-                    // className={cell}
-                  >
+                  <td key={cellIndex} className={tdClassName}>
                     {formatText(String(cellData))}
                   </td>
                 );

@@ -1,10 +1,16 @@
 import React from "react";
 
 import { Paragraph } from "@/components/lesson/Paragraph";
-import { NumeralsTable } from "@/components/lesson/Tables";
+import { GenericTable } from "@/components/lesson/Tables";
 
 import { grammarLesson2 } from "@/prisma/lessons/paragraph";
 import { numeralsTable } from "@/prisma/lessons/tables";
+
+import {
+  tableWithoutBorderLayoutAutoClassName,
+  getColorizedThClassName,
+  getColorizedExceptFirstTdClassName,
+} from "@/components/lesson/Tables/rules";
 
 const { cardinalOrdinalNumerals, finalPartCardinalOrdinalNumerals } =
   grammarLesson2;
@@ -15,7 +21,14 @@ export const Numerals = () => {
   return (
     <>
       <Paragraph data={cardinalOrdinalNumerals} />
-      <NumeralsTable data={cardinalOrdinalNumeralsTable} />
+      <GenericTable
+        data={cardinalOrdinalNumeralsTable}
+        classNames={{
+          table: tableWithoutBorderLayoutAutoClassName,
+          th: getColorizedThClassName,
+          td: getColorizedExceptFirstTdClassName,
+        }}
+      />
       <Paragraph data={finalPartCardinalOrdinalNumerals} />
     </>
   );

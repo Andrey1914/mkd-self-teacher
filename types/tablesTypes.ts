@@ -1,12 +1,15 @@
+import { VocabularyProps } from "@/types";
+
 export interface GenericTableProps {
-  data: TablesProps;
+  data?: TablesProps;
+  lesson?: VocabularyProps["lesson"];
   classNames?: {
     table?: string;
     thead?: string;
     th?: string | ((index: number) => string);
     tbody?: string;
     tr?: string;
-    td?: string;
+    td?: string | ((cellIndex: number, rowIndex: number) => string);
   };
 }
 
