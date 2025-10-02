@@ -33,7 +33,7 @@ export const GenericTable = ({
         ) : Array.isArray(title) ? (
           <h2>{formatText(title.join(", "))}</h2>
         ) : typeof title === "object" && title !== null ? (
-          <h2>
+          <h2 style={{ display: "flex", flexDirection: "column" }}>
             {title.ru && <>{formatText(title.ru)}</>}
             {title.mkd && (
               <>
