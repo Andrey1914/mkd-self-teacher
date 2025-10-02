@@ -10,6 +10,7 @@ export interface GenericTableProps {
     tbody?: string;
     tr?: string;
     td?: string | ((cellIndex: number, rowIndex: number) => string);
+    text?: string;
   };
 }
 
@@ -75,4 +76,7 @@ export interface TablesRows {
   suffix?: string;
   note?: string;
   examples?: string[];
+
+  person?: string;
+  forms?: string[];
 }

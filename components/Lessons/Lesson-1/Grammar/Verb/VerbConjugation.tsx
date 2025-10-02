@@ -10,7 +10,11 @@ import { conjugationLesson1 } from "@/prisma/lessons/tables";
 import { exercisesLesson1 } from "@/prisma/lessons/exercises";
 import { payAttentionsLesson1 } from "@/prisma/lessons/pay-attention";
 
-import { tableClassName, tdClassName } from "@/components/lesson/Tables/rules";
+import {
+  tableClassName,
+  tdClassName,
+  textCenterClassName,
+} from "@/components/lesson/Tables/rules";
 
 const { verbConjugation, ruleConjugation } = grammarLesson1;
 const { aClass, eClass, iClass } = conjugationLesson1;
@@ -26,6 +30,7 @@ export const VerbConjugation = () => {
         classNames={{
           table: tableClassName,
           td: tdClassName,
+          text: textCenterClassName,
         }}
       />
       <FillInExercise data={exercise4} />
@@ -34,6 +39,7 @@ export const VerbConjugation = () => {
         classNames={{
           table: tableClassName,
           td: tdClassName,
+          text: textCenterClassName,
         }}
       />
       <PayAttentionBlock data={payAttention3} />
@@ -43,6 +49,7 @@ export const VerbConjugation = () => {
         classNames={{
           table: tableClassName,
           td: tdClassName,
+          text: textCenterClassName,
         }}
       />
       <Paragraph data={ruleConjugation} />

@@ -4,13 +4,16 @@ const {
   table,
   tableWithoutBorder,
   tableLayoutAuto,
+  headerRow,
   headerCell,
+  headerCellStart,
   secondRowCell,
   headerCellBorderLeft,
   cell,
   cellWithoutBorder,
   cellColorized,
   cellItalic,
+  textCenter,
 } = styles.generic;
 
 export const tableClassName = `${table}`;
@@ -43,5 +46,13 @@ export const getColorizedFirstTdClassName = (cellIndex: number) =>
     ? `${cell} ${cellWithoutBorder} ${cellColorized}`
     : `${cell} ${cellWithoutBorder}`;
 
+export const thClassName = `${cell} ${headerCell}`;
+
+export const thColorizedClassName = `${cell} ${headerCellStart} ${headerCell} ${cellColorized}`;
+
 export const getColorizedThClassName = (index: number) =>
-  `${headerCell} ${secondRowCell} ${index > 0 ? headerCellBorderLeft : ""}`;
+  `${headerRow} ${headerCell} ${secondRowCell} ${
+    index > 0 ? headerCellBorderLeft : ""
+  }`;
+
+export const textCenterClassName = `${textCenter}`;
