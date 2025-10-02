@@ -4,11 +4,13 @@ import { GenericTable } from "@/components/lesson/Tables/GenericTable";
 
 import { grammarTables } from "@/prisma/lessons/tables";
 
-import { styles } from "@/components/lesson/Tables/styles";
+import {
+  tableClassName,
+  thColorizedClassName,
+  tdColorizedClassName,
+} from "@/components/lesson/Tables/rules";
 
 const { imperfect } = grammarTables;
-const { table, headerCell, secondRowCell, headerCellBorderLeft, cell } =
-  styles.generic;
 
 export const Imperfect = () => {
   return (
@@ -16,12 +18,9 @@ export const Imperfect = () => {
       <GenericTable
         data={imperfect}
         classNames={{
-          table: table,
-          td: cell,
-          th: (index) =>
-            `${headerCell} ${secondRowCell} ${
-              index > 0 ? headerCellBorderLeft : ""
-            }`,
+          table: tableClassName,
+          th: thColorizedClassName,
+          td: tdColorizedClassName,
         }}
       />
     </>

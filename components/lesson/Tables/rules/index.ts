@@ -5,8 +5,11 @@ export {
   tableWithoutBorderClassName,
   tdColorizedClassName,
   tdColorizedWithoutBorderClassName,
+  thClassName,
+  thColorizedClassName,
   getColorizedThClassName,
   getColorizedFirstTdClassName,
   getColorizedExceptFirstTdClassName,
   getColorizedItalicTdClassName,
+  textCenterClassName,
 } from "./classNamesRules";

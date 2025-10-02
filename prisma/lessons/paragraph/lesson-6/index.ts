@@ -1,2 +1,2 @@
 export { intro } from "./lecture";
-export { imperfect } from "./grammar";
+// export { imperfect } from "./grammar";

@@ -95,9 +95,9 @@ li::marker {
   color: #994747;
 }
 
-thead {
+/* thead {
   background: var(--thead-bg);
-}
+} */
 
 span:not(.sentence-number) {
   color: rgb(196, 86, 86);

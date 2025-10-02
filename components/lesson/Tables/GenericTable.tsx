@@ -19,7 +19,7 @@ export const GenericTable = ({
   const subtitle = data?.subtitle;
   const text = data?.text;
 
-  const { table, thead, th, tbody, tr, td } = classNames;
+  const { table, thead, th, tbody, tr, td, text: textClassName } = classNames;
 
   if (!Array.isArray(rows) || rows.length === 0) {
     return null;
@@ -49,7 +49,7 @@ export const GenericTable = ({
           {formatText(Array.isArray(subtitle) ? subtitle.join(", ") : subtitle)}
         </h3>
       )}
-      {text && <p style={{ textAlign: "center" }}>{formatText(text)}</p>}
+      {text && <p className={textClassName}>{formatText(text)}</p>}
 
       <table className={table}>
         {Array.isArray(headers) && headers.length > 0 && (

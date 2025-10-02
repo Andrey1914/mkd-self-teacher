@@ -1,6 +1,5 @@
 .table {
   table-layout: fixed;
-  /* table-layout: auto; */
   border: 1px solid #994747;
   margin: 1rem 0 2rem;
 }
@@ -21,6 +20,11 @@
 .headerCell {
   padding: 0.5rem;
   text-align: center;
+  font-weight: normal;
+}
+
+.headerCellStart {
+  text-align: start;
 }
 
 .headerFirstCell {
@@ -61,4 +65,8 @@
 
 .cellItalic {
   font-style: italic;
+}
+
+.textCenter {
+  text-align: center;
 }
