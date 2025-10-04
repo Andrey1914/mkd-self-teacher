@@ -2,15 +2,15 @@
 .fillInInput {
   display: inline-block;
   margin: 0 4px;
-  padding: 4px;
+  padding: 4px 4px 1px 4px;
   font-size: 16px;
   text-align: center;
   background-color: transparent;
-  border-radius: 5px;
+  border-radius: 3px;
   border-top: none;
   border-left: none;
   border-right: none;
-  border-bottom: 2px solid #994747;
+  border-bottom: 1px solid #994747;
   outline: none;
   vertical-align: baseline;
 }
@@ -18,6 +18,9 @@
 .fillInInput {
   min-width: 60px;
   max-width: 250px;
+
+  width: var(--input-width, 60px);
+  transition: width 0.3s ease-out;
 }
 
 .translatorInput {
@@ -38,10 +41,82 @@
   background-color: transparent;
   overflow: hidden;
   resize: none;
+
+  transition: height 0.2s ease-out;
 }
 
 .staticExercise {
   margin-top: 1rem;
   text-indent: 0;
   line-height: 1.8;
+}
+
+.revealAnimation {
+  animation: fadeInText 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes fadeInText {
+  0% {
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+  }
+  60% {
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+  }
+  100% {
+    color: inherit;
+    -webkit-text-fill-color: inherit;
+  }
+}
+
+.hideAnimation {
+  animation: fadeOutText 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes fadeOutText {
+  0% {
+    color: inherit;
+    -webkit-text-fill-color: inherit;
+  }
+  60% {
+    color: inherit;
+    -webkit-text-fill-color: inherit;
+  }
+  100% {
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .fillInInput {
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fillInInput,
+  .paragraphInput,
+  .translatorInput {
+    /* transition-duration: 0.1s; */
+    will-change: auto;
+  }
+
+  .revealAnimation,
+  .hideAnimation {
+    animation: none;
+  }
+
+  .fillInInput:focus {
+    transform: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .fillInInput {
+    font-size: 14px;
+    padding: 3px;
+    margin: 0 2px;
+  }
 }

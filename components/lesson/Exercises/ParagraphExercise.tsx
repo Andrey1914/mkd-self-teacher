@@ -30,11 +30,13 @@ export const ParagraphExercise = ({ data }: { data: ExercisesProps }) => {
     Array(inputCount).fill(false)
   );
 
+  const [animationClass, setAnimationClass] = useState("");
+
   const uniqueIdBase = useId();
   const textareasRef = useRef<(HTMLTextAreaElement | null)[]>([]);
 
   const { buttonContainer, exerciseButton } = styles.buttons;
-  const { paragraphInput } = styles.inputs;
+  const { paragraphInput, revealAnimation, hideAnimation } = styles.inputs;
 
   useEffect(() => {
     textareasRef.current.forEach((textarea) => {
@@ -53,26 +55,37 @@ export const ParagraphExercise = ({ data }: { data: ExercisesProps }) => {
     setIsAutoFilled(updatedFlags);
   };
 
-  const checkAnswers = () => {
-    if (showAnswers) return;
-    setChecked(true);
-    setShowAnswers(false);
-  };
-
   const revealAnswers = () => {
-    const cleanedAnswers = getCleanedAnswers(sections.content.answer);
+    setAnimationClass(revealAnimation);
 
-    setInputs(cleanedAnswers ?? Array(inputCount).fill(""));
-    setIsAutoFilled(Array(inputCount).fill(true));
-    setShowAnswers(true);
-    setChecked(false);
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        const cleanedAnswers = getCleanedAnswers(sections.content.answer);
+        setInputs(cleanedAnswers ?? Array(inputCount).fill(""));
+        setIsAutoFilled(Array(inputCount).fill(true));
+        setShowAnswers(true);
+        setChecked(false);
+        setAnimationClass(revealAnimation);
+      });
+    });
   };
 
   const clearInputs = () => {
-    setInputs(Array(inputCount).fill(""));
-    setIsAutoFilled(Array(inputCount).fill(false));
+    setAnimationClass(hideAnimation);
+
+    setTimeout(() => {
+      setInputs(Array(inputCount).fill(""));
+      setIsAutoFilled(Array(inputCount).fill(false));
+      setShowAnswers(false);
+      setChecked(false);
+      setAnimationClass("");
+    }, 100);
+  };
+
+  const checkAnswers = () => {
+    setChecked(true);
     setShowAnswers(false);
-    setChecked(false);
+    setAnimationClass("");
   };
 
   return (
@@ -98,7 +111,7 @@ export const ParagraphExercise = ({ data }: { data: ExercisesProps }) => {
           return (
             <div key={idx} style={{ marginBottom: "1.5rem" }}>
               <textarea
-                className={paragraphInput}
+                className={`${paragraphInput} ${animationClass}`}
                 id={`${uniqueIdBase}-textarea-${idx}`}
                 name={`${uniqueIdBase}-textarea-${idx}`}
                 autoComplete="off"
