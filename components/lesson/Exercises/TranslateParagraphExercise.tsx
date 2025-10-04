@@ -18,12 +18,14 @@ export const TranslateParagraphExercise = ({
   const correctAnswer = section.content.answer?.[0] ?? "";
 
   const { buttonContainer, exerciseButton } = styles.buttons;
-  const { translatorInput } = styles.inputs;
+  const { translatorInput, revealAnimation, hideAnimation } = styles.inputs;
 
   const [input, setInput] = useState("");
   const [checked, setChecked] = useState(false);
   const [showAnswer, setShowAnswer] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
+
+  const [animationClass, setAnimationClass] = useState("");
 
   const editorRef = useRef<HTMLDivElement>(null);
 
@@ -41,26 +43,37 @@ export const TranslateParagraphExercise = ({
   };
 
   const handleReveal = () => {
-    const cleanAnswer = correctAnswer
-      .replace(/[/«»]|<em>|<\/em>/g, " ")
-      .replace(/\s+/g, " ")
-      .trim();
-    setInput(cleanAnswer);
-    setChecked(false);
-    setShowAnswer(true);
-    if (editorRef.current) {
-      editorRef.current.innerText = cleanAnswer;
-    }
+    setAnimationClass(revealAnimation);
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        const cleanAnswer = correctAnswer
+          .replace(/[/«»]|<em>|<\/em>/g, " ")
+          .replace(/\s+/g, " ")
+          .trim();
+        setInput(cleanAnswer);
+        setChecked(false);
+        setShowAnswer(true);
+        if (editorRef.current) {
+          editorRef.current.innerText = cleanAnswer;
+        }
+        setAnimationClass(revealAnimation);
+      });
+    });
   };
 
   const handleClear = () => {
-    setInput("");
-    setChecked(false);
-    setShowAnswer(false);
+    setAnimationClass(hideAnimation);
 
-    if (editorRef.current) {
-      editorRef.current.innerText = "";
-    }
+    setTimeout(() => {
+      setInput("");
+      setChecked(false);
+      setShowAnswer(false);
+
+      if (editorRef.current) {
+        editorRef.current.innerText = "";
+      }
+    }, 100);
   };
 
   const handleInput = () => {
@@ -92,7 +105,7 @@ export const TranslateParagraphExercise = ({
 
       <div style={{ marginBottom: "1.5rem" }}>
         <div
-          className={translatorInput}
+          className={`${translatorInput} ${animationClass}`}
           ref={editorRef}
           contentEditable={!showAnswer}
           onInput={handleInput}

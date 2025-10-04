@@ -17,13 +17,15 @@ export const FillInExercise = ({ data }: { data: ExercisesProps }) => {
   const [showAnswers, setShowAnswers] = useState(false);
   const [inputs, setInputs] = useState<string[][]>([]);
   const [isAutoFilled, setIsAutoFilled] = useState<boolean[][]>([]);
+  const [animationClass, setAnimationClass] = useState("");
+
   const sentences = data.sections?.[0]?.content?.sentences;
 
   const { initializeFillInState, getCorrectFillInAnswers, parseFillInPart } =
     exercisesUtils;
 
   const { buttonContainer, exerciseButton } = styles.buttons;
-  const { fillInInput } = styles.inputs;
+  const { fillInInput, revealAnimation, hideAnimation } = styles.inputs;
 
   useEffect(() => {
     setHasMounted(true);
@@ -52,27 +54,55 @@ export const FillInExercise = ({ data }: { data: ExercisesProps }) => {
       updated[sentenceIdx][wordIdx] = false;
       return updated;
     });
+
+    setTimeout(() => {
+      const input = document.getElementById(
+        `input-${sentenceIdx}-${sentenceIdx}-${wordIdx}`
+      );
+      if (input) {
+        input.style.setProperty("--input-width", `${getInputWidth(value)}px`);
+      }
+    }, 5);
+  };
+
+  const revealAnswers = () => {
+    setAnimationClass(revealAnimation);
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        const { correctInputs, correctFlags } =
+          getCorrectFillInAnswers(sentences);
+        setInputs(correctInputs);
+        setIsAutoFilled(correctFlags);
+        setChecked(false);
+        setShowAnswers(true);
+
+        setAnimationClass(revealAnimation);
+      });
+    });
+  };
+
+  const handleClear = () => {
+    setAnimationClass(hideAnimation);
+
+    setTimeout(() => {
+      const { initialInputs, initialFlags } = initializeFillInState(sentences);
+      setInputs(initialInputs);
+      setIsAutoFilled(initialFlags);
+      setChecked(false);
+      setShowAnswers(false);
+      setAnimationClass("");
+    }, 200);
   };
 
   const handleCheck = () => {
     setChecked(true);
     setShowAnswers(false);
+    setAnimationClass("");
   };
 
-  const revealAnswers = () => {
-    const { correctInputs, correctFlags } = getCorrectFillInAnswers(sentences);
-    setInputs(correctInputs);
-    setIsAutoFilled(correctFlags);
-    setChecked(false);
-    setShowAnswers(true);
-  };
-
-  const handleClear = () => {
-    const { initialInputs, initialFlags } = initializeFillInState(sentences);
-    setInputs(initialInputs);
-    setIsAutoFilled(initialFlags);
-    setChecked(false);
-    setShowAnswers(false);
+  const getInputWidth = (value: string): number => {
+    return Math.min(Math.max(getTextWidth(value), 60), 250);
   };
 
   return (
@@ -126,7 +156,7 @@ export const FillInExercise = ({ data }: { data: ExercisesProps }) => {
                                 name={`input-${sIdx}-${idx}-${i}`}
                                 autoComplete="off"
                                 type="text"
-                                className={fillInInput}
+                                className={`${fillInInput} ${animationClass}`}
                                 value={inputs[idx]?.[i] ?? ""}
                                 onChange={(e) =>
                                   handleChange(e.target.value, idx, i)
@@ -140,12 +170,8 @@ export const FillInExercise = ({ data }: { data: ExercisesProps }) => {
                                   if (isAutoFilled[idx]?.[i]) e.target.blur();
                                 }}
                                 style={{
-                                  width: `${Math.min(
-                                    Math.max(
-                                      getTextWidth(inputs[idx]?.[i] ?? ""),
-                                      60
-                                    ),
-                                    250
+                                  ["--input-width" as string]: `${getInputWidth(
+                                    inputs[idx]?.[i] ?? ""
                                   )}px`,
                                   ...(isAutoFilled[idx]?.[i]
                                     ? {}

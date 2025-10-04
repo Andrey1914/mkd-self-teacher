@@ -11,7 +11,7 @@ const { example1, example2, example3 } = examplesLesson6;
 const {
   exercise1,
   exercise2,
-  //   exercise3,
+  exercise3,
   //   exercise4,
   //   exercise5,
   //   exercise6,
@@ -51,7 +51,7 @@ export const lesson6 = {
   exercises: [
     exercise1,
     exercise2,
-    // exercise3,
+    exercise3,
     // exercise4,
     // exercise5,
     // exercise6,
