@@ -123,6 +123,7 @@ async function main() {
                 slug: exercise.slug,
                 title: exercise.title ?? "Без названия",
                 prompt: section?.prompt ?? [],
+                answerSet: section?.answerSet ?? {},
                 content: section?.content ?? {},
               };
 
@@ -132,6 +133,8 @@ async function main() {
                 existingExercise.title === newData.title &&
                 JSON.stringify(existingExercise.prompt) ===
                   JSON.stringify(newData.prompt) &&
+                JSON.stringify(existingExercise.answerSet) ===
+                  JSON.stringify(newData.answerSet) &&
                 JSON.stringify(existingExercise.content) ===
                   JSON.stringify(newData.content);
 
