@@ -29,7 +29,12 @@ export const FillInExercise = ({ data }: { data: ExercisesProps }) => {
   const { initializeFillInState, getCorrectFillInAnswers, parseFillInPart } =
     exercisesUtils;
 
-  const { buttonContainer, exerciseButton, outlinedButton } = styles.buttons;
+  const {
+    buttonContainer,
+    exerciseButton,
+    outlinedButtonContainer,
+    outlinedButton,
+  } = styles.buttons;
   const { fillInInput, revealAnimation, hideAnimation } = styles.inputs;
 
   const activeSentences = useMemo(() => {
@@ -186,14 +191,7 @@ export const FillInExercise = ({ data }: { data: ExercisesProps }) => {
             ) : null
           )}
           {hasMultipleAnswerSets && (
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "0.5rem",
-                padding: "1rem 0",
-              }}
-            >
+            <div className={`${buttonContainer} ${outlinedButtonContainer}`}>
               <button
                 onClick={handlePrev}
                 disabled={activeIndex === 0}
