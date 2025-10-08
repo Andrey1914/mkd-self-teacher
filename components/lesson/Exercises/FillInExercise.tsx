@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { ExercisesProps } from "@/types";
 import {
   formatText,
@@ -19,24 +19,85 @@ export const FillInExercise = ({ data }: { data: ExercisesProps }) => {
   const [isAutoFilled, setIsAutoFilled] = useState<boolean[][]>([]);
   const [animationClass, setAnimationClass] = useState("");
 
-  const sentences = data.sections?.[0]?.content?.sentences;
+  const section = data.sections?.[0];
+  const sentences = section?.content?.sentences;
+  const answerSet = section?.answerSet;
+  const hasMultipleAnswerSets = !!answerSet;
+
+  const [activeIndex, setActiveIndex] = useState(0);
 
   const { initializeFillInState, getCorrectFillInAnswers, parseFillInPart } =
     exercisesUtils;
 
-  const { buttonContainer, exerciseButton } = styles.buttons;
+  const { buttonContainer, exerciseButton, outlinedButton } = styles.buttons;
   const { fillInInput, revealAnimation, hideAnimation } = styles.inputs;
+
+  const activeSentences = useMemo(() => {
+    const replaceNameWithPronoun = (text: string, index: number): string => {
+      if (!answerSet?.labels?.[index]) return text;
+
+      const pronoun = answerSet.labels[index];
+      return text.replace(/Де\*?jан/g, pronoun);
+    };
+
+    if (hasMultipleAnswerSets) {
+      return sentences?.map((sentence) => ({
+        ...sentence,
+        mkd: replaceNameWithPronoun(sentence.mkd || "", activeIndex),
+        answer: Array.isArray(sentence.answer)
+          ? sentence.answer.map(
+              (encodedString) => encodedString.split("/")[activeIndex] ?? ""
+            )
+          : [],
+      }));
+    }
+    return sentences;
+  }, [sentences, hasMultipleAnswerSets, activeIndex, answerSet?.labels]);
 
   useEffect(() => {
     setHasMounted(true);
-    const { initialInputs, initialFlags } = initializeFillInState(sentences);
-    setInputs(initialInputs);
-    setIsAutoFilled(initialFlags);
-  }, [data, sentences, initializeFillInState]);
+    const target = activeSentences ?? sentences ?? [];
+    if (showAnswers) {
+      const { correctInputs, correctFlags } = getCorrectFillInAnswers(target);
+      setInputs(correctInputs);
+      setIsAutoFilled(correctFlags);
+      setChecked(false);
+      setAnimationClass("");
+    } else {
+      const { initialInputs, initialFlags } = initializeFillInState(target);
+      setInputs(initialInputs);
+      setIsAutoFilled(initialFlags);
+      setChecked(false);
+      setAnimationClass("");
+    }
+  }, [
+    data,
+    sentences,
+    initializeFillInState,
+    getCorrectFillInAnswers,
+    activeSentences,
+    showAnswers,
+  ]);
 
   if (!hasMounted || !data || !data.sections || data.sections.length === 0) {
     return null;
   }
+
+  const handleNext = () => {
+    if (
+      answerSet &&
+      Array.isArray(answerSet.labels) &&
+      activeIndex < answerSet.labels.length - 1
+    ) {
+      setActiveIndex(activeIndex + 1);
+    }
+  };
+
+  const handlePrev = () => {
+    if (activeIndex > 0) {
+      setActiveIndex(activeIndex - 1);
+    }
+  };
 
   const handleChange = (
     value: string,
@@ -70,8 +131,10 @@ export const FillInExercise = ({ data }: { data: ExercisesProps }) => {
 
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
-        const { correctInputs, correctFlags } =
-          getCorrectFillInAnswers(sentences);
+        const target = (activeSentences ?? sentences) || [];
+
+        const { correctInputs, correctFlags } = getCorrectFillInAnswers(target);
+
         setInputs(correctInputs);
         setIsAutoFilled(correctFlags);
         setChecked(false);
@@ -86,7 +149,8 @@ export const FillInExercise = ({ data }: { data: ExercisesProps }) => {
     setAnimationClass(hideAnimation);
 
     setTimeout(() => {
-      const { initialInputs, initialFlags } = initializeFillInState(sentences);
+      const target = (activeSentences ?? sentences) || [];
+      const { initialInputs, initialFlags } = initializeFillInState(target);
       setInputs(initialInputs);
       setIsAutoFilled(initialFlags);
       setChecked(false);
@@ -121,6 +185,61 @@ export const FillInExercise = ({ data }: { data: ExercisesProps }) => {
               </ul>
             ) : null
           )}
+          {hasMultipleAnswerSets && (
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "0.5rem",
+                padding: "1rem 0",
+              }}
+            >
+              <button
+                onClick={handlePrev}
+                disabled={activeIndex === 0}
+                className={`${exerciseButton} ${outlinedButton}`}
+              >
+                <strong>
+                  {/* < previous */}
+                  <span>
+                    {activeIndex > 0
+                      ? formatText(answerSet.labels?.[activeIndex - 1])
+                      : formatText(answerSet.labels?.[activeIndex])}
+                  </span>
+                </strong>
+              </button>
+
+              <h4
+                style={{
+                  width: "80px",
+                  textAlign: "center",
+                  padding: "0.5rem",
+                  textIndent: 0,
+                }}
+              >
+                <span>{formatText(answerSet.labels?.[activeIndex])}</span>
+              </h4>
+
+              <button
+                onClick={handleNext}
+                disabled={
+                  !answerSet.labels ||
+                  activeIndex === answerSet.labels.length - 1
+                }
+                className={`${exerciseButton} ${outlinedButton}`}
+              >
+                <strong>
+                  {/* next > */}
+                  <span>
+                    {answerSet.labels &&
+                    activeIndex < answerSet.labels.length - 1
+                      ? formatText(answerSet.labels[activeIndex + 1])
+                      : formatText(answerSet.labels?.[activeIndex])}
+                  </span>
+                </strong>
+              </button>
+            </div>
+          )}
           {section.content?.text && (
             <p style={{ textAlign: "center" }}>
               {formatText(section.content.text)}
@@ -128,8 +247,11 @@ export const FillInExercise = ({ data }: { data: ExercisesProps }) => {
           )}
           <form>
             <p style={{ textAlign: "left", lineHeight: "2rem" }}>
-              {Array.isArray(section.content?.sentences) &&
+              {/* {Array.isArray(section.content?.sentences) &&
                 section.content.sentences.map((sentence, idx) => {
+                  const parts = sentence.mkd?.split("___"); */}
+              {Array.isArray(activeSentences) &&
+                activeSentences.map((sentence, idx) => {
                   const parts = sentence.mkd?.split("___");
 
                   return (

@@ -186,6 +186,7 @@ async function main() {
                   slug: exercise.slug ?? "default_slug",
                   title: exercise.title ?? "Без названия.",
                   prompt: section.prompt,
+                  answerSet: section.answerSet ?? {},
                   content: section.content ?? {},
                   lessonId,
                 },
