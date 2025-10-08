@@ -1,7 +1,15 @@
+// export const getTextWidth = (text: string, font = "16px Arial") => {
+//   const canvas = document.createElement("canvas");
+//   const ctx = canvas.getContext("2d");
+//   if (!ctx) return 60;
+//   ctx.font = font;
+//   return ctx.measureText(text).width + 12;
+// };
+
+//---------------------------------------------------------------
+// Новые универсальные утилиты
+import { getTextWidth as coreGetTextWidth } from "./core";
+
 export const getTextWidth = (text: string, font = "16px Arial") => {
-  const canvas = document.createElement("canvas");
-  const ctx = canvas.getContext("2d");
-  if (!ctx) return 60;
-  ctx.font = font;
-  return ctx.measureText(text).width + 12;
+  return coreGetTextWidth(text, font);
 };

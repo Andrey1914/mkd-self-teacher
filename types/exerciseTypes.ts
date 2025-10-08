@@ -7,6 +7,9 @@ export interface ExercisesProps {
     singleInput?: boolean;
     title?: string;
     prompt?: string[];
+    answerSet?: {
+      labels?: string[];
+    };
     content: {
       exercise?: string | string[];
       original?: string;

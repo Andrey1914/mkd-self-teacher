@@ -12,7 +12,7 @@ const {
   exercise1,
   exercise2,
   exercise3,
-  //   exercise4,
+  exercise4,
   //   exercise5,
   //   exercise6,
   //   exercise7,
@@ -26,6 +26,7 @@ export const Exercises = () => {
       <FillInExercise data={exercise1} />
       <FillInExercise data={exercise2} />
       <FillInExercise data={exercise3} />
+      <FillInExercise data={exercise4} />
 
       {/* <HighlightWordsExercise data={exercise3} /> */}
       {/* <TranslateParagraphExercise data={exercise5} /> */}

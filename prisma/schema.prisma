@@ -85,6 +85,7 @@ model Exercise {
   slug      String
   title     String?
   prompt    String[] 
+  answerSet Json?
   content   Json
 
   lessonId  String   @db.ObjectId
