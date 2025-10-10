@@ -1,10 +1,13 @@
 import { PrismaClient } from "@prisma/client";
 import { lessons } from "@/prisma/lessons";
 import type { LessonData } from "@/types";
+import { exercisesUtils } from "@/utils";
 
 const prisma = new PrismaClient();
 
 async function main() {
+  const { isDeepEqual } = exercisesUtils;
+
   console.log("Запуск сидинга...");
 
   for (const lesson of lessons as LessonData[]) {
@@ -118,25 +121,26 @@ async function main() {
 
             if (existingExercise) {
               const section = exercise.sections?.[0];
+
               const newData = {
                 type: exercise.type ?? "default_type",
                 slug: exercise.slug,
                 title: exercise.title ?? "Без названия",
                 prompt: section?.prompt ?? [],
-                answerSet: section?.answerSet ?? {},
+                answerSet: section?.answerSet,
                 content: section?.content ?? {},
               };
 
-              const isSame =
-                existingExercise.type === newData.type &&
-                existingExercise.slug === newData.slug &&
-                existingExercise.title === newData.title &&
-                JSON.stringify(existingExercise.prompt) ===
-                  JSON.stringify(newData.prompt) &&
-                JSON.stringify(existingExercise.answerSet) ===
-                  JSON.stringify(newData.answerSet) &&
-                JSON.stringify(existingExercise.content) ===
-                  JSON.stringify(newData.content);
+              const existingDataForCompare = {
+                type: existingExercise.type,
+                slug: existingExercise.slug,
+                title: existingExercise.title,
+                prompt: existingExercise.prompt,
+                answerSet: existingExercise.answerSet ?? undefined,
+                content: existingExercise.content,
+              };
+
+              const isSame = isDeepEqual(existingDataForCompare, newData);
 
               if (isSame) {
                 skippedCount++;
@@ -144,7 +148,16 @@ async function main() {
                 try {
                   await tx.exercise.update({
                     where: { id: existingExercise.id },
-                    data: { ...newData },
+                    data: {
+                      type: newData.type,
+                      slug: newData.slug,
+                      title: newData.title,
+                      prompt: newData.prompt,
+                      content: newData.content,
+                      ...(newData.answerSet !== undefined
+                        ? { answerSet: newData.answerSet }
+                        : {}),
+                    },
                   });
                   console.log(`♻️ Exercise "${exercise.title}" обновлён.`);
                 } catch (error) {
@@ -189,7 +202,10 @@ async function main() {
                   slug: exercise.slug ?? "default_slug",
                   title: exercise.title ?? "Без названия.",
                   prompt: section.prompt,
-                  answerSet: section.answerSet ?? {},
+                  ...(section.answerSet !== undefined
+                    ? { answerSet: section.answerSet }
+                    : {}),
+
                   content: section.content ?? {},
                   lessonId,
                 },
