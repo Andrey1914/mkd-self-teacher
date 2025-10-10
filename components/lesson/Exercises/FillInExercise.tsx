@@ -209,7 +209,7 @@ export const FillInExercise = ({ data }: { data: ExercisesProps }) => {
 
               <h4
                 style={{
-                  width: "80px",
+                  minWidth: "80px",
                   textAlign: "center",
                   padding: "0.5rem",
                   textIndent: 0,
