@@ -1,9 +1,9 @@
 /**
- * Центральная конфигурация для всех утилит
- * Содержит константы, маппинги и настройки
+ * Central configuration for all utilities
+ * Contains constants, mappings and settings
  */
 
-// Маппинги для конвертации между кириллицей и латиницей
+// Mappings for converting between Cyrillic and Latin
 export const CYRILLIC_TO_LATIN_MAP: Record<string, string> = {
   а: "a",
   б: "b",
@@ -76,7 +76,7 @@ export const LATIN_TO_CYRILLIC_MAP: Record<string, string> = {
   f: "ф",
 };
 
-// Регулярные выражения для очистки текста
+// Regular expressions for text cleaning
 export const TEXT_PATTERNS = {
   HTML_TAGS: /<[^>]*>/g,
   ACCENT_MARKS: /\u0301/g,
@@ -86,14 +86,14 @@ export const TEXT_PATTERNS = {
   WHITESPACE: /\S/,
 } as const;
 
-// Стили для выделения
+// Highlighting styles
 export const HIGHLIGHT_STYLES = {
   CORRECT: "0 0 8px 3px #00c150",
   INCORRECT: "0 0 8px 3px #ffa347",
   INCORRECT_COLOR: "#ffa347",
 } as const;
 
-// Настройки для форматирования текста
+// Text formatting settings
 export const TEXT_FORMAT_CONFIG = {
   ACCENT_REPLACEMENT: "$1\u0301",
   BOLD_PATTERN: /«(.*?)»/g,
@@ -101,7 +101,7 @@ export const TEXT_FORMAT_CONFIG = {
   SPECIAL_ITALIC_PATTERN: /\[\[([^\]]+)\]\]/g,
 } as const;
 
-// Настройки по умолчанию для нормализации
+// Default settings for normalization
 export const DEFAULT_NORMALIZE_OPTIONS = {
   trim: true,
   lowercase: true,
@@ -114,15 +114,15 @@ export const DEFAULT_NORMALIZE_OPTIONS = {
 
 export type NormalizeOptions = Partial<typeof DEFAULT_NORMALIZE_OPTIONS>;
 /**
- * Универсальные утилиты для работы с текстом
- * Объединяют нормализацию, форматирование и валидацию
+ * Universal utilities for working with text
+ * Combine normalization, formatting, and validation
  */
 
 import parse from "html-react-parser";
 
 /**
- * Универсальная функция нормализации текста
- * Объединяет функциональность normalizeAnswer и normalizeText
+ * Universal text normalization function
+ * Combines the functionality of normalizeAnswer and normalizeText
  */
 export const normalizeText = (
   input: string,
@@ -134,46 +134,46 @@ export const normalizeText = (
 
   let result = input;
 
-  // Удаление HTML тегов
+  // Removing HTML tags
   if (config.removeHtmlTags) {
     result = result.replace(TEXT_PATTERNS.HTML_TAGS, "");
   }
 
-  // Удаление акцентов
+  // Removing accents
   if (config.removeAccents) {
     result = result.replace(TEXT_PATTERNS.ACCENT_MARKS, "");
   }
 
-  // Сжатие пробелов
+  // Space compression
   if (config.collapseSpaces) {
     result = result.replace(TEXT_PATTERNS.MULTIPLE_SPACES, " ");
   }
 
-  // Приведение к нижнему регистру
+  // Convert to lowercase
   if (config.lowercase) {
     result = result.toLowerCase();
   }
 
-  // Обрезка пробелов
+  // Trimming spaces
   if (config.trim) {
     result = result.trim();
   }
 
-  // Конвертация латиницы в кириллицу
+  // Converting Latin to Cyrillic
   if (config.convertLatinToCyrillic) {
-    // Сначала диграфы (двойные символы)
+    // First, digraphs (double symbols)
     Object.entries(LATIN_TO_CYRILLIC_DIGRAPHS).forEach(([latin, cyr]) => {
       result = result.replaceAll(latin, cyr);
     });
 
-    // Потом одинарные символы
+    // Then single characters
     result = result
       .split("")
       .map((char) => LATIN_TO_CYRILLIC_MAP[char] ?? char)
       .join("");
   }
 
-  // Конвертация кириллицы в латиницу
+  // Converting Cyrillic to Latin
   if (config.convertCyrillicToLatin) {
     result = result
       .split("")
@@ -185,7 +185,7 @@ export const normalizeText = (
 };
 
 /**
- * Удаляет пунктуацию с начала и конца строки
+ * Removes punctuation from the beginning and end of a line.
  */
 export const stripPunctuation = (text: string): string => {
   if (!text) return "";
@@ -193,7 +193,7 @@ export const stripPunctuation = (text: string): string => {
 };
 
 /**
- * Универсальная функция форматирования текста с HTML разметкой
+ * Universal text formatting function with HTML markup
  */
 export const formatText = (
   text: string | undefined,
@@ -208,7 +208,7 @@ export const formatText = (
 
   let processed = text;
 
-  // Обработка акцентов
+  // Accent processing
   if (processAccents) {
     processed = processed.replace(
       /([а-яёa-z])\*/gi,
@@ -216,7 +216,7 @@ export const formatText = (
     );
   }
 
-  // Обработка разметки
+  // Markup processing
   processed = processed
     .replace(
       TEXT_FORMAT_CONFIG.SPECIAL_ITALIC_PATTERN,
@@ -244,7 +244,7 @@ export const formatText = (
 };
 
 /**
- * Получает ширину текста для измерения
+ * Gets the width of the text to measure
  */
 export const getTextWidth = (text: string, font = "16px Arial"): number => {
   if (typeof document === "undefined") return 60; // SSR fallback
@@ -258,7 +258,7 @@ export const getTextWidth = (text: string, font = "16px Arial"): number => {
 };
 
 /**
- * Универсальная функция очистки массива ответов
+ * Universal function for clearing the response array
  */
 export const cleanAnswers = (
   answers: string[] | undefined,

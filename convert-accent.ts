@@ -1,29 +1,19 @@
 import fs from "fs";
 import path from "path";
 
-// Функция для замены Unicode в файле
+// Function to replace Unicode in a file
 function replaceUnicodeInFile(filePath: string): number {
   try {
     const content = fs.readFileSync(filePath, "utf8");
 
-    // Заменяем \u0301 на *
+    // Replace \u0301 with *
     const updatedContent = content.replace(/\\u0301/g, "*");
 
-    // Проверяем, были ли изменения
     if (content !== updatedContent) {
       fs.writeFileSync(filePath, updatedContent, "utf8");
 
-      // Подсчитываем количество замен
       const matches = content.match(/\\u0301/g);
-      // const count = matches ? matches.length : 0;
 
-      // console.log(
-      //   `✅ Обновлен: ${path.relative(
-      //     process.cwd(),
-      //     filePath
-      //   )} (${count} замен)`
-      // );
-      // return count;
       return matches ? matches.length : 0;
     }
 
@@ -33,20 +23,19 @@ function replaceUnicodeInFile(filePath: string): number {
       `❌ Ошибка при обработке ${filePath}:`,
       (error as Error).message
     );
-    // return 0;
     return -1;
   }
 }
 
 //----------------------------------------------------------------
-// --- НОВОЕ РЕШЕНИЕ 2: Обработка всех файлов в папке ---
+// --- SOLUTION 2: Process all files in a folder ---
 function updateDirectory(): void {
   console.log("♻️ Обновление всех файлов в директории...");
 
-  // ✅ ✅ ✅ НАСТРОЙКИ: ✅ ✅ ✅
-  const targetDirectory = "prisma/lessons/vocabulary"; // Папка для обработки
-  const allowedExtensions = [".ts", ".tsx", ".js", ".jsx"]; // Расширения файлов для проверки
-  const ignoredFolders = ["node_modules", ".git", "dist", "build"]; // Папки, которые нужно игнорировать
+  // ✅ ✅ ✅ SETTINGS: ✅ ✅ ✅
+  const targetDirectory = "prisma/lessons/vocabulary"; // Folder for processing
+  const allowedExtensions = [".ts", ".tsx", ".js", ".jsx"];
+  const ignoredFolders = ["node_modules", ".git", "dist", "build"];
 
   const projectRoot = process.cwd();
   const fullPathToDirectory = path.join(projectRoot, targetDirectory);
@@ -59,16 +48,13 @@ function updateDirectory(): void {
     for (const entry of entries) {
       const entryPath = path.join(currentPath, entry.name);
       if (entry.isDirectory()) {
-        // Пропускаем игнорируемые папки
         if (!ignoredFolders.includes(entry.name)) {
           traverseDirectory(entryPath);
         }
       } else if (allowedExtensions.includes(path.extname(entry.name))) {
-        // Обрабатываем только файлы с нужным расширением
         const replacements = replaceUnicodeInFile(entryPath);
 
         if (replacements > 0) {
-          // Выводим сообщение, если были замены
           console.log(
             `♻️ Обновлен: ${path.relative(
               projectRoot,
@@ -77,7 +63,6 @@ function updateDirectory(): void {
           );
           totalReplacements += replacements;
         } else if (replacements === 0) {
-          // Выводим сообщение, если файл проверен, но замен нет
           console.log(
             `✔️ Проверен: ${path.relative(
               projectRoot,
@@ -85,13 +70,10 @@ function updateDirectory(): void {
             )} (замены не найдены)`
           );
         }
-        // Если replacements < 0, сообщение об ошибке уже вывелось из `replaceUnicodeInFile`
 
         if (replacements >= 0) {
           filesProcessed++;
         }
-        // totalReplacements += replaceUnicodeInFile(entryPath);
-        // filesProcessed++;
       }
     }
   }
@@ -110,7 +92,7 @@ updateDirectory();
 //--------------------------------------------------------------
 
 //--------------------------------------------------------------
-// --- НОВОЕ РЕШЕНИЕ 1: Обработка нескольких файлов по списку ---
+// --- SOLUTION 1: Processing multiple files in a list ---
 // function updateMultipleFiles(): void {
 //   console.log("♻️ Обновление нескольких файлов из списка...");
 
@@ -118,11 +100,10 @@ updateDirectory();
 //   let totalReplacements = 0;
 //   let filesProcessed = 0;
 
-//   // ✅ ✅ ✅ ЗДЕСЬ УКАЖИТЕ СПИСОК ФАЙЛОВ: ✅ ✅ ✅
+//   // ✅ ✅ ✅ FILE LIST: ✅ ✅ ✅
 //   const filesToUpdate = [
 //     "prisma/lessons/exercises/lesson-1/exercise-1.ts",
 //     "prisma/lessons/exercises/lesson-1/exercise-2.ts",
-//     // Добавьте сюда столько путей, сколько нужно
 //   ];
 
 //   for (const relativePath of filesToUpdate) {
@@ -155,24 +136,22 @@ updateDirectory();
 //-----------------------------------------------------------------------------
 
 //------------------------------------------------------------------------------
-// ФУНКЦИЯ - для обработки одного конкретного файла
+// FUNCTION - for processing one file
 // function updateSingleFile(): void {
 //   console.log("♻️ Обновление одного файла...");
 
 //   const projectRoot = process.cwd();
 
-//   // ✅ ✅ ✅ ЗДЕСЬ УКАЖИТЕ ПУТЬ К ВАШЕМУ ФАЙЛУ: ✅ ✅ ✅
+//   // ✅ ✅ ✅ FILE PATH: ✅ ✅ ✅
 //   const updateFilePath = path.join(
 //     projectRoot,
 //     "prisma/lessons/dialogues/lesson-5/dialogueBlock.ts"
 //   );
 
-//   // 📝 ПРИМЕРЫ ДРУГИХ ПУТЕЙ:
+//   // 📝 EXAMPLES OF OTHER WAYS:
 //   // const updateFilePath = path.join(projectRoot, "prisma/lessons/lesson-1.ts")
 //   // const updateFilePath = path.join(projectRoot, "src/data/exercise-data.ts")
 //   // const updateFilePath = path.join(projectRoot, "components/my-component.tsx")
-
-//   // 📝 ИЛИ МОЖНО УКАЗАТЬ ПРОСТО СТРОКОЙ:
 //   // const updateFilePath = "prisma/lessons/exercises/lesson-5.ts"
 
 //   if (fs.existsSync(updateFilePath)) {

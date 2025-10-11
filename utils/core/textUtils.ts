@@ -1,6 +1,6 @@
 /**
- * Универсальные утилиты для работы с текстом
- * Объединяют нормализацию, форматирование и валидацию
+ * Universal utilities for working with text
+ * Combine normalization, formatting, and validation
  */
 
 // import parse from "html-react-parser";

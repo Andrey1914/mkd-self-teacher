@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 import { formatText } from "@/utils";
 import type { DialogueBlockProps } from "@/types";
 

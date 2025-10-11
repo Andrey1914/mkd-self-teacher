@@ -22,7 +22,6 @@
 // };
 
 //---------------------------------------------------------------
-// Новые универсальные утилиты
 import { getHighlightStyle } from "./core";
 
 export const highlightInput = (
