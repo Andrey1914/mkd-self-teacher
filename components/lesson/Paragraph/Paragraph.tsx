@@ -1,6 +1,8 @@
 "use client";
 
 import React from "react";
+
+import { MultiFormatHeading } from "@/components/lesson/Heading";
 import { ParagraphProps } from "@/types";
 import { formatText } from "@/utils";
 
@@ -46,14 +48,11 @@ export const Paragraph = ({ data, part }: ParagraphProps) => {
         {title && (
           <>
             {typeof title === "string" ? (
-              <h2>{formatText(title)}</h2>
+              <MultiFormatHeading as="h2" data={title} />
             ) : Array.isArray(title) ? (
-              <h2>{formatText(title.join(", "))}</h2>
+              <MultiFormatHeading as="h2" data={title} />
             ) : (
-              <h2 style={{ display: "flex", flexDirection: "column" }}>
-                {title.ru && <>{formatText(title.ru)}</>}
-                {title.mkd && <span>{formatText(title.mkd)}</span>}
-              </h2>
+              <MultiFormatHeading as="h2" data={title} />
             )}
           </>
         )}
@@ -61,26 +60,12 @@ export const Paragraph = ({ data, part }: ParagraphProps) => {
         {subtitle &&
           typeof subtitle === "object" &&
           !Array.isArray(subtitle) && (
-            <h3 style={{ display: "flex", flexDirection: "column" }}>
-              {subtitle.ru && <>{formatText(subtitle.ru)}</>}
-              <span>{subtitle.mkd && <>{formatText(subtitle.mkd)}</>}</span>
-            </h3>
+            <MultiFormatHeading as="h3" data={subtitle} />
           )}
         {content?.intro && (
           <>
             {content.intro.subtitle && (
-              <h4 style={{ display: "flex", flexDirection: "column" }}>
-                {typeof content.intro.subtitle === "string" ? (
-                  formatText(content.intro.subtitle)
-                ) : Array.isArray(content.intro.subtitle) ? (
-                  formatText(content.intro.subtitle.join(", "))
-                ) : (
-                  <>
-                    {formatText(content.intro.subtitle.ru)}
-                    <span>{formatText(content.intro.subtitle.mkd)}</span>
-                  </>
-                )}
-              </h4>
+              <MultiFormatHeading as="h4" data={content.intro.subtitle} />
             )}
             {content.intro.intro && (
               <p lang="ru" className={paragraph}>
@@ -112,14 +97,11 @@ export const Paragraph = ({ data, part }: ParagraphProps) => {
         {title && (
           <>
             {typeof title === "string" ? (
-              <h2>{formatText(title)}</h2>
+              <MultiFormatHeading as="h2" data={title} />
             ) : Array.isArray(title) ? (
-              <h2>{formatText(title.join(", "))}</h2>
+              <MultiFormatHeading as="h2" data={title} />
             ) : (
-              <h2 style={{ display: "flex", flexDirection: "column" }}>
-                {title.ru && <>{formatText(title.ru)}</>}
-                {title.mkd && <span>{formatText(title.mkd)}</span>}
-              </h2>
+              <MultiFormatHeading as="h2" data={title} />
             )}
           </>
         )}
@@ -127,26 +109,17 @@ export const Paragraph = ({ data, part }: ParagraphProps) => {
         {subtitle && (
           <>
             {typeof subtitle === "string" ? (
-              <h3>{formatText(subtitle)}</h3>
+              <MultiFormatHeading as="h3" data={subtitle} />
             ) : Array.isArray(subtitle) ? (
-              <h3>{formatText(subtitle.join(", "))}</h3>
+              <MultiFormatHeading as="h3" data={subtitle} />
             ) : (
-              <h3 style={{ display: "flex", flexDirection: "column" }}>
-                {subtitle.ru && <>{formatText(subtitle.ru)}</>}
-                {subtitle.mkd && <span>{formatText(subtitle.mkd)}</span>}
-              </h3>
+              <MultiFormatHeading as="h3" data={subtitle} />
             )}
           </>
         )}
 
         {content?.subtitle && (
-          <h4>
-            {formatText(
-              Array.isArray(content.subtitle)
-                ? content.subtitle.join(", ")
-                : content.subtitle
-            )}
-          </h4>
+          <MultiFormatHeading as="h4" data={content.subtitle} />
         )}
         {content?.text && (
           <>{content?.text && renderTextParagraphs(content.text)}</>
@@ -161,10 +134,7 @@ export const Paragraph = ({ data, part }: ParagraphProps) => {
         {subtitle &&
           typeof subtitle === "object" &&
           !Array.isArray(subtitle) && (
-            <h3 style={{ display: "flex", flexDirection: "column" }}>
-              {subtitle.ru && <>{formatText(subtitle.ru)}</>}
-              <span>{subtitle.mkd && <>{formatText(subtitle.mkd)}</>}</span>
-            </h3>
+            <MultiFormatHeading as="h3" data={subtitle} />
           )}
         {intro && (
           <p>{formatText(Array.isArray(intro) ? intro.join(", ") : intro)}</p>
