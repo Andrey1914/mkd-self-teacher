@@ -8,5 +8,10 @@ export type { ParagraphSectionsProps, ParagraphProps } from "./paragraphType";
 export type { SectionWithTables } from "./sectionWithTables";
 export type { LessonData } from "./lessonTypes";
 export type { ExercisesProps, WordState, Sentence } from "./exerciseTypes";
-export type { BaseProps, CommonContent, CommonWords } from "./baseTypes";
+export type {
+  BaseProps,
+  CommonContent,
+  CommonWords,
+  TitleObject,
+} from "./baseTypes";
 export type { TablesProps, GenericTableProps } from "./tablesTypes";

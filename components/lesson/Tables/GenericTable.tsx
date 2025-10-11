@@ -1,6 +1,8 @@
 "use client";
 
 import React from "react";
+
+import { MultiFormatHeading } from "@/components/lesson/Heading";
 import { GenericTableProps } from "@/types";
 import { formatText } from "@/utils";
 
@@ -29,26 +31,14 @@ export const GenericTable = ({
     <div style={{ padding: "1rem 0 2rem 0", overflowX: "auto" }}>
       {title &&
         (typeof title === "string" ? (
-          <h2>{formatText(title)}</h2>
+          <MultiFormatHeading as="h2" data={title} />
         ) : Array.isArray(title) ? (
-          <h2>{formatText(title.join(", "))}</h2>
+          <MultiFormatHeading as="h2" data={title} />
         ) : typeof title === "object" && title !== null ? (
-          <h2 style={{ display: "flex", flexDirection: "column" }}>
-            {title.ru && <>{formatText(title.ru)}</>}
-            {title.mkd && (
-              <>
-                {" "}
-                <span>{formatText(title.mkd)}</span>
-              </>
-            )}
-          </h2>
+          <MultiFormatHeading as="h2" data={title} />
         ) : null)}
 
-      {subtitle && (
-        <h3>
-          {formatText(Array.isArray(subtitle) ? subtitle.join(", ") : subtitle)}
-        </h3>
-      )}
+      {subtitle && <MultiFormatHeading as="h3" data={subtitle} />}
       {text && <p className={textClassName}>{formatText(text)}</p>}
 
       <table className={table}>
