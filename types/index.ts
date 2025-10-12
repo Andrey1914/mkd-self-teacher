@@ -7,7 +7,12 @@ export type { HeaderProps } from "./headerProps";
 export type { ParagraphSectionsProps, ParagraphProps } from "./paragraphType";
 export type { SectionWithTables } from "./sectionWithTables";
 export type { LessonData } from "./lessonTypes";
-export type { ExercisesProps, WordState, Sentence } from "./exerciseTypes";
+export type {
+  ExercisesProps,
+  WordState,
+  Sentence,
+  AnswerSet,
+} from "./exerciseTypes";
 export type {
   BaseProps,
   CommonContent,

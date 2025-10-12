@@ -9,4 +9,5 @@ export {
   initializeFillInState,
   getCorrectFillInAnswers,
   parseFillInPart,
+  prepareActiveSentences,
 } from "./fillInExercise";
