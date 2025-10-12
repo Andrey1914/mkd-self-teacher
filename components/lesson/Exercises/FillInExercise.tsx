@@ -9,6 +9,8 @@ import {
   exercisesUtils,
 } from "@/utils";
 
+import { ControlButtons, AnswerSetNavigator } from "./ControlButtons";
+
 import { styles } from "./styles";
 
 export const FillInExercise = ({ data }: { data: ExercisesProps }) => {
@@ -26,63 +28,30 @@ export const FillInExercise = ({ data }: { data: ExercisesProps }) => {
 
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const { initializeFillInState, getCorrectFillInAnswers, parseFillInPart } =
-    exercisesUtils;
-
   const {
-    buttonContainer,
-    exerciseButton,
-    outlinedButtonContainer,
-    outlinedButton,
-  } = styles.buttons;
+    initializeFillInState,
+    getCorrectFillInAnswers,
+    parseFillInPart,
+    prepareActiveSentences,
+  } = exercisesUtils;
+
   const { fillInInput, revealAnimation, hideAnimation } = styles.inputs;
 
-  const activeSentences = useMemo(() => {
-    const replaceNameWithPronoun = (text: string, index: number): string => {
-      if (!answerSet?.labels?.[index]) return text;
-
-      const pronoun = answerSet.labels[index];
-      return text.replace(/Де\*?jан/g, pronoun);
-    };
-
-    if (hasMultipleAnswerSets) {
-      return sentences?.map((sentence) => ({
-        ...sentence,
-        mkd: replaceNameWithPronoun(sentence.mkd || "", activeIndex),
-        answer: Array.isArray(sentence.answer)
-          ? sentence.answer.map(
-              (encodedString) => encodedString.split("/")[activeIndex] ?? ""
-            )
-          : [],
-      }));
-    }
-    return sentences;
-  }, [sentences, hasMultipleAnswerSets, activeIndex, answerSet?.labels]);
+  const activeSentences = useMemo(
+    () => prepareActiveSentences(sentences, answerSet, activeIndex),
+    [sentences, answerSet, activeIndex, prepareActiveSentences]
+  );
 
   useEffect(() => {
     setHasMounted(true);
-    const target = activeSentences ?? sentences ?? [];
-    if (showAnswers) {
-      const { correctInputs, correctFlags } = getCorrectFillInAnswers(target);
-      setInputs(correctInputs);
-      setIsAutoFilled(correctFlags);
-      setChecked(false);
-      setAnimationClass("");
-    } else {
-      const { initialInputs, initialFlags } = initializeFillInState(target);
-      setInputs(initialInputs);
-      setIsAutoFilled(initialFlags);
-      setChecked(false);
-      setAnimationClass("");
-    }
-  }, [
-    data,
-    sentences,
-    initializeFillInState,
-    getCorrectFillInAnswers,
-    activeSentences,
-    showAnswers,
-  ]);
+    const { initialInputs, initialFlags } =
+      initializeFillInState(activeSentences);
+    setInputs(initialInputs);
+    setIsAutoFilled(initialFlags);
+    setChecked(false);
+    setShowAnswers(false);
+    setAnimationClass("");
+  }, [activeIndex, activeSentences, initializeFillInState]);
 
   if (!hasMounted || !data || !data.sections || data.sections.length === 0) {
     return null;
@@ -171,7 +140,7 @@ export const FillInExercise = ({ data }: { data: ExercisesProps }) => {
   };
 
   const getInputWidth = (value: string): number => {
-    return Math.min(Math.max(getTextWidth(value), 60), 250);
+    return Math.min(Math.max(getTextWidth(value), 60), 550);
   };
 
   return (
@@ -191,52 +160,12 @@ export const FillInExercise = ({ data }: { data: ExercisesProps }) => {
             ) : null
           )}
           {hasMultipleAnswerSets && (
-            <div className={`${buttonContainer} ${outlinedButtonContainer}`}>
-              <button
-                onClick={handlePrev}
-                disabled={activeIndex === 0}
-                className={`${exerciseButton} ${outlinedButton}`}
-              >
-                <strong>
-                  {/* < previous */}
-                  <span>
-                    {activeIndex > 0
-                      ? formatText(answerSet.labels?.[activeIndex - 1])
-                      : formatText(answerSet.labels?.[activeIndex])}
-                  </span>
-                </strong>
-              </button>
-
-              <h4
-                style={{
-                  minWidth: "80px",
-                  textAlign: "center",
-                  padding: "0.5rem",
-                  textIndent: 0,
-                }}
-              >
-                <span>{formatText(answerSet.labels?.[activeIndex])}</span>
-              </h4>
-
-              <button
-                onClick={handleNext}
-                disabled={
-                  !answerSet.labels ||
-                  activeIndex === answerSet.labels.length - 1
-                }
-                className={`${exerciseButton} ${outlinedButton}`}
-              >
-                <strong>
-                  {/* next > */}
-                  <span>
-                    {answerSet.labels &&
-                    activeIndex < answerSet.labels.length - 1
-                      ? formatText(answerSet.labels[activeIndex + 1])
-                      : formatText(answerSet.labels?.[activeIndex])}
-                  </span>
-                </strong>
-              </button>
-            </div>
+            <AnswerSetNavigator
+              answerSet={answerSet}
+              activeIndex={activeIndex}
+              onPrev={handlePrev}
+              onNext={handleNext}
+            />
           )}
           {section.content?.text && (
             <p style={{ textAlign: "center" }}>
@@ -245,9 +174,6 @@ export const FillInExercise = ({ data }: { data: ExercisesProps }) => {
           )}
           <form>
             <p style={{ textAlign: "left", lineHeight: "2rem" }}>
-              {/* {Array.isArray(section.content?.sentences) &&
-                section.content.sentences.map((sentence, idx) => {
-                  const parts = sentence.mkd?.split("___"); */}
               {Array.isArray(activeSentences) &&
                 activeSentences.map((sentence, idx) => {
                   const parts = sentence.mkd?.split("___");
@@ -314,30 +240,12 @@ export const FillInExercise = ({ data }: { data: ExercisesProps }) => {
             </p>
           </form>
 
-          <div className={buttonContainer}>
-            <button
-              className={exerciseButton}
-              type="button"
-              onClick={handleCheck}
-              disabled={showAnswers}
-            >
-              Проверить мою работу
-            </button>
-            <button
-              className={exerciseButton}
-              type="button"
-              onClick={revealAnswers}
-            >
-              Показать правильные ответы
-            </button>
-            <button
-              className={exerciseButton}
-              type="button"
-              onClick={handleClear}
-            >
-              Очистить
-            </button>
-          </div>
+          <ControlButtons
+            onCheck={handleCheck}
+            onReveal={revealAnswers}
+            onClear={handleClear}
+            showAnswers={showAnswers}
+          />
         </div>
       ))}
     </section>

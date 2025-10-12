@@ -7,9 +7,7 @@ export interface ExercisesProps {
     singleInput?: boolean;
     title?: string;
     prompt?: string[];
-    answerSet?: {
-      labels?: string[];
-    };
+    answerSet?: AnswerSet;
     content: {
       exercise?: string | string[];
       original?: string;
@@ -21,6 +19,10 @@ export interface ExercisesProps {
 
   data?: Partial<ExercisesProps>;
 }
+
+export type AnswerSet = {
+  labels?: string[];
+};
 
 export type Sentence = {
   mkd?: string;
