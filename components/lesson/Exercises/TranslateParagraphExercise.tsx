@@ -4,6 +4,8 @@ import React, { useState, useRef } from "react";
 import { formatText, exercisesUtils, highlightInput } from "@/utils";
 import { ExercisesProps } from "@/types";
 
+import { ControlButtons } from "./ControlButtons";
+
 import { styles } from "./styles";
 
 export const TranslateParagraphExercise = ({
@@ -17,7 +19,6 @@ export const TranslateParagraphExercise = ({
 
   const correctAnswer = section.content.answer?.[0] ?? "";
 
-  const { buttonContainer, exerciseButton } = styles.buttons;
   const { translatorInput, revealAnimation, hideAnimation } = styles.inputs;
 
   const [input, setInput] = useState("");
@@ -100,7 +101,7 @@ export const TranslateParagraphExercise = ({
       ))}
 
       <div style={{ marginBottom: "2rem" }}>
-        {formatText(section.content.original)}
+        {formatText(section.content.original, true)}
       </div>
 
       <div style={{ marginBottom: "1.5rem" }}>
@@ -130,22 +131,12 @@ export const TranslateParagraphExercise = ({
         ></div>
       </div>
 
-      <div className={buttonContainer}>
-        <button
-          className={exerciseButton}
-          type="button"
-          onClick={handleCheck}
-          disabled={showAnswer}
-        >
-          Проверить мою работу
-        </button>
-        <button className={exerciseButton} type="button" onClick={handleReveal}>
-          Показать правильный перевод
-        </button>
-        <button className={exerciseButton} type="button" onClick={handleClear}>
-          Очистить
-        </button>
-      </div>
+      <ControlButtons
+        onCheck={handleCheck}
+        onReveal={handleReveal}
+        onClear={handleClear}
+        showAnswers={showAnswer}
+      />
     </section>
   );
 };

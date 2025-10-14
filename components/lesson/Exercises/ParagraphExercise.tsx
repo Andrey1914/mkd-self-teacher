@@ -10,6 +10,7 @@ import {
   exercisesUtils,
 } from "@/utils";
 import { ExercisesProps } from "@/types";
+import { ControlButtons } from "./ControlButtons";
 
 import { styles } from "./styles";
 
@@ -35,7 +36,6 @@ export const ParagraphExercise = ({ data }: { data: ExercisesProps }) => {
   const uniqueIdBase = useId();
   const textareasRef = useRef<(HTMLTextAreaElement | null)[]>([]);
 
-  const { buttonContainer, exerciseButton } = styles.buttons;
   const { paragraphInput, revealAnimation, hideAnimation } = styles.inputs;
 
   useEffect(() => {
@@ -146,26 +146,12 @@ export const ParagraphExercise = ({ data }: { data: ExercisesProps }) => {
         })}
       </form>
 
-      <div className={buttonContainer}>
-        <button
-          className={exerciseButton}
-          type="button"
-          onClick={checkAnswers}
-          disabled={showAnswers}
-        >
-          Проверить мою работу
-        </button>
-        <button
-          className={exerciseButton}
-          type="button"
-          onClick={revealAnswers}
-        >
-          Показать правильные ответы
-        </button>
-        <button className={exerciseButton} type="button" onClick={clearInputs}>
-          Очистить
-        </button>
-      </div>
+      <ControlButtons
+        onCheck={checkAnswers}
+        onReveal={revealAnswers}
+        onClear={clearInputs}
+        showAnswers={showAnswers}
+      />
     </section>
   );
 };

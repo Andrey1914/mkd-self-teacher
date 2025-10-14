@@ -22,14 +22,23 @@
 // };
 
 //---------------------------------------------------------------
-import { getHighlightStyle } from "./core";
+import { getHighlightStyle, parseAnswerWords, HIGHLIGHT_STYLES } from "./core";
 
 export const highlightInput = (
   input: string,
   correct: string,
   show: boolean
 ) => {
-  return getHighlightStyle(input, correct, show, {
+  if (!show || input.trim() === "") return {};
+
+  const correctOptions = parseAnswerWords(correct);
+  const isCorrect = getHighlightStyle(input, correctOptions, {
     convertLatinToCyrillic: true,
   });
+
+  return {
+    boxShadow: isCorrect
+      ? HIGHLIGHT_STYLES.CORRECT
+      : HIGHLIGHT_STYLES.INCORRECT,
+  };
 };

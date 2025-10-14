@@ -73,6 +73,24 @@ export const FillInExercise = ({ data }: { data: ExercisesProps }) => {
     }
   };
 
+  const revealAnswers = () => {
+    setAnimationClass(revealAnimation);
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        const target = (activeSentences ?? sentences) || [];
+
+        const { correctInputs, correctFlags } = getCorrectFillInAnswers(target);
+
+        setInputs(correctInputs);
+        setIsAutoFilled(correctFlags);
+        setChecked(false);
+        setShowAnswers(true);
+        setAnimationClass(revealAnimation);
+      });
+    });
+  };
+
   const handleChange = (
     value: string,
     sentenceIdx: number,
@@ -100,23 +118,10 @@ export const FillInExercise = ({ data }: { data: ExercisesProps }) => {
     }, 5);
   };
 
-  const revealAnswers = () => {
-    setAnimationClass(revealAnimation);
-
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        const target = (activeSentences ?? sentences) || [];
-
-        const { correctInputs, correctFlags } = getCorrectFillInAnswers(target);
-
-        setInputs(correctInputs);
-        setIsAutoFilled(correctFlags);
-        setChecked(false);
-        setShowAnswers(true);
-
-        setAnimationClass(revealAnimation);
-      });
-    });
+  const handleCheck = () => {
+    setChecked(true);
+    setShowAnswers(false);
+    setAnimationClass("");
   };
 
   const handleClear = () => {
@@ -125,18 +130,14 @@ export const FillInExercise = ({ data }: { data: ExercisesProps }) => {
     setTimeout(() => {
       const target = (activeSentences ?? sentences) || [];
       const { initialInputs, initialFlags } = initializeFillInState(target);
+
       setInputs(initialInputs);
       setIsAutoFilled(initialFlags);
+
       setChecked(false);
       setShowAnswers(false);
       setAnimationClass("");
     }, 200);
-  };
-
-  const handleCheck = () => {
-    setChecked(true);
-    setShowAnswers(false);
-    setAnimationClass("");
   };
 
   const getInputWidth = (value: string): number => {
@@ -173,7 +174,7 @@ export const FillInExercise = ({ data }: { data: ExercisesProps }) => {
             </p>
           )}
           <form>
-            <p style={{ textAlign: "left", lineHeight: "2rem" }}>
+            <div style={{ textAlign: "left", lineHeight: "2rem" }}>
               {Array.isArray(activeSentences) &&
                 activeSentences.map((sentence, idx) => {
                   const parts = sentence.mkd?.split("___");
@@ -186,16 +187,12 @@ export const FillInExercise = ({ data }: { data: ExercisesProps }) => {
 
                         return (
                           <React.Fragment key={i}>
-                            {/* 1. We output a non-colorable prefix (for numbers) */}
                             {unstyledPrefix}
 
-                            {/* 2. We display the main text, which is always colored */}
                             <span>{formatText(styledText)}</span>
 
-                            {/* 3. We derive a non-colorable suffix (for letters) */}
                             {unstyledSuffix}
 
-                            {/* The logic for input remains unchanged. */}
                             {sentence.answer && i < sentence.answer.length && (
                               <input
                                 id={`input-${sIdx}-${idx}-${i}`}
@@ -237,7 +234,7 @@ export const FillInExercise = ({ data }: { data: ExercisesProps }) => {
                     </React.Fragment>
                   );
                 })}
-            </p>
+            </div>
           </form>
 
           <ControlButtons
