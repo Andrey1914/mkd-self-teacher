@@ -32,8 +32,10 @@
 }
 
 .main {
-  padding-left: 80px;
-  padding-right: 80px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 150px;
+  padding-right: 150px;
 }
 
 /* .main {
@@ -74,6 +76,7 @@
 
 @media (max-width: 900px) {
   .main {
+    max-width: 850px;
     padding-left: 24px;
     padding-right: 24px;
   }
@@ -81,6 +84,7 @@
 
 @media (max-width: 400px) {
   .main {
+    max-width: 368px;
     padding-left: 16px;
     padding-right: 16px;
   }

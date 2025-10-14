@@ -22,7 +22,8 @@
 // };
 
 //---------------------------------------------------------------
-import { getHighlightStyle, parseAnswerWords, HIGHLIGHT_STYLES } from "./core";
+import { getHighlightStyle, parseAnswerWords } from "./core";
+import { HIGHLIGHT_STYLES } from "@/constants";
 
 export const highlightInput = (
   input: string,
