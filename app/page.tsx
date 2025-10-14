@@ -14,6 +14,7 @@ import {
   Lesson4,
   Lesson5,
   Lesson6,
+  Lesson7,
 } from "@/components/Lessons";
 import { Header } from "@/components/app";
 
@@ -28,6 +29,7 @@ export default function Home() {
     { title: "Урок 4", component: <Lesson4 /> },
     { title: "Урок 5", component: <Lesson5 /> },
     { title: "Урок 6", component: <Lesson6 /> },
+    { title: "Урок 7", component: <Lesson7 /> },
   ];
 
   const handleTabChange = (index: number) => {
