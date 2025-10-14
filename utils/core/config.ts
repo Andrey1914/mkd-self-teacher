@@ -283,8 +283,8 @@ export const cleanAnswers = (
 };
 
 /**
- * Парсинг строки ответов в массив массивов
- * Пример: "word1/word2 word3" -> [["word1", "word2"], ["word3"]]
+ * Parsing a response string into an array of arrays
+ * Example: "word1/word2 word3" -> [["word1", "word2"], ["word3"]]
  */
 export const parseAnswerWords = (text: string): string[][] => {
   return normalizeText(text, {
@@ -297,25 +297,25 @@ export const parseAnswerWords = (text: string): string[][] => {
 };
 
 /**
- * Проверяет, является ли часть текста словом
+ * Checks if a piece of text is a word
  */
 export const isWord = (text: string): boolean => {
   return TEXT_PATTERNS.WHITESPACE.test(text);
 };
 /**
- * Универсальные утилиты для работы с массивами и состояниями
- * Упрощают создание и инициализацию массивов для упражнений
+ * Universal utilities for working with arrays and states
+ * Simplify the creation and initialization of arrays for exercises
  */
 
 /**
- * Создает массив заданной длины, заполненный указанным значением
+ * Creates an array of the specified length filled with the specified value.
  */
 export const createFilledArray = <T>(length: number, fillValue: T): T[] => {
   return new Array(length).fill(fillValue);
 };
 
 /**
- * Создает двумерный массив с заданными размерами
+ * Creates a two-dimensional array with the given dimensions.
  */
 export const create2DArray = <T>(
   rows: number,
@@ -326,7 +326,7 @@ export const create2DArray = <T>(
 };
 
 /**
- * Инициализирует состояние для упражнений с заполнением пробелов
+ * Initializes the state for gap-filling exercises
  */
 export const initializeFillInState = <T>(
   sentences: Array<{ answer?: string[] }> | undefined,
@@ -340,7 +340,7 @@ export const initializeFillInState = <T>(
 };
 
 /**
- * Создает массивы правильных ответов для упражнений
+ * Creates arrays of correct answers for exercises
  */
 export const getCorrectAnswers = (
   sentences: Array<{ answer?: string[] }> | undefined
@@ -358,7 +358,7 @@ export const getCorrectAnswers = (
 };
 
 /**
- * Безопасное получение элемента массива по индексу
+ * Safely getting an array element by index
  */
 export const safeArrayAccess = <T>(
   array: T[] | undefined,
@@ -369,14 +369,14 @@ export const safeArrayAccess = <T>(
 };
 
 /**
- * Клонирует двумерный массив
+ * Clones a two-dimensional array
  */
 export const clone2DArray = <T>(array: T[][]): T[][] => {
   return array.map((row) => [...row]);
 };
 
 /**
- * Проверяет, все ли элементы в массиве соответствуют условию
+ * Checks if all elements in an array match a condition.
  */
 export const allMatch = <T>(
   array: T[],
@@ -386,7 +386,7 @@ export const allMatch = <T>(
 };
 
 /**
- * Группирует массив по заданному ключу
+ * Groups an array by a given key.
  */
 export const groupBy = <T, K extends string | number>(
   array: T[],
@@ -403,7 +403,7 @@ export const groupBy = <T, K extends string | number>(
 };
 
 /**
- * Фильтрует массив с проверкой типа
+ * Filters an array with type checking
  */
 export const filterWithType = <T, U extends T>(
   array: T[],
@@ -413,7 +413,7 @@ export const filterWithType = <T, U extends T>(
 };
 
 /**
- * Сравнивает два текста с нормализацией
+ * Compares two texts with normalization
  */
 export const compareTexts = (
   input: string,
@@ -437,63 +437,145 @@ export const compareTexts = (
 };
 
 /**
- * Получает стиль выделения для поля ввода на основе корректности
- */
+ * Gets the highlight style for the input field based on validity */
+
 export const getHighlightStyle = (
-  input: string,
-  correct: string,
-  show: boolean,
+  userInput: string,
+  correctOptions: string[][],
   options: NormalizeOptions = {}
-) => {
-  if (!show || input === "") return {};
+): boolean => {
+  const userWords = userInput.trim().split(/\s+/).filter(Boolean);
+  let userIdx = 0;
+  let correctIdx = 0;
 
-  const isCorrect = compareTexts(input, correct, options);
+  while (userIdx < userWords.length && correctIdx < correctOptions.length) {
+    const normalizedUserWord = normalizeText(userWords[userIdx], {
+      trim: true,
+      lowercase: true,
+      ...options,
+    });
+    const currentCorrectGroup = correctOptions[correctIdx];
+    const isOptional =
+      currentCorrectGroup[0]?.startsWith("(") &&
+      currentCorrectGroup[0]?.endsWith(")");
+    const cleanCorrectOptions = currentCorrectGroup.map((opt) =>
+      opt.replace(/^\(|\)$/g, "")
+    );
 
-  return {
-    boxShadow: isCorrect
-      ? HIGHLIGHT_STYLES.CORRECT
-      : HIGHLIGHT_STYLES.INCORRECT,
-  };
+    if (cleanCorrectOptions.includes(normalizedUserWord)) {
+      userIdx++;
+      correctIdx++;
+    } else if (isOptional) {
+      correctIdx++;
+    } else {
+      return false;
+    }
+  }
+
+  if (userIdx < userWords.length) {
+    return false;
+  }
+
+  while (correctIdx < correctOptions.length) {
+    const currentCorrectGroup = correctOptions[correctIdx];
+    const isOptional =
+      currentCorrectGroup[0]?.startsWith("(") &&
+      currentCorrectGroup[0]?.endsWith(")");
+    if (!isOptional) {
+      return false;
+    }
+    correctIdx++;
+  }
+
+  return true;
 };
 
 /**
- * Генерирует HTML строку с выделенными неправильными словами
+ * Generates an HTML string with incorrect words highlighted.
  */
+/**
+ * Generates an HTML string with incorrect words highlighted.
+ * Supports particles in brackets (e.g. "(се)") - they are optional.
+ */
+
 export const generateHighlightedText = (
   userInput: string,
   correctOptions: string[][],
   options: NormalizeOptions = {}
 ): string => {
-  const rawWords = userInput.trim().split(/\s+/);
+  const userWords = userInput.trim().split(/\s+/).filter(Boolean);
+  const resultHtml: string[] = [];
 
-  return rawWords
-    .map((originalWord, idx) => {
-      const normalized = normalizeText(originalWord, {
-        trim: true,
-        lowercase: true,
-        convertLatinToCyrillic: true,
-        ...options,
-      });
+  let userIdx = 0;
+  let correctIdx = 0;
 
-      const isCorrect = correctOptions[idx]?.includes(normalized);
+  while (userIdx < userWords.length) {
+    const currentUserWord = userWords[userIdx];
+    const normalizedUserWord = normalizeText(currentUserWord, {
+      trim: true,
+      lowercase: true,
+      convertLatinToCyrillic: true,
+      ...options,
+    });
 
-      if (!isCorrect) {
-        return `<span style="color: ${HIGHLIGHT_STYLES.INCORRECT_COLOR}">${originalWord}</span>`;
-      }
-      return originalWord;
-    })
-    .join(" ");
+    if (correctIdx >= correctOptions.length) {
+      resultHtml.push(
+        `<span style="color: ${HIGHLIGHT_STYLES.INCORRECT_COLOR}; font-weight: 500;">${currentUserWord}</span>`
+      );
+      userIdx++;
+      continue;
+    }
+
+    const currentCorrectGroup = correctOptions[correctIdx];
+
+    // 1. CHECK IF THE WORD IN THE ANSWER IS OPTIONAL
+    // We consider it optional if it is in parentheses.
+    const isOptional =
+      currentCorrectGroup[0]?.startsWith("(") &&
+      currentCorrectGroup[0]?.endsWith(")");
+
+    // 2. CLEAR THE ANSWER OPTIONS OF BRACKETS FOR COMPARISON
+    const cleanCorrectOptions = currentCorrectGroup.map((opt) =>
+      opt.replace(/^\(|\)$/g, "")
+    );
+
+    // 3. BASIC LOGIC OF COMPARISON
+    if (cleanCorrectOptions.includes(normalizedUserWord)) {
+      // CASE A: The user's word matches the current word in the response.
+      // This is the correct word. Add it and move BOTH pointers.
+      resultHtml.push(currentUserWord);
+      userIdx++;
+      correctIdx++;
+    } else if (isOptional) {
+      // CASE B: The word didn't match, BUT the current word in the answer was optional.
+      // This means the user skipped it. We move ONLY the correct answer pointer,
+      // and leave the user pointer in place so that on the next iteration,
+      // we can check the same user word against the next word in the answer.
+      correctIdx++;
+    } else {
+      // CASE C: The word didn't match, and it was REQUIRED.
+      // This is an error. Highlight the user's word and move BOTH pointers,
+      // to move on to checking the next word pair.
+      resultHtml.push(
+        `<span style="color: ${HIGHLIGHT_STYLES.INCORRECT_COLOR}; font-weight: 500;">${currentUserWord}</span>`
+      );
+      userIdx++;
+      correctIdx++;
+    }
+  }
+
+  return resultHtml.join(" ");
 };
 
 /**
- * Проверяет, является ли строка пустой или содержит только пробелы
+ * Checks if a string is empty or contains only spaces.
  */
 export const isEmptyOrWhitespace = (text: string | undefined): boolean => {
   return !text || text.trim().length === 0;
 };
 
 /**
- * Валидирует массив ответов
+ * Validates the response array
  */
 export const validateAnswers = (
   answers: string[] | undefined,
@@ -529,7 +611,7 @@ export const validateAnswers = (
 };
 
 /**
- * Проверяет, содержит ли текст определенный паттерн
+ * Checks if the text contains a certain pattern
  */
 export const matchesPattern = (text: string, pattern: RegExp): boolean => {
   return pattern.test(text);
