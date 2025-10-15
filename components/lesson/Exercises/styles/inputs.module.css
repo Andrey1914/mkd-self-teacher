@@ -28,6 +28,7 @@
   max-height: 360px;
   overflow-y: auto;
   white-space: pre-wrap;
+  word-break: break-word;
 }
 
 .paragraphInput,
@@ -39,7 +40,7 @@
   font-size: 18px;
   line-height: 1.5;
   background-color: transparent;
-  overflow: hidden;
+  /* overflow: hidden; */
   resize: none;
 
   transition: height 0.2s ease-out;

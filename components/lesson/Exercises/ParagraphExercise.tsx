@@ -98,7 +98,7 @@ export const ParagraphExercise = ({ data }: { data: ExercisesProps }) => {
       ))}
 
       <div style={{ marginBottom: "2rem" }}>
-        {formatText(sections.content.original)}
+        {formatText(sections.content.original, true)}
       </div>
 
       <form onSubmit={(e) => e.preventDefault()}>

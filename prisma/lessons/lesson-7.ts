@@ -1,10 +1,10 @@
 // import { vocabulary } from "@/prisma/lessons/vocabulary/lesson-6";
 import { dialogueBlock } from "@/prisma/lessons/dialogues/lesson-7";
-// import { lectureLesson6 } from "@/prisma/lessons/paragraph";
+import { lectureLesson7 } from "@/prisma/lessons/paragraph";
 // import { examples } from "@/prisma/lessons/tables";
 // import { exercisesLesson6 } from "@/prisma/lessons/exercises";
 
-// const { intro } = lectureLesson7;
+const { intro } = lectureLesson7;
 // const { lesson6: examplesLesson7 } = examples;
 // const { example1, example2, example3 } = examplesLesson7;
 
@@ -39,7 +39,7 @@ export const lesson7 = {
       },
     },
   ],
-  //   paragraph: [intro],
+  paragraph: [intro],
   //   vocabulary: [vocabulary],
   dialogues: [dialogueBlock],
   //   tables: [
