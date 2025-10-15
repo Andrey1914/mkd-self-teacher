@@ -10,4 +10,5 @@ export * as grammarLesson4 from "./lesson-4";
 export * as lectureLesson5 from "./lesson-5";
 
 export * as lectureLesson6 from "./lesson-6";
-// export * as grammarLesson6 from "./lesson-6";
+
+export * as lectureLesson7 from "./lesson-7";

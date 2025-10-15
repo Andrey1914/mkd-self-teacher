@@ -6,7 +6,7 @@ import { HeaderProps } from "@/types";
 
 import styles from "./Header.module.css";
 
-const { header } = styles;
+const { headerContainer, header } = styles;
 
 export const Header = ({
   activeIndex,
@@ -15,7 +15,13 @@ export const Header = ({
 }: HeaderProps) => {
   return (
     <header className={header}>
-      <Tabs tabs={lessonTitles} activeIndex={activeIndex} onChange={onChange} />
+      <div className={headerContainer}>
+        <Tabs
+          tabs={lessonTitles}
+          activeIndex={activeIndex}
+          onChange={onChange}
+        />
+      </div>
     </header>
   );
 };

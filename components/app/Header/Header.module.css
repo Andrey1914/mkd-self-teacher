@@ -2,17 +2,49 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  background-color: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  /* backdrop-filter: blur(5px); */
+  /* -webkit-backdrop-filter: blur(5px); */
+  /* background-color: rgba(255, 255, 255, 0.1); */
+  /* box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); */
   text-align: center;
   border-radius: 0 0 4px 4px;
-  padding: 0.5rem 1rem 0 1rem;
+  padding: 24px 150px 24px 150px;
 }
 
-@media (min-width: 768px) {
+.headerContainer {
+  max-width: 1280px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px) saturate(150%);
+  -webkit-backdrop-filter: blur(10px) saturate(150%);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.1),
+    inset 0 0 6px 3px rgba(255, 255, 255, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+@media (max-width: 900px) {
+  .headerContainer {
+    max-width: 850px;
+    padding: 0 24px 0 24px;
+  }
+
   .header {
-    padding: 2rem 2rem 0 2rem;
+    padding: 24px 24px 0 24px;
+  }
+}
+
+@media (max-width: 400px) {
+  .headerContainer {
+    max-width: 368px;
+    padding: 0 16px 0 16px;
+  }
+
+  .header {
+    padding: 0.5rem 0 0 0;
   }
 }

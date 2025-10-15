@@ -13,11 +13,7 @@ export const Tabs = ({ tabs, activeIndex, onChange }: TabsProps) => {
         whiteSpace: "nowrap",
       }}
     >
-      <Swiper
-        slidesPerView="auto"
-        spaceBetween={8}
-        style={{ padding: "10px 10px 0 10px" }}
-      >
+      <Swiper slidesPerView="auto" spaceBetween={8} style={{ padding: "10px" }}>
         {tabs.map((tab, index) => (
           <SwiperSlide
             key={index}
@@ -29,26 +25,32 @@ export const Tabs = ({ tabs, activeIndex, onChange }: TabsProps) => {
             <button
               onClick={() => onChange(index)}
               style={{
+                backdropFilter: index === activeIndex ? "blur(5px)" : "none",
                 backgroundColor:
                   index === activeIndex
-                    ? "rgba(191, 191, 191, 0.2)"
+                    ? "rgba(0, 0, 90, 0.08)"
                     : "transparent",
                 border: "none",
-                // borderTopLeftRadius: index === activeIndex ? "6px" : "none",
-                // borderTopRightRadius: index === activeIndex ? "6px" : "none",
-
+                borderRadius: "5px",
                 borderBottom:
                   index === activeIndex
-                    ? "2px solid #fff"
+                    ? "0.5px solid #fff"
                     : "1px solid transparent",
                 padding: "0.5rem 0.75rem",
-                color: index === activeIndex ? "#fff" : "#c6b8b8",
-                fontWeight: index === activeIndex ? "700" : "400",
+                color: "#fff",
+                fontWeight: index === activeIndex ? "700" : "300",
                 cursor: "pointer",
                 boxShadow:
                   index === activeIndex
-                    ? `rgb(255, 255, 255) 0px 0px 8px 0px`
+                    ? `0 8px 32px rgba(0, 0, 0, 0.1),
+         inset 0 1px 0 rgba(255, 255, 255, 0.5),
+         inset 0 -1px 0 rgba(255, 255, 255, 0.1),
+         inset 0 0 6px 3px rgba(255, 255, 255, 0.3)`
                     : "none",
+                // boxShadow:
+                //   index === activeIndex
+                //     ? `rgb(255, 255, 255) 0px 0px 8px 0px`
+                //     : "none",
 
                 transition: "border-bottom 0.2s ease, box-shadow 0.2s ease",
               }}
