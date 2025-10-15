@@ -1,6 +1,8 @@
 import React from "react";
+
+import { MultiFormatHeading } from "@/components/lesson/Heading";
 import { TablesProps } from "@/types";
-import { formatText, renderTitle } from "@/utils";
+import { formatText } from "@/utils";
 
 import { styles } from "./styles";
 
@@ -28,28 +30,11 @@ export const ExamplesTable = ({ data }: { data: TablesProps }) => {
 
   return (
     <>
-      {title && (
-        <h2 style={{ display: "flex", flexDirection: "column" }}>
-          {renderTitle(title)}
-        </h2>
-      )}
+      {title && <MultiFormatHeading as="h2" data={title} />}
 
-      {subtitle && (
-        <h3>
-          {Array.isArray(subtitle)
-            ? formatText(subtitle.join(", "))
-            : formatText(subtitle)}
-        </h3>
-      )}
-      <>
-        {content.subtitle && (
-          <h4>
-            {Array.isArray(content.subtitle)
-              ? formatText(content.subtitle.join(", "))
-              : formatText(content.subtitle)}
-          </h4>
-        )}
-      </>
+      {subtitle && <MultiFormatHeading as="h3" data={subtitle} />}
+
+      <>{content.subtitle && <MultiFormatHeading as="h4" data={subtitle} />}</>
       <>{content.text && <>{renderTextParagraphs(content.text)}</>}</>
 
       <div className={flexContainer}>
