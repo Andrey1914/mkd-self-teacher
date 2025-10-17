@@ -25,3 +25,24 @@
   color: #333;
   text-indent: 0;
 }
+
+.flexList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  /* margin: 1rem 0; */
+
+  justify-items: center;
+}
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+}
+
+@media (max-width: 768px) {
+  .gridContainer {
+    gap: 0.3rem;
+  }
+}

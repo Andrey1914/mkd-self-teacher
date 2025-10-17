@@ -367,10 +367,17 @@ async function main() {
 
           // 📘 Pay attention blocks
           for (const block of lesson.payAttention ?? []) {
-            const slug = block.sections?.[0]?.slug ?? "";
-            const type = block.sections?.[0]?.type ?? "";
-            const rawTitle = block.sections?.[0]?.title;
+            const section = block.sections?.[0];
+            // const slug = block.sections?.[0]?.slug ?? "";
+            // const type = block.sections?.[0]?.type ?? "";
+            // const rawTitle = block.sections?.[0]?.title;
+
+            const slug = section?.slug ?? "";
+            const type = section?.type ?? "";
+            const rawTitle = section?.title;
+
             const contentText = block.sections?.[0]?.content?.text ?? "";
+            const contentWords = section?.content?.words;
 
             if (!slug || !type) {
               console.error(
@@ -383,42 +390,62 @@ async function main() {
 
             const title: string = rawTitle || type || "Без названия";
 
+            const contentObject = {
+              text: contentText,
+              ...(contentWords && { words: contentWords }),
+            };
+
             const exists = await tx.payAttentionBlock.findFirst({
-              where: {
-                type,
-                lessonId,
-              },
-              select: {
-                id: true,
-                content: true,
-                slug: true,
-                type: true,
-              },
+              where: { type, lessonId },
+              select: { id: true, content: true, slug: true, type: true },
             });
 
-            const contentObject = { text: contentText };
+            // const exists = await tx.payAttentionBlock.findFirst({
+            //   where: {
+            //     type,
+            //     lessonId,
+            //   },
+            //   select: {
+            //     id: true,
+            //     content: true,
+            //     slug: true,
+            //     type: true,
+            //   },
+            // });
+
+            // const contentObject = { text: contentText };
 
             if (exists) {
               // const existingTitle = exists.title || "";
-              const existingText =
-                typeof exists.content === "object" &&
-                exists.content !== null &&
-                !Array.isArray(exists.content) &&
-                "text" in exists.content
-                  ? (exists.content as { text: string }).text
-                  : "";
-
-              // const isTitleDifferent = existingTitle !== title;
-
-              if (existingText !== contentText) {
+              const isSame = isDeepEqual(exists.content, contentObject);
+              if (!isSame) {
                 await tx.payAttentionBlock.update({
                   where: { id: exists.id },
                   data: {
                     title,
-                    content: contentObject,
                     slug,
+                    content: contentObject, // `contentObject` уже имеет правильную структуру
                   },
                 });
+                // const existingText =
+                //   typeof exists.content === "object" &&
+                //   exists.content !== null &&
+                //   !Array.isArray(exists.content) &&
+                //   "text" in exists.content
+                //     ? (exists.content as { text: string }).text
+                //     : "";
+
+                // const isTitleDifferent = existingTitle !== title;
+
+                // if (existingText !== contentText) {
+                //   await tx.payAttentionBlock.update({
+                //     where: { id: exists.id },
+                //     data: {
+                //       title,
+                //       content: contentObject,
+                //       slug,
+                //     },
+                //   });
                 console.log(`♻️ Обновлён PayAttentionBlock "${type}"`);
               } else {
                 console.log(
