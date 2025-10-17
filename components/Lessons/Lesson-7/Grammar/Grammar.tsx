@@ -1,13 +1,13 @@
 import React from "react";
 
 import { Examples } from "./Examples";
-// import { Exercises } from "./Exercises";
+import { Exercises } from "./Exercises";
 
 export const Grammar = () => {
   return (
     <>
       <Examples />
-      {/* <Exercises /> */}
+      <Exercises />
     </>
   );
 };
