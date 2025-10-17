@@ -368,9 +368,6 @@ async function main() {
           // 📘 Pay attention blocks
           for (const block of lesson.payAttention ?? []) {
             const section = block.sections?.[0];
-            // const slug = block.sections?.[0]?.slug ?? "";
-            // const type = block.sections?.[0]?.type ?? "";
-            // const rawTitle = block.sections?.[0]?.title;
 
             const slug = section?.slug ?? "";
             const type = section?.type ?? "";
@@ -400,23 +397,7 @@ async function main() {
               select: { id: true, content: true, slug: true, type: true },
             });
 
-            // const exists = await tx.payAttentionBlock.findFirst({
-            //   where: {
-            //     type,
-            //     lessonId,
-            //   },
-            //   select: {
-            //     id: true,
-            //     content: true,
-            //     slug: true,
-            //     type: true,
-            //   },
-            // });
-
-            // const contentObject = { text: contentText };
-
             if (exists) {
-              // const existingTitle = exists.title || "";
               const isSame = isDeepEqual(exists.content, contentObject);
               if (!isSame) {
                 await tx.payAttentionBlock.update({
@@ -424,28 +405,10 @@ async function main() {
                   data: {
                     title,
                     slug,
-                    content: contentObject, // `contentObject` уже имеет правильную структуру
+                    content: contentObject,
                   },
                 });
-                // const existingText =
-                //   typeof exists.content === "object" &&
-                //   exists.content !== null &&
-                //   !Array.isArray(exists.content) &&
-                //   "text" in exists.content
-                //     ? (exists.content as { text: string }).text
-                //     : "";
 
-                // const isTitleDifferent = existingTitle !== title;
-
-                // if (existingText !== contentText) {
-                //   await tx.payAttentionBlock.update({
-                //     where: { id: exists.id },
-                //     data: {
-                //       title,
-                //       content: contentObject,
-                //       slug,
-                //     },
-                //   });
                 console.log(`♻️ Обновлён PayAttentionBlock "${type}"`);
               } else {
                 console.log(
