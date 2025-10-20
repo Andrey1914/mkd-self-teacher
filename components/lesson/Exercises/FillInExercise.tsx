@@ -141,22 +141,22 @@ export const FillInExercise = ({ data }: { data: ExercisesProps }) => {
   };
 
   const getInputWidth = (value: string): number => {
-    return Math.min(Math.max(getTextWidth(value), 60), 550);
+    return Math.min(Math.max(getTextWidth(value), 60), 850);
   };
 
   return (
     <section style={{ margin: "2rem 0" }}>
       {data.sections.map((section, sIdx) => (
         <div key={sIdx}>
-          {section.prompt?.map((p, i) =>
-            typeof p === "string" ? (
+          {section.prompt?.map((text, i) =>
+            typeof text === "string" ? (
               <ul key={i}>
                 <li>
                   <p>
                     <strong>{data.title}.</strong>
                   </p>
                 </li>
-                {formatText(p, true)}
+                {formatText(text, true)}
               </ul>
             ) : null
           )}

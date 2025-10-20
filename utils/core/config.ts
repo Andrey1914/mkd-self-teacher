@@ -197,6 +197,63 @@ export const parseAnswerWords = (text: string): string[][] => {
 };
 
 /**
+ * Parses a response string containing options separated by '/' and optional parts in '()',
+ * into an array of all possible complete response options.
+ * Each option is an array of "word groups" (a word or several words separated by /).
+ * Parentheses () are preserved.
+ * @param text Response line.
+ * @returns Array of arrays of arrays of strings `string[][][]`.
+ * Outer array - all sentence variations.
+ * Middle array - words/word groups in a sentence.
+ * Inner array - alternatives for a single word/word group (separated by /).
+ * Example: "word1a/word1b (opt) word2" -> [[["word1a","word1b"], ["(opt)"], ["word2"]]]
+ * (In this case, there is only one complete variant, but the structure is ready for combinations)
+ * Example 2: "word1a/word1b word2a/word2b" ->
+ * [[["word1a"], ["word2a"]], [["word1a"], ["word2b"]],
+ * [["word1b"], ["word2a"]], [["word1b"], ["word2b"]]]
+ * Although code is not currently needed to generate combinations (Example 2),
+ * we will return a simple structure for now, sufficient for the current task.
+ */
+export const parseComplexAnswerString = (text: string): string[][][] => {
+  if (!text) return [];
+
+  // We split into "word groups", preserving spaces around brackets, if any
+  const wordGroups = text.match(/\S+\/\S+|\([^)]+\)|\S+/g) || [];
+
+  // For each group, we split by '/', keeping the brackets
+  const alternativesPerGroup: string[][] = wordGroups.map((group) => {
+    // Do not separate '/' if it is part of an optional block
+    if (group.startsWith("(") && group.endsWith(")")) {
+      return [group];
+    }
+    return group.split("/");
+  });
+
+  // --- Generating combinations (not yet required for your task, but here's how it could be done) ---
+  // Currently, since you're only using "/" *within* a single word/phrase,
+  // and not between different words, we don't need to generate combinations.
+  // We simply return a structure where each "word-group" has its alternatives.
+  // This will be an array with one element - an array of alternatives for each group.
+  return [alternativesPerGroup];
+
+  // If combinations were needed (for example, "иди/одона дома/куќи"):
+  /*
+  let results: string[][][] = [[]];
+  for (const alternatives of alternativesPerGroup) {
+      const newResults: string[][][] = [];
+      for (const result of results) {
+          for (const alternative of alternatives) {
+              newResults.push([...result, [alternative]]); // Store as string[] for consistency
+          }
+      }
+      results = newResults;
+  }
+  // This would return [[["иди"], ["дома"]], [["иди"], ["куќи"]], [["оди"], ["дома"]], [["оди"], ["куќи"]]]
+  // But for now, the simple structure above is sufficient.
+  */
+};
+
+/**
  * Checks if a piece of text is a word
  */
 export const isWord = (text: string): boolean => {
@@ -341,53 +398,84 @@ export const compareTexts = (
 
 export const getHighlightStyle = (
   userInput: string,
-  correctOptions: string[][],
+  correctAnswerString: string, // String of type "Option A / Option B (option)"
   options: NormalizeOptions = {}
 ): boolean => {
   const userWords = userInput.trim().split(/\s+/).filter(Boolean);
-  let userIdx = 0;
-  let correctIdx = 0;
 
-  while (userIdx < userWords.length && correctIdx < correctOptions.length) {
-    const normalizedUserWord = normalizeText(userWords[userIdx], {
-      trim: true,
-      lowercase: true,
-      ...options,
-    });
-    const currentCorrectGroup = correctOptions[correctIdx];
-    const isOptional =
-      currentCorrectGroup[0]?.startsWith("(") &&
-      currentCorrectGroup[0]?.endsWith(")");
-    const cleanCorrectOptions = currentCorrectGroup.map((opt) =>
-      opt.replace(/^\(|\)$/g, "")
-    );
+  // 1. Split the string into COMPLETE alternative answer options
+  const possibleAnswerStrings = correctAnswerString.split(" / "); // Split by " / "
 
-    if (cleanCorrectOptions.includes(normalizedUserWord)) {
-      userIdx++;
+  // 2. We check EVERY complete version
+  for (const variantString of possibleAnswerStrings) {
+    // 3. Split the CURRENT variant into "word groups" (keeping the parentheses)
+    // Use a simple regular expression for words and parentheses
+    const correctWordGroups = variantString.match(/\([^)]+\)|\S+/g) || [];
+
+    let userIdx = 0;
+    let correctIdx = 0;
+    let currentVariantMatches = true; // Match flag for the current variant
+
+    // 4. Run the algorithm with two pointers for THIS variant
+    while (
+      userIdx < userWords.length &&
+      correctIdx < correctWordGroups.length
+    ) {
+      const normalizedUserWord = normalizeText(userWords[userIdx], {
+        trim: true,
+        lowercase: true,
+        ...options,
+      });
+      // The current "word group" from the correct answer
+      const currentCorrectWordOrGroup = correctWordGroups[correctIdx];
+      const isOptional =
+        currentCorrectWordOrGroup.startsWith("(") &&
+        currentCorrectWordOrGroup.endsWith(")");
+      // Remove parentheses and normalize for comparison
+      const cleanCorrectWord = normalizeText(
+        currentCorrectWordOrGroup.replace(/^\(|\)$/g, ""),
+        {
+          trim: true,
+          lowercase: true,
+          ...options,
+        }
+      );
+
+      if (cleanCorrectWord === normalizedUserWord) {
+        userIdx++;
+        correctIdx++;
+      } else if (isOptional) {
+        correctIdx++;
+      } else {
+        currentVariantMatches = false; // Mismatch in this variant
+        break;
+      }
+    }
+
+    // 5. Checking for extra/missing words (as before)
+    if (userIdx < userWords.length) {
+      currentVariantMatches = false;
+    }
+    while (correctIdx < correctWordGroups.length) {
+      const currentCorrectWordOrGroup = correctWordGroups[correctIdx];
+      const isOptional =
+        currentCorrectWordOrGroup.startsWith("(") &&
+        currentCorrectWordOrGroup.endsWith(")");
+      if (!isOptional) {
+        currentVariantMatches = false;
+        break;
+      }
       correctIdx++;
-    } else if (isOptional) {
-      correctIdx++;
-    } else {
-      return false;
+    }
+
+    // 6. If AT LEAST ONE option matches, return true
+    if (currentVariantMatches) {
+      return true;
     }
   }
 
-  if (userIdx < userWords.length) {
-    return false;
-  }
-
-  while (correctIdx < correctOptions.length) {
-    const currentCorrectGroup = correctOptions[correctIdx];
-    const isOptional =
-      currentCorrectGroup[0]?.startsWith("(") &&
-      currentCorrectGroup[0]?.endsWith(")");
-    if (!isOptional) {
-      return false;
-    }
-    correctIdx++;
-  }
-
-  return true;
+  // 7. If none of the options match, return false
+  return false;
 };
 
 /**
@@ -400,15 +488,24 @@ export const getHighlightStyle = (
 
 export const generateHighlightedText = (
   userInput: string,
-  correctOptions: string[][],
+  correctAnswerString: string, // String of type "Option A / Option B (option)"
   options: NormalizeOptions = {}
 ): string => {
   const userWords = userInput.trim().split(/\s+/).filter(Boolean);
   const resultHtml: string[] = [];
 
+  // 1. Divide into full variants
+  const possibleAnswerStrings = correctAnswerString.split(" / ");
+
+  // 2. We take the FIRST option as a basis for the highlighting
+  const primaryVariantString = possibleAnswerStrings[0] || ""; // Take the first or empty string
+  const primaryCorrectWordGroups =
+    primaryVariantString.match(/\([^)]+\)|\S+/g) || [];
+
   let userIdx = 0;
   let correctIdx = 0;
 
+  // 3. Algorithm with two pointers for word-by-word highlighting (as before)
   while (userIdx < userWords.length) {
     const currentUserWord = userWords[userIdx];
     const normalizedUserWord = normalizeText(currentUserWord, {
@@ -418,7 +515,7 @@ export const generateHighlightedText = (
       ...options,
     });
 
-    if (correctIdx >= correctOptions.length) {
+    if (correctIdx >= primaryCorrectWordGroups.length) {
       resultHtml.push(
         `<span style="color: ${HIGHLIGHT_STYLES.INCORRECT_COLOR}; font-weight: 500;">${currentUserWord}</span>`
       );
@@ -426,36 +523,27 @@ export const generateHighlightedText = (
       continue;
     }
 
-    const currentCorrectGroup = correctOptions[correctIdx];
-
-    // 1. CHECK IF THE WORD IN THE ANSWER IS OPTIONAL
-    // We consider it optional if it is in parentheses.
+    const currentCorrectWordOrGroup = primaryCorrectWordGroups[correctIdx];
     const isOptional =
-      currentCorrectGroup[0]?.startsWith("(") &&
-      currentCorrectGroup[0]?.endsWith(")");
-
-    // 2. CLEAR THE ANSWER OPTIONS OF BRACKETS FOR COMPARISON
-    const cleanCorrectOptions = currentCorrectGroup.map((opt) =>
-      opt.replace(/^\(|\)$/g, "")
+      currentCorrectWordOrGroup.startsWith("(") &&
+      currentCorrectWordOrGroup.endsWith(")");
+    const cleanCorrectWord = normalizeText(
+      currentCorrectWordOrGroup.replace(/^\(|\)$/g, ""),
+      {
+        trim: true,
+        lowercase: true,
+        convertLatinToCyrillic: true,
+        ...options,
+      }
     );
 
-    // 3. BASIC LOGIC OF COMPARISON
-    if (cleanCorrectOptions.includes(normalizedUserWord)) {
-      // CASE A: The user's word matches the current word in the response.
-      // This is the correct word. Add it and move BOTH pointers.
+    if (cleanCorrectWord === normalizedUserWord) {
       resultHtml.push(currentUserWord);
       userIdx++;
       correctIdx++;
     } else if (isOptional) {
-      // CASE B: The word didn't match, BUT the current word in the answer was optional.
-      // This means the user skipped it. We move ONLY the correct answer pointer,
-      // and leave the user pointer in place so that on the next iteration,
-      // we can check the same user word against the next word in the answer.
       correctIdx++;
     } else {
-      // CASE C: The word didn't match, and it was REQUIRED.
-      // This is an error. Highlight the user's word and move BOTH pointers,
-      // to move on to checking the next word pair.
       resultHtml.push(
         `<span style="color: ${HIGHLIGHT_STYLES.INCORRECT_COLOR}; font-weight: 500;">${currentUserWord}</span>`
       );

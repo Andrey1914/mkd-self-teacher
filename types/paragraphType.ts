@@ -1,6 +1,11 @@
 export interface ParagraphProps {
   data: ParagraphSectionsProps;
   part?: "title" | "text" | "marked";
+
+  titleIconSrc?: string;
+  titleIconSize?: number;
+  subtitleIconSrc?: string;
+  subtitleIconSize?: number;
 }
 
 export interface ParagraphSectionsProps {

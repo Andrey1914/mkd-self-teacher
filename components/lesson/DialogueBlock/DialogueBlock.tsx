@@ -39,7 +39,12 @@ export const DialogueBlock = ({ data }: { data: DialogueBlockProps }) => {
           <div key={`section-${idx}`} className={sectionContainer}>
             <div className={header}>
               {title && typeof title === "object" && !Array.isArray(title) && (
-                <MultiFormatHeading as="h3" data={title} />
+                <MultiFormatHeading
+                  as="h2"
+                  data={title}
+                  iconSrc="/lecture.png"
+                  iconSize={62}
+                />
               )}
 
               {subtitle &&

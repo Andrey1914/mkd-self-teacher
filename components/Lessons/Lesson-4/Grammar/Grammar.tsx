@@ -14,7 +14,12 @@ const { definitenessCategoryTable } = grammarTables;
 export const Grammar = () => {
   return (
     <>
-      <Paragraph data={definitenessCategory} part="title" />
+      <Paragraph
+        data={definitenessCategory}
+        part="title"
+        titleIconSrc="/grammar.png"
+        titleIconSize={62}
+      />
       <DefinitenessCategoryTable data={definitenessCategoryTable} />
       <Paragraph data={definitenessCategory} part="text" />
       <Examples />

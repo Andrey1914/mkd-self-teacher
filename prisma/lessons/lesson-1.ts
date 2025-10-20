@@ -64,6 +64,10 @@ export const lesson1 = {
       type: "lecture",
       slug: "lesson-1",
       title: {
+        ru: "АЭРОПОРТ",
+        mkd: "АЕРОДРОМ",
+      },
+      subtitle: {
         ru: "ЛЕКСИКА",
         mkd: "ЛЕКСИКА",
       },
