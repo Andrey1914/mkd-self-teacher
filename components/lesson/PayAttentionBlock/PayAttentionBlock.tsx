@@ -1,5 +1,3 @@
-// "use client";
-
 import React from "react";
 import { PayAttentionBlockProps } from "@/types";
 import { formatText } from "@/utils";
@@ -10,7 +8,6 @@ export function PayAttentionBlock({ data }: { data: PayAttentionBlockProps }) {
   const { table, leftCell, rightCell, cell, flexList, gridContainer } =
     styles.payAttentionStyles;
 
-  // if (!data.sections || !data.sections) return null;
   if (!data?.sections?.length) return null;
 
   return (

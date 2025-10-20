@@ -44,7 +44,11 @@ export const Lecture = () => {
           td: getColorizedFirstTdClassName,
         }}
       />
-      <Paragraph data={personalPronouns} />
+      <Paragraph
+        data={personalPronouns}
+        titleIconSrc="/grammar.png"
+        titleIconSize={62}
+      />
       <PronounTable data={personalPronounsTable} />
       <Examples />
     </>

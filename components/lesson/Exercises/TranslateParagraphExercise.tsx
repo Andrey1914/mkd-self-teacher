@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useRef } from "react";
-import { formatText, exercisesUtils, highlightInput } from "@/utils";
+import { formatText, highlightInput, generateHighlightedText } from "@/utils";
 import { ExercisesProps } from "@/types";
 
 import { ControlButtons } from "./ControlButtons";
@@ -14,8 +14,6 @@ export const TranslateParagraphExercise = ({
   data: ExercisesProps;
 }) => {
   const section = data.sections[0];
-
-  const { generateHighlightedWord, parseAnswerWords } = exercisesUtils;
 
   const correctAnswer = section.content.answer?.[0] ?? "";
 
@@ -30,15 +28,13 @@ export const TranslateParagraphExercise = ({
 
   const editorRef = useRef<HTMLDivElement>(null);
 
-  const correctWordOptions = parseAnswerWords(correctAnswer);
-
   const handleCheck = () => {
     setChecked(true);
     setShowAnswer(false);
     if (editorRef.current) {
-      editorRef.current.innerHTML = generateHighlightedWord(
+      editorRef.current.innerHTML = generateHighlightedText(
         input,
-        correctWordOptions
+        correctAnswer
       );
     }
   };
@@ -94,10 +90,14 @@ export const TranslateParagraphExercise = ({
   return (
     <section style={{ marginBottom: "2rem" }}>
       {section.prompt?.map((text, i) => (
-        <p key={i} style={{ marginBottom: "1rem" }}>
-          <strong>{data.title}. </strong>
-          {formatText(text)}
-        </p>
+        <ul key={i} style={{ marginBottom: "1rem" }}>
+          <li>
+            <p>
+              <strong>{data.title}. </strong>
+            </p>
+          </li>
+          {formatText(text, true)}
+        </ul>
       ))}
 
       <div style={{ marginBottom: "2rem" }}>

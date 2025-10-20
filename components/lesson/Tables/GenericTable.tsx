@@ -1,5 +1,3 @@
-// "use client";
-
 import React from "react";
 
 import { MultiFormatHeading } from "@/components/lesson/Heading";
@@ -10,6 +8,8 @@ export const GenericTable = ({
   data,
   lesson,
   classNames = {},
+  titleIconSrc,
+  titleIconSize,
 }: GenericTableProps) => {
   const rows =
     data?.content.words ||
@@ -31,11 +31,26 @@ export const GenericTable = ({
     <div style={{ padding: "1rem 0 2rem 0", overflowX: "auto" }}>
       {title &&
         (typeof title === "string" ? (
-          <MultiFormatHeading as="h2" data={title} />
+          <MultiFormatHeading
+            as="h2"
+            data={title}
+            iconSrc={titleIconSrc}
+            iconSize={titleIconSize}
+          />
         ) : Array.isArray(title) ? (
-          <MultiFormatHeading as="h2" data={title} />
+          <MultiFormatHeading
+            as="h2"
+            data={title}
+            iconSrc={titleIconSrc}
+            iconSize={titleIconSize}
+          />
         ) : typeof title === "object" && title !== null ? (
-          <MultiFormatHeading as="h2" data={title} />
+          <MultiFormatHeading
+            as="h2"
+            data={title}
+            iconSrc={titleIconSrc}
+            iconSize={titleIconSize}
+          />
         ) : null)}
 
       {subtitle && <MultiFormatHeading as="h3" data={subtitle} />}

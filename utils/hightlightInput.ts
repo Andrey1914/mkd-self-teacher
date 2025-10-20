@@ -22,18 +22,18 @@
 // };
 
 //---------------------------------------------------------------
-import { getHighlightStyle, parseAnswerWords } from "./core";
+
+import { getHighlightStyle } from "./core";
 import { HIGHLIGHT_STYLES } from "@/constants";
 
 export const highlightInput = (
   input: string,
-  correct: string,
+  correctAnswerString: string,
   show: boolean
 ) => {
   if (!show || input.trim() === "") return {};
 
-  const correctOptions = parseAnswerWords(correct);
-  const isCorrect = getHighlightStyle(input, correctOptions, {
+  const isCorrect = getHighlightStyle(input, correctAnswerString, {
     convertLatinToCyrillic: true,
   });
 

@@ -3,7 +3,10 @@ import { TablesProps } from "@/types";
 export const example1: TablesProps = {
   slug: "lesson-5",
   type: "example-1",
-  title: { ru: `ГРАММАТИКА`, mkd: `<span>ГРАМАТИКА</span>` },
+  title: {
+    ru: `ГРАММАТИКА`,
+    mkd: `ГРАМАТИКА`,
+  },
   subtitle: "ПРЯМОЙ ОБЪЕКТ",
   content: {
     text: `Прямой объект — это объект, на который направлено действие. В руссокм языке выражается винительным падежом и отвечает на вопросы

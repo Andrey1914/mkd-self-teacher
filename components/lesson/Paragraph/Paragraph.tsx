@@ -8,7 +8,12 @@ import { formatText } from "@/utils";
 
 import { styles } from "./styles";
 
-export const Paragraph = ({ data, part }: ParagraphProps) => {
+export const Paragraph = ({
+  data,
+  part,
+  titleIconSrc,
+  titleIconSize,
+}: ParagraphProps) => {
   const { title, subtitle, intro, content } = data;
 
   const { paragraph, markedParagraph, markedItem, markedList } =
@@ -48,11 +53,26 @@ export const Paragraph = ({ data, part }: ParagraphProps) => {
         {title && (
           <>
             {typeof title === "string" ? (
-              <MultiFormatHeading as="h2" data={title} />
+              <MultiFormatHeading
+                as="h2"
+                data={title}
+                iconSrc={titleIconSrc}
+                iconSize={titleIconSize}
+              />
             ) : Array.isArray(title) ? (
-              <MultiFormatHeading as="h2" data={title} />
+              <MultiFormatHeading
+                as="h2"
+                data={title}
+                iconSrc={titleIconSrc}
+                iconSize={titleIconSize}
+              />
             ) : (
-              <MultiFormatHeading as="h2" data={title} />
+              <MultiFormatHeading
+                as="h2"
+                data={title}
+                iconSrc={titleIconSrc}
+                iconSize={titleIconSize}
+              />
             )}
           </>
         )}
@@ -97,11 +117,26 @@ export const Paragraph = ({ data, part }: ParagraphProps) => {
         {title && (
           <>
             {typeof title === "string" ? (
-              <MultiFormatHeading as="h2" data={title} />
+              <MultiFormatHeading
+                as="h2"
+                data={title}
+                iconSrc={titleIconSrc}
+                iconSize={titleIconSize}
+              />
             ) : Array.isArray(title) ? (
-              <MultiFormatHeading as="h2" data={title} />
+              <MultiFormatHeading
+                as="h2"
+                data={title}
+                iconSrc={titleIconSrc}
+                iconSize={titleIconSize}
+              />
             ) : (
-              <MultiFormatHeading as="h2" data={title} />
+              <MultiFormatHeading
+                as="h2"
+                data={title}
+                iconSrc={titleIconSrc}
+                iconSize={titleIconSize}
+              />
             )}
           </>
         )}

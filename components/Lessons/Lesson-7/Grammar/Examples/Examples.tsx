@@ -23,7 +23,11 @@ const { payAttention1 } = payAttentionsLesson7;
 export const Examples = () => {
   return (
     <>
-      <ExamplesTable data={example1} />
+      <ExamplesTable
+        data={example1}
+        titleIconSrc="/grammar.png"
+        titleIconSize={62}
+      />
       <ExamplesTable data={example2} />
       <ExamplesTable data={example3} />
       <ExamplesTable data={example4} />

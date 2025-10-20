@@ -6,7 +6,15 @@ import { formatText } from "@/utils";
 
 import { styles } from "./styles";
 
-export const ExamplesTable = ({ data }: { data: TablesProps }) => {
+export const ExamplesTable = ({
+  data,
+  titleIconSrc,
+  titleIconSize,
+}: {
+  data: TablesProps;
+  titleIconSrc?: string;
+  titleIconSize?: number;
+}) => {
   const { title, subtitle, content } = data;
 
   const { examples, paragraph, flexContainer, gridContainer } = styles.examples;
@@ -30,7 +38,14 @@ export const ExamplesTable = ({ data }: { data: TablesProps }) => {
 
   return (
     <>
-      {title && <MultiFormatHeading as="h2" data={title} />}
+      {title && (
+        <MultiFormatHeading
+          as="h2"
+          data={title}
+          iconSrc={titleIconSrc}
+          iconSize={titleIconSize}
+        />
+      )}
 
       {subtitle && <MultiFormatHeading as="h3" data={subtitle} />}
 

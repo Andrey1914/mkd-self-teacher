@@ -12,6 +12,11 @@ export interface GenericTableProps {
     td?: string | ((cellIndex: number, rowIndex: number) => string);
     text?: string;
   };
+
+  titleIconSrc?: string;
+  titleIconSize?: number;
+  subtitleIconSrc?: string;
+  subtitleIconSize?: number;
 }
 
 export interface TablesProps {

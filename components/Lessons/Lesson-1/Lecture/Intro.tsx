@@ -5,7 +5,7 @@ import { lesson1 } from "@/prisma/lessons/lesson-1";
 export const Intro = () => {
   return (
     <>
-      <HeadingLesson lessonData={lesson1} />
+      <HeadingLesson lessonData={lesson1} TitleIconSrc="/airport.png" />
 
       {lesson1.sections?.map((section, i) => (
         <section key={i} style={{ marginBottom: "2rem" }}>

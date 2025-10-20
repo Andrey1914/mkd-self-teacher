@@ -22,6 +22,8 @@ export const Imperfect = () => {
           th: thColorizedClassName,
           td: tdColorizedClassName,
         }}
+        titleIconSrc="/grammar.png"
+        titleIconSize={62}
       />
     </>
   );
