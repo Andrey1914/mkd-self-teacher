@@ -1,2 +1,2 @@
 export { parseAnswerWords } from "./parseAnswerWords";
-export { generateHighlightedWord } from "./generateHighlightedWord";
+// export { generateHighlightedWord } from "./generateHighlightedWord";
