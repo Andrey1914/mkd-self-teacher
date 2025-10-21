@@ -25,18 +25,18 @@
 //     .join(" ");
 // };
 
-import { generateHighlightedText } from "../../core";
+// import { generateHighlightedText } from "../../core";
 
-/**
- * Generates an HTML string with incorrect words highlighted.
- */
-export const generateHighlightedWord = (
-  userInput: string,
-  correctOptions: string[][]
-): string => {
-  return generateHighlightedText(userInput, correctOptions, {
-    trim: true,
-    lowercase: true,
-    convertLatinToCyrillic: true,
-  });
-};
+// /**
+//  * Generates an HTML string with incorrect words highlighted.
+//  */
+// export const generateHighlightedWord = (
+//   userInput: string,
+//   correctOptions: string[][]
+// ): string => {
+//   return generateHighlightedText(userInput, correctOptions, {
+//     trim: true,
+//     lowercase: true,
+//     convertLatinToCyrillic: true,
+//   });
+// };
