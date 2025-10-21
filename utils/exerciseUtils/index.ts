@@ -3,7 +3,7 @@ export { determineExerciseConfig } from "./paragraphExercise";
 export { isDeepEqual } from "./isDeepEqual";
 export {
   parseAnswerWords,
-  generateHighlightedWord,
+  // generateHighlightedWord,
 } from "./translateParagraph";
 export {
   initializeFillInState,
