@@ -1,10 +1,7 @@
 export { parseHighlightExercise } from "./parseHighlightExercise";
 export { determineExerciseConfig } from "./paragraphExercise";
 export { isDeepEqual } from "./isDeepEqual";
-export {
-  parseAnswerWords,
-  // generateHighlightedWord,
-} from "./translateParagraph";
+export { parseAnswerWords } from "./translateParagraph";
 export {
   initializeFillInState,
   getCorrectFillInAnswers,

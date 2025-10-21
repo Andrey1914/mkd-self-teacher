@@ -1,13 +1,10 @@
 import type { Sentence, AnswerSet } from "@/types";
 
 /**
- * Подготавливает массив предложений для отображения в FillInExercise.
- * Если есть несколько наборов ответов, функция "расшифровывает" нужный набор
- * и заменяет имена на соответствующие местоимения.
- * @param sentences Исходный массив предложений.
- * @param answerSet Объект с описанием наборов ответов.
- * @param activeIndex Индекс активного набора ответов.
- * @returns Обработанный массив предложений, готовый к рендерингу.
+ * @param sentences
+ * @param answerSet
+ * @param activeIndex
+ * @returns
  */
 export const prepareActiveSentences = (
   sentences: Sentence[] | undefined,
@@ -21,9 +18,8 @@ export const prepareActiveSentences = (
 
     return sentences?.map((sentence) => ({
       ...sentence,
-      // Заменяем "Дејан" (с возможным ударением) на текущее местоимение/имя
-      mkd: sentence.mkd?.replace(/Де\*?jан/g, pronoun) ?? "",
-      // "Расшифровываем" строку ответов, выбирая нужный по индексу
+      // Заменяем "Дејан", "Жена ми" (с возможным ударением) на текущее местоимение/имя
+      mkd: sentence.mkd?.replace(/Де\*?jан|Же\*?на ми/g, pronoun) ?? "",
       answer: Array.isArray(sentence.answer)
         ? sentence.answer.map(
             (encodedString) => encodedString.split("/")[activeIndex] ?? ""

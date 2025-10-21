@@ -19,7 +19,7 @@ export const Nouns = () => {
       <Paragraph
         data={genderOfNouns}
         titleIconSrc="/grammar.png"
-        titleIconSize={62}
+        // titleIconSize={62}
       />
       <Paragraph data={pluralOfNouns} />
       <Paragraph data={feminineNouns} />

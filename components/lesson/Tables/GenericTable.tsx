@@ -9,8 +9,8 @@ export const GenericTable = ({
   lesson,
   classNames = {},
   titleIconSrc,
-  titleIconSize,
-}: GenericTableProps) => {
+}: // titleIconSize,
+GenericTableProps) => {
   const rows =
     data?.content.words ||
     data?.content.rows ||
@@ -35,21 +35,21 @@ export const GenericTable = ({
             as="h2"
             data={title}
             iconSrc={titleIconSrc}
-            iconSize={titleIconSize}
+            // iconSize={titleIconSize}
           />
         ) : Array.isArray(title) ? (
           <MultiFormatHeading
             as="h2"
             data={title}
             iconSrc={titleIconSrc}
-            iconSize={titleIconSize}
+            // iconSize={titleIconSize}
           />
         ) : typeof title === "object" && title !== null ? (
           <MultiFormatHeading
             as="h2"
             data={title}
             iconSrc={titleIconSrc}
-            iconSize={titleIconSize}
+            // iconSize={titleIconSize}
           />
         ) : null)}
 

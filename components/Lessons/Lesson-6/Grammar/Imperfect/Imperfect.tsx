@@ -23,7 +23,7 @@ export const Imperfect = () => {
           td: tdColorizedClassName,
         }}
         titleIconSrc="/grammar.png"
-        titleIconSize={62}
+        // titleIconSize={62}
       />
     </>
   );
