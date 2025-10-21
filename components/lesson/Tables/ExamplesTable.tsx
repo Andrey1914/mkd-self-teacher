@@ -9,8 +9,8 @@ import { styles } from "./styles";
 export const ExamplesTable = ({
   data,
   titleIconSrc,
-  titleIconSize,
-}: {
+}: // titleIconSize,
+{
   data: TablesProps;
   titleIconSrc?: string;
   titleIconSize?: number;
@@ -43,7 +43,7 @@ export const ExamplesTable = ({
           as="h2"
           data={title}
           iconSrc={titleIconSrc}
-          iconSize={titleIconSize}
+          // iconSize={titleIconSize}
         />
       )}
 

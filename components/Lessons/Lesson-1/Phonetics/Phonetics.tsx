@@ -17,7 +17,7 @@ export const Phonetics = () => {
         data={phonetics}
         part="title"
         titleIconSrc="/phonetics.png"
-        titleIconSize={62}
+        // titleIconSize={62}
       />
       <AlphabetTable />
       <Paragraph data={phonetics} part="text" />

@@ -3,6 +3,8 @@ import React from "react";
 import Image from "next/image";
 import { TitleObject } from "@/types";
 
+import { styles } from "./styles";
+
 type HeadingData = string | string[] | TitleObject;
 
 interface MultiFormatHeadingProps
@@ -17,10 +19,13 @@ export const MultiFormatHeading = ({
   data,
   as: Tag = "h2",
   iconSrc,
-  iconSize = 24,
+  iconSize = 48,
   style: propStyle,
+  className: propClassName,
   ...restProps
 }: MultiFormatHeadingProps) => {
+  const { responsiveIcon } = styles.adaptiveIcons;
+
   if (!data) return null;
 
   const iconContainerStyle: React.CSSProperties = {
@@ -30,15 +35,20 @@ export const MultiFormatHeading = ({
 
   if (typeof data === "string") {
     const combinedStyle = { ...(iconSrc && iconContainerStyle), ...propStyle };
+    const combinedClassName = `${propClassName || ""}`.trim();
+
     return (
-      <Tag {...restProps} style={combinedStyle}>
+      <Tag {...restProps} style={combinedStyle} className={combinedClassName}>
         {iconSrc && (
           <Image
             src={iconSrc}
             alt=""
             width={iconSize}
             height={iconSize}
-            style={{ flexShrink: 0 }}
+            className={responsiveIcon}
+            style={
+              { "--icon-size-prop": `${iconSize}px` } as React.CSSProperties
+            }
           />
         )}
         {formatText(data)}
@@ -48,15 +58,20 @@ export const MultiFormatHeading = ({
 
   if (Array.isArray(data)) {
     const combinedStyle = { ...(iconSrc && iconContainerStyle), ...propStyle };
+    const combinedClassName = `${propClassName || ""}`.trim();
+
     return (
-      <Tag {...restProps} style={combinedStyle}>
+      <Tag {...restProps} style={combinedStyle} className={combinedClassName}>
         {iconSrc && (
           <Image
             src={iconSrc}
             alt=""
             width={iconSize}
             height={iconSize}
-            style={{ flexShrink: 0 }}
+            className={responsiveIcon}
+            style={
+              { "--icon-size-prop": `${iconSize}px` } as React.CSSProperties
+            }
           />
         )}
         {formatText(data.join(", "))}
@@ -73,17 +88,20 @@ export const MultiFormatHeading = ({
     ...propStyle,
   };
 
+  const combinedClassName = `${propClassName || ""}`.trim();
+
   const isH1 = Tag === "h1";
 
   return (
-    <Tag {...restProps} style={objectStyle}>
+    <Tag {...restProps} style={objectStyle} className={combinedClassName}>
       {iconSrc && (
         <Image
           src={iconSrc}
           alt=""
           width={iconSize}
           height={iconSize}
-          style={{ flexShrink: 0 }}
+          className={responsiveIcon}
+          style={{ "--icon-size-prop": `${iconSize}px` } as React.CSSProperties}
         />
       )}
 
@@ -101,55 +119,3 @@ export const MultiFormatHeading = ({
     </Tag>
   );
 };
-
-// import { formatText } from "@/utils";
-// import React from "react";
-// import { TitleObject } from "@/types";
-
-// type HeadingData = string | string[] | TitleObject;
-
-// interface MultiFormatHeadingProps
-//   extends Omit<React.HTMLAttributes<HTMLElement>, "data" | "as"> {
-//   data?: HeadingData;
-//   as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "span";
-// }
-
-// export const MultiFormatHeading = ({
-//   data,
-//   as: Tag = "h2",
-//   ...restProps
-// }: MultiFormatHeadingProps) => {
-//   if (!data) return null;
-
-//   if (typeof data === "string") {
-//     return <Tag {...restProps}>{formatText(data)}</Tag>;
-//   }
-
-//   if (Array.isArray(data)) {
-//     return <Tag {...restProps}>{formatText(data.join(", "))}</Tag>;
-//   }
-
-//   const isH1 = Tag === "h1";
-
-//   const style: React.CSSProperties = {
-//     display: "flex",
-//     flexDirection: "column",
-//     ...(restProps.style || {}),
-//   };
-
-//   return (
-//     <Tag {...restProps} style={style}>
-//       {isH1 ? (
-//         <>
-//           {data.ru && <span>{formatText(data.ru)}</span>}
-//           {data.mkd && <span>{formatText(data.mkd)}</span>}
-//         </>
-//       ) : (
-//         <>
-//           {data.ru && formatText(data.ru)}
-//           {data.mkd && <span>{formatText(data.mkd)}</span>}
-//         </>
-//       )}
-//     </Tag>
-//   );
-// };

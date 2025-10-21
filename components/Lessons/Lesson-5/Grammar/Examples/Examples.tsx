@@ -32,7 +32,7 @@ export const Examples = () => {
       <ExamplesTable
         data={example1}
         titleIconSrc="/grammar.png"
-        titleIconSize={62}
+        // titleIconSize={62}
       />
       <ExamplesTable data={example2} />
       <ExamplesTable data={example3} />

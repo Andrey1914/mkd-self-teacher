@@ -26,7 +26,7 @@ export const FormsOfPersonalPronouns = () => {
           th: getColorizedThClassName,
         }}
         titleIconSrc="/grammar.png"
-        titleIconSize={62}
+        // titleIconSize={62}
       />
       <Paragraph data={intro} />
     </>

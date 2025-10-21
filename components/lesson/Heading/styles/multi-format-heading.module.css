@@ -1,0 +1,14 @@
+.responsiveIcon {
+  --icon-min-size: 48px;
+  --icon-viewport-factor: 5vw;
+
+  width: clamp(
+    var(--icon-min-size),
+    var(--icon-viewport-factor),
+    var(--icon-size-prop)
+  );
+
+  height: auto;
+
+  flex-shrink: 0;
+}

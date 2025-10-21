@@ -12,8 +12,8 @@ export const Paragraph = ({
   data,
   part,
   titleIconSrc,
-  titleIconSize,
-}: ParagraphProps) => {
+}: // titleIconSize,
+ParagraphProps) => {
   const { title, subtitle, intro, content } = data;
 
   const { paragraph, markedParagraph, markedItem, markedList } =
@@ -57,21 +57,21 @@ export const Paragraph = ({
                 as="h2"
                 data={title}
                 iconSrc={titleIconSrc}
-                iconSize={titleIconSize}
+                // iconSize={titleIconSize}
               />
             ) : Array.isArray(title) ? (
               <MultiFormatHeading
                 as="h2"
                 data={title}
                 iconSrc={titleIconSrc}
-                iconSize={titleIconSize}
+                // iconSize={titleIconSize}
               />
             ) : (
               <MultiFormatHeading
                 as="h2"
                 data={title}
                 iconSrc={titleIconSrc}
-                iconSize={titleIconSize}
+                // iconSize={titleIconSize}
               />
             )}
           </>
@@ -121,21 +121,21 @@ export const Paragraph = ({
                 as="h2"
                 data={title}
                 iconSrc={titleIconSrc}
-                iconSize={titleIconSize}
+                // iconSize={titleIconSize}
               />
             ) : Array.isArray(title) ? (
               <MultiFormatHeading
                 as="h2"
                 data={title}
                 iconSrc={titleIconSrc}
-                iconSize={titleIconSize}
+                // iconSize={titleIconSize}
               />
             ) : (
               <MultiFormatHeading
                 as="h2"
                 data={title}
                 iconSrc={titleIconSrc}
-                iconSize={titleIconSize}
+                // iconSize={titleIconSize}
               />
             )}
           </>
