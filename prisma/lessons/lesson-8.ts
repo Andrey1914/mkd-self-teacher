@@ -1,5 +1,5 @@
 // import { vocabulary } from "@/prisma/lessons/vocabulary/lesson-8";
-// import { dialogueBlock } from "@/prisma/lessons/dialogues/lesson-8";
+import { dialogueBlock } from "@/prisma/lessons/dialogues/lesson-8";
 // import { lectureLesson8 } from "@/prisma/lessons/paragraph";
 // import { examples } from "@/prisma/lessons/tables";
 // import { payAttentionsLesson8 } from "@/prisma/lessons/pay-attention";
@@ -53,7 +53,7 @@ export const lesson8 = {
   ],
   //   paragraph: [intro],
   //   vocabulary: [vocabulary],
-  //   dialogues: [dialogueBlock],
+  dialogues: [dialogueBlock],
   //   tables: [
   // { ...example1, slug: "lesson-8" },
   // { ...example2, slug: "lesson-8" },
