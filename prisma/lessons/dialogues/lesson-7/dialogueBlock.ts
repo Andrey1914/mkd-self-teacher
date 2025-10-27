@@ -10,10 +10,6 @@ export const dialogueBlock: DialogueBlockProps = {
         mkd: "ДИЈАЛОГ",
       },
       content: {
-        // description: {
-        //   mkd: `На*таша и И*ван дискути*раат ка*ко да сти*гнат до О*хрид.`,
-        //   ru: `Наташа и Иван обсуждают, как добраться до Охрида.`,
-        // },
         dialogue: [
           {
             speaker: {

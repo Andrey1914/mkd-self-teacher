@@ -1,6 +1,6 @@
 import React from "react";
 
-// import { Apartments } from "./Dialogue";
+import { Dialogue } from "./Dialogue";
 import { Intro } from "./Intro";
 // import { Paragraph } from "@/components/lesson/Paragraph";
 // import { GenericTable } from "@/components/lesson/Tables";
@@ -20,7 +20,7 @@ export const Lecture = () => {
   return (
     <>
       <Intro />
-      {/* <Apartments /> */}
+      <Dialogue />
       {/* <Paragraph data={intro} /> */}
       {/* <GenericTable
         lesson={vocabulary}
