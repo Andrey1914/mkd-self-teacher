@@ -80,9 +80,23 @@ export const FillInExercise = ({ data }: { data: ExercisesProps }) => {
       requestAnimationFrame(() => {
         const target = (activeSentences ?? sentences) || [];
 
-        const { correctInputs, correctFlags } = getCorrectFillInAnswers(target);
+        const { correctInputs: rawCorrectInputs, correctFlags } =
+          getCorrectFillInAnswers(target);
 
-        setInputs(correctInputs);
+        const cleanCorrectInputs = rawCorrectInputs.map((sentenceAnswers) => {
+          return sentenceAnswers.map((answer) => {
+            if (typeof answer === "string") {
+              return answer
+                .replace(/\*\*(.*?)\*\*/g, "$1")
+                .replace(/\((.*?)\)/g, "$1")
+                .replace(/\s+/g, " ")
+                .trim();
+            }
+            return answer;
+          });
+        });
+
+        setInputs(cleanCorrectInputs);
         setIsAutoFilled(correctFlags);
         setChecked(false);
         setShowAnswers(true);
