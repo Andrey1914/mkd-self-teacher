@@ -2,8 +2,8 @@ import { vocabulary } from "@/prisma/lessons/vocabulary/lesson-8";
 import { dialogueBlock } from "@/prisma/lessons/dialogues/lesson-8";
 import { lectureLesson8, grammarLesson8 } from "@/prisma/lessons/paragraph";
 import { examples } from "@/prisma/lessons/tables";
-// import { payAttentionsLesson8 } from "@/prisma/lessons/pay-attention";
-// import { exercisesLesson8 } from "@/prisma/lessons/exercises";
+import { payAttentionsLesson8 } from "@/prisma/lessons/pay-attention";
+import { exercisesLesson8 } from "@/prisma/lessons/exercises";
 
 const { intro } = lectureLesson8;
 const { imperative } = grammarLesson8;
@@ -19,18 +19,18 @@ const {
   example8,
 } = examplesLesson8;
 
-// const { payAttention1 } = payAttentionsLesson8;
+const { payAttention1 } = payAttentionsLesson8;
 
-// const {
-//   exercise1,
-//   exercise2,
-//   exercise3,
-//   exercise4,
-//   exercise5,
-//   exercise6,
-//   exercise7,
-//   exercise8,
-// } = exercisesLesson8;
+const {
+  exercise1,
+  exercise2,
+  //   exercise3,
+  //   exercise4,
+  //   exercise5,
+  //   exercise6,
+  //   exercise7,
+  //   exercise8,
+} = exercisesLesson8;
 
 export const lesson8 = {
   title: {
@@ -65,16 +65,16 @@ export const lesson8 = {
     { ...example7, slug: "lesson-8" },
     { ...example8, slug: "lesson-8" },
   ],
-  //   payAttention: [payAttention1],
+  payAttention: [payAttention1],
 
-  //   exercises: [
-  //     exercise1,
-  //     exercise2,
-  //     exercise3,
-  //     exercise4,
-  //     exercise5,
-  //     exercise6,
-  //     exercise7,
-  //     exercise8,
-  //   ],
+  exercises: [
+    exercise1,
+    exercise2,
+    //     exercise3,
+    //     exercise4,
+    //     exercise5,
+    //     exercise6,
+    //     exercise7,
+    //     exercise8,
+  ],
 };

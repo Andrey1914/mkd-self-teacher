@@ -45,9 +45,13 @@ export const TranslateParagraphExercise = ({
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         const cleanAnswer = correctAnswer
-          .replace(/[/«»]|<em>|<\/em>/g, " ")
+          .replace(/\*\*(.*?)\*\*/g, "$1")
+          // 2. Remove optional (markers **), leaving the content
+          .replace(/\((.*?)\)/g, "$1")
+          // 3. We remove any extra spaces that may remain.
           .replace(/\s+/g, " ")
           .trim();
+
         setInput(cleanAnswer);
         setChecked(false);
         setShowAnswer(true);
