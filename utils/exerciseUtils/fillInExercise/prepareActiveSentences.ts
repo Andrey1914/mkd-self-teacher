@@ -18,8 +18,9 @@ export const prepareActiveSentences = (
 
     return sentences?.map((sentence) => ({
       ...sentence,
-      // Заменяем "Дејан", "Жена ми" (с возможным ударением) на текущее местоимение/имя
-      mkd: sentence.mkd?.replace(/Де\*?jан|Же\*?на ми/g, pronoun) ?? "",
+      // Заменяем "Дејан", "Жена ми", "Филип" (с возможным ударением) на текущее местоимение/имя
+      mkd:
+        sentence.mkd?.replace(/Де\*?jан|Же\*?на ми|Фи\*?лип/g, pronoun) ?? "",
       answer: Array.isArray(sentence.answer)
         ? sentence.answer.map(
             (encodedString) => encodedString.split("/")[activeIndex] ?? ""
