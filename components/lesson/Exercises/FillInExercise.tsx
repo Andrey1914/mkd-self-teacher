@@ -247,7 +247,14 @@ export const FillInExercise = ({ data }: { data: ExercisesProps }) => {
             />
           )}
           {section.content?.text && (
-            <p style={{ textAlign: "center" }}>
+            <p
+              style={{
+                textAlign: "center",
+                width: "65%",
+                margin: "0 auto",
+                textIndent: 0,
+              }}
+            >
               {formatText(section.content.text)}
             </p>
           )}
