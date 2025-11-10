@@ -194,11 +194,20 @@ export const FillInExercise = ({ data }: { data: ExercisesProps }) => {
     inputRefs.current.forEach((ref) => {
       if (ref) {
         ref.style.setProperty("--input-width", "60px");
+        if (ref.innerText !== undefined) {
+          ref.innerText = "";
+        }
+        ref.removeAttribute("style");
       }
     });
 
-    setInputs([]);
-    setIsAutoFilled([]);
+    const target = (activeSentences ?? sentences) || [];
+    const { initialInputs, initialFlags } = initializeFillInState(target);
+
+    // setInputs([]);
+    // setIsAutoFilled([]);
+    setInputs(initialInputs);
+    setIsAutoFilled(initialFlags);
     setChecked(false);
     setShowAnswers(false);
 
@@ -248,6 +257,7 @@ export const FillInExercise = ({ data }: { data: ExercisesProps }) => {
           )}
           {section.content?.text && (
             <p
+              lang="ru"
               style={{
                 textAlign: "center",
                 width: "65%",
@@ -299,6 +309,7 @@ export const FillInExercise = ({ data }: { data: ExercisesProps }) => {
                                     exit="exit"
                                     variants={inputVariants}
                                     style={{
+                                      whiteSpace: "nowrap",
                                       width: `${getInputWidth(
                                         inputs[idx]?.[i] ?? ""
                                       )}px`,
@@ -329,6 +340,7 @@ export const FillInExercise = ({ data }: { data: ExercisesProps }) => {
                                     exit="exit"
                                     variants={inputVariants}
                                     style={{
+                                      whiteSpace: "nowrap",
                                       width: `${getInputWidth(
                                         inputs[idx]?.[i] ?? ""
                                       )}px`,
