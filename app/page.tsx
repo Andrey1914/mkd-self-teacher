@@ -57,7 +57,7 @@ export default function Home() {
             slidesPerView={1}
             allowTouchMove
             initialSlide={activeIndex}
-            style={{ paddingTop: "10px" }}
+            style={{ padding: "10px 5px" }}
           >
             {lessons.map((lesson, index) => (
               <SwiperSlide key={index}>{lesson.component}</SwiperSlide>
