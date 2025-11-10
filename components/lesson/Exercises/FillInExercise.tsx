@@ -286,70 +286,72 @@ export const FillInExercise = ({ data }: { data: ExercisesProps }) => {
                             </span>
                             {unstyledSuffix}
 
-                            {sentence.answer && i < sentence.answer.length && (
-                              <AnimatePresence>
-                                {!isAutoFilled[idx]?.[i] && !showAnswers ? (
-                                  <motion.div
-                                    layout
-                                    ref={(el) => {
-                                      inputRefs.current[idx * 10 + i] = el;
-                                    }}
-                                    id={`input-${sIdx}-${idx}-${i}`}
-                                    className={fillInInput}
-                                    contentEditable={true}
-                                    onInput={(e) =>
-                                      handleChange(
-                                        e.currentTarget.innerText,
-                                        idx,
-                                        i
-                                      )
-                                    }
-                                    initial="hidden"
-                                    animate="visible"
-                                    exit="exit"
-                                    variants={inputVariants}
-                                    style={{
-                                      whiteSpace: "nowrap",
-                                      width: `${getInputWidth(
-                                        inputs[idx]?.[i] ?? ""
-                                      )}px`,
+                            {sentence.answer &&
+                              i < sentence.answer.length &&
+                              i < (parts?.length ?? 0) - 1 && (
+                                <AnimatePresence>
+                                  {!isAutoFilled[idx]?.[i] && !showAnswers ? (
+                                    <motion.div
+                                      layout
+                                      ref={(el) => {
+                                        inputRefs.current[idx * 10 + i] = el;
+                                      }}
+                                      id={`input-${sIdx}-${idx}-${i}`}
+                                      className={fillInInput}
+                                      contentEditable={true}
+                                      onInput={(e) =>
+                                        handleChange(
+                                          e.currentTarget.innerText,
+                                          idx,
+                                          i
+                                        )
+                                      }
+                                      initial="hidden"
+                                      animate="visible"
+                                      exit="exit"
+                                      variants={inputVariants}
+                                      style={{
+                                        whiteSpace: "nowrap",
+                                        width: `${getInputWidth(
+                                          inputs[idx]?.[i] ?? ""
+                                        )}px`,
 
-                                      ...(checked && !showAnswers
-                                        ? highlightInput(
-                                            inputs[idx]?.[i] ?? "",
-                                            sentence.answer[i],
-                                            true
-                                          )
-                                        : {}),
-                                    }}
-                                  />
-                                ) : (
-                                  <motion.div
-                                    layout
-                                    ref={(el) => {
-                                      inputRefs.current[idx * 10 + i] = el;
-                                    }}
-                                    id={`input-${sIdx}-${idx}-${i}`}
-                                    className={fillInInput}
-                                    contentEditable={false}
-                                    dangerouslySetInnerHTML={{
-                                      __html: inputs[idx]?.[i] ?? "",
-                                    }}
-                                    initial="hidden"
-                                    animate="visible"
-                                    exit="exit"
-                                    variants={inputVariants}
-                                    style={{
-                                      whiteSpace: "nowrap",
-                                      width: `${getInputWidth(
-                                        inputs[idx]?.[i] ?? ""
-                                      )}px`,
-                                      willChange: "transform, opacity",
-                                    }}
-                                  />
-                                )}
-                              </AnimatePresence>
-                            )}
+                                        ...(checked && !showAnswers
+                                          ? highlightInput(
+                                              inputs[idx]?.[i] ?? "",
+                                              sentence.answer[i],
+                                              true
+                                            )
+                                          : {}),
+                                      }}
+                                    />
+                                  ) : (
+                                    <motion.div
+                                      layout
+                                      ref={(el) => {
+                                        inputRefs.current[idx * 10 + i] = el;
+                                      }}
+                                      id={`input-${sIdx}-${idx}-${i}`}
+                                      className={fillInInput}
+                                      contentEditable={false}
+                                      dangerouslySetInnerHTML={{
+                                        __html: inputs[idx]?.[i] ?? "",
+                                      }}
+                                      initial="hidden"
+                                      animate="visible"
+                                      exit="exit"
+                                      variants={inputVariants}
+                                      style={{
+                                        whiteSpace: "nowrap",
+                                        width: `${getInputWidth(
+                                          inputs[idx]?.[i] ?? ""
+                                        )}px`,
+                                        willChange: "transform, opacity",
+                                      }}
+                                    />
+                                  )}
+                                </AnimatePresence>
+                              )}
                           </React.Fragment>
                         );
                       })}
