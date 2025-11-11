@@ -41,7 +41,7 @@ export const HeadingLesson = ({
           position: "absolute",
           inset: 0,
           background: `radial-gradient(ellipse at center,
-                rgba(0, 0, 0, 0.25) 0%,      /* центр */
+                rgba(0, 0, 0, 0.30) 0%,      /* центр */
                 rgba(0, 0, 0, 0.85) 60%,     /* переход */
                 rgba(0, 0, 0, 1) 100%     /* края */
             )
