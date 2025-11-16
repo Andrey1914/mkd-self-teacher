@@ -80,7 +80,8 @@ export async function generateStaticParams() {
 }
 
 type Props = {
-  params: { id: string };
+  // params: { id: string };
+  params: Promise<{ id: string }>;
 };
 
 export async function generateMetadata({ params }: Props) {
