@@ -80,7 +80,6 @@ export async function generateStaticParams() {
 }
 
 type Props = {
-  // params: { id: string };
   params: Promise<{ id: string }>;
 };
 
@@ -93,12 +92,31 @@ export async function generateMetadata({ params }: Props) {
   if (!lesson) {
     return {
       title: "Урок не найден | Самоучитель македонского языка.",
+      description: "Страница не найдена для самоучителя македонского языка.",
+      keywords: [
+        "самоучитель",
+        "self techer",
+        "македонский язык",
+        "урок",
+        "македонский",
+        "macedonian",
+        "язык",
+      ],
     };
   }
 
   return {
     title: `${lesson.title} | Самоучитель македонского языка.`,
     description: lesson.description,
+    keywords: [
+      "самоучитель",
+      "self techer",
+      "македонский язык",
+      "урок",
+      "македонский",
+      "macedonian",
+      "язык",
+    ],
   };
 }
 
