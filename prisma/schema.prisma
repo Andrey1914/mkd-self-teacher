@@ -26,6 +26,7 @@ model User {
 model Lesson {
   id            String              @id @default(auto()) @map("_id") @db.ObjectId
   title         Json
+  numericId     Int                 @unique
   slug          String              @unique
 
   sections      Section[]
