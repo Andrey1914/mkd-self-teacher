@@ -18,6 +18,7 @@ export type TableBlockData = TablesProps;
 
 export interface LessonData {
   slug: string;
+  numericId: number;
   title?: { ru: string; mkd: string } | string | string[];
   sections?: SectionWithTables[];
   glossary?: GlossaryEntryData[];

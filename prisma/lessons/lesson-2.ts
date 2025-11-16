@@ -37,6 +37,7 @@ export const lesson2 = {
     ru: "Урок 2",
     mkd: "Лекциjя 2",
   },
+  numericId: 2,
   slug: "lesson-2",
   sections: [
     {
