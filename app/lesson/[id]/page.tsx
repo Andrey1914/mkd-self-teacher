@@ -91,7 +91,7 @@ export async function generateMetadata({ params }: Props) {
 
   if (!lesson) {
     return {
-      title: "Урок не найден | Самоучитель македонского языка.",
+      title: "Самоучитель македонского языка | Урок не найден",
       description: "Страница не найдена для самоучителя македонского языка.",
       keywords: [
         "самоучитель",
@@ -106,7 +106,9 @@ export async function generateMetadata({ params }: Props) {
   }
 
   return {
-    title: `${lesson.title} | Самоучитель македонского языка.`,
+    title: `Macedonian self teacher | ${lesson.title}`,
+    // title: `Macedonian self teacher | Самоучитель македонского языка.`,
+
     description: lesson.description,
     keywords: [
       "самоучитель",

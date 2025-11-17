@@ -29,17 +29,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "MKD Self Teacher",
+  title: "Macedonian self teacher | Самоучитель македонского языка.",
   description: "Your personal self learning application",
-  keywords: [
-    "самоучитель",
-    "self techer",
-    "македонский язык",
-    "урок",
-    "македонский",
-    "macedonian",
-    "язык",
-  ],
 };
 
 export default function RootLayout({

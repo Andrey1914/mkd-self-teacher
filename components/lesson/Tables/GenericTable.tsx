@@ -9,8 +9,7 @@ export const GenericTable = ({
   lesson,
   classNames = {},
   titleIconSrc,
-}: // titleIconSize,
-GenericTableProps) => {
+}: GenericTableProps) => {
   const rows =
     data?.content.words ||
     data?.content.rows ||
@@ -31,30 +30,15 @@ GenericTableProps) => {
     <div style={{ padding: "1rem 0 2rem 0", overflowX: "auto" }}>
       {title &&
         (typeof title === "string" ? (
-          <MultiFormatHeading
-            as="h2"
-            data={title}
-            iconSrc={titleIconSrc}
-            // iconSize={titleIconSize}
-          />
+          <MultiFormatHeading as="h2" data={title} iconSrc={titleIconSrc} />
         ) : Array.isArray(title) ? (
-          <MultiFormatHeading
-            as="h2"
-            data={title}
-            iconSrc={titleIconSrc}
-            // iconSize={titleIconSize}
-          />
+          <MultiFormatHeading as="h2" data={title} iconSrc={titleIconSrc} />
         ) : typeof title === "object" && title !== null ? (
-          <MultiFormatHeading
-            as="h2"
-            data={title}
-            iconSrc={titleIconSrc}
-            // iconSize={titleIconSize}
-          />
+          <MultiFormatHeading as="h2" data={title} iconSrc={titleIconSrc} />
         ) : null)}
 
       {subtitle && <MultiFormatHeading as="h3" data={subtitle} />}
-      {text && <p className={textClassName}>{formatText(text)}</p>}
+      {text && <div className={textClassName}>{formatText(text, true)}</div>}
 
       <table className={table}>
         {Array.isArray(headers) && headers.length > 0 && (
@@ -80,14 +64,39 @@ GenericTableProps) => {
                   typeof td === "function" ? td(cellIndex, rowIndex) : td;
 
                 if (Array.isArray(cellData)) {
-                  return cellData.map((item, itemIndex) => (
-                    <td
-                      key={`${cellIndex}-${itemIndex}`}
-                      className={tdClassName}
-                    >
-                      {formatText(item)}
-                    </td>
-                  ));
+                  return cellData.map((item, itemIndex) => {
+                    if (Array.isArray(item)) {
+                      return (
+                        <td
+                          key={`${cellIndex}-${itemIndex}`}
+                          className={tdClassName}
+                        >
+                          <div
+                            style={{
+                              display: "flex",
+                              flexDirection: "column",
+                              gap: 4,
+                            }}
+                          >
+                            {item.map((variant, vi) => (
+                              <div key={vi} style={{ whiteSpace: "nowrap" }}>
+                                {formatText(String(variant))}
+                              </div>
+                            ))}
+                          </div>
+                        </td>
+                      );
+                    }
+
+                    return (
+                      <td
+                        key={`${cellIndex}-${itemIndex}`}
+                        className={tdClassName}
+                      >
+                        {formatText(String(item))}
+                      </td>
+                    );
+                  });
                 }
 
                 return (
