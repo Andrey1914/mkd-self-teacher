@@ -79,9 +79,7 @@ export const GenericTable = ({
                             }}
                           >
                             {item.map((variant, vi) => (
-                              <div key={vi} style={{ whiteSpace: "nowrap" }}>
-                                {formatText(String(variant))}
-                              </div>
+                              <div key={vi}>{formatText(String(variant))}</div>
                             ))}
                           </div>
                         </td>
