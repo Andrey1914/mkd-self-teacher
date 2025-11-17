@@ -10,19 +10,27 @@ import {
   tdColorizedClassName,
 } from "@/components/lesson/Tables/rules";
 
-const { imperfect } = grammarTables;
+const { aorist, iClassVerbs } = grammarTables;
 
-export const Imperfect = () => {
+export const Aorist = () => {
   return (
     <>
       <GenericTable
-        data={imperfect}
+        data={aorist}
         classNames={{
           table: tableClassName,
           th: thColorizedClassName,
           td: tdColorizedClassName,
         }}
         titleIconSrc="/grammar.png"
+      />
+      <GenericTable
+        data={iClassVerbs}
+        classNames={{
+          table: tableClassName,
+          th: thColorizedClassName,
+          td: tdColorizedClassName,
+        }}
       />
     </>
   );

@@ -2,34 +2,45 @@ import React from "react";
 
 import { Dialogue } from "./Dialogue";
 import { Intro } from "./Intro";
-// import { Paragraph } from "@/components/lesson/Paragraph";
-// import { GenericTable } from "@/components/lesson/Tables";
+import { Paragraph } from "@/components/lesson/Paragraph";
+import { GenericTable } from "@/components/lesson/Tables";
 
-// import { lectureLesson8 } from "@/prisma/lessons/paragraph";
-// import { vocabulary } from "@/prisma/lessons/vocabulary/lesson-8";
+import { lectureLesson9 } from "@/prisma/lessons/paragraph";
+import { vocabulary } from "@/prisma/lessons/vocabulary/lesson-9";
+import { glossary } from "@/prisma/lessons/tables";
 
-// import {
-//   getColorizedItalicTdClassName,
-//   tableWithoutBorderClassName,
-//   getColorizedThClassName,
-// } from "@/components/lesson/Tables/rules";
+import {
+  getColorizedItalicTdClassName,
+  tableWithoutBorderClassName,
+  getColorizedThClassName,
+} from "@/components/lesson/Tables/rules";
 
-// const { intro } = lectureLesson8;
+const { intro, ruleAfterGlossary } = lectureLesson9;
+const { clothingAccessories } = glossary;
 
 export const Lecture = () => {
   return (
     <>
       <Intro />
       <Dialogue />
-      {/* <Paragraph data={intro} /> */}
-      {/* <GenericTable
+      <Paragraph data={intro} />
+      <GenericTable
         lesson={vocabulary}
         classNames={{
           table: tableWithoutBorderClassName,
           th: getColorizedThClassName,
           td: getColorizedItalicTdClassName,
         }}
-      /> */}
+      />
+      <GenericTable
+        data={clothingAccessories}
+        classNames={{
+          table: tableWithoutBorderClassName,
+          th: getColorizedThClassName,
+          td: getColorizedItalicTdClassName,
+        }}
+      />
+      <Paragraph data={ruleAfterGlossary} />
     </>
   );
 };

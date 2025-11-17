@@ -1,12 +1,13 @@
 import { vocabulary } from "@/prisma/lessons/vocabulary/lesson-6";
 import { dialogueBlock } from "@/prisma/lessons/dialogues/lesson-6";
 import { lectureLesson6 } from "@/prisma/lessons/paragraph";
-import { examples } from "@/prisma/lessons/tables";
+import { examples, grammarTables } from "@/prisma/lessons/tables";
 import { exercisesLesson6 } from "@/prisma/lessons/exercises";
 
 const { intro } = lectureLesson6;
 const { lesson6: examplesLesson6 } = examples;
 const { example1, example2, example3 } = examplesLesson6;
+const { imperfect } = grammarTables;
 
 const {
   exercise1,
@@ -44,6 +45,7 @@ export const lesson6 = {
   vocabulary: [vocabulary],
   dialogues: [dialogueBlock],
   tables: [
+    imperfect,
     { ...example1, slug: "lesson-6" },
     { ...example2, slug: "lesson-6" },
     { ...example3, slug: "lesson-6" },

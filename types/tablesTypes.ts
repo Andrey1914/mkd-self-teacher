@@ -83,5 +83,6 @@ export interface TablesRows {
   examples?: string[];
 
   person?: string;
-  forms?: string[];
+  // forms?: string[];
+  forms?: (string | string[])[];
 }

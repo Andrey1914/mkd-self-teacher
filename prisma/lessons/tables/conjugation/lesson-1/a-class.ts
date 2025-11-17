@@ -1,7 +1,5 @@
-// import { ConjugationTableSection } from "@/types/conjugationTypes";
 import { TablesProps } from "@/types";
 
-// export const aClass: ConjugationTableSection = {
 export const aClass: TablesProps = {
   type: "a-class",
   subtitle: ["СПРЯЖЕНИЕ ГЛАГОЛОВ A-КЛАССА"],
