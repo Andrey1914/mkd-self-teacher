@@ -1,34 +1,17 @@
 import { vocabulary } from "@/prisma/lessons/vocabulary/lesson-9";
 import { dialogueBlock } from "@/prisma/lessons/dialogues/lesson-9";
-import {
-  lectureLesson9,
-  // grammarLesson9
-} from "@/prisma/lessons/paragraph";
-import {
-  glossary,
-  grammarTables,
-  // examples
-} from "@/prisma/lessons/tables";
-// import { payAttentionsLesson9 } from "@/prisma/lessons/pay-attention";
+import { lectureLesson9 } from "@/prisma/lessons/paragraph";
+import { glossary, grammarTables, examples } from "@/prisma/lessons/tables";
+import { payAttentionsLesson9 } from "@/prisma/lessons/pay-attention";
 // import { exercisesLesson9 } from "@/prisma/lessons/exercises";
 
 const { intro, ruleAfterGlossary } = lectureLesson9;
 const { clothingAccessories } = glossary;
-const { aorist } = grammarTables;
-// const { imperative } = grammarLesson9;
-// const { lesson9: examplesLesson9 } = examples;
-// const {
-//   example1,
-//   example2,
-//   example3,
-//   example4,
-//   example5,
-//   example6,
-//   example7,
-//   example8,
-// } = examplesLesson9;
+const { aorist, iClassVerbs, perfectiveVerbs } = grammarTables;
+const { lesson9: examplesLesson9 } = examples;
+const { example1 } = examplesLesson9;
 
-// const { payAttention1 } = payAttentionsLesson9;
+const { payAttention1 } = payAttentionsLesson9;
 
 // const {
 //   exercise1,
@@ -41,11 +24,6 @@ const { aorist } = grammarTables;
 //   exercise8,
 //   exercise9,
 //   exercise10,
-//   exercise11,
-//   exercise12,
-//   exercise13,
-//   exercise14,
-//   exercise15,
 // } = exercisesLesson9;
 
 export const lesson9 = {
@@ -75,16 +53,11 @@ export const lesson9 = {
   tables: [
     clothingAccessories,
     aorist,
-    //     { ...example1, slug: "lesson-8" },
-    //     { ...example2, slug: "lesson-8" },
-    //     { ...example3, slug: "lesson-8" },
-    //     { ...example4, slug: "lesson-8" },
-    //     { ...example5, slug: "lesson-8" },
-    //     { ...example6, slug: "lesson-8" },
-    //     { ...example7, slug: "lesson-8" },
-    //     { ...example8, slug: "lesson-8" },
+    iClassVerbs,
+    perfectiveVerbs,
+    { ...example1, slug: "lesson-9" },
   ],
-  //   payAttention: [payAttention1],
+  payAttention: [payAttention1],
 
   //   exercises: [
   //     exercise1,
@@ -97,10 +70,5 @@ export const lesson9 = {
   //     exercise8,
   //     exercise9,
   //     exercise10,
-  //     exercise11,
-  //     exercise12,
-  //     exercise13,
-  //     exercise14,
-  //     exercise15,
   //   ],
 };

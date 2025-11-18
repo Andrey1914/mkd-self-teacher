@@ -2,6 +2,7 @@ import { TablesProps } from "@/types";
 
 export const aorist: TablesProps = {
   type: "aorist",
+  slug: "lesson-9",
   title: {
     ru: "ГРАММАТИКА",
     mkd: "ГРАМАТИКА",
