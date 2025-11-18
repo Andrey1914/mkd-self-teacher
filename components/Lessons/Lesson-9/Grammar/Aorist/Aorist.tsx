@@ -10,7 +10,7 @@ import {
   tdColorizedClassName,
 } from "@/components/lesson/Tables/rules";
 
-const { aorist, iClassVerbs } = grammarTables;
+const { aorist, iClassVerbs, perfectiveVerbs } = grammarTables;
 
 export const Aorist = () => {
   return (
@@ -26,6 +26,14 @@ export const Aorist = () => {
       />
       <GenericTable
         data={iClassVerbs}
+        classNames={{
+          table: tableClassName,
+          th: thColorizedClassName,
+          td: tdColorizedClassName,
+        }}
+      />
+      <GenericTable
+        data={perfectiveVerbs}
         classNames={{
           table: tableClassName,
           th: thColorizedClassName,

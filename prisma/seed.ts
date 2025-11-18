@@ -18,15 +18,6 @@ async function main() {
             where: { slug: lesson.slug },
           });
 
-          // const createdOrExistingLesson = existing
-          //   ? existing
-          //   : await tx.lesson.create({
-          //       data: {
-          //         title: lesson.title ?? {},
-          //         slug: lesson.slug,
-          //       },
-          //     });
-
           const createdOrExistingLesson = existing
             ? await tx.lesson.update({
                 where: { slug: lesson.slug },
