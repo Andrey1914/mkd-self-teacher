@@ -3,7 +3,7 @@ import { dialogueBlock } from "@/prisma/lessons/dialogues/lesson-9";
 import { lectureLesson9 } from "@/prisma/lessons/paragraph";
 import { glossary, grammarTables, examples } from "@/prisma/lessons/tables";
 import { payAttentionsLesson9 } from "@/prisma/lessons/pay-attention";
-// import { exercisesLesson9 } from "@/prisma/lessons/exercises";
+import { exercisesLesson9 } from "@/prisma/lessons/exercises";
 
 const { intro, ruleAfterGlossary } = lectureLesson9;
 const { clothingAccessories } = glossary;
@@ -13,18 +13,18 @@ const { example1 } = examplesLesson9;
 
 const { payAttention1 } = payAttentionsLesson9;
 
-// const {
-//   exercise1,
-//   exercise2,
-//   exercise3,
-//   exercise4,
-//   exercise5,
-//   exercise6,
-//   exercise7,
-//   exercise8,
-//   exercise9,
-//   exercise10,
-// } = exercisesLesson9;
+const {
+  exercise1,
+  //   exercise2,
+  //   exercise3,
+  //   exercise4,
+  //   exercise5,
+  //   exercise6,
+  //   exercise7,
+  //   exercise8,
+  //   exercise9,
+  //   exercise10,
+} = exercisesLesson9;
 
 export const lesson9 = {
   title: {
@@ -59,16 +59,16 @@ export const lesson9 = {
   ],
   payAttention: [payAttention1],
 
-  //   exercises: [
-  //     exercise1,
-  //     exercise2,
-  //     exercise3,
-  //     exercise4,
-  //     exercise5,
-  //     exercise6,
-  //     exercise7,
-  //     exercise8,
-  //     exercise9,
-  //     exercise10,
-  //   ],
+  exercises: [
+    exercise1,
+    //     exercise2,
+    //     exercise3,
+    //     exercise4,
+    //     exercise5,
+    //     exercise6,
+    //     exercise7,
+    //     exercise8,
+    //     exercise9,
+    //     exercise10,
+  ],
 };

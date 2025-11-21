@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Examples } from "./Examples";
-// import { Exercises } from "./Exercises";
+import { Exercises } from "./Exercises";
 import { Aorist } from "./Aorist";
 
 export const Grammar = () => {
@@ -9,7 +9,7 @@ export const Grammar = () => {
     <>
       <Aorist />
       <Examples />
-      {/* <Exercises /> */}
+      <Exercises />
     </>
   );
 };
