@@ -22,6 +22,7 @@ export interface ExercisesProps {
 
 export type AnswerSet = {
   labels?: string[];
+  pronounWords?: string[];
 };
 
 export type Sentence = {
