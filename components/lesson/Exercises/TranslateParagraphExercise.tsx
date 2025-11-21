@@ -95,7 +95,7 @@ export const TranslateParagraphExercise = ({
     <section style={{ marginBottom: "2rem" }}>
       {section.prompt?.map((text, i) => (
         <ul key={i} style={{ marginBottom: "1rem" }}>
-          <li>
+          <li style={{ listStyle: "none" }}>
             <p>
               <strong>{data.title}. </strong>
             </p>
