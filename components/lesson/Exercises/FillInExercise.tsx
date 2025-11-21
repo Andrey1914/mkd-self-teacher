@@ -238,7 +238,7 @@ export const FillInExercise = ({ data }: { data: ExercisesProps }) => {
           {section.prompt?.map((text, i) =>
             typeof text === "string" ? (
               <ul key={i}>
-                <li>
+                <li style={{ listStyle: "none" }}>
                   <p>
                     <strong>{data.title}.</strong>
                   </p>

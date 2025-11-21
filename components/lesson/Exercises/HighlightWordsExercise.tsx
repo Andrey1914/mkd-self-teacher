@@ -118,7 +118,7 @@ export const HighlightWordsExercise = ({ data }: { data: ExercisesProps }) => {
     <section style={{ margin: "2rem 0" }}>
       {section.prompt?.map((text, i) => (
         <ul key={i} style={{ marginBottom: "1rem" }}>
-          <li>
+          <li style={{ listStyle: "none" }}>
             <p>
               <strong>{data.title}. </strong>
             </p>
