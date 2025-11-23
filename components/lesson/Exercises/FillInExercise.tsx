@@ -256,7 +256,7 @@ export const FillInExercise = ({ data }: { data: ExercisesProps }) => {
             />
           )}
           {section.content?.text && (
-            <p
+            <div
               lang="ru"
               style={{
                 textAlign: "center",
@@ -265,8 +265,8 @@ export const FillInExercise = ({ data }: { data: ExercisesProps }) => {
                 textIndent: 0,
               }}
             >
-              {formatText(section.content.text)}
-            </p>
+              {formatText(section.content.text, true)}
+            </div>
           )}
           <form onSubmit={(e) => e.preventDefault()}>
             <div style={{ textAlign: "left", lineHeight: "2rem" }}>
