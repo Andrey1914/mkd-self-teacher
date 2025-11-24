@@ -6,7 +6,6 @@
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
-    
     <url>
         <loc>https://mkd-self-teacher.vercel.app/lesson/1</loc>
         <lastmod>2025-11-16</lastmod>
