@@ -1,63 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <url>
-        <loc>https://mkd-self-teacher.vercel.app/</loc>
-        <lastmod>2025-11-16</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>1.0</priority>
-    </url>
-    <url>
-        <loc>https://mkd-self-teacher.vercel.app/lesson/1</loc>
-        <lastmod>2025-11-16</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://mkd-self-teacher.vercel.app/lesson/2</loc>
-        <lastmod>2025-11-16</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://mkd-self-teacher.vercel.app/lesson/3</loc>
-        <lastmod>2025-11-16</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://mkd-self-teacher.vercel.app/lesson/4</loc>
-        <lastmod>2025-11-16</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://mkd-self-teacher.vercel.app/lesson/5</loc>
-        <lastmod>2025-11-16</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://mkd-self-teacher.vercel.app/lesson/6</loc>
-        <lastmod>2025-11-16</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://mkd-self-teacher.vercel.app/lesson/7</loc>
-        <lastmod>2025-11-16</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://mkd-self-teacher.vercel.app/lesson/8</loc>
-        <lastmod>2025-11-16</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://mkd-self-teacher.vercel.app/lesson/9</loc>
-        <lastmod>2025-11-16</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
+<url><loc>https://mkd-self-teacher.vercel.app/</loc><lastmod>2025-11-16</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url>
+<url><loc>https://mkd-self-teacher.vercel.app/lesson/1</loc><lastmod>2025-11-16</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+<url><loc>https://mkd-self-teacher.vercel.app/lesson/2</loc><lastmod>2025-11-16</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+<url><loc>https://mkd-self-teacher.vercel.app/lesson/3</loc><lastmod>2025-11-16</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+<url><loc>https://mkd-self-teacher.vercel.app/lesson/4</loc><lastmod>2025-11-16</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+<url><loc>https://mkd-self-teacher.vercel.app/lesson/5</loc><lastmod>2025-11-16</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+<url><loc>https://mkd-self-teacher.vercel.app/lesson/6</loc><lastmod>2025-11-16</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+<url><loc>https://mkd-self-teacher.vercel.app/lesson/7</loc><lastmod>2025-11-16</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+<url><loc>https://mkd-self-teacher.vercel.app/lesson/8</loc><lastmod>2025-11-16</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+<url><loc>https://mkd-self-teacher.vercel.app/lesson/9</loc><lastmod>2025-11-16</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
 </urlset>
