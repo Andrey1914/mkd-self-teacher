@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://mkd-self-teacher.vercel.app/sitemap.xml
