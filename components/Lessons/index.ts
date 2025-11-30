@@ -7,3 +7,4 @@ export { Lesson6 } from "./Lesson-6";
 export { Lesson7 } from "./Lesson-7";
 export { Lesson8 } from "./Lesson-8";
 export { Lesson9 } from "./Lesson-9";
+export { Lesson10 } from "./Lesson-10";
