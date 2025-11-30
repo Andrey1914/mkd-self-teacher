@@ -3,7 +3,7 @@ import { MetadataRoute } from "next";
 const baseUrl = "https://mkd-self-teacher.vercel.app";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lessons = Array.from({ length: 9 }, (_, i) => ({
+  const lessons = Array.from({ length: 10 }, (_, i) => ({
     url: `${baseUrl}/lesson/${i + 1}`,
     lastModified: "2025-11-30",
     changeFrequency: "weekly" as const,
