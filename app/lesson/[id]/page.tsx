@@ -68,6 +68,13 @@ const lessonData = [
     title: "Урок 9",
     description: "Описание и повторение материала.",
   },
+  {
+    id: 10,
+    numericId: 10,
+    component: "Lesson10",
+    title: "Урок 10",
+    description: "Описание и повторение материала.",
+  },
 ];
 
 export const dynamic = "force-static";
