@@ -6,5 +6,5 @@ export { exercise5 } from "./exercise-5";
 export { exercise6 } from "./exercise-6";
 export { exercise7 } from "./exercise-7";
 export { exercise8 } from "./exercise-8";
-// export { exercise9 } from "./exercise-9";
-// export { exercise10 } from "./exercise-10";
+export { exercise9 } from "./exercise-9";
+export { exercise10 } from "./exercise-10";
