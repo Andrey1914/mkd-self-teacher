@@ -62,6 +62,8 @@ export function LessonPageContent({
     window.history.pushState(null, "", `/lesson/${lessonId}`);
     setActiveIndex(index);
     swiperRef.current?.slideTo(index);
+
+    window.scrollTo(0, 0);
   };
 
   useEffect(() => {
