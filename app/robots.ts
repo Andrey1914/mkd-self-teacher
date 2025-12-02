@@ -7,6 +7,5 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
     },
     sitemap: "https://mkd-self-teacher.vercel.app/sitemap.xml",
-    host: "https://mkd-self-teacher.vercel.app/",
   };
 }
