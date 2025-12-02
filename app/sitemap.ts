@@ -3,17 +3,19 @@ import { MetadataRoute } from "next";
 const baseUrl = "https://mkd-self-teacher.vercel.app";
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const today = new Date().toISOString().split("T")[0];
+
   const lessons = Array.from({ length: 10 }, (_, i) => ({
     url: `${baseUrl}/lesson/${i + 1}`,
-    lastModified: "2025-11-30",
+    lastModified: today,
     changeFrequency: "weekly" as const,
-    priority: 0.8,
+    priority: 0.9,
   }));
 
   return [
     {
       url: baseUrl,
-      lastModified: "2025-11-30",
+      lastModified: today,
       changeFrequency: "daily" as const,
       priority: 1.0,
     },
