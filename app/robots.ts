@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://mkd-self-teacher.vercel.app/sitemap.js",
-    host: "https://mkd-self-teacher.vercel.app",
+    sitemap: "https://mkd-self-teacher.vercel.app/sitemap.xml",
+    host: "https://mkd-self-teacher.vercel.app/",
   };
 }

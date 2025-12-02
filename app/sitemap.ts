@@ -1,6 +1,6 @@
 import { MetadataRoute } from "next";
 
-const baseUrl = "https://mkd-self-teacher.vercel.app";
+const baseUrl = "https://mkd-self-teacher.vercel.app/";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lessons = Array.from({ length: 10 }, (_, i) => ({
