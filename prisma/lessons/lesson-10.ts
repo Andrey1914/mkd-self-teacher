@@ -1,20 +1,16 @@
 import { vocabulary } from "@/prisma/lessons/vocabulary/lesson-10";
 import { dialogueBlock } from "@/prisma/lessons/dialogues/lesson-10";
-// import { lectureLesson10 } from "@/prisma/lessons/paragraph";
-import {
-  glossary,
-  // grammarTables, examples
-} from "@/prisma/lessons/tables";
-// import { payAttentionsLesson10 } from "@/prisma/lessons/pay-attention";
+import { grammarLesson10 } from "@/prisma/lessons/paragraph";
+import { glossary, grammarTables } from "@/prisma/lessons/tables";
 // import { exercisesLesson10 } from "@/prisma/lessons/exercises";
 
-// const { intro, ruleAfterGlossary } = lectureLesson10;
+const { aorist } = grammarLesson10;
 const { health } = glossary;
-// const { aorist, iClassVerbs, perfectiveVerbs } = grammarTables;
-// const { lesson9: examplesLesson10 } = examples;
-// const { example1 } = examplesLesson10;
-
-// const { payAttention1 } = payAttentionsLesson10;
+const { aSubtypes, oSubtypes, eSubtypes, nullSubtypes } = grammarTables;
+const { aSubtype1, aSubtype2, aSubtype3 } = aSubtypes;
+const { oSubtype1, oSubtype2 } = oSubtypes;
+const { eSubtype } = eSubtypes;
+const { nullSubtype } = nullSubtypes;
 
 // const {
 //   exercise1,
@@ -50,14 +46,19 @@ export const lesson10 = {
       },
     },
   ],
-  //   paragraph: [intro, ruleAfterGlossary],
+  paragraph: [aorist],
   vocabulary: [vocabulary],
   dialogues: [dialogueBlock],
   tables: [
     health,
-    // { ...example1, slug: "lesson-10" },
+    aSubtype1,
+    aSubtype2,
+    aSubtype3,
+    oSubtype1,
+    oSubtype2,
+    eSubtype,
+    nullSubtype,
   ],
-  //   payAttention: [payAttention1],
 
   //   exercises: [
   //     exercise1,

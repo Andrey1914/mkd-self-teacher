@@ -1,0 +1,1 @@
+export { aorist } from "./grammar";
