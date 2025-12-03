@@ -83,7 +83,6 @@ export function LessonPageContent({
         />
         <main className={styles.main}>
           <Swiper
-            // onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
             onSlideChange={(swiper) => {
               setActiveIndex(swiper.activeIndex);
               window.scrollTo(0, 0);

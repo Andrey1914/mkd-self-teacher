@@ -3,6 +3,7 @@ export * as grammarLesson2 from "./lesson-2";
 export * as grammarLesson3 from "./lesson-3";
 export * as grammarLesson4 from "./lesson-4";
 export * as grammarLesson8 from "./lesson-8";
+export * as grammarLesson10 from "./lesson-10";
 
 export * as lectureLesson2 from "./lesson-2";
 export * as lectureLesson5 from "./lesson-5";
