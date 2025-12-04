@@ -7,3 +7,4 @@ export * as exercisesLesson6 from "./lesson-6";
 export * as exercisesLesson7 from "./lesson-7";
 export * as exercisesLesson8 from "./lesson-8";
 export * as exercisesLesson9 from "./lesson-9";
+export * as exercisesLesson10 from "./lesson-10";

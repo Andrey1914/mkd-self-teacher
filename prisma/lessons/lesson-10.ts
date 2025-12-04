@@ -2,7 +2,7 @@ import { vocabulary } from "@/prisma/lessons/vocabulary/lesson-10";
 import { dialogueBlock } from "@/prisma/lessons/dialogues/lesson-10";
 import { grammarLesson10 } from "@/prisma/lessons/paragraph";
 import { glossary, grammarTables } from "@/prisma/lessons/tables";
-// import { exercisesLesson10 } from "@/prisma/lessons/exercises";
+import { exercisesLesson10 } from "@/prisma/lessons/exercises";
 
 const { aorist } = grammarLesson10;
 const { health } = glossary;
@@ -12,18 +12,14 @@ const { oSubtype1, oSubtype2 } = oSubtypes;
 const { eSubtype } = eSubtypes;
 const { nullSubtype } = nullSubtypes;
 
-// const {
-//   exercise1,
-//   exercise2,
-//   exercise3,
-//   exercise4,
-//   exercise5,
-//   exercise6,
-//   exercise7,
-//   exercise8,
-//   exercise9,
-//   exercise10,
-// } = exercisesLesson10;
+const {
+  exercise1,
+  //   exercise2,
+  //   exercise3,
+  //   exercise4,
+  //   exercise5,
+  //   exercise6,
+} = exercisesLesson10;
 
 export const lesson10 = {
   title: {
@@ -60,16 +56,12 @@ export const lesson10 = {
     nullSubtype,
   ],
 
-  //   exercises: [
-  //     exercise1,
-  //     exercise2,
-  //     exercise3,
-  //     exercise4,
-  //     exercise5,
-  //     exercise6,
-  //     exercise7,
-  //     exercise8,
-  //     exercise9,
-  //     exercise10,
-  //   ],
+  exercises: [
+    exercise1,
+    //     exercise2,
+    //     exercise3,
+    //     exercise4,
+    //     exercise5,
+    //     exercise6,
+  ],
 };
