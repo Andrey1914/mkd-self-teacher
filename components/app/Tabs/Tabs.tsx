@@ -19,7 +19,6 @@ export const Tabs = ({ tabs, activeIndex, onChange }: TabsProps) => {
             style={{
               width: "auto",
               flexShrink: 0,
-              margin: "0 20px",
             }}
           >
             <button
