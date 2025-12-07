@@ -1,7 +1,3 @@
-"use client";
-
-import React from "react";
-
 import { MultiFormatHeading } from "@/components/lesson/Heading";
 import { ParagraphProps } from "@/types";
 import { formatText } from "@/utils";

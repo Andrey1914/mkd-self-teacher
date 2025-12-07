@@ -22,7 +22,6 @@ export const FillInExercise = ({ data }: { data: ExercisesProps }) => {
   const [showAnswers, setShowAnswers] = useState(false);
   const [inputs, setInputs] = useState<string[][]>([]);
   const [isAutoFilled, setIsAutoFilled] = useState<boolean[][]>([]);
-  // const [animationClass, setAnimationClass] = useState("");
 
   const section = data.sections?.[0];
   const sentences = section?.content?.sentences;
@@ -40,10 +39,7 @@ export const FillInExercise = ({ data }: { data: ExercisesProps }) => {
     prepareActiveSentences,
   } = exercisesUtils;
 
-  const {
-    fillInInput,
-    // revealAnimation, hideAnimation
-  } = styles.inputs;
+  const { fillInInput } = styles.inputs;
 
   const activeSentences = useMemo(
     () => prepareActiveSentences(sentences, answerSet, activeIndex),
@@ -59,7 +55,6 @@ export const FillInExercise = ({ data }: { data: ExercisesProps }) => {
     setIsAutoFilled(initialFlags);
     setChecked(false);
     setShowAnswers(false);
-    // setAnimationClass("");
   }, [activeIndex, activeSentences, initializeFillInState]);
 
   if (!hasMounted || !data || !data.sections || data.sections.length === 0) {
@@ -109,44 +104,11 @@ export const FillInExercise = ({ data }: { data: ExercisesProps }) => {
       });
     });
 
-    // setAnimationClass(revealAnimation);
     setInputs(cleanCorrectInputs);
     setIsAutoFilled(correctFlags);
     setChecked(false);
     setShowAnswers(true);
   };
-
-  // const revealAnswers = () => {
-  //   setAnimationClass(revealAnimation);
-
-  //   requestAnimationFrame(() => {
-  //     requestAnimationFrame(() => {
-  //       const target = (activeSentences ?? sentences) || [];
-
-  //       const { correctInputs: rawCorrectInputs, correctFlags } =
-  //         getCorrectFillInAnswers(target);
-
-  //       const cleanCorrectInputs = rawCorrectInputs.map((sentenceAnswers) => {
-  //         return sentenceAnswers.map((answer) => {
-  //           if (typeof answer === "string") {
-  //             return answer
-  //               .replace(/\*\*(.*?)\*\*/g, "$1")
-  //               .replace(/\((.*?)\)/g, "$1")
-  //               .replace(/\s+/g, " ")
-  //               .trim();
-  //           }
-  //           return answer;
-  //         });
-  //       });
-
-  //       setInputs(cleanCorrectInputs);
-  //       setIsAutoFilled(correctFlags);
-  //       setChecked(false);
-  //       setShowAnswers(true);
-  //       setAnimationClass(revealAnimation);
-  //     });
-  //   });
-  // };
 
   const handleChange = (
     value: string,
@@ -172,63 +134,42 @@ export const FillInExercise = ({ data }: { data: ExercisesProps }) => {
     if (ref) {
       ref.style.setProperty("--input-width", `${getInputWidth(value)}px`);
     }
-    // setTimeout(() => {
-    //   const input = document.getElementById(
-    //     `input-${sentenceIdx}-${sentenceIdx}-${wordIdx}`
-    //   );
-    //   if (input) {
-    //     input.style.setProperty("--input-width", `${getInputWidth(value)}px`);
-    //   }
-    // }, 5);
   };
 
   const handleCheck = () => {
     setChecked(true);
     setShowAnswers(false);
-    // setAnimationClass("");
   };
 
   const handleClear = () => {
-    // setAnimationClass(hideAnimation);
-
     inputRefs.current.forEach((ref) => {
       if (ref) {
-        ref.style.setProperty("--input-width", "60px");
+        const { style } = ref;
+
+        style.setProperty("--input-width", "60px");
+
         if (ref.innerText !== undefined) {
           ref.innerText = "";
         }
-        ref.removeAttribute("style");
+
+        style.color = "inherit";
+        style.boxShadow = "inherit";
+        style.fontWeight = "normal";
       }
     });
 
     const target = (activeSentences ?? sentences) || [];
     const { initialInputs, initialFlags } = initializeFillInState(target);
 
-    // setInputs([]);
-    // setIsAutoFilled([]);
     setInputs(initialInputs);
     setIsAutoFilled(initialFlags);
     setChecked(false);
     setShowAnswers(false);
-
-    // setTimeout(() => {
-    //   const target = (activeSentences ?? sentences) || [];
-    //   const { initialInputs, initialFlags } = initializeFillInState(target);
-
-    //   setInputs(initialInputs);
-    //   setIsAutoFilled(initialFlags);
-    //   setChecked(false);
-    //   setShowAnswers(false);
-    //   setAnimationClass("");
-
-    //   inputRefs.current.forEach((ref) => {
-    //     if (ref) ref.innerText = "";
-    //   });
-    // }, 200);
   };
 
   const getInputWidth = (value: string): number => {
-    return Math.min(Math.max(getTextWidth(value), 60), 850);
+    // return Math.min(Math.max(getTextWidth(value), 60), 850);
+    return Math.max(getTextWidth(value), 60);
   };
 
   return (

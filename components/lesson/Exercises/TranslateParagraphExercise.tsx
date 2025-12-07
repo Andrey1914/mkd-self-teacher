@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import { useState, useRef } from "react";
 import { formatText, highlightInput, generateHighlightedText } from "@/utils";
 import { ExercisesProps } from "@/types";
 

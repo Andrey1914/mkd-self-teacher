@@ -1,5 +1,3 @@
-import React from "react";
-
 import { FormsOfPersonalPronouns } from "./FormsOfPersonalPronouns";
 import { Verb, VerbType, VerbConjugation } from "./Verb";
 import { Negation } from "./Negation";

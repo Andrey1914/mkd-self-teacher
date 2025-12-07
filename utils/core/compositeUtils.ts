@@ -129,22 +129,24 @@ export const determineExerciseConfig = (
  * Парсит часть текста для fill-in упражнения
  */
 export const parseFillInPart = (part: string) => {
-  const numberPatternStart = /^(\d+\.\s*)/;
-  const letterPatternEnd = /([a-вA-V]\)\s*)$/;
+  const numberPatternStart = /^(\d+[\.\)]\s*)/;
+
+  const suffixPattern = /(\s*(\(\?\)|\([a-вA-V]\))\s*)$/;
 
   let unstyledPrefix = "";
   let styledText = part;
   let unstyledSuffix = "";
 
   const numberMatch = part.match(numberPatternStart);
-  const letterMatchEnd = part.match(letterPatternEnd);
-
   if (numberMatch) {
     unstyledPrefix = numberMatch[1];
     styledText = part.replace(numberPatternStart, "");
-  } else if (letterMatchEnd) {
-    unstyledSuffix = letterMatchEnd[1];
-    styledText = part.replace(letterPatternEnd, "");
+  }
+
+  const suffixMatch = styledText.match(suffixPattern);
+  if (suffixMatch) {
+    unstyledSuffix = suffixMatch[1];
+    styledText = styledText.replace(suffixMatch[1], "");
   }
 
   return { unstyledPrefix, styledText, unstyledSuffix };

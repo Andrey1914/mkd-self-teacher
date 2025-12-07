@@ -1,5 +1,3 @@
-import React from "react";
-
 import { Lecture } from "./Lecture";
 import { Grammar } from "./Grammar";
 

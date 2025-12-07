@@ -14,7 +14,7 @@ const { nullSubtype } = nullSubtypes;
 
 const {
   exercise1,
-  //   exercise2,
+  exercise2,
   //   exercise3,
   //   exercise4,
   //   exercise5,
@@ -58,7 +58,7 @@ export const lesson10 = {
 
   exercises: [
     exercise1,
-    //     exercise2,
+    exercise2,
     //     exercise3,
     //     exercise4,
     //     exercise5,

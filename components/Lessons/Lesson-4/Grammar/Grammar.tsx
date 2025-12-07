@@ -1,5 +1,3 @@
-import React from "react";
-
 import { Examples } from "./Examples";
 import { Exercises } from "./Exercises";
 import { Paragraph } from "@/components/lesson/Paragraph";
@@ -18,7 +16,6 @@ export const Grammar = () => {
         data={definitenessCategory}
         part="title"
         titleIconSrc="/grammar.png"
-        // titleIconSize={62}
       />
       <DefinitenessCategoryTable data={definitenessCategoryTable} />
       <Paragraph data={definitenessCategory} part="text" />

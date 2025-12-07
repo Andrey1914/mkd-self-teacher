@@ -1,4 +1,3 @@
-import React from "react";
 import { PayAttentionBlockProps } from "@/types";
 import { formatText } from "@/utils";
 

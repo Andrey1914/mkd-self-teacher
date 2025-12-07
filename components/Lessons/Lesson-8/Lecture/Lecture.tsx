@@ -1,5 +1,3 @@
-import React from "react";
-
 import { Dialogue } from "./Dialogue";
 import { Intro } from "./Intro";
 import { Paragraph } from "@/components/lesson/Paragraph";

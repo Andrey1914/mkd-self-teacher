@@ -1,5 +1,3 @@
-import React from "react";
-
 import { GenericTable } from "@/components/lesson/Tables/GenericTable";
 
 import { grammarTables } from "@/prisma/lessons/tables";

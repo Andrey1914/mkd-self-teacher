@@ -1,5 +1,3 @@
-import React from "react";
-
 import { MultiFormatHeading } from "@/components/lesson/Heading";
 import { GenericTableProps } from "@/types";
 import { formatText } from "@/utils";

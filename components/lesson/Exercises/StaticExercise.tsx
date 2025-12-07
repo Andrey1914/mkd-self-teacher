@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import parse from "html-react-parser";
 import { ExercisesProps } from "@/types";
 import { formatText } from "@/utils";

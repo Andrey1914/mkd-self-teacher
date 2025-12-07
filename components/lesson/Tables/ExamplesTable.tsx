@@ -1,5 +1,3 @@
-import React from "react";
-
 import { MultiFormatHeading } from "@/components/lesson/Heading";
 import { TablesProps } from "@/types";
 import { formatText } from "@/utils";
@@ -9,8 +7,7 @@ import { styles } from "./styles";
 export const ExamplesTable = ({
   data,
   titleIconSrc,
-}: // titleIconSize,
-{
+}: {
   data: TablesProps;
   titleIconSrc?: string;
   titleIconSize?: number;
@@ -39,12 +36,7 @@ export const ExamplesTable = ({
   return (
     <>
       {title && (
-        <MultiFormatHeading
-          as="h2"
-          data={title}
-          iconSrc={titleIconSrc}
-          // iconSize={titleIconSize}
-        />
+        <MultiFormatHeading as="h2" data={title} iconSrc={titleIconSrc} />
       )}
 
       {subtitle && <MultiFormatHeading as="h3" data={subtitle} />}

@@ -2,7 +2,6 @@
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import React from "react";
 import { TabsProps } from "@/types";
 
 export const Tabs = ({ tabs, activeIndex, onChange }: TabsProps) => {
@@ -20,6 +19,7 @@ export const Tabs = ({ tabs, activeIndex, onChange }: TabsProps) => {
             style={{
               width: "auto",
               flexShrink: 0,
+              margin: "0 20px",
             }}
           >
             <button
