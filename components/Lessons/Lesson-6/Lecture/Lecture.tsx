@@ -1,5 +1,3 @@
-import React from "react";
-
 import { TripToOhrid } from "./Dialogue";
 import { Intro } from "./Intro";
 import { Paragraph } from "@/components/lesson/Paragraph";

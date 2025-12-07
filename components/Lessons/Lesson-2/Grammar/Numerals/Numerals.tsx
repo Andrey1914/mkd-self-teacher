@@ -1,5 +1,3 @@
-import React from "react";
-
 import { Paragraph } from "@/components/lesson/Paragraph";
 import { GenericTable } from "@/components/lesson/Tables";
 

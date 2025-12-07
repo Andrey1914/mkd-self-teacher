@@ -88,7 +88,7 @@ export function LessonPageContent({
               window.scrollTo(0, 0);
             }}
             onSwiper={(swiper) => (swiperRef.current = swiper)}
-            spaceBetween={15}
+            spaceBetween={50}
             slidesPerView={1}
             allowTouchMove
             initialSlide={initialIndex}

@@ -1,5 +1,3 @@
-import React from "react";
-
 import { ExamplesTable } from "@/components/lesson/Tables";
 import { Paragraph } from "@/components/lesson/Paragraph";
 

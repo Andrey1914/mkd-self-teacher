@@ -1,4 +1,3 @@
-import React from "react";
 import { Intro, Lecture } from "@/components/Lessons/Lesson-3/Lecture";
 import { Exercises } from "@/components/Lessons/Lesson-3/Exercises";
 

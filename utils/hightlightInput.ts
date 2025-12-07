@@ -23,7 +23,7 @@
 
 //---------------------------------------------------------------
 
-import { getHighlightStyle } from "./core";
+import { getHighlightStyle } from "@/utils/core";
 import { HIGHLIGHT_STYLES } from "@/constants";
 
 export const highlightInput = (

@@ -1,4 +1,3 @@
-import React from "react";
 import { formatText } from "@/utils";
 import type { AnswerSet } from "@/types";
 

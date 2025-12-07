@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import { formatText } from "@/utils";
 import { alphabetTable } from "@/prisma/lessons/tables";

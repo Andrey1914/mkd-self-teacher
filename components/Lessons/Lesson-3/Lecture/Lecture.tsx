@@ -1,5 +1,3 @@
-import React from "react";
-
 import { DialogueMeetingWithFriends } from "./Dialogue";
 import { Examples } from "./Examples";
 import { PayAttentionBlock } from "@/components/lesson/PayAttentionBlock";

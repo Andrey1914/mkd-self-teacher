@@ -1,4 +1,3 @@
-import React from "react";
 import { TablesProps } from "@/types";
 import { formatText } from "@/utils";
 import { styles } from "./styles";

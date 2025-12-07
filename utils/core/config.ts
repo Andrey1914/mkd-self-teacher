@@ -400,13 +400,12 @@ export const compareTexts = (
  *
  * */
 
-export const getHighlightStyle = (
+const checkSingleVariant = (
   userInput: string,
   correctAnswerString: string,
   options: NormalizeOptions = {}
 ): boolean => {
   const userWords = userInput.trim().split(/\s+/).filter(Boolean);
-
   const correctWordGroups =
     correctAnswerString.match(/\*\*.*?\*\*|\([^)]+\)|\S+/g) || [];
 
@@ -473,12 +472,6 @@ export const getHighlightStyle = (
           ...options,
         });
 
-        // console.log("Проверяем варианты:");
-        // console.log("То, что ввел пользователь:", userSliceWords.join(" "));
-        // console.log("Нормализованный ввод пользователя:", userSliceStr);
-        // console.log("Альтернативный вариант:", alt);
-        // console.log("Нормализованный вариант:", altNorm);
-
         if (userSliceStr === altNorm) {
           userIdx += altWords.length;
           correctIdx++;
@@ -528,17 +521,72 @@ export const getHighlightStyle = (
   return true;
 };
 
+export const getHighlightStyle = (
+  userInput: string,
+  correctAnswerString: string,
+  options: NormalizeOptions = {}
+): boolean => {
+  const internalToken = "@@INTERNAL_SLASH_TOKEN@@";
+  const optionalGroupPattern = /\*\*.*?\*\*/g;
+
+  let tempCorrectAnswerString = correctAnswerString.replace(
+    optionalGroupPattern,
+    (match) => {
+      return match.replace(/\//g, internalToken);
+    }
+  );
+
+  const majorVariants = tempCorrectAnswerString
+    .split("/")
+    .map((variant) =>
+      variant.trim().replace(new RegExp(internalToken, "g"), "/")
+    );
+
+  for (const singleVariant of majorVariants) {
+    if (checkSingleVariant(userInput, singleVariant, options)) {
+      return true;
+    }
+  }
+
+  return false;
+};
+
 export const generateHighlightedText = (
   userInput: string,
   correctAnswerString: string,
   options: NormalizeOptions = {}
 ): string => {
-  const userWords = userInput.trim().split(/\s+/).filter(Boolean);
-  const resultHtml: string[] = [];
+  const internalToken = "@@INTERNAL_SLASH_TOKEN@@";
+  const optionalGroupPattern = /\*\*.*?\*\*/g;
 
-  // REGEX: Finds groups of variants (**...**), optionals (...), and regular words
+  let tempCorrectAnswerString = correctAnswerString.replace(
+    optionalGroupPattern,
+    (match) => {
+      return match.replace(/\//g, internalToken);
+    }
+  );
+
+  const majorVariants = tempCorrectAnswerString
+    .split("/")
+    .map((variant) =>
+      variant.trim().replace(new RegExp(internalToken, "g"), "/")
+    );
+
+  let bestMatchVariant = correctAnswerString;
+
+  for (const singleVariant of majorVariants) {
+    if (checkSingleVariant(userInput, singleVariant, options)) {
+      bestMatchVariant = singleVariant;
+      break;
+    }
+  }
+
+  const currentCorrectAnswerString = bestMatchVariant;
+  const userWords = userInput.trim().split(/\s+/).filter(Boolean);
+  const resultHtml: string[] = []; // REGEX: Finds groups of variants (**...**), optionals (...), and regular words
+
   const correctWordGroups =
-    correctAnswerString.match(/\*\*.*?\*\*|\([^)]+\)|\S+/g) || [];
+    currentCorrectAnswerString.match(/\*\*.*?\*\*|\([^)]+\)|\S+/g) || [];
 
   let userIdx = 0;
   let correctIdx = 0;
@@ -623,12 +671,6 @@ export const generateHighlightedText = (
           lowercase: true,
           ...options,
         });
-
-        // console.log("Проверяем варианты:");
-        // console.log("Пользовательский срез:", userSliceWords.join(" "));
-        // console.log("Нормализованный срез пользователя:", userSliceStr);
-        // console.log("Альтернативный вариант:", alt);
-        // console.log("Нормализованный вариант:", altNorm);
 
         if (userSliceStr === altNorm) {
           resultHtml.push(...userSliceWords);

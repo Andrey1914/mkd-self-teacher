@@ -1,5 +1,3 @@
-import React from "react";
-
 import { HeadingLesson } from "@/components/lesson/Heading";
 
 import { lesson2 } from "@/prisma/lessons/lesson-2";

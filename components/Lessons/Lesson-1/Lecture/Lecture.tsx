@@ -1,5 +1,3 @@
-import React from "react";
-
 import { DialogueAtAirport } from "./Dialogue";
 import { GenericTable } from "@/components/lesson/Tables";
 import { PayAttentionBlock } from "@/components/lesson/PayAttentionBlock";

@@ -1,5 +1,3 @@
-import React from "react";
-
 import { Paragraph } from "@/components/lesson/Paragraph";
 import { AlphabetTable } from "@/components/lesson/Tables";
 import { StaticExercise } from "@/components/lesson/Exercises";
@@ -13,12 +11,7 @@ const { phonetics, features, accent, exceptions, spelling } = grammarLesson1;
 export const Phonetics = () => {
   return (
     <>
-      <Paragraph
-        data={phonetics}
-        part="title"
-        titleIconSrc="/phonetics.png"
-        // titleIconSize={62}
-      />
+      <Paragraph data={phonetics} part="title" titleIconSrc="/phonetics.png" />
       <AlphabetTable />
       <Paragraph data={phonetics} part="text" />
       <Paragraph data={features} />

@@ -1,5 +1,3 @@
-import React from "react";
-
 import { DialogueCity } from "./Dialogue";
 import { PayAttentionBlock } from "@/components/lesson/PayAttentionBlock";
 import { GenericTable } from "@/components/lesson/Tables";

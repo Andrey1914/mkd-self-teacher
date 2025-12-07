@@ -1,5 +1,3 @@
-import React from "react";
-
 import { Examples } from "./Examples";
 import { Exercises } from "./Exercises";
 import { Imperfect } from "./Imperfect";
