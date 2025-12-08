@@ -12,14 +12,8 @@ const { oSubtype1, oSubtype2 } = oSubtypes;
 const { eSubtype } = eSubtypes;
 const { nullSubtype } = nullSubtypes;
 
-const {
-  exercise1,
-  exercise2,
-  exercise3,
-  exercise4,
-  //   exercise5,
-  //   exercise6,
-} = exercisesLesson10;
+const { exercise1, exercise2, exercise3, exercise4, exercise5, exercise6 } =
+  exercisesLesson10;
 
 export const lesson10 = {
   title: {
@@ -56,12 +50,5 @@ export const lesson10 = {
     nullSubtype,
   ],
 
-  exercises: [
-    exercise1,
-    exercise2,
-    exercise3,
-    exercise4,
-    //     exercise5,
-    //     exercise6,
-  ],
+  exercises: [exercise1, exercise2, exercise3, exercise4, exercise5, exercise6],
 };

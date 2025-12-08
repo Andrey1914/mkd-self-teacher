@@ -5,14 +5,8 @@ import {
 
 import { exercisesLesson10 } from "@/prisma/lessons/exercises";
 
-const {
-  exercise1,
-  exercise2,
-  exercise3,
-  exercise4,
-  //   exercise5,
-  //   exercise6,
-} = exercisesLesson10;
+const { exercise1, exercise2, exercise3, exercise4, exercise5, exercise6 } =
+  exercisesLesson10;
 
 export const Exercises = () => {
   return (
@@ -21,13 +15,8 @@ export const Exercises = () => {
       <FillInExercise data={exercise2} />
       <FillInExercise data={exercise3} />
       <TranslateParagraphExercise data={exercise4} />
-
-      {/* <FillInExercise data={exercise5} /> */}
-      {/* <FillInExercise data={exercise6} /> */}
-      {/* <FillInExercise data={exercise7} /> */}
-      {/* <FillInExercise data={exercise8} /> */}
-      {/* <TranslateParagraphExercise data={exercise9} /> */}
-      {/* <TranslateParagraphExercise data={exercise10} /> */}
+      <FillInExercise data={exercise5} />
+      <TranslateParagraphExercise data={exercise6} />
     </>
   );
 };
