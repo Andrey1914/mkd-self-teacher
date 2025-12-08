@@ -75,6 +75,13 @@ const lessonData = [
     title: "Урок 10",
     description: "Описание и повторение материала.",
   },
+  {
+    id: 11,
+    numericId: 11,
+    component: "Lesson11",
+    title: "Урок 11",
+    description: "Описание популярного в Македонии празника.",
+  },
 ];
 
 export const dynamic = "force-static";
