@@ -18,6 +18,7 @@ import {
   Lesson8,
   Lesson9,
   Lesson10,
+  Lesson11,
 } from "@/components/Lessons";
 import { Header } from "@/components/app";
 
@@ -32,6 +33,7 @@ const LessonComponents: { [key: string]: React.ElementType } = {
   Lesson8,
   Lesson9,
   Lesson10,
+  Lesson11,
 };
 
 interface LessonItem {
