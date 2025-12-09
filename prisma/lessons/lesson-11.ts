@@ -1,11 +1,11 @@
-// import { vocabulary } from "@/prisma/lessons/vocabulary/lesson-10";
-// import { dialogueBlock } from "@/prisma/lessons/dialogues/lesson-10";
+import { vocabulary } from "@/prisma/lessons/vocabulary/lesson-11";
+import { dialogueBlock } from "@/prisma/lessons/dialogues/lesson-11";
 // import { grammarLesson10 } from "@/prisma/lessons/paragraph";
-// import { glossary, grammarTables } from "@/prisma/lessons/tables";
+import { glossary, grammarTables } from "@/prisma/lessons/tables";
 // import { exercisesLesson10 } from "@/prisma/lessons/exercises";
 
 // const { aorist } = grammarLesson10;
-// const { health } = glossary;
+const { time } = glossary;
 // const { aSubtypes, oSubtypes, eSubtypes, nullSubtypes } = grammarTables;
 // const { aSubtype1, aSubtype2, aSubtype3 } = aSubtypes;
 // const { oSubtype1, oSubtype2 } = oSubtypes;
@@ -37,18 +37,9 @@ export const lesson11 = {
     },
   ],
   //   paragraph: [aorist],
-  //   vocabulary: [vocabulary],
-  //   dialogues: [dialogueBlock],
-  //   tables: [
-  //     health,
-  //     aSubtype1,
-  //     aSubtype2,
-  //     aSubtype3,
-  //     oSubtype1,
-  //     oSubtype2,
-  //     eSubtype,
-  //     nullSubtype,
-  //   ],
+  vocabulary: [vocabulary],
+  dialogues: [dialogueBlock],
+  tables: [time],
 
   //   exercises: [exercise1, exercise2, exercise3, exercise4, exercise5, exercise6],
 };

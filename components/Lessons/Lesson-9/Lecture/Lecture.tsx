@@ -11,6 +11,7 @@ import {
   getColorizedItalicTdClassName,
   tableWithoutBorderClassName,
   getColorizedThClassName,
+  getColorizedFirstTdClassName,
 } from "@/components/lesson/Tables/rules";
 
 const { intro, ruleAfterGlossary } = lectureLesson9;
@@ -35,7 +36,7 @@ export const Lecture = () => {
         classNames={{
           table: tableWithoutBorderClassName,
           th: getColorizedThClassName,
-          td: getColorizedItalicTdClassName,
+          td: getColorizedFirstTdClassName,
         }}
       />
       <Paragraph data={ruleAfterGlossary} />
