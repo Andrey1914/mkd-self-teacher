@@ -1,39 +1,46 @@
-// import { Dialogue } from "./Dialogue";
+import { Dialogue } from "./Dialogue";
 import { Intro } from "./Intro";
-// import { GenericTable } from "@/components/lesson/Tables";
+import { GenericTable } from "@/components/lesson/Tables";
 
-// import { vocabulary } from "@/prisma/lessons/vocabulary/lesson-10";
-// import { glossary } from "@/prisma/lessons/tables";
+import { vocabulary } from "@/prisma/lessons/vocabulary/lesson-11";
+import { glossary } from "@/prisma/lessons/tables";
 
 // import {
 //   getColorizedItalicTdClassName,
 //   tableWithoutBorderClassName,
 //   getColorizedThClassName,
-// } from "@/components/lesson/Tables/rules";
 
-// const { health } = glossary;
+// } from "@/components/lesson/Tables/rules";
+import {
+  tableWithoutBorderClassName,
+  getColorizedThClassName,
+  getColorizedFirstTdClassName,
+  getColorizedItalicTdClassName,
+} from "@/components/lesson/Tables/rules";
+
+const { time } = glossary;
 
 export const Lecture = () => {
   return (
     <>
       <Intro />
-      {/* <Dialogue /> */}
-      {/* <GenericTable
+      <Dialogue />
+      <GenericTable
         lesson={vocabulary}
         classNames={{
           table: tableWithoutBorderClassName,
           th: getColorizedThClassName,
           td: getColorizedItalicTdClassName,
         }}
-      /> */}
-      {/* <GenericTable
-        data={health}
+      />
+      <GenericTable
+        data={time}
         classNames={{
           table: tableWithoutBorderClassName,
           th: getColorizedThClassName,
-          td: getColorizedItalicTdClassName,
+          td: getColorizedFirstTdClassName,
         }}
-      /> */}
+      />
     </>
   );
 };

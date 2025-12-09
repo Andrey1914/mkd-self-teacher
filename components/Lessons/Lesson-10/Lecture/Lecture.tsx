@@ -9,6 +9,7 @@ import {
   getColorizedItalicTdClassName,
   tableWithoutBorderClassName,
   getColorizedThClassName,
+  getColorizedFirstTdClassName,
 } from "@/components/lesson/Tables/rules";
 
 const { health } = glossary;
@@ -31,7 +32,7 @@ export const Lecture = () => {
         classNames={{
           table: tableWithoutBorderClassName,
           th: getColorizedThClassName,
-          td: getColorizedItalicTdClassName,
+          td: getColorizedFirstTdClassName,
         }}
       />
     </>
