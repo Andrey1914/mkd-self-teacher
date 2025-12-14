@@ -1,4 +1,11 @@
+import { NAMES } from "@/constants";
 import type { Sentence, AnswerSet } from "@/types";
+
+const nameToRegex = (name: string): string => {
+  return name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&").replace(/\\\*/g, "\\*?");
+};
+
+const ALL_NAMES_REGEX = new RegExp(NAMES.map(nameToRegex).join("|"), "g");
 
 /**
  * @param sentences
@@ -15,9 +22,6 @@ export const prepareActiveSentences = (
 
   if (hasMultipleAnswerSets && Array.isArray(answerSet.labels)) {
     const pronoun = answerSet.labels[activeIndex];
-
-    const ALL_NAMES_REGEX =
-      /Де\*?jан|Же\*?на ми|Фи\*?лип|Jо\*?рдан|Мари\*?на|Сло\*?бодан|Еми\*?лиjа|Фро\*?сина|Ве\*?сна|Ма\*?рко|Па\*?вле|У\*?бавка|И\*?лиjа|А\*?нѓела|Не\*?над|А\*?нѓел|На\*?де|Зо\*?ран|Зла\*?те|Ле\*?карот/g;
 
     const dynamicWord = answerSet.pronounWords?.[activeIndex];
 
