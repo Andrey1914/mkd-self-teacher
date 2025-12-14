@@ -1,7 +1,7 @@
 import { vocabulary } from "@/prisma/lessons/vocabulary/lesson-11";
 import { dialogueBlock } from "@/prisma/lessons/dialogues/lesson-11";
 import { glossary, examples } from "@/prisma/lessons/tables";
-// import { exercisesLesson11 } from "@/prisma/lessons/exercises";
+import { exercisesLesson11 } from "@/prisma/lessons/exercises";
 
 const { time } = glossary;
 const { lesson11: examplesLesson11 } = examples;
@@ -21,8 +21,8 @@ const {
   example13,
 } = examplesLesson11;
 
-// const { exercise1, exercise2, exercise3, exercise4, exercise5 } =
-//   exercisesLesson11;
+const { exercise1, exercise2, exercise3, exercise4, exercise5 } =
+  exercisesLesson11;
 
 export const lesson11 = {
   title: {
@@ -64,5 +64,5 @@ export const lesson11 = {
     { ...example13, slug: "lesson-11" },
   ],
 
-  //   exercises: [exercise1, exercise2, exercise3, exercise4, exercise5],
+  exercises: [exercise1, exercise2, exercise3, exercise4, exercise5],
 };
