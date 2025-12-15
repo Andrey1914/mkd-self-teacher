@@ -5,12 +5,6 @@ import { GenericTable } from "@/components/lesson/Tables";
 import { vocabulary } from "@/prisma/lessons/vocabulary/lesson-11";
 import { glossary } from "@/prisma/lessons/tables";
 
-// import {
-//   getColorizedItalicTdClassName,
-//   tableWithoutBorderClassName,
-//   getColorizedThClassName,
-
-// } from "@/components/lesson/Tables/rules";
 import {
   tableWithoutBorderClassName,
   getColorizedThClassName,
