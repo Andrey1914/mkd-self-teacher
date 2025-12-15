@@ -1,18 +1,31 @@
-"use client";
-
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Mousewheel } from "swiper/modules";
 import "swiper/css";
 import { TabsProps } from "@/types";
 
 export const Tabs = ({ tabs, activeIndex, onChange }: TabsProps) => {
   return (
     <div
-      style={{
-        overflowX: "auto",
-        whiteSpace: "nowrap",
-      }}
+    // style={
+    //   {
+    //     // overflowX: "auto",
+    //     // whiteSpace: "nowrap",
+    //   }
+    // }
     >
-      <Swiper slidesPerView="auto" spaceBetween={8} style={{ padding: "10px" }}>
+      <Swiper
+        modules={[Mousewheel]}
+        slidesPerView="auto"
+        spaceBetween={8}
+        simulateTouch
+        mousewheel={{
+          sensitivity: 1,
+          releaseOnEdges: false,
+          eventsTarget: "container",
+        }}
+        grabCursor
+        style={{ padding: "10px" }}
+      >
         {tabs.map((tab, index) => (
           <SwiperSlide
             key={index}
