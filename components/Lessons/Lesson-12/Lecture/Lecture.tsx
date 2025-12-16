@@ -1,4 +1,4 @@
-// import { Dialogue } from "./Dialogue";
+import { Dialogue } from "./Dialogue";
 import { Intro } from "./Intro";
 // import { GenericTable } from "@/components/lesson/Tables";
 
@@ -18,7 +18,7 @@ export const Lecture = () => {
   return (
     <>
       <Intro />
-      {/* <Dialogue /> */}
+      <Dialogue />
       {/* <GenericTable
         lesson={vocabulary}
         classNames={{

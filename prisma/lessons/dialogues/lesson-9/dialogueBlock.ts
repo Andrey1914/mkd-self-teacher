@@ -87,7 +87,6 @@ export const dialogueBlock: DialogueBlockProps = {
               `Вот сдача. Носите на здоровье.`,
             ],
           },
-
           {
             speaker: {
               id: `description`,

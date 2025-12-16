@@ -5,14 +5,7 @@ import { TabsProps } from "@/types";
 
 export const Tabs = ({ tabs, activeIndex, onChange }: TabsProps) => {
   return (
-    <div
-    // style={
-    //   {
-    //     // overflowX: "auto",
-    //     // whiteSpace: "nowrap",
-    //   }
-    // }
-    >
+    <div>
       <Swiper
         modules={[Mousewheel]}
         slidesPerView="auto"
@@ -49,7 +42,8 @@ export const Tabs = ({ tabs, activeIndex, onChange }: TabsProps) => {
                     ? "0.5px solid #fff"
                     : "1px solid transparent",
                 padding: "0.5rem 0.75rem",
-                color: "#fff",
+                color:
+                  index === activeIndex ? "#fff" : "rgba(255, 255, 255, 0.8)",
                 fontWeight: index === activeIndex ? "700" : "300",
                 cursor: "pointer",
                 boxShadow:
