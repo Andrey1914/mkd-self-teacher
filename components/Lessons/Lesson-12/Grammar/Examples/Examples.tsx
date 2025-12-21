@@ -1,8 +1,10 @@
 import { ExamplesTable } from "@/components/lesson/Tables";
 import { GenericTable } from "@/components/lesson/Tables";
+import { Paragraph } from "@/components/lesson/Paragraph";
 
 import { examples } from "@/prisma/lessons/tables";
 import { grammarTables } from "@/prisma/lessons/tables";
+import { grammarLesson12 } from "@/prisma/lessons/paragraph";
 
 import {
   tableClassName,
@@ -11,14 +13,9 @@ import {
 } from "@/components/lesson/Tables/rules";
 
 const { lesson12: examplesLesson12 } = examples;
-const {
-  example1,
-  example2,
-  example3,
-  //   example4,
-  //   example5,
-} = examplesLesson12;
+const { example1, example2, example3, example4, example5 } = examplesLesson12;
 const { perfect } = grammarTables;
+const { perfectLForm } = grammarLesson12;
 
 export const Examples = () => {
   return (
@@ -34,8 +31,9 @@ export const Examples = () => {
           td: tdColorizedClassName,
         }}
       />
-      {/* <ExamplesTable data={example4} /> */}
-      {/* <ExamplesTable data={example5} /> */}
+      <Paragraph data={perfectLForm} />
+      <ExamplesTable data={example4} />
+      <ExamplesTable data={example5} />
     </>
   );
 };
