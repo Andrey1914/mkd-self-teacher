@@ -28,6 +28,8 @@
 
     --button-primary-hover: #ccc;
     --button-secondary-hover: #1a1a1a;
+
+    /* display: block; */
   }
 }
 
@@ -45,10 +47,15 @@
   font-weight: 600;
 }
 
-.footer {
+.lesson {
   display: flex;
-  gap: 24px;
-  justify-content: center;
+  flex-direction: column;
+}
+
+.footer {
+  padding: 24px 0;
+  text-align: center;
+  opacity: 0.6;
 }
 
 @media (max-width: 900px) {
