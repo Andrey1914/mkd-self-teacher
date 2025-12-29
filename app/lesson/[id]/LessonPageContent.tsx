@@ -60,6 +60,7 @@ export function LessonPageContent({
 
   const [activeIndex, setActiveIndex] = useState(initialIndex);
   const swiperRef = useRef<SwiperType | null>(null);
+  const [isSwiperLocked, setIsSwiperLocked] = useState(false);
 
   const handleTabChange = (index: number) => {
     const lessonId = lessons[index].id;
@@ -68,6 +69,17 @@ export function LessonPageContent({
     swiperRef.current?.slideTo(index);
 
     window.scrollTo(0, 0);
+  };
+
+  const handleSwiperLock = (locked: boolean) => {
+    setIsSwiperLocked(locked);
+    if (swiperRef.current) {
+      if (locked) {
+        swiperRef.current.disable();
+      } else {
+        swiperRef.current.enable();
+      }
+    }
   };
 
   useEffect(() => {
@@ -87,6 +99,7 @@ export function LessonPageContent({
         />
         <main className={styles.main}>
           <Swiper
+            autoHeight={true}
             onSlideChange={(swiper) => {
               setActiveIndex(swiper.activeIndex);
               window.scrollTo(0, 0);
@@ -94,7 +107,8 @@ export function LessonPageContent({
             onSwiper={(swiper) => (swiperRef.current = swiper)}
             spaceBetween={50}
             slidesPerView={1}
-            allowTouchMove
+            // allowTouchMove
+            allowTouchMove={!isSwiperLocked}
             initialSlide={initialIndex}
             style={{ padding: "10px 5px" }}
           >
@@ -104,7 +118,7 @@ export function LessonPageContent({
 
               return (
                 <SwiperSlide key={lesson.id}>
-                  <LessonComponent />
+                  <LessonComponent onSwiperLock={handleSwiperLock} />
                 </SwiperSlide>
               );
             })}

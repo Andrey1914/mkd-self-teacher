@@ -9,14 +9,28 @@ import {
   exercisesUtils,
 } from "@/utils";
 
+import {
+  extractDraggableWords,
+  removeWordsFromPrompt,
+  hasDraggableWords,
+} from "@/utils/exerciseUtils/fillInExercise/drag-and-drop";
+import { useDragAndDrop } from "@/hooks/";
+
 import { ControlButtons, AnswerSetNavigator } from "./ControlButtons";
+import { DraggableWord } from "./DraggableWord";
+import { DragGhost } from "./DragGhost";
 
 import { motion, AnimatePresence } from "framer-motion";
 
 import { styles } from "./styles";
 import { inputVariants } from "./motion";
 
-export const FillInExercise = ({ data }: { data: ExercisesProps }) => {
+export interface FillInExerciseProps {
+  data: ExercisesProps;
+  onSwiperLock?: (locked: boolean) => void;
+}
+
+export const FillInExercise = ({ data, onSwiperLock }: FillInExerciseProps) => {
   const [hasMounted, setHasMounted] = useState(false);
   const [checked, setChecked] = useState(false);
   const [showAnswers, setShowAnswers] = useState(false);
@@ -45,6 +59,23 @@ export const FillInExercise = ({ data }: { data: ExercisesProps }) => {
     () => prepareActiveSentences(sentences, answerSet, activeIndex),
     [sentences, answerSet, activeIndex, prepareActiveSentences]
   );
+
+  const draggableWords = useMemo(() => {
+    const prompt = section?.prompt?.[0];
+    if (typeof prompt === "string" && hasDraggableWords(prompt)) {
+      return extractDraggableWords(prompt);
+    }
+    return null;
+  }, [section?.prompt]);
+
+  const { dragState, usedWords, handleDragStart, resetUsedWords, returnWord } =
+    useDragAndDrop({
+      availableWords: draggableWords || [],
+      onWordUsed: (word, index) => {
+        console.log("Word used:", word, "at index:", index);
+      },
+      onSwiperLock,
+    });
 
   useEffect(() => {
     setHasMounted(true);
@@ -118,6 +149,15 @@ export const FillInExercise = ({ data }: { data: ExercisesProps }) => {
     if (checked) setChecked(false);
     if (showAnswers) setShowAnswers(false);
 
+    const oldValue = inputs[sentenceIdx]?.[wordIdx];
+
+    if (oldValue && oldValue !== value) {
+      const wordIndexInPool = draggableWords?.indexOf(oldValue);
+      if (wordIndexInPool !== undefined && wordIndexInPool !== -1) {
+        returnWord(wordIndexInPool);
+      }
+    }
+
     setInputs((prev) => {
       const updated = [...prev];
       updated[sentenceIdx][wordIdx] = value;
@@ -165,6 +205,8 @@ export const FillInExercise = ({ data }: { data: ExercisesProps }) => {
     setIsAutoFilled(initialFlags);
     setChecked(false);
     setShowAnswers(false);
+
+    resetUsedWords();
   };
 
   const getInputWidth = (value: string): number => {
@@ -184,10 +226,36 @@ export const FillInExercise = ({ data }: { data: ExercisesProps }) => {
                     <strong>{data.title}.</strong>
                   </p>
                 </li>
-                {formatText(text, true)}
+                {formatText(removeWordsFromPrompt(text), true)}
               </ul>
             ) : null
           )}
+
+          {draggableWords && draggableWords.length > 0 && (
+            <div
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                gap: "8px",
+                userSelect: "none",
+                WebkitUserSelect: "none",
+                position: "relative",
+                zIndex: 50,
+                touchAction: "none",
+              }}
+            >
+              {draggableWords.map((word, idx) => (
+                <DraggableWord
+                  key={idx}
+                  word={word}
+                  index={idx}
+                  isUsed={usedWords.has(idx)}
+                  onDragStart={handleDragStart}
+                />
+              ))}
+            </div>
+          )}
+
           {hasMultipleAnswerSets && (
             <AnswerSetNavigator
               answerSet={answerSet}
@@ -256,11 +324,13 @@ export const FillInExercise = ({ data }: { data: ExercisesProps }) => {
                                         width: `${getInputWidth(
                                           inputs[idx]?.[i] ?? ""
                                         )}px`,
-
                                         ...(checked && !showAnswers
                                           ? highlightInput(
                                               inputs[idx]?.[i] ?? "",
-                                              sentence.answer[i],
+                                              sentence.answer[i].replace(
+                                                /\*\*/g,
+                                                ""
+                                              ),
                                               true
                                             )
                                           : {}),
@@ -301,69 +371,6 @@ export const FillInExercise = ({ data }: { data: ExercisesProps }) => {
                 })}
             </div>
           </form>
-          {/* <form>
-            <div style={{ textAlign: "left", lineHeight: "2rem" }}>
-              {Array.isArray(activeSentences) &&
-                activeSentences.map((sentence, idx) => {
-                  const parts = sentence.mkd?.split("___");
-
-                  return (
-                    <React.Fragment key={idx}>
-                      {parts?.map((part, i) => {
-                        const { unstyledPrefix, styledText, unstyledSuffix } =
-                          parseFillInPart(part);
-
-                        return (
-                          <React.Fragment key={i}>
-                            {unstyledPrefix}
-
-                            <span>{formatText(styledText)}</span>
-
-                            {unstyledSuffix}
-
-                            {sentence.answer && i < sentence.answer.length && (
-                              <input
-                                id={`input-${sIdx}-${idx}-${i}`}
-                                name={`input-${sIdx}-${idx}-${i}`}
-                                autoComplete="off"
-                                type="text"
-                                className={`${fillInInput} ${animationClass}`}
-                                value={inputs[idx]?.[i] ?? ""}
-                                onChange={(e) =>
-                                  handleChange(e.target.value, idx, i)
-                                }
-                                readOnly={isAutoFilled[idx]?.[i]}
-                                onCopy={(e) => {
-                                  if (isAutoFilled[idx]?.[i])
-                                    e.preventDefault();
-                                }}
-                                onFocus={(e) => {
-                                  if (isAutoFilled[idx]?.[i]) e.target.blur();
-                                }}
-                                style={{
-                                  ["--input-width" as string]: `${getInputWidth(
-                                    inputs[idx]?.[i] ?? ""
-                                  )}px`,
-                                  ...(isAutoFilled[idx]?.[i]
-                                    ? {}
-                                    : checked && !showAnswers
-                                    ? highlightInput(
-                                        inputs[idx]?.[i] ?? "",
-                                        sentence.answer[i],
-                                        true
-                                      )
-                                    : {}),
-                                }}
-                              />
-                            )}
-                          </React.Fragment>
-                        );
-                      })}{" "}
-                    </React.Fragment>
-                  );
-                })}
-            </div>
-          </form> */}
 
           <ControlButtons
             onCheck={handleCheck}
@@ -373,6 +380,7 @@ export const FillInExercise = ({ data }: { data: ExercisesProps }) => {
           />
         </div>
       ))}
+      <DragGhost dragState={dragState} />
     </section>
   );
 };

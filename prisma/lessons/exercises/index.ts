@@ -9,3 +9,4 @@ export * as exercisesLesson8 from "./lesson-8";
 export * as exercisesLesson9 from "./lesson-9";
 export * as exercisesLesson10 from "./lesson-10";
 export * as exercisesLesson11 from "./lesson-11";
+export * as exercisesLesson12 from "./lesson-12";
