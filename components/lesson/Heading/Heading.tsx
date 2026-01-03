@@ -20,42 +20,18 @@ export const HeadingLesson = ({
   SubtitleIconSize = 62,
 }: LessonIntroProps) => {
   const { title, sections } = lessonData;
-  const { lessonTitle, sectionSubtitle } = styles.heading;
+  const {
+    lessonTitle,
+    sectionSubtitle,
+    contanerImg,
+    gradient,
+    containerTitle,
+  } = styles.heading;
 
   return (
-    <div
-      style={{
-        position: "relative",
-        backgroundImage: 'url("/flag.jpg")',
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-        width: "100%",
-        height: "auto",
-        overflow: "hidden",
-        marginBottom: "2rem",
-      }}
-    >
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          background: `radial-gradient(ellipse at center,
-                rgba(0, 0, 0, 0.30) 0%,      /* центр */
-                rgba(0, 0, 0, 0.90) 65%,     /* переход */
-                rgba(0, 0, 0, 1) 100%     /* края */
-            )
-          `,
-          zIndex: 1,
-        }}
-      ></div>
-      <div
-        style={{
-          position: "relative",
-          zIndex: 2,
-          // padding: "2rem 1rem",
-        }}
-      >
+    <div className={contanerImg}>
+      <div className={gradient}></div>
+      <div className={containerTitle}>
         <MultiFormatHeading as="h1" data={title} className={lessonTitle} />
 
         {sections?.map((section, i) => (

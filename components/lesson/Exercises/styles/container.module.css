@@ -1,0 +1,30 @@
+.containerDraggableWords {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 15px 0;
+  gap: 8px;
+  user-select: none;
+  -webkit-user-select: none;
+  position: relative;
+  z-index: 50;
+  touch-action: none;
+}
+
+.containerExampleText {
+  text-align: center;
+  width: 65%;
+  margin: 0 auto;
+  text-indent: 0;
+}
+
+.containerGhostElement {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 999999;
+  color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  white-space: nowrap;
+}

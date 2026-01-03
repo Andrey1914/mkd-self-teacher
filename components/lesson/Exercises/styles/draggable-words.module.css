@@ -1,0 +1,9 @@
+.draggableWord {
+  display: inline-block;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+  position: relative;
+  z-index: 100;
+}

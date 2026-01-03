@@ -25,6 +25,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { styles } from "./styles";
 import { inputVariants } from "./motion";
 
+import { createFillInExerciseHandlers } from "./handlers";
+
 export interface FillInExerciseProps {
   data: ExercisesProps;
   onSwiperLock?: (locked: boolean) => void;
@@ -54,6 +56,7 @@ export const FillInExercise = ({ data, onSwiperLock }: FillInExerciseProps) => {
   } = exercisesUtils;
 
   const { fillInInput } = styles.inputs;
+  const { containerDraggableWords, containerExampleText } = styles.containers;
 
   const activeSentences = useMemo(
     () => prepareActiveSentences(sentences, answerSet, activeIndex),
@@ -77,6 +80,37 @@ export const FillInExercise = ({ data, onSwiperLock }: FillInExerciseProps) => {
       onSwiperLock,
     });
 
+  const getInputWidth = (value: string): number => {
+    // return Math.min(Math.max(getTextWidth(value), 60), 850);
+    return Math.max(getTextWidth(value), 60);
+  };
+
+  const {
+    handlePrev,
+    handleNext,
+    handleCheck,
+    handleRevealAnswers,
+    handleClear,
+    handleChange,
+  } = createFillInExerciseHandlers({
+    sentences,
+    activeSentences,
+    draggableWords,
+    answerSet,
+    activeIndex,
+    setActiveIndex,
+    inputRefs,
+    initializeFillInState,
+    getCorrectFillInAnswers,
+    getInputWidth,
+    returnWord,
+    resetUsedWords,
+    setInputs,
+    setIsAutoFilled,
+    setChecked,
+    setShowAnswers,
+  });
+
   useEffect(() => {
     setHasMounted(true);
     const { initialInputs, initialFlags } =
@@ -91,128 +125,6 @@ export const FillInExercise = ({ data, onSwiperLock }: FillInExerciseProps) => {
   if (!hasMounted || !data || !data.sections || data.sections.length === 0) {
     return null;
   }
-
-  const handleNext = () => {
-    if (
-      answerSet &&
-      Array.isArray(answerSet.labels) &&
-      activeIndex < answerSet.labels.length - 1
-    ) {
-      setActiveIndex(activeIndex + 1);
-    }
-  };
-
-  const handlePrev = () => {
-    if (activeIndex > 0) {
-      setActiveIndex(activeIndex - 1);
-    }
-  };
-
-  const revealAnswers = () => {
-    const target = (activeSentences ?? sentences) || [];
-    const { correctInputs: rawCorrectInputs, correctFlags } =
-      getCorrectFillInAnswers(target);
-
-    const cleanCorrectInputs = rawCorrectInputs.map((sentenceAnswers) =>
-      sentenceAnswers.map((answer) =>
-        typeof answer === "string"
-          ? answer
-              .replace(/\*\*(.*?)\*\*/g, "$1")
-              .replace(/\((.*?)\)/g, "$1")
-              .replace(/\s+/g, " ")
-              .trim()
-          : answer
-      )
-    );
-
-    cleanCorrectInputs.forEach((sentence, sIdx) => {
-      sentence.forEach((answer, wIdx) => {
-        const ref = inputRefs.current[sIdx * 10 + wIdx];
-        if (ref) {
-          const newWidth = getInputWidth(answer);
-          ref.style.setProperty("--input-width", `${newWidth}px`);
-        }
-      });
-    });
-
-    setInputs(cleanCorrectInputs);
-    setIsAutoFilled(correctFlags);
-    setChecked(false);
-    setShowAnswers(true);
-  };
-
-  const handleChange = (
-    value: string,
-    sentenceIdx: number,
-    wordIdx: number
-  ) => {
-    if (checked) setChecked(false);
-    if (showAnswers) setShowAnswers(false);
-
-    const oldValue = inputs[sentenceIdx]?.[wordIdx];
-
-    if (oldValue && oldValue !== value) {
-      const wordIndexInPool = draggableWords?.indexOf(oldValue);
-      if (wordIndexInPool !== undefined && wordIndexInPool !== -1) {
-        returnWord(wordIndexInPool);
-      }
-    }
-
-    setInputs((prev) => {
-      const updated = [...prev];
-      updated[sentenceIdx][wordIdx] = value;
-      return updated;
-    });
-
-    setIsAutoFilled((prev) => {
-      const updated = [...prev];
-      updated[sentenceIdx][wordIdx] = false;
-      return updated;
-    });
-
-    const ref = inputRefs.current[sentenceIdx * 10 + wordIdx];
-    if (ref) {
-      ref.style.setProperty("--input-width", `${getInputWidth(value)}px`);
-    }
-  };
-
-  const handleCheck = () => {
-    setChecked(true);
-    setShowAnswers(false);
-  };
-
-  const handleClear = () => {
-    inputRefs.current.forEach((ref) => {
-      if (ref) {
-        const { style } = ref;
-
-        style.setProperty("--input-width", "60px");
-
-        if (ref.innerText !== undefined) {
-          ref.innerText = "";
-        }
-
-        style.color = "inherit";
-        style.boxShadow = "inherit";
-        style.fontWeight = "normal";
-      }
-    });
-
-    const target = (activeSentences ?? sentences) || [];
-    const { initialInputs, initialFlags } = initializeFillInState(target);
-
-    setInputs(initialInputs);
-    setIsAutoFilled(initialFlags);
-    setChecked(false);
-    setShowAnswers(false);
-
-    resetUsedWords();
-  };
-
-  const getInputWidth = (value: string): number => {
-    // return Math.min(Math.max(getTextWidth(value), 60), 850);
-    return Math.max(getTextWidth(value), 60);
-  };
 
   return (
     <section style={{ margin: "2rem 0" }}>
@@ -232,18 +144,7 @@ export const FillInExercise = ({ data, onSwiperLock }: FillInExerciseProps) => {
           )}
 
           {draggableWords && draggableWords.length > 0 && (
-            <div
-              style={{
-                display: "flex",
-                flexWrap: "wrap",
-                gap: "8px",
-                userSelect: "none",
-                WebkitUserSelect: "none",
-                position: "relative",
-                zIndex: 50,
-                touchAction: "none",
-              }}
-            >
+            <div className={containerDraggableWords}>
               {draggableWords.map((word, idx) => (
                 <DraggableWord
                   key={idx}
@@ -265,15 +166,7 @@ export const FillInExercise = ({ data, onSwiperLock }: FillInExerciseProps) => {
             />
           )}
           {section.content?.text && (
-            <div
-              lang="ru"
-              style={{
-                textAlign: "center",
-                width: "65%",
-                margin: "0 auto",
-                textIndent: 0,
-              }}
-            >
+            <div lang="ru" className={containerExampleText}>
               {formatText(section.content.text, true)}
             </div>
           )}
@@ -320,7 +213,6 @@ export const FillInExercise = ({ data, onSwiperLock }: FillInExerciseProps) => {
                                       exit="exit"
                                       variants={inputVariants}
                                       style={{
-                                        whiteSpace: "nowrap",
                                         width: `${getInputWidth(
                                           inputs[idx]?.[i] ?? ""
                                         )}px`,
@@ -353,7 +245,6 @@ export const FillInExercise = ({ data, onSwiperLock }: FillInExerciseProps) => {
                                       exit="exit"
                                       variants={inputVariants}
                                       style={{
-                                        whiteSpace: "nowrap",
                                         width: `${getInputWidth(
                                           inputs[idx]?.[i] ?? ""
                                         )}px`,
@@ -374,7 +265,7 @@ export const FillInExercise = ({ data, onSwiperLock }: FillInExerciseProps) => {
 
           <ControlButtons
             onCheck={handleCheck}
-            onReveal={revealAnswers}
+            onReveal={handleRevealAnswers}
             onClear={handleClear}
             showAnswers={showAnswers}
           />
