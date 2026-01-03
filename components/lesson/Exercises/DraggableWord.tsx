@@ -1,5 +1,6 @@
-import type React from "react";
 import { formatText } from "@/utils";
+
+import { styles } from "./styles";
 
 export interface DraggableWordProps {
   word: string;
@@ -20,21 +21,17 @@ export const DraggableWord: React.FC<DraggableWordProps> = ({
 }) => {
   if (isUsed) return null;
 
+  const { draggableWord } = styles.draggableWord;
+
+  const handlePointerDownCapture = (e: React.PointerEvent<HTMLSpanElement>) => {
+    e.stopPropagation();
+    onDragStart(word, index, e);
+  };
+
   return (
     <span
-      onPointerDownCapture={(e) => {
-        e.stopPropagation();
-        onDragStart(word, index, e);
-      }}
-      style={{
-        display: "inline-block",
-        cursor: "grab",
-        userSelect: "none",
-        touchAction: "none",
-        WebkitUserSelect: "none",
-        position: "relative",
-        zIndex: 100,
-      }}
+      onPointerDownCapture={handlePointerDownCapture}
+      className={draggableWord}
     >
       {formatText(word)}
     </span>

@@ -1,4 +1,4 @@
-import { styles } from "./styles";
+import { styles } from "../styles";
 
 interface ExerciseControlsProps {
   onCheck: () => void;

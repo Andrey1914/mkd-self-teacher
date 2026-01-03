@@ -43,7 +43,6 @@ export const DialogueBlock = ({ data }: { data: DialogueBlockProps }) => {
                   as="h2"
                   data={title}
                   iconSrc="/lecture.png"
-                  // iconSize={62}
                 />
               )}
 

@@ -7,6 +7,8 @@ export {
 
 export const MACEDONIAN_PRONOUNS = ["Jас", "Ти", "Ние", "Вие", "Тие"];
 
+export const TABLE_HEADER_LABELS = ["Буква", "Звук", "Буква", "Звук"] as const;
+
 // Regular expressions for text cleaning
 export const TEXT_PATTERNS = {
   HTML_TAGS: /<[^>]*>/g,

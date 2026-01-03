@@ -1,7 +1,6 @@
 .exerciseInput,
 .fillInInput {
   display: inline-block;
-  /* margin: 0 4px; */
   padding: 0 4px 0 4px;
   font-size: 16px;
   text-align: center;
@@ -12,21 +11,14 @@
   border-right: none;
   border-bottom: 1px solid #994747;
   outline: none;
-  /* vertical-align: baseline; */
   vertical-align: 8px;
 }
 
 .fillInInput {
   min-width: 60px;
-  /* max-width: 850px; */
   max-width: 100%;
-  white-space: pre-wrap;
   word-break: break-word;
-
-  /* width: var(--input-width, 60px); */
-  /* transition: width 0.3s ease-out, color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-    -webkit-text-fill-color 0.4s cubic-bezier(0.4, 0, 0.2, 1); */
-  /* transition: width 0.3s ease-out; */
+  white-space: nowrap;
 }
 
 .translatorInput {
@@ -46,7 +38,6 @@
   font-size: 18px;
   line-height: 1.5;
   background-color: transparent;
-  /* overflow: hidden; */
   resize: none;
 
   transition: height 0.2s ease-out;
@@ -106,7 +97,6 @@
   .fillInInput,
   .paragraphInput,
   .translatorInput {
-    /* transition-duration: 0.1s; */
     will-change: auto;
   }
 
@@ -123,7 +113,6 @@
 @media (max-width: 768px) {
   .fillInInput {
     font-size: 14px;
-    /* padding: 3px; */
     margin: 0 2px;
   }
 }

@@ -5,3 +5,37 @@
 .sectionSubtitle {
   margin: 2rem 0;
 }
+
+.contanerImg {
+  position: relative;
+  background-image: url("/flag.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.gradient {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 0, 0, 0.3) 0%,
+    /* центр */ rgba(0, 0, 0, 0.9) 65%,
+    /* переход */ rgba(0, 0, 0, 1) 100% /* края */
+  );
+  z-index: 1;
+}
+
+.containerTitle {
+  position: relative;
+  z-index: 2;
+}
+
+.containerMultilanguageTitle {
+  display: flex;
+  flex-direction: column;
+}

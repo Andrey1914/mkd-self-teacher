@@ -33,12 +33,9 @@ export function extractDraggableWords(promptText: string): string[] | null {
 export function removeWordsFromPrompt(promptText: string): string {
   if (!promptText) return "";
 
-  const cleanWithSpan = promptText.replace(
-    /<span[^>]*>\s*\*[\s\S]*?\*\*\s*<\/span>/g,
-    ""
-  );
+  let cleaned = promptText.replace(/\*\*([\s\S]*?)\*\*/g, "");
 
-  const finalPrompt = cleanWithSpan.replace(DRAG_MARKER_REGEX, "");
+  cleaned = cleaned.replace(/<span[^>]*>\s*<\/span>/g, "");
 
-  return finalPrompt.replace(/\s+/g, " ").trim();
+  return cleaned.trim();
 }

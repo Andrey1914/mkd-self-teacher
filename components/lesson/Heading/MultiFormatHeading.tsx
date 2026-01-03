@@ -25,6 +25,7 @@ export const MultiFormatHeading = ({
   ...restProps
 }: MultiFormatHeadingProps) => {
   const { responsiveIcon } = styles.adaptiveIcons;
+  const { containerMultilanguageTitle } = styles.heading;
 
   if (!data) return null;
 
@@ -106,12 +107,12 @@ export const MultiFormatHeading = ({
       )}
 
       {isH1 ? (
-        <div style={{ display: "flex", flexDirection: "column" }}>
+        <div className={containerMultilanguageTitle}>
           {data.ru && <span>{formatText(data.ru)}</span>}
           {data.mkd && <span>{formatText(data.mkd)}</span>}
         </div>
       ) : (
-        <div style={{ display: "flex", flexDirection: "column" }}>
+        <div className={containerMultilanguageTitle}>
           {data.ru && formatText(data.ru)}
           {data.mkd && <span>{formatText(data.mkd)}</span>}
         </div>

@@ -1,10 +1,22 @@
 import React from "react";
 import { formatText } from "@/utils";
 import { alphabetTable } from "@/prisma/lessons/tables";
+import { TABLE_HEADER_LABELS } from "@/constants";
+
+import { styles } from "./styles";
 
 export const AlphabetTable = () => {
   const section = alphabetTable.sections[0];
   const table = section.tableEntries?.create?.[0];
+
+  const {
+    tableSheet,
+    tableColgroup,
+    tableRowHeader,
+    tableHeaderCell,
+    tableCell,
+    tableCellText,
+  } = styles.alphabet;
 
   if (!table || !table.rows) return null;
 
@@ -15,32 +27,18 @@ export const AlphabetTable = () => {
 
   return (
     <div style={{ margin: "1rem 0" }}>
-      {/* {table.title && <h3 style={{ marginBottom: "1rem" }}>{table.title}</h3>} */}
-      <table
-        style={{
-          marginBottom: "1rem",
-          border: "1px solid #994747",
-        }}
-      >
-        <colgroup>
-          <col style={{ width: "10%" }} />
-          <col style={{ width: "40%" }} />
-          <col style={{ width: "10%" }} />
-          <col style={{ width: "40%" }} />
+      <table className={tableSheet}>
+        <colgroup className={tableColgroup}>
+          <col />
+          <col />
+          <col />
+          <col />
         </colgroup>
 
         <thead>
-          <tr style={{ backgroundColor: "#994747", color: "#fff" }}>
-            {["Буква", "Звук", "Буква", "Звук"].map((label, idx) => (
-              <th
-                lang="ru"
-                key={idx}
-                style={{
-                  padding: "0.5rem",
-                  textAlign: "center",
-                  borderLeft: idx === 0 ? "none" : "1px solid #fff",
-                }}
-              >
+          <tr className={tableRowHeader}>
+            {TABLE_HEADER_LABELS.map((label, idx) => (
+              <th lang="ru" key={idx} className={tableHeaderCell}>
                 {label}
               </th>
             ))}
@@ -53,31 +51,12 @@ export const AlphabetTable = () => {
               <tr key={rowIdx}>
                 {[left[rowIdx], right[rowIdx]].map((item, colIdx) => (
                   <React.Fragment key={colIdx}>
-                    <td
-                      style={{
-                        padding: "0.5rem",
-                        verticalAlign: "top",
-                        border: "1px solid #994747",
-                      }}
-                    >
+                    <td lang="ru" className={tableCell}>
                       {item?.letter
                         ? formatText(`<span>${item.letter}</span>`)
                         : ""}
                     </td>
-                    <td
-                      lang="ru"
-                      style={{
-                        hyphens: "auto",
-                        overflowWrap: "break-word",
-                        wordBreak: "normal",
-                        whiteSpace: "normal",
-
-                        padding: "0.5rem",
-                        verticalAlign: "top",
-                        border: "1px solid #994747",
-                        width: colIdx % 2 === 1 ? "45%" : "auto",
-                      }}
-                    >
+                    <td lang="ru" className={`${tableCell} ${tableCellText}`}>
                       {item?.sound ? formatText(item.sound) : ""}
                     </td>
                   </React.Fragment>

@@ -1,0 +1,39 @@
+.tableSheet {
+  margin-bottom: 1rem;
+  border: 1px solid #994747;
+}
+
+.tableColgroup col:nth-child(odd) {
+  width: 10%;
+}
+
+.tableColgroup col:nth-child(even) {
+  width: 40%;
+}
+
+.tableRowHeader {
+  background-color: #994747;
+  color: #ffffff;
+}
+
+.tableHeaderCell {
+  padding: 0.5rem;
+  text-align: center;
+}
+
+.tableHeaderCell:not(:first-child) {
+  border-left: 1px solid #ffffff;
+}
+
+.tableCell {
+  padding: 0.5rem;
+  vertical-align: top;
+  border: 1px solid #994747;
+}
+
+.tableCellText {
+  hyphens: auto;
+  overflow-wrap: break-word;
+  word-break: normal;
+  white-space: normal;
+}

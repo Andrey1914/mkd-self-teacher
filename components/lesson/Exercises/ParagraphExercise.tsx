@@ -1,16 +1,14 @@
-"use client";
-
 import { useState, useId, useRef, useEffect } from "react";
 import { MACEDONIAN_PRONOUNS } from "@/constants";
 import {
   formatText,
   resizeTextarea,
   highlightInput,
-  getCleanedAnswers,
   exercisesUtils,
 } from "@/utils";
 import { ExercisesProps } from "@/types";
 import { ControlButtons } from "./ControlButtons";
+import { createParagraphExerciseHandlers } from "./handlers";
 
 import { styles } from "./styles";
 
@@ -44,49 +42,19 @@ export const ParagraphExercise = ({ data }: { data: ExercisesProps }) => {
     });
   }, [inputs]);
 
-  const handleChange = (value: string, idx: number) => {
-    const updatedInputs = [...inputs];
-    updatedInputs[idx] = value;
-    setInputs(updatedInputs);
-    setChecked(false);
-
-    const updatedFlags = [...isAutoFilled];
-    updatedFlags[idx] = false;
-    setIsAutoFilled(updatedFlags);
-  };
-
-  const revealAnswers = () => {
-    setAnimationClass(revealAnimation);
-
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        const cleanedAnswers = getCleanedAnswers(sections.content.answer);
-        setInputs(cleanedAnswers ?? Array(inputCount).fill(""));
-        setIsAutoFilled(Array(inputCount).fill(true));
-        setShowAnswers(true);
-        setChecked(false);
-        setAnimationClass(revealAnimation);
-      });
+  const { handleChange, handleRevealAnswers, handleClear, handleCheck } =
+    createParagraphExerciseHandlers({
+      sections,
+      inputCount,
+      inputs,
+      setInputs,
+      setChecked,
+      setShowAnswers,
+      setIsAutoFilled,
+      setAnimationClass,
+      revealAnimation,
+      hideAnimation,
     });
-  };
-
-  const clearInputs = () => {
-    setAnimationClass(hideAnimation);
-
-    setTimeout(() => {
-      setInputs(Array(inputCount).fill(""));
-      setIsAutoFilled(Array(inputCount).fill(false));
-      setShowAnswers(false);
-      setChecked(false);
-      setAnimationClass("");
-    }, 100);
-  };
-
-  const checkAnswers = () => {
-    setChecked(true);
-    setShowAnswers(false);
-    setAnimationClass("");
-  };
 
   return (
     <section style={{ margin: "2rem 0" }}>
@@ -147,9 +115,9 @@ export const ParagraphExercise = ({ data }: { data: ExercisesProps }) => {
       </form>
 
       <ControlButtons
-        onCheck={checkAnswers}
-        onReveal={revealAnswers}
-        onClear={clearInputs}
+        onCheck={handleCheck}
+        onReveal={handleRevealAnswers}
+        onClear={handleClear}
         showAnswers={showAnswers}
       />
     </section>

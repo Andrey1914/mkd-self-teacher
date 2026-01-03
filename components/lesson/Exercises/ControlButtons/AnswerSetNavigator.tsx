@@ -1,7 +1,7 @@
 import { formatText } from "@/utils";
 import type { AnswerSet } from "@/types";
 
-import { styles } from "./styles";
+import { styles } from "../styles";
 
 interface AnswerSetNavigatorProps {
   answerSet: AnswerSet;
