@@ -1,10 +1,11 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { formatText, highlightInput, generateHighlightedText } from "@/utils";
+import { formatText, highlightInput } from "@/utils";
 import { ExercisesProps } from "@/types";
 
 import { ControlButtons } from "./ControlButtons";
+import { createTranslateParagraphHandlers } from "./handlers";
 
 import { styles } from "./styles";
 
@@ -28,65 +29,20 @@ export const TranslateParagraphExercise = ({
 
   const editorRef = useRef<HTMLDivElement>(null);
 
-  const handleCheck = () => {
-    setChecked(true);
-    setShowAnswer(false);
-    if (editorRef.current) {
-      editorRef.current.innerHTML = generateHighlightedText(
-        input,
-        correctAnswer
-      );
-    }
-  };
-
-  const handleReveal = () => {
-    setAnimationClass(revealAnimation);
-
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        const cleanAnswer = correctAnswer
-          .replace(/\*\*(.*?)\*\*/g, "$1")
-          // 2. Remove optional (markers **), leaving the content
-          .replace(/\((.*?)\)/g, "$1")
-          // 3. We remove any extra spaces that may remain.
-          .replace(/\s+/g, " ")
-          .trim();
-
-        setInput(cleanAnswer);
-        setChecked(false);
-        setShowAnswer(true);
-        if (editorRef.current) {
-          editorRef.current.innerText = cleanAnswer;
-        }
-        setAnimationClass(revealAnimation);
-      });
+  const { handleCheck, handleRevealAnswers, handleClear, handleInput } =
+    createTranslateParagraphHandlers({
+      section,
+      correctAnswer,
+      input,
+      checked,
+      editorRef,
+      setInput,
+      setChecked,
+      setShowAnswer,
+      setAnimationClass,
+      revealAnimation,
+      hideAnimation,
     });
-  };
-
-  const handleClear = () => {
-    setAnimationClass(hideAnimation);
-
-    setTimeout(() => {
-      setInput("");
-      setChecked(false);
-      setShowAnswer(false);
-
-      if (editorRef.current) {
-        editorRef.current.innerText = "";
-      }
-    }, 100);
-  };
-
-  const handleInput = () => {
-    if (editorRef.current) {
-      const text = editorRef.current.innerText;
-      setInput(text);
-
-      if (checked) {
-        setChecked(false);
-      }
-    }
-  };
 
   const outline = isFocused && !showAnswer ? "2px solid white" : "none";
   const userSelect = showAnswer ? "none" : "text";
@@ -137,7 +93,7 @@ export const TranslateParagraphExercise = ({
 
       <ControlButtons
         onCheck={handleCheck}
-        onReveal={handleReveal}
+        onReveal={handleRevealAnswers}
         onClear={handleClear}
         showAnswers={showAnswer}
       />

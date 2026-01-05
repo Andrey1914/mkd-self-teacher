@@ -4,8 +4,9 @@ import { useState, useEffect, useMemo } from "react";
 import type { ExercisesProps, WordState } from "@/types";
 import { formatText, exercisesUtils } from "@/utils";
 import { ControlButtons } from "./ControlButtons";
+import { createHighlightWordsHandlers } from "./handlers";
 
-import { styles } from "./styles";
+import { styles, getWordStyleClass, getWordStatusClass } from "./styles";
 
 export const HighlightWordsExercise = ({ data }: { data: ExercisesProps }) => {
   const section = data.sections[0];
@@ -30,89 +31,14 @@ export const HighlightWordsExercise = ({ data }: { data: ExercisesProps }) => {
     setWordsState(initialWordsState);
   }, [initialWordsState]);
 
-  const handleWordClick = (index: number) => {
-    if (showAnswer) return;
-
-    setChecked(false);
-    setWordsState((prev) => {
-      const newState = [...prev];
-      const wordState = newState[index];
-
-      if (wordState.userStyle === "normal") wordState.userStyle = "bold";
-      else if (wordState.userStyle === "bold") wordState.userStyle = "italic";
-      else wordState.userStyle = "normal";
-
-      wordState.status = "unchecked";
-      wordState.touched = true;
-      return newState;
+  const { handleWordClick, handleCheck, handleRevealAnswers, handleClear } =
+    createHighlightWordsHandlers({
+      initialWordsState,
+      showAnswer,
+      setWordsState,
+      setChecked,
+      setShowAnswer,
     });
-  };
-
-  const handleCheck = () => {
-    setChecked(true);
-    setShowAnswer(false);
-    setWordsState((prev) =>
-      prev.map((wordState) => {
-        if (!wordState.isWord || !wordState.touched) {
-          return { ...wordState, status: "unchecked" };
-        }
-        const isCorrect = wordState.userStyle === wordState.correctStyle;
-        return { ...wordState, status: isCorrect ? "correct" : "incorrect" };
-      })
-    );
-  };
-
-  const handleReveal = () => {
-    setChecked(false);
-    setShowAnswer(true);
-    setWordsState((prev) =>
-      prev.map((wordState) =>
-        !wordState.isWord
-          ? wordState
-          : {
-              ...wordState,
-              userStyle: wordState.correctStyle,
-              status:
-                wordState.correctStyle !== "normal" ? "correct" : "unchecked",
-            }
-      )
-    );
-  };
-
-  const handleClear = () => {
-    setChecked(false);
-    setShowAnswer(false);
-    setWordsState(
-      initialWordsState.map((w) => ({
-        ...w,
-        userStyle: "normal",
-        status: "unchecked",
-        touched: false,
-      }))
-    );
-  };
-
-  const getStyleClass = (style: "normal" | "bold" | "italic") => {
-    switch (style) {
-      case "bold":
-        return bold;
-      case "italic":
-        return italic;
-      default:
-        return normal;
-    }
-  };
-
-  const getStatusClass = (status: "unchecked" | "correct" | "incorrect") => {
-    switch (status) {
-      case "correct":
-        return correct;
-      case "incorrect":
-        return incorrect;
-      default:
-        return "";
-    }
-  };
 
   return (
     <section style={{ margin: "2rem 0" }}>
@@ -138,8 +64,17 @@ export const HighlightWordsExercise = ({ data }: { data: ExercisesProps }) => {
           wordState.isWord ? (
             <span
               key={index}
-              className={`${word} ${getStyleClass(wordState.userStyle)} ${
-                checked || showAnswer ? getStatusClass(wordState.status) : ""
+              className={`${word} ${getWordStyleClass(wordState.userStyle, {
+                normal,
+                bold,
+                italic,
+              })} ${
+                checked || showAnswer
+                  ? getWordStatusClass(wordState.status, {
+                      correct,
+                      incorrect,
+                    })
+                  : ""
               }`}
               onClick={() => handleWordClick(index)}
             >
@@ -153,7 +88,7 @@ export const HighlightWordsExercise = ({ data }: { data: ExercisesProps }) => {
 
       <ControlButtons
         onCheck={handleCheck}
-        onReveal={handleReveal}
+        onReveal={handleRevealAnswers}
         onClear={handleClear}
         showAnswers={showAnswer}
       />

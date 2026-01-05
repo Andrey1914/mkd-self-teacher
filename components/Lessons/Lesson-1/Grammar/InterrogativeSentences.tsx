@@ -15,6 +15,7 @@ export const InterrogativeSentences = () => {
       <ParagraphExercise data={exercise7} />
       <TranslateParagraphExercise data={exercise8} />
       <TranslateParagraphExercise data={exercise9} />
+      <div data-lesson-end />
     </>
   );
 };

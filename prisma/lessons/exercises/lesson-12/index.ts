@@ -1,6 +1,6 @@
 export { exercise1 } from "./exercises-1";
 export { exercise2 } from "./exercises-2";
-// export { exercise3 } from "./exercises-3";
+export { exercise3 } from "./exercises-3";
 // export { exercise4 } from "./exercises-4";
 // export { exercise5 } from "./exercises-5";
 // export { exercise6 } from "./exercises-6";
