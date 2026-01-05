@@ -23,6 +23,8 @@ import {
 } from "@/components/Lessons";
 import { Header } from "@/components/app";
 
+import { useLessonCompletion } from "@/hooks";
+
 const LessonComponents: { [key: string]: React.ElementType } = {
   Lesson1,
   Lesson2,
@@ -62,6 +64,17 @@ export function LessonPageContent({
   const swiperRef = useRef<SwiperType | null>(null);
   const [isSwiperLocked, setIsSwiperLocked] = useState(false);
 
+  const slideRef = useRef<HTMLDivElement | null>(null);
+  const [showCompletion, setShowCompletion] = useState(false);
+
+  useLessonCompletion(slideRef.current, activeIndex, () =>
+    setShowCompletion(true)
+  );
+
+  useEffect(() => {
+    setShowCompletion(false);
+  }, [activeIndex]);
+
   const handleTabChange = (index: number) => {
     const lessonId = lessons[index].id;
     window.history.pushState(null, "", `/lesson/${lessonId}`);
@@ -99,7 +112,7 @@ export function LessonPageContent({
         />
         <main className={styles.main}>
           <Swiper
-            autoHeight={true}
+            // autoHeight={true}
             onSlideChange={(swiper) => {
               setActiveIndex(swiper.activeIndex);
               window.scrollTo(0, 0);
@@ -107,25 +120,34 @@ export function LessonPageContent({
             onSwiper={(swiper) => (swiperRef.current = swiper)}
             spaceBetween={50}
             slidesPerView={1}
-            // allowTouchMove
             allowTouchMove={!isSwiperLocked}
             initialSlide={initialIndex}
             style={{ padding: "10px 5px" }}
           >
-            {lessons.map((lesson) => {
+            {lessons.map((lesson, index) => {
               const LessonComponent = LessonComponents[lesson.component];
               if (!LessonComponent) return null;
 
               return (
                 <SwiperSlide key={lesson.id}>
-                  <LessonComponent onSwiperLock={handleSwiperLock} />
+                  <div ref={index === activeIndex ? slideRef : null}>
+                    <LessonComponent onSwiperLock={handleSwiperLock} />
+
+                    <p
+                      className={`${styles.lessonCompletion} ${
+                        showCompletion ? styles.visible : ""
+                      }`}
+                    >
+                      - Ready to move on to the next lesson? -
+                    </p>
+                  </div>
                 </SwiperSlide>
               );
             })}
           </Swiper>
         </main>
         <footer className={styles.footer}>
-          <p>- Ready to move on to the next lesson? -</p>
+          {/* <p>- Ready to move on to the next lesson? -</p> */}
         </footer>
       </div>
     </>

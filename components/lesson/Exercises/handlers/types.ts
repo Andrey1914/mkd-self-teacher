@@ -1,4 +1,4 @@
-import { Sentence, AnswerSet, ExercisesProps } from "@/types";
+import { Sentence, AnswerSet, ExercisesProps, WordState } from "@/types";
 
 export type FillInHandlersDeps = {
   sentences?: Sentence[];
@@ -45,4 +45,32 @@ export type ParagraphExerciseHandlersDeps = {
 
   revealAnimation: string;
   hideAnimation: string;
+};
+
+export type TranslateParagraphHandlersDeps = {
+  section: ExercisesProps["sections"][number];
+  correctAnswer: string;
+
+  input: string;
+  checked: boolean;
+
+  editorRef: React.RefObject<HTMLDivElement | null>;
+
+  setInput: React.Dispatch<React.SetStateAction<string>>;
+  setChecked: React.Dispatch<React.SetStateAction<boolean>>;
+  setShowAnswer: React.Dispatch<React.SetStateAction<boolean>>;
+  setAnimationClass: React.Dispatch<React.SetStateAction<string>>;
+
+  revealAnimation: string;
+  hideAnimation: string;
+};
+
+export type HighlightWordsHandlersDeps = {
+  initialWordsState: WordState[];
+
+  showAnswer: boolean;
+
+  setWordsState: React.Dispatch<React.SetStateAction<WordState[]>>;
+  setChecked: React.Dispatch<React.SetStateAction<boolean>>;
+  setShowAnswer: React.Dispatch<React.SetStateAction<boolean>>;
 };

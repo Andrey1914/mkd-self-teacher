@@ -27,6 +27,7 @@ export const Exercises = () => {
       <FillInExercise data={exercise6} />
       <FillInExercise data={exercise7} />
       <TranslateParagraphExercise data={exercise8} />
+      <div data-lesson-end />
     </>
   );
 };
