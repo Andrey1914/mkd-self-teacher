@@ -138,7 +138,7 @@ export function LessonPageContent({
                         showCompletion ? styles.visible : ""
                       }`}
                     >
-                      - Ready to move on to the next lesson? -
+                      Ready to move on to the next lesson?
                     </p>
                   </div>
                 </SwiperSlide>
