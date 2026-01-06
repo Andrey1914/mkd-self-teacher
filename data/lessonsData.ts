@@ -86,4 +86,11 @@ export const lessonsData = [
     title: "Урок 12",
     description: "Диалог во время неожиданной встречи.",
   },
+  {
+    id: 13,
+    numericId: 13,
+    component: "Lesson13",
+    title: "Урок 13",
+    description: "Наташа теряет кошелёк.",
+  },
 ];
