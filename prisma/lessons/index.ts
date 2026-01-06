@@ -9,6 +9,8 @@ import { lesson8 } from "./lesson-8";
 import { lesson9 } from "./lesson-9";
 import { lesson10 } from "./lesson-10";
 import { lesson11 } from "./lesson-11";
+import { lesson12 } from "./lesson-12";
+import { lesson13 } from "./lesson-13";
 
 export const lessons = [
   lesson1,
@@ -22,4 +24,6 @@ export const lessons = [
   lesson9,
   lesson10,
   lesson11,
+  lesson12,
+  lesson13,
 ];
