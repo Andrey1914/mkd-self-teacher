@@ -1,4 +1,4 @@
-// import { Dialogue } from "./Dialogue";
+import { Dialogue } from "./Dialogue";
 import { Intro } from "./Intro";
 // import { Paragraph } from "@/components/lesson/Paragraph";
 // import { GenericTable } from "@/components/lesson/Tables";
@@ -21,7 +21,7 @@ export const Lecture = () => {
   return (
     <>
       <Intro />
-      {/* <Dialogue /> */}
+      <Dialogue />
       {/* <Paragraph data={intro} /> */}
       {/* <GenericTable
         lesson={vocabulary}
