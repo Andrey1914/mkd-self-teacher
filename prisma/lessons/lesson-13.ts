@@ -1,11 +1,17 @@
-// import { vocabulary } from "@/prisma/lessons/vocabulary/lesson-12";
+import { vocabulary } from "@/prisma/lessons/vocabulary/lesson-13";
 import { dialogueBlock } from "@/prisma/lessons/dialogues/lesson-13";
-// import { lectureLesson12, grammarLesson12 } from "@/prisma/lessons/paragraph";
-// import { glossary, examples, grammarTables } from "@/prisma/lessons/tables";
+import {
+  lectureLesson13,
+  // grammarLesson12
+} from "@/prisma/lessons/paragraph";
+import {
+  glossary,
+  // examples, grammarTables
+} from "@/prisma/lessons/tables";
 // import { exercisesLesson12 } from "@/prisma/lessons/exercises";
 
-// const { family } = glossary;
-// const { intro, ruleAfterVocabulary, ruleAfterGlossary } = lectureLesson12;
+const { appearanceAndCare } = glossary;
+const { intro, ruleAfterVocabulary, ruleAfterGlossary } = lectureLesson13;
 // const { perfectLForm } = grammarLesson12;
 // const { lesson12: examplesLesson12 } = examples;
 // const { perfect } = grammarTables;
@@ -44,28 +50,28 @@ export const lesson13 = {
       },
     },
   ],
-  //   vocabulary: [vocabulary],
-  //   paragraph: [intro, ruleAfterVocabulary, ruleAfterGlossary, perfectLForm],
+  vocabulary: [vocabulary],
+  paragraph: [intro, ruleAfterVocabulary, ruleAfterGlossary],
   dialogues: [dialogueBlock],
-  //   tables: [
-  //     family,
-  //     perfect,
-  //     { ...example1, slug: "lesson-12" },
-  //     { ...example2, slug: "lesson-12" },
-  //     { ...example3, slug: "lesson-12" },
-  //     { ...example4, slug: "lesson-12" },
-  //     { ...example5, slug: "lesson-12" },
-  //   ],
+  tables: [
+    appearanceAndCare,
+    //     perfect,
+    //     { ...example1, slug: "lesson-12" },
+    //     { ...example2, slug: "lesson-12" },
+    //     { ...example3, slug: "lesson-12" },
+    //     { ...example4, slug: "lesson-12" },
+    //     { ...example5, slug: "lesson-12" },
+    //   ],
 
-  //   exercises: [
-  //     exercise1,
-  //     exercise2,
-  //     exercise3,
-  //     exercise4,
-  //     exercise5,
-  //     exercise6,
-  //     exercise7,
-  //     exercise8,
-  //     exercise9,
-  //   ],
+    //   exercises: [
+    //     exercise1,
+    //     exercise2,
+    //     exercise3,
+    //     exercise4,
+    //     exercise5,
+    //     exercise6,
+    //     exercise7,
+    //     exercise8,
+    //     exercise9,
+  ],
 };
