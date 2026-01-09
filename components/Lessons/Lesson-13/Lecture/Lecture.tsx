@@ -1,46 +1,46 @@
 import { Dialogue } from "./Dialogue";
 import { Intro } from "./Intro";
-// import { Paragraph } from "@/components/lesson/Paragraph";
-// import { GenericTable } from "@/components/lesson/Tables";
+import { Paragraph } from "@/components/lesson/Paragraph";
+import { GenericTable } from "@/components/lesson/Tables";
 
-// import { vocabulary } from "@/prisma/lessons/vocabulary/lesson-12";
-// import { glossary } from "@/prisma/lessons/tables";
-// import { lectureLesson12 } from "@/prisma/lessons/paragraph";
+import { vocabulary } from "@/prisma/lessons/vocabulary/lesson-13";
+import { glossary } from "@/prisma/lessons/tables";
+import { lectureLesson13 } from "@/prisma/lessons/paragraph";
 
-// import {
-//   tableWithoutBorderClassName,
-//   getColorizedThClassName,
-//   getColorizedFirstTdClassName,
-//   getColorizedItalicTdClassName,
-// } from "@/components/lesson/Tables/rules";
+import {
+  tableWithoutBorderClassName,
+  getColorizedThClassName,
+  getColorizedFirstTdClassName,
+  getColorizedItalicTdClassName,
+} from "@/components/lesson/Tables/rules";
 
-// const { family } = glossary;
-// const { intro, ruleAfterVocabulary, ruleAfterGlossary } = lectureLesson12;
+const { appearanceAndCare } = glossary;
+const { intro, ruleAfterVocabulary, ruleAfterGlossary } = lectureLesson13;
 
 export const Lecture = () => {
   return (
     <>
       <Intro />
       <Dialogue />
-      {/* <Paragraph data={intro} /> */}
-      {/* <GenericTable
+      <Paragraph data={intro} />
+      <GenericTable
         lesson={vocabulary}
         classNames={{
           table: tableWithoutBorderClassName,
           th: getColorizedThClassName,
           td: getColorizedItalicTdClassName,
         }}
-      /> */}
-      {/* <Paragraph data={ruleAfterVocabulary} /> */}
-      {/* <GenericTable
-        data={family}
+      />
+      <Paragraph data={ruleAfterVocabulary} />
+      <GenericTable
+        data={appearanceAndCare}
         classNames={{
           table: tableWithoutBorderClassName,
           th: getColorizedThClassName,
           td: getColorizedFirstTdClassName,
         }}
-      /> */}
-      {/* <Paragraph data={ruleAfterGlossary} /> */}
+      />
+      <Paragraph data={ruleAfterGlossary} />
     </>
   );
 };

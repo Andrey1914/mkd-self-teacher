@@ -1,7 +1,7 @@
 import { TablesProps } from "@/types";
 
 export const family: TablesProps = {
-  slug: "lesson-11",
+  slug: "lesson-12",
   type: "family",
   title: {
     ru: `СЕМЬЯ`,

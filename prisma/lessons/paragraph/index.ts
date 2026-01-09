@@ -13,3 +13,4 @@ export * as lectureLesson7 from "./lesson-7";
 export * as lectureLesson8 from "./lesson-8";
 export * as lectureLesson9 from "./lesson-9";
 export * as lectureLesson12 from "./lesson-12";
+export * as lectureLesson13 from "./lesson-13";
