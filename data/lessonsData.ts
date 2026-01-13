@@ -93,4 +93,11 @@ export const lessonsData = [
     title: "Урок 13",
     description: "Наташа теряет кошелёк.",
   },
+  {
+    id: 14,
+    numericId: 14,
+    component: "Lesson14",
+    title: "Урок 14",
+    description: "В этом уроке обсуждается спорт.",
+  },
 ];
