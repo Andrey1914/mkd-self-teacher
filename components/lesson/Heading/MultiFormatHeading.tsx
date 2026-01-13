@@ -32,6 +32,7 @@ export const MultiFormatHeading = ({
   const iconContainerStyle: React.CSSProperties = {
     display: "flex",
     alignItems: "center",
+    gap: "15px",
   };
 
   if (typeof data === "string") {

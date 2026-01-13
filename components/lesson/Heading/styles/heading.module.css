@@ -38,4 +38,5 @@
 .containerMultilanguageTitle {
   display: flex;
   flex-direction: column;
+  text-indent: 0;
 }

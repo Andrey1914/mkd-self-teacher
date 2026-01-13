@@ -2,7 +2,7 @@ import { vocabulary } from "@/prisma/lessons/vocabulary/lesson-13";
 import { dialogueBlock } from "@/prisma/lessons/dialogues/lesson-13";
 import { lectureLesson13, grammarLesson13 } from "@/prisma/lessons/paragraph";
 import { glossary, examples } from "@/prisma/lessons/tables";
-// import { exercisesLesson13 } from "@/prisma/lessons/exercises";
+import { exercisesLesson13 } from "@/prisma/lessons/exercises";
 
 const { appearanceAndCare } = glossary;
 const { intro, ruleAfterVocabulary, ruleAfterGlossary } = lectureLesson13;
@@ -10,17 +10,17 @@ const { formsOfRetelling } = grammarLesson13;
 const { lesson13: examplesLesson13 } = examples;
 const { example1, example2, example3, example4, example5 } = examplesLesson13;
 
-// const {
-//   exercise1,
-//   exercise2,
-//   exercise3,
-//   exercise4,
-//   exercise5,
-//   exercise6,
-//   exercise7,
-//   exercise8,
-//   exercise9,
-// } = exercisesLesson13;
+const {
+  exercise1,
+  exercise2,
+  exercise3,
+  exercise4,
+  exercise5,
+  exercise6,
+  exercise7,
+  exercise8,
+  exercise9,
+} = exercisesLesson13;
 
 export const lesson13 = {
   title: {
@@ -55,15 +55,15 @@ export const lesson13 = {
     { ...example5, slug: "lesson-13" },
   ],
 
-  //   exercises: [
-  //     exercise1,
-  //     exercise2,
-  //     exercise3,
-  //     exercise4,
-  //     exercise5,
-  //     exercise6,
-  //     exercise7,
-  //     exercise8,
-  //     exercise9,
-  // ],
+  exercises: [
+    exercise1,
+    exercise2,
+    exercise3,
+    exercise4,
+    exercise5,
+    exercise6,
+    exercise7,
+    exercise8,
+    exercise9,
+  ],
 };
