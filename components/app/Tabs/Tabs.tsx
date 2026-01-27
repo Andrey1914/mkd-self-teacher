@@ -17,7 +17,10 @@ export const Tabs = ({ tabs, activeIndex, onChange }: TabsProps) => {
           eventsTarget: "container",
         }}
         grabCursor
-        style={{ padding: "10px" }}
+        style={{
+          paddingTop: "10px",
+          borderBottom: "1px solid rgba(255,255,255,0.3)",
+        }}
       >
         {tabs.map((tab, index) => (
           <SwiperSlide
@@ -30,29 +33,31 @@ export const Tabs = ({ tabs, activeIndex, onChange }: TabsProps) => {
             <button
               onClick={() => onChange(index)}
               style={{
-                backdropFilter: index === activeIndex ? "blur(5px)" : "none",
-                backgroundColor:
-                  index === activeIndex
-                    ? "rgba(0, 0, 90, 0.08)"
-                    : "transparent",
+                // backdropFilter: index === activeIndex ? "blur(5px)" : "none",
+                // backgroundColor:
+                //   index === activeIndex
+                //     ? "rgba(0, 0, 90, 0.08)"
+                //     : "transparent",
+                backgroundColor: "transparent",
                 border: "none",
-                borderRadius: "5px",
+                // borderRadius: "5px",
+                // borderRadius: "2.5px",
                 borderBottom:
                   index === activeIndex
-                    ? "0.5px solid #fff"
-                    : "1px solid transparent",
-                padding: "0.5rem 0.75rem",
+                    ? "2px solid #fff"
+                    : "2px solid transparent",
+                padding: "0.5rem 0.75rem 1rem 0.75rem",
                 color:
                   index === activeIndex ? "#fff" : "rgba(255, 255, 255, 0.8)",
                 fontWeight: index === activeIndex ? "700" : "300",
                 cursor: "pointer",
-                boxShadow:
-                  index === activeIndex
-                    ? `0 8px 32px rgba(0, 0, 0, 0.1),
-         inset 0 1px 0 rgba(255, 255, 255, 0.5),
-         inset 0 -1px 0 rgba(255, 255, 255, 0.1),
-         inset 0 0 6px 3px rgba(255, 255, 255, 0.3)`
-                    : "none",
+                // boxShadow:
+                //   index === activeIndex
+                //     ? `0 8px 32px rgba(0, 0, 0, 0.1),
+                //  inset 0 1px 0 rgba(255, 255, 255, 0.5),
+                //  inset 0 -1px 0 rgba(255, 255, 255, 0.1),
+                //  inset 0 0 6px 3px rgba(255, 255, 255, 0.3)`
+                //     : "none",
                 // boxShadow:
                 //   index === activeIndex
                 //     ? `rgb(255, 255, 255) 0px 0px 8px 0px`

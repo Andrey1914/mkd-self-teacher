@@ -23,8 +23,8 @@
   inset: 0;
   background: radial-gradient(
     ellipse at center,
-    rgba(0, 0, 0, 0.3) 0%,
-    /* центр */ rgba(0, 0, 0, 0.9) 65%,
+    rgba(0, 0, 0, 0.4) 0%,
+    /* центр */ rgba(0, 0, 0, 0.9) 50%,
     /* переход */ rgba(0, 0, 0, 1) 100% /* края */
   );
   z-index: 1;
