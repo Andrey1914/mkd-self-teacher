@@ -1,1 +1,1 @@
-export { intro } from "./lecture";
+export { intro, ruleAfterVocabulary } from "./lecture";

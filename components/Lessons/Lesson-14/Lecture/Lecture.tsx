@@ -4,7 +4,7 @@ import { Paragraph } from "@/components/lesson/Paragraph";
 import { GenericTable } from "@/components/lesson/Tables";
 
 import { vocabulary } from "@/prisma/lessons/vocabulary/lesson-14";
-// import { glossary } from "@/prisma/lessons/tables";
+import { glossary } from "@/prisma/lessons/tables";
 import { lectureLesson14 } from "@/prisma/lessons/paragraph";
 
 import {
@@ -14,8 +14,8 @@ import {
   getColorizedItalicTdClassName,
 } from "@/components/lesson/Tables/rules";
 
-// const { appearanceAndCare } = glossary;
-const { intro } = lectureLesson14;
+const { sport } = glossary;
+const { intro, ruleAfterVocabulary } = lectureLesson14;
 
 export const Lecture = () => {
   return (
@@ -31,16 +31,15 @@ export const Lecture = () => {
           td: getColorizedItalicTdClassName,
         }}
       />
-      {/* <Paragraph data={ruleAfterVocabulary} /> */}
-      {/* <GenericTable
-        data={appearanceAndCare}
+      <Paragraph data={ruleAfterVocabulary} />
+      <GenericTable
+        data={sport}
         classNames={{
           table: tableWithoutBorderClassName,
           th: getColorizedThClassName,
           td: getColorizedFirstTdClassName,
         }}
-      /> */}
-      {/* <Paragraph data={ruleAfterGlossary} /> */}
+      />
     </>
   );
 };

@@ -5,3 +5,4 @@ export { health } from "./lesson-10";
 export { time } from "./lesson-11";
 export { family } from "./lesson-12";
 export { appearanceAndCare } from "./lesson-13";
+export { sport } from "./lesson-14";
