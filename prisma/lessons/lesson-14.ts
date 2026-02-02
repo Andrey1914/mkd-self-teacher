@@ -1,21 +1,15 @@
 import { vocabulary } from "@/prisma/lessons/vocabulary/lesson-14";
 import { dialogueBlock } from "@/prisma/lessons/dialogues/lesson-14";
-import {
-  lectureLesson14,
-  // grammarLesson14
-} from "@/prisma/lessons/paragraph";
+import { lectureLesson14, grammarLesson14 } from "@/prisma/lessons/paragraph";
 import { glossary, examples, grammarTables } from "@/prisma/lessons/tables";
-// import { exercisesLesson13 } from "@/prisma/lessons/exercises";
+// import { exercisesLesson14 } from "@/prisma/lessons/exercises";
 
 const { sport } = glossary;
 const { intro, ruleAfterVocabulary } = lectureLesson14;
 const { futureInThePast } = grammarTables;
-// const { formsOfRetelling } = grammarLesson13;
+const { indefinitePronouns } = grammarLesson14;
 const { lesson14: examplesLesson14 } = examples;
-const {
-  example1,
-  // example2, example3, example4, example5
-} = examplesLesson14;
+const { example1, example2, example3, example4, example5 } = examplesLesson14;
 
 // const {
 //   exercise1,
@@ -25,9 +19,7 @@ const {
 //   exercise5,
 //   exercise6,
 //   exercise7,
-//   exercise8,
-//   exercise9,
-// } = exercisesLesson13;
+// } = exercisesLesson14;
 
 export const lesson14 = {
   title: {
@@ -56,11 +48,12 @@ export const lesson14 = {
   tables: [
     sport,
     futureInThePast,
+    indefinitePronouns,
     { ...example1, slug: "lesson-14" },
-    // { ...example2, slug: "lesson-14" },
-    // { ...example3, slug: "lesson-14" },
-    // { ...example4, slug: "lesson-14" },
-    // { ...example5, slug: "lesson-14" },
+    { ...example2, slug: "lesson-14" },
+    { ...example3, slug: "lesson-14" },
+    { ...example4, slug: "lesson-14" },
+    { ...example5, slug: "lesson-14" },
   ],
 
   //   exercises: [
@@ -71,7 +64,5 @@ export const lesson14 = {
   //     exercise5,
   //     exercise6,
   //     exercise7,
-  //     exercise8,
-  //     exercise9,
   //   ],
 };
