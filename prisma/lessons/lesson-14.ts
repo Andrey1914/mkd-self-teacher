@@ -43,12 +43,11 @@ export const lesson14 = {
     },
   ],
   vocabulary: [vocabulary],
-  paragraph: [intro, ruleAfterVocabulary],
+  paragraph: [intro, ruleAfterVocabulary, indefinitePronouns],
   dialogues: [dialogueBlock],
   tables: [
     sport,
     futureInThePast,
-    indefinitePronouns,
     { ...example1, slug: "lesson-14" },
     { ...example2, slug: "lesson-14" },
     { ...example3, slug: "lesson-14" },
