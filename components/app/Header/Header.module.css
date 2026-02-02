@@ -10,7 +10,7 @@
   /* box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); */
   text-align: center;
   border-radius: 0 0 4px 4px;
-  padding: 24px 150px 24px 150px;
+  padding: 0 150px 0 150px;
 }
 
 .headerHidden {
@@ -70,7 +70,7 @@
   }
 
   .header {
-    padding: 24px 24px 0 24px;
+    padding: 0 24px 0 24px;
   }
 }
 
@@ -81,6 +81,7 @@
   }
 
   .header {
-    padding: 16px 0 0 0;
+    /* padding: 16px 0 0 0; */
+    padding: 0;
   }
 }
