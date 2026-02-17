@@ -15,11 +15,33 @@
 }
 
 .fillInInput {
+  display: inline;
+  min-width: 60px;
+  max-width: 100%;
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.fillInInput:empty::before {
+  content: "";
+  display: inline-block;
+  width: 60px;
+  vertical-align: middle;
+}
+
+.fillInInput:not(:focus):empty::before {
+  content: "";
+  display: inline-block;
+  width: 60px;
+}
+
+/* .fillInInput {
   min-width: 60px;
   max-width: 100%;
   word-break: break-word;
   white-space: nowrap;
-}
+} */
 
 .translatorInput {
   min-height: 120px;

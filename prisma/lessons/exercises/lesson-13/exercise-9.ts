@@ -3,7 +3,7 @@ import { ExercisesProps } from "@/types";
 export const exercise9: ExercisesProps = {
   type: "exercises",
   title: "Упражнение 9",
-  slug: "lesson-12",
+  slug: "lesson-13",
   sections: [
     {
       type: "translate-paragraph-exercise",

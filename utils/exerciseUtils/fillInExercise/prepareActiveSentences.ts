@@ -16,7 +16,7 @@ const ALL_NAMES_REGEX = new RegExp(NAMES.map(nameToRegex).join("|"), "g");
 export const prepareActiveSentences = (
   sentences: Sentence[] | undefined,
   answerSet: AnswerSet | undefined,
-  activeIndex: number
+  activeIndex: number,
 ): Sentence[] | undefined => {
   const hasMultipleAnswerSets = !!answerSet;
 
@@ -27,6 +27,11 @@ export const prepareActiveSentences = (
 
     return sentences?.map((sentence) => {
       let updatedMkd = sentence.mkd ?? "";
+
+      if (updatedMkd.includes("/")) {
+        const variants = updatedMkd.split("/");
+        updatedMkd = variants[activeIndex]?.trim() ?? variants[0].trim();
+      }
 
       if (activeIndex > 0) {
         updatedMkd = updatedMkd.replace(
@@ -43,14 +48,14 @@ export const prepareActiveSentences = (
             }
 
             return pronoun;
-          }
+          },
         );
       }
 
       if (dynamicWord) {
         updatedMkd = updatedMkd.replace(
           /\*\*\[\[PRONOUN_WORD\]\]\*\*/g,
-          `<span>${dynamicWord}</span>`
+          `<span>${dynamicWord}</span>`,
         );
       }
 
@@ -59,7 +64,7 @@ export const prepareActiveSentences = (
         mkd: updatedMkd,
         answer: Array.isArray(sentence.answer)
           ? sentence.answer.map(
-              (encodedString) => encodedString.split("/")[activeIndex] ?? ""
+              (encodedString) => encodedString.split("/")[activeIndex] ?? "",
             )
           : [],
       };

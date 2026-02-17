@@ -24,7 +24,7 @@ export interface Sentence {
  */
 export const parseHighlightExercise = (
   originalText: string,
-  answerText: string
+  answerText: string,
 ): WordState[] => {
   const boldWords = new Set<string>();
   const italicWords = new Set<string>();
@@ -108,7 +108,7 @@ export const parseHighlightExercise = (
  */
 export const determineExerciseConfig = (
   section: { singleInput?: boolean; content: { answer?: string[] } },
-  pronouns: string[]
+  pronouns: string[],
 ) => {
   const isSingleInput = section.singleInput === true;
   const answers = section.content.answer ?? [];
@@ -117,7 +117,7 @@ export const determineExerciseConfig = (
     !isSingleInput &&
     answers.length > 0 &&
     answers.every((answer) =>
-      pronouns.some((pronoun) => answer.trim().startsWith(pronoun))
+      pronouns.some((pronoun) => answer.trim().startsWith(pronoun)),
     );
 
   const inputCount = isSingleInput ? 1 : pronouns.length;
@@ -128,7 +128,8 @@ export const determineExerciseConfig = (
 /**
  * Парсит часть текста для fill-in упражнения
  */
-export const parseFillInPart = (part: string) => {
+// export const parseFillInPart = (part: string) => {
+export const parseSentenceInPart = (part: string) => {
   const numberPatternStart = /^(\d+[\.\)]\s*)/;
 
   const suffixPattern = /(\s*(\(\?\)|\([a-вA-V]\))\s*)$/;
@@ -157,7 +158,7 @@ export const parseFillInPart = (part: string) => {
  */
 export const resizeTextarea = (
   el: HTMLTextAreaElement | null,
-  options: { minRows: number; maxRows: number }
+  options: { minRows: number; maxRows: number },
 ) => {
   if (!el) return;
 

@@ -23,7 +23,7 @@
 //   return { unstyledPrefix, styledText, unstyledSuffix };
 // };
 
-import { parseFillInPart as coreParseFillInPart } from "../../core/compositeUtils";
+import { parseSentenceInPart as coreParseFillInPart } from "../../core/compositeUtils";
 
 /**
  * Parses a text fragment into stylized and non-stylized parts.

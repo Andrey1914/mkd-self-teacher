@@ -60,7 +60,7 @@ export const FillInExercise = ({ data, onSwiperLock }: FillInExerciseProps) => {
 
   const activeSentences = useMemo(
     () => prepareActiveSentences(sentences, answerSet, activeIndex),
-    [sentences, answerSet, activeIndex, prepareActiveSentences]
+    [sentences, answerSet, activeIndex, prepareActiveSentences],
   );
 
   const draggableWords = useMemo(() => {
@@ -140,7 +140,7 @@ export const FillInExercise = ({ data, onSwiperLock }: FillInExerciseProps) => {
                 </li>
                 {formatText(removeWordsFromPrompt(text), true)}
               </ul>
-            ) : null
+            ) : null,
           )}
 
           {draggableWords && draggableWords.length > 0 && (
@@ -205,7 +205,7 @@ export const FillInExercise = ({ data, onSwiperLock }: FillInExerciseProps) => {
                                         handleChange(
                                           e.currentTarget.innerText,
                                           idx,
-                                          i
+                                          i,
                                         )
                                       }
                                       initial="hidden"
@@ -213,20 +213,39 @@ export const FillInExercise = ({ data, onSwiperLock }: FillInExerciseProps) => {
                                       exit="exit"
                                       variants={inputVariants}
                                       style={{
-                                        width: `${getInputWidth(
-                                          inputs[idx]?.[i] ?? ""
-                                        )}px`,
+                                        display: "inline",
+                                        minWidth: `${getInputWidth(inputs[idx]?.[i] ?? "")}px`,
+                                        width: "auto",
+                                        maxWidth: "100%",
+                                        height: "auto",
+                                        verticalAlign: "bottom",
                                         ...(checked && !showAnswers
                                           ? highlightInput(
                                               inputs[idx]?.[i] ?? "",
                                               sentence.answer[i].replace(
                                                 /\*\*/g,
-                                                ""
+                                                "",
                                               ),
-                                              true
+                                              true,
                                             )
                                           : {}),
                                       }}
+                                      // style={{
+
+                                      //   width: `${getInputWidth(
+                                      //     inputs[idx]?.[i] ?? "",
+                                      //   )}px`,
+                                      //   ...(checked && !showAnswers
+                                      //     ? highlightInput(
+                                      //         inputs[idx]?.[i] ?? "",
+                                      //         sentence.answer[i].replace(
+                                      //           /\*\*/g,
+                                      //           "",
+                                      //         ),
+                                      //         true,
+                                      //       )
+                                      //     : {}),
+                                      // }}
                                     />
                                   ) : (
                                     <motion.div
@@ -245,11 +264,20 @@ export const FillInExercise = ({ data, onSwiperLock }: FillInExerciseProps) => {
                                       exit="exit"
                                       variants={inputVariants}
                                       style={{
-                                        width: `${getInputWidth(
-                                          inputs[idx]?.[i] ?? ""
-                                        )}px`,
+                                        display: "inline",
+                                        minWidth: `${getInputWidth(inputs[idx]?.[i] ?? "")}px`,
+                                        width: "auto",
+                                        maxWidth: "100%",
+                                        height: "auto",
+                                        verticalAlign: "bottom",
                                         willChange: "transform, opacity",
                                       }}
+                                      // style={{
+                                      //   width: `${getInputWidth(
+                                      //     inputs[idx]?.[i] ?? "",
+                                      //   )}px`,
+                                      //   willChange: "transform, opacity",
+                                      // }}
                                     />
                                   )}
                                 </AnimatePresence>

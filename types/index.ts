@@ -12,6 +12,8 @@ export type {
   WordState,
   Sentence,
   AnswerSet,
+  ParsedSentencePart,
+  OptionItem,
 } from "./exerciseTypes";
 export type {
   BaseProps,
