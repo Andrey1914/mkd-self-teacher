@@ -20,15 +20,11 @@ export const AnswerSetNavigator = ({
   const isPrevDisabled = activeIndex === 0;
   const isNextDisabled = activeIndex >= labels.length - 1;
 
-  const {
-    buttonContainer,
-    outlinedButtonContainer,
-    exerciseButton,
-    outlinedButton,
-  } = styles.buttons;
+  const { outlinedButtonContainer, exerciseButton, outlinedButton } =
+    styles.buttons;
 
   return (
-    <div className={`${buttonContainer} ${outlinedButtonContainer}`}>
+    <div className={outlinedButtonContainer}>
       <button
         onClick={onPrev}
         disabled={isPrevDisabled}

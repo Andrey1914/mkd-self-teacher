@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 export interface ExercisesProps {
   type?: string;
   slug?: string;
@@ -38,3 +40,18 @@ export type WordState = {
   status: "unchecked" | "correct" | "incorrect";
   touched: boolean;
 };
+
+export interface OptionItem {
+  raw: string;
+  formatted: ReactNode;
+}
+
+export interface ParsedSentencePart {
+  isOption: boolean;
+  options?: Array<{ raw: string; formatted: string }>;
+  text?: string;
+  correctAnswer?: string;
+  optionIndex?: number;
+  isSentenceNumber?: boolean;
+  isWord?: boolean;
+}

@@ -18,3 +18,4 @@ export { getTextWidth } from "./getTextWidth";
 export { renderTitle } from "./renderTitle";
 export { getCleanedAnswers } from "./getCleanedAnswers";
 export * as exercisesUtils from "./exerciseUtils";
+export { parseSentences } from "./parseSentences";

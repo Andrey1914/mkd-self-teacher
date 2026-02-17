@@ -3,3 +3,4 @@ export { ParagraphExercise } from "./ParagraphExercise";
 export { StaticExercise } from "./StaticExercise";
 export { TranslateParagraphExercise } from "./TranslateParagraphExercise";
 export { HighlightWordsExercise } from "./HighlightWordsExercise";
+export { SelectOptionExercise } from "./SelectOptionExercise";
