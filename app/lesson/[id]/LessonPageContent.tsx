@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import type { Swiper as SwiperType } from "swiper";
 import "swiper/css";
 
-import styles from "../../page.module.css";
+import styles from "@/app/page.module.css";
 
 import {
   Lesson1,
@@ -22,6 +22,7 @@ import {
   Lesson12,
   Lesson13,
   Lesson14,
+  Lesson15,
 } from "@/components/Lessons";
 import { Header } from "@/components/app";
 
@@ -42,6 +43,7 @@ const LessonComponents: { [key: string]: React.ElementType } = {
   Lesson12,
   Lesson13,
   Lesson14,
+  Lesson15,
 };
 
 interface LessonItem {
@@ -72,7 +74,7 @@ export function LessonPageContent({
   const [showCompletion, setShowCompletion] = useState(false);
 
   useLessonCompletion(slideRef.current, activeIndex, () =>
-    setShowCompletion(true)
+    setShowCompletion(true),
   );
 
   useEffect(() => {
