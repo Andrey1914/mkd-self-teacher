@@ -1,28 +1,23 @@
 import { vocabulary } from "@/prisma/lessons/vocabulary/lesson-15";
 import { dialogueBlock } from "@/prisma/lessons/dialogues/lesson-15";
-import {
-  lectureLesson15,
-  // grammarLesson15
-} from "@/prisma/lessons/paragraph";
-import { glossary, examples, grammarTables } from "@/prisma/lessons/tables";
-import { exercisesLesson14 } from "@/prisma/lessons/exercises";
+import { lectureLesson15, grammarLesson15 } from "@/prisma/lessons/paragraph";
+import { examples, grammarTables } from "@/prisma/lessons/tables";
+// import { exercisesLesson15 } from "@/prisma/lessons/exercises";
 
-const { sport } = glossary;
 const { ruleAfterVocabulary } = lectureLesson15;
-const { futureInThePast } = grammarTables;
-// const { indefinitePronouns } = grammarLesson14;
-const { lesson14: examplesLesson14 } = examples;
-const { example1, example2, example3, example4, example5 } = examplesLesson14;
+const { pluperfect } = grammarLesson15;
+const { pluperfect: pluperfectTable } = grammarTables;
+const { lesson15: examplesLesson15 } = examples;
+const { example1, example2, example3, example4, example5 } = examplesLesson15;
 
-const {
-  exercise1,
-  exercise2,
-  exercise3,
-  exercise4,
-  exercise5,
-  exercise6,
-  exercise7,
-} = exercisesLesson14;
+// const {
+//   exercise1,
+//   exercise2,
+//   exercise3,
+//   exercise4,
+//   exercise5,
+//   exercise6,
+// } = exercisesLesson15;
 
 export const lesson15 = {
   title: {
@@ -46,20 +41,16 @@ export const lesson15 = {
     },
   ],
   vocabulary: [vocabulary],
-  paragraph: [
-    ruleAfterVocabulary,
-    // indefinitePronouns
-  ],
+  paragraph: [ruleAfterVocabulary, pluperfect],
   dialogues: [dialogueBlock],
-  //   tables: [
-  //     sport,
-  //     futureInThePast,
-  //     { ...example1, slug: "lesson-14" },
-  //     { ...example2, slug: "lesson-14" },
-  //     { ...example3, slug: "lesson-14" },
-  //     { ...example4, slug: "lesson-14" },
-  //     { ...example5, slug: "lesson-14" },
-  //   ],
+  tables: [
+    pluperfectTable,
+    { ...example1, slug: "lesson-15" },
+    { ...example2, slug: "lesson-15" },
+    { ...example3, slug: "lesson-15" },
+    { ...example4, slug: "lesson-15" },
+    { ...example5, slug: "lesson-15" },
+  ],
 
   //   exercises: [
   //     exercise1,
@@ -68,6 +59,5 @@ export const lesson15 = {
   //     exercise4,
   //     exercise5,
   //     exercise6,
-  //     exercise7,
   //   ],
 };
