@@ -4,7 +4,6 @@ import { Paragraph } from "@/components/lesson/Paragraph";
 import { GenericTable } from "@/components/lesson/Tables";
 
 import { vocabulary } from "@/prisma/lessons/vocabulary/lesson-15";
-// import { glossary } from "@/prisma/lessons/tables";
 import { lectureLesson15 } from "@/prisma/lessons/paragraph";
 
 import {
@@ -13,7 +12,6 @@ import {
   getColorizedItalicTdClassName,
 } from "@/components/lesson/Tables/rules";
 
-// const { sport } = glossary;
 const { ruleAfterVocabulary } = lectureLesson15;
 
 export const Lecture = () => {
@@ -30,14 +28,6 @@ export const Lecture = () => {
         }}
       />
       <Paragraph data={ruleAfterVocabulary} />
-      {/* <GenericTable
-        data={sport}
-        classNames={{
-          table: tableWithoutBorderClassName,
-          th: getColorizedThClassName,
-          td: getColorizedFirstTdClassName,
-        }}
-      /> */}
     </>
   );
 };
