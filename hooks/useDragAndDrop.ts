@@ -81,7 +81,7 @@ export function useDragAndDrop({
         };
       });
     },
-    [onWordUsed, onSwiperLock]
+    [onWordUsed, onSwiperLock],
   );
 
   useEffect(() => {
@@ -102,7 +102,7 @@ export function useDragAndDrop({
     (
       word: string,
       index: number,
-      event: React.PointerEvent<HTMLSpanElement>
+      event: React.PointerEvent<HTMLSpanElement>,
     ) => {
       if (usedWords.has(index)) return;
 
@@ -115,7 +115,7 @@ export function useDragAndDrop({
         dragPosition: { x: event.clientX, y: event.clientY },
       });
     },
-    [usedWords, onSwiperLock]
+    [usedWords, onSwiperLock],
   );
 
   const returnWord = useCallback((index: number) => {

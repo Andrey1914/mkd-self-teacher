@@ -9,7 +9,7 @@ export interface DraggableWordProps {
   onDragStart: (
     word: string,
     index: number,
-    event: React.PointerEvent<HTMLSpanElement>
+    event: React.PointerEvent<HTMLSpanElement>,
   ) => void;
 }
 

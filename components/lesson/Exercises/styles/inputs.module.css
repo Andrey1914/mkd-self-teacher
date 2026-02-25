@@ -1,9 +1,10 @@
 .exerciseInput,
 .fillInInput {
-  display: inline-block;
-  padding: 0 4px 0 4px;
+  display: inline;
+  padding: 4px 4px 2px 6px;
   font-size: 16px;
-  text-align: center;
+  line-height: 14px;
+  text-align: left;
   background-color: transparent;
   border-radius: 3px;
   border-top: none;
@@ -11,13 +12,17 @@
   border-right: none;
   border-bottom: 1px solid #994747;
   outline: none;
-  vertical-align: 8px;
+  /* vertical-align: 8px; */
+  caret-color: #ccc;
+  color: #ccc;
+  box-sizing: content-box;
 }
 
 .fillInInput {
   display: inline;
   min-width: 60px;
   max-width: 100%;
+  height: auto;
   white-space: pre-wrap;
   word-break: break-word;
   overflow-wrap: break-word;
@@ -25,23 +30,22 @@
 
 .fillInInput:empty::before {
   content: "";
-  display: inline-block;
-  width: 60px;
+  display: inline;
+  min-width: 60px;
+
   vertical-align: middle;
 }
 
 .fillInInput:not(:focus):empty::before {
   content: "";
   display: inline-block;
-  width: 60px;
+  min-width: 60px;
 }
 
-/* .fillInInput {
-  min-width: 60px;
-  max-width: 100%;
-  word-break: break-word;
-  white-space: nowrap;
-} */
+.fillInInput:focus {
+  display: inline-block;
+  background-color: rgb(35, 35, 35);
+}
 
 .translatorInput {
   min-height: 120px;
@@ -61,8 +65,9 @@
   line-height: 1.5;
   background-color: transparent;
   resize: none;
-
   transition: height 0.2s ease-out;
+  caret-color: #ccc;
+  color: #ccc;
 }
 
 .staticExercise {
@@ -104,8 +109,10 @@
     -webkit-text-fill-color: inherit;
   }
   100% {
-    color: transparent;
-    -webkit-text-fill-color: transparent;
+    /* color: transparent;
+    -webkit-text-fill-color: transparent; */
+    color: #ccc;
+    -webkit-text-fill-color: #ccc;
   }
 }
 
