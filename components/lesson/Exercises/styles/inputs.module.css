@@ -65,9 +65,20 @@
   line-height: 1.5;
   background-color: transparent;
   resize: none;
-  transition: height 0.2s ease-out;
+  outline: none;
+  transition:
+    height 0.2s ease-out,
+    box-shadow 0.2s ease-out;
   caret-color: #ccc;
   color: #ccc;
+}
+
+.paragraphInput:focus,
+.translatorInput:focus {
+  display: inline-block;
+  background-color: rgb(35, 35, 35);
+  border: 1px solid #67dd47;
+  box-shadow: 0 0 6px 2px #89de7e;
 }
 
 .staticExercise {

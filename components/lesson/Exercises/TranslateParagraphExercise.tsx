@@ -44,7 +44,10 @@ export const TranslateParagraphExercise = ({
       hideAnimation,
     });
 
-  const outline = isFocused && !showAnswer ? "2px solid white" : "none";
+  const border =
+    isFocused && !showAnswer ? "1px solid #67dd47" : "1px solid #994747";
+  const boxShadow = isFocused && !showAnswer ? "0 0 6px 2px #89de7e" : "none";
+
   const userSelect = showAnswer ? "none" : "text";
 
   return (
@@ -72,7 +75,8 @@ export const TranslateParagraphExercise = ({
           suppressContentEditableWarning
           onInput={handleInput}
           style={{
-            outline,
+            border,
+            boxShadow,
             userSelect,
             ...highlightInput(input, correctAnswer, checked && !showAnswer),
             color: "#ccc",

@@ -92,8 +92,6 @@ export const FillInExercise = ({ data, onSwiperLock }: FillInExerciseProps) => {
     handleRevealAnswers,
     handleClear,
     handleInput,
-    handleFocus,
-    handleBlur,
   } = createFillInExerciseHandlers({
     sentences,
     activeSentences,
@@ -206,8 +204,6 @@ export const FillInExercise = ({ data, onSwiperLock }: FillInExerciseProps) => {
                                       className={fillInInput}
                                       contentEditable={true}
                                       onInput={(e) => handleInput(e, idx, i)}
-                                      onFocus={handleFocus}
-                                      onBlur={handleBlur}
                                       initial="hidden"
                                       animate="visible"
                                       exit="exit"
@@ -248,7 +244,6 @@ export const FillInExercise = ({ data, onSwiperLock }: FillInExerciseProps) => {
                                       style={{
                                         color: "#ccc",
                                         minWidth: `${getInputWidth(inputs[idx]?.[i] ?? "")}px`,
-                                        // willChange: "transform, opacity",
                                       }}
                                     />
                                   )}
