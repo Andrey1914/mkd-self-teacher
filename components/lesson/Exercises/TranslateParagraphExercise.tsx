@@ -69,18 +69,20 @@ export const TranslateParagraphExercise = ({
           className={`${translatorInput} ${animationClass}`}
           ref={editorRef}
           contentEditable={!showAnswer}
+          suppressContentEditableWarning
           onInput={handleInput}
           style={{
             outline,
             userSelect,
             ...highlightInput(input, correctAnswer, checked && !showAnswer),
+            color: "#ccc",
           }}
           onFocus={(e) => {
             if (showAnswer) {
-              e.target.blur();
-            } else {
-              setIsFocused(true);
+              e.currentTarget.blur();
+              return;
             }
+            setIsFocused(true);
           }}
           onBlur={() => setIsFocused(false)}
           onCopy={(e) => {

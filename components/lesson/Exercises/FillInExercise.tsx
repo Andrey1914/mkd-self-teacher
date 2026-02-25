@@ -46,7 +46,7 @@ export const FillInExercise = ({ data, onSwiperLock }: FillInExerciseProps) => {
 
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const inputRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const inputRefs = useRef<(HTMLSpanElement | null)[]>([]);
 
   const {
     initializeFillInState,
@@ -91,7 +91,9 @@ export const FillInExercise = ({ data, onSwiperLock }: FillInExerciseProps) => {
     handleCheck,
     handleRevealAnswers,
     handleClear,
-    handleChange,
+    handleInput,
+    handleFocus,
+    handleBlur,
   } = createFillInExerciseHandlers({
     sentences,
     activeSentences,
@@ -191,34 +193,28 @@ export const FillInExercise = ({ data, onSwiperLock }: FillInExerciseProps) => {
                             {sentence.answer &&
                               i < sentence.answer.length &&
                               i < (parts?.length ?? 0) - 1 && (
-                                <AnimatePresence>
+                                <AnimatePresence mode="wait">
                                   {!isAutoFilled[idx]?.[i] && !showAnswers ? (
-                                    <motion.div
-                                      layout
+                                    <motion.span
+                                      key="editable"
+                                      layout={false}
                                       ref={(el) => {
-                                        inputRefs.current[idx * 10 + i] = el;
+                                        inputRefs.current[idx * 10 + i] =
+                                          el as HTMLSpanElement;
                                       }}
                                       id={`input-${sIdx}-${idx}-${i}`}
                                       className={fillInInput}
                                       contentEditable={true}
-                                      onInput={(e) =>
-                                        handleChange(
-                                          e.currentTarget.innerText,
-                                          idx,
-                                          i,
-                                        )
-                                      }
+                                      onInput={(e) => handleInput(e, idx, i)}
+                                      onFocus={handleFocus}
+                                      onBlur={handleBlur}
                                       initial="hidden"
                                       animate="visible"
                                       exit="exit"
                                       variants={inputVariants}
                                       style={{
-                                        display: "inline",
+                                        color: "#ccc",
                                         minWidth: `${getInputWidth(inputs[idx]?.[i] ?? "")}px`,
-                                        width: "auto",
-                                        maxWidth: "100%",
-                                        height: "auto",
-                                        verticalAlign: "bottom",
                                         ...(checked && !showAnswers
                                           ? highlightInput(
                                               inputs[idx]?.[i] ?? "",
@@ -230,28 +226,14 @@ export const FillInExercise = ({ data, onSwiperLock }: FillInExerciseProps) => {
                                             )
                                           : {}),
                                       }}
-                                      // style={{
-
-                                      //   width: `${getInputWidth(
-                                      //     inputs[idx]?.[i] ?? "",
-                                      //   )}px`,
-                                      //   ...(checked && !showAnswers
-                                      //     ? highlightInput(
-                                      //         inputs[idx]?.[i] ?? "",
-                                      //         sentence.answer[i].replace(
-                                      //           /\*\*/g,
-                                      //           "",
-                                      //         ),
-                                      //         true,
-                                      //       )
-                                      //     : {}),
-                                      // }}
                                     />
                                   ) : (
-                                    <motion.div
-                                      layout
+                                    <motion.span
+                                      key="readonly"
+                                      layout={false}
                                       ref={(el) => {
-                                        inputRefs.current[idx * 10 + i] = el;
+                                        inputRefs.current[idx * 10 + i] =
+                                          el as HTMLSpanElement;
                                       }}
                                       id={`input-${sIdx}-${idx}-${i}`}
                                       className={fillInInput}
@@ -264,20 +246,10 @@ export const FillInExercise = ({ data, onSwiperLock }: FillInExerciseProps) => {
                                       exit="exit"
                                       variants={inputVariants}
                                       style={{
-                                        display: "inline",
+                                        color: "#ccc",
                                         minWidth: `${getInputWidth(inputs[idx]?.[i] ?? "")}px`,
-                                        width: "auto",
-                                        maxWidth: "100%",
-                                        height: "auto",
-                                        verticalAlign: "bottom",
-                                        willChange: "transform, opacity",
+                                        // willChange: "transform, opacity",
                                       }}
-                                      // style={{
-                                      //   width: `${getInputWidth(
-                                      //     inputs[idx]?.[i] ?? "",
-                                      //   )}px`,
-                                      //   willChange: "transform, opacity",
-                                      // }}
                                     />
                                   )}
                                 </AnimatePresence>

@@ -39,9 +39,8 @@ export function createFillInExerciseHandlers(deps: FillInHandlersDeps) {
   };
 
   const handleRevealAnswers = () => {
-    const { correctInputs, correctFlags } = getCorrectFillInAnswers(
-      getTarget()
-    );
+    const { correctInputs, correctFlags } =
+      getCorrectFillInAnswers(getTarget());
 
     const cleanInputs = correctInputs.map((sentence) =>
       sentence.map((answer) =>
@@ -51,8 +50,8 @@ export function createFillInExerciseHandlers(deps: FillInHandlersDeps) {
               .replace(/\((.*?)\)/g, "$1")
               .replace(/\s+/g, " ")
               .trim()
-          : ""
-      )
+          : "",
+      ),
     );
 
     cleanInputs.forEach((sentence, sIdx) => {
@@ -73,7 +72,7 @@ export function createFillInExerciseHandlers(deps: FillInHandlersDeps) {
   const handleChange = (
     value: string,
     sentenceIdx: number,
-    wordIdx: number
+    wordIdx: number,
   ) => {
     setChecked(false);
     setShowAnswers(false);
@@ -132,6 +131,26 @@ export function createFillInExerciseHandlers(deps: FillInHandlersDeps) {
     resetUsedWords();
   };
 
+  const handleInput = (
+    e: React.FormEvent<HTMLSpanElement>,
+    sentenceIdx: number,
+    wordIdx: number,
+  ) => {
+    handleChange(e.currentTarget.innerText, sentenceIdx, wordIdx);
+  };
+
+  const handleFocus = (e: React.FocusEvent<HTMLSpanElement>) => {
+    if (e.currentTarget.innerText === "") {
+      e.currentTarget.innerText = "\u200B";
+    }
+  };
+
+  const handleBlur = (e: React.FocusEvent<HTMLSpanElement>) => {
+    if (e.currentTarget.innerText === "\u200B") {
+      e.currentTarget.innerText = "";
+    }
+  };
+
   return {
     handleNext,
     handlePrev,
@@ -139,5 +158,8 @@ export function createFillInExerciseHandlers(deps: FillInHandlersDeps) {
     handleChange,
     handleCheck,
     handleClear,
+    handleInput,
+    handleFocus,
+    handleBlur,
   };
 }

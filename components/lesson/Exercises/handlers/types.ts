@@ -9,7 +9,7 @@ export type FillInHandlersDeps = {
   activeIndex: number;
   setActiveIndex: React.Dispatch<React.SetStateAction<number>>;
 
-  inputRefs: React.RefObject<(HTMLDivElement | null)[]>;
+  inputRefs: React.RefObject<(HTMLSpanElement | null)[]>;
 
   initializeFillInState: (target: Sentence[]) => {
     initialInputs: string[][];

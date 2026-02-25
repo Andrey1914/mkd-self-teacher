@@ -2,7 +2,7 @@ import { generateHighlightedText } from "@/utils";
 import { TranslateParagraphHandlersDeps } from "./types";
 
 export function createTranslateParagraphHandlers(
-  deps: TranslateParagraphHandlersDeps
+  deps: TranslateParagraphHandlersDeps,
 ) {
   const {
     correctAnswer,
@@ -24,7 +24,7 @@ export function createTranslateParagraphHandlers(
     if (editorRef.current) {
       editorRef.current.innerHTML = generateHighlightedText(
         input,
-        correctAnswer
+        correctAnswer,
       );
     }
   };
