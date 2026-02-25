@@ -139,18 +139,6 @@ export function createFillInExerciseHandlers(deps: FillInHandlersDeps) {
     handleChange(e.currentTarget.innerText, sentenceIdx, wordIdx);
   };
 
-  const handleFocus = (e: React.FocusEvent<HTMLSpanElement>) => {
-    if (e.currentTarget.innerText === "") {
-      e.currentTarget.innerText = "\u200B";
-    }
-  };
-
-  const handleBlur = (e: React.FocusEvent<HTMLSpanElement>) => {
-    if (e.currentTarget.innerText === "\u200B") {
-      e.currentTarget.innerText = "";
-    }
-  };
-
   return {
     handleNext,
     handlePrev,
@@ -159,7 +147,5 @@ export function createFillInExerciseHandlers(deps: FillInHandlersDeps) {
     handleCheck,
     handleClear,
     handleInput,
-    handleFocus,
-    handleBlur,
   };
 }
