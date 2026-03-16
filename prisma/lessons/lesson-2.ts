@@ -35,7 +35,7 @@ const { cardinalOrdinalNumeralsTable } = numeralsTable;
 export const lesson2 = {
   title: {
     ru: "Урок 2",
-    mkd: "Лекциjя 2",
+    mkd: "Лекциjа 2",
   },
   numericId: 2,
   slug: "lesson-2",

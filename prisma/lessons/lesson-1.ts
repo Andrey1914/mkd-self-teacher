@@ -56,7 +56,7 @@ const { grammarPronouns1, grammarPronouns2 } = grammarPronouns;
 export const lesson1 = {
   title: {
     ru: "Урок 1",
-    mkd: "Лекциjя 1",
+    mkd: "Лекциjа 1",
   },
   numericId: 1,
   slug: "lesson-1",

@@ -42,7 +42,7 @@ const {
 export const lesson5 = {
   title: {
     ru: "Урок 5",
-    mkd: "Лекциjя 5",
+    mkd: "Лекциjа 5",
   },
   numericId: 5,
   slug: "lesson-5",
