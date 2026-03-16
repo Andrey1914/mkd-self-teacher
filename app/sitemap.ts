@@ -1,16 +1,23 @@
 import { MetadataRoute } from "next";
+import { lessonsData } from "@/data";
 
 const baseUrl = "https://mkd-self-teacher.vercel.app";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const today = new Date().toISOString().split("T")[0];
 
-  const lessons = Array.from({ length: 10 }, (_, i) => ({
-    url: `${baseUrl}/lesson/${i + 1}`,
+  const lessons = lessonsData.map((lesson) => ({
+    url: `${baseUrl}/lesson/${lesson.id}`,
     lastModified: today,
     changeFrequency: "weekly" as const,
     priority: 0.9,
   }));
+  // const lessons = Array.from({ length: 10 }, (_, i) => ({
+  //   url: `${baseUrl}/lesson/${i + 1}`,
+  //   lastModified: today,
+  //   changeFrequency: "weekly" as const,
+  //   priority: 0.9,
+  // }));
 
   return [
     {

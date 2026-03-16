@@ -10,6 +10,11 @@ export const Tabs = ({ tabs, activeIndex, onChange }: TabsProps) => {
         modules={[Mousewheel]}
         slidesPerView="auto"
         spaceBetween={8}
+        //swipe
+        threshold={30}
+        touchAngle={45}
+        touchRatio={0.5}
+        //-------
         simulateTouch
         mousewheel={{
           sensitivity: 1,
@@ -44,11 +49,13 @@ export const Tabs = ({ tabs, activeIndex, onChange }: TabsProps) => {
                 // borderRadius: "2.5px",
                 borderBottom:
                   index === activeIndex
-                    ? "2px solid #fff"
+                    ? "2px solid var(--foreground)"
                     : "2px solid transparent",
                 padding: "0.5rem 0.75rem 1rem 0.75rem",
                 color:
-                  index === activeIndex ? "#fff" : "rgba(255, 255, 255, 0.8)",
+                  index === activeIndex
+                    ? "var(--foreground)"
+                    : "var(--tab-inactive)",
                 fontWeight: index === activeIndex ? "700" : "300",
                 cursor: "pointer",
                 // boxShadow:

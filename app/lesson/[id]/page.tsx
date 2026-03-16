@@ -51,6 +51,10 @@ export async function generateMetadata({ params }: Props) {
       "macedonian",
       "язык",
     ],
+
+    alternates: {
+      canonical: `https://mkd-self-teacher.vercel.app/lesson/${id}`,
+    },
   };
 }
 
