@@ -1,22 +1,41 @@
+import { useRef, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Mousewheel } from "swiper/modules";
 import "swiper/css";
 import { TabsProps } from "@/types";
 
 export const Tabs = ({ tabs, activeIndex, onChange }: TabsProps) => {
+  const swiperRef = useRef<any>(null);
+
+  useEffect(() => {
+    const swiper = swiperRef.current;
+    if (!swiper) return;
+
+    const timeoutId = setTimeout(() => {
+      swiper.slideTo(activeIndex, 300);
+    }, 100);
+
+    return () => clearTimeout(timeoutId);
+  }, [activeIndex]);
+
   return (
     <div>
       <Swiper
+        onSwiper={(swiper) => (swiperRef.current = swiper)}
         modules={[Mousewheel]}
         slidesPerView="auto"
+        centeredSlides={true}
+        centeredSlidesBounds={true}
+        simulateTouch={true}
         spaceBetween={8}
         //swipe
         threshold={50}
         touchAngle={45}
         touchRatio={0.5}
         //-------
-        simulateTouch
+        // simulateTouch
         mousewheel={{
+          forceToAxis: true,
           sensitivity: 1,
           releaseOnEdges: false,
           eventsTarget: "container",
@@ -24,7 +43,7 @@ export const Tabs = ({ tabs, activeIndex, onChange }: TabsProps) => {
         grabCursor
         style={{
           paddingTop: "10px",
-          borderBottom: "1px solid rgba(255,255,255,0.3)",
+          borderBottom: "var(--tabs-border-bottom)",
         }}
       >
         {tabs.map((tab, index) => (
@@ -38,15 +57,9 @@ export const Tabs = ({ tabs, activeIndex, onChange }: TabsProps) => {
             <button
               onClick={() => onChange(index)}
               style={{
-                // backdropFilter: index === activeIndex ? "blur(5px)" : "none",
-                // backgroundColor:
-                //   index === activeIndex
-                //     ? "rgba(0, 0, 90, 0.08)"
-                //     : "transparent",
                 backgroundColor: "transparent",
                 border: "none",
-                // borderRadius: "5px",
-                // borderRadius: "2.5px",
+
                 borderBottom:
                   index === activeIndex
                     ? "2px solid var(--foreground)"
@@ -58,17 +71,6 @@ export const Tabs = ({ tabs, activeIndex, onChange }: TabsProps) => {
                     : "var(--tab-inactive)",
                 fontWeight: index === activeIndex ? "700" : "300",
                 cursor: "pointer",
-                // boxShadow:
-                //   index === activeIndex
-                //     ? `0 8px 32px rgba(0, 0, 0, 0.1),
-                //  inset 0 1px 0 rgba(255, 255, 255, 0.5),
-                //  inset 0 -1px 0 rgba(255, 255, 255, 0.1),
-                //  inset 0 0 6px 3px rgba(255, 255, 255, 0.3)`
-                //     : "none",
-                // boxShadow:
-                //   index === activeIndex
-                //     ? `rgb(255, 255, 255) 0px 0px 8px 0px`
-                //     : "none",
 
                 transition: "border-bottom 0.2s ease, box-shadow 0.2s ease",
               }}

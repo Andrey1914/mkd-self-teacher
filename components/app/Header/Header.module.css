@@ -4,10 +4,6 @@
   z-index: 100;
   max-width: 1280px;
   margin: 0 auto;
-  /* backdrop-filter: blur(5px); */
-  /* -webkit-backdrop-filter: blur(5px); */
-  /* background-color: rgba(255, 255, 255, 0.1); */
-  /* box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); */
   text-align: center;
   border-radius: 0 0 4px 4px;
   padding: 0 150px 0 150px;
@@ -32,19 +28,8 @@
 
   max-width: 1280px;
   margin: 0 auto;
-  /* background: rgba(255, 255, 255, 0.1); */
   background: var(--tabs-container-bg);
   backdrop-filter: blur(5px);
-  /* border-radius: 10px; */
-  /* border-radius: 5px; */
-
-  /* border: 1px solid rgba(255, 255, 255, 0.3); */
-  /* border-top: 0.5px solid rgba(255, 255, 255, 0.6); */
-  /* box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.5),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.1),
-    inset 0 0 6px 3px rgba(255, 255, 255, 0.3); */
 
   position: relative;
   overflow: hidden;
@@ -57,7 +42,6 @@
   left: 0;
   right: 0;
   height: 1px;
-  /* background: rgba(255, 255, 255, 0.9); */
 
   transform: scaleY(0.5);
   transform-origin: top;

@@ -6,6 +6,7 @@
 
   --tab-inactive: rgba(0, 0, 0, 0.6);
   --tabs-container-bg: rgba(255, 255, 255, 0.08);
+  --tabs-border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 
   --gradient-center: rgba(255, 255, 255, 0.4);
   --gradient-mid: rgba(255, 255, 255, 0.85);
@@ -22,6 +23,7 @@
 
     --tab-inactive: rgba(255, 255, 255, 0.8);
     --tabs-container-bg: rgba(0, 0, 90, 0.08);
+    --tabs-border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 
     --gradient-center: rgba(0, 0, 0, 0.4);
     --gradient-mid: rgba(0, 0, 0, 0.9);
@@ -35,19 +37,19 @@ html {
 
 @media (max-width: 900px) {
   html {
-    font-size: 16px; /* tablet */
+    font-size: 16px; /* tablet 16*/
   }
 }
 
 @media (max-width: 600px) {
   html {
-    font-size: 15px; /* large phones */
+    font-size: 16px; /* large phones 15*/
   }
 }
 
 @media (max-width: 400px) {
   html {
-    font-size: 14px; /* small screens */
+    font-size: 16px; /* small screens 14*/
   }
 }
 
@@ -55,9 +57,6 @@ html,
 body {
   width: 100%;
   max-width: 100%;
-  /* width: 100vw; */
-  /* max-width: 100vw; */
-  /* overflow-x: hidden; */
 }
 
 body {
@@ -69,7 +68,6 @@ body {
 }
 
 * {
-  /* outline: 1px solid rgba(255, 0, 0, 0.1); */
   box-sizing: border-box;
   padding: 0;
   margin: 0;
@@ -92,9 +90,8 @@ h1 {
 }
 
 p {
-  text-indent: 2em;
-  line-height: 1.8;
-  letter-spacing: 0.08em;
+  text-indent: 1em;
+  line-height: 1.5;
   overflow-wrap: break-word;
   white-space: normal;
   hyphens: auto;
