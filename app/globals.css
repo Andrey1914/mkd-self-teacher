@@ -30,24 +30,24 @@
 }
 
 html {
-  font-size: 18px; /* базовый размер для десктопа */
+  font-size: 18px; /* desktop */
 }
 
 @media (max-width: 900px) {
   html {
-    font-size: 16px; /* планшеты */
+    font-size: 16px; /* tablet */
   }
 }
 
 @media (max-width: 600px) {
   html {
-    font-size: 15px; /* крупные смартфоны */
+    font-size: 15px; /* large phones */
   }
 }
 
 @media (max-width: 400px) {
   html {
-    font-size: 14px; /* маленькие экраны */
+    font-size: 14px; /* small screens */
   }
 }
 

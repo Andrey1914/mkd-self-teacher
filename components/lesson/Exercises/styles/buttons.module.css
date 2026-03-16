@@ -1,7 +1,8 @@
 .buttonContainer {
   margin-top: 2rem;
+  padding-left: 10px;
   display: flex;
-  gap: 1rem;
+  gap: 10px;
   justify-content: flex-end;
 }
 
