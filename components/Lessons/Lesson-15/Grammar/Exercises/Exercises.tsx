@@ -21,7 +21,7 @@ export const Exercises = () => {
       <FillInExercise data={exercise1} />
       <FillInExercise data={exercise2} />
       <FillInExercise data={exercise3} />
-      <SelectOptionExercise data={exercise4} />
+      <FillInExercise data={exercise4} />
       {/* <FillInExercise data={exercise4} /> */}
       {/* <TranslateParagraphExercise data={exercise5} /> */}
       <div data-lesson-end />

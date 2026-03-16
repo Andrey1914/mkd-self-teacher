@@ -27,7 +27,7 @@ const { exercise1, exercise2, exercise3, exercise4, exercise5 } =
 export const lesson11 = {
   title: {
     ru: "Урок 11",
-    mkd: "Лекциjя 11",
+    mkd: "Лекциjа 11",
   },
   numericId: 11,
   slug: "lesson-11",

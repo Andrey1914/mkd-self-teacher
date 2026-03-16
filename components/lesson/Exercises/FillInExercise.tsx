@@ -209,7 +209,7 @@ export const FillInExercise = ({ data, onSwiperLock }: FillInExerciseProps) => {
                                       exit="exit"
                                       variants={inputVariants}
                                       style={{
-                                        color: "#ccc",
+                                        color: "var(--foreground)",
                                         minWidth: `${getInputWidth(inputs[idx]?.[i] ?? "")}px`,
                                         ...(checked && !showAnswers
                                           ? highlightInput(
@@ -242,7 +242,7 @@ export const FillInExercise = ({ data, onSwiperLock }: FillInExerciseProps) => {
                                       exit="exit"
                                       variants={inputVariants}
                                       style={{
-                                        color: "#ccc",
+                                        color: "var(--foreground)",
                                         minWidth: `${getInputWidth(inputs[idx]?.[i] ?? "")}px`,
                                       }}
                                     />

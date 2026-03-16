@@ -12,9 +12,8 @@
   border-right: none;
   border-bottom: 1px solid #994747;
   outline: none;
-  /* vertical-align: 8px; */
-  caret-color: #ccc;
-  color: #ccc;
+  caret-color: var(--foreground);
+  color: var(--foreground);
   box-sizing: content-box;
 }
 
@@ -44,7 +43,7 @@
 
 .fillInInput:focus {
   display: inline-block;
-  background-color: rgb(35, 35, 35);
+  background-color: var(--input-focus-bg);
 }
 
 .translatorInput {
@@ -69,14 +68,14 @@
   transition:
     height 0.2s ease-out,
     box-shadow 0.2s ease-out;
-  caret-color: #ccc;
-  color: #ccc;
+  caret-color: var(--foreground);
+  color: var(--foreground);
 }
 
 .paragraphInput:focus,
 .translatorInput:focus {
   display: inline-block;
-  background-color: rgb(35, 35, 35);
+  background-color: var(--input-focus-bg);
   border: 1px solid #67dd47;
   box-shadow: 0 0 6px 2px #89de7e;
 }
@@ -122,8 +121,8 @@
   100% {
     /* color: transparent;
     -webkit-text-fill-color: transparent; */
-    color: #ccc;
-    -webkit-text-fill-color: #ccc;
+    color: var(--foreground);
+    -webkit-text-fill-color: var(--foreground);
   }
 }
 

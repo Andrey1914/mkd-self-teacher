@@ -24,7 +24,7 @@ const {
 export const lesson14 = {
   title: {
     ru: "Урок 14",
-    mkd: "Лекциjя 14",
+    mkd: "Лекциjа 14",
   },
   numericId: 14,
   slug: "lesson-14",
