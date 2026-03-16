@@ -6,26 +6,53 @@
   margin: 2rem 0;
 }
 
+.bgImage {
+  display: block;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 0 0 2rem 0;
+}
+
+@media (max-width: 760px) {
+  .bgImage {
+    display: none;
+  }
+
+  .container {
+    justify-content: flex-start;
+    padding: 0 0 1rem 0;
+  }
+}
+
 .contanerImg {
-  position: relative;
-  background-image: url("/flag.jpg");
-  background-size: cover;
+  /* position: relative; */
+  /* background-image: url("/flag.jpg"); */
+  background-image: url("/bg-image.png");
+
+  /* background-size: cover; */
+  background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
   width: 100%;
   height: auto;
-  overflow: hidden;
+  /* overflow: hidden; */
   margin-bottom: 2rem;
 }
 
 .gradient {
   position: absolute;
   inset: 0;
-  background: radial-gradient(
-    ellipse at center,
-    var(--gradient-center) 0%,
+  background: linear-gradient(
+    to left,
+    var(--gradient-start) 0%,
+    var(--gradient-start) 10%,
+    var(--gradient-center) 30%,
     var(--gradient-mid) 50%,
-    var(--gradient-edge) 100%
+    var(--gradient-edge) 70%
   );
 
   z-index: 1;
@@ -33,12 +60,14 @@
 
 .containerTitle {
   padding: 20px 0 0 20px;
-  position: relative;
+  align-content: center;
+  /* position: relative; */
   z-index: 2;
 }
 
 .containerMultilanguageTitle {
   display: flex;
   flex-direction: column;
+  /* align-content: center; */
   text-indent: 0;
 }

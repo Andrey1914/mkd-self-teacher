@@ -8,6 +8,7 @@
   --tabs-container-bg: rgba(255, 255, 255, 0.08);
   --tabs-border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 
+  --gradient-start: rgba(255, 255, 255, 0.35);
   --gradient-center: rgba(255, 255, 255, 0.4);
   --gradient-mid: rgba(255, 255, 255, 0.85);
   --gradient-edge: rgba(255, 255, 255, 1);
@@ -27,6 +28,7 @@
     --tabs-container-bg: rgba(0, 0, 90, 0.08);
     --tabs-border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 
+    --gradient-start: rgba(0, 0, 0, 0.35);
     --gradient-center: rgba(0, 0, 0, 0.4);
     --gradient-mid: rgba(0, 0, 0, 0.9);
     --gradient-edge: rgba(0, 0, 0, 1);

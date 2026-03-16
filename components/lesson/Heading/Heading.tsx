@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { MultiFormatHeading } from "./MultiFormatHeading";
 import type { LessonData } from "@/types";
 import { styles } from "./styles";
@@ -23,14 +24,17 @@ export const HeadingLesson = ({
   const {
     lessonTitle,
     sectionSubtitle,
-    contanerImg,
-    gradient,
+    // contanerImg,
+    // gradient,
     containerTitle,
+    bgImage,
+    container,
   } = styles.heading;
 
   return (
-    <div className={contanerImg}>
-      <div className={gradient}></div>
+    <div className={container}>
+      {/* <div className={contanerImg}> */}
+      {/* <div className={gradient}></div> */}
       <div className={containerTitle}>
         <MultiFormatHeading as="h1" data={title} className={lessonTitle} />
 
@@ -52,6 +56,15 @@ export const HeadingLesson = ({
           </section>
         ))}
       </div>
+      <Image
+        src="/bg-image-v2.png"
+        alt="Background"
+        width={500}
+        height={600}
+        className={bgImage}
+      />
+      {/* <div className={contanerImg}></div> */}
     </div>
+    // </div>
   );
 };
