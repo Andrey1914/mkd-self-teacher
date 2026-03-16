@@ -1,6 +1,15 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  --thead-bg: #994747;
+
+  --tab-inactive: rgba(0, 0, 0, 0.6);
+  --tabs-container-bg: rgba(255, 255, 255, 0.08);
+
+  --gradient-center: rgba(255, 255, 255, 0.4);
+  --gradient-mid: rgba(255, 255, 255, 0.85);
+  --gradient-edge: rgba(255, 255, 255, 1);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -8,7 +17,15 @@
     /* --background: #0a0a0a; */
     --background: #000;
     --foreground: #ededed;
+
     --thead-bg: #994747;
+
+    --tab-inactive: rgba(255, 255, 255, 0.8);
+    --tabs-container-bg: rgba(0, 0, 90, 0.08);
+
+    --gradient-center: rgba(0, 0, 0, 0.4);
+    --gradient-mid: rgba(0, 0, 0, 0.9);
+    --gradient-edge: rgba(0, 0, 0, 1);
   }
 }
 
