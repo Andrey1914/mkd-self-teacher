@@ -11,7 +11,7 @@ export const Tabs = ({ tabs, activeIndex, onChange }: TabsProps) => {
         slidesPerView="auto"
         spaceBetween={8}
         //swipe
-        threshold={30}
+        threshold={50}
         touchAngle={45}
         touchRatio={0.5}
         //-------
