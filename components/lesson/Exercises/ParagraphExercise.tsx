@@ -19,14 +19,14 @@ export const ParagraphExercise = ({ data }: { data: ExercisesProps }) => {
 
   const { usePlaceholders, inputCount } = determineExerciseConfig(
     sections,
-    MACEDONIAN_PRONOUNS
+    MACEDONIAN_PRONOUNS,
   );
 
   const [inputs, setInputs] = useState<string[]>(Array(inputCount).fill(""));
   const [checked, setChecked] = useState(false);
   const [showAnswers, setShowAnswers] = useState(false);
   const [isAutoFilled, setIsAutoFilled] = useState<boolean[]>(
-    Array(inputCount).fill(false)
+    Array(inputCount).fill(false),
   );
 
   const [animationClass, setAnimationClass] = useState("");
@@ -92,7 +92,7 @@ export const ParagraphExercise = ({ data }: { data: ExercisesProps }) => {
                   ...highlightInput(
                     userInput,
                     correctAnswer,
-                    checked && !showAnswers
+                    checked && !showAnswers,
                   ),
                 }}
                 value={userInput}
@@ -119,6 +119,7 @@ export const ParagraphExercise = ({ data }: { data: ExercisesProps }) => {
         onReveal={handleRevealAnswers}
         onClear={handleClear}
         showAnswers={showAnswers}
+        isChecked={checked}
       />
     </section>
   );

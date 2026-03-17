@@ -102,6 +102,7 @@ export const TranslateParagraphExercise = ({
         onReveal={handleRevealAnswers}
         onClear={handleClear}
         showAnswers={showAnswer}
+        isChecked={checked}
       />
     </section>
   );

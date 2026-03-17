@@ -145,6 +145,7 @@ export const SelectOptionExercise = ({ data }: { data: ExercisesProps }) => {
         onReveal={handleRevealAnswers}
         onClear={handleClear}
         showAnswers={showAnswers}
+        isChecked={isChecked}
       />
     </section>
   );
