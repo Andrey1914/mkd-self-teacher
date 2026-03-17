@@ -1,5 +1,6 @@
 import type React from "react";
-import type { DragState } from "@/hooks/useDragAndDrop";
+import type { DragState } from "@/hooks/drag-and-drop";
+
 import { createPortal } from "react-dom";
 import { formatText } from "@/utils";
 
