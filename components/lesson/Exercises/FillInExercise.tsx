@@ -263,6 +263,7 @@ export const FillInExercise = ({ data, onSwiperLock }: FillInExerciseProps) => {
             onReveal={handleRevealAnswers}
             onClear={handleClear}
             showAnswers={showAnswers}
+            isChecked={checked}
           />
         </div>
       ))}

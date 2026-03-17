@@ -24,7 +24,7 @@ export const HighlightWordsExercise = ({ data }: { data: ExercisesProps }) => {
 
   const initialWordsState = useMemo(
     () => parseHighlightExercise(originalText, answerText),
-    [originalText, answerText, parseHighlightExercise]
+    [originalText, answerText, parseHighlightExercise],
   );
 
   useEffect(() => {
@@ -82,7 +82,7 @@ export const HighlightWordsExercise = ({ data }: { data: ExercisesProps }) => {
             </span>
           ) : (
             <span key={index}>{formatText(wordState.text)}</span>
-          )
+          ),
         )}
       </div>
 
@@ -91,6 +91,7 @@ export const HighlightWordsExercise = ({ data }: { data: ExercisesProps }) => {
         onReveal={handleRevealAnswers}
         onClear={handleClear}
         showAnswers={showAnswer}
+        isChecked={checked}
       />
     </section>
   );

@@ -6,10 +6,6 @@
   margin: 2rem 0;
 }
 
-.bgImage {
-  display: block;
-}
-
 .container {
   display: flex;
   justify-content: center;
@@ -17,7 +13,17 @@
   padding: 0 0 2rem 0;
 }
 
-@media (max-width: 760px) {
+.contanerImg {
+  width: 60%;
+}
+
+.bgImage {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 640px) {
   .bgImage {
     display: none;
   }
@@ -28,22 +34,28 @@
   }
 }
 
-.contanerImg {
-  /* position: relative; */
-  /* background-image: url("/flag.jpg"); */
+@media (min-width: 641px) {
+  .divider {
+    display: none;
+  }
+}
+
+/* .contanerImg {
+  position: relative;
+  
   background-image: url("/bg-image.png");
 
-  /* background-size: cover; */
-  background-size: contain;
+  background-size: cover;
+  
   background-position: center;
   background-repeat: no-repeat;
   width: 100%;
   height: auto;
-  /* overflow: hidden; */
+  overflow: hidden;
   margin-bottom: 2rem;
-}
+} */
 
-.gradient {
+/* .gradient {
   position: absolute;
   inset: 0;
   background: linear-gradient(
@@ -56,7 +68,7 @@
   );
 
   z-index: 1;
-}
+} */
 
 .containerTitle {
   padding: 20px 0 0 20px;
@@ -65,9 +77,14 @@
   z-index: 2;
 }
 
+.divider {
+  width: 100%;
+  height: 1px;
+  border-bottom: var(--divider);
+}
+
 .containerMultilanguageTitle {
   display: flex;
   flex-direction: column;
-  /* align-content: center; */
   text-indent: 0;
 }
