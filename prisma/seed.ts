@@ -39,14 +39,14 @@ async function main() {
           console.log(
             existing
               ? `ℹ️ Урок "${lesson.slug}" уже существует. Данные будут дополнены.`
-              : `✅ Урок "${lesson.slug}" создан.`
+              : `✅ Урок "${lesson.slug}" создан.`,
           );
 
           // 📘 Sections и таблицы
           for (const section of lesson.sections ?? []) {
             const sectionTitle = Array.isArray(section.title)
               ? section.title.join(", ")
-              : section.title ?? {};
+              : (section.title ?? {});
 
             const existingSection = await tx.section.findFirst({
               where: {
@@ -80,7 +80,7 @@ async function main() {
 
             if (existingSection) {
               console.log(
-                `ℹ️ Section "${sectionTitle}" уже существует, пропущен.`
+                `ℹ️ Section "${sectionTitle}" уже существует, пропущен.`,
               );
               continue;
             } else {
@@ -170,7 +170,7 @@ async function main() {
                 } catch (error) {
                   console.error(
                     `❌ Ошибка при обновлении упражнения "${exercise.title}":`,
-                    error
+                    error,
                   );
                 }
               }
@@ -180,7 +180,7 @@ async function main() {
             if (!exercise.sections?.[0]) {
               console.warn(
                 `⚠️ "${exercise.title}" → sections =`,
-                JSON.stringify(exercise.sections)
+                JSON.stringify(exercise.sections),
               );
               continue;
             }
@@ -190,14 +190,14 @@ async function main() {
             if (!section) {
               console.warn(
                 `⚠️ Упражнение "${exercise.title}" пропущено — section[0] невалидный.`,
-                JSON.stringify(exercise.sections)
+                JSON.stringify(exercise.sections),
               );
               continue;
             }
 
             if (!Array.isArray(section.prompt)) {
               console.warn(
-                `⚠️ Упражнение "${exercise.title}" пропущено — prompt не массив строк.`
+                `⚠️ Упражнение "${exercise.title}" пропущено — prompt не массив строк.`,
               );
               continue;
             }
@@ -222,13 +222,13 @@ async function main() {
             } catch (error) {
               console.error(
                 `❌ Ошибка при добавлении упражнения "${exercise.title}":`,
-                error
+                error,
               );
             }
           }
           if (skippedCount > 0) {
             console.log(
-              `ℹ️ Пропущено ${skippedCount} уже существующих упражнений.`
+              `ℹ️ Пропущено ${skippedCount} уже существующих упражнений.`,
             );
           }
 
@@ -239,7 +239,7 @@ async function main() {
             });
             if (exists) {
               console.log(
-                `ℹ️ GlossaryEntry "${entry.word}" уже существует, пропущен.`
+                `ℹ️ GlossaryEntry "${entry.word}" уже существует, пропущен.`,
               );
               continue;
             }
@@ -251,7 +251,7 @@ async function main() {
             } catch (error) {
               console.error(
                 `❌ Ошибка при добавлении GlossaryEntry "${entry.word}":`,
-                error
+                error,
               );
             }
           }
@@ -274,7 +274,7 @@ async function main() {
                   console.log(`♻️ DialogueBlock "${dialogue}" обновлён.`);
                 } else {
                   console.log(
-                    `ℹ️ DialogueBlock "${dialogue}" уже существует, пропущен.`
+                    `ℹ️ DialogueBlock "${dialogue}" уже существует, пропущен.`,
                   );
                 }
               } else {
@@ -286,7 +286,7 @@ async function main() {
             } catch (error) {
               console.error(
                 `❌ Ошибка при обработке DialogueBlock "${dialogue}":`,
-                error
+                error,
               );
             }
           }
@@ -337,7 +337,7 @@ async function main() {
                 !contentChanged
               ) {
                 console.log(
-                  `ℹ️ ParagraphBlock "${paragraph.type}" не изменился, пропущен.`
+                  `ℹ️ ParagraphBlock "${paragraph.type}" не изменился, пропущен.`,
                 );
                 continue;
               }
@@ -367,7 +367,7 @@ async function main() {
               });
 
               console.log(
-                `✅ Добавлен ParagraphBlock "${paragraph.type}", subtitle: "${subtitle}".`
+                `✅ Добавлен ParagraphBlock "${paragraph.type}", subtitle: "${subtitle}".`,
               );
             }
           }
@@ -386,8 +386,8 @@ async function main() {
             if (!slug || !type) {
               console.error(
                 `❌ Пропущен PayAttentionBlock — нет slug или type в ${JSON.stringify(
-                  block
-                )}`
+                  block,
+                )}`,
               );
               continue;
             }
@@ -419,7 +419,7 @@ async function main() {
                 console.log(`♻️ Обновлён PayAttentionBlock "${type}"`);
               } else {
                 console.log(
-                  `ℹ️ PayAttentionBlock "${type}" без изменений, пропущен.`
+                  `ℹ️ PayAttentionBlock "${type}" без изменений, пропущен.`,
                 );
               }
               continue;
@@ -439,7 +439,7 @@ async function main() {
             } catch (error) {
               console.error(
                 `❌ Ошибка при добавлении PayAttentionBlock "${type}":`,
-                error
+                error,
               );
             }
           }
@@ -470,7 +470,7 @@ async function main() {
             const content = tableBlock?.content ?? tableBlock?.data?.content;
             if (!content) {
               console.error(
-                `❌ Пропущен tableBlock без content. title: ${displayTitle}`
+                `❌ Пропущен tableBlock без content. title: ${displayTitle}`,
               );
               continue;
             }
@@ -494,7 +494,7 @@ async function main() {
             const jsonData = JSON.parse(
               JSON.stringify({
                 content: content,
-              })
+              }),
             );
 
             if (exists) {
@@ -621,7 +621,7 @@ async function main() {
                   } catch (e) {
                     console.log(
                       "❌ Ошибка при извлечении существующих слов:",
-                      e
+                      e,
                     );
                   }
 
@@ -636,7 +636,7 @@ async function main() {
                     if (!newWord.mkd) return;
 
                     const oldWord = existingWords.find(
-                      (w) => w.mkd === newWord.mkd
+                      (w) => w.mkd === newWord.mkd,
                     );
                     if (oldWord) {
                       if (
@@ -654,7 +654,7 @@ async function main() {
                     if (!oldWord.mkd) return;
 
                     const stillExists = newWords.some(
-                      (w) => w.mkd === oldWord.mkd
+                      (w) => w.mkd === oldWord.mkd,
                     );
                     if (!stillExists) {
                       updatedWords.push(`-${oldWord.mkd}`);
@@ -663,7 +663,7 @@ async function main() {
 
                   if (updatedWords.length > 0) {
                     changes.push(
-                      `♻️ Обновлены слова: ${updatedWords.join(", ")}`
+                      `♻️ Обновлены слова: ${updatedWords.join(", ")}`,
                     );
                   } else {
                     changes.push("структура словаря");
@@ -685,12 +685,12 @@ async function main() {
 
                 console.log(
                   `♻️ Обновлен Vocabulary "${displayTitle}": ${changes.join(
-                    ", "
-                  )} (🔡 всего ${wordsCount} слов)`
+                    ", ",
+                  )} (🔡 всего ${wordsCount} слов)`,
                 );
               } else {
                 console.log(
-                  `ℹ️ Vocabulary "${displayTitle}" не изменился, пропущен.`
+                  `ℹ️ Vocabulary "${displayTitle}" не изменился, пропущен.`,
                 );
               }
               vocabularyIndex++;
@@ -712,7 +712,7 @@ async function main() {
               }, 0) ?? 0;
 
             console.log(
-              `✅ Добавлен Vocabulary "${displayTitle}" с ${wordsCount} словами`
+              `✅ Добавлен Vocabulary "${displayTitle}" с ${wordsCount} словами`,
             );
             vocabularyIndex++;
           }
@@ -722,13 +722,13 @@ async function main() {
         {
           maxWait: 10000,
           timeout: 20000,
-        }
+        },
         //----------------------------------------------------------------------------------------
       );
     } catch (error) {
       console.error(
         `\n--- ❌ ОШИБКА при сидинге урока "${lesson.slug}". Транзакция отменена. ---\n`,
-        error instanceof Error ? error.message : error
+        error instanceof Error ? error.message : error,
       );
     }
   }
