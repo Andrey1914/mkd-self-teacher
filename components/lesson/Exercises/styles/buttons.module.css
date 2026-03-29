@@ -1,9 +1,17 @@
 .buttonContainer {
   margin-top: 2rem;
-  padding-left: 10px;
   display: flex;
-  gap: 10px;
+  gap: 15px;
   justify-content: flex-end;
+}
+
+@media (max-width: 550px) {
+  .buttonContainer {
+    margin: 1rem auto;
+    max-width: 360px;
+    gap: 10px;
+    flex-direction: column;
+  }
 }
 
 .outlinedButtonContainer {

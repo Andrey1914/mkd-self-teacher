@@ -26,7 +26,7 @@ import parse from "html-react-parser";
  */
 export const normalizeText = (
   input: string,
-  options: NormalizeOptions = {}
+  options: NormalizeOptions = {},
 ): string => {
   const config = { ...DEFAULT_NORMALIZE_OPTIONS, ...options };
 
@@ -102,7 +102,7 @@ export const formatText = (
   options: {
     keepEmptyLines?: boolean;
     processAccents?: boolean;
-  } = {}
+  } = {},
 ) => {
   if (!text) return null;
 
@@ -114,7 +114,7 @@ export const formatText = (
   if (processAccents) {
     processed = processed.replace(
       /([а-яёa-z])\*/gi,
-      TEXT_FORMAT_CONFIG.ACCENT_REPLACEMENT
+      TEXT_FORMAT_CONFIG.ACCENT_REPLACEMENT,
     );
   }
 
@@ -122,15 +122,15 @@ export const formatText = (
   processed = processed
     .replace(
       TEXT_FORMAT_CONFIG.SPECIAL_ITALIC_PATTERN,
-      (_, inner) => `<em>[[${inner}]]</em>`
+      (_, inner) => `<em>[[${inner}]]</em>`,
     )
     .replace(
       TEXT_FORMAT_CONFIG.ITALIC_PATTERN,
-      (_, inner) => `<em>${inner}</em>`
+      (_, inner) => `<em>${inner}</em>`,
     )
     .replace(
       TEXT_FORMAT_CONFIG.BOLD_PATTERN,
-      (_, inner) => `<strong>${inner}</strong>`
+      (_, inner) => `<strong>${inner}</strong>`,
     );
 
   if (keepEmptyLines) {
@@ -138,7 +138,7 @@ export const formatText = (
       processed
         .split(/\s*\/\s*/)
         .map((p) => `<p>${p.trim()}</p>`)
-        .join("")
+        .join(""),
     );
   }
 
@@ -164,7 +164,7 @@ export const getTextWidth = (text: string, font = "16px Arial"): number => {
  */
 export const cleanAnswers = (
   answers: string[] | undefined,
-  options: NormalizeOptions = {}
+  options: NormalizeOptions = {},
 ): string[] | undefined => {
   if (!answers) return undefined;
 
@@ -179,8 +179,8 @@ export const cleanAnswers = (
   return answers.map((answer) =>
     normalizeText(
       answer.replace(TEXT_PATTERNS.MULTIPLE_SPACES, " "),
-      normalizeOptions
-    )
+      normalizeOptions,
+    ),
   );
 };
 
@@ -279,7 +279,7 @@ export const createFilledArray = <T>(length: number, fillValue: T): T[] => {
 export const create2DArray = <T>(
   rows: number,
   cols: number,
-  fillValue: T
+  fillValue: T,
 ): T[][] => {
   return Array.from({ length: rows }, () => createFilledArray(cols, fillValue));
 };
@@ -289,12 +289,12 @@ export const create2DArray = <T>(
  */
 export const initializeFillInState = <T>(
   sentences: Array<{ answer?: string[] }> | undefined,
-  fillValue: T
+  fillValue: T,
 ) => {
   if (!sentences) return [];
 
   return sentences.map((sentence) =>
-    createFilledArray(sentence.answer?.length || 0, fillValue)
+    createFilledArray(sentence.answer?.length || 0, fillValue),
   );
 };
 
@@ -302,7 +302,7 @@ export const initializeFillInState = <T>(
  * Creates arrays of correct answers for exercises
  */
 export const getCorrectAnswers = (
-  sentences: Array<{ answer?: string[] }> | undefined
+  sentences: Array<{ answer?: string[] }> | undefined,
 ) => {
   if (!sentences) return { correctInputs: [], correctFlags: [] };
 
@@ -310,7 +310,7 @@ export const getCorrectAnswers = (
     ...(sentence.answer ?? []),
   ]);
   const correctFlags = sentences.map((sentence) =>
-    createFilledArray(sentence.answer?.length || 0, true)
+    createFilledArray(sentence.answer?.length || 0, true),
   );
 
   return { correctInputs, correctFlags };
@@ -322,7 +322,7 @@ export const getCorrectAnswers = (
 export const safeArrayAccess = <T>(
   array: T[] | undefined,
   index: number,
-  fallback: T
+  fallback: T,
 ): T => {
   return array?.[index] ?? fallback;
 };
@@ -339,7 +339,7 @@ export const clone2DArray = <T>(array: T[][]): T[][] => {
  */
 export const allMatch = <T>(
   array: T[],
-  predicate: (item: T) => boolean
+  predicate: (item: T) => boolean,
 ): boolean => {
   return array.every(predicate);
 };
@@ -349,16 +349,19 @@ export const allMatch = <T>(
  */
 export const groupBy = <T, K extends string | number>(
   array: T[],
-  keyFn: (item: T) => K
+  keyFn: (item: T) => K,
 ): Record<K, T[]> => {
-  return array.reduce((groups, item) => {
-    const key = keyFn(item);
-    if (!groups[key]) {
-      groups[key] = [];
-    }
-    groups[key].push(item);
-    return groups;
-  }, {} as Record<K, T[]>);
+  return array.reduce(
+    (groups, item) => {
+      const key = keyFn(item);
+      if (!groups[key]) {
+        groups[key] = [];
+      }
+      groups[key].push(item);
+      return groups;
+    },
+    {} as Record<K, T[]>,
+  );
 };
 
 /**
@@ -366,7 +369,7 @@ export const groupBy = <T, K extends string | number>(
  */
 export const filterWithType = <T, U extends T>(
   array: T[],
-  predicate: (item: T) => item is U
+  predicate: (item: T) => item is U,
 ): U[] => {
   return array.filter(predicate);
 };
@@ -377,7 +380,7 @@ export const filterWithType = <T, U extends T>(
 export const compareTexts = (
   input: string,
   correct: string,
-  options: NormalizeOptions = {}
+  options: NormalizeOptions = {},
 ): boolean => {
   const defaultOptions = {
     convertLatinToCyrillic: true,
@@ -399,15 +402,60 @@ export const compareTexts = (
  * Gets the highlight style for the input field based on validity
  *
  * */
+/**
+ * Разбивает строку по `/` но НЕ внутри %...% блоков
+ */
+function splitBySlashOutsidePercent(str: string): string[] {
+  const parts: string[] = [];
+  let current = "";
+  let insidePercent = false;
+
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] === "%") {
+      insidePercent = !insidePercent;
+      current += str[i];
+    } else if (str[i] === "/" && !insidePercent) {
+      parts.push(current);
+      current = "";
+    } else {
+      current += str[i];
+    }
+  }
+  if (current) parts.push(current);
+
+  return parts;
+}
+
+/**
+ * Раскрывает вложенные альтернативы %...% в строке.
+ * "би %зборувал / зборувала% македонски."
+ * → ["би зборувал македонски.", "би зборувала македонски."]
+ */
+function expandNestedAlternatives(str: string): string[] {
+  const match = str.match(/%([^%]+)%/);
+  if (!match) return [str];
+
+  const before = str.slice(0, match.index!);
+  const after = str.slice(match.index! + match[0].length);
+  const subAlts = match[1].split(/\s*\/\s*/);
+
+  const results: string[] = [];
+  for (const subAlt of subAlts) {
+    const expanded = expandNestedAlternatives(before + subAlt + after);
+    results.push(...expanded);
+  }
+
+  return results;
+}
 
 const checkSingleVariant = (
   userInput: string,
   correctAnswerString: string,
-  options: NormalizeOptions = {}
+  options: NormalizeOptions = {},
 ): boolean => {
   const userWords = userInput.trim().split(/\s+/).filter(Boolean);
   const correctWordGroups =
-    correctAnswerString.match(/\*\*.*?\*\*|\([^)]+\)|\S+/g) || [];
+    correctAnswerString.match(/\*\*[\s\S]*?\*\*|\([^)]+\)|\S+/g) || [];
 
   let userIdx = 0;
   let correctIdx = 0;
@@ -436,12 +484,18 @@ const checkSingleVariant = (
         }),
       ];
     } else if (isAlternative) {
-      cleanCorrectOptions = currentCorrectGroup
-        .replace(/^\*\*|\*\*$/g, "")
-        .split(/\s*\/\s*/)
-        .map((opt) =>
-          normalizeText(opt, { trim: true, lowercase: true, ...options })
-        );
+      // Убираем внешние маркеры **
+      const inner = currentCorrectGroup.replace(/^\*\*|\*\*$/g, "");
+
+      // Разбиваем по `/` но НЕ внутри %...% блоков
+      const topLevelAlts = splitBySlashOutsidePercent(inner);
+
+      // Раскрываем вложенные альтернативы %...%
+      cleanCorrectOptions = [];
+      for (const alt of topLevelAlts) {
+        const expanded = expandNestedAlternatives(alt.trim());
+        cleanCorrectOptions.push(...expanded);
+      }
     } else {
       cleanCorrectOptions = [
         normalizeText(currentCorrectGroup, {
@@ -456,17 +510,17 @@ const checkSingleVariant = (
 
     if (isAlternative) {
       for (const alt of cleanCorrectOptions) {
-        const altWords = alt.split(/\s+/);
-        const userSliceWords = userWords.slice(
-          userIdx,
-          userIdx + altWords.length
-        );
-        const userSliceStr = normalizeText(userSliceWords.join(" "), {
+        const altNorm = normalizeText(alt, {
           trim: true,
           lowercase: true,
           ...options,
         });
-        const altNorm = normalizeText(alt, {
+        const altWords = altNorm.split(/\s+/);
+        const userSliceWords = userWords.slice(
+          userIdx,
+          userIdx + altWords.length,
+        );
+        const userSliceStr = normalizeText(userSliceWords.join(" "), {
           trim: true,
           lowercase: true,
           ...options,
@@ -520,11 +574,134 @@ const checkSingleVariant = (
 
   return true;
 };
+// const checkSingleVariant = (
+//   userInput: string,
+//   correctAnswerString: string,
+//   options: NormalizeOptions = {},
+// ): boolean => {
+//   const userWords = userInput.trim().split(/\s+/).filter(Boolean);
+//   const correctWordGroups =
+//     correctAnswerString.match(/\*\*.*?\*\*|\([^)]+\)|\S+/g) || [];
+
+//   let userIdx = 0;
+//   let correctIdx = 0;
+
+//   while (userIdx < userWords.length && correctIdx < correctWordGroups.length) {
+//     const normalizedUserWord = normalizeText(userWords[userIdx], {
+//       trim: true,
+//       lowercase: true,
+//       ...options,
+//     });
+
+//     const currentCorrectGroup = correctWordGroups[correctIdx];
+//     const isOptional =
+//       currentCorrectGroup.startsWith("(") && currentCorrectGroup.endsWith(")");
+//     const isAlternative =
+//       currentCorrectGroup.startsWith("**") &&
+//       currentCorrectGroup.endsWith("**");
+
+//     let cleanCorrectOptions: string[] = [];
+//     if (isOptional) {
+//       cleanCorrectOptions = [
+//         normalizeText(currentCorrectGroup.replace(/^\(|\)$/g, ""), {
+//           trim: true,
+//           lowercase: true,
+//           ...options,
+//         }),
+//       ];
+//     } else if (isAlternative) {
+//       cleanCorrectOptions = currentCorrectGroup
+//         .replace(/^\*\*|\*\*$/g, "")
+//         .split(/\s*\/\s*/);
+//       // .map((opt) =>
+//       //   normalizeText(opt, { trim: true, lowercase: true, ...options }),
+//       // );
+//     } else {
+//       cleanCorrectOptions = [
+//         normalizeText(currentCorrectGroup, {
+//           trim: true,
+//           lowercase: true,
+//           ...options,
+//         }),
+//       ];
+//     }
+
+//     let matched = false;
+
+//     //------------------
+
+//     if (isAlternative) {
+//       for (const alt of cleanCorrectOptions) {
+//         const altWords = alt.split(/\s+/);
+//         const userSliceWords = userWords.slice(
+//           userIdx,
+//           userIdx + altWords.length,
+//         );
+//         const userSliceStr = normalizeText(userSliceWords.join(" "), {
+//           trim: true,
+//           lowercase: true,
+//           ...options,
+//         });
+//         const altNorm = normalizeText(alt, {
+//           trim: true,
+//           lowercase: true,
+//           ...options,
+//         });
+
+//         if (userSliceStr === altNorm) {
+//           userIdx += altWords.length;
+//           correctIdx++;
+//           matched = true;
+//           break;
+//         }
+//       }
+//     } else {
+//       if (cleanCorrectOptions.includes(normalizedUserWord)) {
+//         userIdx++;
+//         correctIdx++;
+//         matched = true;
+//       }
+//     }
+
+//     if (matched) continue;
+
+//     if (isOptional) {
+//       correctIdx++;
+//       continue;
+//     }
+
+//     return false;
+//   }
+
+//   if (userIdx < userWords.length) {
+//     return false;
+//   }
+
+//   while (correctIdx < correctWordGroups.length) {
+//     const currentCorrectGroup = correctWordGroups[correctIdx];
+//     const isOptional =
+//       currentCorrectGroup.startsWith("(") && currentCorrectGroup.endsWith(")");
+//     const isAlternative =
+//       currentCorrectGroup.startsWith("**") &&
+//       currentCorrectGroup.endsWith("**");
+
+//     if (!isOptional && !isAlternative) {
+//       return false;
+//     }
+//     if (isAlternative) {
+//       return false;
+//     }
+//     correctIdx++;
+//   }
+
+//   return true;
+// };
+//--------------
 
 export const getHighlightStyle = (
   userInput: string,
   correctAnswerString: string,
-  options: NormalizeOptions = {}
+  options: NormalizeOptions = {},
 ): boolean => {
   const internalToken = "@@INTERNAL_SLASH_TOKEN@@";
   const optionalGroupPattern = /\*\*.*?\*\*/g;
@@ -533,13 +710,13 @@ export const getHighlightStyle = (
     optionalGroupPattern,
     (match) => {
       return match.replace(/\//g, internalToken);
-    }
+    },
   );
 
   const majorVariants = tempCorrectAnswerString
     .split("/")
     .map((variant) =>
-      variant.trim().replace(new RegExp(internalToken, "g"), "/")
+      variant.trim().replace(new RegExp(internalToken, "g"), "/"),
     );
 
   for (const singleVariant of majorVariants) {
@@ -551,25 +728,29 @@ export const getHighlightStyle = (
   return false;
 };
 
+// Вот итоговая функция generateHighlightedText:
 export const generateHighlightedText = (
   userInput: string,
   correctAnswerString: string,
-  options: NormalizeOptions = {}
+  options: NormalizeOptions = {},
 ): string => {
   const internalToken = "@@INTERNAL_SLASH_TOKEN@@";
-  const optionalGroupPattern = /\*\*.*?\*\*/g;
+  const optionalGroupPattern = /\*\*[\s\S]*?\*\*/g;
 
   let tempCorrectAnswerString = correctAnswerString.replace(
     optionalGroupPattern,
-    (match) => {
-      return match.replace(/\//g, internalToken);
-    }
+    (match) => match.replace(/\//g, internalToken),
+  );
+
+  tempCorrectAnswerString = tempCorrectAnswerString.replace(
+    /%[^%]+%/g,
+    (match) => match.replace(/\//g, internalToken),
   );
 
   const majorVariants = tempCorrectAnswerString
     .split("/")
     .map((variant) =>
-      variant.trim().replace(new RegExp(internalToken, "g"), "/")
+      variant.trim().replace(new RegExp(internalToken, "g"), "/"),
     );
 
   let bestMatchVariant = correctAnswerString;
@@ -583,10 +764,10 @@ export const generateHighlightedText = (
 
   const currentCorrectAnswerString = bestMatchVariant;
   const userWords = userInput.trim().split(/\s+/).filter(Boolean);
-  const resultHtml: string[] = []; // REGEX: Finds groups of variants (**...**), optionals (...), and regular words
+  const resultHtml: string[] = [];
 
   const correctWordGroups =
-    currentCorrectAnswerString.match(/\*\*.*?\*\*|\([^)]+\)|\S+/g) || [];
+    currentCorrectAnswerString.match(/\*\*[\s\S]*?\*\*|\([^)]+\)|\S+/g) || [];
 
   let userIdx = 0;
   let correctIdx = 0;
@@ -602,7 +783,7 @@ export const generateHighlightedText = (
 
     if (correctIdx >= correctWordGroups.length) {
       resultHtml.push(
-        `<span style="color: ${HIGHLIGHT_STYLES.INCORRECT_COLOR}; font-weight: 500;">${currentUserWord}</span>`
+        `<span style="color: ${HIGHLIGHT_STYLES.INCORRECT_COLOR}; font-weight: 500;">${currentUserWord}</span>`,
       );
       userIdx++;
       continue;
@@ -618,7 +799,6 @@ export const generateHighlightedText = (
     let cleanCorrectOptions: string[] = [];
 
     if (isOptional) {
-      // "(се)" -> ["се"]
       cleanCorrectOptions = [
         normalizeText(currentCorrectGroup.replace(/^\(|\)$/g, ""), {
           trim: true,
@@ -627,14 +807,17 @@ export const generateHighlightedText = (
         }),
       ];
     } else if (isAlternative) {
-      // "**некому / на некого**" -> ["некому", "на некого"]
-
-      cleanCorrectOptions = currentCorrectGroup
-        .replace(/^\*\*|\*\*$/g, "")
-        .split(/\s*\/\s*/)
-        .map((opt) =>
-          normalizeText(opt, { trim: true, lowercase: true, ...options })
+      const inner = currentCorrectGroup.replace(/^\*\*|\*\*$/g, "");
+      const topLevelAlts = splitBySlashOutsidePercent(inner);
+      cleanCorrectOptions = [];
+      for (const alt of topLevelAlts) {
+        const expanded = expandNestedAlternatives(alt.trim());
+        cleanCorrectOptions.push(
+          ...expanded.map((opt) =>
+            normalizeText(opt, { trim: true, lowercase: true, ...options }),
+          ),
         );
+      }
     } else {
       cleanCorrectOptions = [
         normalizeText(currentCorrectGroup, {
@@ -655,29 +838,79 @@ export const generateHighlightedText = (
     let multiWordMatch = false;
 
     if (isAlternative) {
+      let bestAltWords: string[] | null = null;
+
       for (const alt of cleanCorrectOptions) {
         const altWords = alt.split(/\s+/);
         const userSliceWords = userWords.slice(
           userIdx,
-          userIdx + altWords.length
+          userIdx + altWords.length,
         );
         const userSliceStr = normalizeText(userSliceWords.join(" "), {
           trim: true,
           lowercase: true,
           ...options,
         });
-        const altNorm = normalizeText(alt, {
-          trim: true,
-          lowercase: true,
-          ...options,
-        });
 
-        if (userSliceStr === altNorm) {
+        if (userSliceStr === alt) {
           resultHtml.push(...userSliceWords);
           userIdx += altWords.length;
           correctIdx++;
           multiWordMatch = true;
           break;
+        }
+      }
+
+      if (!multiWordMatch) {
+        let bestScore = -1;
+
+        for (const alt of cleanCorrectOptions) {
+          const altWords = alt.split(/\s+/);
+          const userSliceWords = userWords.slice(
+            userIdx,
+            userIdx + altWords.length,
+          );
+          let score = 0;
+          for (
+            let i = 0;
+            i < Math.min(altWords.length, userSliceWords.length);
+            i++
+          ) {
+            const uNorm = normalizeText(userSliceWords[i], {
+              trim: true,
+              lowercase: true,
+              ...options,
+            });
+            if (uNorm === altWords[i]) score++;
+          }
+          if (score > bestScore) {
+            bestScore = score;
+            bestAltWords = altWords;
+          }
+        }
+
+        if (bestAltWords && bestScore > 0) {
+          const userSliceWords = userWords.slice(
+            userIdx,
+            userIdx + bestAltWords.length,
+          );
+          for (let i = 0; i < userSliceWords.length; i++) {
+            const uNorm = normalizeText(userSliceWords[i], {
+              trim: true,
+              lowercase: true,
+              ...options,
+            });
+            if (i < bestAltWords.length && uNorm === bestAltWords[i]) {
+              resultHtml.push(userSliceWords[i]);
+            } else {
+              resultHtml.push(
+                `<span style="color: ${HIGHLIGHT_STYLES.INCORRECT_COLOR}; font-weight: 500;">${userSliceWords[i]}</span>`,
+              );
+            }
+          }
+          userIdx += userSliceWords.length;
+          correctIdx++;
+          multiWordMatch = true;
         }
       }
     } else {
@@ -689,9 +922,7 @@ export const generateHighlightedText = (
       }
     }
 
-    if (multiWordMatch) {
-      continue;
-    }
+    if (multiWordMatch) continue;
 
     if (isOptional) {
       correctIdx++;
@@ -699,7 +930,7 @@ export const generateHighlightedText = (
     }
 
     resultHtml.push(
-      `<span style="color: ${HIGHLIGHT_STYLES.INCORRECT_COLOR}; font-weight: 500;">${currentUserWord}</span>`
+      `<span style="color: ${HIGHLIGHT_STYLES.INCORRECT_COLOR}; font-weight: 500;">${currentUserWord}</span>`,
     );
     userIdx++;
     correctIdx++;
@@ -707,6 +938,162 @@ export const generateHighlightedText = (
 
   return resultHtml.join(" ");
 };
+// export const generateHighlightedText = (
+//   userInput: string,
+//   correctAnswerString: string,
+//   options: NormalizeOptions = {},
+// ): string => {
+//   const internalToken = "@@INTERNAL_SLASH_TOKEN@@";
+//   const optionalGroupPattern = /\*\*.*?\*\*/g;
+
+//   let tempCorrectAnswerString = correctAnswerString.replace(
+//     optionalGroupPattern,
+//     (match) => {
+//       return match.replace(/\//g, internalToken);
+//     },
+//   );
+
+//   const majorVariants = tempCorrectAnswerString
+//     .split("/")
+//     .map((variant) =>
+//       variant.trim().replace(new RegExp(internalToken, "g"), "/"),
+//     );
+
+//   let bestMatchVariant = correctAnswerString;
+
+//   for (const singleVariant of majorVariants) {
+//     if (checkSingleVariant(userInput, singleVariant, options)) {
+//       bestMatchVariant = singleVariant;
+//       break;
+//     }
+//   }
+
+//   const currentCorrectAnswerString = bestMatchVariant;
+//   const userWords = userInput.trim().split(/\s+/).filter(Boolean);
+//   const resultHtml: string[] = []; // REGEX: Finds groups of variants (**...**), optionals (...), and regular words
+
+//   const correctWordGroups =
+//     currentCorrectAnswerString.match(/\*\*.*?\*\*|\([^)]+\)|\S+/g) || [];
+
+//   let userIdx = 0;
+//   let correctIdx = 0;
+
+//   while (userIdx < userWords.length) {
+//     const currentUserWord = userWords[userIdx];
+//     const normalizedUserWord = normalizeText(currentUserWord, {
+//       trim: true,
+//       lowercase: true,
+//       convertLatinToCyrillic: true,
+//       ...options,
+//     });
+
+//     if (correctIdx >= correctWordGroups.length) {
+//       resultHtml.push(
+//         `<span style="color: ${HIGHLIGHT_STYLES.INCORRECT_COLOR}; font-weight: 500;">${currentUserWord}</span>`,
+//       );
+//       userIdx++;
+//       continue;
+//     }
+
+//     const currentCorrectGroup = correctWordGroups[correctIdx];
+//     const isOptional =
+//       currentCorrectGroup.startsWith("(") && currentCorrectGroup.endsWith(")");
+//     const isAlternative =
+//       currentCorrectGroup.startsWith("**") &&
+//       currentCorrectGroup.endsWith("**");
+
+//     let cleanCorrectOptions: string[] = [];
+
+//     if (isOptional) {
+//       // "(се)" -> ["се"]
+//       cleanCorrectOptions = [
+//         normalizeText(currentCorrectGroup.replace(/^\(|\)$/g, ""), {
+//           trim: true,
+//           lowercase: true,
+//           ...options,
+//         }),
+//       ];
+//     } else if (isAlternative) {
+//       // "**некому / на некого**" -> ["некому", "на некого"]
+
+//       cleanCorrectOptions = currentCorrectGroup
+//         .replace(/^\*\*|\*\*$/g, "")
+//         .split(/\s*\/\s*/)
+//         .map((opt) =>
+//           normalizeText(opt, { trim: true, lowercase: true, ...options }),
+//         );
+//     } else {
+//       cleanCorrectOptions = [
+//         normalizeText(currentCorrectGroup, {
+//           trim: true,
+//           lowercase: true,
+//           ...options,
+//         }),
+//       ];
+//     }
+
+//     if (cleanCorrectOptions.includes(normalizedUserWord)) {
+//       resultHtml.push(currentUserWord);
+//       userIdx++;
+//       correctIdx++;
+//       continue;
+//     }
+
+//     let multiWordMatch = false;
+
+//     if (isAlternative) {
+//       for (const alt of cleanCorrectOptions) {
+//         const altWords = alt.split(/\s+/);
+//         const userSliceWords = userWords.slice(
+//           userIdx,
+//           userIdx + altWords.length,
+//         );
+//         const userSliceStr = normalizeText(userSliceWords.join(" "), {
+//           trim: true,
+//           lowercase: true,
+//           ...options,
+//         });
+//         const altNorm = normalizeText(alt, {
+//           trim: true,
+//           lowercase: true,
+//           ...options,
+//         });
+
+//         if (userSliceStr === altNorm) {
+//           resultHtml.push(...userSliceWords);
+//           userIdx += altWords.length;
+//           correctIdx++;
+//           multiWordMatch = true;
+//           break;
+//         }
+//       }
+//     } else {
+//       if (cleanCorrectOptions.includes(normalizedUserWord)) {
+//         resultHtml.push(currentUserWord);
+//         userIdx++;
+//         correctIdx++;
+//         multiWordMatch = true;
+//       }
+//     }
+
+//     if (multiWordMatch) {
+//       continue;
+//     }
+
+//     if (isOptional) {
+//       correctIdx++;
+//       continue;
+//     }
+
+//     resultHtml.push(
+//       `<span style="color: ${HIGHLIGHT_STYLES.INCORRECT_COLOR}; font-weight: 500;">${currentUserWord}</span>`,
+//     );
+//     userIdx++;
+//     correctIdx++;
+//   }
+
+//   return resultHtml.join(" ");
+// };
 
 /**
  * Checks if a string is empty or contains only spaces.
@@ -720,7 +1107,7 @@ export const isEmptyOrWhitespace = (text: string | undefined): boolean => {
  */
 export const validateAnswers = (
   answers: string[] | undefined,
-  requiredLength?: number
+  requiredLength?: number,
 ): { isValid: boolean; errors: string[] } => {
   const errors: string[] = [];
 
@@ -741,7 +1128,7 @@ export const validateAnswers = (
     errors.push(
       `Empty answers at positions: ${emptyAnswers
         .map(({ index }) => index)
-        .join(", ")}`
+        .join(", ")}`,
     );
   }
 
