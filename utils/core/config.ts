@@ -808,8 +808,10 @@ export const generateHighlightedText = (
       ];
     } else if (isAlternative) {
       const inner = currentCorrectGroup.replace(/^\*\*|\*\*$/g, "");
+
       const topLevelAlts = splitBySlashOutsidePercent(inner);
       cleanCorrectOptions = [];
+
       for (const alt of topLevelAlts) {
         const expanded = expandNestedAlternatives(alt.trim());
         cleanCorrectOptions.push(

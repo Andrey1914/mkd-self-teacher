@@ -24,5 +24,3 @@ export const exercise5: ExercisesProps = {
     },
   ],
 };
-
-//**зборувал / зборувала**
