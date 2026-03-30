@@ -35,8 +35,9 @@ export function createTranslateParagraphHandlers(
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         const cleanAnswer = correctAnswer
+          // Remove optional (markers **, %), leaving the content
           .replace(/\*\*(.*?)\*\*/g, "$1")
-          // Remove optional (markers **), leaving the content
+          .replace(/%(.*?)%/g, "$1")
           .replace(/\((.*?)\)/g, "$1")
           // We remove any extra spaces that may remain.
           .replace(/\s+/g, " ")

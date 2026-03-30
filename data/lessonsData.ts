@@ -107,4 +107,11 @@ export const lessonsData = [
     title: "Урок 15",
     description: "В этом уроке обсуждается тема изучения иностранных языков.",
   },
+  {
+    id: 16,
+    numericId: 16,
+    component: "Lesson16",
+    title: "Урок 16",
+    description: "В этом уроке обсуждается тема музыки.",
+  },
 ];
