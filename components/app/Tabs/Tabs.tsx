@@ -1,45 +1,58 @@
 import { useRef, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Mousewheel } from "swiper/modules";
+import { Mousewheel, FreeMode } from "swiper/modules";
 import "swiper/css";
+import "swiper/css/free-mode";
 import { TabsProps } from "@/types";
 
 export const Tabs = ({ tabs, activeIndex, onChange }: TabsProps) => {
   const swiperRef = useRef<any>(null);
 
   useEffect(() => {
-    const swiper = swiperRef.current;
-    if (!swiper) return;
-
-    const timeoutId = setTimeout(() => {
-      swiper.slideTo(activeIndex, 300);
-    }, 100);
-
-    return () => clearTimeout(timeoutId);
+    if (swiperRef.current) {
+      swiperRef.current.slideTo(activeIndex, 300);
+    }
   }, [activeIndex]);
+
+  // useEffect(() => {
+  //   const swiper = swiperRef.current;
+  //   if (!swiper) return;
+
+  //   const timeoutId = setTimeout(() => {
+  //     swiper.slideTo(activeIndex, 300);
+  //   }, 100);
+
+  //   return () => clearTimeout(timeoutId);
+  // }, [activeIndex]);
 
   return (
     <div>
       <Swiper
         onSwiper={(swiper) => (swiperRef.current = swiper)}
-        modules={[Mousewheel]}
+        modules={[Mousewheel, FreeMode]}
         slidesPerView="auto"
         centeredSlides={true}
         centeredSlidesBounds={true}
         simulateTouch={true}
         spaceBetween={8}
         //swipe
-        threshold={50}
+        threshold={20}
         touchAngle={45}
-        touchRatio={0.5}
+        touchRatio={1}
         //-------
-        // simulateTouch
+        freeMode={{
+          enabled: true,
+          sticky: true,
+          momentum: true,
+          momentumRatio: 0.5,
+        }}
         mousewheel={{
           forceToAxis: true,
-          sensitivity: 1,
+          sensitivity: 1.5,
           releaseOnEdges: false,
           eventsTarget: "container",
         }}
+        cssMode={false}
         grabCursor
         style={{
           paddingTop: "10px",
