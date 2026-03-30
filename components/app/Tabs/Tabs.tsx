@@ -75,9 +75,9 @@ export const Tabs = ({ tabs, activeIndex, onChange }: TabsProps) => {
 
                 borderBottom:
                   index === activeIndex
-                    ? "2px solid var(--foreground)"
+                    ? "3px solid var(--foreground)"
                     : "2px solid transparent",
-                padding: "0.5rem 0.75rem 1rem 0.75rem",
+                padding: "0.5rem 1.3rem 1rem 1.3rem",
                 color:
                   index === activeIndex
                     ? "var(--foreground)"
