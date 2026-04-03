@@ -27,7 +27,7 @@ import {
 } from "@/components/Lessons";
 import { Header } from "@/components/app";
 
-import { useLessonCompletion } from "@/hooks";
+import { useLessonCompletion, useWindowScrollRestore } from "@/hooks";
 
 const LessonComponents: { [key: string]: React.ElementType } = {
   Lesson1,
@@ -75,9 +75,22 @@ export function LessonPageContent({
   const slideRef = useRef<HTMLDivElement | null>(null);
   const [showCompletion, setShowCompletion] = useState(false);
 
+  useWindowScrollRestore(activeLessonId.toString());
+
   useLessonCompletion(slideRef.current, activeIndex, () =>
     setShowCompletion(true),
   );
+
+  useEffect(() => {
+    const saved = localStorage.getItem(`lesson-${activeLessonId}-index`);
+    if (saved) {
+      const index = parseInt(saved);
+      if (index >= 0 && index < lessons.length) {
+        setActiveIndex(index);
+        swiperRef.current?.slideTo(index, 0);
+      }
+    }
+  }, [activeLessonId, lessons.length]);
 
   useEffect(() => {
     setShowCompletion(false);
@@ -89,7 +102,17 @@ export function LessonPageContent({
     setActiveIndex(index);
     swiperRef.current?.slideTo(index);
 
-    window.scrollTo(0, 0);
+    localStorage.setItem(`lesson-${lessons[index].id}-index`, index.toString());
+  };
+
+  const onSlideChange = (swiper: SwiperType) => {
+    const index = swiper.activeIndex;
+    setActiveIndex(index);
+    localStorage.setItem(`lesson-${lessons[index].id}-index`, index.toString());
+  };
+
+  const setSwiperRef = (swiper: SwiperType) => {
+    swiperRef.current = swiper;
   };
 
   const handleSwiperLock = (locked: boolean) => {
@@ -121,11 +144,8 @@ export function LessonPageContent({
         <main className={styles.main}>
           <Swiper
             // autoHeight={true}
-            onSlideChange={(swiper) => {
-              setActiveIndex(swiper.activeIndex);
-              window.scrollTo(0, 0);
-            }}
-            onSwiper={(swiper) => (swiperRef.current = swiper)}
+            onSlideChange={onSlideChange}
+            onSwiper={setSwiperRef}
             spaceBetween={50}
             slidesPerView={1}
             allowTouchMove={!isSwiperLocked}
