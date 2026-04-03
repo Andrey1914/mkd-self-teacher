@@ -14,17 +14,6 @@ export const Tabs = ({ tabs, activeIndex, onChange }: TabsProps) => {
     }
   }, [activeIndex]);
 
-  // useEffect(() => {
-  //   const swiper = swiperRef.current;
-  //   if (!swiper) return;
-
-  //   const timeoutId = setTimeout(() => {
-  //     swiper.slideTo(activeIndex, 300);
-  //   }, 100);
-
-  //   return () => clearTimeout(timeoutId);
-  // }, [activeIndex]);
-
   return (
     <div>
       <Swiper
@@ -75,7 +64,7 @@ export const Tabs = ({ tabs, activeIndex, onChange }: TabsProps) => {
 
                 borderBottom:
                   index === activeIndex
-                    ? "3px solid var(--foreground)"
+                    ? "2px solid var(--foreground)"
                     : "2px solid transparent",
                 padding: "0.5rem 1.3rem 1rem 1.3rem",
                 color:
