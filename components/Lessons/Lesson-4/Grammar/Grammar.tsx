@@ -15,7 +15,7 @@ export const Grammar = () => {
       <Paragraph
         data={definitenessCategory}
         part="title"
-        titleIconSrc="/grammar.png"
+        titleIconSrc="/grammar.webp"
       />
       <DefinitenessCategoryTable data={definitenessCategoryTable} />
       <Paragraph data={definitenessCategory} part="text" />

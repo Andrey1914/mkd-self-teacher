@@ -20,7 +20,7 @@ export const Aorist = () => {
           th: thColorizedClassName,
           td: tdColorizedClassName,
         }}
-        titleIconSrc="/grammar.png"
+        titleIconSrc="/grammar.webp"
       />
       <GenericTable
         data={iClassVerbs}

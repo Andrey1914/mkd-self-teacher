@@ -23,7 +23,7 @@ export const Examples = () => {
     <>
       <ExamplesTable
         data={example1}
-        titleIconSrc="/grammar.png"
+        titleIconSrc="/grammar.webp"
         // titleIconSize={62}
       />
       <ExamplesTable data={example2} />

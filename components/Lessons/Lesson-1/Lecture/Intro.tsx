@@ -5,7 +5,7 @@ import { lesson1 } from "@/prisma/lessons/lesson-1";
 export const Intro = () => {
   return (
     <>
-      <HeadingLesson lessonData={lesson1} TitleIconSrc="/airport.png" />
+      <HeadingLesson lessonData={lesson1} TitleIconSrc="/airport.webp" />
 
       {lesson1.sections?.map((section, i) => (
         <section key={i} style={{ marginBottom: "2rem" }}>
@@ -22,7 +22,9 @@ export const Intro = () => {
                   ) : (
                     <div style={{ display: "flex", flexDirection: "column" }}>
                       {section.content.intro.subtitle.ru && (
-                        <p>{section.content.intro.subtitle.ru}</p>
+                        <p style={{ fontWeight: 500 }}>
+                          {section.content.intro.subtitle.ru}
+                        </p>
                       )}
                       {section.content.intro.subtitle.mkd && (
                         <p>{section.content.intro.subtitle.mkd}</p>
@@ -35,10 +37,8 @@ export const Intro = () => {
               <p
                 lang="ru"
                 style={{
+                  fontWeight: 300,
                   marginBottom: 0,
-                  overflowWrap: "break-word",
-                  whiteSpace: "normal",
-                  hyphens: "auto",
                 }}
               >
                 {section.content.intro.intro}

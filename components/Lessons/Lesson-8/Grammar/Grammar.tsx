@@ -9,7 +9,7 @@ const { imperative } = grammarLesson8;
 export const Grammar = () => {
   return (
     <>
-      <Paragraph data={imperative} titleIconSrc="/grammar.png" />
+      <Paragraph data={imperative} titleIconSrc="/grammar.webp" />
       <Examples />
       <Exercises />
     </>

@@ -1,52 +1,16 @@
 "use client";
 
-import { useState, useRef, useEffect, useMemo } from "react";
+import { useState, useRef, useEffect, useMemo, startTransition } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import type { Swiper as SwiperType } from "swiper";
 import "swiper/css";
+import { LessonComponents } from "@/components/Lessons/LessonRegistry";
 
 import styles from "@/app/page.module.css";
 
-import {
-  Lesson1,
-  Lesson2,
-  Lesson3,
-  Lesson4,
-  Lesson5,
-  Lesson6,
-  Lesson7,
-  Lesson8,
-  Lesson9,
-  Lesson10,
-  Lesson11,
-  Lesson12,
-  Lesson13,
-  Lesson14,
-  Lesson15,
-  Lesson16,
-} from "@/components/Lessons";
 import { Header } from "@/components/app";
 
 import { useLessonCompletion, useWindowScrollRestore } from "@/hooks";
-
-const LessonComponents: { [key: string]: React.ElementType } = {
-  Lesson1,
-  Lesson2,
-  Lesson3,
-  Lesson4,
-  Lesson5,
-  Lesson6,
-  Lesson7,
-  Lesson8,
-  Lesson9,
-  Lesson10,
-  Lesson11,
-  Lesson12,
-  Lesson13,
-  Lesson14,
-  Lesson15,
-  Lesson16,
-};
 
 interface LessonItem {
   id: number;
@@ -75,6 +39,15 @@ export function LessonPageContent({
   const slideRef = useRef<HTMLDivElement | null>(null);
   const [showCompletion, setShowCompletion] = useState(false);
 
+  const [renderedSlides, setRenderedSlides] = useState(() => {
+    const initial = new Set<number>();
+
+    [initialIndex].forEach((i) => {
+      if (i >= 0 && i < lessons.length) initial.add(i);
+    });
+    return initial;
+  });
+
   useWindowScrollRestore(activeLessonId.toString());
 
   useLessonCompletion(slideRef.current, activeIndex, () =>
@@ -96,19 +69,43 @@ export function LessonPageContent({
     setShowCompletion(false);
   }, [activeIndex]);
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setRenderedSlides((prev) => {
+        const next = new Set(prev);
+
+        [activeIndex].forEach((i) => {
+          if (i >= 0 && i < lessons.length) next.add(i);
+        });
+        return next;
+      });
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, [activeIndex, lessons.length]);
+
   const handleTabChange = (index: number) => {
     const lessonId = lessons[index].id;
+
     window.history.pushState(null, "", `/lesson/${lessonId}`);
-    setActiveIndex(index);
+
     swiperRef.current?.slideTo(index);
 
-    localStorage.setItem(`lesson-${lessons[index].id}-index`, index.toString());
+    startTransition(() => {
+      setActiveIndex(index);
+      localStorage.setItem(`lesson-${lessonId}-index`, index.toString());
+    });
   };
 
   const onSlideChange = (swiper: SwiperType) => {
     const index = swiper.activeIndex;
-    setActiveIndex(index);
-    localStorage.setItem(`lesson-${lessons[index].id}-index`, index.toString());
+    startTransition(() => {
+      setActiveIndex(index);
+      localStorage.setItem(
+        `lesson-${lessons[index].id}-index`,
+        index.toString(),
+      );
+    });
   };
 
   const setSwiperRef = (swiper: SwiperType) => {
@@ -143,23 +140,31 @@ export function LessonPageContent({
         />
         <main className={styles.main}>
           <Swiper
-            // autoHeight={true}
+            autoHeight={false}
             onSlideChange={onSlideChange}
             onSwiper={setSwiperRef}
             spaceBetween={50}
             slidesPerView={1}
             allowTouchMove={!isSwiperLocked}
             initialSlide={initialIndex}
-            style={{ padding: "10px 5px" }}
+            style={{ padding: "10px 5px", height: "auto" }}
           >
             {lessons.map((lesson, index) => {
               const LessonComponent = LessonComponents[lesson.component];
               if (!LessonComponent) return null;
 
+              const isLoaded = renderedSlides.has(index);
+              console.log(`Slide ${index}: ${isLoaded ? "RENDER" : "skip"}`);
+
               return (
-                <SwiperSlide key={lesson.id}>
-                  <div ref={index === activeIndex ? slideRef : null}>
-                    <LessonComponent onSwiperLock={handleSwiperLock} />
+                <SwiperSlide key={lesson.id} style={{ height: "100%" }}>
+                  <div
+                    ref={index === activeIndex ? slideRef : null}
+                    style={{ display: "contents" }}
+                  >
+                    {isLoaded && (
+                      <LessonComponent onSwiperLock={handleSwiperLock} />
+                    )}
 
                     <p
                       className={`${styles.lessonCompletion} ${

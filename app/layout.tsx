@@ -1,12 +1,15 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Karla, Roboto, Montserrat } from "next/font/google";
+import {
+  // Geist, Geist_Mono, Karla, Montserrat
+  Roboto,
+} from "next/font/google";
 import "./globals.css";
 
-const montserrat = Montserrat({
-  variable: "--font-montserrat",
-  subsets: ["cyrillic", "latin"],
-  display: "swap",
-});
+// const montserrat = Montserrat({
+//   variable: "--font-montserrat",
+//   subsets: ["cyrillic", "latin"],
+//   display: "swap",
+// });
 
 const roboto = Roboto({
   variable: "--font-roboto",
@@ -15,23 +18,23 @@ const roboto = Roboto({
   display: "swap",
 });
 
-const karla = Karla({
-  variable: "--font-karla",
-  subsets: ["latin"],
-  display: "swap",
-});
+// const karla = Karla({
+//   variable: "--font-karla",
+//   subsets: ["latin"],
+//   display: "swap",
+// });
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-  display: "swap",
-});
+// const geistSans = Geist({
+//   variable: "--font-geist-sans",
+//   subsets: ["latin"],
+//   display: "swap",
+// });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-  display: "swap",
-});
+// const geistMono = Geist_Mono({
+//   variable: "--font-geist-mono",
+//   subsets: ["latin"],
+//   display: "swap",
+// });
 
 export const metadata: Metadata = {
   title: "Macedonian self teacher | Самоучитель македонского языка.",
@@ -46,7 +49,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${montserrat.variable} ${roboto.variable} ${karla.variable} ${geistSans.variable} ${geistMono.variable}`}
+        // className={`${montserrat.variable} ${roboto.variable} ${karla.variable} ${geistSans.variable} ${geistMono.variable}`}
+        className={roboto.variable}
       >
         {children}
       </body>

@@ -19,7 +19,7 @@ import {
 export const Examples = () => {
   return (
     <>
-      <ExamplesTable data={example1} titleIconSrc="/grammar.png" />
+      <ExamplesTable data={example1} titleIconSrc="/grammar.webp" />
       <ExamplesTable data={example2} />
       <GenericTable
         data={pluperfectTable}

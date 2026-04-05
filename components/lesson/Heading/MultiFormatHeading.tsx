@@ -7,8 +7,10 @@ import { styles } from "./styles";
 
 type HeadingData = string | string[] | TitleObject;
 
-interface MultiFormatHeadingProps
-  extends Omit<React.HTMLAttributes<HTMLElement>, "data" | "as"> {
+interface MultiFormatHeadingProps extends Omit<
+  React.HTMLAttributes<HTMLElement>,
+  "data" | "as"
+> {
   data?: HeadingData;
   as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "span";
   iconSrc?: string;

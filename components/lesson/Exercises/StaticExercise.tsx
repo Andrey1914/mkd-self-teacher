@@ -1,6 +1,4 @@
-"use client";
-
-import parse from "html-react-parser";
+// import parse from "html-react-parser";
 import { ExercisesProps } from "@/types";
 import { formatText } from "@/utils";
 
@@ -18,7 +16,7 @@ export const StaticExercise = ({ data }: { data: ExercisesProps }) => {
           {section.prompt?.map((paragraph, pIdx) => (
             <p key={pIdx} style={{ textIndent: 0 }}>
               <strong>{data.title}. </strong>
-              {typeof paragraph === "string" ? parse(paragraph) : null}
+              {typeof paragraph === "string" ? formatText(paragraph) : null}
             </p>
           ))}
 

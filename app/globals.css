@@ -100,7 +100,7 @@ h1 {
 }
 
 p {
-  text-indent: 1em;
+  text-indent: 20px;
   line-height: 1.5;
   overflow-wrap: break-word;
   white-space: normal;

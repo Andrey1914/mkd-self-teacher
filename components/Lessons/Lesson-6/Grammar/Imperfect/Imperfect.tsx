@@ -20,7 +20,7 @@ export const Imperfect = () => {
           th: thColorizedClassName,
           td: tdColorizedClassName,
         }}
-        titleIconSrc="/grammar.png"
+        titleIconSrc="/grammar.webp"
       />
     </>
   );
