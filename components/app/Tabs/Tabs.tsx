@@ -1,12 +1,26 @@
-import { useRef, useEffect } from "react";
+import {
+  useRef,
+  useState,
+  useEffect,
+  useCallback,
+  startTransition,
+} from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Mousewheel, FreeMode } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/free-mode";
 import { TabsProps } from "@/types";
 
+import { styles } from "./styles";
+
 export const Tabs = ({ tabs, activeIndex, onChange }: TabsProps) => {
   const swiperRef = useRef<any>(null);
+  const [localIndex, setLocalIndex] = useState(activeIndex);
+  const { swiper, swiperSlide, active, tab: tabStyle } = styles.tabs;
+
+  useEffect(() => {
+    setLocalIndex(activeIndex);
+  }, [activeIndex]);
 
   useEffect(() => {
     if (swiperRef.current) {
@@ -14,8 +28,21 @@ export const Tabs = ({ tabs, activeIndex, onChange }: TabsProps) => {
     }
   }, [activeIndex]);
 
+  const handleTabClick = useCallback(
+    (index: number) => {
+      if (index === localIndex) return;
+
+      setLocalIndex(index);
+
+      startTransition(() => {
+        onChange(index);
+      });
+    },
+    [localIndex, onChange],
+  );
+
   return (
-    <div>
+    <>
       <Swiper
         onSwiper={(swiper) => (swiperRef.current = swiper)}
         modules={[Mousewheel, FreeMode]}
@@ -24,6 +51,7 @@ export const Tabs = ({ tabs, activeIndex, onChange }: TabsProps) => {
         centeredSlidesBounds={true}
         simulateTouch={true}
         spaceBetween={8}
+        touchStartPreventDefault={false}
         //swipe
         threshold={20}
         touchAngle={45}
@@ -43,38 +71,18 @@ export const Tabs = ({ tabs, activeIndex, onChange }: TabsProps) => {
         }}
         cssMode={false}
         grabCursor
-        style={{
-          paddingTop: "10px",
-          borderBottom: "var(--tabs-border-bottom)",
-        }}
+        className={swiper}
       >
         {tabs.map((tab, index) => (
-          <SwiperSlide
-            key={index}
-            style={{
-              width: "auto",
-              flexShrink: 0,
-            }}
-          >
+          <SwiperSlide key={index} className={swiperSlide}>
             <button
-              onClick={() => onChange(index)}
+              onClick={() => handleTabClick(index)}
+              className={`${tabStyle} ${index === localIndex ? active : ""}`}
               style={{
-                backgroundColor: "transparent",
-                border: "none",
-
                 borderBottom:
-                  index === activeIndex
+                  index === localIndex
                     ? "2px solid var(--foreground)"
                     : "2px solid transparent",
-                padding: "0.5rem 1.3rem 1rem 1.3rem",
-                color:
-                  index === activeIndex
-                    ? "var(--foreground)"
-                    : "var(--tab-inactive)",
-                fontWeight: index === activeIndex ? "700" : "300",
-                cursor: "pointer",
-
-                transition: "border-bottom 0.2s ease, box-shadow 0.2s ease",
               }}
             >
               {tab}
@@ -82,6 +90,6 @@ export const Tabs = ({ tabs, activeIndex, onChange }: TabsProps) => {
           </SwiperSlide>
         ))}
       </Swiper>
-    </div>
+    </>
   );
 };

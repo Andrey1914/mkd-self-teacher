@@ -23,7 +23,7 @@ export const FormsOfPersonalPronouns = () => {
           td: tdClassName,
           th: getColorizedThClassName,
         }}
-        titleIconSrc="/grammar.png"
+        titleIconSrc="/grammar.webp"
         // titleIconSize={62}
       />
       <Paragraph data={intro} />

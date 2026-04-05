@@ -5,12 +5,9 @@
 
   --button-primary-hover: #383838;
   --button-secondary-hover: #f2f2f2;
-
   font-family: var(--font-roboto);
-  /* display: flex; */
   display: block;
   flex-direction: column;
-  /* min-height: 0; */
   height: auto;
 }
 
@@ -22,8 +19,6 @@
 
     --button-primary-hover: #ccc;
     --button-secondary-hover: #1a1a1a;
-
-    /* min-height: 0; */
   }
 }
 
@@ -61,7 +56,9 @@
   text-align: center;
   opacity: 0;
   transform: translateY(80px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
   pointer-events: none;
 }
 
@@ -82,4 +79,9 @@
     max-width: 368px;
     padding: 0 16px;
   }
+}
+
+.swiper :global(.swiper-slide) {
+  height: 100%;
+  overflow-y: auto;
 }

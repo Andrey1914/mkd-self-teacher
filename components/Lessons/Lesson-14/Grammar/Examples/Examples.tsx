@@ -19,7 +19,7 @@ import {
 export const Examples = () => {
   return (
     <>
-      <ExamplesTable data={example1} titleIconSrc="/grammar.png" />
+      <ExamplesTable data={example1} titleIconSrc="/grammar.webp" />
       <GenericTable
         data={futureInThePast}
         classNames={{
