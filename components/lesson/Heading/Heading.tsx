@@ -15,7 +15,7 @@ export const HeadingLesson = ({
   lessonData,
   TitleIconSrc = "/grammar.webp",
   TitleIconSize = 72,
-  SubtitleIconSrc = "/lecture.png",
+  SubtitleIconSrc = "/lecture.webp",
   SubtitleIconSize = 62,
 }: LessonIntroProps) => {
   const { title, sections } = lessonData;
@@ -54,7 +54,7 @@ export const HeadingLesson = ({
         </div>
         <div style={{ position: "relative", width: "60%", height: "510px" }}>
           <Image
-            src="https://res.cloudinary.com/dufpe0dv4/image/upload/f_auto,q_auto,w_800/v1775416491/bg-image-v2_vmjylz.webp"
+            src="/bg-image-v2.webp"
             alt="Background"
             fill
             priority
