@@ -9,6 +9,7 @@ export * as grammarLesson13 from "./lesson-13";
 export * as grammarLesson14 from "./lesson-14";
 export * as grammarLesson15 from "./lesson-15";
 
+export * as lectureLesson1 from "./lesson-1";
 export * as lectureLesson2 from "./lesson-2";
 export * as lectureLesson5 from "./lesson-5";
 export * as lectureLesson6 from "./lesson-6";

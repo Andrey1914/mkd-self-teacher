@@ -4,12 +4,7 @@ import { formatText } from "@/utils";
 
 import { styles } from "./styles";
 
-export const Paragraph = ({
-  data,
-  part,
-  titleIconSrc,
-}: // titleIconSize,
-ParagraphProps) => {
+export const Paragraph = ({ data, part, titleIconSrc }: ParagraphProps) => {
   const { title, subtitle, intro, content } = data;
 
   const { paragraph, markedParagraph, markedItem, markedList } =
@@ -49,26 +44,11 @@ ParagraphProps) => {
         {title && (
           <>
             {typeof title === "string" ? (
-              <MultiFormatHeading
-                as="h2"
-                data={title}
-                iconSrc={titleIconSrc}
-                // iconSize={titleIconSize}
-              />
+              <MultiFormatHeading as="h2" data={title} iconSrc={titleIconSrc} />
             ) : Array.isArray(title) ? (
-              <MultiFormatHeading
-                as="h2"
-                data={title}
-                iconSrc={titleIconSrc}
-                // iconSize={titleIconSize}
-              />
+              <MultiFormatHeading as="h2" data={title} iconSrc={titleIconSrc} />
             ) : (
-              <MultiFormatHeading
-                as="h2"
-                data={title}
-                iconSrc={titleIconSrc}
-                // iconSize={titleIconSize}
-              />
+              <MultiFormatHeading as="h2" data={title} iconSrc={titleIconSrc} />
             )}
           </>
         )}
@@ -100,6 +80,19 @@ ParagraphProps) => {
   if (part === "text") {
     return (
       <>
+        {content?.intro?.subtitle && (
+          <MultiFormatHeading as="h3" data={content.intro.subtitle} />
+        )}
+
+        <p
+          lang="ru"
+          style={{
+            fontWeight: 300,
+            marginBottom: 0,
+          }}
+        >
+          {content?.intro?.intro && formatText(content.intro.intro)}
+        </p>
         {content?.text && (
           <>{content?.text && renderTextParagraphs(content.text)}</>
         )}
@@ -113,26 +106,11 @@ ParagraphProps) => {
         {title && (
           <>
             {typeof title === "string" ? (
-              <MultiFormatHeading
-                as="h2"
-                data={title}
-                iconSrc={titleIconSrc}
-                // iconSize={titleIconSize}
-              />
+              <MultiFormatHeading as="h2" data={title} iconSrc={titleIconSrc} />
             ) : Array.isArray(title) ? (
-              <MultiFormatHeading
-                as="h2"
-                data={title}
-                iconSrc={titleIconSrc}
-                // iconSize={titleIconSize}
-              />
+              <MultiFormatHeading as="h2" data={title} iconSrc={titleIconSrc} />
             ) : (
-              <MultiFormatHeading
-                as="h2"
-                data={title}
-                iconSrc={titleIconSrc}
-                // iconSize={titleIconSize}
-              />
+              <MultiFormatHeading as="h2" data={title} iconSrc={titleIconSrc} />
             )}
           </>
         )}
