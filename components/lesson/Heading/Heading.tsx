@@ -63,17 +63,6 @@ export const HeadingLesson = ({
             style={{ objectFit: "contain" }}
           />
         </div>
-        {/* <Image
-          // src="https://res.cloudinary.com/dufpe0dv4/image/upload/v1775416491/bg-image-v2_vmjylz.webp"
-          src="https://res.cloudinary.com/dufpe0dv4/image/upload/f_auto,q_auto,w_800/v1775416491/bg-image-v2_vmjylz.webp"
-          alt="Background"
-          width={1200}
-          height={400}
-          className={bgImage}
-          priority
-          // sizes="100vw"
-          sizes="(max-width: 768px) 100vw, 60vw"
-        /> */}
       </div>
       <div className={divider} />
     </>

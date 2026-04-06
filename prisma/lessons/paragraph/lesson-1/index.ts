@@ -13,3 +13,5 @@ export {
   ruleConjugation,
   negation,
 } from "./grammar";
+
+export { intro as lectureIntro } from "./lecture";
