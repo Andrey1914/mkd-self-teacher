@@ -11,6 +11,7 @@ export const useWindowScrollRestore = (lessonId: string) => {
 
         if (!data.timestamp || Date.now() - data.timestamp > MAX_AGE) {
           localStorage.removeItem(`lesson-${lessonId}-window`);
+          window.scrollTo(0, 0);
           return;
         }
 
@@ -18,7 +19,10 @@ export const useWindowScrollRestore = (lessonId: string) => {
         // console.log(`RESTORED lesson-${lessonId}: ${scrollY}px`);
       } catch {
         localStorage.removeItem(`lesson-${lessonId}-window`);
+        window.scrollTo(0, 0);
       }
+    } else {
+      window.scrollTo(0, 0);
     }
   }, [lessonId]);
 

@@ -13,8 +13,15 @@
   padding: 0 0 2rem 0;
 }
 
+.containerImage {
+  position: relative;
+  width: 60%;
+  height: 510px;
+}
+
 .bgImage {
   display: block;
+  object-fit: contain;
   /* width: 60%;
   height: auto; */
 }

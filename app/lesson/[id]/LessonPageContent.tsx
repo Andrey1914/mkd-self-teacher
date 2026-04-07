@@ -48,7 +48,11 @@ export function LessonPageContent({
     return initial;
   });
 
-  useWindowScrollRestore(activeLessonId.toString());
+  const currentLessonId = useMemo(() => {
+    return lessons[activeIndex]?.id.toString() || activeLessonId.toString();
+  }, [activeIndex, lessons, activeLessonId]);
+
+  useWindowScrollRestore(currentLessonId);
 
   useLessonCompletion(slideRef.current, activeIndex, () =>
     setShowCompletion(true),
@@ -154,7 +158,7 @@ export function LessonPageContent({
               if (!LessonComponent) return null;
 
               const isLoaded = renderedSlides.has(index);
-              console.log(`Slide ${index}: ${isLoaded ? "RENDER" : "skip"}`);
+              // console.log(`Slide ${index}: ${isLoaded ? "RENDER" : "skip"}`);
 
               return (
                 <SwiperSlide key={lesson.id} style={{ height: "100%" }}>

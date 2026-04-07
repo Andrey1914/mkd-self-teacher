@@ -1,15 +1,7 @@
 import Image from "next/image";
 import { MultiFormatHeading } from "./MultiFormatHeading";
-import type { LessonData } from "@/types";
+import type { LessonIntroProps } from "@/types";
 import { styles } from "./styles";
-
-interface LessonIntroProps {
-  lessonData: LessonData;
-  TitleIconSrc?: string;
-  TitleIconSize?: number;
-  SubtitleIconSrc?: string;
-  SubtitleIconSize?: number;
-}
 
 export const HeadingLesson = ({
   lessonData,
@@ -24,6 +16,7 @@ export const HeadingLesson = ({
     sectionSubtitle,
     divider,
     containerTitle,
+    containerImage,
     bgImage,
     container,
   } = styles.heading;
@@ -52,7 +45,7 @@ export const HeadingLesson = ({
             </section>
           ))}
         </div>
-        <div style={{ position: "relative", width: "60%", height: "510px" }}>
+        <div className={containerImage}>
           <Image
             src="/bg-image-v2.webp"
             alt="Background"
@@ -60,7 +53,6 @@ export const HeadingLesson = ({
             priority
             className={bgImage}
             sizes="(max-width: 768px) 100vw, 60vw"
-            style={{ objectFit: "contain" }}
           />
         </div>
       </div>

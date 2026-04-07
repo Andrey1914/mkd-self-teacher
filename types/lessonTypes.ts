@@ -31,3 +31,11 @@ export interface LessonData {
 
   // data?: Partial<LessonData>;
 }
+
+export interface LessonIntroProps {
+  lessonData: LessonData;
+  TitleIconSrc?: string;
+  TitleIconSize?: number;
+  SubtitleIconSrc?: string;
+  SubtitleIconSize?: number;
+}
