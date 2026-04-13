@@ -1,10 +1,13 @@
-// import { vocabulary } from "@/prisma/lessons/vocabulary/lesson-16";
+import { vocabulary } from "@/prisma/lessons/vocabulary/lesson-16";
 import { dialogueBlock } from "@/prisma/lessons/dialogues/lesson-16";
-// import { lectureLesson16, grammarLesson16 } from "@/prisma/lessons/paragraph";
+import {
+  lectureLesson16,
+  // grammarLesson16
+} from "@/prisma/lessons/paragraph";
 // import { examples, grammarTables } from "@/prisma/lessons/tables";
 // import { exercisesLesson16 } from "@/prisma/lessons/exercises";
 
-// const { ruleAfterVocabulary } = lectureLesson16;
+const { ruleAfterVocabulary, ruleAfterGlossary } = lectureLesson16;
 // const { pluperfect } = grammarLesson16;
 // const { pluperfect: pluperfectTable } = grammarTables;
 // const { lesson16: examplesLesson16 } = examples;
@@ -34,8 +37,12 @@ export const lesson16 = {
       },
     },
   ],
-  //   vocabulary: [vocabulary],
-  //   paragraph: [ruleAfterVocabulary, pluperfect],
+  vocabulary: [vocabulary],
+  paragraph: [
+    ruleAfterVocabulary,
+    ruleAfterGlossary,
+    // pluperfect
+  ],
   dialogues: [dialogueBlock],
   //   tables: [
   //     pluperfectTable,
