@@ -3,8 +3,6 @@
   position: relative;
   z-index: 105;
   pointer-events: auto;
-  /* -ms-overflow-style: none;
-  scrollbar-width: none; */
 }
 
 .tabsContainer::-webkit-scrollbar {

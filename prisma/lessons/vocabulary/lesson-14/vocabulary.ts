@@ -239,7 +239,7 @@ export const vocabulary: VocabularyData = {
             ru: "гандболистка",
           },
           {
-            mkd: "*р*бетот",
+            mkd: "'р*бетот",
             pron: "ы*рбэт",
             ru: "позвоночник",
           },
