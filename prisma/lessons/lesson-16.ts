@@ -1,5 +1,5 @@
 // import { vocabulary } from "@/prisma/lessons/vocabulary/lesson-16";
-// import { dialogueBlock } from "@/prisma/lessons/dialogues/lesson-16";
+import { dialogueBlock } from "@/prisma/lessons/dialogues/lesson-16";
 // import { lectureLesson16, grammarLesson16 } from "@/prisma/lessons/paragraph";
 // import { examples, grammarTables } from "@/prisma/lessons/tables";
 // import { exercisesLesson16 } from "@/prisma/lessons/exercises";
@@ -36,7 +36,7 @@ export const lesson16 = {
   ],
   //   vocabulary: [vocabulary],
   //   paragraph: [ruleAfterVocabulary, pluperfect],
-  //   dialogues: [dialogueBlock],
+  dialogues: [dialogueBlock],
   //   tables: [
   //     pluperfectTable,
   //     { ...example1, slug: "lesson-15" },
