@@ -95,10 +95,13 @@ export function LessonPageContent({
 
     swiperRef.current?.slideTo(index);
 
-    startTransition(() => {
-      setActiveIndex(index);
-      localStorage.setItem(`lesson-${lessonId}-index`, index.toString());
-    });
+    setActiveIndex(index);
+    localStorage.setItem(`lesson-${lessonId}-index`, index.toString());
+
+    // startTransition(() => {
+    //   setActiveIndex(index);
+    //   localStorage.setItem(`lesson-${lessonId}-index`, index.toString());
+    // });
   };
 
   const onSlideChange = (swiper: SwiperType) => {

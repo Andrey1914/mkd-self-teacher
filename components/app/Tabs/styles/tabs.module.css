@@ -1,7 +1,21 @@
+.tabsContainer {
+  overflow: hidden;
+  position: relative;
+  z-index: 105;
+  pointer-events: auto;
+  /* -ms-overflow-style: none;
+  scrollbar-width: none; */
+}
+
+.tabsContainer::-webkit-scrollbar {
+  display: none;
+}
+
 .swiper {
   padding-top: 10px;
   border-bottom: var(--tabs-border-bottom);
-  height: 100%;
+  width: 100%;
+  height: auto;
 }
 
 .swiperSlide {
