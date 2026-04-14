@@ -1,17 +1,13 @@
 import { vocabulary } from "@/prisma/lessons/vocabulary/lesson-16";
 import { dialogueBlock } from "@/prisma/lessons/dialogues/lesson-16";
-import {
-  lectureLesson16,
-  // grammarLesson16
-} from "@/prisma/lessons/paragraph";
-// import { examples, grammarTables } from "@/prisma/lessons/tables";
+import { lectureLesson16 } from "@/prisma/lessons/paragraph";
+import { examples } from "@/prisma/lessons/tables";
 // import { exercisesLesson16 } from "@/prisma/lessons/exercises";
 
 const { ruleAfterVocabulary, ruleAfterGlossary } = lectureLesson16;
-// const { pluperfect } = grammarLesson16;
-// const { pluperfect: pluperfectTable } = grammarTables;
-// const { lesson16: examplesLesson16 } = examples;
-// const { example1, example2, example3, example4, example5 } = examplesLesson16;
+
+const { lesson16: examplesLesson16 } = examples;
+const { example1, example2, example3, example4 } = examplesLesson16;
 
 // const { exercise1, exercise2, exercise3, exercise4, exercise5, exercise6 } =
 //   exercisesLesson16;
@@ -38,20 +34,14 @@ export const lesson16 = {
     },
   ],
   vocabulary: [vocabulary],
-  paragraph: [
-    ruleAfterVocabulary,
-    ruleAfterGlossary,
-    // pluperfect
-  ],
+  paragraph: [ruleAfterVocabulary, ruleAfterGlossary],
   dialogues: [dialogueBlock],
-  //   tables: [
-  //     pluperfectTable,
-  //     { ...example1, slug: "lesson-15" },
-  //     { ...example2, slug: "lesson-15" },
-  //     { ...example3, slug: "lesson-15" },
-  //     { ...example4, slug: "lesson-15" },
-  //     { ...example5, slug: "lesson-15" },
-  //   ],
+  tables: [
+    { ...example1, slug: "lesson-16" },
+    { ...example2, slug: "lesson-16" },
+    { ...example3, slug: "lesson-16" },
+    { ...example4, slug: "lesson-16" },
+  ],
 
   //   exercises: [exercise1, exercise2, exercise3, exercise4, exercise5, exercise6],
 };
