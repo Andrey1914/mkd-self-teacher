@@ -574,129 +574,6 @@ const checkSingleVariant = (
 
   return true;
 };
-// const checkSingleVariant = (
-//   userInput: string,
-//   correctAnswerString: string,
-//   options: NormalizeOptions = {},
-// ): boolean => {
-//   const userWords = userInput.trim().split(/\s+/).filter(Boolean);
-//   const correctWordGroups =
-//     correctAnswerString.match(/\*\*.*?\*\*|\([^)]+\)|\S+/g) || [];
-
-//   let userIdx = 0;
-//   let correctIdx = 0;
-
-//   while (userIdx < userWords.length && correctIdx < correctWordGroups.length) {
-//     const normalizedUserWord = normalizeText(userWords[userIdx], {
-//       trim: true,
-//       lowercase: true,
-//       ...options,
-//     });
-
-//     const currentCorrectGroup = correctWordGroups[correctIdx];
-//     const isOptional =
-//       currentCorrectGroup.startsWith("(") && currentCorrectGroup.endsWith(")");
-//     const isAlternative =
-//       currentCorrectGroup.startsWith("**") &&
-//       currentCorrectGroup.endsWith("**");
-
-//     let cleanCorrectOptions: string[] = [];
-//     if (isOptional) {
-//       cleanCorrectOptions = [
-//         normalizeText(currentCorrectGroup.replace(/^\(|\)$/g, ""), {
-//           trim: true,
-//           lowercase: true,
-//           ...options,
-//         }),
-//       ];
-//     } else if (isAlternative) {
-//       cleanCorrectOptions = currentCorrectGroup
-//         .replace(/^\*\*|\*\*$/g, "")
-//         .split(/\s*\/\s*/);
-//       // .map((opt) =>
-//       //   normalizeText(opt, { trim: true, lowercase: true, ...options }),
-//       // );
-//     } else {
-//       cleanCorrectOptions = [
-//         normalizeText(currentCorrectGroup, {
-//           trim: true,
-//           lowercase: true,
-//           ...options,
-//         }),
-//       ];
-//     }
-
-//     let matched = false;
-
-//     //------------------
-
-//     if (isAlternative) {
-//       for (const alt of cleanCorrectOptions) {
-//         const altWords = alt.split(/\s+/);
-//         const userSliceWords = userWords.slice(
-//           userIdx,
-//           userIdx + altWords.length,
-//         );
-//         const userSliceStr = normalizeText(userSliceWords.join(" "), {
-//           trim: true,
-//           lowercase: true,
-//           ...options,
-//         });
-//         const altNorm = normalizeText(alt, {
-//           trim: true,
-//           lowercase: true,
-//           ...options,
-//         });
-
-//         if (userSliceStr === altNorm) {
-//           userIdx += altWords.length;
-//           correctIdx++;
-//           matched = true;
-//           break;
-//         }
-//       }
-//     } else {
-//       if (cleanCorrectOptions.includes(normalizedUserWord)) {
-//         userIdx++;
-//         correctIdx++;
-//         matched = true;
-//       }
-//     }
-
-//     if (matched) continue;
-
-//     if (isOptional) {
-//       correctIdx++;
-//       continue;
-//     }
-
-//     return false;
-//   }
-
-//   if (userIdx < userWords.length) {
-//     return false;
-//   }
-
-//   while (correctIdx < correctWordGroups.length) {
-//     const currentCorrectGroup = correctWordGroups[correctIdx];
-//     const isOptional =
-//       currentCorrectGroup.startsWith("(") && currentCorrectGroup.endsWith(")");
-//     const isAlternative =
-//       currentCorrectGroup.startsWith("**") &&
-//       currentCorrectGroup.endsWith("**");
-
-//     if (!isOptional && !isAlternative) {
-//       return false;
-//     }
-//     if (isAlternative) {
-//       return false;
-//     }
-//     correctIdx++;
-//   }
-
-//   return true;
-// };
-//--------------
 
 export const getHighlightStyle = (
   userInput: string,
@@ -719,8 +596,22 @@ export const getHighlightStyle = (
       variant.trim().replace(new RegExp(internalToken, "g"), "/"),
     );
 
+  const normalizeForComparison = (str: string): string => {
+    if (!str) return "";
+    return str
+      .normalize("NFD")
+      .replace(/\u0301/g, "")
+      .replace(/\*/g, "")
+      .replace(/'/g, "")
+      .normalize("NFC");
+  };
+
+  const cleanUserInput = normalizeForComparison(userInput);
+
   for (const singleVariant of majorVariants) {
-    if (checkSingleVariant(userInput, singleVariant, options)) {
+    const cleanVariant = normalizeForComparison(singleVariant);
+
+    if (checkSingleVariant(cleanUserInput, cleanVariant, options)) {
       return true;
     }
   }
@@ -728,7 +619,6 @@ export const getHighlightStyle = (
   return false;
 };
 
-// Вот итоговая функция generateHighlightedText:
 export const generateHighlightedText = (
   userInput: string,
   correctAnswerString: string,
@@ -940,162 +830,6 @@ export const generateHighlightedText = (
 
   return resultHtml.join(" ");
 };
-// export const generateHighlightedText = (
-//   userInput: string,
-//   correctAnswerString: string,
-//   options: NormalizeOptions = {},
-// ): string => {
-//   const internalToken = "@@INTERNAL_SLASH_TOKEN@@";
-//   const optionalGroupPattern = /\*\*.*?\*\*/g;
-
-//   let tempCorrectAnswerString = correctAnswerString.replace(
-//     optionalGroupPattern,
-//     (match) => {
-//       return match.replace(/\//g, internalToken);
-//     },
-//   );
-
-//   const majorVariants = tempCorrectAnswerString
-//     .split("/")
-//     .map((variant) =>
-//       variant.trim().replace(new RegExp(internalToken, "g"), "/"),
-//     );
-
-//   let bestMatchVariant = correctAnswerString;
-
-//   for (const singleVariant of majorVariants) {
-//     if (checkSingleVariant(userInput, singleVariant, options)) {
-//       bestMatchVariant = singleVariant;
-//       break;
-//     }
-//   }
-
-//   const currentCorrectAnswerString = bestMatchVariant;
-//   const userWords = userInput.trim().split(/\s+/).filter(Boolean);
-//   const resultHtml: string[] = []; // REGEX: Finds groups of variants (**...**), optionals (...), and regular words
-
-//   const correctWordGroups =
-//     currentCorrectAnswerString.match(/\*\*.*?\*\*|\([^)]+\)|\S+/g) || [];
-
-//   let userIdx = 0;
-//   let correctIdx = 0;
-
-//   while (userIdx < userWords.length) {
-//     const currentUserWord = userWords[userIdx];
-//     const normalizedUserWord = normalizeText(currentUserWord, {
-//       trim: true,
-//       lowercase: true,
-//       convertLatinToCyrillic: true,
-//       ...options,
-//     });
-
-//     if (correctIdx >= correctWordGroups.length) {
-//       resultHtml.push(
-//         `<span style="color: ${HIGHLIGHT_STYLES.INCORRECT_COLOR}; font-weight: 500;">${currentUserWord}</span>`,
-//       );
-//       userIdx++;
-//       continue;
-//     }
-
-//     const currentCorrectGroup = correctWordGroups[correctIdx];
-//     const isOptional =
-//       currentCorrectGroup.startsWith("(") && currentCorrectGroup.endsWith(")");
-//     const isAlternative =
-//       currentCorrectGroup.startsWith("**") &&
-//       currentCorrectGroup.endsWith("**");
-
-//     let cleanCorrectOptions: string[] = [];
-
-//     if (isOptional) {
-//       // "(се)" -> ["се"]
-//       cleanCorrectOptions = [
-//         normalizeText(currentCorrectGroup.replace(/^\(|\)$/g, ""), {
-//           trim: true,
-//           lowercase: true,
-//           ...options,
-//         }),
-//       ];
-//     } else if (isAlternative) {
-//       // "**некому / на некого**" -> ["некому", "на некого"]
-
-//       cleanCorrectOptions = currentCorrectGroup
-//         .replace(/^\*\*|\*\*$/g, "")
-//         .split(/\s*\/\s*/)
-//         .map((opt) =>
-//           normalizeText(opt, { trim: true, lowercase: true, ...options }),
-//         );
-//     } else {
-//       cleanCorrectOptions = [
-//         normalizeText(currentCorrectGroup, {
-//           trim: true,
-//           lowercase: true,
-//           ...options,
-//         }),
-//       ];
-//     }
-
-//     if (cleanCorrectOptions.includes(normalizedUserWord)) {
-//       resultHtml.push(currentUserWord);
-//       userIdx++;
-//       correctIdx++;
-//       continue;
-//     }
-
-//     let multiWordMatch = false;
-
-//     if (isAlternative) {
-//       for (const alt of cleanCorrectOptions) {
-//         const altWords = alt.split(/\s+/);
-//         const userSliceWords = userWords.slice(
-//           userIdx,
-//           userIdx + altWords.length,
-//         );
-//         const userSliceStr = normalizeText(userSliceWords.join(" "), {
-//           trim: true,
-//           lowercase: true,
-//           ...options,
-//         });
-//         const altNorm = normalizeText(alt, {
-//           trim: true,
-//           lowercase: true,
-//           ...options,
-//         });
-
-//         if (userSliceStr === altNorm) {
-//           resultHtml.push(...userSliceWords);
-//           userIdx += altWords.length;
-//           correctIdx++;
-//           multiWordMatch = true;
-//           break;
-//         }
-//       }
-//     } else {
-//       if (cleanCorrectOptions.includes(normalizedUserWord)) {
-//         resultHtml.push(currentUserWord);
-//         userIdx++;
-//         correctIdx++;
-//         multiWordMatch = true;
-//       }
-//     }
-
-//     if (multiWordMatch) {
-//       continue;
-//     }
-
-//     if (isOptional) {
-//       correctIdx++;
-//       continue;
-//     }
-
-//     resultHtml.push(
-//       `<span style="color: ${HIGHLIGHT_STYLES.INCORRECT_COLOR}; font-weight: 500;">${currentUserWord}</span>`,
-//     );
-//     userIdx++;
-//     correctIdx++;
-//   }
-
-//   return resultHtml.join(" ");
-// };
 
 /**
  * Checks if a string is empty or contains only spaces.

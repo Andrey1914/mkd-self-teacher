@@ -87,7 +87,7 @@ export const Paragraph = ({ data, part, titleIconSrc }: ParagraphProps) => {
         <p
           lang="ru"
           style={{
-            fontWeight: 300,
+            // fontWeight: 300,
             marginBottom: 0,
           }}
         >

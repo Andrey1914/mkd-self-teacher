@@ -4,7 +4,7 @@ type Parsed = ReturnType<typeof parse>;
 
 export const formatText = (
   text: string | string[] | undefined,
-  keepEmptyLines = false
+  keepEmptyLines = false,
 ): Parsed | Parsed[] | null => {
   if (!text) return null;
 
@@ -31,7 +31,7 @@ const formatSingleText = (text: string, keepEmptyLines = false): Parsed => {
       processed
         .split(/\n\s*\n/)
         .map((p) => `<p>${p.trim()}</p>`)
-        .join("")
+        .join(""),
     );
   }
 

@@ -235,7 +235,9 @@ export const FillInExercise = ({ data, onSwiperLock }: FillInExerciseProps) => {
                                       className={fillInInput}
                                       contentEditable={false}
                                       dangerouslySetInnerHTML={{
-                                        __html: inputs[idx]?.[i] ?? "",
+                                        __html: formatText(
+                                          inputs[idx]?.[i] ?? "",
+                                        ) as string,
                                       }}
                                       initial="hidden"
                                       animate="visible"
