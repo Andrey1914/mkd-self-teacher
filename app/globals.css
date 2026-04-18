@@ -16,6 +16,8 @@
   --input-focus-bg: rgb(238, 238, 238);
 
   --divider: 1px solid rgba(0, 0, 0, 0.3);
+
+  --oval-loader: #0a0a0a;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -38,6 +40,8 @@
     --input-focus-bg: rgb(35, 35, 35);
 
     --divider: 1px solid rgba(255, 255, 255, 0.3);
+
+    --oval-loader: #fff;
   }
 }
 

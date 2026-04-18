@@ -1,33 +1,24 @@
 "use client";
 
 import { useState, useRef, useEffect, useMemo, startTransition } from "react";
+import { useRouter } from "next/navigation";
 import { Swiper, SwiperSlide } from "swiper/react";
 import type { Swiper as SwiperType } from "swiper";
 import "swiper/css";
+import { useLessonCompletion, useWindowScrollRestore } from "@/hooks";
+import { LessonPageContentProps } from "./types";
+
 import { LessonComponents } from "@/components/Lessons/LessonRegistry";
-
-import styles from "@/app/page.module.css";
-
 import { Header } from "@/components/app";
 
-import { useLessonCompletion, useWindowScrollRestore } from "@/hooks";
-
-interface LessonItem {
-  id: number;
-  component: string;
-  title: string;
-  description: string;
-}
-
-interface LessonPageContentProps {
-  lessons: LessonItem[];
-  activeLessonId: number;
-}
+import styles from "@/app/page.module.css";
 
 export function LessonPageContent({
   lessons,
   activeLessonId,
 }: LessonPageContentProps) {
+  const router = useRouter();
+
   const initialIndex = useMemo(() => {
     return lessons.findIndex((l) => l.id === activeLessonId) || 0;
   }, [lessons, activeLessonId]);
@@ -38,6 +29,8 @@ export function LessonPageContent({
 
   const slideRef = useRef<HTMLDivElement | null>(null);
   const [showCompletion, setShowCompletion] = useState(false);
+
+  const [isLoading, setIsLoading] = useState(false);
 
   const [renderedSlides, setRenderedSlides] = useState(() => {
     const initial = new Set<number>();
@@ -89,25 +82,30 @@ export function LessonPageContent({
   }, [activeIndex, lessons.length]);
 
   const handleTabChange = (index: number) => {
-    const lessonId = lessons[index].id;
+    if (index === activeIndex) return;
 
-    window.history.pushState(null, "", `/lesson/${lessonId}`);
+    setIsLoading(true);
+
+    const lessonId = lessons[index].id;
+    // window.history.pushState(null, "", `/lesson/${lessonId}`);
+    router.push(`/lesson/${lessonId}`);
 
     swiperRef.current?.slideTo(index);
-
     setActiveIndex(index);
     localStorage.setItem(`lesson-${lessonId}-index`, index.toString());
 
-    // startTransition(() => {
-    //   setActiveIndex(index);
-    //   localStorage.setItem(`lesson-${lessonId}-index`, index.toString());
-    // });
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 400);
   };
 
   const onSlideChange = (swiper: SwiperType) => {
     const index = swiper.activeIndex;
+    const lessonId = lessons[index].id;
+
     startTransition(() => {
       setActiveIndex(index);
+      router.push(`/lesson/${lessonId}`);
       localStorage.setItem(
         `lesson-${lessons[index].id}-index`,
         index.toString(),
@@ -144,6 +142,7 @@ export function LessonPageContent({
           activeIndex={activeIndex}
           onChange={handleTabChange}
           lessonTitles={lessons.map((l) => l.title)}
+          isLoading={isLoading}
         />
         <main className={styles.main}>
           <Swiper
