@@ -5,10 +5,16 @@ import type { Swiper as SwiperType } from "swiper";
 import "swiper/css";
 import "swiper/css/free-mode";
 import { TabsProps } from "@/types";
+import { Loader } from "@/components/app/Loader";
 
 import { styles } from "./styles";
 
-export const Tabs = ({ tabs, activeIndex, onChange }: TabsProps) => {
+export const Tabs = ({
+  tabs,
+  activeIndex,
+  onChange,
+  isLoading,
+}: TabsProps & { isLoading?: boolean }) => {
   const swiperRef = useRef<SwiperType | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
 
@@ -19,6 +25,7 @@ export const Tabs = ({ tabs, activeIndex, onChange }: TabsProps) => {
     swiperSlide,
     active,
     tab: tabStyle,
+    wrapper,
   } = styles.tabs;
 
   useEffect(() => {
@@ -39,7 +46,7 @@ export const Tabs = ({ tabs, activeIndex, onChange }: TabsProps) => {
 
       onChange(index);
     },
-    [localIndex, onChange],
+    [localIndex, onChange, isLoading],
   );
 
   const isHoveringRef = useRef(false);
@@ -125,23 +132,35 @@ export const Tabs = ({ tabs, activeIndex, onChange }: TabsProps) => {
         preventClicksPropagation={true}
         className={swiper}
       >
-        {tabs.map((tab, index) => (
-          <SwiperSlide key={index} className={swiperSlide}>
-            <button
-              onClick={() => handleTabClick(index)}
-              className={`${tabStyle} ${index === localIndex ? active : ""}`}
-              style={{
-                borderBottom:
-                  index === localIndex
-                    ? "2px solid var(--foreground)"
-                    : "2px solid transparent",
-                userSelect: "none",
-              }}
-            >
-              {tab}
-            </button>
-          </SwiperSlide>
-        ))}
+        {tabs.map((tab, index) => {
+          const isActive = index === localIndex;
+          const showLoader = isLoading && isActive;
+          const isDimmed = isLoading && !isActive;
+          const buttonStyle = {
+            opacity: isDimmed ? 0.5 : 1,
+            borderBottom: isActive
+              ? "2px solid var(--foreground)"
+              : "2px solid transparent",
+          };
+
+          const buttonClasses = `${tabStyle} ${isActive ? active : ""}`;
+
+          return (
+            <SwiperSlide key={index} className={swiperSlide}>
+              <button
+                onClick={() => handleTabClick(index)}
+                className={buttonClasses}
+                disabled={isLoading}
+                style={buttonStyle}
+              >
+                <p>{tab}</p>
+                <div className={wrapper}>
+                  {showLoader && <Loader size={20} withContainer={false} />}
+                </div>
+              </button>
+            </SwiperSlide>
+          );
+        })}
       </Swiper>
     </div>
   );
