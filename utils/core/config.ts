@@ -600,9 +600,10 @@ export const getHighlightStyle = (
     if (!str) return "";
     return str
       .normalize("NFD")
-      .replace(/\u0301/g, "")
+      .replace(/[\u0300\u0301]/g, "")
       .replace(/\*/g, "")
       .replace(/'/g, "")
+      .replace(/`/g, "")
       .normalize("NFC");
   };
 
