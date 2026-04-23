@@ -12,7 +12,8 @@ const { example1, example2, example3, example4 } = examplesLesson16;
 const {
   exercise1,
   exercise2,
-  // exercise3, exercise4, exercise5, exercise6, exercise7, exercise8, exercise9
+  exercise3,
+  // exercise4, exercise5, exercise6, exercise7, exercise8, exercise9
 } = exercisesLesson16;
 
 export const lesson16 = {
@@ -49,6 +50,7 @@ export const lesson16 = {
   exercises: [
     exercise1,
     exercise2,
-    // exercise3, exercise4, exercise5, exercise6, exercise7, exercise8, exercise9
+    exercise3,
+    // exercise4, exercise5, exercise6, exercise7, exercise8, exercise9
   ],
 };
