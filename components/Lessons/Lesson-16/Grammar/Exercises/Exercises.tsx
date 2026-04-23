@@ -8,7 +8,7 @@ import { exercisesLesson16 } from "@/prisma/lessons/exercises";
 const {
   exercise1,
   exercise2,
-  //   exercise3,
+  exercise3,
   //   exercise4,
   //   exercise5,
   //   exercise6,
@@ -22,7 +22,7 @@ export const Exercises = () => {
     <>
       <FillInExercise data={exercise1} />
       <FillInExercise data={exercise2} />
-      {/* <FillInExercise data={exercise3} /> */}
+      <FillInExercise data={exercise3} />
       {/* <FillInExercise data={exercise4} /> */}
       {/* <TranslateParagraphExercise data={exercise5} /> */}
       {/* <TranslateParagraphExercise data={exercise6} /> */}
