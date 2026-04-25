@@ -13,7 +13,10 @@ const {
   exercise1,
   exercise2,
   exercise3,
-  // exercise4, exercise5, exercise6, exercise7, exercise8, exercise9
+  exercise4,
+  exercise5,
+  exercise6,
+  // exercise7, exercise8, exercise9
 } = exercisesLesson16;
 
 export const lesson16 = {
@@ -51,6 +54,9 @@ export const lesson16 = {
     exercise1,
     exercise2,
     exercise3,
-    // exercise4, exercise5, exercise6, exercise7, exercise8, exercise9
+    exercise4,
+    exercise5,
+    exercise6,
+    // exercise7, exercise8, exercise9
   ],
 };
