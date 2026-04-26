@@ -12,9 +12,9 @@ const {
   exercise4,
   exercise5,
   exercise6,
-  //   exercise7,
-  //   exercise8,
-  //   exercise9,
+  exercise7,
+  exercise8,
+  exercise9,
 } = exercisesLesson16;
 
 export const Exercises = () => {
@@ -26,8 +26,9 @@ export const Exercises = () => {
       <FillInExercise data={exercise4} />
       <FillInExercise data={exercise5} />
       <FillInExercise data={exercise6} />
-      {/* <TranslateParagraphExercise data={exercise5} /> */}
-      {/* <TranslateParagraphExercise data={exercise6} /> */}
+      <FillInExercise data={exercise7} />
+      <TranslateParagraphExercise data={exercise8} />
+      <TranslateParagraphExercise data={exercise9} />
       <div data-lesson-end />
     </>
   );
