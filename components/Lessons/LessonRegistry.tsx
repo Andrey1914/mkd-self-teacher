@@ -66,8 +66,8 @@ export const LessonComponents: { [key: string]: React.ElementType } = {
     ssr: false,
     loading: () => <Loader />,
   }),
-  //   Lesson17: dynamic(() => import("./Lesson-17").then((m) => m.Lesson17), {
-  //     ssr: false,
-  //     loading: LoadingState,
-  //   }),
+  Lesson17: dynamic(() => import("./Lesson-17").then((m) => m.Lesson17), {
+    ssr: false,
+    loading: () => <Loader />,
+  }),
 };

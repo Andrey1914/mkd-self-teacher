@@ -114,4 +114,11 @@ export const lessonsData = [
     title: "Урок 16",
     description: "В этом уроке обсуждается тема музыки.",
   },
+  {
+    id: 17,
+    numericId: 17,
+    component: "Lesson17",
+    title: "Урок 17",
+    description: "В этом уроке обсуждается тема диалог прощания.",
+  },
 ];

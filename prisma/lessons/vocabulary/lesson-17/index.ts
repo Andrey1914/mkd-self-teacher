@@ -1,0 +1,1 @@
+export { vocabulary } from "./vocabulary";
