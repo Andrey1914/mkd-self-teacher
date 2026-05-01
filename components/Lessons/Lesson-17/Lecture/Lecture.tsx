@@ -1,27 +1,24 @@
-// import { Dialogue } from "./Dialogue";
+import { Dialogue } from "./Dialogue";
 import { Intro } from "./Intro";
-// import { Paragraph } from "@/components/lesson/Paragraph";
+import { Paragraph } from "@/components/lesson/Paragraph";
 import { GenericTable } from "@/components/lesson/Tables";
 
 import { vocabulary } from "@/prisma/lessons/vocabulary/lesson-17";
-// import { lectureLesson16 } from "@/prisma/lessons/paragraph";
-// import { glossary } from "@/prisma/lessons/tables";
+import { lectureLesson17 } from "@/prisma/lessons/paragraph";
 
 import {
   tableWithoutBorderClassName,
   getColorizedThClassName,
-  // getColorizedFirstTdClassName,
   getColorizedItalicTdClassName,
 } from "@/components/lesson/Tables/rules";
 
-// const { ruleAfterVocabulary, ruleAfterGlossary } = lectureLesson16;
-// const { music } = glossary;
+const { ruleAfterVocabulary } = lectureLesson17;
 
 export const Lecture = () => {
   return (
     <>
       <Intro />
-      {/* <Dialogue /> */}
+      <Dialogue />
       <GenericTable
         lesson={vocabulary}
         classNames={{
@@ -30,16 +27,7 @@ export const Lecture = () => {
           td: getColorizedItalicTdClassName,
         }}
       />
-      {/* <Paragraph data={ruleAfterVocabulary} /> */}
-      {/* <GenericTable
-        data={music}
-        classNames={{
-          table: tableWithoutBorderClassName,
-          th: getColorizedThClassName,
-          td: getColorizedFirstTdClassName,
-        }}
-      /> */}
-      {/* <Paragraph data={ruleAfterGlossary} /> */}
+      <Paragraph data={ruleAfterVocabulary} />
     </>
   );
 };
