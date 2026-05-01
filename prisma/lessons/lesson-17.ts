@@ -1,10 +1,10 @@
 import { vocabulary } from "@/prisma/lessons/vocabulary/lesson-17";
-// import { dialogueBlock } from "@/prisma/lessons/dialogues/lesson-17";
-// import { lectureLesson17 } from "@/prisma/lessons/paragraph";
+import { dialogueBlock } from "@/prisma/lessons/dialogues/lesson-17";
+import { lectureLesson17 } from "@/prisma/lessons/paragraph";
 // import { examples } from "@/prisma/lessons/tables";
 // import { exercisesLesson17 } from "@/prisma/lessons/exercises";
 
-// const { ruleAfterVocabulary, ruleAfterGlossary } = lectureLesson17;
+const { ruleAfterVocabulary } = lectureLesson17;
 
 // const { lesson17: examplesLesson17 } = examples;
 // const { example1, example2, example3, example4 } = examplesLesson17;
@@ -43,8 +43,8 @@ export const lesson17 = {
     },
   ],
   vocabulary: [vocabulary],
-  //   paragraph: [ruleAfterVocabulary, ruleAfterGlossary],
-  //   dialogues: [dialogueBlock],
+  paragraph: [ruleAfterVocabulary],
+  dialogues: [dialogueBlock],
   //   tables: [
   //     { ...example1, slug: "lesson-17" },
   //     { ...example2, slug: "lesson-17" },
