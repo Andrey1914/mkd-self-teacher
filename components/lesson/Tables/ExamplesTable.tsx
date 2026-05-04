@@ -3,7 +3,6 @@ import { TablesProps } from "@/types";
 import { formatText } from "@/utils";
 
 import { styles } from "./styles";
-// import { styles as paragraphStyles } from "@/components/lesson/Paragraph/styles";
 
 export const ExamplesTable = ({
   data,
@@ -15,9 +14,16 @@ export const ExamplesTable = ({
 }) => {
   const { title, subtitle, content } = data;
 
-  const { examples, paragraph, noIndent, flexContainer, gridContainer } =
-    styles.examples;
-  // const { markedItem, markedList } = paragraphStyles.paragraph;
+  const {
+    examples,
+    paragraph,
+    noIndent,
+    markedParagraph,
+    markedItem,
+    markedList,
+    flexContainer,
+    gridContainer,
+  } = styles.examples;
 
   // const renderTextParagraphs = (text: string | string[]) => {
   //   const textContent = Array.isArray(text) ? text.join("\n\n") : text;
@@ -49,21 +55,26 @@ export const ExamplesTable = ({
       elements.push(
         <ul
           key={`list-${key}`}
-          style={{
-            listStyleType: "disc",
-            paddingLeft: "40px",
-            margin: 0,
-          }}
+          className={markedList}
+          // style={{
+          //   listStyleType: "disc",
+          //   paddingLeft: "40px",
+          //   margin: 0,
+          // }}
         >
           {listItems.map((item, i) => (
             <li
               key={i}
-              style={{
-                textIndent: 0,
-                marginLeft: 0,
-              }}
+              className={markedItem}
+              // style={{
+              //   // textIndent: 0,
+              //   marginLeft: 0,
+              // }}
             >
-              <p lang="ru" className={`${paragraph} ${noIndent}`}>
+              <p
+                lang="ru"
+                className={`${paragraph} ${noIndent} ${markedParagraph}`}
+              >
                 {formatText(item)}
               </p>
             </li>

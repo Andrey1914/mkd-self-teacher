@@ -20,6 +20,18 @@
   text-indent: 0;
 }
 
+.markedParagraph {
+  display: inline;
+}
+
+.markedItem {
+  padding: 0 0 0 20px;
+}
+
+.markedList {
+  list-style: inside;
+}
+
 .flexContainer {
   display: flex;
   flex-direction: column;
