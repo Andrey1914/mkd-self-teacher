@@ -1,0 +1,1 @@
+export { ruleAfterExamples } from "./rule";

@@ -7,3 +7,4 @@ export { aSubtypes, oSubtypes, eSubtypes, nullSubtypes } from "./lesson-10";
 export { perfect } from "./lesson-12";
 export { futureInThePast } from "./lesson-14";
 export { pluperfect } from "./lesson-15";
+export { retellingForms } from "./lesson-17";

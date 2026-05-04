@@ -50,6 +50,10 @@
   border-left: 1px solid #fff;
 }
 
+.headerStaticWidth {
+  width: 25%;
+}
+
 .secondRowCell {
   border-bottom: none;
 }
@@ -73,6 +77,20 @@
 
 .cellColorized {
   color: #994747;
+}
+
+.cellFragment {
+  color: var(--foreground);
+  font-weight: normal;
+  font-size: 12px;
+  opacity: 0.8;
+  margin-left: 4px;
+}
+
+@media (min-width: 768px) {
+  .cellFragment {
+    font-size: 16px;
+  }
 }
 
 .cellItalic {

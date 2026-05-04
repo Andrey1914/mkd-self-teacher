@@ -81,7 +81,9 @@ export interface TablesRows {
   suffix?: string;
   note?: string;
   examples?: string[];
-
+  tenses?: string;
+  indicative?: string[];
+  renarrative?: string[];
   person?: string;
   // forms?: string[];
   forms?: (string | string[])[];
