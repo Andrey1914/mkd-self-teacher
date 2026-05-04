@@ -8,6 +8,7 @@ export * as grammarLesson12 from "./lesson-12";
 export * as grammarLesson13 from "./lesson-13";
 export * as grammarLesson14 from "./lesson-14";
 export * as grammarLesson15 from "./lesson-15";
+export * as grammarLesson17 from "./lesson-17";
 
 export * as lectureLesson1 from "./lesson-1";
 export * as lectureLesson2 from "./lesson-2";

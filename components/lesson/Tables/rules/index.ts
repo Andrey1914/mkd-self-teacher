@@ -12,4 +12,7 @@ export {
   getColorizedExceptFirstTdClassName,
   getColorizedItalicTdClassName,
   textCenterClassName,
+  tableLayoutAutoClassName,
+  getColorizedBorderedExceptFirstTdClassName,
+  getTableWidth,
 } from "./classNamesRules";

@@ -7,6 +7,7 @@ const {
   headerRow,
   headerCell,
   headerCellStart,
+  headerStaticWidth,
   secondRowCell,
   headerCellBorderLeft,
   cell,
@@ -17,6 +18,8 @@ const {
 } = styles.generic;
 
 export const tableClassName = `${table}`;
+
+export const tableLayoutAutoClassName = tableLayoutAuto;
 
 export const tableWithoutBorderClassName = `${table} ${tableWithoutBorder}`;
 
@@ -41,6 +44,10 @@ export const getColorizedExceptFirstTdClassName = (cellIndex: number) =>
     ? `${cell} ${cellWithoutBorder}`
     : `${cell} ${cellWithoutBorder} ${cellColorized}`;
 
+export const getColorizedBorderedExceptFirstTdClassName = (
+  cellIndex: number,
+) => (cellIndex === 0 ? cell : `${cell}  ${cellColorized}`);
+
 export const getColorizedFirstTdClassName = (cellIndex: number) =>
   cellIndex === 0
     ? `${cell} ${cellWithoutBorder} ${cellColorized}`
@@ -54,5 +61,11 @@ export const getColorizedThClassName = (index: number) =>
   `${headerRow} ${headerCell} ${secondRowCell} ${
     index > 0 ? headerCellBorderLeft : ""
   }`;
+
+export const getHeaderStaticWidthClassName = (index: number) =>
+  index === 0 ? headerStaticWidth : "auto";
+
+export const getTableWidth = (index: number) =>
+  getHeaderStaticWidthClassName(index);
 
 export const textCenterClassName = `${textCenter}`;

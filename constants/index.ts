@@ -44,3 +44,8 @@ export const DEFAULT_NORMALIZE_OPTIONS = {
   removeAccents: false,
   collapseSpaces: false,
 };
+
+export const EMPTY_CELL = "\u00A0";
+export const MERGE_V = "MERGE_V";
+export const MERGE_H = "MERGE_H";
+export const ETC = "и т.д.";
