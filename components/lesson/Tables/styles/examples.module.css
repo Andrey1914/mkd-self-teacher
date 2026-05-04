@@ -16,6 +16,10 @@
   margin-bottom: 0;
 }
 
+.noIndent {
+  text-indent: 0;
+}
+
 .flexContainer {
   display: flex;
   flex-direction: column;

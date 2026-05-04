@@ -8,11 +8,7 @@ const { ruleAfterVocabulary } = lectureLesson17;
 const { ruleAfterExamples } = grammarLesson17;
 const { retellingForms } = grammarTables;
 const { lesson17: examplesLesson17 } = examples;
-const {
-  example1,
-  example2,
-  // example3, example4
-} = examplesLesson17;
+const { example1, example2, example3, example4 } = examplesLesson17;
 
 // const {
 //   exercise1,
@@ -54,8 +50,8 @@ export const lesson17 = {
     retellingForms,
     { ...example1, slug: "lesson-17" },
     { ...example2, slug: "lesson-17" },
-    //     { ...example3, slug: "lesson-17" },
-    //     { ...example4, slug: "lesson-17" },
+    { ...example3, slug: "lesson-17" },
+    { ...example4, slug: "lesson-17" },
   ],
 
   //   exercises: [

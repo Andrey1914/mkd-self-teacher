@@ -14,11 +14,7 @@ import {
 
 const { lesson17: examplesLesson17 } = examples;
 const { ruleAfterExamples } = grammarLesson17;
-const {
-  example1,
-  example2,
-  // example3, example4
-} = examplesLesson17;
+const { example1, example2, example3, example4 } = examplesLesson17;
 
 const { retellingForms } = grammarTables;
 
@@ -38,8 +34,8 @@ export const Examples = () => {
           text: textCenterClassName,
         }}
       />
-      {/* <ExamplesTable data={example3} /> */}
-      {/* <ExamplesTable data={example4} /> */}
+      <ExamplesTable data={example3} />
+      <ExamplesTable data={example4} />
     </>
   );
 };

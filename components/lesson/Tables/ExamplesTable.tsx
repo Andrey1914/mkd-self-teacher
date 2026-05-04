@@ -3,6 +3,7 @@ import { TablesProps } from "@/types";
 import { formatText } from "@/utils";
 
 import { styles } from "./styles";
+// import { styles as paragraphStyles } from "@/components/lesson/Paragraph/styles";
 
 export const ExamplesTable = ({
   data,
@@ -14,19 +15,85 @@ export const ExamplesTable = ({
 }) => {
   const { title, subtitle, content } = data;
 
-  const { examples, paragraph, flexContainer, gridContainer } = styles.examples;
+  const { examples, paragraph, noIndent, flexContainer, gridContainer } =
+    styles.examples;
+  // const { markedItem, markedList } = paragraphStyles.paragraph;
 
+  // const renderTextParagraphs = (text: string | string[]) => {
+  //   const textContent = Array.isArray(text) ? text.join("\n\n") : text;
+
+  //   return textContent
+  //     .split(/\n\s*\n/)
+  //     .filter((line) => line.trim().length > 0)
+  //     .map((p, i) => (
+  //       <li key={i}>
+  //         <p lang="ru" key={i} className={paragraph}>
+  //           {formatText(p)}
+  //         </p>
+  //       </li>
+  //     ));
+  // };
   const renderTextParagraphs = (text: string | string[]) => {
     const textContent = Array.isArray(text) ? text.join("\n\n") : text;
 
-    return textContent
+    const blocks = textContent
       .split(/\n\s*\n/)
-      .filter((line) => line.trim().length > 0)
-      .map((p, i) => (
-        <p lang="ru" key={i} className={paragraph}>
-          {formatText(p)}
-        </p>
-      ));
+      .filter((line) => line.trim().length > 0);
+
+    const elements: React.ReactNode[] = [];
+    let listItems: string[] = [];
+
+    const flushList = (key: number) => {
+      if (!listItems.length) return;
+
+      elements.push(
+        <ul
+          key={`list-${key}`}
+          style={{
+            listStyleType: "disc",
+            paddingLeft: "40px",
+            margin: 0,
+          }}
+        >
+          {listItems.map((item, i) => (
+            <li
+              key={i}
+              style={{
+                textIndent: 0,
+                marginLeft: 0,
+              }}
+            >
+              <p lang="ru" className={`${paragraph} ${noIndent}`}>
+                {formatText(item)}
+              </p>
+            </li>
+          ))}
+        </ul>,
+      );
+
+      listItems = [];
+    };
+
+    blocks.forEach((block, i) => {
+      const trimmed = block.trim();
+
+      if (trimmed.startsWith("- ")) {
+        listItems.push(trimmed.replace(/^- /, "").trim());
+        return;
+      }
+
+      flushList(i);
+
+      elements.push(
+        <p key={`p-${i}`} lang="ru" className={paragraph}>
+          {formatText(block)}
+        </p>,
+      );
+    });
+
+    flushList(blocks.length);
+
+    return elements;
   };
 
   if (!Array.isArray(content?.words)) {
