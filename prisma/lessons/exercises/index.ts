@@ -14,4 +14,4 @@ export * as exercisesLesson13 from "./lesson-13";
 export * as exercisesLesson14 from "./lesson-14";
 export * as exercisesLesson15 from "./lesson-15";
 export * as exercisesLesson16 from "./lesson-16";
-// export * as exercisesLesson17 from "./lesson-17";
+export * as exercisesLesson17 from "./lesson-17";

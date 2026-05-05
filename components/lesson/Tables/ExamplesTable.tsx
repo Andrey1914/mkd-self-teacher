@@ -25,20 +25,6 @@ export const ExamplesTable = ({
     gridContainer,
   } = styles.examples;
 
-  // const renderTextParagraphs = (text: string | string[]) => {
-  //   const textContent = Array.isArray(text) ? text.join("\n\n") : text;
-
-  //   return textContent
-  //     .split(/\n\s*\n/)
-  //     .filter((line) => line.trim().length > 0)
-  //     .map((p, i) => (
-  //       <li key={i}>
-  //         <p lang="ru" key={i} className={paragraph}>
-  //           {formatText(p)}
-  //         </p>
-  //       </li>
-  //     ));
-  // };
   const renderTextParagraphs = (text: string | string[]) => {
     const textContent = Array.isArray(text) ? text.join("\n\n") : text;
 
@@ -53,24 +39,9 @@ export const ExamplesTable = ({
       if (!listItems.length) return;
 
       elements.push(
-        <ul
-          key={`list-${key}`}
-          className={markedList}
-          // style={{
-          //   listStyleType: "disc",
-          //   paddingLeft: "40px",
-          //   margin: 0,
-          // }}
-        >
+        <ul key={`list-${key}`} className={markedList}>
           {listItems.map((item, i) => (
-            <li
-              key={i}
-              className={markedItem}
-              // style={{
-              //   // textIndent: 0,
-              //   marginLeft: 0,
-              // }}
-            >
+            <li key={i} className={markedItem}>
               <p
                 lang="ru"
                 className={`${paragraph} ${noIndent} ${markedParagraph}`}
