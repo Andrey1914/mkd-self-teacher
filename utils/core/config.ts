@@ -399,10 +399,6 @@ export const compareTexts = (
 };
 
 /**
- * Gets the highlight style for the input field based on validity
- *
- * */
-/**
  * Разбивает строку по `/` но НЕ внутри %...% блоков
  */
 function splitBySlashOutsidePercent(str: string): string[] {
@@ -454,8 +450,11 @@ const checkSingleVariant = (
   options: NormalizeOptions = {},
 ): boolean => {
   const userWords = userInput.trim().split(/\s+/).filter(Boolean);
+  // const correctWordGroups =
+  //   correctAnswerString.match(/\*\*[\s\S]*?\*\*|\([^)]+\)|\S+/g) || [];
+
   const correctWordGroups =
-    correctAnswerString.match(/\*\*[\s\S]*?\*\*|\([^)]+\)|\S+/g) || [];
+    correctAnswerString.match(/\*\*[\s\S]*?\*\*|%[^%]+%|\([^)]+\)|\S+/g) || [];
 
   let userIdx = 0;
   let correctIdx = 0;
@@ -473,37 +472,54 @@ const checkSingleVariant = (
     const isAlternative =
       currentCorrectGroup.startsWith("**") &&
       currentCorrectGroup.endsWith("**");
+    // const isPercent =
+    //   currentCorrectGroup.startsWith("%") && currentCorrectGroup.endsWith("%");
 
     let cleanCorrectOptions: string[] = [];
+
+    // if (isOptional) {
+    //   cleanCorrectOptions = [
+    //     normalizeText(currentCorrectGroup.replace(/^\(|\)$/g, ""), {
+    //       trim: true,
+    //       lowercase: true,
+    //       ...options,
+    //     }),
+    //   ];
+    // } else if (isAlternative) {
+    //   // Убираем внешние маркеры **
+    //   const inner = currentCorrectGroup.replace(/^\*\*|\*\*$/g, "");
+
+    //   // Разбиваем по `/` но НЕ внутри %...% блоков
+    //   const topLevelAlts = splitBySlashOutsidePercent(inner);
+
+    //   // Раскрываем вложенные альтернативы %...%
+    //   cleanCorrectOptions = [];
+    //   for (const alt of topLevelAlts) {
+    //     const expanded = expandNestedAlternatives(alt.trim());
+    //     cleanCorrectOptions.push(...expanded);
+    //   }
+    // } else {
+    //   cleanCorrectOptions = [
+    //     normalizeText(currentCorrectGroup, {
+    //       trim: true,
+    //       lowercase: true,
+    //       ...options,
+    //     }),
+    //   ];
+    // }
     if (isOptional) {
-      cleanCorrectOptions = [
-        normalizeText(currentCorrectGroup.replace(/^\(|\)$/g, ""), {
-          trim: true,
-          lowercase: true,
-          ...options,
-        }),
-      ];
+      cleanCorrectOptions = [currentCorrectGroup.replace(/^\(|\)$/g, "")];
     } else if (isAlternative) {
-      // Убираем внешние маркеры **
       const inner = currentCorrectGroup.replace(/^\*\*|\*\*$/g, "");
-
-      // Разбиваем по `/` но НЕ внутри %...% блоков
       const topLevelAlts = splitBySlashOutsidePercent(inner);
-
-      // Раскрываем вложенные альтернативы %...%
-      cleanCorrectOptions = [];
       for (const alt of topLevelAlts) {
-        const expanded = expandNestedAlternatives(alt.trim());
-        cleanCorrectOptions.push(...expanded);
+        cleanCorrectOptions.push(...expandNestedAlternatives(alt.trim()));
       }
+      // }
+      // else if (isPercent) {
+      //   cleanCorrectOptions = expandNestedAlternatives(currentCorrectGroup);
     } else {
-      cleanCorrectOptions = [
-        normalizeText(currentCorrectGroup, {
-          trim: true,
-          lowercase: true,
-          ...options,
-        }),
-      ];
+      cleanCorrectOptions = [currentCorrectGroup];
     }
 
     let matched = false;
@@ -575,12 +591,73 @@ const checkSingleVariant = (
   return true;
 };
 
+//--
+
+function expandAllSchemaVariants(schema: string): string[] {
+  const recursiveExpand = (input: string): string[] => {
+    const altMatch = input.match(/\*\*([\s\S]+?)\*\*/);
+
+    if (altMatch) {
+      const [fullMatch, content] = altMatch;
+
+      const before = input.slice(0, altMatch.index);
+      const after = input.slice((altMatch.index ?? 0) + fullMatch.length);
+
+      const topLevelVariants = splitBySlashOutsidePercent(content);
+
+      const results: string[] = [];
+
+      for (const variant of topLevelVariants) {
+        const expanded = recursiveExpand(before + variant.trim() + after);
+
+        results.push(...expanded);
+      }
+
+      return results;
+    }
+
+    const nestedMatch = input.match(/%([^%]+)%/);
+
+    if (nestedMatch) {
+      const [fullMatch, content] = nestedMatch;
+
+      const before = input.slice(0, nestedMatch.index);
+      const after = input.slice((nestedMatch.index ?? 0) + fullMatch.length);
+
+      const nestedVariants = content.split(/\s*\/\s*/).map((v) => v.trim());
+
+      const results: string[] = [];
+
+      for (const variant of nestedVariants) {
+        const expanded = recursiveExpand(before + variant + after);
+
+        results.push(...expanded);
+      }
+
+      return results;
+    }
+
+    return [input.replace(/\s+/g, " ").trim()];
+  };
+
+  return recursiveExpand(schema);
+}
+//---
+
 export const getHighlightStyle = (
   userInput: string,
   correctAnswerString: string,
   options: NormalizeOptions = {},
 ): boolean => {
   const internalToken = "@@INTERNAL_SLASH_TOKEN@@";
+
+  // let maskedSchema = correctAnswerString.replace(
+  //   /\*\*[\s\S]*?\*\*|%[^%]+%/g,
+  //   (match) => {
+  //     return match.replace(/\//g, internalToken);
+  //   },
+  // );
+
   const optionalGroupPattern = /\*\*.*?\*\*/g;
 
   let tempCorrectAnswerString = correctAnswerString.replace(
@@ -590,11 +667,22 @@ export const getHighlightStyle = (
     },
   );
 
-  const majorVariants = tempCorrectAnswerString
-    .split("/")
-    .map((variant) =>
-      variant.trim().replace(new RegExp(internalToken, "g"), "/"),
-    );
+  tempCorrectAnswerString = tempCorrectAnswerString.replace(
+    /%[^%]+%/g,
+    (match) => {
+      return match.replace(/\//g, internalToken);
+    },
+  );
+
+  // const majorVariants = tempCorrectAnswerString
+  //   .split("/")
+  //   .map((variant) =>
+  //     variant.trim().replace(new RegExp(internalToken, "g"), "/"),
+  //   );
+  // const majorVariants = maskedSchema
+  //   .split("/")
+  //   .map((v) => v.trim().replace(new RegExp(internalToken, "g"), "/"));
+  const majorVariants = expandAllSchemaVariants(correctAnswerString);
 
   const normalizeForComparison = (str: string): string => {
     if (!str) return "";
@@ -612,7 +700,11 @@ export const getHighlightStyle = (
   for (const singleVariant of majorVariants) {
     const cleanVariant = normalizeForComparison(singleVariant);
 
-    if (checkSingleVariant(cleanUserInput, cleanVariant, options)) {
+    //   if (checkSingleVariant(cleanUserInput, cleanVariant, options)) {
+    //     return true;
+    //   }
+
+    if (cleanVariant === cleanUserInput) {
       return true;
     }
   }

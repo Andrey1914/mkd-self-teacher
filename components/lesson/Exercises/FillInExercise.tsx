@@ -214,10 +214,7 @@ export const FillInExercise = ({ data, onSwiperLock }: FillInExerciseProps) => {
                                         ...(checked && !showAnswers
                                           ? highlightInput(
                                               inputs[idx]?.[i] ?? "",
-                                              sentence.answer[i].replace(
-                                                /\*\*/g,
-                                                "",
-                                              ),
+                                              sentence.answer[i],
                                               true,
                                             )
                                           : {}),
