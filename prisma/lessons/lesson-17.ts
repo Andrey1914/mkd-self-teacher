@@ -13,8 +13,8 @@ const { example1, example2, example3, example4 } = examplesLesson17;
 const {
   exercise1,
   exercise2,
-  //   exercise3,
-  //   exercise4,
+  exercise3,
+  exercise4,
   //   exercise5,
   //   exercise6,
 } = exercisesLesson17;
@@ -54,8 +54,8 @@ export const lesson17 = {
   exercises: [
     exercise1,
     exercise2,
-    //     exercise3,
-    //     exercise4,
+    exercise3,
+    exercise4,
     //     exercise5,
     //     exercise6,
   ],
