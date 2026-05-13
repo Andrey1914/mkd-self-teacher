@@ -1,18 +1,12 @@
 import {
   FillInExercise,
-  // TranslateParagraphExercise,
+  TranslateParagraphExercise,
 } from "@/components/lesson/Exercises";
 
 import { exercisesLesson17 } from "@/prisma/lessons/exercises";
 
-const {
-  exercise1,
-  exercise2,
-  exercise3,
-  exercise4,
-  // exercise5,
-  // exercise6,
-} = exercisesLesson17;
+const { exercise1, exercise2, exercise3, exercise4, exercise5, exercise6 } =
+  exercisesLesson17;
 
 export const Exercises = () => {
   return (
@@ -21,8 +15,8 @@ export const Exercises = () => {
       <FillInExercise data={exercise2} />
       <FillInExercise data={exercise3} />
       <FillInExercise data={exercise4} />
-      {/* <TranslateParagraphExercise data={exercise5} /> */}
-      {/* <TranslateParagraphExercise data={exercise6} /> */}
+      <TranslateParagraphExercise data={exercise5} />
+      <TranslateParagraphExercise data={exercise6} />
       <div data-lesson-end />
     </>
   );
