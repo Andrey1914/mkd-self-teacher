@@ -24,6 +24,7 @@ export function LessonPageContent({
   }, [lessons, activeLessonId]);
 
   const [activeIndex, setActiveIndex] = useState(initialIndex);
+  const isLastLesson = activeIndex === lessons.length - 1;
   const swiperRef = useRef<SwiperType | null>(null);
   const [isSwiperLocked, setIsSwiperLocked] = useState(false);
 
@@ -171,13 +172,17 @@ export function LessonPageContent({
                     {isLoaded && (
                       <LessonComponent onSwiperLock={handleSwiperLock} />
                     )}
-
                     <p
                       className={`${styles.lessonCompletion} ${
                         showCompletion ? styles.visible : ""
                       }`}
                     >
-                      Ready to move on to the next lesson?
+                      {/* {isLastLesson
+                        ? "The course is finished! You’ve completed all lessons!"
+                        : "Ready to move on to the next lesson?"} */}
+                      {isLastLesson
+                        ? "Курс завершён! Вы прошли все уроки!"
+                        : "Готовы перейти к следующему уроку?"}
                     </p>
                   </div>
                 </SwiperSlide>
