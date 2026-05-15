@@ -39,7 +39,6 @@ export async function generateMetadata({ params }: Props) {
 
   return {
     title: `Macedonian self teacher | ${lesson.title}`,
-    // title: `Macedonian self teacher | Самоучитель македонского языка.`,
 
     description: lesson.description,
     keywords: [

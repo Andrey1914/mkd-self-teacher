@@ -28,8 +28,6 @@ export interface LessonData {
   tables?: TableBlockData[];
   vocabulary?: VocabularyData[];
   exercises?: ExercisesProps[];
-
-  // data?: Partial<LessonData>;
 }
 
 export interface LessonIntroProps {

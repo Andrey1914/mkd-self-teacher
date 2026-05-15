@@ -1,11 +1,5 @@
-import { NAMES } from "@/constants";
+import { ALL_NAMES_REGEX } from "@/constants";
 import type { Sentence, AnswerSet } from "@/types";
-
-const nameToRegex = (name: string): string => {
-  return name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&").replace(/\\\*/g, "\\*?");
-};
-
-const ALL_NAMES_REGEX = new RegExp(NAMES.map(nameToRegex).join("|"), "g");
 
 /**
  * @param sentences
