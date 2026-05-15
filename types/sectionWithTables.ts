@@ -2,7 +2,6 @@ import { ExercisesProps } from "@/types";
 
 export type TableEntry = {
   title?: string;
-  // rows: string[][];
   rows: { letter: string; sound: string }[];
 };
 
@@ -17,6 +16,4 @@ export type SectionWithTables = {
   exercises?: ExercisesProps[];
   prompt?: string[] | string;
   answer?: string[] | string;
-
-  // data?: Partial<SectionWithTables>;
 };

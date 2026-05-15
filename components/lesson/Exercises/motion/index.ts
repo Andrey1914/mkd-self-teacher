@@ -1,4 +1,1 @@
-export {
-  inputVariants,
-  // textareaVariants
-} from "./settings";
+export { inputVariants } from "./settings";

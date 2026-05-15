@@ -20,14 +20,3 @@ export const inputVariants = {
     transition: { transition },
   },
 };
-
-// const visibleAndAutoHeightState = {
-//   opacity: 1,
-//   height: "auto",
-// };
-
-// export const textareaVariants = {
-//   initial: visibleAndAutoHeightState,
-//   animate: visibleAndAutoHeightState,
-//   transition,
-// };

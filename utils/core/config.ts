@@ -7,23 +7,11 @@ import {
   TEXT_FORMAT_CONFIG,
   DEFAULT_NORMALIZE_OPTIONS,
 } from "@/constants";
-/**
- * Central configuration for all utilities
- * Contains constants, mappings and settings
- */
 
 export type NormalizeOptions = Partial<typeof DEFAULT_NORMALIZE_OPTIONS>;
-/**
- * Universal utilities for working with text
- * Combine normalization, formatting, and validation
- */
 
 import parse from "html-react-parser";
 
-/**
- * Universal text normalization function
- * Combines the functionality of normalizeAnswer and normalizeText
- */
 export const normalizeText = (
   input: string,
   options: NormalizeOptions = {},
@@ -237,22 +225,6 @@ export const parseComplexAnswerString = (text: string): string[][][] => {
   // We simply return a structure where each "word-group" has its alternatives.
   // This will be an array with one element - an array of alternatives for each group.
   return [alternativesPerGroup];
-
-  // If combinations were needed (for example, "иди/одона дома/куќи"):
-  /*
-  let results: string[][][] = [[]];
-  for (const alternatives of alternativesPerGroup) {
-      const newResults: string[][][] = [];
-      for (const result of results) {
-          for (const alternative of alternatives) {
-              newResults.push([...result, [alternative]]); // Store as string[] for consistency
-          }
-      }
-      results = newResults;
-  }
-  // This would return [[["иди"], ["дома"]], [["иди"], ["куќи"]], [["оди"], ["дома"]], [["оди"], ["куќи"]]]
-  // But for now, the simple structure above is sufficient.
-  */
 };
 
 /**
@@ -450,8 +422,6 @@ const checkSingleVariant = (
   options: NormalizeOptions = {},
 ): boolean => {
   const userWords = userInput.trim().split(/\s+/).filter(Boolean);
-  // const correctWordGroups =
-  //   correctAnswerString.match(/\*\*[\s\S]*?\*\*|\([^)]+\)|\S+/g) || [];
 
   const correctWordGroups =
     correctAnswerString.match(/\*\*[\s\S]*?\*\*|%[^%]+%|\([^)]+\)|\S+/g) || [];
@@ -472,41 +442,9 @@ const checkSingleVariant = (
     const isAlternative =
       currentCorrectGroup.startsWith("**") &&
       currentCorrectGroup.endsWith("**");
-    // const isPercent =
-    //   currentCorrectGroup.startsWith("%") && currentCorrectGroup.endsWith("%");
 
     let cleanCorrectOptions: string[] = [];
 
-    // if (isOptional) {
-    //   cleanCorrectOptions = [
-    //     normalizeText(currentCorrectGroup.replace(/^\(|\)$/g, ""), {
-    //       trim: true,
-    //       lowercase: true,
-    //       ...options,
-    //     }),
-    //   ];
-    // } else if (isAlternative) {
-    //   // Убираем внешние маркеры **
-    //   const inner = currentCorrectGroup.replace(/^\*\*|\*\*$/g, "");
-
-    //   // Разбиваем по `/` но НЕ внутри %...% блоков
-    //   const topLevelAlts = splitBySlashOutsidePercent(inner);
-
-    //   // Раскрываем вложенные альтернативы %...%
-    //   cleanCorrectOptions = [];
-    //   for (const alt of topLevelAlts) {
-    //     const expanded = expandNestedAlternatives(alt.trim());
-    //     cleanCorrectOptions.push(...expanded);
-    //   }
-    // } else {
-    //   cleanCorrectOptions = [
-    //     normalizeText(currentCorrectGroup, {
-    //       trim: true,
-    //       lowercase: true,
-    //       ...options,
-    //     }),
-    //   ];
-    // }
     if (isOptional) {
       cleanCorrectOptions = [currentCorrectGroup.replace(/^\(|\)$/g, "")];
     } else if (isAlternative) {
@@ -515,9 +453,6 @@ const checkSingleVariant = (
       for (const alt of topLevelAlts) {
         cleanCorrectOptions.push(...expandNestedAlternatives(alt.trim()));
       }
-      // }
-      // else if (isPercent) {
-      //   cleanCorrectOptions = expandNestedAlternatives(currentCorrectGroup);
     } else {
       cleanCorrectOptions = [currentCorrectGroup];
     }
@@ -591,8 +526,6 @@ const checkSingleVariant = (
   return true;
 };
 
-//--
-
 function expandAllSchemaVariants(schema: string): string[] {
   const recursiveExpand = (input: string): string[] => {
     const altMatch = input.match(/\*\*([\s\S]+?)\*\*/);
@@ -642,7 +575,6 @@ function expandAllSchemaVariants(schema: string): string[] {
 
   return recursiveExpand(schema);
 }
-//---
 
 export const getHighlightStyle = (
   userInput: string,
@@ -650,13 +582,6 @@ export const getHighlightStyle = (
   options: NormalizeOptions = {},
 ): boolean => {
   const internalToken = "@@INTERNAL_SLASH_TOKEN@@";
-
-  // let maskedSchema = correctAnswerString.replace(
-  //   /\*\*[\s\S]*?\*\*|%[^%]+%/g,
-  //   (match) => {
-  //     return match.replace(/\//g, internalToken);
-  //   },
-  // );
 
   const optionalGroupPattern = /\*\*.*?\*\*/g;
 
@@ -674,14 +599,6 @@ export const getHighlightStyle = (
     },
   );
 
-  // const majorVariants = tempCorrectAnswerString
-  //   .split("/")
-  //   .map((variant) =>
-  //     variant.trim().replace(new RegExp(internalToken, "g"), "/"),
-  //   );
-  // const majorVariants = maskedSchema
-  //   .split("/")
-  //   .map((v) => v.trim().replace(new RegExp(internalToken, "g"), "/"));
   const majorVariants = expandAllSchemaVariants(correctAnswerString);
 
   const normalizeForComparison = (str: string): string => {
@@ -699,10 +616,6 @@ export const getHighlightStyle = (
 
   for (const singleVariant of majorVariants) {
     const cleanVariant = normalizeForComparison(singleVariant);
-
-    //   if (checkSingleVariant(cleanUserInput, cleanVariant, options)) {
-    //     return true;
-    //   }
 
     if (cleanVariant === cleanUserInput) {
       return true;

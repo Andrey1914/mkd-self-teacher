@@ -1,3 +1,4 @@
+import { NAMES } from "@/constants";
 export { NAMES } from "./names";
 export {
   CYRILLIC_TO_LATIN_MAP,
@@ -49,3 +50,14 @@ export const EMPTY_CELL = "\u00A0";
 export const MERGE_V = "MERGE_V";
 export const MERGE_H = "MERGE_H";
 export const ETC = "и т.д.";
+
+export const DRAG_MARKER_REGEX = /\*\*([\s\S]*?)\*\*/g;
+
+const nameToRegex = (name: string): string => {
+  return name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&").replace(/\\\*/g, "\\*?");
+};
+
+export const ALL_NAMES_REGEX = new RegExp(
+  NAMES.map(nameToRegex).join("|"),
+  "g",
+);

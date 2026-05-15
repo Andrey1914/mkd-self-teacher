@@ -1,15 +1,16 @@
 "use client";
 
-import { useState, useRef, useEffect, useMemo, startTransition } from "react";
+import { useState, useEffect, useMemo, startTransition } from "react";
 import { useRouter } from "next/navigation";
-import { Swiper, SwiperSlide } from "swiper/react";
 import type { Swiper as SwiperType } from "swiper";
+
 import "swiper/css";
-import { useLessonCompletion, useWindowScrollRestore } from "@/hooks";
+
+import { useWindowScrollRestore } from "@/hooks";
 import { LessonPageContentProps } from "./types";
 
-import { LessonComponents } from "@/components/Lessons/LessonRegistry";
 import { Header } from "@/components/app";
+import { LessonSwiper } from "@/components/app/Swiper";
 
 import styles from "@/app/page.module.css";
 
@@ -20,27 +21,12 @@ export function LessonPageContent({
   const router = useRouter();
 
   const initialIndex = useMemo(() => {
-    return lessons.findIndex((l) => l.id === activeLessonId) || 0;
+    const idx = lessons.findIndex((l) => l.id === activeLessonId);
+    return idx >= 0 ? idx : 0;
   }, [lessons, activeLessonId]);
 
   const [activeIndex, setActiveIndex] = useState(initialIndex);
-  const isLastLesson = activeIndex === lessons.length - 1;
-  const swiperRef = useRef<SwiperType | null>(null);
-  const [isSwiperLocked, setIsSwiperLocked] = useState(false);
-
-  const slideRef = useRef<HTMLDivElement | null>(null);
-  const [showCompletion, setShowCompletion] = useState(false);
-
   const [isLoading, setIsLoading] = useState(false);
-
-  const [renderedSlides, setRenderedSlides] = useState(() => {
-    const initial = new Set<number>();
-
-    [initialIndex].forEach((i) => {
-      if (i >= 0 && i < lessons.length) initial.add(i);
-    });
-    return initial;
-  });
 
   const currentLessonId = useMemo(() => {
     return lessons[activeIndex]?.id.toString() || activeLessonId.toString();
@@ -48,51 +34,16 @@ export function LessonPageContent({
 
   useWindowScrollRestore(currentLessonId);
 
-  useLessonCompletion(slideRef.current, activeIndex, () =>
-    setShowCompletion(true),
-  );
-
-  useEffect(() => {
-    const saved = localStorage.getItem(`lesson-${activeLessonId}-index`);
-    if (saved) {
-      const index = parseInt(saved);
-      if (index >= 0 && index < lessons.length) {
-        setActiveIndex(index);
-        swiperRef.current?.slideTo(index, 0);
-      }
-    }
-  }, [activeLessonId, lessons.length]);
-
-  useEffect(() => {
-    setShowCompletion(false);
-  }, [activeIndex]);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setRenderedSlides((prev) => {
-        const next = new Set(prev);
-
-        [activeIndex].forEach((i) => {
-          if (i >= 0 && i < lessons.length) next.add(i);
-        });
-        return next;
-      });
-    }, 100);
-
-    return () => clearTimeout(timer);
-  }, [activeIndex, lessons.length]);
-
   const handleTabChange = (index: number) => {
     if (index === activeIndex) return;
 
     setIsLoading(true);
 
     const lessonId = lessons[index].id;
-    // window.history.pushState(null, "", `/lesson/${lessonId}`);
-    router.push(`/lesson/${lessonId}`);
 
-    swiperRef.current?.slideTo(index);
+    router.push(`/lesson/${lessonId}`);
     setActiveIndex(index);
+
     localStorage.setItem(`lesson-${lessonId}-index`, index.toString());
 
     setTimeout(() => {
@@ -106,27 +57,11 @@ export function LessonPageContent({
 
     startTransition(() => {
       setActiveIndex(index);
+
       router.push(`/lesson/${lessonId}`);
-      localStorage.setItem(
-        `lesson-${lessons[index].id}-index`,
-        index.toString(),
-      );
+
+      localStorage.setItem(`lesson-${lessonId}-index`, index.toString());
     });
-  };
-
-  const setSwiperRef = (swiper: SwiperType) => {
-    swiperRef.current = swiper;
-  };
-
-  const handleSwiperLock = (locked: boolean) => {
-    setIsSwiperLocked(locked);
-    if (swiperRef.current) {
-      if (locked) {
-        swiperRef.current.disable();
-      } else {
-        swiperRef.current.enable();
-      }
-    }
   };
 
   useEffect(() => {
@@ -137,63 +72,25 @@ export function LessonPageContent({
   }, [activeIndex, lessons, initialIndex]);
 
   return (
-    <>
-      <div className={styles.page}>
-        <Header
+    <div className={styles.page}>
+      <Header
+        activeIndex={activeIndex}
+        onChange={handleTabChange}
+        lessonTitles={lessons.map((l) => l.title)}
+        isLoading={isLoading}
+      />
+
+      <main className={styles.main}>
+        <LessonSwiper
+          lessons={lessons}
           activeIndex={activeIndex}
-          onChange={handleTabChange}
-          lessonTitles={lessons.map((l) => l.title)}
-          isLoading={isLoading}
+          activeLessonId={activeLessonId}
+          initialIndex={initialIndex}
+          onSlideChange={onSlideChange}
         />
-        <main className={styles.main}>
-          <Swiper
-            autoHeight={false}
-            onSlideChange={onSlideChange}
-            onSwiper={setSwiperRef}
-            spaceBetween={50}
-            slidesPerView={1}
-            allowTouchMove={!isSwiperLocked}
-            initialSlide={initialIndex}
-            style={{ padding: "10px 5px", height: "auto" }}
-          >
-            {lessons.map((lesson, index) => {
-              const LessonComponent = LessonComponents[lesson.component];
-              if (!LessonComponent) return null;
+      </main>
 
-              const isLoaded = renderedSlides.has(index);
-              // console.log(`Slide ${index}: ${isLoaded ? "RENDER" : "skip"}`);
-
-              return (
-                <SwiperSlide key={lesson.id} style={{ height: "100%" }}>
-                  <div
-                    ref={index === activeIndex ? slideRef : null}
-                    style={{ display: "contents" }}
-                  >
-                    {isLoaded && (
-                      <LessonComponent onSwiperLock={handleSwiperLock} />
-                    )}
-                    <p
-                      className={`${styles.lessonCompletion} ${
-                        showCompletion ? styles.visible : ""
-                      }`}
-                    >
-                      {/* {isLastLesson
-                        ? "The course is finished! You’ve completed all lessons!"
-                        : "Ready to move on to the next lesson?"} */}
-                      {isLastLesson
-                        ? "Курс завершён! Вы прошли все уроки!"
-                        : "Готовы перейти к следующему уроку?"}
-                    </p>
-                  </div>
-                </SwiperSlide>
-              );
-            })}
-          </Swiper>
-        </main>
-        <footer className={styles.footer}>
-          {/* <p>- Ready to move on to the next lesson? -</p> */}
-        </footer>
-      </div>
-    </>
+      <footer className={styles.footer} />
+    </div>
   );
 }

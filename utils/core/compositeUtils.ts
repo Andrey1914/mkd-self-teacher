@@ -1,27 +1,10 @@
-/**
- * Композитные утилиты для сложных операций
- * Объединяют несколько базовых утилит для выполнения сложных задач
- */
-
 import { normalizeText, stripPunctuation, isWord } from "./config";
-
-// Типы для упражнений
-export interface WordState {
-  text: string;
-  isWord: boolean;
-  userStyle: "normal" | "bold" | "italic";
-  correctStyle: "normal" | "bold" | "italic";
-  status: "unchecked" | "correct" | "incorrect";
-  touched: boolean;
-}
+import { WordState } from "@/types";
 
 export interface Sentence {
   answer?: string[];
 }
 
-/**
- * Парсит упражнение на выделение слов
- */
 export const parseHighlightExercise = (
   originalText: string,
   answerText: string,
@@ -29,7 +12,6 @@ export const parseHighlightExercise = (
   const boldWords = new Set<string>();
   const italicWords = new Set<string>();
 
-  // Ищем слова, которые должны быть жирными
   const boldRegex = /«([^»]+)»/g;
   let boldMatch;
   while ((boldMatch = boldRegex.exec(answerText))) {
@@ -45,7 +27,6 @@ export const parseHighlightExercise = (
     });
   }
 
-  // Ищем слова, которые должны быть курсивными
   const italicRegex = /<em\b[^>]*>([\s\S]*?)<\/em>/gi;
   let italicMatch;
   while ((italicMatch = italicRegex.exec(answerText))) {
@@ -61,7 +42,6 @@ export const parseHighlightExercise = (
     });
   }
 
-  // Разбиваем оригинальный текст на слова и пробелы
   const textParts = originalText.replace(/<span>|<\/span>/g, "").split(/(\s+)/);
 
   return textParts.map((part) => {
@@ -103,9 +83,6 @@ export const parseHighlightExercise = (
   });
 };
 
-/**
- * Определяет конфигурацию упражнения
- */
 export const determineExerciseConfig = (
   section: { singleInput?: boolean; content: { answer?: string[] } },
   pronouns: string[],
@@ -125,10 +102,6 @@ export const determineExerciseConfig = (
   return { usePlaceholders, inputCount };
 };
 
-/**
- * Парсит часть текста для fill-in упражнения
- */
-// export const parseFillInPart = (part: string) => {
 export const parseSentenceInPart = (part: string) => {
   const numberPatternStart = /^(\d+[\.\)]\s*)/;
 
@@ -153,9 +126,6 @@ export const parseSentenceInPart = (part: string) => {
   return { unstyledPrefix, styledText, unstyledSuffix };
 };
 
-/**
- * Автоматически изменяет размер textarea
- */
 export const resizeTextarea = (
   el: HTMLTextAreaElement | null,
   options: { minRows: number; maxRows: number },
@@ -164,28 +134,22 @@ export const resizeTextarea = (
 
   const { minRows, maxRows } = options;
 
-  // Сбрасываем высоту для корректного вычисления scrollHeight
   el.style.height = "auto";
 
   const cs = window.getComputedStyle(el);
   const paddingTop = parseFloat(cs.paddingTop);
   const paddingBottom = parseFloat(cs.paddingBottom);
 
-  // scrollHeight включает контент и padding; вычитаем padding для чистой высоты контента
   const contentHeight = el.scrollHeight - paddingTop - paddingBottom;
 
-  // Вычисляем высоту одной строки
   const lineHeight = parseFloat(cs.lineHeight) || parseFloat(cs.fontSize) * 1.5;
 
   const minHeight = minRows * lineHeight;
   const maxHeight = maxRows * lineHeight;
 
-  // Вычисляем новую высоту, ограничивая между min и max
   const newHeight = Math.min(Math.max(contentHeight, minHeight), maxHeight);
 
-  // Применяем новую высоту, добавляя padding обратно
   el.style.height = `${newHeight + paddingTop + paddingBottom}px`;
 
-  // Показываем скроллбар только если контент превышает максимальную высоту
   el.style.overflowY = contentHeight > maxHeight ? "auto" : "hidden";
 };

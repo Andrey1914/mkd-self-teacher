@@ -1,4 +1,4 @@
-const DRAG_MARKER_REGEX = /\*\*([\s\S]*?)\*\*/g;
+import { DRAG_MARKER_REGEX } from "@/constants";
 
 export function hasDraggableWords(promptText: string): boolean {
   return promptText.includes("**");

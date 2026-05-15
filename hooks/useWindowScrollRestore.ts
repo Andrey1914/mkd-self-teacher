@@ -16,7 +16,6 @@ export const useWindowScrollRestore = (lessonId: string) => {
         }
 
         setTimeout(() => window.scrollTo(0, data.scrollY), 200);
-        // console.log(`RESTORED lesson-${lessonId}: ${scrollY}px`);
       } catch {
         localStorage.removeItem(`lesson-${lessonId}-window`);
         window.scrollTo(0, 0);
@@ -35,7 +34,6 @@ export const useWindowScrollRestore = (lessonId: string) => {
           timestamp: Date.now(),
         }),
       );
-      // console.log(`SAVED lesson-${lessonId}: ${window.scrollY}px`);
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
