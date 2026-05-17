@@ -14,7 +14,10 @@ export const Tabs = ({
   activeIndex,
   onChange,
   isLoading,
-}: TabsProps & { isLoading?: boolean }) => {
+  showHomeTab = true,
+  onHomeClick,
+  homeIcon,
+}: TabsProps) => {
   const swiperRef = useRef<SwiperType | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
 
@@ -48,6 +51,12 @@ export const Tabs = ({
     },
     [localIndex, onChange, isLoading],
   );
+
+  const handleHomeClick = useCallback(() => {
+    if (onHomeClick) {
+      onHomeClick();
+    }
+  }, [onHomeClick]);
 
   const isHoveringRef = useRef(false);
 
@@ -97,6 +106,8 @@ export const Tabs = ({
     };
   }, []);
 
+  // const isHomeActive = activeIndex === -1;
+
   return (
     <div ref={containerRef} className={tabsContainer}>
       <Swiper
@@ -128,30 +139,60 @@ export const Tabs = ({
         }}
         cssMode={false}
         grabCursor
-        preventClicks={true}
-        preventClicksPropagation={true}
+        // preventClicks={true}
+        // preventClicksPropagation={true}
+        preventClicks={false}
+        preventClicksPropagation={false}
         className={swiper}
       >
+        {showHomeTab &&
+          (() => {
+            const isHomeActive = activeIndex === -1;
+            const showHomeLoader = isLoading && isHomeActive;
+            const isHomeDimmed = isLoading && !isHomeActive;
+
+            return (
+              <SwiperSlide className={swiperSlide}>
+                <button
+                  onClick={handleHomeClick}
+                  className={`${tabStyle} ${isHomeActive ? active : ""}`}
+                  disabled={isLoading}
+                  style={{
+                    opacity: isHomeDimmed ? 0.5 : 1,
+                    borderBottom: isHomeActive
+                      ? "2px solid var(--foreground)"
+                      : "2px solid transparent",
+                  }}
+                >
+                  {homeIcon ?? <p>Главная</p>}
+                  <div className={wrapper}>
+                    {showHomeLoader && (
+                      <Loader size={20} withContainer={false} />
+                    )}
+                  </div>
+                </button>
+              </SwiperSlide>
+            );
+          })()}
+
+        {/* LESSON TABS */}
         {tabs.map((tab, index) => {
           const isActive = index === localIndex;
           const showLoader = isLoading && isActive;
           const isDimmed = isLoading && !isActive;
-          const buttonStyle = {
-            opacity: isDimmed ? 0.5 : 1,
-            borderBottom: isActive
-              ? "2px solid var(--foreground)"
-              : "2px solid transparent",
-          };
-
-          const buttonClasses = `${tabStyle} ${isActive ? active : ""}`;
 
           return (
             <SwiperSlide key={index} className={swiperSlide}>
               <button
                 onClick={() => handleTabClick(index)}
-                className={buttonClasses}
+                className={`${tabStyle} ${isActive ? active : ""}`}
                 disabled={isLoading}
-                style={buttonStyle}
+                style={{
+                  opacity: isDimmed ? 0.5 : 1,
+                  borderBottom: isActive
+                    ? "2px solid var(--foreground)"
+                    : "2px solid transparent",
+                }}
               >
                 <p>{tab}</p>
                 <div className={wrapper}>
@@ -161,6 +202,56 @@ export const Tabs = ({
             </SwiperSlide>
           );
         })}
+        {/* {showHomeTab && (
+          <SwiperSlide className={swiperSlide}>
+            <button
+              onClick={handleHomeClick}
+              className={`${tabStyle} ${isHomeActive ? active : ""}`}
+              disabled={isLoading}
+              style={{
+                opacity: isLoading && activeIndex !== -1 ? 0.5 : 1,
+                borderBottom:
+                  activeIndex === -1
+                    ? "2px solid var(--foreground)"
+                    : "2px solid transparent",
+              }}
+            >
+              
+              <p>Главная</p>
+              <div className={wrapper}>
+                {showLoader && <Loader size={20} withContainer={false} />}
+              </div>
+            </button>
+          </SwiperSlide>
+        )}
+
+        
+        {tabs.map((tab, index) => {
+          const isActive = index === localIndex;
+          const showLoader = isLoading && isActive;
+          const isDimmed = isLoading && !isActive;
+
+          return (
+            <SwiperSlide key={index} className={swiperSlide}>
+              <button
+                onClick={() => handleTabClick(index)}
+                className={`${tabStyle} ${isActive ? active : ""}`}
+                disabled={isLoading}
+                style={{
+                  opacity: isDimmed ? 0.5 : 1,
+                  borderBottom: isActive
+                    ? "2px solid var(--foreground)"
+                    : "2px solid transparent",
+                }}
+              >
+                <p>{tab}</p>
+                <div className={wrapper}>
+                  {showLoader && <Loader size={20} withContainer={false} />}
+                </div>
+              </button>
+            </SwiperSlide>
+          );
+        })} */}
       </Swiper>
     </div>
   );

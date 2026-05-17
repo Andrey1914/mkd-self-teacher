@@ -1,0 +1,54 @@
+.titleContainer {
+  padding: 30px;
+  width: auto;
+  height: 300px;
+  /* background-color: rgb(78, 78, 255); */
+}
+
+.subtitleContainer {
+  padding: 10px 30px;
+  display: flex;
+  justify-content: end;
+  /* background-color: rgb(212, 0, 0); */
+}
+
+.contentContainer {
+  height: 100vh;
+  padding: 30px;
+  /* background-color: blueviolet; */
+}
+
+.title {
+  font-size: 64px;
+  text-indent: 0;
+}
+
+.subtitle {
+  font-size: 32px;
+}
+
+.title,
+.subtitle {
+  margin: 0;
+  padding: 0;
+}
+
+.list {
+  flex-wrap: wrap;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.item {
+  /* flex: 1 0 auto;  */
+  min-width: 119px;
+
+  padding: 8px 16px;
+  border: 1px solid #ccc;
+  text-align: center;
+  font-size: 24px;
+  /* white-space: nowrap; */
+  /* flex-grow: 1; */
+}

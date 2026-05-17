@@ -3,6 +3,7 @@ import { ParagraphSectionsProps } from "@/types";
 export const intro: ParagraphSectionsProps = {
   type: `lecture-intro`,
   slug: "lesson-1",
+  anchor: "lesson-1_introduction",
   content: {
     intro: {
       subtitle: {

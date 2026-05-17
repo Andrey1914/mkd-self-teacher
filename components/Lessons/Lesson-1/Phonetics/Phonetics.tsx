@@ -11,12 +11,24 @@ const { phonetics, features, accent, exceptions, spelling } = grammarLesson1;
 export const Phonetics = () => {
   return (
     <>
-      <Paragraph data={phonetics} part="title" titleIconSrc="/phonetics.png" />
+      <div id="lesson-1_phonetics">
+        <Paragraph
+          data={phonetics}
+          part="title"
+          titleIconSrc="/phonetics.png"
+        />
+      </div>
       <AlphabetTable />
       <Paragraph data={phonetics} part="text" />
-      <Paragraph data={features} />
-      <Paragraph data={accent} />
-      <Paragraph data={exceptions} />
+      <div id="lesson-1_features">
+        <Paragraph data={features} />
+      </div>
+      <div id="lesson-1_accent">
+        <Paragraph data={accent} />
+      </div>
+      <div id="lesson-1_exeptions">
+        <Paragraph data={exceptions} />
+      </div>
       <Paragraph data={spelling} />
       <StaticExercise data={exercise1} />
     </>

@@ -11,7 +11,8 @@ export const Header = ({
   onChange,
   lessonTitles,
   isLoading,
-}: HeaderProps & { isLoading?: boolean }) => {
+  onHomeClick,
+}: HeaderProps) => {
   const isVisible = useUserActivity(4000);
 
   return (
@@ -22,6 +23,7 @@ export const Header = ({
           activeIndex={activeIndex}
           onChange={onChange}
           isLoading={isLoading}
+          onHomeClick={onHomeClick}
         />
       </div>
     </header>

@@ -1,3 +1,5 @@
+import { Suspense } from "react";
+import Loader from "./loading";
 import { notFound } from "next/navigation";
 import { LessonPageContent } from "./LessonPageContent";
 import { lessonsData } from "@/data";
@@ -66,5 +68,9 @@ export default async function LessonPage({ params }: Props) {
     notFound();
   }
 
-  return <LessonPageContent lessons={lessonsData} activeLessonId={id} />;
+  return (
+    <Suspense fallback={<Loader />}>
+      <LessonPageContent lessons={lessonsData} activeLessonId={id} />
+    </Suspense>
+  );
 }
