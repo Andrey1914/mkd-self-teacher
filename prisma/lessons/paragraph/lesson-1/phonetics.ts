@@ -4,6 +4,7 @@ import { ParagraphSectionsProps } from "@/types";
 export const phonetics: ParagraphSectionsProps = {
   type: "phonetics",
   slug: "lesson-1",
+  anchor: "lesson-1_phonetics",
   title: {
     ru: "ФОНЕТИКА",
     mkd: "ФОНЕТИКА",

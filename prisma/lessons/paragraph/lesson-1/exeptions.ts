@@ -3,6 +3,7 @@ import { ParagraphSectionsProps } from "@/types";
 export const exceptions: ParagraphSectionsProps = {
   type: "exceptions",
   slug: "lesson-1",
+  anchor: "lesson-1_exceptions",
   subtitle: "ИСКЛЮЧЕНИЯ",
   content: {
     text: `

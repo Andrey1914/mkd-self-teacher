@@ -18,36 +18,56 @@ async function main() {
   console.log("Запуск сидинга...");
 
   for (const lesson of lessons as LessonData[]) {
+    const slug = lesson.slug;
+    const title = lesson.title;
+    const numericId = lesson.numericId;
+    const anchor = lesson.anchor;
     try {
       await prisma.$transaction(
         async (tx) => {
           const existing = await tx.lesson.findUnique({
-            where: { slug: lesson.slug },
+            where: { slug },
           });
 
           const createdOrExistingLesson = existing
             ? await tx.lesson.update({
-                where: { slug: lesson.slug },
+                where: { slug },
                 data: {
-                  title: lesson.title ?? {},
-                  numericId: lesson.numericId,
+                  title: title ?? {},
+                  numericId,
+                  ...(anchor !== undefined ? { anchor } : {}),
                 },
               })
             : await tx.lesson.create({
                 data: {
-                  title: lesson.title ?? {},
-                  slug: lesson.slug,
-                  numericId: lesson.numericId,
+                  title: title ?? {},
+                  slug,
+                  numericId,
+                  anchor,
                 },
               });
 
           const lessonId = createdOrExistingLesson.id;
 
-          console.log(
-            existing
-              ? `ℹ️ Урок "${lesson.slug}" уже существует. Данные будут дополнены.`
-              : `✅ Урок "${lesson.slug}" создан.`,
-          );
+          if (existing) {
+            const updatedFields: string[] = [];
+            if (anchor !== undefined && existing.anchor !== anchor) {
+              updatedFields.push(`anchor: "${anchor}"`);
+            }
+            console.log(
+              updatedFields.length > 0
+                ? `♻️ Урок "${slug}" обновлён. ${updatedFields.join(", ")}`
+                : `ℹ️ Урок "${slug}" уже существует. Изменений нет.`,
+            );
+          } else {
+            console.log(`✅ Урок "${slug}" создан.`);
+          }
+
+          // console.log(
+          //   existing
+          //     ? `ℹ️ Урок "${lesson.slug}" уже существует. Данные будут дополнены.`
+          //     : `✅ Урок "${lesson.slug}" создан.`,
+          // );
 
           // Sections и таблицы
           await seedSections(tx, lesson, lessonId);

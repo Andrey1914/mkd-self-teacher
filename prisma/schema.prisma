@@ -28,6 +28,7 @@ model Lesson {
   title         Json
   numericId     Int                 @unique
   slug          String              @unique
+  anchor        String?
 
   sections      Section[]
   glossary      GlossaryEntry[]
@@ -43,6 +44,8 @@ model Section {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   type      String
   slug      String?
+  anchor    String?
+
   title     Json?
   subtitle  Json?
   content   Json?
@@ -58,6 +61,7 @@ model Section {
 
 model GlossaryEntry {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  anchor    String?
   word      String
   meaning   String
   example   String?
@@ -70,6 +74,7 @@ model GlossaryEntry {
 
 model TableEntry {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  anchor    String?
   title     String?
   rows      Json
 
@@ -84,6 +89,7 @@ model Exercise {
 
   type      String
   slug      String
+  anchor    String?
   title     String?
   prompt    String[] 
   answerSet Json?
@@ -100,6 +106,7 @@ model Exercise {
 
 model DialogueBlock {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  anchor    String?
   content   Json
 
   lessonId  String   @db.ObjectId
@@ -111,7 +118,8 @@ model DialogueBlock {
 model ParagraphBlock {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   type      String 
-  slug      String?    
+  slug      String?  
+  anchor    String?  
   subtitle  Json?  
   intro     String?  
   content   Json
@@ -126,6 +134,7 @@ model PayAttentionBlock {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   type      String
   slug      String
+  anchor    String?
   title     String
   content   Json
 
@@ -138,6 +147,7 @@ model PayAttentionBlock {
 model TableBlock {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   slug      String?
+  anchor    String?
   type      String?
   category  String? 
   title     Json
@@ -154,6 +164,7 @@ model TableBlock {
 model VocabularyEntry {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   type      String?
+  anchor    String?
   title     Json
   slug      String?
   content   Json

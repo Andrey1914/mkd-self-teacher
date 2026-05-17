@@ -4,6 +4,10 @@ export const useWindowScrollRestore = (lessonId: string) => {
   const MAX_AGE = 3 * 24 * 60 * 60 * 1000;
 
   useEffect(() => {
+    if (window.location.hash) {
+      return;
+    }
+
     const saved = localStorage.getItem(`lesson-${lessonId}-window`);
     if (saved) {
       try {
@@ -27,6 +31,10 @@ export const useWindowScrollRestore = (lessonId: string) => {
 
   useEffect(() => {
     const handleScroll = () => {
+      if (window.location.hash) {
+        return;
+      }
+
       localStorage.setItem(
         `lesson-${lessonId}-window`,
         JSON.stringify({

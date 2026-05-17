@@ -8,6 +8,7 @@ export type TableEntry = {
 export type SectionWithTables = {
   type: string;
   slug?: string;
+  anchor?: string;
   title?: string | string[] | { ru: string; mkd: string };
   subtitle?: string | string[] | { ru: string; mkd: string };
   tableEntries?: {

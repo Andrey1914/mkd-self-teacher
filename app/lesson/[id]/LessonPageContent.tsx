@@ -78,6 +78,9 @@ export function LessonPageContent({
         onChange={handleTabChange}
         lessonTitles={lessons.map((l) => l.title)}
         isLoading={isLoading}
+        onHomeClick={() => {
+          router.push("/");
+        }}
       />
 
       <main className={styles.main}>

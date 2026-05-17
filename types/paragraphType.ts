@@ -11,6 +11,7 @@ export interface ParagraphProps {
 export interface ParagraphSectionsProps {
   type: string;
   slug?: string;
+  anchor?: string;
   title?: string | string[] | { ru: string; mkd: string };
   subtitle?: string | string[] | { ru: string; mkd: string };
   intro?: string;

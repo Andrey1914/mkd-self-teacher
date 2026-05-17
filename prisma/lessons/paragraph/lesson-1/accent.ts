@@ -3,6 +3,7 @@ import { ParagraphSectionsProps } from "@/types";
 export const accent: ParagraphSectionsProps = {
   type: "accent",
   slug: "lesson-1",
+  anchor: "lesson-1_accent",
   subtitle: "УДАРЕНИЕ",
   content: {
     text: `

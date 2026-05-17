@@ -16,6 +16,7 @@ export interface TitleObject {
 export interface CommonProps {
   type?: string;
   slug?: string;
+  anchor?: string;
   category?: string;
   title?: JsonValue | TitleObject;
   subtitle?: string | string[];

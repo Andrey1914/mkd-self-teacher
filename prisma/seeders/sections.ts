@@ -8,30 +8,95 @@ export async function seedSections(
   lessonId: string,
 ) {
   for (const section of lesson.sections ?? []) {
-    const sectionTitle = Array.isArray(section.title)
-      ? section.title.join(", ")
-      : (section.title ?? {});
+    const title = section.title;
+    const sectionTitle = Array.isArray(title)
+      ? title.join(", ")
+      : (title ?? {});
+    const type = section.type;
+    const slug = section.slug;
+    const anchor = section.anchor;
+    const subtitle = section.subtitle;
+    const tableEntries = section.tableEntries;
 
-    // const existingSection = await tx.section.findFirst({
     const existingSection = await prisma.section.findFirst({
       where: {
         title: { equals: sectionTitle },
-        type: section.type,
+        type,
         lessonId,
       },
     });
+
+    if (existingSection) {
+      const updates: Record<string, unknown> = {};
+      const updatedFields: string[] = [];
+
+      if (anchor !== undefined && existingSection.anchor !== anchor) {
+        updates.anchor = anchor;
+        updatedFields.push(`anchor: "${anchor}"`);
+      }
+      if (slug !== undefined && existingSection.slug !== slug) {
+        updates.slug = slug;
+        updatedFields.push(`slug: "${slug}"`);
+      }
+      if (subtitle && Object.keys(subtitle).length > 0) {
+        const existingSubtitle = existingSection.subtitle as Record<
+          string,
+          unknown
+        > | null;
+        if (
+          !existingSubtitle ||
+          JSON.stringify(existingSubtitle) !== JSON.stringify(subtitle)
+        ) {
+          updates.subtitle = subtitle;
+          updatedFields.push("subtitle");
+        }
+      }
+      if (
+        "content" in section &&
+        section.content &&
+        Object.keys(section.content).length > 0
+      ) {
+        const existingContent = existingSection.content as Record<
+          string,
+          unknown
+        > | null;
+        if (
+          !existingContent ||
+          JSON.stringify(existingContent) !== JSON.stringify(section.content)
+        ) {
+          updates.content = section.content;
+          updatedFields.push("content");
+        }
+      }
+
+      if (Object.keys(updates).length > 0) {
+        await prisma.section.update({
+          where: { id: existingSection.id },
+          data: updates,
+        });
+        console.log(
+          `♻️ Section "${sectionTitle}" обновлена. ${updatedFields.join(", ")}`,
+        );
+      } else {
+        console.log(
+          `ℹ️ Section "${sectionTitle}" уже существует, изменений нет.`,
+        );
+      }
+      continue;
+    }
 
     const createdSection = existingSection
       ? existingSection
       : await prisma.section.create({
           data: {
-            type: section.type,
-            slug: section.slug,
+            type,
+            slug,
+            anchor,
             title: sectionTitle,
             ...("subtitle" in section &&
-            section.subtitle &&
-            Object.keys(section.subtitle).length > 0
-              ? { subtitle: section.subtitle }
+            subtitle &&
+            Object.keys(subtitle).length > 0
+              ? { subtitle }
               : {}),
 
             ...("content" in section &&
@@ -43,20 +108,22 @@ export async function seedSections(
           },
         });
 
-    if (existingSection) {
-      console.log(`ℹ️ Section "${sectionTitle}" уже существует, пропущен.`);
-      continue;
-    } else {
-      console.log(`✅ Section "${sectionTitle}" создан.`);
-    }
+    console.log(`✅ Section "${sectionTitle}" создан.`);
+
+    // if (existingSection) {
+    //   console.log(`ℹ️ Section "${sectionTitle}" уже существует, пропущен.`);
+    //   continue;
+    // } else {
+    //   console.log(`✅ Section "${sectionTitle}" создан.`);
+    // }
 
     // ✅ Table entries
     if (
-      section.tableEntries &&
-      typeof section.tableEntries === "object" &&
-      Array.isArray(section.tableEntries.create)
+      tableEntries &&
+      typeof tableEntries === "object" &&
+      Array.isArray(tableEntries.create)
     ) {
-      for (const entry of section.tableEntries.create) {
+      for (const entry of tableEntries.create) {
         const exists = await prisma.tableEntry.findFirst({
           where: {
             sectionId: createdSection.id,
