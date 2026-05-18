@@ -20,7 +20,9 @@ export const HomePage = () => {
       </div>
       <div className={contentContainer}>
         <Link href="/contents" style={{ textDecoration: "underline" }}>
-          <h3 style={{ textIndent: 0 }}>Содержание</h3>
+          <h3 style={{ padding: "30px 30px 30px 0", textIndent: 0 }}>
+            Содержание
+          </h3>
         </Link>
 
         <ul className={list}>
