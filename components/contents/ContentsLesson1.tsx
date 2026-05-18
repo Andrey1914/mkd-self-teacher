@@ -3,6 +3,7 @@ import {
   Lesson1LectureFirstPart,
   Lesson1LectureSecondPart,
   Lesson1Phonetics,
+  Lesson1Grammar,
 } from "@/components/contents/Lesson-1";
 
 export const ContentsLesson1 = () => {
@@ -20,6 +21,9 @@ export const ContentsLesson1 = () => {
         </li>
         <li>
           <Lesson1LectureSecondPart />
+        </li>
+        <li>
+          <Lesson1Grammar />
         </li>
       </ul>
     </>

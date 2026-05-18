@@ -2,6 +2,7 @@ import { TablesProps } from "@/types";
 
 export const aClass: TablesProps = {
   type: "a-class",
+  anchor: "a-class",
   subtitle: ["СПРЯЖЕНИЕ ГЛАГОЛОВ A-КЛАССА"],
   text: "<span>cе в*ика</span> называться",
   content: {

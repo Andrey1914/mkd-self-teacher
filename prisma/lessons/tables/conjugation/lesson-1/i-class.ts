@@ -1,8 +1,8 @@
-// import { GrammarTableProps } from "@/types/grammarTypes";
 import { TablesProps } from "@/types";
 
 export const iClass: TablesProps = {
   type: `i-class`,
+  anchor: "i-class",
   subtitle: [`СПРЯЖЕНИЕ ГЛАГОЛОВ И-КЛАССА`],
   text: `<span>о*ди</span> идти, <span>се*ди</span> сидеть, <span>бро*и</span> считать, <span>сто*и</span> стоять.`,
   content: {

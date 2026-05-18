@@ -23,7 +23,7 @@ const { example1 } = lesson1;
 export const Verb = () => {
   return (
     <>
-      <Paragraph data={toBe} />
+      <Paragraph data={toBe} id="to-be" />
       <GenericTable
         data={grammarPronouns2}
         classNames={{

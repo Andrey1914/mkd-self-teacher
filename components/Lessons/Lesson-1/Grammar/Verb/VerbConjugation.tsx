@@ -22,8 +22,9 @@ const { exercise4, exercise5, exercise6 } = exercisesLesson1;
 export const VerbConjugation = () => {
   return (
     <>
-      <Paragraph data={verbConjugation} />
+      <Paragraph data={verbConjugation} id="conjugation-verb" />
       <GenericTable
+        id="a-class"
         data={aClass}
         classNames={{
           table: tableClassName,
@@ -33,6 +34,7 @@ export const VerbConjugation = () => {
       />
       <FillInExercise data={exercise4} />
       <GenericTable
+        id="i-class"
         data={iClass}
         classNames={{
           table: tableClassName,
@@ -43,6 +45,7 @@ export const VerbConjugation = () => {
       <PayAttentionBlock data={payAttention3} />
       <FillInExercise data={exercise5} />
       <GenericTable
+        id="e-class"
         data={eClass}
         classNames={{
           table: tableClassName,

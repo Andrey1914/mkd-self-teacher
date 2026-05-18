@@ -21,6 +21,7 @@ export interface GenericTableProps {
 }
 
 export interface TablesProps {
+  id?: string;
   slug?: string;
   type: string;
   anchor?: string;
