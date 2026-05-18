@@ -17,6 +17,7 @@ export const FormsOfPersonalPronouns = () => {
   return (
     <>
       <GenericTable
+        id="pronouns"
         data={grammarPronouns1}
         classNames={{
           table: tableClassName,
@@ -24,7 +25,6 @@ export const FormsOfPersonalPronouns = () => {
           th: getColorizedThClassName,
         }}
         titleIconSrc="/grammar.webp"
-        // titleIconSize={62}
       />
       <Paragraph data={intro} />
     </>

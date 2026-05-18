@@ -20,7 +20,7 @@ export const Examples = () => {
     <>
       <ExamplesTable data={example1} />
       <ExamplesTable data={example2} />
-      <ExamplesTable data={example3} />
+      <ExamplesTable data={example3} id="interrogative-sentences" />
       <ExamplesTable data={example4} />
       <ExamplesTable data={example5} />
       <ExamplesTable data={example6} />

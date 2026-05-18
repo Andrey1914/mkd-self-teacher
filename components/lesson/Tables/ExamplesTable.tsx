@@ -7,10 +7,12 @@ import { styles } from "./styles";
 export const ExamplesTable = ({
   data,
   titleIconSrc,
+  id,
 }: {
   data: TablesProps;
   titleIconSrc?: string;
   titleIconSize?: number;
+  id?: string;
 }) => {
   const { title, subtitle, content } = data;
 
@@ -83,7 +85,7 @@ export const ExamplesTable = ({
   }
 
   return (
-    <>
+    <div id={id}>
       {title && (
         <MultiFormatHeading as="h2" data={title} iconSrc={titleIconSrc} />
       )}
@@ -130,6 +132,6 @@ export const ExamplesTable = ({
           );
         })}
       </div>
-    </>
+    </div>
   );
 };

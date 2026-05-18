@@ -12,8 +12,8 @@ const { example2 } = lesson1;
 export const VerbType = () => {
   return (
     <>
-      <Paragraph data={verbType} />
-      <ExamplesTable data={example2} />
+      <Paragraph data={verbType} id="verb-type" />
+      <ExamplesTable data={example2} id="reflexive-verbs" />
     </>
   );
 };

@@ -1,4 +1,3 @@
-// import { GrammarTableProps } from "@/types/grammarTypes";
 import { TablesProps } from "@/types";
 
 export const grammarPronouns2: TablesProps = {

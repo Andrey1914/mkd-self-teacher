@@ -7,7 +7,7 @@ const { negation } = grammarLesson1;
 export const Negation = () => {
   return (
     <>
-      <Paragraph data={negation} />
+      <Paragraph data={negation} id="negation" />
     </>
   );
 };
