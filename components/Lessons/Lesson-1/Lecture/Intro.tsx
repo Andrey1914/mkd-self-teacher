@@ -9,12 +9,12 @@ const { lectureIntro } = lectureLesson1;
 export const Intro = () => {
   return (
     <>
-      <div id="lesson-1_airport">
-        <HeadingLesson lessonData={lesson1} TitleIconSrc="/airport.webp" />
-      </div>
-      <div id="lesson-1_introduction">
-        <Paragraph data={lectureIntro} part="text" />
-      </div>
+      <HeadingLesson
+        lessonData={lesson1}
+        TitleIconSrc="/airport.webp"
+        id="lesson-1_airport"
+      />
+      <Paragraph data={lectureIntro} part="text" id="lesson-1_introduction" />
     </>
   );
 };

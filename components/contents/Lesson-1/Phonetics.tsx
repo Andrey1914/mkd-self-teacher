@@ -21,6 +21,9 @@ export const Lesson1Phonetics = () => {
   const partExeptions = lectureLesson1.exceptions;
   const exeptions = partExeptions?.subtitle as string;
 
+  const partSpelling = lectureLesson1.spelling;
+  const spelling = partSpelling?.subtitle as string;
+
   return (
     <>
       <Link
@@ -55,6 +58,11 @@ export const Lesson1Phonetics = () => {
         <li>
           <Link href="/lesson/1#lesson-1_exeptions">
             <p>{exeptions}</p>
+          </Link>
+        </li>
+        <li>
+          <Link href="/lesson/1#lesson-1_spelling">
+            <p>{spelling}</p>
           </Link>
         </li>
       </ul>

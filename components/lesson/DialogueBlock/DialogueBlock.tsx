@@ -4,7 +4,13 @@ import type { DialogueBlockProps } from "@/types";
 
 import { styles } from "./styles";
 
-export const DialogueBlock = ({ data }: { data: DialogueBlockProps }) => {
+export const DialogueBlock = ({
+  data,
+  id,
+}: {
+  data: DialogueBlockProps;
+  id?: string;
+}) => {
   const { sections } = data;
 
   const {
@@ -36,7 +42,7 @@ export const DialogueBlock = ({ data }: { data: DialogueBlockProps }) => {
         } = section;
 
         return (
-          <div key={`section-${idx}`} className={sectionContainer}>
+          <div key={`section-${idx}`} className={sectionContainer} id={id}>
             <div className={header}>
               {title && typeof title === "object" && !Array.isArray(title) && (
                 <MultiFormatHeading
@@ -102,17 +108,17 @@ export const DialogueBlock = ({ data }: { data: DialogueBlockProps }) => {
                       (item, index) =>
                         item.language === "ru" &&
                         Math.floor(index / 2) ===
-                          Math.floor(dialogueOrder.indexOf(mkdItem) / 2)
+                          Math.floor(dialogueOrder.indexOf(mkdItem) / 2),
                     );
 
                     const mkdSpeakerData = dialogue.find(
-                      (line) => line.speaker.id === mkdItem.speakerId
+                      (line) => line.speaker.id === mkdItem.speakerId,
                     );
                     const mkdText = mkdSpeakerData?.mkd?.[mkdItem.replyIndex];
 
                     const ruSpeakerData = ruItem
                       ? dialogue.find(
-                          (line) => line.speaker.id === ruItem.speakerId
+                          (line) => line.speaker.id === ruItem.speakerId,
                         )
                       : null;
                     const ruText = ruSpeakerData?.ru?.[ruItem?.replyIndex || 0];

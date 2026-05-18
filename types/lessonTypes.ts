@@ -32,6 +32,7 @@ export interface LessonData {
 }
 
 export interface LessonIntroProps {
+  id?: string;
   lessonData: LessonData;
   TitleIconSrc?: string;
   TitleIconSize?: number;

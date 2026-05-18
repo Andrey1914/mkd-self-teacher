@@ -4,7 +4,7 @@ import { formatText } from "@/utils";
 
 import { styles } from "./styles";
 
-export const Paragraph = ({ data, part, titleIconSrc }: ParagraphProps) => {
+export const Paragraph = ({ id, data, part, titleIconSrc }: ParagraphProps) => {
   const { title, subtitle, intro, content } = data;
 
   const { paragraph, markedParagraph, markedItem, markedList } =
@@ -40,7 +40,7 @@ export const Paragraph = ({ data, part, titleIconSrc }: ParagraphProps) => {
 
   if (part === "title") {
     return (
-      <>
+      <div id={id}>
         {title && (
           <>
             {typeof title === "string" ? (
@@ -73,13 +73,13 @@ export const Paragraph = ({ data, part, titleIconSrc }: ParagraphProps) => {
             )}
           </>
         )}
-      </>
+      </div>
     );
   }
 
   if (part === "text") {
     return (
-      <>
+      <div id={id}>
         {content?.intro?.subtitle && (
           <MultiFormatHeading as="h3" data={content.intro.subtitle} />
         )}
@@ -96,13 +96,13 @@ export const Paragraph = ({ data, part, titleIconSrc }: ParagraphProps) => {
         {content?.text && (
           <>{content?.text && renderTextParagraphs(content.text)}</>
         )}
-      </>
+      </div>
     );
   }
 
   if (!part) {
     return (
-      <>
+      <div id={id}>
         {title && (
           <>
             {typeof title === "string" ? (
@@ -133,13 +133,13 @@ export const Paragraph = ({ data, part, titleIconSrc }: ParagraphProps) => {
         {content?.text && (
           <>{content?.text && renderTextParagraphs(content.text)}</>
         )}
-      </>
+      </div>
     );
   }
 
   if (part === "marked") {
     return (
-      <>
+      <div id={id}>
         {subtitle &&
           typeof subtitle === "object" &&
           !Array.isArray(subtitle) && (
@@ -153,7 +153,7 @@ export const Paragraph = ({ data, part, titleIconSrc }: ParagraphProps) => {
             {content?.text && markedTextParagraphs(content.text)}
           </ul>
         )}
-      </>
+      </div>
     );
   }
 

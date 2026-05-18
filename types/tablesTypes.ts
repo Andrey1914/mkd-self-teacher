@@ -1,6 +1,7 @@
 import { VocabularyProps } from "@/types";
 
 export interface GenericTableProps {
+  id?: string;
   data?: TablesProps;
   lesson?: VocabularyProps["lesson"];
   classNames?: {
@@ -22,6 +23,7 @@ export interface GenericTableProps {
 export interface TablesProps {
   slug?: string;
   type: string;
+  anchor?: string;
   category?: string;
   title?: string[] | string | { ru?: string; mkd?: string };
   text?: string;

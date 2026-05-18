@@ -9,6 +9,7 @@ export const HeadingLesson = ({
   TitleIconSize = 72,
   SubtitleIconSrc = "/lecture.webp",
   SubtitleIconSize = 62,
+  id,
 }: LessonIntroProps) => {
   const { title, sections } = lessonData;
   const {
@@ -23,7 +24,7 @@ export const HeadingLesson = ({
 
   return (
     <>
-      <div className={container}>
+      <div className={container} id={id}>
         <div className={containerTitle}>
           <MultiFormatHeading as="h1" data={title} className={lessonTitle} />
 

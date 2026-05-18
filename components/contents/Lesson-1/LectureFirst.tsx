@@ -2,7 +2,7 @@ import Link from "next/link";
 import { lesson1 } from "@/prisma/lessons/lesson-1";
 import { lectureLesson1 } from "@/prisma/lessons/paragraph";
 
-export const Lesson1Lecture = () => {
+export const Lesson1LectureFirstPart = () => {
   const section = lesson1.sections?.[0];
 
   const sectionSubtitle = section?.subtitle as

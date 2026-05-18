@@ -1,4 +1,5 @@
 export interface ParagraphProps {
+  id?: string;
   data: ParagraphSectionsProps;
   part?: "title" | "text" | "marked";
 
