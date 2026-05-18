@@ -25,6 +25,7 @@ export const Lecture = () => {
       <DialogueAtAirport />
       <PayAttentionBlock data={payAttention1} />
       <GenericTable
+        id="vocabulary-1"
         lesson={vocabulary1}
         classNames={{
           table: tableWithoutBorderClassName,
@@ -43,6 +44,7 @@ export const Lecture = () => {
       />
       <Paragraph data={explanation} />
       <GenericTable
+        id="countries-nationalities"
         data={countriesNationalitiesTable}
         classNames={{
           table: tableClassName,

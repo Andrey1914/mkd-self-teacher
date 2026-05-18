@@ -9,6 +9,7 @@ export const GenericTable = ({
   lesson,
   classNames = {},
   titleIconSrc,
+  id,
 }: GenericTableProps) => {
   const rows =
     data?.content.rows ||
@@ -38,7 +39,7 @@ export const GenericTable = ({
   );
 
   return (
-    <div style={{ padding: "1rem 0 2rem 0", overflowX: "auto" }}>
+    <div style={{ padding: "1rem 0 2rem 0", overflowX: "auto" }} id={id}>
       {title && (
         <MultiFormatHeading as="h2" data={title} iconSrc={titleIconSrc} />
       )}

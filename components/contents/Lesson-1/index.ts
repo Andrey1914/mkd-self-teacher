@@ -1,2 +1,4 @@
-export { Lesson1Lecture } from "./Lecture";
+export { Lesson1LectureFirstPart } from "./LectureFirst";
+export { Lesson1LectureSecondPart } from "./LectureSecond";
 export { Lesson1Phonetics } from "./Phonetics";
+export { Lesson1Heading } from "./Heading";

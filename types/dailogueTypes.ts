@@ -1,5 +1,7 @@
 export type DialogueBlockProps = {
+  id?: string;
   slug: string;
+  anchor?: string;
   sections: {
     type: string;
     title?: string[] | { ru: string; mkd: string };

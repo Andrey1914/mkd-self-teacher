@@ -2,6 +2,7 @@ import { TablesProps } from "@/types";
 
 export const countriesNationalitiesTable: TablesProps = {
   type: "countries-nationalities-table",
+  anchor: "countries-nationalities",
   subtitle: ["СТРАНЫ И НАЦИОНАЛЬНОСТИ"],
   content: {
     subtitle: [

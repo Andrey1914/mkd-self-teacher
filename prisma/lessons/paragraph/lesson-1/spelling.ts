@@ -3,6 +3,7 @@ import { ParagraphSectionsProps } from "@/types";
 export const spelling: ParagraphSectionsProps = {
   type: "spelling",
   slug: "lesson-1",
+  anchor: "lesson-1_spelling",
   subtitle: "ПРАВОПИСАНИЕ",
   content: {
     text: `
