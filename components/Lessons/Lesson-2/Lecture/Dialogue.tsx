@@ -5,7 +5,7 @@ import { dialogueBlock } from "@/prisma/lessons/dialogues/lesson-2";
 export const DialogueAtTaxiAndHotel = () => {
   return (
     <>
-      <DialogueBlock data={dialogueBlock} />
+      <DialogueBlock data={dialogueBlock} id="dialogue-2" />
     </>
   );
 };

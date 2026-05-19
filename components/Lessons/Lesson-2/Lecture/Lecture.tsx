@@ -19,6 +19,7 @@ export const Lecture = () => {
       <DialogueAtTaxiAndHotel />
       <Paragraph data={ruleAfterDialogue} />
       <GenericTable
+        id="vocabulary-2"
         lesson={vocabulary}
         classNames={{
           table: tableWithoutBorderClassName,

@@ -92,7 +92,12 @@ export const ExamplesTable = ({
 
       {subtitle && <MultiFormatHeading as="h3" data={subtitle} />}
 
-      <>{content.subtitle && <MultiFormatHeading as="h4" data={subtitle} />}</>
+      <>
+        {content.subtitle && (
+          <MultiFormatHeading as="h4" data={content.subtitle} />
+        )}
+      </>
+
       <>{content.text && <>{renderTextParagraphs(content.text)}</>}</>
 
       <div className={flexContainer}>

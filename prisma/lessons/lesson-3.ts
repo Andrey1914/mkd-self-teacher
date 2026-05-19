@@ -53,6 +53,8 @@ export const lesson3 = {
     {
       type: "lecture",
       slug: "lesson-3",
+      anchor: "lesson-2_acquaintance",
+
       title: {
         ru: "ЗНАКОМСТВО",
         mkd: "ЗАПОЗНАВАЊЕ",

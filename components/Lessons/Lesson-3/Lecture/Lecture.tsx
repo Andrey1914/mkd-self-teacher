@@ -27,6 +27,7 @@ export const Lecture = () => {
       <DialogueMeetingWithFriends />
       <PayAttentionBlock data={payAttention1} />
       <GenericTable
+        id="vocabulary-3"
         lesson={vocabulary}
         classNames={{
           table: tableWithoutBorderClassName,
@@ -35,6 +36,7 @@ export const Lecture = () => {
         }}
       />
       <GenericTable
+        id="occupation-3"
         data={occupationTable}
         classNames={{
           table: tableWithoutBorderClassName,

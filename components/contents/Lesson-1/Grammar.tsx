@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { formatText } from "@/utils";
 import { grammarLesson1 } from "@/prisma/lessons/paragraph";
 import {
   grammarPronouns,
@@ -52,7 +53,7 @@ export const Lesson1Grammar = () => {
           <ul style={{ paddingLeft: "20px", listStyle: "none" }}>
             <li>
               <Link href="/lesson/1#to-be">
-                <p>{verbSubtitle}</p>
+                <p>{formatText(verbSubtitle)}</p>
               </Link>
             </li>
             <li>

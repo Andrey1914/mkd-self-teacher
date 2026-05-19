@@ -3,6 +3,7 @@ import { TablesProps } from "@/types";
 export const example5: TablesProps = {
   slug: "lesson-3",
   type: "example-5",
+  anchor: "verb-3",
   subtitle: "ГЛАГОЛ",
   content: {
     subtitle: "Да-конструкция",
