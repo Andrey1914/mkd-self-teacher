@@ -48,6 +48,7 @@ export const Lecture = () => {
         data={personalPronouns}
         titleIconSrc="/grammar.webp"
         titleIconSize={62}
+        id="personal-pronouns"
       />
       <PronounTable data={personalPronounsTable} />
       <Examples />
