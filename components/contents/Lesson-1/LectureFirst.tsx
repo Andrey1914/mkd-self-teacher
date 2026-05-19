@@ -19,6 +19,7 @@ export const Lesson1LectureFirstPart = () => {
       <Link
         href="/lesson/1#lesson-1_airport"
         style={{ display: "flex", gap: "8px", alignItems: "baseline" }}
+        scroll={false}
       >
         <h3 style={{ display: "flex", gap: "8px", textIndent: 0 }}>
           {sectionSubtitle?.ru}
@@ -27,7 +28,7 @@ export const Lesson1LectureFirstPart = () => {
       </Link>
       <ul style={{ listStyle: "none" }}>
         <li>
-          <Link href="/lesson/1#lesson-1_introduction">
+          <Link href="/lesson/1#lesson-1_introduction" scroll={false}>
             <p>{introduction?.ru}</p>
           </Link>
         </li>

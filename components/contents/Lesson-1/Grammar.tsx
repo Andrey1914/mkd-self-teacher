@@ -34,7 +34,7 @@ export const Lesson1Grammar = () => {
 
   return (
     <>
-      <Link href="/lesson/1#pronouns">
+      <Link href="/lesson/1#pronouns" scroll={false}>
         <h3 style={{ display: "flex", flexDirection: "column", textIndent: 0 }}>
           {title?.ru}
           <span>{title?.mkd}</span>
@@ -42,47 +42,47 @@ export const Lesson1Grammar = () => {
       </Link>
       <ul style={{ listStyle: "none" }}>
         <li>
-          <Link href="/lesson/1#pronouns">
+          <Link href="/lesson/1#pronouns" scroll={false}>
             <p>{subtitle}</p>
           </Link>
         </li>
         <li>
-          <Link href="/lesson/1#to-be">
+          <Link href="/lesson/1#to-be" scroll={false}>
             <p>{verbTitle}</p>
           </Link>
           <ul style={{ paddingLeft: "20px", listStyle: "none" }}>
             <li>
-              <Link href="/lesson/1#to-be">
+              <Link href="/lesson/1#to-be" scroll={false}>
                 <p>{formatText(verbSubtitle)}</p>
               </Link>
             </li>
             <li>
-              <Link href="/lesson/1#verb-type">
+              <Link href="/lesson/1#verb-type" scroll={false}>
                 <p>{verbTypeTitle}</p>
               </Link>
               <ul style={{ paddingLeft: "20px", listStyle: "none" }}>
                 <li>
-                  <Link href="/lesson/1#reflexive-verbs">
+                  <Link href="/lesson/1#reflexive-verbs" scroll={false}>
                     <p>{reflexiveVerbsSubtitle}</p>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/lesson/1#conjugation-verb">
+                  <Link href="/lesson/1#conjugation-verb" scroll={false}>
                     <p>{conjugationVerbSubtitle}</p>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/lesson/1#a-class">
+                  <Link href="/lesson/1#a-class" scroll={false}>
                     <p>{aClassSubtitle}</p>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/lesson/1#i-class">
+                  <Link href="/lesson/1#i-class" scroll={false}>
                     <p>{iClassSubtitle}</p>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/lesson/1#e-class">
+                  <Link href="/lesson/1#e-class" scroll={false}>
                     <p>{eClassSubtitle}</p>
                   </Link>
                 </li>
@@ -91,12 +91,12 @@ export const Lesson1Grammar = () => {
           </ul>
         </li>
         <li>
-          <Link href="/lesson/1#negation">
+          <Link href="/lesson/1#negation" scroll={false}>
             <p>{negationTitle}</p>
           </Link>
         </li>
         <li>
-          <Link href="/lesson/1#interrogative-sentences">
+          <Link href="/lesson/1#interrogative-sentences" scroll={false}>
             <p>{interrogativeSentencesSubtitle}</p>
           </Link>
         </li>

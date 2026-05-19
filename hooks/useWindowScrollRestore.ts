@@ -4,9 +4,37 @@ export const useWindowScrollRestore = (lessonId: string) => {
   const MAX_AGE = 3 * 24 * 60 * 60 * 1000;
 
   useEffect(() => {
+    history.scrollRestoration = "manual";
+
     if (window.location.hash) {
-      return;
+      const id = window.location.hash.replace("#", "");
+
+      let attempts = 0;
+
+      const interval = setInterval(() => {
+        const element = document.getElementById(id);
+
+        if (element) {
+          element.scrollIntoView({
+            behavior: "instant",
+            block: "start",
+          });
+
+          clearInterval(interval);
+        }
+
+        attempts++;
+
+        if (attempts > 20) {
+          clearInterval(interval);
+        }
+      }, 100);
+
+      return () => clearInterval(interval);
     }
+    // if (window.location.hash) {
+    //   return;
+    // }
 
     const saved = localStorage.getItem(`lesson-${lessonId}-window`);
     if (saved) {
