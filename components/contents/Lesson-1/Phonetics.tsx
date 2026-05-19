@@ -29,6 +29,7 @@ export const Lesson1Phonetics = () => {
       <Link
         href="/lesson/1#lesson-1_phonetics"
         style={{ display: "flex", gap: "8px", alignItems: "baseline" }}
+        scroll={false}
       >
         <h3 style={{ display: "flex", gap: "8px", textIndent: 0 }}>
           {phonetics?.ru}
@@ -40,28 +41,29 @@ export const Lesson1Phonetics = () => {
           <Link
             href="/lesson/1#lesson-1_phonetics"
             style={{ display: "flex", gap: "8px" }}
+            scroll={false}
           >
             <p>{alphabet?.ru}</p>
             <p style={{ textIndent: 0 }}>{alphabet?.mkd}</p>
           </Link>
         </li>
         <li>
-          <Link href="/lesson/1#lesson-1_features">
+          <Link href="/lesson/1#lesson-1_features" scroll={false}>
             <p>{features}</p>
           </Link>
         </li>
         <li>
-          <Link href="/lesson/1#lesson-1_accent">
+          <Link href="/lesson/1#lesson-1_accent" scroll={false}>
             <p>{accent}</p>
           </Link>
         </li>
         <li>
-          <Link href="/lesson/1#lesson-1_exeptions">
+          <Link href="/lesson/1#lesson-1_exeptions" scroll={false}>
             <p>{exeptions}</p>
           </Link>
         </li>
         <li>
-          <Link href="/lesson/1#lesson-1_spelling">
+          <Link href="/lesson/1#lesson-1_spelling" scroll={false}>
             <p>{spelling}</p>
           </Link>
         </li>

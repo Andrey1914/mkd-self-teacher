@@ -20,7 +20,7 @@ export const Grammar = () => {
 
   return (
     <>
-      <Link href="/lesson/2#gender-of-nouns">
+      <Link href="/lesson/2#gender-of-nouns" scroll={false}>
         <h3 style={{ display: "flex", gap: 8, textIndent: 0 }}>
           {title?.ru}
           <span>{title?.mkd}</span>
@@ -28,31 +28,31 @@ export const Grammar = () => {
       </Link>
       <ul style={{ listStyle: "none" }}>
         <li>
-          <Link href="/lesson/2#gender-of-nouns">
+          <Link href="/lesson/2#gender-of-nouns" scroll={false}>
             <p>{subtitle}</p>
           </Link>
         </li>
         <li>
           <ul style={{ paddingLeft: 20, listStyle: "none" }}>
             <li>
-              <Link href="/lesson/2#gender-of-nouns">
+              <Link href="/lesson/2#gender-of-nouns" scroll={false}>
                 <p>{genderSubtitle}</p>
               </Link>
             </li>
             <li>
-              <Link href="/lesson/2#plural-of-nouns">
+              <Link href="/lesson/2#plural-of-nouns" scroll={false}>
                 <p>{pluralSubtitle}</p>
               </Link>
             </li>
             <li>
               <ul style={{ paddingLeft: 20, listStyle: "none" }}>
                 <li>
-                  <Link href="/lesson/2#plural-of-nouns">
+                  <Link href="/lesson/2#plural-of-nouns" scroll={false}>
                     <p>{pluralContentSubtitle}</p>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/lesson/2#countable-plural">
+                  <Link href="/lesson/2#countable-plural" scroll={false}>
                     <p>{countableSubtitle}</p>
                   </Link>
                 </li>
@@ -63,12 +63,12 @@ export const Grammar = () => {
         <li>
           <ul style={{ listStyle: "none" }}>
             <li>
-              <Link href="/lesson/2#adjectives">
+              <Link href="/lesson/2#adjectives" scroll={false}>
                 <p>{adjectivesSubtitle}</p>
               </Link>
             </li>
             <li>
-              <Link href="/lesson/2#numerals-cardinal-ordinal">
+              <Link href="/lesson/2#numerals-cardinal-ordinal" scroll={false}>
                 <p>{numeralsSubtitle}</p>
               </Link>
             </li>

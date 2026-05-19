@@ -12,13 +12,13 @@ export const Heading = () => {
     <>
       <ul style={{ listStyle: "none" }}>
         <li>
-          <Link href="/lesson/2">
+          <Link href="/lesson/2" scroll={false}>
             <h2 style={{ textIndent: 0 }}>
               {title.ru} <span>{title.mkd}</span>
             </h2>
           </Link>
 
-          <Link href="/lesson/2#lesson-2_taxi-hotel">
+          <Link href="/lesson/2#lesson-2_taxi-hotel" scroll={false}>
             <h3
               style={{
                 display: "flex",

@@ -23,6 +23,7 @@ export const Lecture = () => {
       <Link
         href="/lesson/2#lesson-2_taxi-hotel"
         style={{ display: "flex", gap: "8px", alignItems: "baseline" }}
+        scroll={false}
       >
         <h3 style={{ display: "flex", gap: "8px", textIndent: 0 }}>
           {sectionSubtitle?.ru}
@@ -34,13 +35,14 @@ export const Lecture = () => {
           <Link
             href="/lesson/2#dialogue-2"
             style={{ display: "flex", gap: "8px", alignItems: "baseline" }}
+            scroll={false}
           >
             <p>{dialogue?.ru}</p>
             <span>{dialogue?.mkd}</span>
           </Link>
         </li>
         <li>
-          <Link href="/lesson/2#vocabulary-2">
+          <Link href="/lesson/2#vocabulary-2" scroll={false}>
             <p>{vocabularyTitle?.ru}</p>
             <span style={{ paddingLeft: 20 }}>{vocabularyTitle?.mkd}</span>
           </Link>

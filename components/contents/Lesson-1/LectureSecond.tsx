@@ -23,6 +23,7 @@ export const Lesson1LectureSecondPart = () => {
       <Link
         href="/lesson/1#dialogue-1"
         style={{ display: "flex", gap: "8px", alignItems: "baseline" }}
+        scroll={false}
       >
         <h3 style={{ display: "flex", gap: "8px", textIndent: 0 }}>
           {title?.ru}
@@ -34,19 +35,20 @@ export const Lesson1LectureSecondPart = () => {
           <Link
             href="/lesson/1#dialogue-1"
             style={{ display: "flex", gap: "8px", alignItems: "baseline" }}
+            scroll={false}
           >
             <p>{dialogue?.ru}</p>
             <span>{dialogue?.mkd}</span>
           </Link>
         </li>
         <li>
-          <Link href="/lesson/1#vocabulary-1">
+          <Link href="/lesson/1#vocabulary-1" scroll={false}>
             <p>{vocabulary?.ru}</p>
             <span style={{ paddingLeft: "20px" }}>{vocabulary?.mkd}</span>
           </Link>
         </li>
         <li>
-          <Link href="/lesson/1#countries-nationalities">
+          <Link href="/lesson/1#countries-nationalities" scroll={false}>
             <p>{countriesNationalities}</p>
           </Link>
         </li>
