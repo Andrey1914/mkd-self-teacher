@@ -43,6 +43,7 @@ export const lesson2 = {
     {
       type: "lecture",
       slug: "lesson-2",
+      anchor: "lesson-2_taxi-hotel",
       title: {
         ru: "ТАКСИ И ГОСТИНИЦА",
         mkd: "ТАКСИ И ХОТЕЛ",

@@ -17,13 +17,13 @@ export const Nouns = () => {
       <Paragraph
         data={genderOfNouns}
         titleIconSrc="/grammar.webp"
-        // titleIconSize={62}
+        id="gender-of-nouns"
       />
-      <Paragraph data={pluralOfNouns} />
+      <Paragraph data={pluralOfNouns} id="plural-of-nouns" />
       <Paragraph data={feminineNouns} />
       <Paragraph data={masculineNouns} />
       <Paragraph data={neuterNouns} />
-      <Paragraph data={countablePlural} />
+      <Paragraph data={countablePlural} id="countable-plural" />
     </>
   );
 };

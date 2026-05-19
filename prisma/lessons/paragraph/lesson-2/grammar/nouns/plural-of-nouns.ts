@@ -3,6 +3,7 @@ import { ParagraphSectionsProps } from "@/types";
 export const pluralOfNouns: ParagraphSectionsProps = {
   type: "grammar-plural-of-noun",
   slug: "lesson-2",
+  anchor: "plural-of-nouns",
   subtitle: "МНОЖЕСТВЕННОЕ ЧИСЛО ИМЁН СУЩЕСТВИТЕЛЬНЫХ",
   content: {
     subtitle: "ПРОСТОЕ МНОЖЕСТВЕННОЕ ЧИСЛО",

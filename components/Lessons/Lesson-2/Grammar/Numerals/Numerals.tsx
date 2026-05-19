@@ -18,7 +18,10 @@ const { cardinalOrdinalNumeralsTable } = numeralsTable;
 export const Numerals = () => {
   return (
     <>
-      <Paragraph data={cardinalOrdinalNumerals} />
+      <Paragraph
+        data={cardinalOrdinalNumerals}
+        id="numerals-cardinal-ordinal"
+      />
       <GenericTable
         data={cardinalOrdinalNumeralsTable}
         classNames={{

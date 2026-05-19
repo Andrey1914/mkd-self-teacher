@@ -3,6 +3,7 @@ import { ParagraphSectionsProps } from "@/types";
 export const countablePlural: ParagraphSectionsProps = {
   type: "grammar-countable-plural",
   slug: "lesson-2",
+  anchor: "countable-plural",
   content: {
     subtitle: "СЧЁТНОЕ МНОЖЕСТВЕННОЕ",
     text: `Если числительное употребляется с существительным мужского рода, то это существительное может стоять в счётной форме, которая

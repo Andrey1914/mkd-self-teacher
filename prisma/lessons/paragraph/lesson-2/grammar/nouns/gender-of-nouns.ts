@@ -3,6 +3,7 @@ import { ParagraphSectionsProps } from "@/types";
 export const genderOfNouns: ParagraphSectionsProps = {
   type: "grammar-gender-of-noun",
   slug: "lesson-2",
+  anchor: "gender-of-nouns",
   title: {
     ru: "ГРАММАТИКА",
     mkd: "ГРАММАТИКА",

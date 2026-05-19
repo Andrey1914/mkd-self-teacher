@@ -15,7 +15,7 @@ const { introAdjectives, genderNumberPronominalText } = grammarLesson2;
 export const Adjectives = () => {
   return (
     <>
-      <Paragraph data={introAdjectives} />
+      <Paragraph data={introAdjectives} id="adjectives" />
       <GenericTable
         data={genderNumberPronominalOfAdjectives}
         classNames={{

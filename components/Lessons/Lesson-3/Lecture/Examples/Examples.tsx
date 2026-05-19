@@ -33,15 +33,15 @@ export const Examples = () => {
       <ExamplesTable data={example3} />
       <ExamplesTable data={example4} />
       <PayAttentionBlock data={payAttention2} />
-      <ExamplesTable data={example5} />
+      <ExamplesTable data={example5} id="verb-3" />
       <ExamplesTable data={example6} />
       <ExamplesTable data={example7} />
       <ExamplesTable data={example8} />
       <ExamplesTable data={example9} />
       <ExamplesTable data={example10} />
       <ExamplesTable data={example11} />
-      <Paragraph data={needVerb} />
-      <ExamplesTable data={example12} />
+      <Paragraph data={needVerb} id="verb-need" />
+      <ExamplesTable data={example12} id="verb-can" />
     </>
   );
 };
