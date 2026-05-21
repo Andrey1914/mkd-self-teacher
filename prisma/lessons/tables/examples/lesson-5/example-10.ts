@@ -3,6 +3,7 @@ import { TablesProps } from "@/types";
 export const example10: TablesProps = {
   slug: "lesson-5",
   type: "example-10",
+  anchor: "adversary-conjanctions",
   content: {
     subtitle: "ПРОТИВИТЕЛЬНЫЕ СОЮЗЫ",
     text: `Популярные противительные союзы: <span>а</span> «а», <span>но</span> «но», <span>ту*ку</span> «но», <span>не — ту*ку</span>

@@ -3,6 +3,7 @@ import { ParagraphSectionsProps } from "@/types";
 export const verbalNoun: ParagraphSectionsProps = {
   type: "lecture-verbal-noun",
   slug: "lesson-5",
+  anchor: "verbal-noun",
   subtitle: "ГЛАГОЛЬНОЕ СУЩЕСТВИТЕЛЬНОЕ",
   content: {
     text: `В македонском языке от глаголов несовершенного вида при помощи суфикса <span>-ње</span> регулярно образуются существительные,
