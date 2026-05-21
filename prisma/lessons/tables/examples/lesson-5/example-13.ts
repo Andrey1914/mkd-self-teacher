@@ -3,6 +3,7 @@ import { TablesProps } from "@/types";
 export const example13: TablesProps = {
   slug: "lesson-5",
   type: "example-13",
+  anchor: "conjunctions-that-whether",
   subtitle: "СОЮЗЫ <span>ДЕ*КА</span> И <span>ДА*ЛИ</span>",
   content: {
     text: `Союз <span>де*ка</span> «что» употребляется в изъяснительных предложениях: <span>ми*слам де*ка...</span> «думаю, что...;

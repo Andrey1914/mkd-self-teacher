@@ -30,7 +30,7 @@ export const Examples = () => {
       <ExamplesTable
         data={example1}
         titleIconSrc="/grammar.webp"
-        // titleIconSize={62}
+        id="direct-object"
       />
       <ExamplesTable data={example2} />
       <ExamplesTable data={example3} />
@@ -38,13 +38,13 @@ export const Examples = () => {
       <ExamplesTable data={example5} />
       <ExamplesTable data={example6} />
       <ExamplesTable data={example7} />
-      <Paragraph data={verbalNoun} />
-      <ExamplesTable data={example8} />
+      <Paragraph data={verbalNoun} id="verbal-noun" />
+      <ExamplesTable data={example8} id="conjanctions" />
       <ExamplesTable data={example9} />
-      <ExamplesTable data={example10} />
+      <ExamplesTable data={example10} id="adversary-conjanctions" />
       <ExamplesTable data={example11} />
-      <ExamplesTable data={example12} />
-      <ExamplesTable data={example13} />
+      <ExamplesTable data={example12} id="disjunctive-conjunctions" />
+      <ExamplesTable data={example13} id="conjunctions-that-whether" />
       <ExamplesTable data={example14} />
     </>
   );
