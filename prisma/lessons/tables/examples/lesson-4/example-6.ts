@@ -3,6 +3,7 @@ import { TablesProps } from "@/types";
 export const example6: TablesProps = {
   slug: "lesson-4",
   type: "example-6",
+  anchor: "verb-have-have-not",
   subtitle: "ГЛАГОЛЫ  <span>И*МА / НЕ*МА</span>",
   content: {
     text: `

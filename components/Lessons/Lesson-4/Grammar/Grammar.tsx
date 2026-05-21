@@ -16,11 +16,12 @@ export const Grammar = () => {
         data={definitenessCategory}
         part="title"
         titleIconSrc="/grammar.webp"
+        id="definiteness-category"
       />
       <DefinitenessCategoryTable data={definitenessCategoryTable} />
       <Paragraph data={definitenessCategory} part="text" />
       <Examples />
-      <Paragraph data={prepositions} part="marked" />
+      <Paragraph data={prepositions} part="marked" id="prepositions" />
       <Exercises />
     </>
   );

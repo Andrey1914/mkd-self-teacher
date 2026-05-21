@@ -2,6 +2,8 @@ export type DialogueBlockProps = {
   id?: string;
   slug: string;
   anchor?: string;
+  iconSrc?: string;
+  iconSize?: number;
   sections: {
     type: string;
     title?: string[] | { ru: string; mkd: string };
@@ -32,4 +34,6 @@ export type DialogueBlockProps = {
       }[];
     };
   }[];
+
+  data?: Partial<DialogueBlockProps>;
 };

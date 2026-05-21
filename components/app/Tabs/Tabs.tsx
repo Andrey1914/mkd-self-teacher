@@ -164,7 +164,7 @@ export const Tabs = ({
                       : "2px solid transparent",
                   }}
                 >
-                  {homeIcon ?? <p>Главная</p>}
+                  {homeIcon ?? <p>Содержание</p>}
                   <div className={wrapper}>
                     {showHomeLoader && (
                       <Loader size={20} withContainer={false} />

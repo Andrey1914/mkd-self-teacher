@@ -48,6 +48,7 @@ export const lesson4 = {
     {
       type: "lecture",
       slug: "lesson-4",
+      anchor: "lesson-2_exploring-the-city",
       title: {
         ru: "ЗНАКОМСТВО С ГОРОДОМ",
         mkd: "ЗАПОЗНАВАЊЕ СО ГРАДОТ",

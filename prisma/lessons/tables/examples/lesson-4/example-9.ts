@@ -3,6 +3,7 @@ import { TablesProps } from "@/types";
 export const example9: TablesProps = {
   slug: "lesson-4",
   type: "example-9",
+  anchor: "lets-construction",
   subtitle: "КОНСТРУКЦИЯ <span>А*JДЕ ДА</span>",
   content: {
     text: `Конструкция <span>а*jда да</span> + глагол в форме настоящего времени 1-го лица множественного числа используется для выражения
