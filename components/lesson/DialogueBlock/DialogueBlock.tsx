@@ -7,9 +7,13 @@ import { styles } from "./styles";
 export const DialogueBlock = ({
   data,
   id,
+  iconSrc,
+  iconSize,
 }: {
   data: DialogueBlockProps;
   id?: string;
+  iconSrc?: string;
+  iconSize?: number;
 }) => {
   const { sections } = data;
 
@@ -48,7 +52,8 @@ export const DialogueBlock = ({
                 <MultiFormatHeading
                   as="h2"
                   data={title}
-                  iconSrc="/lecture.png"
+                  iconSrc={iconSrc || "/lecture.webp"}
+                  iconSize={iconSize}
                 />
               )}
 

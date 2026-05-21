@@ -29,7 +29,6 @@ export const Lecture = () => {
       <Link
         href="/lesson/3#lesson-3_acquaintance"
         style={{ display: "flex", gap: "8px", alignItems: "baseline" }}
-        scroll={false}
       >
         <h3 style={{ display: "flex", gap: "8px", textIndent: 0 }}>
           {sectionSubtitle?.ru}
@@ -41,20 +40,19 @@ export const Lecture = () => {
           <Link
             href="/lesson/3#dialogue-3"
             style={{ display: "flex", gap: "8px", alignItems: "baseline" }}
-            scroll={false}
           >
             <p>{dialogue?.ru}</p>
             <span>{dialogue?.mkd}</span>
           </Link>
         </li>
         <li>
-          <Link href="/lesson/3#vocabulary-3" scroll={false}>
+          <Link href="/lesson/3#vocabulary-3">
             <p>{vocabularyTitle?.ru}</p>
             <span style={{ paddingLeft: 20 }}>{vocabularyTitle?.mkd}</span>
           </Link>
         </li>
         <li>
-          <Link href="/lesson/3#occupation-3" scroll={false}>
+          <Link href="/lesson/3#occupation-3">
             <p>{occupation?.ru}</p>
             <span style={{ paddingLeft: 20 }}>{occupation?.mkd}</span>
           </Link>

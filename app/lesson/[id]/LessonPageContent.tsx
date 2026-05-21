@@ -79,7 +79,7 @@ export function LessonPageContent({
         lessonTitles={lessons.map((l) => l.title)}
         isLoading={isLoading}
         onHomeClick={() => {
-          router.push("/");
+          router.push("/contents");
         }}
       />
 

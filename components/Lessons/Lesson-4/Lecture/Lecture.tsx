@@ -20,6 +20,7 @@ export const Lecture = () => {
       <PayAttentionBlock data={payAttention1} />
       <PayAttentionBlock data={payAttention2} />
       <GenericTable
+        id="vocabulary-4"
         lesson={vocabulary}
         classNames={{
           table: tableWithoutBorderClassName,

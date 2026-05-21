@@ -3,6 +3,7 @@ import { ParagraphSectionsProps } from "@/types";
 export const prepositions: ParagraphSectionsProps = {
   type: "grammar-prepositions",
   slug: "lesson-4",
+  anchor: "prepositions",
   subtitle: "ПРЕДЛОГИ",
   intro: `В македонском языке зачения, которые в русском языке выражаются падежами, передаются в основном при помощи предлогов:
   <span>це*нтарот на гра*дот</span> «центр города», <span>пода*роци за дру*гари</span> «подарки друзьям/для друзей»,

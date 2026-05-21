@@ -19,7 +19,7 @@ export const Grammar = () => {
 
   return (
     <>
-      <Link href="/lesson/3#personal-pronouns" scroll={false}>
+      <Link href="/lesson/3#personal-pronouns">
         <h3 style={{ display: "flex", gap: 8, textIndent: 0 }}>
           {title?.ru}
           <span>{title?.mkd}</span>
@@ -27,26 +27,26 @@ export const Grammar = () => {
       </Link>
       <ul style={{ listStyle: "none" }}>
         <li>
-          <Link href="/lesson/3#personal-pronouns" scroll={false}>
+          <Link href="/lesson/3#personal-pronouns">
             <p>{subtitle}</p>
           </Link>
         </li>
         <li>
           <ul style={{ paddingLeft: 20, listStyle: "none" }}>
             <li>
-              <Link href="/lesson/3#verb-3" scroll={false}>
+              <Link href="/lesson/3#verb-3">
                 <p>{verbSubtitle}</p>
               </Link>
             </li>
             <li>
               <ul style={{ paddingLeft: 20, listStyle: "none" }}>
                 <li>
-                  <Link href="/lesson/3#verb-need" scroll={false}>
+                  <Link href="/lesson/3#verb-need">
                     <p>{formatText(verbNeedSubtitle)}</p>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/lesson/3#verb-can" scroll={false}>
+                  <Link href="/lesson/3#verb-can">
                     <p>{formatText(verbCanSubtitle)}</p>
                   </Link>
                 </li>
