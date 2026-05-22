@@ -31,6 +31,7 @@ export const lesson6 = {
     {
       type: "lecture",
       slug: "lesson-6",
+      anchor: "lesson-6_car-rental",
       title: {
         ru: "АРЕНДА АВТОМОБИЛЯ",
         mkd: "ИЗНАJМУВАЊЕ АВТОМОБИЛ",

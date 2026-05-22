@@ -3,6 +3,7 @@ import { TablesProps } from "@/types";
 export const imperfect: TablesProps = {
   type: `grammar-imperfect-table`,
   slug: "lesson-6",
+  anchor: "imperfect",
   title: {
     ru: "ГРАММАТИКА",
     mkd: "ГРАМАТИКА",

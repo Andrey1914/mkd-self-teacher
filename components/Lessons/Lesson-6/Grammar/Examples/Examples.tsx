@@ -8,7 +8,7 @@ const { example1, example2, example3 } = examplesLesson6;
 export const Examples = () => {
   return (
     <>
-      <ExamplesTable data={example1} />
+      <ExamplesTable data={example1} id="adjective" />
       <ExamplesTable data={example2} />
       <ExamplesTable data={example3} />
     </>

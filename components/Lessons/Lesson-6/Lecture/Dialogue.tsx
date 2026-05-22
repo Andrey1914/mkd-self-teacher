@@ -5,7 +5,7 @@ import { dialogueBlock } from "@/prisma/lessons/dialogues/lesson-6";
 export const TripToOhrid = () => {
   return (
     <>
-      <DialogueBlock data={dialogueBlock} />
+      <DialogueBlock data={dialogueBlock} id="dialogue-6" />
     </>
   );
 };

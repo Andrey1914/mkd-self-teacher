@@ -21,6 +21,7 @@ export const Lecture = () => {
       <TripToOhrid />
       <Paragraph data={intro} />
       <GenericTable
+        id="vocabulary-6"
         lesson={vocabulary}
         classNames={{
           table: tableWithoutBorderClassName,

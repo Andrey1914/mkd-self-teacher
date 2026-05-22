@@ -5,6 +5,7 @@ import {
   ContentsLesson3,
   ContentsLesson4,
   ContentsLesson5,
+  ContentsLesson6,
 } from "@/components/contents";
 import styles from "./page.module.css";
 
@@ -24,6 +25,7 @@ export default function ContentsPage() {
         <ContentsLesson3 />
         <ContentsLesson4 />
         <ContentsLesson5 />
+        <ContentsLesson6 />
         <p style={{ color: "#9d9d9d", paddingTop: 15 }}>
           Работа над этой страницей продолжается...
         </p>

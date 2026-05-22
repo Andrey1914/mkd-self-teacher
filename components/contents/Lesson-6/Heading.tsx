@@ -1,11 +1,11 @@
 // import Link from "next/link";
-import { lesson1 } from "@/prisma/lessons/lesson-1";
+import { lesson6 } from "@/prisma/lessons/lesson-6";
 import { HeadingGenerator } from "@/components/contents/generator";
 
 export const Heading = () => {
-  return <HeadingGenerator lesson={lesson1} />;
-  // const title = lesson1.title as { ru: string; mkd: string };
-  // const section = lesson1.sections?.[0];
+  return <HeadingGenerator lesson={lesson6} />;
+  // const title = lesson6.title as { ru: string; mkd: string };
+  // const section = lesson6.sections?.[0];
   // const sectionTitle = section?.title as
   //   | { ru: string; mkd: string }
   //   | undefined;
@@ -14,13 +14,13 @@ export const Heading = () => {
   //   <>
   //     <ul style={{ listStyle: "none" }}>
   //       <li>
-  //         <Link href="/lesson/1">
+  //         <Link href="/lesson/6">
   //           <h2 style={{ textIndent: 0 }}>
   //             {title.ru} <span>{title.mkd}</span>
   //           </h2>
   //         </Link>
 
-  //         <Link href="/lesson/1#lesson-1_airport">
+  //         <Link href="/lesson/6#car_rental">
   //           <h3
   //             style={{
   //               display: "flex",
