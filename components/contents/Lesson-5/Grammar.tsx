@@ -22,20 +22,6 @@ export const Grammar = () => {
   const conjactionsSubtitle = sectionConjactions.subtitle as string;
   const conjactionsContentSubtitle = sectionConjactions.content
     .subtitle as string;
-  // const sectionVerbHaveHavnt = sectionExamples.example6;
-  // const sectionLetsConstruction = sectionExamples.example9;
-  // const sectionVerbFuture = sectionTitle.content.subtitle as string;
-  // const verbHaveHavntSubtitle = sectionVerbHaveHavnt.subtitle as string;
-  // const letsConstructionSubtitle = sectionLetsConstruction.subtitle as string;
-  // const prepositions = section.prepositions.subtitle as string;
-
-  // const title = sectionDefinitenessCategory?.title as {
-  //   ru: string;
-  //   mkd: string;
-  // };
-  // const subtitle = sectionDefinitenessCategory?.content?.intro
-  //   ?.subtitle as string[];
-  // const verbSubtitle = sectionVerb.subtitle as string;
 
   return (
     <>

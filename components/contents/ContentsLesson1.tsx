@@ -1,5 +1,5 @@
 import {
-  Lesson1Heading,
+  Heading,
   Lesson1LectureFirstPart,
   Lesson1LectureSecondPart,
   Lesson1Phonetics,
@@ -11,7 +11,7 @@ export const ContentsLesson1 = () => {
     <>
       <ul style={{ listStyle: "none" }}>
         <li>
-          <Lesson1Heading />
+          <Heading />
         </li>
         <li>
           <Lesson1LectureFirstPart />

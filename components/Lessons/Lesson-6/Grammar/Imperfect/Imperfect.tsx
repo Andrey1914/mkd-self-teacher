@@ -14,6 +14,7 @@ export const Imperfect = () => {
   return (
     <>
       <GenericTable
+        id="imperfect"
         data={imperfect}
         classNames={{
           table: tableClassName,
