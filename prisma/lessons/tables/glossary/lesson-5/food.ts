@@ -3,6 +3,7 @@ import { TablesProps } from "@/types";
 export const foodTable: TablesProps = {
   slug: "lesson-5",
   type: "food-table",
+  anchor: "food",
   title: {
     ru: `ЕДА`,
     mkd: `<span>ХРАНА</span>`,

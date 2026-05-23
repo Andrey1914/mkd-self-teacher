@@ -78,6 +78,7 @@ export default function lectureConfigs(): Record<string, LectureConfig> {
       lessonId: 2,
       mainAnchor: "lesson-2_taxi-hotel",
       title: lesson2.sections?.[0]?.subtitle as LocalizedText,
+      scroll: true,
       items: [
         {
           id: "dialogue",
@@ -111,7 +112,7 @@ export default function lectureConfigs(): Record<string, LectureConfig> {
         },
         {
           id: "occupation",
-          anchor: "occupation-3",
+          anchor: "occupation",
           text: glossary.occupationTable.title as LocalizedText,
           layout: "column",
         },
@@ -156,9 +157,9 @@ export default function lectureConfigs(): Record<string, LectureConfig> {
           layout: "column",
         },
         {
-          id: "occupation",
-          anchor: "occupation-5",
-          text: glossary.occupationTable.title as LocalizedText,
+          id: "food",
+          anchor: "food",
+          text: glossary.foodTable.title as LocalizedText,
           layout: "column",
         },
       ],

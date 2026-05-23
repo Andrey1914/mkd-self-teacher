@@ -2,6 +2,7 @@ import { VocabularyData } from "@/types";
 
 export const vocabulary: VocabularyData = {
   type: "vocabulary",
+  anchor: "vocabulary-6",
   title: {
     ru: `НОВЫЕ СЛОВА И ВЫРАЖЕНИЯ`,
     mkd: `<span>НОВИ ЗБОРОВИ И ИЗРАЗИ</span>`,

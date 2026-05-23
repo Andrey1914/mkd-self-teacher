@@ -3,7 +3,7 @@ import { TablesProps } from "@/types";
 export const occupationTable: TablesProps = {
   slug: "lesson-3",
   type: "occupation-table",
-  anchor: "occupation-3",
+  anchor: "occupation",
   title: {
     ru: `РОД ДЕЯТЕЛЬНОСТИ`,
     mkd: `ЗАНИМАЊЕ`,
