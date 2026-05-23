@@ -38,7 +38,7 @@ export const LectureGenerator = ({ config }: LectureGeneratorProps) => {
 
           const linkStyle: React.CSSProperties = {
             display: "flex",
-            gap: isColumn ? "4px" : "8px",
+            gap: isColumn ? "2px" : "8px",
             flexDirection: currentLayout,
             alignItems: isColumn ? "flex-start" : "baseline",
           };

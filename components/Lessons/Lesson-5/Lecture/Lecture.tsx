@@ -33,7 +33,7 @@ export const Lecture = () => {
         }}
       />
       <GenericTable
-        id="occupation-5"
+        id="food"
         data={foodTable}
         classNames={{
           table: tableWithoutBorderClassName,
