@@ -26,6 +26,7 @@ export const lesson10 = {
     {
       type: "lecture",
       slug: "lesson-10",
+      anchor: "lesson-10_health",
       title: {
         ru: "ЗДОРОВЬЕ",
         mkd: "ЗДРАВJЕ",

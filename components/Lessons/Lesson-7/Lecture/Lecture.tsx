@@ -21,6 +21,7 @@ export const Lecture = () => {
       <Apartments />
       <Paragraph data={intro} />
       <GenericTable
+        id="vocabulary-7"
         lesson={vocabulary}
         classNames={{
           table: tableWithoutBorderClassName,

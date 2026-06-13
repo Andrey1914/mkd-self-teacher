@@ -1,12 +1,6 @@
 import Link from "next/link";
-import {
-  ContentsLesson1,
-  ContentsLesson2,
-  ContentsLesson3,
-  ContentsLesson4,
-  ContentsLesson5,
-  ContentsLesson6,
-} from "@/components/contents";
+import { ContentsGenerator } from "@/components/contents/generator/ContentsGenerator";
+import { lessonConfig } from "@/components/contents/config";
 import styles from "./page.module.css";
 
 export default function ContentsPage() {
@@ -20,17 +14,13 @@ export default function ContentsPage() {
           <p style={{ textIndent: 0 }}>ГЛАВНАЯ</p>
         </Link>
 
-        <ContentsLesson1 />
-        <ContentsLesson2 />
-        <ContentsLesson3 />
-        <ContentsLesson4 />
-        <ContentsLesson5 />
-        <ContentsLesson6 />
+        <ContentsGenerator config={lessonConfig} splitAt={10} />
+
         <p style={{ color: "#9d9d9d", paddingTop: 15 }}>
           Работа над этой страницей продолжается...
         </p>
       </div>
-      <div className={column}>{/* <ContentsLesson1 /> */}</div>
+      <div className={column}></div>
     </div>
   );
 }

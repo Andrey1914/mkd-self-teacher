@@ -6,7 +6,7 @@ export const foodTable: TablesProps = {
   anchor: "food",
   title: {
     ru: `ЕДА`,
-    mkd: `<span>ХРАНА</span>`,
+    mkd: `ХРАНА`,
   },
   content: {
     subtitle: [`Македонский язык`, `Русский язык`],

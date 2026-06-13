@@ -3,9 +3,10 @@ import { TablesProps } from "@/types";
 export const clothingAccessories: TablesProps = {
   slug: "lesson-9",
   type: "clothing-accessories",
+  anchor: "clothing-accessories",
   title: {
     ru: `ОДЕЖДА И АКСЕССУАРЫ`,
-    mkd: `<span>ОБЛЕКА И АКСЕСОАРИ</span>`,
+    mkd: `ОБЛЕКА И АКСЕСОАРИ`,
   },
   content: {
     subtitle: [`Македонский язык`, `Русский язык`],

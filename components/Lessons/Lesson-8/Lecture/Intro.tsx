@@ -3,5 +3,11 @@ import { HeadingLesson } from "@/components/lesson/Heading";
 import { lesson8 } from "@/prisma/lessons/lesson-8";
 
 export const Intro = () => {
-  return <HeadingLesson lessonData={lesson8} TitleIconSrc="/road.webp" />;
+  return (
+    <HeadingLesson
+      lessonData={lesson8}
+      TitleIconSrc="/road.webp"
+      id="lesson-8_road"
+    />
+  );
 };

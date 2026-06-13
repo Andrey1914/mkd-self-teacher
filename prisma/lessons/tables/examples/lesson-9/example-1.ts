@@ -3,8 +3,9 @@ import { TablesProps } from "@/types";
 export const example1: TablesProps = {
   slug: "lesson-9",
   type: "example-1",
+  anchor: "conjunctions",
   subtitle:
-    "СОЮЗЫ <span>КАДЕ ШТО, КАКО ШТО, КОЛКУ ШТО, КАКОВ ШТО, КОЛКАВ ШТО</span>",
+    "СОЮЗЫ <span>КА*ДЕ ШТО, КА*КО ШТО, КО*ЛКУ ШТО, КА*КОВ ШТО, КО*ЛКАВ ШТО</span>",
   content: {
     text: `Союзы <span>ка*де што</span>, <span>ка*ко што</span>, <span>ко*лку што</span>, <span>ка*ков што</span> и <span>ко*лкав што</span>
     пишутся раздельно.`,

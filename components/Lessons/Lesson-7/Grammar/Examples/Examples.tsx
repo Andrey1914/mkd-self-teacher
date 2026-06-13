@@ -24,7 +24,7 @@ export const Examples = () => {
       <ExamplesTable
         data={example1}
         titleIconSrc="/grammar.webp"
-        // titleIconSize={62}
+        id="indirect-object"
       />
       <ExamplesTable data={example2} />
       <ExamplesTable data={example3} />

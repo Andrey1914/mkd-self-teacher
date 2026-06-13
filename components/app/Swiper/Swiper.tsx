@@ -70,17 +70,17 @@ export function LessonSwiper({
     return () => clearTimeout(timer);
   }, [activeIndex, lessons.length]);
 
-  useEffect(() => {
-    const saved = localStorage.getItem(`lesson-${activeLessonId}-index`);
+  // useEffect(() => {
+  //   const saved = localStorage.getItem(`lesson-${activeLessonId}-index`);
 
-    if (!saved) return;
+  //   if (!saved) return;
 
-    const index = parseInt(saved);
+  //   const index = parseInt(saved);
 
-    if (index >= 0 && index < lessons.length) {
-      swiperRef.current?.slideTo(index, 0);
-    }
-  }, [activeLessonId, lessons.length]);
+  //   if (index >= 0 && index < lessons.length) {
+  //     swiperRef.current?.slideTo(index, 0);
+  //   }
+  // }, [activeLessonId, lessons.length]);
 
   useEffect(() => {
     if (!swiperRef.current) return;
