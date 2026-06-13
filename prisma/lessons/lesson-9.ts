@@ -37,6 +37,7 @@ export const lesson9 = {
     {
       type: "lecture",
       slug: "lesson-9",
+      anchor: "lesson-9_shop",
       title: {
         ru: "МАГАЗИН",
         mkd: "ПРОДАВНИЦА",

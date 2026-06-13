@@ -7,6 +7,21 @@ interface LectureGeneratorProps {
 }
 
 export const LectureGenerator = ({ config }: LectureGeneratorProps) => {
+  if (!config) {
+    console.error(
+      "LectureGenerator: Свойство 'config' не передано или равно undefined!",
+    );
+    return (
+      <div
+        style={{
+          color: "orange",
+        }}
+      >
+        Секция лексики не найдена.
+      </div>
+    );
+  }
+
   const { lessonId, mainAnchor, title, items, scroll } = config;
 
   const formatMacedonian = (textValue: string, shouldFormat?: boolean) => {
@@ -26,7 +41,6 @@ export const LectureGenerator = ({ config }: LectureGeneratorProps) => {
         </h3>
       </Link>
 
-      {/* Список подпунктов */}
       <ul style={{ listStyle: "none", padding: 0 }}>
         {items.map((item) => {
           if (!item || !item.text) return null;
@@ -43,13 +57,7 @@ export const LectureGenerator = ({ config }: LectureGeneratorProps) => {
             alignItems: isColumn ? "flex-start" : "baseline",
           };
 
-          // Отступ для македонского текста:
-          // Если столбик — 20. Если строка и это НЕ диалог (произвольное правило) — 20px
-          const paddingLeftValue = isColumn
-            ? 20
-            : item.id === "dialogue"
-              ? 0
-              : 20;
+          const paddingLeftValue = isColumn ? 20 : 0;
 
           return (
             <li key={item.id}>

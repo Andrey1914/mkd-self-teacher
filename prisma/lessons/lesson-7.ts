@@ -42,6 +42,7 @@ export const lesson7 = {
     {
       type: "lecture",
       slug: "lesson-7",
+      anchor: "lesson-7_apartments",
       title: {
         ru: "АПАРТАМЕНТЫ",
         mkd: "АПАРТМАН",

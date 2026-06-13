@@ -50,6 +50,7 @@ export const lesson8 = {
     {
       type: "lecture",
       slug: "lesson-8",
+      anchor: "lesson-8_road",
       title: {
         ru: "ДОРОГА",
         mkd: "ПАТ",

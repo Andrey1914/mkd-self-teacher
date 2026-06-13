@@ -3,37 +3,68 @@ import { useEffect } from "react";
 export const useWindowScrollRestore = (lessonId: string) => {
   const MAX_AGE = 3 * 24 * 60 * 60 * 1000;
 
+  // useEffect(() => {
+  //   if (window.location.hash) {
+  //     const id = window.location.hash.replace("#", "");
+
+  //     // Вместо setInterval — один раз после полного рендера
+  //     const timer = setTimeout(() => {
+  //       const element = document.getElementById(id);
+  //       if (element) {
+  //         element.scrollIntoView({
+  //           behavior: "instant",
+  //           block: "start",
+  //         });
+  //       }
+  //     }, 100); // ждём 300мс для полного рендера Swiper
+
+  //     return () => clearTimeout(timer);
+  //   }
+
   useEffect(() => {
     history.scrollRestoration = "manual";
-
     if (window.location.hash) {
       const id = window.location.hash.replace("#", "");
 
-      let attempts = 0;
-
-      const interval = setInterval(() => {
+      // Вместо setInterval — один раз после полного рендера
+      const timer = setTimeout(() => {
         const element = document.getElementById(id);
-
         if (element) {
           element.scrollIntoView({
             behavior: "instant",
             block: "start",
           });
-
-          clearInterval(interval);
         }
+      }, 300); // ждём 300мс для полного рендера Swiper
 
-        attempts++;
-
-        if (attempts > 20) {
-          clearInterval(interval);
-        }
-      }, 100);
-
-      return () => clearInterval(interval);
+      return () => clearTimeout(timer);
     }
+
     // if (window.location.hash) {
-    //   return;
+    //   const id = window.location.hash.replace("#", "");
+
+    //   let attempts = 0;
+
+    //   const interval = setInterval(() => {
+    //     const element = document.getElementById(id);
+
+    //     if (element) {
+    //       element.scrollIntoView({
+    //         behavior: "instant",
+    //         block: "start",
+    //       });
+
+    //       clearInterval(interval);
+    //     }
+
+    //     attempts++;
+
+    //     if (attempts > 20) {
+    //       clearInterval(interval);
+    //     }
+    //   }, 100);
+
+    //   return () => clearInterval(interval);
     // }
 
     const saved = localStorage.getItem(`lesson-${lessonId}-window`);

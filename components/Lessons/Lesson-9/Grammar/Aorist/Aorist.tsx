@@ -14,6 +14,7 @@ export const Aorist = () => {
   return (
     <>
       <GenericTable
+        id="aorist"
         data={aorist}
         classNames={{
           table: tableClassName,

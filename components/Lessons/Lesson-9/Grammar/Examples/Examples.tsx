@@ -11,7 +11,7 @@ const { payAttention1 } = payAttentionsLesson9;
 export const Examples = () => {
   return (
     <>
-      <ExamplesTable data={example1} />
+      <ExamplesTable data={example1} id="conjunctions" />
       <PayAttentionBlock data={payAttention1} />
     </>
   );

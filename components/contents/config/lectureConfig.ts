@@ -27,10 +27,27 @@ import { lesson6 } from "@/prisma/lessons/lesson-6";
 import { dialogueBlock as dialogue6 } from "@/prisma/lessons/dialogues/lesson-6";
 import { vocabulary as vocabulary6Block } from "@/prisma/lessons/vocabulary/lesson-6";
 
+import { lesson7 } from "@/prisma/lessons/lesson-7";
+import { dialogueBlock as dialogue7 } from "@/prisma/lessons/dialogues/lesson-7";
+import { vocabulary as vocabulary7Block } from "@/prisma/lessons/vocabulary/lesson-7";
+
+import { lesson8 } from "@/prisma/lessons/lesson-8";
+import { dialogueBlock as dialogue8 } from "@/prisma/lessons/dialogues/lesson-8";
+import { vocabulary as vocabulary8Block } from "@/prisma/lessons/vocabulary/lesson-8";
+
+import { lesson9 } from "@/prisma/lessons/lesson-9";
+import { dialogueBlock as dialogue9 } from "@/prisma/lessons/dialogues/lesson-9";
+import { vocabulary as vocabulary9Block } from "@/prisma/lessons/vocabulary/lesson-9";
+
+import { lesson10 } from "@/prisma/lessons/lesson-10";
+import { dialogueBlock as dialogue10 } from "@/prisma/lessons/dialogues/lesson-10";
+import { vocabulary as vocabulary10Block } from "@/prisma/lessons/vocabulary/lesson-10";
+
 export default function lectureConfigs(): Record<string, LectureConfig> {
   return {
     "1_part1": {
       lessonId: 1,
+      lessonData: lesson1,
       mainAnchor: "lesson-1_airport",
       title: lesson1.sections?.[0]?.subtitle as LocalizedText,
       scroll: true,
@@ -76,6 +93,7 @@ export default function lectureConfigs(): Record<string, LectureConfig> {
 
     "2": {
       lessonId: 2,
+      lessonData: lesson2,
       mainAnchor: "lesson-2_taxi-hotel",
       title: lesson2.sections?.[0]?.subtitle as LocalizedText,
       scroll: true,
@@ -96,8 +114,10 @@ export default function lectureConfigs(): Record<string, LectureConfig> {
 
     "3": {
       lessonId: 3,
+      lessonData: lesson3,
       mainAnchor: "lesson-3_acquaintance",
       title: lesson3.sections?.[0]?.subtitle as LocalizedText,
+      scroll: true,
       items: [
         {
           id: "dialogue",
@@ -114,15 +134,17 @@ export default function lectureConfigs(): Record<string, LectureConfig> {
           id: "occupation",
           anchor: "occupation",
           text: glossary.occupationTable.title as LocalizedText,
-          layout: "column",
+          layout: "row",
         },
       ],
     },
 
     "4": {
       lessonId: 4,
+      lessonData: lesson4,
       mainAnchor: "lesson-4_exploring-the-city",
       title: lesson4.sections?.[0]?.subtitle as LocalizedText,
+      scroll: true,
       items: [
         {
           id: "dialogue",
@@ -141,8 +163,10 @@ export default function lectureConfigs(): Record<string, LectureConfig> {
 
     "5": {
       lessonId: 5,
+      lessonData: lesson5,
       mainAnchor: "lesson-5_restaurant",
       title: lesson5.sections?.[0]?.subtitle as LocalizedText,
+      scroll: true,
       items: [
         {
           id: "dialogue",
@@ -160,15 +184,17 @@ export default function lectureConfigs(): Record<string, LectureConfig> {
           id: "food",
           anchor: "food",
           text: glossary.foodTable.title as LocalizedText,
-          layout: "column",
+          layout: "row",
         },
       ],
     },
 
     "6": {
       lessonId: 6,
+      lessonData: lesson6,
       mainAnchor: "lesson-6_car-rental",
       title: lesson6.sections?.[0]?.subtitle as LocalizedText,
+      scroll: true,
       items: [
         {
           id: "dialogue",
@@ -181,6 +207,104 @@ export default function lectureConfigs(): Record<string, LectureConfig> {
           text: vocabulary6Block.title as LocalizedText,
           formatMkd: true,
           layout: "column",
+        },
+      ],
+    },
+    "7": {
+      lessonId: 7,
+      lessonData: lesson7,
+      mainAnchor: "lesson-7_apartments",
+      title: lesson7.sections?.[0]?.subtitle as LocalizedText,
+      scroll: true,
+      items: [
+        {
+          id: "dialogue",
+          anchor: "dialogue-7",
+          text: dialogue7.sections?.[0]?.subtitle as LocalizedText,
+        },
+        {
+          id: "vocabulary",
+          anchor: "vocabulary-7",
+          text: vocabulary7Block.title as LocalizedText,
+          formatMkd: true,
+          layout: "column",
+        },
+      ],
+    },
+    "8": {
+      lessonId: 8,
+      lessonData: lesson8,
+      mainAnchor: "lesson-8_road",
+      title: lesson8.sections?.[0]?.subtitle as LocalizedText,
+      scroll: true,
+      items: [
+        {
+          id: "dialogue",
+          anchor: "dialogue-8",
+          text: dialogue8.sections?.[0]?.subtitle as LocalizedText,
+        },
+        {
+          id: "vocabulary",
+          anchor: "vocabulary-8",
+          text: vocabulary8Block.title as LocalizedText,
+          formatMkd: true,
+          layout: "column",
+        },
+      ],
+    },
+    "9": {
+      lessonId: 9,
+      lessonData: lesson9,
+      mainAnchor: "lesson-9_shop",
+      title: lesson9.sections?.[0]?.subtitle as LocalizedText,
+      scroll: true,
+      items: [
+        {
+          id: "dialogue",
+          anchor: "dialogue-9",
+          text: dialogue9.sections?.[0]?.subtitle as LocalizedText,
+        },
+        {
+          id: "vocabulary",
+          anchor: "vocabulary-9",
+          text: vocabulary9Block.title as LocalizedText,
+          formatMkd: true,
+          layout: "column",
+        },
+        {
+          id: "clothing-accessories",
+          anchor: "clothing-accessories",
+          text: glossary.clothingAccessories.title as LocalizedText,
+          formatMkd: true,
+          layout: "column",
+        },
+      ],
+    },
+    "10": {
+      lessonId: 10,
+      lessonData: lesson10,
+      mainAnchor: "lesson-10_health",
+      title: lesson10.sections?.[0]?.subtitle as LocalizedText,
+      scroll: true,
+      items: [
+        {
+          id: "dialogue",
+          anchor: "dialogue-10",
+          text: dialogue10.sections?.[0]?.subtitle as LocalizedText,
+        },
+        {
+          id: "vocabulary",
+          anchor: "vocabulary-10",
+          text: vocabulary10Block.title as LocalizedText,
+          formatMkd: true,
+          layout: "column",
+        },
+        {
+          id: "health",
+          anchor: "health",
+          text: glossary.health.title as LocalizedText,
+          formatMkd: true,
+          layout: "row",
         },
       ],
     },

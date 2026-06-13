@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useMemo, startTransition } from "react";
+import { useState, useEffect, useMemo, startTransition, useRef } from "react";
 import { useRouter } from "next/navigation";
 import type { Swiper as SwiperType } from "swiper";
 
@@ -42,6 +42,7 @@ export function LessonPageContent({
     const lessonId = lessons[index].id;
 
     router.push(`/lesson/${lessonId}`);
+
     setActiveIndex(index);
 
     localStorage.setItem(`lesson-${lessonId}-index`, index.toString());
@@ -51,22 +52,58 @@ export function LessonPageContent({
     }, 400);
   };
 
+  const activeIndexRef = useRef(activeIndex);
+  activeIndexRef.current = activeIndex;
+
   const onSlideChange = (swiper: SwiperType) => {
     const index = swiper.activeIndex;
+    if (index === activeIndexRef.current) return;
     const lessonId = lessons[index].id;
 
     startTransition(() => {
       setActiveIndex(index);
-
       router.push(`/lesson/${lessonId}`);
-
       localStorage.setItem(`lesson-${lessonId}-index`, index.toString());
     });
   };
 
   useEffect(() => {
+    const hash = window.location.hash;
+    if (!hash) return;
+
+    const id = hash.replace("#", "");
+
+    const scrollToAnchor = () => {
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ block: "start", behavior: "instant" });
+        return true;
+      }
+      return false;
+    };
+
+    if (scrollToAnchor()) return;
+
+    const observer = new MutationObserver(() => {
+      if (scrollToAnchor()) {
+        observer.disconnect();
+      }
+    });
+
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    const timeout = setTimeout(() => observer.disconnect(), 300);
+
+    return () => {
+      observer.disconnect();
+      clearTimeout(timeout);
+    };
+  }, []);
+
+  useEffect(() => {
     if (activeIndex !== initialIndex) {
       const lessonId = lessons[activeIndex].id;
+
       window.history.replaceState(null, "", `/lesson/${lessonId}`);
     }
   }, [activeIndex, lessons, initialIndex]);

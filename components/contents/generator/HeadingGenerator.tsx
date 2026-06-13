@@ -6,6 +6,20 @@ interface LessonHeadingProps {
 }
 
 export const HeadingGenerator = ({ lesson }: LessonHeadingProps) => {
+  if (!lesson) {
+    console.error(
+      "HeadingGenerator: Свойство 'lesson' не передано или равно undefined!",
+    );
+    return (
+      <div
+        style={{
+          color: "orange",
+        }}
+      >
+        Секция заголовков не найдена.
+      </div>
+    );
+  }
   const { numericId, title, sections } = lesson;
 
   const firstSection = sections?.[0];

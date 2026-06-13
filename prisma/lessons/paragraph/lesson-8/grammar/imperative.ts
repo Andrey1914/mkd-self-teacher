@@ -3,6 +3,7 @@ import { ParagraphSectionsProps } from "@/types";
 export const imperative: ParagraphSectionsProps = {
   type: "grammar-imperative",
   slug: "lesson-8",
+  anchor: "imperative",
   title: {
     ru: "ГРАММАТИКА",
     mkd: "ГРАМАТИКА",
