@@ -4,6 +4,8 @@ import { formatText } from "@/utils";
 import { EMPTY_CELL, MERGE_V, MERGE_H, ETC } from "@/constants";
 import { styles } from "./styles";
 
+type TableRow = Record<string, unknown>;
+
 export const GenericTable = ({
   data,
   lesson,
@@ -11,10 +13,9 @@ export const GenericTable = ({
   titleIconSrc,
   id,
 }: GenericTableProps) => {
-  const rows =
-    data?.content.rows ||
+  const rows = (data?.content.rows ||
     data?.content.words ||
-    lesson?.sections?.[0].content.words;
+    lesson?.sections?.[0].content.words) as TableRow[];
   const headers =
     data?.content?.subtitle || lesson?.sections?.[0].content.subtitle;
   const title = data?.title || lesson?.title;
@@ -34,9 +35,26 @@ export const GenericTable = ({
   const renderedMap: boolean[][] = flatRows.map(() => []);
 
   const firstRow = rows[0] as Record<string, unknown>;
-  const cellToHeaderMap = Object.values(firstRow).flatMap((val, idx) =>
-    Array.isArray(val) ? val.map(() => idx) : [idx],
-  );
+
+  const flatColumnCount = getFlatCells(firstRow).length;
+
+  const isOneToOne =
+    Array.isArray(headers) && headers.length === flatColumnCount;
+
+  const cellToHeaderMap = (() => {
+    if (isOneToOne) {
+      let idx = 0;
+      return Object.values(firstRow).flatMap((val) => {
+        if (Array.isArray(val)) {
+          return val.map(() => idx++);
+        }
+        return [idx++];
+      });
+    }
+    return Object.values(firstRow).flatMap((val, idx) =>
+      Array.isArray(val) ? val.map(() => idx) : [idx],
+    );
+  })();
 
   return (
     <div style={{ padding: "1rem 0 2rem 0", overflowX: "auto" }} id={id}>
@@ -55,9 +73,12 @@ export const GenericTable = ({
                 const sampleRow = rows[0] as Record<string, unknown>;
                 const key = Object.keys(sampleRow)[index];
                 const sampleValue = sampleRow[key];
-                const colSpan = Array.isArray(sampleValue)
-                  ? sampleValue.length
-                  : 1;
+
+                const colSpan = isOneToOne
+                  ? 1
+                  : Array.isArray(sampleValue)
+                    ? sampleValue.length
+                    : 1;
 
                 return (
                   <th key={index} className={thClassName} colSpan={colSpan}>

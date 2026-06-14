@@ -2,6 +2,7 @@ import { DialogueBlockProps } from "@/types";
 
 export const dialogueBlock: DialogueBlockProps = {
   slug: `lesson-15`,
+  anchor: `dialogue-15`,
   sections: [
     {
       type: "lecture",

@@ -20,6 +20,7 @@ export const Lecture = () => {
       <Intro />
       <Dialogue />
       <GenericTable
+        id="vocabulary-15"
         lesson={vocabulary}
         classNames={{
           table: tableWithoutBorderClassName,

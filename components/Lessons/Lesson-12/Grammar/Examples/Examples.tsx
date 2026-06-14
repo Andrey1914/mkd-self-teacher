@@ -20,9 +20,13 @@ const { perfectLForm } = grammarLesson12;
 export const Examples = () => {
   return (
     <>
-      <ExamplesTable data={example1} titleIconSrc="/grammar.webp" />
-      <ExamplesTable data={example2} />
-      <ExamplesTable data={example3} />
+      <ExamplesTable
+        data={example1}
+        titleIconSrc="/grammar.webp"
+        id="vocative-form"
+      />
+      <ExamplesTable data={example2} id="participle" />
+      <ExamplesTable data={example3} id="perfect" />
       <GenericTable
         data={perfect}
         classNames={{

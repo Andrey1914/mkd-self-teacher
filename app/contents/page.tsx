@@ -14,11 +14,15 @@ export default function ContentsPage() {
           <p style={{ textIndent: 0 }}>ГЛАВНАЯ</p>
         </Link>
 
-        <ContentsGenerator config={lessonConfig} splitAt={10} />
-
-        <p style={{ color: "#9d9d9d", paddingTop: 15 }}>
-          Работа над этой страницей продолжается...
-        </p>
+        <ContentsGenerator
+          config={lessonConfig}
+          splitAt={9}
+          footer={
+            <p style={{ color: "#9d9d9d", paddingTop: 15 }}>
+              © 2026 Macedonian Self Teacher.
+            </p>
+          }
+        />
       </div>
       <div className={column}></div>
     </div>

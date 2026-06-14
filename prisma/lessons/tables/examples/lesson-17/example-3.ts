@@ -3,6 +3,7 @@ import { TablesProps } from "@/types";
 export const example3: TablesProps = {
   slug: "lesson-17",
   type: "example-3",
+  anchor: "about-the-prefix-po",
   subtitle: "О ПРИСТАВКЕ <span>ПО</span>",
   content: {
     text: `У приставки <span>по-</span> в составе македонских прилагательных есть интересное значение, которого нет в русском языке. Это значение 

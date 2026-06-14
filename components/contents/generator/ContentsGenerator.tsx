@@ -12,11 +12,13 @@ import { styles } from "../styles";
 interface ContentsGeneratorProps {
   config: LessonConfig[];
   splitAt?: number;
+  footer?: React.ReactNode;
 }
 
 export const ContentsGenerator = ({
   config,
-  splitAt = 10,
+  splitAt = 9,
+  footer,
 }: ContentsGeneratorProps) => {
   const lectures = lectureConfigs();
   const grammars = grammarConfigs();
@@ -79,14 +81,31 @@ export const ContentsGenerator = ({
 
   const firstColumn = config.filter((lesson) => lesson.lessonId < splitAt);
   const secondColumn = config.filter((lesson) => lesson.lessonId >= splitAt);
+  const lastLessonId = Math.max(...config.map((l) => l.lessonId));
 
   return (
     <>
-      <div className={mobileOnly}>{config.map(renderLesson)}</div>
+      <div className={mobileOnly}>
+        {config.map((lesson) => (
+          <div key={lesson.lessonId}>
+            {renderLesson(lesson)}
+            {lesson.lessonId === lastLessonId && footer}
+          </div>
+        ))}
+      </div>
 
       <div className={desktopColumns}>
-        <div className={columnLeft}>{firstColumn.map(renderLesson)}</div>
-        <div className={columnRight}>{secondColumn.map(renderLesson)}</div>
+        <div className={columnLeft}>
+          {firstColumn.map((lesson) => renderLesson(lesson))}
+        </div>
+        <div className={columnRight}>
+          {secondColumn.map((lesson) => (
+            <div key={lesson.lessonId}>
+              {renderLesson(lesson)}
+              {lesson.lessonId === lastLessonId && footer}
+            </div>
+          ))}
+        </div>
       </div>
     </>
   );

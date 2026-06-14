@@ -1,8 +1,9 @@
 import { TablesProps } from "@/types";
 
 export const example5: TablesProps = {
-  slug: "lesson-14",
+  slug: "lesson-15",
   type: "example-5",
+  anchor: "comparative-clauses",
   subtitle: `ПРИДАТОЧНЫЕ СРАВНЕНИЯ`,
   content: {
     text: `Придаточные предложения со значением сравнения вводятся союзами <span>ка*ко да</span>, <span>не*баре</span>, 

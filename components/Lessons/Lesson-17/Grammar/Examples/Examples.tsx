@@ -13,7 +13,7 @@ import {
 } from "@/components/lesson/Tables/rules";
 
 const { lesson17: examplesLesson17 } = examples;
-const { ruleAfterExamples } = grammarLesson17;
+const { ruleAfterExamples, retelling } = grammarLesson17;
 const { example1, example2, example3, example4 } = examplesLesson17;
 
 const { retellingForms } = grammarTables;
@@ -21,9 +21,14 @@ const { retellingForms } = grammarTables;
 export const Examples = () => {
   return (
     <>
-      <ExamplesTable data={example1} titleIconSrc="/grammar.webp" />
+      <ExamplesTable
+        data={example1}
+        titleIconSrc="/grammar.webp"
+        id="the-construction-there-is/is-not"
+      />
       <ExamplesTable data={example2} />
       <Paragraph data={ruleAfterExamples} />
+      <Paragraph data={retelling} id="retelling" />
       <GenericTable
         data={retellingForms}
         classNames={{
@@ -34,7 +39,7 @@ export const Examples = () => {
           text: textCenterClassName,
         }}
       />
-      <ExamplesTable data={example3} />
+      <ExamplesTable data={example3} id="about-the-prefix-po" />
       <ExamplesTable data={example4} />
     </>
   );

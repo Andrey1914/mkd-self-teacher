@@ -5,7 +5,7 @@ import { examples, grammarTables } from "@/prisma/lessons/tables";
 import { exercisesLesson17 } from "@/prisma/lessons/exercises";
 
 const { ruleAfterVocabulary } = lectureLesson17;
-const { ruleAfterExamples } = grammarLesson17;
+const { ruleAfterExamples, retelling } = grammarLesson17;
 const { retellingForms } = grammarTables;
 const { lesson17: examplesLesson17 } = examples;
 const { example1, example2, example3, example4 } = examplesLesson17;
@@ -24,6 +24,7 @@ export const lesson17 = {
     {
       type: "lecture",
       slug: "lesson-17",
+      anchor: "lesson-17_farewell",
       title: {
         ru: "ПРОЩАНИЕ",
         mkd: "ЗБОГУВАЊЕ",
@@ -35,7 +36,7 @@ export const lesson17 = {
     },
   ],
   vocabulary: [vocabulary],
-  paragraph: [ruleAfterVocabulary, ruleAfterExamples],
+  paragraph: [ruleAfterVocabulary, ruleAfterExamples, retelling],
   dialogues: [dialogueBlock],
   tables: [
     retellingForms,

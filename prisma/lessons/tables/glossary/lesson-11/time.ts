@@ -3,6 +3,7 @@ import { TablesProps } from "@/types";
 export const time: TablesProps = {
   slug: "lesson-11",
   type: "time",
+  anchor: "time",
   title: {
     ru: `ВРЕМЯ`,
     mkd: `<span>ВРЕМЕ</span>`,

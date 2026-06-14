@@ -34,6 +34,7 @@ export const lesson12 = {
     {
       type: "lecture",
       slug: "lesson-12",
+      anchor: "lesson-12_unexpected-meeting",
       title: {
         ru: "НЕОЖИДАННАЯ ВСТРЕЧА",
         mkd: "НЕОЧЕКУВАНА СРЕДБА",

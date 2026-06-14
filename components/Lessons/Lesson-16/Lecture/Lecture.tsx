@@ -23,6 +23,7 @@ export const Lecture = () => {
       <Intro />
       <Dialogue />
       <GenericTable
+        id="vocabulary-16"
         lesson={vocabulary}
         classNames={{
           table: tableWithoutBorderClassName,
@@ -32,6 +33,7 @@ export const Lecture = () => {
       />
       <Paragraph data={ruleAfterVocabulary} />
       <GenericTable
+        id="music"
         data={music}
         classNames={{
           table: tableWithoutBorderClassName,

@@ -3,6 +3,7 @@ import { TablesProps } from "@/types";
 export const family: TablesProps = {
   slug: "lesson-12",
   type: "family",
+  anchor: "family",
   title: {
     ru: `СЕМЬЯ`,
     mkd: `<span>ФАМИЛИJA</span>`,

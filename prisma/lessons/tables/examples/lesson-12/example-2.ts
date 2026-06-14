@@ -3,6 +3,7 @@ import { TablesProps } from "@/types";
 export const example2: TablesProps = {
   slug: "lesson-12",
   type: "example-2",
+  anchor: "participle",
   subtitle: "ПРИЧАСТИЕ",
   content: {
     text: `От глаголов совершенного вида, которые в аористе имеют основу на <span>-а</span>, причастия образуются с помощью суффиксов

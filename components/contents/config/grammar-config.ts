@@ -7,6 +7,8 @@ import {
   grammarLesson4,
   grammarLesson8,
   grammarLesson10,
+  grammarLesson14,
+  grammarLesson17,
   lectureLesson5,
 } from "@/prisma/lessons/paragraph";
 import {
@@ -334,16 +336,141 @@ export default function grammarConfigs(): Record<string, GrammarConfig> {
       title: grammarLesson10.aorist.title as LocalizedText,
       items: [
         {
-          id: "aorist-sub",
+          id: "aorist-continued-sub",
           anchor: "aorist-continued",
           text: grammarLesson10.aorist.subtitle as string,
         },
-        // {
-        //   id: "conjunctions",
-        //   anchor: "conjunctions",
-        //   text: examples.lesson9.example1.subtitle as string,
-        //   formatText: true,
-        // },
+      ],
+    },
+    "11": {
+      lessonId: 11,
+      mainAnchor: "expression-of-temporal-relations",
+      title: examples.lesson11.example1.title as LocalizedText,
+      items: [
+        {
+          id: "expression-of-temporal-relations-sub",
+          anchor: "expression-of-temporal-relations",
+          text: examples.lesson11.example1.subtitle as string,
+        },
+      ],
+    },
+    "12": {
+      lessonId: 12,
+      mainAnchor: "vocative-form",
+      title: examples.lesson12.example1.title as LocalizedText,
+      items: [
+        {
+          id: "vocative-form-sub",
+          anchor: "vocative-form",
+          text: examples.lesson12.example1.subtitle as string,
+        },
+        {
+          id: "participle",
+          anchor: "participle",
+          text: examples.lesson12.example2.subtitle as string,
+        },
+        {
+          id: "perfect",
+          anchor: "perfect",
+          text: examples.lesson12.example3.subtitle as string,
+        },
+      ],
+    },
+    "13": {
+      lessonId: 13,
+      mainAnchor: "perfect-and-forms-of-retelling",
+      title: examples.lesson13.example1.title as LocalizedText,
+      items: [
+        {
+          id: "perfect-and-forms-of-retelling-sub",
+          anchor: "perfect-and-forms-of-retelling",
+          text: examples.lesson13.example1.subtitle as string,
+        },
+        {
+          id: "bi-construction",
+          anchor: "bi-construction",
+          text: examples.lesson13.example3.subtitle as string,
+        },
+        {
+          id: "concessive-clauses",
+          anchor: "concessive-clauses",
+          text: examples.lesson13.example5.subtitle as string,
+        },
+      ],
+    },
+    "14": {
+      lessonId: 14,
+      mainAnchor: "future-in-the-past",
+      title: examples.lesson14.example1.title as LocalizedText,
+      items: [
+        {
+          id: "future-in-the-past-sub",
+          anchor: "future-in-the-past",
+          text: examples.lesson14.example1.subtitle as string,
+        },
+        {
+          id: "indefinite-pronouns",
+          anchor: "indefinite-pronouns",
+          text: grammarLesson14.indefinitePronouns.subtitle as string,
+        },
+      ],
+    },
+    "15": {
+      lessonId: 15,
+      mainAnchor: "pluperfect",
+      title: examples.lesson15.example1.title as LocalizedText,
+      items: [
+        {
+          id: "pluperfect-sub",
+          anchor: "pluperfect",
+          text: examples.lesson15.example1.subtitle as string,
+        },
+        {
+          id: "comparative-clauses",
+          anchor: "comparative-clauses",
+          text: examples.lesson15.example5.subtitle as string,
+        },
+      ],
+    },
+    "16": {
+      lessonId: 16,
+      mainAnchor: "participle",
+      title: examples.lesson16.example1.title as LocalizedText,
+      items: [
+        {
+          id: "participle-sub",
+          anchor: "participle",
+          text: examples.lesson16.example1.subtitle as string,
+        },
+        {
+          id: "restrictive-clauses",
+          anchor: "restrictive-clauses",
+          text: examples.lesson16.example4.subtitle as string,
+        },
+      ],
+    },
+    "17": {
+      lessonId: 17,
+      mainAnchor: "the-construction-there-is/is-not",
+      title: examples.lesson17.example1.title as LocalizedText,
+      items: [
+        {
+          id: "the-construction-there-is/is-not-sub",
+          anchor: "the-construction-there-is/is-not",
+          text: examples.lesson17.example1.subtitle as string,
+          formatText: true,
+        },
+        {
+          id: "retelling",
+          anchor: "retelling",
+          text: grammarLesson17.retelling.subtitle as string,
+        },
+        {
+          id: "about-the-prefix-po",
+          anchor: "about-the-prefix-po",
+          text: examples.lesson17.example3.subtitle as string,
+          formatText: true,
+        },
       ],
     },
   };

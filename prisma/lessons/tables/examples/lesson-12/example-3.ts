@@ -3,6 +3,7 @@ import { TablesProps } from "@/types";
 export const example3: TablesProps = {
   slug: "lesson-12",
   type: "example-3",
+  anchor: "perfect",
   subtitle: "ПЕРФЕКТ",
   content: {
     text: `Перфект — это прошедшее время, которое используется, когда действие в прошлом или его результаты актуальны для момента речи. 

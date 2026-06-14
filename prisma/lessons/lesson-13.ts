@@ -33,6 +33,7 @@ export const lesson13 = {
     {
       type: "lecture",
       slug: "lesson-13",
+      anchor: "lesson-13_nastya-loses-her-wallet",
       title: {
         ru: "НАТАША ТЕРЯЕТ КОШЕЛЁК",
         mkd: "НАТАША ГУБИ ПАРИЧНИК",

@@ -19,7 +19,11 @@ import {
 export const Examples = () => {
   return (
     <>
-      <ExamplesTable data={example1} titleIconSrc="/grammar.webp" />
+      <ExamplesTable
+        data={example1}
+        titleIconSrc="/grammar.webp"
+        id="pluperfect"
+      />
       <ExamplesTable data={example2} />
       <GenericTable
         data={pluperfectTable}
@@ -32,7 +36,7 @@ export const Examples = () => {
       <ExamplesTable data={example3} />
       <ExamplesTable data={example4} />
       <Paragraph data={pluperfect} />
-      <ExamplesTable data={example5} />
+      <ExamplesTable data={example5} id="comparative-clauses" />
     </>
   );
 };

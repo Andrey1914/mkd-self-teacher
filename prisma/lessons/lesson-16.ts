@@ -32,6 +32,7 @@ export const lesson16 = {
     {
       type: "lecture",
       slug: "lesson-16",
+      anchor: "lesson-16_music",
       title: {
         ru: "МУЗЫКА",
         mkd: "МУЗИКА",
