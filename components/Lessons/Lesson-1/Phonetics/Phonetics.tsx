@@ -19,10 +19,10 @@ export const Phonetics = () => {
       />
       <AlphabetTable />
       <Paragraph data={phonetics} part="text" />
-      <Paragraph data={features} id="lesson-1_features" />
-      <Paragraph data={accent} id="lesson-1_accent" />
-      <Paragraph data={exceptions} id="lesson-1_exceptions" />
-      <Paragraph data={spelling} id="lesson-1_spelling" />
+      <Paragraph data={features} id="features" />
+      <Paragraph data={accent} id="accent" />
+      <Paragraph data={exceptions} id="exceptions" />
+      <Paragraph data={spelling} id="spelling" />
       <StaticExercise data={exercise1} />
     </>
   );

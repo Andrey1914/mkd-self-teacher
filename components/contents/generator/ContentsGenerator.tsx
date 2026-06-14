@@ -2,8 +2,9 @@ import {
   HeadingGenerator,
   LectureGenerator,
   GrammarGenerator,
+  PhoneticsGenerator,
 } from "@/components/contents/generator";
-import { lectureConfigs, grammarConfigs } from "../config";
+import { lectureConfigs, grammarConfigs, phoneticsConfigs } from "../config";
 import { LessonConfig, CustomBlock, LessonBlockConfig } from "../types";
 
 import { styles } from "../styles";
@@ -19,17 +20,23 @@ export const ContentsGenerator = ({
 }: ContentsGeneratorProps) => {
   const lectures = lectureConfigs();
   const grammars = grammarConfigs();
+  const phonetics = phoneticsConfigs();
 
   const { mobileOnly, desktopColumns, columnLeft, columnRight } =
     styles.contentGeneratorStyles;
 
   const renderBlocks: Record<
-    "lecture" | "grammar" | "custom",
+    "lecture" | "grammar" | "custom" | "phonetics",
     (block: LessonBlockConfig) => React.ReactNode
   > = {
     lecture: (block) => {
       const targetConfig = lectures[(block as { configKey: string }).configKey];
       return targetConfig ? <LectureGenerator config={targetConfig} /> : null;
+    },
+    phonetics: (block) => {
+      const targetConfig =
+        phonetics[(block as { configKey: string }).configKey];
+      return targetConfig ? <PhoneticsGenerator config={targetConfig} /> : null;
     },
     grammar: (block) => {
       const targetConfig = grammars[(block as { configKey: string }).configKey];

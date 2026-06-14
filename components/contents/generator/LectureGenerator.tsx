@@ -8,18 +8,8 @@ interface LectureGeneratorProps {
 
 export const LectureGenerator = ({ config }: LectureGeneratorProps) => {
   if (!config) {
-    console.error(
-      "LectureGenerator: Свойство 'config' не передано или равно undefined!",
-    );
-    return (
-      <div
-        style={{
-          color: "orange",
-        }}
-      >
-        Секция лексики не найдена.
-      </div>
-    );
+    console.error("LectureGenerator: 'config' не передан!");
+    return <div style={{ color: "orange" }}>Секция лексики не найдена.</div>;
   }
 
   const { lessonId, mainAnchor, title, items, scroll } = config;

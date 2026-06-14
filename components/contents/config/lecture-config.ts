@@ -1,47 +1,72 @@
 import type { LectureConfig, LocalizedText } from "@/components/contents/types";
 
-import { lesson1 } from "@/prisma/lessons/lesson-1";
 import { lectureLesson1 } from "@/prisma/lessons/paragraph";
-import { dialogueBlock as dialogue1 } from "@/prisma/lessons/dialogues/lesson-1";
-import { vocabulary1, vocabulary2 } from "@/prisma/lessons/vocabulary/lesson-1";
 import { countriesNationalitiesTable } from "@/prisma/lessons/tables";
-
-import { lesson2 } from "@/prisma/lessons/lesson-2";
-import { dialogueBlock as dialogue2 } from "@/prisma/lessons/dialogues/lesson-2";
-import { vocabulary as vocabulary2Block } from "@/prisma/lessons/vocabulary/lesson-2";
-
-import { lesson3 } from "@/prisma/lessons/lesson-3";
-import { dialogueBlock as dialogue3 } from "@/prisma/lessons/dialogues/lesson-3";
-import { vocabulary as vocabulary3Block } from "@/prisma/lessons/vocabulary/lesson-3";
 import { glossary } from "@/prisma/lessons/tables";
+import { lessons } from "@/prisma/lessons";
+import { dialogues } from "@/prisma/lessons/dialogues";
+import { vocabularies } from "@/prisma/lessons/vocabulary";
 
-import { lesson4 } from "@/prisma/lessons/lesson-4";
-import { dialogueBlock as dialogue4 } from "@/prisma/lessons/dialogues/lesson-4";
-import { vocabulary as vocabulary4Block } from "@/prisma/lessons/vocabulary/lesson-4";
+const [
+  lesson1,
+  lesson2,
+  lesson3,
+  lesson4,
+  lesson5,
+  lesson6,
+  lesson7,
+  lesson8,
+  lesson9,
+  lesson10,
+  lesson11,
+  lesson12,
+  lesson13,
+  lesson14,
+  lesson15,
+  lesson16,
+  lesson17,
+] = lessons;
 
-import { lesson5 } from "@/prisma/lessons/lesson-5";
-import { dialogueBlock as dialogue5 } from "@/prisma/lessons/dialogues/lesson-5";
-import { vocabulary as vocabulary5Block } from "@/prisma/lessons/vocabulary/lesson-5";
+const [
+  dialogue1,
+  dialogue2,
+  dialogue3,
+  dialogue4,
+  dialogue5,
+  dialogue6,
+  dialogue7,
+  dialogue8,
+  dialogue9,
+  dialogue10,
+  dialogue11,
+  dialogue12,
+  dialogue13,
+  dialogue14,
+  dialogue15,
+  dialogue16,
+  dialogue17,
+] = dialogues;
 
-import { lesson6 } from "@/prisma/lessons/lesson-6";
-import { dialogueBlock as dialogue6 } from "@/prisma/lessons/dialogues/lesson-6";
-import { vocabulary as vocabulary6Block } from "@/prisma/lessons/vocabulary/lesson-6";
-
-import { lesson7 } from "@/prisma/lessons/lesson-7";
-import { dialogueBlock as dialogue7 } from "@/prisma/lessons/dialogues/lesson-7";
-import { vocabulary as vocabulary7Block } from "@/prisma/lessons/vocabulary/lesson-7";
-
-import { lesson8 } from "@/prisma/lessons/lesson-8";
-import { dialogueBlock as dialogue8 } from "@/prisma/lessons/dialogues/lesson-8";
-import { vocabulary as vocabulary8Block } from "@/prisma/lessons/vocabulary/lesson-8";
-
-import { lesson9 } from "@/prisma/lessons/lesson-9";
-import { dialogueBlock as dialogue9 } from "@/prisma/lessons/dialogues/lesson-9";
-import { vocabulary as vocabulary9Block } from "@/prisma/lessons/vocabulary/lesson-9";
-
-import { lesson10 } from "@/prisma/lessons/lesson-10";
-import { dialogueBlock as dialogue10 } from "@/prisma/lessons/dialogues/lesson-10";
-import { vocabulary as vocabulary10Block } from "@/prisma/lessons/vocabulary/lesson-10";
+const [
+  vocabulary1Block_1,
+  vocabulary1Block_2,
+  vocabulary2Block,
+  vocabulary3Block,
+  vocabulary4Block,
+  vocabulary5Block,
+  vocabulary6Block,
+  vocabulary7Block,
+  vocabulary8Block,
+  vocabulary9Block,
+  vocabulary10Block,
+  vocabulary11Block,
+  vocabulary12Block,
+  vocabulary13Block,
+  vocabulary14Block,
+  vocabulary15Block,
+  vocabulary16Block,
+  vocabulary17Block,
+] = vocabularies;
 
 export default function lectureConfigs(): Record<string, LectureConfig> {
   return {
@@ -74,13 +99,13 @@ export default function lectureConfigs(): Record<string, LectureConfig> {
         {
           id: "vocabulary",
           anchor: "vocabulary-1",
-          text: vocabulary1.title as LocalizedText,
+          text: vocabulary1Block_1.title as LocalizedText,
           layout: "column",
         },
         {
           id: "vocabulary",
           anchor: "vocabulary-2",
-          text: vocabulary2.title as LocalizedText,
+          text: vocabulary1Block_2.title as LocalizedText,
           layout: "column",
         },
         {

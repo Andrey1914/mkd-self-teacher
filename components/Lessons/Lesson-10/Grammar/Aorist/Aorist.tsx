@@ -13,7 +13,11 @@ const { aorist } = grammarLesson10;
 export const Aorist = () => {
   return (
     <>
-      <Paragraph data={aorist} titleIconSrc="/grammar.webp" />
+      <Paragraph
+        data={aorist}
+        titleIconSrc="/grammar.webp"
+        id="aorist-continued"
+      />
       <AoristASubtype />
       <AoristOSubtype />
       <AoristESubtype />
