@@ -24,6 +24,7 @@ export const lesson15 = {
     {
       type: "lecture",
       slug: "lesson-15",
+      anchor: "lesson-15_learning-a-language",
       title: {
         ru: "ИЗУЧЕНИЕ ЯЗЫКА",
         mkd: "УЧЕЊЕ ЈАЗИК",

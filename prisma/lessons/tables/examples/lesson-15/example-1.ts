@@ -3,6 +3,7 @@ import { TablesProps } from "@/types";
 export const example1: TablesProps = {
   slug: "lesson-15",
   type: "example-1",
+  anchor: "pluperfect",
   title: {
     ru: "ГРАММАТИКА",
     mkd: "ГРАМАТИКА",
@@ -22,7 +23,3 @@ export const example1: TablesProps = {
     ],
   },
 };
-
-//     От других глаголов совершенного и несовершенного вида причастие образуется от основы имперфекта (<span>-а-</span>, <span>-е-</span>
-//     сохраняются, <span>-и-</span> меняется на <span>-е-</span>): <span>чи*та</span> «читать» — <span>чи*тан</span> «читанный»,
-//     <span>пре*ку ден</span> «»

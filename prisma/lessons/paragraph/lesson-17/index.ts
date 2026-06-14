@@ -1,2 +1,2 @@
 export { ruleAfterVocabulary } from "./lecture";
-export { ruleAfterExamples } from "./grammar";
+export { ruleAfterExamples, retelling } from "./grammar";

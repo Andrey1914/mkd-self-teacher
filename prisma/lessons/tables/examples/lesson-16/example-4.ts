@@ -3,6 +3,7 @@ import { TablesProps } from "@/types";
 export const example4: TablesProps = {
   slug: "lesson-16",
   type: "example-4",
+  anchor: "restrictive-clauses",
   subtitle: "ОГРАНИЧИТЕЛЬНЫЕ ПРИДАТОЧНЫЕ",
   content: {
     text: `Ограничительные придаточные предложения вводятся союзами <span>о*свен да</span> «кроме как», <span>о*свен што</span> «кроме того что», 

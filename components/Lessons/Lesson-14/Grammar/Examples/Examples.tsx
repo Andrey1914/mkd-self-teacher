@@ -19,7 +19,11 @@ import {
 export const Examples = () => {
   return (
     <>
-      <ExamplesTable data={example1} titleIconSrc="/grammar.webp" />
+      <ExamplesTable
+        data={example1}
+        titleIconSrc="/grammar.webp"
+        id="future-in-the-past"
+      />
       <GenericTable
         data={futureInThePast}
         classNames={{
@@ -32,7 +36,7 @@ export const Examples = () => {
       <ExamplesTable data={example3} />
       <ExamplesTable data={example4} />
       <ExamplesTable data={example5} />
-      <Paragraph data={indefinitePronouns} />
+      <Paragraph data={indefinitePronouns} id="indefinite-pronouns" />
     </>
   );
 };

@@ -3,6 +3,7 @@ import { TablesProps } from "@/types";
 export const example3: TablesProps = {
   slug: "lesson-13",
   type: "example-3",
+  anchor: "bi-construction",
   subtitle: "БИ-КОНСТРУКЦИЯ",
   content: {
     text: `Би-конструкция состоит из частицы <span>би</span> и л-формы, между ними могут стоять только краткие частицы д.п., в.п. / 

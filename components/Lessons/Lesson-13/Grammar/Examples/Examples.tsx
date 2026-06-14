@@ -11,12 +11,16 @@ const { formsOfRetelling } = grammarLesson13;
 export const Examples = () => {
   return (
     <>
-      <ExamplesTable data={example1} titleIconSrc="/grammar.webp" />
+      <ExamplesTable
+        data={example1}
+        titleIconSrc="/grammar.webp"
+        id="perfect-and-forms-of-retelling"
+      />
       <ExamplesTable data={example2} />
       <Paragraph data={formsOfRetelling} />
-      <ExamplesTable data={example3} />
+      <ExamplesTable data={example3} id="bi-construction" />
       <ExamplesTable data={example4} />
-      <ExamplesTable data={example5} />
+      <ExamplesTable data={example5} id="concessive-clauses" />
     </>
   );
 };

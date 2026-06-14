@@ -22,7 +22,11 @@ const {
 export const Examples = () => {
   return (
     <>
-      <ExamplesTable data={example1} titleIconSrc="/grammar.webp" />
+      <ExamplesTable
+        data={example1}
+        titleIconSrc="/grammar.webp"
+        id="expression-of-temporal-relations"
+      />
       <ExamplesTable data={example2} />
       <ExamplesTable data={example3} />
       <ExamplesTable data={example4} />

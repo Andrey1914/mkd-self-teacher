@@ -3,6 +3,7 @@ import { TablesProps } from "@/types";
 export const example5: TablesProps = {
   slug: "lesson-13",
   type: "example-5",
+  anchor: "concessive-clauses",
   subtitle: "ПРИДАТОЧНЫЕ УСТУПИТЕЛЬНЫЕ",
   content: {
     text: `Придаточные предложения со значением уступки вводятся союзами, союзными словами и словосочетаниями <span>и*ако</span> «хотя», 

@@ -3,6 +3,7 @@ import { TablesProps } from "@/types";
 export const example1: TablesProps = {
   slug: "lesson-13",
   type: "example-1",
+  anchor: "perfect-and-forms-of-retelling",
   title: {
     ru: "ГРАММАТИКА",
     mkd: "ГРАМАТИКА",

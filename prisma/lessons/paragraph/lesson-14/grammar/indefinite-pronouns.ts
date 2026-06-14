@@ -3,6 +3,7 @@ import { ParagraphSectionsProps } from "@/types";
 export const indefinitePronouns: ParagraphSectionsProps = {
   type: "grammar-indefinite-pronouns",
   slug: "lesson-14",
+  anchor: "indefinite-pronouns",
   subtitle: "НЕОПРЕДЕЛЁННЫЕ МЕСТОИМЕНИЯ",
   content: {
     text: `Наиболее употребительными неопределёнными местоимениями являются: <span>не*коj</span> «некто, кто-то, кто-нибудь, кто-либо»,

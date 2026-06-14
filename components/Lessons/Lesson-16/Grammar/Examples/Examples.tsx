@@ -8,10 +8,14 @@ const { example1, example2, example3, example4 } = examplesLesson16;
 export const Examples = () => {
   return (
     <>
-      <ExamplesTable data={example1} titleIconSrc="/grammar.webp" />
+      <ExamplesTable
+        data={example1}
+        titleIconSrc="/grammar.webp"
+        id="participle"
+      />
       <ExamplesTable data={example2} />
       <ExamplesTable data={example3} />
-      <ExamplesTable data={example4} />
+      <ExamplesTable data={example4} id="restrictive-clauses" />
     </>
   );
 };

@@ -35,6 +35,7 @@ export const lesson11 = {
     {
       type: "lecture",
       slug: "lesson-11",
+      anchor: "lesson-11_holidays",
       title: {
         ru: "СОЧЕЛЬНИК И РОЖДЕСТВО",
         mkd: "БАДНИК И БОЖИК",
