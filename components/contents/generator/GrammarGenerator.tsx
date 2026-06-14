@@ -12,18 +12,8 @@ interface GrammarGeneratorProps {
 
 export const GrammarGenerator = ({ config }: GrammarGeneratorProps) => {
   if (!config) {
-    console.error(
-      "GrammarGenerator: Свойство 'config' не передано или равно undefined!",
-    );
-    return (
-      <div
-        style={{
-          color: "orange",
-        }}
-      >
-        Секция грамматики не найдена.
-      </div>
-    );
+    console.error("GrammarGenerator: 'config' не передан!");
+    return <div style={{ color: "orange" }}>Секция грамматики не найдена.</div>;
   }
 
   const { lessonId, mainAnchor, title, items, scroll } = config;
@@ -79,14 +69,7 @@ export const GrammarGenerator = ({ config }: GrammarGeneratorProps) => {
         style={{ display: "flex", gap: "8px", alignItems: "baseline" }}
         scroll={scroll}
       >
-        <h3
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            textIndent: 0,
-            gap: "4px",
-          }}
-        >
+        <h3 style={{ display: "flex", gap: "8px", textIndent: 0 }}>
           {title?.ru}
           <span>{title?.mkd}</span>
         </h3>

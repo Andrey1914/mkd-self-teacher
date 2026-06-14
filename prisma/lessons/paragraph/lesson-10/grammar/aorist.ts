@@ -3,6 +3,7 @@ import { ParagraphSectionsProps } from "@/types";
 export const aorist: ParagraphSectionsProps = {
   type: "aorist",
   slug: "lesson-10",
+  anchor: "aorist-continued",
   title: {
     ru: "ГРАММАТИКА",
     mkd: "ГРАМАТИКА",

@@ -6,6 +6,7 @@ import {
   grammarLesson3,
   grammarLesson4,
   grammarLesson8,
+  grammarLesson10,
   lectureLesson5,
 } from "@/prisma/lessons/paragraph";
 import {
@@ -325,6 +326,24 @@ export default function grammarConfigs(): Record<string, GrammarConfig> {
           text: examples.lesson9.example1.subtitle as string,
           formatText: true,
         },
+      ],
+    },
+    "10": {
+      lessonId: 10,
+      mainAnchor: "aorist-continued",
+      title: grammarLesson10.aorist.title as LocalizedText,
+      items: [
+        {
+          id: "aorist-sub",
+          anchor: "aorist-continued",
+          text: grammarLesson10.aorist.subtitle as string,
+        },
+        // {
+        //   id: "conjunctions",
+        //   anchor: "conjunctions",
+        //   text: examples.lesson9.example1.subtitle as string,
+        //   formatText: true,
+        // },
       ],
     },
   };
