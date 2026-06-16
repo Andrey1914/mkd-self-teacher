@@ -4,6 +4,7 @@ export const appearanceAndCare: TablesProps = {
   slug: "lesson-13",
   type: "appearance-and-care",
   anchor: "appearance-and-care",
+  glossary: true,
   title: {
     ru: `ВНЕШНОСТЬ И УХОД`,
     mkd: `<span>ИЗГЛЕД И ГРИЖА</span>`,

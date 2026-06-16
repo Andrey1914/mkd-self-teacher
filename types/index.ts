@@ -6,7 +6,11 @@ export type { TabsProps } from "./tabsProps";
 export type { HeaderProps } from "./headerProps";
 export type { ParagraphSectionsProps, ParagraphProps } from "./paragraphType";
 export type { SectionWithTables } from "./sectionWithTables";
-export type { LessonData, LessonIntroProps } from "./lessonTypes";
+export type {
+  LessonData,
+  LessonIntroProps,
+  GlossaryEntryData,
+} from "./lessonTypes";
 export type {
   ExercisesProps,
   WordState,
@@ -21,4 +25,8 @@ export type {
   CommonWords,
   TitleObject,
 } from "./baseTypes";
-export type { TablesProps, GenericTableProps } from "./tablesTypes";
+export type {
+  TablesProps,
+  GenericTableProps,
+  TablesWords,
+} from "./tablesTypes";

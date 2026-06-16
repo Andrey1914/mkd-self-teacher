@@ -4,6 +4,7 @@ export const health: TablesProps = {
   slug: "lesson-10",
   type: "health",
   anchor: "health",
+  glossary: true,
   title: {
     ru: `ЗДОРОВЬЕ`,
     mkd: `<span>ЗДРАВJE</span>`,

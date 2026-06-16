@@ -63,12 +63,6 @@ async function main() {
             console.log(`✅ Урок "${slug}" создан.`);
           }
 
-          // console.log(
-          //   existing
-          //     ? `ℹ️ Урок "${lesson.slug}" уже существует. Данные будут дополнены.`
-          //     : `✅ Урок "${lesson.slug}" создан.`,
-          // );
-
           // Sections и таблицы
           await seedSections(tx, lesson, lessonId);
 

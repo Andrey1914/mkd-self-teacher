@@ -4,6 +4,7 @@ export const family: TablesProps = {
   slug: "lesson-12",
   type: "family",
   anchor: "family",
+  glossary: true,
   title: {
     ru: `СЕМЬЯ`,
     mkd: `<span>ФАМИЛИJA</span>`,

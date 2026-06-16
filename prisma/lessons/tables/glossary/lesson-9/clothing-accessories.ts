@@ -4,6 +4,7 @@ export const clothingAccessories: TablesProps = {
   slug: "lesson-9",
   type: "clothing-accessories",
   anchor: "clothing-accessories",
+  glossary: true,
   title: {
     ru: `ОДЕЖДА И АКСЕССУАРЫ`,
     mkd: `ОБЛЕКА И АКСЕСОАРИ`,

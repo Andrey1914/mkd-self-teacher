@@ -61,10 +61,12 @@ model Section {
 
 model GlossaryEntry {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  slug      String?
+  type      String? 
   anchor    String?
-  word      String
-  meaning   String
-  example   String?
+  glossary  Boolean? @default(true)
+  title     Json?   
+  content   Json?
 
   lessonId  String   @db.ObjectId
   lesson    Lesson   @relation(fields: [lessonId], references: [id])
