@@ -25,6 +25,7 @@ export interface TablesProps {
   slug?: string;
   type: string;
   anchor?: string;
+  glossary?: boolean;
   category?: string;
   title?: string[] | string | { ru?: string; mkd?: string };
   text?: string;

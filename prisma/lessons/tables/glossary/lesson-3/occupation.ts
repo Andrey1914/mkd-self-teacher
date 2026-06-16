@@ -4,6 +4,7 @@ export const occupationTable: TablesProps = {
   slug: "lesson-3",
   type: "occupation-table",
   anchor: "occupation",
+  glossary: true,
   title: {
     ru: `РОД ДЕЯТЕЛЬНОСТИ`,
     mkd: `ЗАНИМАЊЕ`,

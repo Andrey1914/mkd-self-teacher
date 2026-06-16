@@ -4,6 +4,7 @@ export const time: TablesProps = {
   slug: "lesson-11",
   type: "time",
   anchor: "time",
+  glossary: true,
   title: {
     ru: `ВРЕМЯ`,
     mkd: `<span>ВРЕМЕ</span>`,

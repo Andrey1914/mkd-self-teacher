@@ -4,6 +4,7 @@ export const music: TablesProps = {
   slug: "lesson-16",
   type: "music",
   anchor: "music",
+  glossary: true,
   title: {
     ru: `МУЗЫКА`,
     mkd: `<span>МУЗЫКА</span>`,

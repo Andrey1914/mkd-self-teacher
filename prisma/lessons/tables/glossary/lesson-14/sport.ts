@@ -4,6 +4,7 @@ export const sport: TablesProps = {
   slug: "lesson-14",
   type: "sport",
   anchor: "sport",
+  glossary: true,
   title: {
     ru: `СПОРТ`,
     mkd: `<span>СПОРТ</span>`,

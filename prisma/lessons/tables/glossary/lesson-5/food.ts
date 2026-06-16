@@ -4,6 +4,7 @@ export const foodTable: TablesProps = {
   slug: "lesson-5",
   type: "food-table",
   anchor: "food",
+  glossary: true,
   title: {
     ru: `ЕДА`,
     mkd: `ХРАНА`,

@@ -3,12 +3,15 @@ import type { LessonData } from "@/types";
 type DbClient = PrismaClient | Prisma.TransactionClient;
 
 export async function seedTables(
-  // tx: PrismaClient,
   prisma: DbClient,
   lesson: LessonData,
   lessonId: string,
 ) {
   for (const tableBlock of lesson.tables ?? []) {
+    if ("glossary" in tableBlock && tableBlock.glossary === true) {
+      continue;
+    }
+
     const rawTitle = "title" in tableBlock ? tableBlock.title : undefined;
 
     let title: string | { ru?: string; mkd?: string };

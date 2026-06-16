@@ -12,6 +12,7 @@ export interface GlossaryEntryData {
   word: string;
   meaning: string;
   example?: string;
+  anchor?: string;
 }
 
 export type TableBlockData = TablesProps;
